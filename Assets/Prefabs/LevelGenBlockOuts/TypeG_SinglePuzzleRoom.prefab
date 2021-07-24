@@ -42,6 +42,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8623654039477989759}
+  - component: {fileID: 4490460940811037188}
   m_Layer: 0
   m_Name: TypeG_SinglePuzzleRoom
   m_TagString: Untagged
@@ -65,6 +66,29 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4490460940811037188
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8623654039477989758}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 925619b30e43b064497f85ecdf8feaf4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  seeder: {fileID: 11400000, guid: d1861e6a6ee7f0b4186bc669d976f901, type: 2}
+  roomPuzzles:
+  - puzzleType: 1
+    mat: {fileID: 2100000, guid: 8cd229eb12d815b4fac0294de5cf31a3, type: 2}
+  - puzzleType: 3
+    mat: {fileID: 2100000, guid: 41925724ee467eb4dab376be7d7bd4ae, type: 2}
+  - puzzleType: 0
+    mat: {fileID: 2100000, guid: 749ef7c8773eb7c4eaf89bd885e9cafc, type: 2}
+  - puzzleType: 4
+    mat: {fileID: 2100000, guid: 5748b12bc20c60f44ba2e51858f5eba5, type: 2}
+  renderer: {fileID: 8623654039826749600}
 --- !u!1 &8623654039826749661
 GameObject:
   m_ObjectHideFlags: 0

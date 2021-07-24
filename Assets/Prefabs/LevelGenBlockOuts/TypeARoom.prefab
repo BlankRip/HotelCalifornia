@@ -136,6 +136,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2670573269207488503}
+  - component: {fileID: 2967304514838998894}
   m_Layer: 0
   m_Name: TypeARoom
   m_TagString: Untagged
@@ -159,6 +160,26 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2967304514838998894
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2670573269207488502}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cadd415ab90fb824d8a34eff84aadd32, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  roomType: 1
+  doorways:
+  - {fileID: 3277926394947113862}
+  - {fileID: 3277926395021429722}
+  colliders:
+  - {fileID: 2670573268985642539}
+  myPuzzleVariant: {fileID: 3135362591166988491, guid: 89feec59fd86a8e45ac159fbfe6adc71, type: 3}
+  mySinglePuzzleVariant: {fileID: 1771974922736875325, guid: 8b152eec70e03874a8f7b2e3b1f55446, type: 3}
 --- !u!1001 &6105338988203330491
 PrefabInstance:
   m_ObjectHideFlags: 0
