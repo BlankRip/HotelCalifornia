@@ -41,5 +41,13 @@ namespace Knotgames.Blank.LevelGen {
         public GameObject GetSingleVarient() {
             return mySinglePuzzleVariant;
         }
+
+        public Transform GetTransform() {
+            return this.transform;
+        }
+
+        public List<Collider> GetColliders() {
+            return colliders;
+        }
     }
 }

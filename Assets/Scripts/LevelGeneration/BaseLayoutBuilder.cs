@@ -10,26 +10,23 @@ namespace Knotgames.Blank.LevelGen {
         private IRoom startRoom;
         private List<Transform> availableEntryDoors;
         private ScriptableLevelSeed seeder;
-        private BuildingData currentBuildingData;
-        private BuildingData backupBuilderData;
+        private BuildingStatus currentBuildingData;
+        private BuildingStatus backupBuilderData;
         private int routId;
-        private int iterations;
-        private int finalIteration;
+        BuilderData builderData;
         private int finalRoutId = 3;
         public BaseLayoutBuilder(ScriptableLevelSeed levelSeed, IRoom startRoom,
-            int iterations, int finalIteration, ref BuildingData currentBuildingData, ref BuildingData backupBuilderData) {
+            BuilderData builderData, ref BuildingStatus currentBuildingData, ref BuildingStatus backupBuilderData) {
             seeder = levelSeed;
             this.startRoom = startRoom;
             availableEntryDoors = startRoom.GetDoorways();
             this.currentBuildingData = currentBuildingData;
             this.backupBuilderData = backupBuilderData;
-            this.iterations = iterations;
-            this.finalIteration = finalIteration;
+            this.builderData = builderData;
             routId = 0;
         }
 
-        public void StartBuilder()
-        {
+        public void StartBuilder() {
             buildInProcess = true;
         }
 
@@ -43,9 +40,9 @@ namespace Knotgames.Blank.LevelGen {
                 UpdateBackupWithCurrent();
                 IBuilder routBuilder;
                 if(routId == finalRoutId)
-                    routBuilder = new RoutBuilder(finalIteration, seeder, ref currentBuildingData, ref backupBuilderData);
+                    routBuilder = new RoutBuilder(builderData.finalIteration, seeder, builderData, ref currentBuildingData, ref backupBuilderData);
                 else
-                    routBuilder = new RoutBuilder(iterations, seeder, ref currentBuildingData, ref backupBuilderData);
+                    routBuilder = new RoutBuilder(builderData.iterations, seeder, builderData, ref currentBuildingData, ref backupBuilderData);
                 routBuilder.StartBuilder();
                 while(routBuilder.GetBuilderStatus()) {
                     if(routBuilder.HasFailed())
@@ -67,21 +64,22 @@ namespace Knotgames.Blank.LevelGen {
         }
 
         private void UpdateBackupWithCurrent() {
-            backupBuilderData = currentBuildingData;
+            backupBuilderData = new BuildingStatus(currentBuildingData);
         }
 
         private void UpdateCurrentOnSuccessfulRout() {
             switch (routId) {
                 case 1:
-                    currentBuildingData.availableSide1Rooms = new List<IRoom>(currentBuildingData.currentRoutRooms);
+                    builderData.availableSide1Rooms = new List<IRoom>(currentBuildingData.currentRoutRooms);
                     break;
                 case 2:
-                    currentBuildingData.availableSide2Rooms = new List<IRoom>(currentBuildingData.currentRoutRooms);
+                    builderData.availableSide2Rooms = new List<IRoom>(currentBuildingData.currentRoutRooms);
                     break;
                 case 3:
-                    currentBuildingData.availableSide3Rooms = new List<IRoom>(currentBuildingData.currentRoutRooms);
+                    builderData.availableSide3Rooms = new List<IRoom>(currentBuildingData.currentRoutRooms);
                     break;
             }
+            seeder.levelSeed.UpdateSeed();
             currentBuildingData.currentRoutRooms.Clear();
             currentBuildingData.availableDoorways.Clear();
             currentBuildingData.retries = 0;

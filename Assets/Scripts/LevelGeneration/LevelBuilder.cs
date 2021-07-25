@@ -5,24 +5,16 @@ using UnityEngine;
 namespace Knotgames.Blank.LevelGen {
     public class LevelBuilder : MonoBehaviour
     {
+        [SerializeField] GameObject levelGen;
         [SerializeField] ScriptableLevelSeed seeder;
-        [SerializeField] GameObject startRoomObj;
-        [SerializeField] int iterations = 3;
-        [SerializeField] int finalIteration = 2;
-        [SerializeField] int maxRetries = 15;
-        [SerializeField] int puzzlePairs = 2, singelPuzzles = 1;
-        [SerializeField] int maxNumberOfSameRooms = 2;
-        [SerializeField] LayerMask roomLayerMask;
-        [SerializeField] List<GameObject> corridors;
-        [SerializeField] List<GameObject> allRoomObjs;
+        [SerializeField] BuilderData builderData;
+        [SerializeField] BuildingStatus current;
 
-        private BuildingData current;
-        private BuildingData backup;
+        private BuildingStatus backup;
         private IRoom startRoom;
 
         private void Start() {
-            current = new BuildingData();
-            backup = new BuildingData();
+            backup = new BuildingStatus(current);
             StartCoroutine(GenerateLevel());
         }
 
@@ -33,22 +25,27 @@ namespace Knotgames.Blank.LevelGen {
             yield return longInterval;
             SpawnStartRoom();
             yield return interval;
-            IBuilder baseBuilder = new BaseLayoutBuilder(seeder, startRoom, iterations, finalIteration, ref current, ref backup);
+            IBuilder baseBuilder = new BaseLayoutBuilder(seeder, startRoom, builderData, ref current, ref backup);
             baseBuilder.StartBuilder();
             yield return interval;
             while(baseBuilder.GetBuilderStatus()) {
                 if(baseBuilder.HasFailed())
-                    Debug.Log("Failed");
+                    RestartLevelGen();
                 else
                     yield return interval;
             }
-
         }
 
         private void SpawnStartRoom() {
-            GameObject sapwned = GameObject.Instantiate(startRoomObj.gameObject, transform.position, transform.rotation);
+            GameObject sapwned = GameObject.Instantiate(builderData.startRoomObj, transform.position, transform.rotation);
             sapwned.transform.parent = this.transform;
             startRoom = sapwned.GetComponent<IRoom>();
+        }
+
+        public void RestartLevelGen() {
+            Debug.Log($"Retrying Gen");
+            GameObject.Instantiate(levelGen, transform.position, transform.rotation);
+            Destroy(this.gameObject);
         }
     }
 }
