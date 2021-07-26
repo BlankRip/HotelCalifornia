@@ -6,7 +6,6 @@ namespace Knotgames.Blank.LevelGen {
     public class BaseLayoutBuilder: MonoBehaviour, IBuilder 
     {
         private bool buildInProcess;
-        private bool failed;
         private IRoom startRoom;
         private List<Transform> availableEntryDoors;
         private ScriptableLevelSeed seeder;
@@ -49,12 +48,7 @@ namespace Knotgames.Blank.LevelGen {
                 routBuilder.StartBuilder();
                 while(routBuilder.GetBuilderStatus()) {
                     //?Debug.Log("Base Building");
-                    if(routBuilder.HasFailed()) {
-                        Debug.Log("ENT");
-                        failed = true;
-                    }
-                    else
-                        yield return interval;
+                    yield return interval;
                 }
                 UpdateCurrentOnSuccessfulRout();
             }
@@ -96,10 +90,6 @@ namespace Knotgames.Blank.LevelGen {
 
         public bool GetBuilderStatus() {
             return buildInProcess;
-        }
-
-        public bool HasFailed() {
-            return failed;
         }
     }
 }

@@ -6,6 +6,7 @@ namespace Knotgames.Blank.LevelGen {
     [System.Serializable]
     public class BuilderData {
         public Transform parent;
+        public GameObject levelGen;
         public GameObject startRoomObj;
         
         public LayerMask roomLayerMask;

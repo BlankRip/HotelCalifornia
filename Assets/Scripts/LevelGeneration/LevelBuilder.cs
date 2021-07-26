@@ -5,7 +5,6 @@ using UnityEngine;
 namespace Knotgames.Blank.LevelGen {
     public class LevelBuilder : MonoBehaviour
     {
-        [SerializeField] GameObject levelGen;
         [SerializeField] bool generateSeed;
         [SerializeField] ScriptableLevelSeed seeder;
         [SerializeField] BuilderData builderData;
@@ -39,10 +38,7 @@ namespace Knotgames.Blank.LevelGen {
             yield return interval;
             while(baseBuilder.GetBuilderStatus()) {
                 //?Debug.Log("Level Building");
-                if(baseBuilder.HasFailed())
-                    RestartLevelGen();
-                else
-                    yield return interval;
+                yield return interval;
             }
             Debug.Log("Base Built");
         }
@@ -55,7 +51,7 @@ namespace Knotgames.Blank.LevelGen {
 
         public void RestartLevelGen() {
             Debug.Log($"Retrying Gen");
-            GameObject.Instantiate(levelGen, transform.position, transform.rotation);
+            GameObject.Instantiate(builderData.levelGen, transform.position, transform.rotation);
             Destroy(this.gameObject);
         }
     }

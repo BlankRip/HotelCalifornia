@@ -7,6 +7,5 @@ namespace Knotgames.Blank.LevelGen {
     {
         void StartBuilder();
         bool GetBuilderStatus();
-        bool HasFailed();
     }
 }

@@ -6,7 +6,6 @@ namespace Knotgames.Blank.LevelGen {
     public class RoutBuilder: MonoBehaviour, IBuilder
     {
         private bool buildInProgress;
-        private bool failed;
         private int iterations;
         private ScriptableLevelSeed seeder;
         private BuildingStatus currentBuildingData;
@@ -75,8 +74,7 @@ namespace Knotgames.Blank.LevelGen {
             currentBuildingData.retries++;
             if(currentBuildingData.retries >= builderData.maxRetries) {
                 Debug.Log("ENT   tttttttt");
-                //builderData.CallFaile();
-                failed = true;
+                builderData.OnFaile();
                 return;
             }
             seeder.levelSeed.ClearCurrent();
@@ -99,10 +97,6 @@ namespace Knotgames.Blank.LevelGen {
 
         public bool GetBuilderStatus() {
             return buildInProgress;
-        }
-
-        public bool HasFailed() {
-            return failed;
         }
     }
 }
