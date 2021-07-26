@@ -9,12 +9,20 @@ namespace Knotgames.Blank.LevelGen
         [SerializeField] ScriptableLevelSeed seed;
         private bool generateSeed;
         private List<int> probableSeed;
-        private Queue<int> theSeed;
+        private List<int> theSeed;
+        int seedIndex;
+        private int previousCount;
+        private int saftyIndex;
+        private int inValidSafty = -1;
+        private int valueAtSaftyIndex;
+        private bool correct;
 
         private void Awake() {
             seed.levelSeed = this;
             probableSeed = new List<int>();
-            theSeed = new Queue<int>();
+            theSeed = new List<int>();
+            seedIndex = 0;
+            valueAtSaftyIndex = inValidSafty;
         }
 
         public int GetRandomBetween(int min, int max) {
@@ -30,21 +38,28 @@ namespace Knotgames.Blank.LevelGen
         }
 
         private void UpdateProbableSeed(int value) {
+            if(probableSeed.Count == 0)
+                valueAtSaftyIndex = value;
             probableSeed.Add(value);
         }
 
-        public void ClearCurrent() {
-            probableSeed.Clear();
+        private int GetValueFromSeed() {
+            int valueToReturn = theSeed[0];
+            theSeed.RemoveAt(0);
+            return valueToReturn;
         }
 
         public void UpdateSeed() {
             for (int i = 0; i < probableSeed.Count; i++)
-                theSeed.Enqueue(probableSeed[i]);
+                theSeed.Add(probableSeed[i]);
+            valueAtSaftyIndex = inValidSafty;
             ClearCurrent();
         }
 
-        private int GetValueFromSeed() {
-            return theSeed.Dequeue();
+        public void ClearCurrent() {
+            probableSeed.Clear();
+            if(valueAtSaftyIndex != inValidSafty)
+                probableSeed.Add(valueAtSaftyIndex);
         }
 
         public void TurnOnGeneration() {

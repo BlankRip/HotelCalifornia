@@ -60,7 +60,7 @@ namespace Knotgames.Blank.LevelGen {
 
         private void PickRout() {
             int rand = seeder.levelSeed.GetRandomBetween(0, availableEntryDoors.Count);
-
+            Debug.Log(rand);
             currentBuildingData.availableDoorways.Add(availableEntryDoors[rand]);
             availableEntryDoors.RemoveAt(rand);
             routId++;
