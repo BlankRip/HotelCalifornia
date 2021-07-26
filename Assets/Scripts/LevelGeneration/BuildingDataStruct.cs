@@ -22,6 +22,11 @@ namespace Knotgames.Blank.LevelGen {
         public List<IRoom> availableSide2Rooms;
         public List<IRoom> availableSide3Rooms;
 
+        public event System.Action onFail;
+        public void OnFaile() {
+            onFail();
+        }
+
         public void GetAllUsableRooms(BuildingStatus buildingStatus, ref List<GameObject> rooms) {
             for (int i = 0; i < allRoomObjs.Count; i++) {
                 IRoom current = allRoomObjs[i].GetComponent<IRoom>();
@@ -34,7 +39,6 @@ namespace Knotgames.Blank.LevelGen {
     [System.Serializable]
     public class BuildingStatus
     {
-        public List<IRoom> allRooms;
         public List<RoomType> allRoomTypes;
         public List<int> eachTypeSpawned;
         public List<IRoom> currentRoutRooms;
@@ -54,7 +58,7 @@ namespace Knotgames.Blank.LevelGen {
         public BuildingStatus(BuildingStatus copy) {
             allRoomTypes = new List<RoomType>(copy.allRoomTypes);
             eachTypeSpawned = new List<int>(copy.eachTypeSpawned);
-            currentRoutRooms = new List<IRoom>(copy.allRooms);
+            currentRoutRooms = new List<IRoom>(copy.currentRoutRooms);
             availableDoorways = new List<Transform>(copy.availableDoorways);
             currentIterations = copy.currentIterations;
             retries = copy.currentIterations;

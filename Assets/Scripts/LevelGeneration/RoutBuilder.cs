@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 namespace Knotgames.Blank.LevelGen {
-    public class RoutBuilder: IBuilder
+    public class RoutBuilder: MonoBehaviour, IBuilder
     {
         private bool buildInProgress;
         private bool failed;
@@ -14,8 +14,9 @@ namespace Knotgames.Blank.LevelGen {
         private BuilderData builderData;
         private List<GameObject> availableRoomsObjs;
         private RoomPlacer roomPlacer;
+        Coroutine coroutine;
 
-        public RoutBuilder(int iterations, ScriptableLevelSeed levelSeed, BuilderData builderData, ref BuildingStatus currentBuildingData, ref BuildingStatus backupBuilderData) {
+        public void Initilize(int iterations, ScriptableLevelSeed levelSeed, BuilderData builderData, ref BuildingStatus currentBuildingData, ref BuildingStatus backupBuilderData) {
             this.iterations = iterations;
             seeder = levelSeed;
             this.builderData = builderData;
@@ -30,7 +31,7 @@ namespace Knotgames.Blank.LevelGen {
 
         public void StartBuilder() {
             buildInProgress = true;
-            
+            coroutine = StartCoroutine(Build());
         }
 
         private IEnumerator Build() {
@@ -39,6 +40,7 @@ namespace Knotgames.Blank.LevelGen {
 
             yield return longInterval;
             for (int i = 0; i < iterations; i++) {
+                //?Debug.Log("Rout Building");
                 int rand = seeder.levelSeed.GetRandomBetween(0, 100);
                 if(rand > 80) {
                     PlaceCorridor();
@@ -56,6 +58,9 @@ namespace Knotgames.Blank.LevelGen {
                 yield return interval;
             }
             buildInProgress = false;
+
+            yield return longInterval;
+            Destroy(this);
         }
 
         private void PlaceCorridor() {
@@ -64,16 +69,13 @@ namespace Knotgames.Blank.LevelGen {
                 RestartRout();
         }
 
-        
-        private void UpdateAvailableDoors(List<Transform> updateWith) {
-            currentBuildingData.availableDoorways.Clear();
-            currentBuildingData.availableDoorways = new List<Transform>(updateWith);
-        }
-
         private void RestartRout() {
-            //^ StopCoroutine(c);
+            StopCoroutine(coroutine);
+            //!StopAllCoroutines();
             currentBuildingData.retries++;
             if(currentBuildingData.retries >= builderData.maxRetries) {
+                Debug.Log("ENT   tttttttt");
+                //builderData.CallFaile();
                 failed = true;
                 return;
             }
@@ -85,13 +87,13 @@ namespace Knotgames.Blank.LevelGen {
             }
             UpdateCurrentOnFailRout();
 
-            //!Debug.Log($"Restarting Rout with Id: {routId}");
-            // c = StartCoroutine(SpawnRooms(tracker.currentIterations));
+            Debug.Log($"Restarting Rout with retry Id: {currentBuildingData.retries}");
+            coroutine = StartCoroutine(Build());
         }
 
         private void UpdateCurrentOnFailRout() {
-            currentBuildingData.eachTypeSpawned = backupBuilderData.eachTypeSpawned;
-            currentBuildingData.availableDoorways = backupBuilderData.availableDoorways;
+            currentBuildingData.eachTypeSpawned = new List<int>(backupBuilderData.eachTypeSpawned);
+            currentBuildingData.availableDoorways = new List<Transform>(backupBuilderData.availableDoorways);
             currentBuildingData.currentRoutRooms.Clear();
         }
 

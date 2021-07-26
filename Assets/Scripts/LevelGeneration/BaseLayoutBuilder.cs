@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 namespace Knotgames.Blank.LevelGen {
-    public class BaseLayoutBuilder: IBuilder 
+    public class BaseLayoutBuilder: MonoBehaviour, IBuilder 
     {
         private bool buildInProcess;
         private bool failed;
@@ -15,7 +15,7 @@ namespace Knotgames.Blank.LevelGen {
         private int routId;
         BuilderData builderData;
         private int finalRoutId = 3;
-        public BaseLayoutBuilder(ScriptableLevelSeed levelSeed, IRoom startRoom,
+        public void Initilize(ScriptableLevelSeed levelSeed, IRoom startRoom,
             BuilderData builderData, ref BuildingStatus currentBuildingData, ref BuildingStatus backupBuilderData) {
             seeder = levelSeed;
             this.startRoom = startRoom;
@@ -28,6 +28,7 @@ namespace Knotgames.Blank.LevelGen {
 
         public void StartBuilder() {
             buildInProcess = true;
+            StartCoroutine(Build());
         }
 
         private IEnumerator Build() {
@@ -35,24 +36,32 @@ namespace Knotgames.Blank.LevelGen {
             WaitForFixedUpdate interval = new WaitForFixedUpdate();
 
             yield return longInterval;
-            //while(routId != finalRoutId) {
+            while(routId != finalRoutId) {
                 PickRout();
                 UpdateBackupWithCurrent();
-                IBuilder routBuilder;
+                RoutBuilder routBuild = gameObject.AddComponent<RoutBuilder>();
                 if(routId == finalRoutId)
-                    routBuilder = new RoutBuilder(builderData.finalIteration, seeder, builderData, ref currentBuildingData, ref backupBuilderData);
+                    routBuild.Initilize(builderData.finalIteration, seeder, builderData, ref currentBuildingData, ref backupBuilderData);
                 else
-                    routBuilder = new RoutBuilder(builderData.iterations, seeder, builderData, ref currentBuildingData, ref backupBuilderData);
+                    routBuild.Initilize(builderData.iterations, seeder, builderData, ref currentBuildingData, ref backupBuilderData);
+
+                IBuilder routBuilder = routBuild;
                 routBuilder.StartBuilder();
                 while(routBuilder.GetBuilderStatus()) {
-                    if(routBuilder.HasFailed())
+                    //?Debug.Log("Base Building");
+                    if(routBuilder.HasFailed()) {
+                        Debug.Log("ENT");
                         failed = true;
+                    }
                     else
                         yield return interval;
                 }
                 UpdateCurrentOnSuccessfulRout();
-            //}
+            }
             buildInProcess = false;
+
+            yield return longInterval;
+            Destroy(this);
         }
 
         private void PickRout() {

@@ -68,6 +68,7 @@ namespace Knotgames.Blank.LevelGen {
                     currentDoors[j].gameObject.SetActive(false);
                     currentDoors.RemoveAt(j);
                     currentBuildingData.availableDoorways[i].gameObject.SetActive(false);
+                    UpdateAvailableDoors(currentDoors);
                     
                     break;
                 }
@@ -79,6 +80,7 @@ namespace Knotgames.Blank.LevelGen {
 
         private void PlaceRoomAtDoor(ref Transform room, Transform myDoor, Transform attachTo) {
             //^ Making door face opposit to each other
+            room.rotation = Quaternion.identity;
             Vector3 targetDoorEular = attachTo.eulerAngles;
             Vector3 myDoorEular = myDoor.eulerAngles;
             float deltaAngel = Mathf.DeltaAngle(myDoorEular.y, targetDoorEular.y);
@@ -115,6 +117,11 @@ namespace Knotgames.Blank.LevelGen {
                 }
             }
             return false;
+        }
+
+        private void UpdateAvailableDoors(List<Transform> updateWith) {
+            currentBuildingData.availableDoorways.Clear();
+            currentBuildingData.availableDoorways = new List<Transform>(updateWith);
         }
     }
 }

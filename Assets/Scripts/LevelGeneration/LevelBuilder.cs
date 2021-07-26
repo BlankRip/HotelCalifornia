@@ -6,6 +6,7 @@ namespace Knotgames.Blank.LevelGen {
     public class LevelBuilder : MonoBehaviour
     {
         [SerializeField] GameObject levelGen;
+        [SerializeField] bool generateSeed;
         [SerializeField] ScriptableLevelSeed seeder;
         [SerializeField] BuilderData builderData;
         [SerializeField] BuildingStatus current;
@@ -14,7 +15,12 @@ namespace Knotgames.Blank.LevelGen {
         private IRoom startRoom;
 
         private void Start() {
+            builderData.onFail += RestartLevelGen;
             backup = new BuildingStatus(current);
+            if(generateSeed)
+                seeder.levelSeed.TurnOnGeneration();
+            else
+                seeder.levelSeed.TurnOffGeneration();
             StartCoroutine(GenerateLevel());
         }
 
@@ -25,15 +31,20 @@ namespace Knotgames.Blank.LevelGen {
             yield return longInterval;
             SpawnStartRoom();
             yield return interval;
-            IBuilder baseBuilder = new BaseLayoutBuilder(seeder, startRoom, builderData, ref current, ref backup);
+            BaseLayoutBuilder baseBuild = gameObject.AddComponent<BaseLayoutBuilder>();
+            baseBuild.Initilize(seeder, startRoom, builderData, ref current, ref backup);
+
+            IBuilder baseBuilder = baseBuild;
             baseBuilder.StartBuilder();
             yield return interval;
             while(baseBuilder.GetBuilderStatus()) {
+                //?Debug.Log("Level Building");
                 if(baseBuilder.HasFailed())
                     RestartLevelGen();
                 else
                     yield return interval;
             }
+            Debug.Log("Base Built");
         }
 
         private void SpawnStartRoom() {
