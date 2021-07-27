@@ -19,10 +19,6 @@ namespace Knotgames.Blank.LevelGen {
         public int puzzlePairs = 2, singelPuzzles = 1;
         public int maxNumberOfSameRooms = 2;
 
-        public List<IRoom> availableSide1Rooms;
-        public List<IRoom> availableSide2Rooms;
-        public List<IRoom> availableSide3Rooms;
-
         public event System.Action onFail;
         public void OnFaile() {
             onFail();
@@ -47,6 +43,10 @@ namespace Knotgames.Blank.LevelGen {
         public int currentIterations;
         public int retries;
 
+        public List<IRoom> availableSide1Rooms;
+        public List<IRoom> availableSide2Rooms;
+        public List<IRoom> availableSide3Rooms;
+
         public BuildingStatus() {
             allRoomTypes = new List<RoomType>();
             eachTypeSpawned = new List<int>();
@@ -54,6 +54,10 @@ namespace Knotgames.Blank.LevelGen {
             availableDoorways = new List<Transform>();
             currentIterations = 0;
             retries = 0;
+
+            availableSide1Rooms = new List<IRoom>();
+            availableSide2Rooms = new List<IRoom>();
+            availableSide3Rooms = new List<IRoom>();
         }
 
         public BuildingStatus(BuildingStatus copy) {

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 namespace Knotgames.Blank.LevelGen {
-    public class PuzzleRoom : MonoBehaviour, IPuzzleRoom
+    public class PuzzleRoom : MonoBehaviour, IPairPuzzleRoom
     {
         [SerializeField] ScriptableLevelSeed seeder;
         [SerializeField] List<RoomType> connectable;
@@ -12,7 +12,7 @@ namespace Knotgames.Blank.LevelGen {
         private List<PuzzleType> puzzleTypes;
         private List<IPuzzle> myPuzzles;
 
-        public PuzzleType GetAndActivePuzzle(List<PuzzleType> myType, ref List<PuzzleType> exclusionTypes) {
+        public PuzzleType GetAndActivePuzzle(List<PuzzleType> myType) {
             List<PuzzleType> common = new List<PuzzleType>();
             for (int i = 0; i < myType.Count; i++) {
                 if(GetPuzzleTypes().Contains(myType[i]))
@@ -29,7 +29,7 @@ namespace Knotgames.Blank.LevelGen {
             }
         }
 
-        private void ActivatePuzzleOfType(PuzzleType puzzleType) {
+        public void ActivatePuzzleOfType(PuzzleType puzzleType) {
             for (int i = 0; i < myPuzzles.Count; i++) {
                 if(myPuzzles[i].GetPuzzleType() == puzzleType) {
                     myPuzzles[i].ActivatePuzzle(renderer);
@@ -59,6 +59,10 @@ namespace Knotgames.Blank.LevelGen {
                 for (int i = 0; i < myPuzzles.Count; i++)
                     puzzleTypes.Add(myPuzzles[i].GetPuzzleType());
             }
+        }
+
+        public List<RoomType> GetConnectableRoomTypes() {
+            return connectable;
         }
     }
 }

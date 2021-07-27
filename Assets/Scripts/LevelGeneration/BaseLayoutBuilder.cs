@@ -73,13 +73,13 @@ namespace Knotgames.Blank.LevelGen {
         private void UpdateCurrentOnSuccessfulRout() {
             switch (routId) {
                 case 1:
-                    builderData.availableSide1Rooms = new List<IRoom>(currentBuildingData.currentRoutRooms);
+                    currentBuildingData.availableSide1Rooms = new List<IRoom>(currentBuildingData.currentRoutRooms);
                     break;
                 case 2:
-                    builderData.availableSide2Rooms = new List<IRoom>(currentBuildingData.currentRoutRooms);
+                    currentBuildingData.availableSide2Rooms = new List<IRoom>(currentBuildingData.currentRoutRooms);
                     break;
                 case 3:
-                    builderData.availableSide3Rooms = new List<IRoom>(currentBuildingData.currentRoutRooms);
+                    currentBuildingData.availableSide3Rooms = new List<IRoom>(currentBuildingData.currentRoutRooms);
                     break;
             }
             seeder.levelSeed.UpdateSeed();
