@@ -22,19 +22,11 @@ namespace Knotgames.Blank.LevelGen {
             while(!puzzlePlaced) {
                 List<IRoom> currentSet = GetRandomSet();
                 int rand = seeder.levelSeed.GetRandomBetween(0, currentSet.Count, SeedValueType.PickPuzzleRoom);
-                ISingelPuzzleRoom spawned = null;
-                try {
-                    spawned = GameObject.Instantiate(currentSet[rand].GetSingleVarient(), 
+                Debug.Log(rand);
+                Debug.Log(currentSet.Count);
+                ISingelPuzzleRoom spawned = GameObject.Instantiate(currentSet[rand].GetSingleVarient(), 
                     currentSet[rand].GetTransform().position, currentSet[rand].GetTransform().rotation,
                     currentSet[rand].GetTransform().parent).GetComponent<ISingelPuzzleRoom>();
-
-                } catch {
-                    Debug.Log("out");
-                }
-                
-                if(spawned == null) {
-                    Debug.Log("To Break");
-                }
 
                 PuzzleType validPuzzle = spawned.GetAndActivePuzzle(ref spawnedSingleTypes);
                 if(validPuzzle == PuzzleType.Nada) {
@@ -49,7 +41,11 @@ namespace Knotgames.Blank.LevelGen {
         }
 
         private List<IRoom> GetRandomSet() {
-            setInUse = seeder.levelSeed.GetRandomBetween(0, 3, SeedValueType.PickRoutId);
+            //setInUse = seeder.levelSeed.GetRandomBetween(0, 3, SeedValueType.PickRoutId);
+            setInUse = int.MinValue;
+            CheckForFreeRooms(builderData.availableSide1Rooms, 0, ref setInUse);
+            CheckForFreeRooms(builderData.availableSide2Rooms, 1, ref setInUse);
+            CheckForFreeRooms(builderData.availableSide3Rooms, 2, ref setInUse);
 
             switch(setInUse) {
                 case 0:
@@ -61,6 +57,12 @@ namespace Knotgames.Blank.LevelGen {
                 default:
                     return null;
             }
+        }
+
+        private void CheckForFreeRooms(List<IRoom> rooms, int id, ref int freeRoomsCount) {
+            int temp = rooms.Count;
+            if(temp > freeRoomsCount)
+                freeRoomsCount = id;
         }
 
         private void RemoveFormSet(IRoom room, int setId) {

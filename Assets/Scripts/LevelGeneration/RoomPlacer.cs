@@ -21,7 +21,7 @@ namespace Knotgames.Blank.LevelGen {
         }
 
         public bool PlaceRoom(ref List<GameObject> availableRooms) {
-            int rand = seeder.levelSeed.GetRandomBetween(0, availableRooms.Count, SeedValueType.PickRoom);
+            int rand = seeder.levelSeed.GetRandomBetween(0, availableRooms.Count - 1, SeedValueType.PickRoom);
 
             GameObject spawned = GameObject.Instantiate(availableRooms[rand], Vector3.zero, Quaternion.identity);
             spawned.transform.parent = builderData.parent;
