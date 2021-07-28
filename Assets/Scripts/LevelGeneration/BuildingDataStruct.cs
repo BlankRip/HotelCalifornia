@@ -19,6 +19,10 @@ namespace Knotgames.Blank.LevelGen {
         public int puzzlePairs = 2, singelPuzzles = 1;
         public int maxNumberOfSameRooms = 2;
 
+        public List<IRoom> availableSide1Rooms;
+        public List<IRoom> availableSide2Rooms;
+        public List<IRoom> availableSide3Rooms;
+
         public event System.Action onFail;
         public void OnFaile() {
             onFail();
@@ -39,23 +43,17 @@ namespace Knotgames.Blank.LevelGen {
         public List<RoomType> allRoomTypes;
         public List<int> eachTypeSpawned;
         public List<IRoom> currentRoutRooms;
-        [HideInInspector] public List<Transform> availableDoorways;
-        [HideInInspector] public int retries;
-
-        public List<IRoom> availableSide1Rooms;
-        public List<IRoom> availableSide2Rooms;
-        public List<IRoom> availableSide3Rooms;
+        public List<Transform> availableDoorways;
+        public int currentIterations;
+        public int retries;
 
         public BuildingStatus() {
             allRoomTypes = new List<RoomType>();
             eachTypeSpawned = new List<int>();
             currentRoutRooms = new List<IRoom>();
             availableDoorways = new List<Transform>();
+            currentIterations = 0;
             retries = 0;
-
-            availableSide1Rooms = new List<IRoom>();
-            availableSide2Rooms = new List<IRoom>();
-            availableSide3Rooms = new List<IRoom>();
         }
 
         public BuildingStatus(BuildingStatus copy) {
@@ -63,7 +61,8 @@ namespace Knotgames.Blank.LevelGen {
             eachTypeSpawned = new List<int>(copy.eachTypeSpawned);
             currentRoutRooms = new List<IRoom>(copy.currentRoutRooms);
             availableDoorways = new List<Transform>(copy.availableDoorways);
-            retries = copy.retries;
+            currentIterations = copy.currentIterations;
+            retries = copy.currentIterations;
         }
     }
 }

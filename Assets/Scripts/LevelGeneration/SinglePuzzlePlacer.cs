@@ -6,13 +6,13 @@ namespace Knotgames.Blank.LevelGen {
     public class SinglePuzzlePlacer: IPuzzlePlacer
     {
         private ScriptableLevelSeed seeder;
-        private BuildingStatus currentBuildStatus;
+        private BuilderData builderData;
         private List<PuzzleType> spawnedSingleTypes;
         private int setInUse;
 
-        public SinglePuzzlePlacer(ScriptableLevelSeed levelSeed, ref BuildingStatus currentBuildStatus) {
+        public SinglePuzzlePlacer(ScriptableLevelSeed levelSeed, ref BuilderData builderData) {
             seeder = levelSeed;
-            this.currentBuildStatus = currentBuildStatus;
+            this.builderData = builderData;
 
             spawnedSingleTypes = new List<PuzzleType>();
         }
@@ -21,7 +21,7 @@ namespace Knotgames.Blank.LevelGen {
             bool puzzlePlaced = false;
             while(!puzzlePlaced) {
                 List<IRoom> currentSet = GetRandomSet();
-                int rand = seeder.levelSeed.GetRandomBetween(0, currentSet.Count);
+                int rand = seeder.levelSeed.GetRandomBetween(0, currentSet.Count, SeedValueType.PickPuzzleRoom);
                 ISingelPuzzleRoom spawned = null;
                 try {
                     spawned = GameObject.Instantiate(currentSet[rand].GetSingleVarient(), 
@@ -49,15 +49,15 @@ namespace Knotgames.Blank.LevelGen {
         }
 
         private List<IRoom> GetRandomSet() {
-            setInUse = seeder.levelSeed.GetRandomBetween(0, 3);
+            setInUse = seeder.levelSeed.GetRandomBetween(0, 3, SeedValueType.PickRoutId);
 
             switch(setInUse) {
                 case 0:
-                    return currentBuildStatus.availableSide1Rooms;
+                    return builderData.availableSide1Rooms;
                 case 1:
-                    return currentBuildStatus.availableSide2Rooms;
+                    return builderData.availableSide2Rooms;
                 case 2:
-                    return currentBuildStatus.availableSide3Rooms;
+                    return builderData.availableSide3Rooms;
                 default:
                     return null;
             }
@@ -66,13 +66,13 @@ namespace Knotgames.Blank.LevelGen {
         private void RemoveFormSet(IRoom room, int setId) {
             switch(setId) {
                 case 0:
-                    currentBuildStatus.availableSide1Rooms.Remove(room);
+                    builderData.availableSide1Rooms.Remove(room);
                     break;
                 case 1:
-                    currentBuildStatus.availableSide2Rooms.Remove(room);
+                    builderData.availableSide2Rooms.Remove(room);
                     break;
                 case 2:
-                    currentBuildStatus.availableSide3Rooms.Remove(room);
+                    builderData.availableSide3Rooms.Remove(room);
                     break;
             }
         }

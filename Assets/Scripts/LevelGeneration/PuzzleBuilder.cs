@@ -7,16 +7,13 @@ namespace Knotgames.Blank.LevelGen {
     {
         private ScriptableLevelSeed seeder;
         private BuilderData builderData;
-        private BuildingStatus currentBuildStatus;
         private bool buildingPuzzles;
         IPuzzlePlacer pairPlacer;
         IPuzzlePlacer singlePlacer;
 
-        public void Initilize(ScriptableLevelSeed levelSeed, BuilderData builderData, ref BuildingStatus currentBuildStatus) {
+        public void Initilize(ScriptableLevelSeed levelSeed, ref BuilderData builderData) {
             seeder = levelSeed;
             this.builderData = builderData;
-            this.currentBuildStatus = currentBuildStatus;
-
         }
 
         public void StartBuilder() {
@@ -33,7 +30,7 @@ namespace Knotgames.Blank.LevelGen {
             WaitForFixedUpdate interval = new WaitForFixedUpdate();
 
             yield return longInterval;
-            pairPlacer = new PairPuzzlePlacer(seeder, ref currentBuildStatus);
+            pairPlacer = new PairPuzzlePlacer(seeder, ref builderData);
             for (int i = 0; i < builderData.puzzlePairs; i++) {
                 Debug.Log("<color=cyan>Placing Pairs</color>");
                 bool paced = pairPlacer.Place();
@@ -44,7 +41,7 @@ namespace Knotgames.Blank.LevelGen {
             }
 
             yield return longInterval;
-            singlePlacer = new SinglePuzzlePlacer(seeder, ref currentBuildStatus);
+            singlePlacer = new SinglePuzzlePlacer(seeder, ref builderData);
             for (int i = 0; i < builderData.singelPuzzles; i++) {
                 Debug.Log("<color=cyan>Placing Singles</color>");
                 singlePlacer.Place();
