@@ -63,7 +63,6 @@ namespace Knotgames.Blank.LevelGen {
                         continue;
                     
                     roomPlaced = true;
-                    currentBuildingData.currentRoutRooms.Add(room);
 
                     currentDoors[j].gameObject.SetActive(false);
                     currentDoors.RemoveAt(j);

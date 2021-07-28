@@ -22,11 +22,20 @@ namespace Knotgames.Blank.LevelGen {
             while(!puzzlePlaced) {
                 List<IRoom> currentSet = GetRandomSet();
                 int rand = seeder.levelSeed.GetRandomBetween(0, currentSet.Count);
-
-                ISingelPuzzleRoom spawned = GameObject.Instantiate(currentSet[rand].GetSingleVarient(), 
+                ISingelPuzzleRoom spawned = null;
+                try {
+                    spawned = GameObject.Instantiate(currentSet[rand].GetSingleVarient(), 
                     currentSet[rand].GetTransform().position, currentSet[rand].GetTransform().rotation,
                     currentSet[rand].GetTransform().parent).GetComponent<ISingelPuzzleRoom>();
+
+                } catch {
+                    Debug.Log("out");
+                }
                 
+                if(spawned == null) {
+                    Debug.Log("To Break");
+                }
+
                 PuzzleType validPuzzle = spawned.GetAndActivePuzzle(ref spawnedSingleTypes);
                 if(validPuzzle == PuzzleType.Nada) {
                     spawned.SelfKill();
@@ -71,6 +80,16 @@ namespace Knotgames.Blank.LevelGen {
         private void CleanUpReplacedRoom(IRoom room, int setId) {
             RemoveFormSet(room, setId);
             room.SelfKill();
+        }
+
+        private struct ReplacedRoomData {
+            int inSet;
+            IRoom room;
+
+            public ReplacedRoomData(IRoom room, int inSet) {
+                this.room = room;
+                this.inSet = inSet;
+            }
         }
     }
 }

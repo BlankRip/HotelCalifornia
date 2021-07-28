@@ -39,9 +39,8 @@ namespace Knotgames.Blank.LevelGen {
         public List<RoomType> allRoomTypes;
         public List<int> eachTypeSpawned;
         public List<IRoom> currentRoutRooms;
-        public List<Transform> availableDoorways;
-        public int currentIterations;
-        public int retries;
+        [HideInInspector] public List<Transform> availableDoorways;
+        [HideInInspector] public int retries;
 
         public List<IRoom> availableSide1Rooms;
         public List<IRoom> availableSide2Rooms;
@@ -52,7 +51,6 @@ namespace Knotgames.Blank.LevelGen {
             eachTypeSpawned = new List<int>();
             currentRoutRooms = new List<IRoom>();
             availableDoorways = new List<Transform>();
-            currentIterations = 0;
             retries = 0;
 
             availableSide1Rooms = new List<IRoom>();
@@ -65,8 +63,7 @@ namespace Knotgames.Blank.LevelGen {
             eachTypeSpawned = new List<int>(copy.eachTypeSpawned);
             currentRoutRooms = new List<IRoom>(copy.currentRoutRooms);
             availableDoorways = new List<Transform>(copy.availableDoorways);
-            currentIterations = copy.currentIterations;
-            retries = copy.currentIterations;
+            retries = copy.retries;
         }
     }
 }

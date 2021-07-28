@@ -10,19 +10,11 @@ namespace Knotgames.Blank.LevelGen
         private bool generateSeed;
         private List<int> probableSeed;
         private List<int> theSeed;
-        int seedIndex;
-        private int previousCount;
-        private int saftyIndex;
         private int inValidSafty = -1;
         private int valueAtSaftyIndex;
-        private bool correct;
 
         private void Awake() {
             seed.levelSeed = this;
-            probableSeed = new List<int>();
-            theSeed = new List<int>();
-            seedIndex = 0;
-            valueAtSaftyIndex = inValidSafty;
         }
 
         public int GetRandomBetween(int min, int max) {
@@ -64,6 +56,13 @@ namespace Knotgames.Blank.LevelGen
 
         public void TurnOnGeneration() {
             generateSeed = true;
+            Initilize();
+        }
+
+        private void Initilize() {
+            probableSeed = new List<int>();
+            theSeed = new List<int>();
+            valueAtSaftyIndex = inValidSafty;
         }
 
         public void TurnOffGeneration() {

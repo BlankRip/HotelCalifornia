@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 namespace Knotgames.Blank.LevelGen {
-    public enum RoomType { Nada, A, B, C, D, E, F, G, H }
+    public enum RoomType { Nada, A, B, C, D, E, F, G, H, Corridor }
     public interface IRoom {
         void SelfKill();
         RoomType GetRoomType();

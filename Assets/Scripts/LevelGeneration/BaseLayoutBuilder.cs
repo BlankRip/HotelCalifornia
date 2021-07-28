@@ -47,7 +47,7 @@ namespace Knotgames.Blank.LevelGen {
                 IBuilder routBuilder = routBuild;
                 routBuilder.StartBuilder();
                 while(routBuilder.GetBuilderStatus()) {
-                    //?Debug.Log("Base Building");
+                    Debug.Log("<color=black>Base Building</color>");
                     yield return interval;
                 }
                 UpdateCurrentOnSuccessfulRout();
@@ -60,7 +60,6 @@ namespace Knotgames.Blank.LevelGen {
 
         private void PickRout() {
             int rand = seeder.levelSeed.GetRandomBetween(0, availableEntryDoors.Count);
-            Debug.Log(rand);
             currentBuildingData.availableDoorways.Add(availableEntryDoors[rand]);
             availableEntryDoors.RemoveAt(rand);
             routId++;
@@ -71,6 +70,7 @@ namespace Knotgames.Blank.LevelGen {
         }
 
         private void UpdateCurrentOnSuccessfulRout() {
+            CullCorridorsFromList();
             switch (routId) {
                 case 1:
                     currentBuildingData.availableSide1Rooms = new List<IRoom>(currentBuildingData.currentRoutRooms);
@@ -86,6 +86,18 @@ namespace Knotgames.Blank.LevelGen {
             currentBuildingData.currentRoutRooms.Clear();
             currentBuildingData.availableDoorways.Clear();
             currentBuildingData.retries = 0;
+        }
+
+        private void CullCorridorsFromList() {
+            List<IRoom> indicesToCull = new List<IRoom>();
+            for (int i = 0; i < currentBuildingData.currentRoutRooms.Count; i++) {
+                if(currentBuildingData.currentRoutRooms[i].GetRoomType() == RoomType.Corridor)
+                    indicesToCull.Add(currentBuildingData.currentRoutRooms[i]);
+            }
+
+            for (int i = 0; i < indicesToCull.Count; i++) {
+                currentBuildingData.currentRoutRooms.Remove(indicesToCull[i]);
+            }
         }
 
         public bool GetBuilderStatus() {

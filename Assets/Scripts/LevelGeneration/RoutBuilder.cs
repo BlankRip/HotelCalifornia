@@ -39,7 +39,7 @@ namespace Knotgames.Blank.LevelGen {
 
             yield return longInterval;
             for (int i = 0; i < iterations; i++) {
-                //?Debug.Log("Rout Building");
+                Debug.Log("<color=black>Rout Building</color>");
                 int rand = seeder.levelSeed.GetRandomBetween(0, 100);
                 if(rand > 80) {
                     PlaceCorridor();
@@ -73,7 +73,6 @@ namespace Knotgames.Blank.LevelGen {
             //!StopAllCoroutines();
             currentBuildingData.retries++;
             if(currentBuildingData.retries >= builderData.maxRetries) {
-                Debug.Log("ENT   tttttttt");
                 builderData.OnFaile();
                 return;
             }
@@ -85,7 +84,7 @@ namespace Knotgames.Blank.LevelGen {
             }
             UpdateCurrentOnFailRout();
 
-            Debug.Log($"Restarting Rout with retry Id: {currentBuildingData.retries}");
+            Debug.Log($"<color=red>Restarting Rout with retry Id: {currentBuildingData.retries}</color>");
             coroutine = StartCoroutine(Build());
         }
 

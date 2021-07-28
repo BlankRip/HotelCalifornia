@@ -8,14 +8,14 @@ namespace Knotgames.Blank.LevelGen {
         [SerializeField] bool generateSeed;
         [SerializeField] ScriptableLevelSeed seeder;
         [SerializeField] BuilderData builderData;
-        [SerializeField] BuildingStatus current;
+        [SerializeField] BuildingStatus currentStatus;
 
         private BuildingStatus backup;
         private IRoom startRoom;
 
         private void Start() {
             builderData.onFail += RestartLevelGen;
-            backup = new BuildingStatus(current);
+            backup = new BuildingStatus(currentStatus);
             if(generateSeed)
                 seeder.levelSeed.TurnOnGeneration();
             else
@@ -29,18 +29,33 @@ namespace Knotgames.Blank.LevelGen {
 
             yield return longInterval;
             SpawnStartRoom();
+
             yield return interval;
             BaseLayoutBuilder baseBuild = gameObject.AddComponent<BaseLayoutBuilder>();
-            baseBuild.Initilize(seeder, startRoom, builderData, ref current, ref backup);
-
+            baseBuild.Initilize(seeder, startRoom, builderData, ref currentStatus, ref backup);
             IBuilder baseBuilder = baseBuild;
             baseBuilder.StartBuilder();
             yield return interval;
             while(baseBuilder.GetBuilderStatus()) {
-                //?Debug.Log("Level Building");
+                Debug.Log("<color=black>Level Building</color>");
                 yield return interval;
             }
-            Debug.Log("Base Built");
+            Debug.Log("<color=yellow>Base Built</color>");
+
+            PuzzleBuilder puzzleBuild = gameObject.AddComponent<PuzzleBuilder>();
+            puzzleBuild.Initilize(seeder, builderData, ref currentStatus);
+            IBuilder puzzleBuilder = puzzleBuild;
+            puzzleBuild.StartBuilder();
+            yield return interval;
+            while(puzzleBuild.GetBuilderStatus()) {
+                Debug.Log("<color=cyan>Puzzle Building</color>");
+                yield return interval;
+            }
+            Debug.Log("<color=yellow>Puzzles Built</color>");
+            Debug.Log("<color=green>Level Built</color>");
+
+            yield return longInterval;
+            Destroy(this);
         }
 
         private void SpawnStartRoom() {
@@ -49,10 +64,14 @@ namespace Knotgames.Blank.LevelGen {
             startRoom = sapwned.GetComponent<IRoom>();
         }
 
+        private bool restartSafe = true;
         public void RestartLevelGen() {
-            Debug.Log($"Retrying Gen");
-            GameObject.Instantiate(builderData.levelGen, transform.position, transform.rotation);
-            Destroy(this.gameObject);
+            if(restartSafe) {
+                Debug.Log($"Retrying Gen");
+                restartSafe = false;
+                GameObject.Instantiate(builderData.levelGen, transform.position, transform.rotation);
+                Destroy(this.gameObject);
+            }
         }
     }
 }
