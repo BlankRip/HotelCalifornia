@@ -10,8 +10,24 @@ namespace Knotgames.Blank.LevelGen
         private bool generateSeed;
         private List<int> probableSeed;
         private List<int> theSeed;
-        private int inValidSafty = -1;
-        private int valueAtSaftyIndex;
+
+        private int saftryIndex;
+        private int saftyValue;
+        public bool needSaftryUpdate = true;
+        public void FillSafty(int value) {
+            if(needSaftryUpdate) {
+                saftryIndex = theSeed.Count;
+                saftyValue = value;
+                needSaftryUpdate = false;
+            }
+        }
+        public void ApplySafty() {
+            if(theSeed[saftryIndex] != saftyValue) {
+                Debug.Log("<color=red>DirtyFix</color>");
+                theSeed.Insert(saftryIndex, saftyValue);
+            }
+            needSaftryUpdate = true;
+        }
 
         private void Awake() {
             seed.levelSeed = this;
@@ -31,7 +47,7 @@ namespace Knotgames.Blank.LevelGen
 
         private void UpdateProbableSeed(int value) {
             if(probableSeed.Count == 0)
-                valueAtSaftyIndex = value;
+                FillSafty(value);
             probableSeed.Add(value);
         }
 
@@ -42,16 +58,16 @@ namespace Knotgames.Blank.LevelGen
         }
 
         public void UpdateSeed() {
-            for (int i = 0; i < probableSeed.Count; i++)
-                theSeed.Add(probableSeed[i]);
-            valueAtSaftyIndex = inValidSafty;
-            ClearCurrent();
+            if(generateSeed) {
+                for (int i = 0; i < probableSeed.Count; i++)
+                    theSeed.Add(probableSeed[i]);
+                ApplySafty();
+                ClearCurrent();
+            }
         }
 
         public void ClearCurrent() {
             probableSeed.Clear();
-            if(valueAtSaftyIndex != inValidSafty)
-                probableSeed.Add(valueAtSaftyIndex);
         }
 
         public void TurnOnGeneration() {
@@ -62,7 +78,6 @@ namespace Knotgames.Blank.LevelGen
         private void Initilize() {
             probableSeed = new List<int>();
             theSeed = new List<int>();
-            valueAtSaftyIndex = inValidSafty;
         }
 
         public void TurnOffGeneration() {
