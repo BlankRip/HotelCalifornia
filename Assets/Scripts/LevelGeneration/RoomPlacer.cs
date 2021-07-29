@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 namespace Knotgames.Blank.LevelGen {
-    public class RoomPlacer
+    public class RoomPlacer: IRoomPlacer
     {
         ScriptableLevelSeed seeder;
         BuilderData builderData;

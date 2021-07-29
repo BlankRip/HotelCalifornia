@@ -12,7 +12,7 @@ namespace Knotgames.Blank.LevelGen {
         private BuildingStatus backupBuilderData;
         private BuilderData builderData;
         private List<GameObject> availableRoomsObjs;
-        private RoomPlacer roomPlacer;
+        private IRoomPlacer roomPlacer;
         Coroutine coroutine;
 
         public void Initilize(int iterations, ScriptableLevelSeed levelSeed, BuilderData builderData, ref BuildingStatus currentBuildingData, ref BuildingStatus backupBuilderData) {
