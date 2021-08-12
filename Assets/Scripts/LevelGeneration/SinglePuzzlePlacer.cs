@@ -21,7 +21,7 @@ namespace Knotgames.Blank.LevelGen {
             bool puzzlePlaced = false;
             while(!puzzlePlaced) {
                 List<IRoom> currentSet = GetRandomSet();
-                int rand = seeder.levelSeed.GetRandomBetween(0, currentSet.Count, SeedValueType.PickPuzzleRoom);
+                int rand = seeder.levelSeed.GetRandomBetween(0, currentSet.Count);
                 Debug.Log(rand);
                 Debug.Log(currentSet.Count);
                 ISingelPuzzleRoom spawned = GameObject.Instantiate(currentSet[rand].GetSingleVarient(), 
@@ -36,7 +36,6 @@ namespace Knotgames.Blank.LevelGen {
                     puzzlePlaced = true;
                 }
             }
-            seeder.levelSeed.UpdateSeed();
             return true;
         }
 

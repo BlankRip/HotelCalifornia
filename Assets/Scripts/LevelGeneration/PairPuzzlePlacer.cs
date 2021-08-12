@@ -19,7 +19,7 @@ namespace Knotgames.Blank.LevelGen {
 
         public bool Place() {
             List<IRoom> currentSet = GetRandomSet();
-            int rand = seeder.levelSeed.GetRandomBetween(0, currentSet.Count, SeedValueType.PickPuzzleRoom);
+            int rand = seeder.levelSeed.GetRandomBetween(0, currentSet.Count);
             
             IPairPuzzleRoom spawned = GameObject.Instantiate(currentSet[rand].GetPuzzleVarient(), 
                 currentSet[rand].GetTransform().position, currentSet[rand].GetTransform().rotation, 
@@ -32,14 +32,13 @@ namespace Knotgames.Blank.LevelGen {
             bool placed = LoopThrewAndPlacePuzzle(available, spawned);
 
             if(placed) {
-                seeder.levelSeed.UpdateSeed();
                 return true;
             } else
                 return false;
         }
 
         private List<IRoom> GetRandomSet() {
-            setInUse = seeder.levelSeed.GetRandomBetween(0, 3, SeedValueType.PickRoutId);
+            setInUse = seeder.levelSeed.GetRandomBetween(0, 3);
 
             switch(setInUse) {
                 case 0:

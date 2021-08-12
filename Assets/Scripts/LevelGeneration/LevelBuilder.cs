@@ -17,9 +17,8 @@ namespace Knotgames.Blank.LevelGen {
             builderData.onFail += RestartLevelGen;
             backup = new BuildingStatus(currentStatus);
             if(generateSeed)
-                seeder.levelSeed.TurnOnGeneration();
-            else
-                seeder.levelSeed.TurnOffGeneration();
+                seeder.levelSeed.GenerateSeed();
+            seeder.levelSeed.Initilize();
             StartCoroutine(GenerateLevel());
         }
 

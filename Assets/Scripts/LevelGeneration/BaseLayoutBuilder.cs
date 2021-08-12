@@ -59,7 +59,7 @@ namespace Knotgames.Blank.LevelGen {
         }
 
         private void PickRout() {
-            int rand = seeder.levelSeed.GetRandomBetween(0, availableEntryDoors.Count, SeedValueType.RoutPick);
+            int rand = seeder.levelSeed.GetRandomBetween(0, availableEntryDoors.Count);
             currentBuildingData.availableDoorways.Add(availableEntryDoors[rand]);
             availableEntryDoors.RemoveAt(rand);
             routId++;
@@ -82,7 +82,6 @@ namespace Knotgames.Blank.LevelGen {
                     builderData.availableSide3Rooms = new List<IRoom>(currentBuildingData.currentRoutRooms);
                     break;
             }
-            seeder.levelSeed.UpdateSeed();
             currentBuildingData.currentRoutRooms.Clear();
             currentBuildingData.availableDoorways.Clear();
             currentBuildingData.retries = 0;

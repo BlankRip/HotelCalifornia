@@ -20,7 +20,7 @@ namespace Knotgames.Blank.LevelGen {
             }
 
             if(common.Count > 1) {
-                int rand = seeder.levelSeed.GetRandomBetween(0, common.Count, SeedValueType.PickPuzzle);
+                int rand = seeder.levelSeed.GetRandomBetween(0, common.Count);
                 ActivatePuzzleOfType(common[rand]);
                 return common[rand];
             } else {

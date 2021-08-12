@@ -40,7 +40,7 @@ namespace Knotgames.Blank.LevelGen {
             yield return longInterval;
             for (int i = 0; i < iterations; i++) {
                 //?Debug.Log("<color=black>Rout Building</color>");
-                int rand = seeder.levelSeed.GetRandomBetween(0, 100, SeedValueType.CorridorCount);
+                int rand = seeder.levelSeed.GetRandomBetween(0, 100);
                 if(rand > 80) {
                     PlaceCorridor();
                     yield return interval;
@@ -76,7 +76,6 @@ namespace Knotgames.Blank.LevelGen {
                 builderData.OnFaile();
                 return;
             }
-            seeder.levelSeed.ClearCurrent();
 
             if(currentBuildingData.currentRoutRooms.Count > 0) {
                 for (int i = 0; i < currentBuildingData.currentRoutRooms.Count; i++)

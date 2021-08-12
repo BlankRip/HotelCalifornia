@@ -21,7 +21,7 @@ namespace Knotgames.Blank.LevelGen {
         }
 
         public bool PlaceRoom(ref List<GameObject> availableRooms) {
-            int rand = seeder.levelSeed.GetRandomBetween(0, availableRooms.Count - 1, SeedValueType.PickRoom);
+            int rand = seeder.levelSeed.GetRandomBetween(0, availableRooms.Count);
 
             GameObject spawned = GameObject.Instantiate(availableRooms[rand], Vector3.zero, Quaternion.identity);
             spawned.transform.parent = builderData.parent;
@@ -47,8 +47,8 @@ namespace Knotgames.Blank.LevelGen {
         private void AddDoorwaysToList(IRoom room, ref List<Transform> availableDoorways) {
             List<Transform> doorways = room.GetDoorways();
             for (int i = 0; i < doorways.Count; i++) {
-                //! int rand = seeder.levelSeed.GetRandomBetween(0, availableDoorways.Count, SeedValueType.DoorInsersion);
-                //! availableDoorways.Insert(rand, doorways[i]);
+                int rand = seeder.levelSeed.GetRandomBetween(0, availableDoorways.Count);
+                availableDoorways.Insert(rand, doorways[i]);
                 availableDoorways.Add(doorways[i]);
             }
         }
