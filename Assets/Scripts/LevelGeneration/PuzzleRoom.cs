@@ -5,7 +5,6 @@ using UnityEngine;
 namespace Knotgames.Blank.LevelGen {
     public class PuzzleRoom : MonoBehaviour, IPairPuzzleRoom
     {
-        [SerializeField] ScriptableLevelSeed seeder;
         [SerializeField] List<RoomType> connectable;
         [SerializeField] List<Puzzle> roomPuzzles;
         [SerializeField] Renderer renderer;
@@ -20,7 +19,7 @@ namespace Knotgames.Blank.LevelGen {
             }
 
             if(common.Count > 1) {
-                int rand = seeder.levelSeed.GetRandomBetween(0, common.Count);
+                int rand = Random.Range(0, common.Count);
                 ActivatePuzzleOfType(common[rand]);
                 return common[rand];
             } else {

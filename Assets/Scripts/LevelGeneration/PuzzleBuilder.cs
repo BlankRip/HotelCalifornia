@@ -5,14 +5,12 @@ using UnityEngine;
 namespace Knotgames.Blank.LevelGen {
     public class PuzzleBuilder: MonoBehaviour, IBuilder
     {
-        private ScriptableLevelSeed seeder;
         private BuilderData builderData;
         private bool buildingPuzzles;
         IPuzzlePlacer pairPlacer;
         IPuzzlePlacer singlePlacer;
 
-        public void Initilize(ScriptableLevelSeed levelSeed, ref BuilderData builderData) {
-            seeder = levelSeed;
+        public void Initilize(ref BuilderData builderData) {
             this.builderData = builderData;
         }
 
@@ -30,7 +28,7 @@ namespace Knotgames.Blank.LevelGen {
             WaitForFixedUpdate interval = new WaitForFixedUpdate();
 
             yield return longInterval;
-            pairPlacer = new PairPuzzlePlacer(seeder, ref builderData);
+            pairPlacer = new PairPuzzlePlacer(ref builderData);
             for (int i = 0; i < builderData.puzzlePairs; i++) {
                 Debug.Log("<color=cyan>Placing Pairs</color>");
                 bool paced = pairPlacer.Place();
@@ -41,7 +39,7 @@ namespace Knotgames.Blank.LevelGen {
             }
 
             yield return longInterval;
-            singlePlacer = new SinglePuzzlePlacer(seeder, ref builderData);
+            singlePlacer = new SinglePuzzlePlacer(ref builderData);
             for (int i = 0; i < builderData.singelPuzzles; i++) {
                 Debug.Log("<color=cyan>Placing Singles</color>");
                 singlePlacer.Place();

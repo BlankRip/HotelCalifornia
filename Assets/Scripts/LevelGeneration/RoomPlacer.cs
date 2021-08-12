@@ -5,12 +5,10 @@ using UnityEngine;
 namespace Knotgames.Blank.LevelGen {
     public class RoomPlacer: IRoomPlacer
     {
-        ScriptableLevelSeed seeder;
         BuilderData builderData;
         BuildingStatus currentBuildingData;
 
-        public RoomPlacer(ScriptableLevelSeed levelSeed, BuilderData builderData, BuildingStatus buildingStatus) {
-            seeder = levelSeed;
+        public RoomPlacer(BuilderData builderData, BuildingStatus buildingStatus) {
             this.builderData = builderData;
             currentBuildingData = buildingStatus;
         }
@@ -21,7 +19,7 @@ namespace Knotgames.Blank.LevelGen {
         }
 
         public bool PlaceRoom(ref List<GameObject> availableRooms) {
-            int rand = seeder.levelSeed.GetRandomBetween(0, availableRooms.Count);
+            int rand = Random.Range(0, availableRooms.Count - 1); //-1 as unity is just a fucking bitch
 
             GameObject spawned = GameObject.Instantiate(availableRooms[rand], Vector3.zero, Quaternion.identity);
             spawned.transform.parent = builderData.parent;
@@ -47,7 +45,7 @@ namespace Knotgames.Blank.LevelGen {
         private void AddDoorwaysToList(IRoom room, ref List<Transform> availableDoorways) {
             List<Transform> doorways = room.GetDoorways();
             for (int i = 0; i < doorways.Count; i++) {
-                int rand = seeder.levelSeed.GetRandomBetween(0, availableDoorways.Count);
+                int rand = Random.Range(0, availableDoorways.Count);
                 availableDoorways.Insert(rand, doorways[i]);
                 availableDoorways.Add(doorways[i]);
             }

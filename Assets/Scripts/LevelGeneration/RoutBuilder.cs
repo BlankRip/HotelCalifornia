@@ -7,7 +7,6 @@ namespace Knotgames.Blank.LevelGen {
     {
         private bool buildInProgress;
         private int iterations;
-        private ScriptableLevelSeed seeder;
         private BuildingStatus currentBuildingData;
         private BuildingStatus backupBuilderData;
         private BuilderData builderData;
@@ -15,9 +14,8 @@ namespace Knotgames.Blank.LevelGen {
         private IRoomPlacer roomPlacer;
         Coroutine coroutine;
 
-        public void Initilize(int iterations, ScriptableLevelSeed levelSeed, BuilderData builderData, ref BuildingStatus currentBuildingData, ref BuildingStatus backupBuilderData) {
+        public void Initilize(int iterations, BuilderData builderData, ref BuildingStatus currentBuildingData, ref BuildingStatus backupBuilderData) {
             this.iterations = iterations;
-            seeder = levelSeed;
             this.builderData = builderData;
             this.currentBuildingData = currentBuildingData;
             this.backupBuilderData = backupBuilderData;
@@ -25,7 +23,7 @@ namespace Knotgames.Blank.LevelGen {
             availableRoomsObjs = new List<GameObject>();
             builderData.GetAllUsableRooms(currentBuildingData, ref availableRoomsObjs);
 
-            roomPlacer = new RoomPlacer(seeder, builderData, currentBuildingData);
+            roomPlacer = new RoomPlacer(builderData, currentBuildingData);
         }
 
         public void StartBuilder() {
@@ -40,7 +38,7 @@ namespace Knotgames.Blank.LevelGen {
             yield return longInterval;
             for (int i = 0; i < iterations; i++) {
                 //?Debug.Log("<color=black>Rout Building</color>");
-                int rand = seeder.levelSeed.GetRandomBetween(0, 100);
+                int rand = Random.Range(0, 100);
                 if(rand > 80) {
                     PlaceCorridor();
                     yield return interval;

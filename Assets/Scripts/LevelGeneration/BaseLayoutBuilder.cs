@@ -8,15 +8,13 @@ namespace Knotgames.Blank.LevelGen {
         private bool buildInProcess;
         private IRoom startRoom;
         private List<Transform> availableEntryDoors;
-        private ScriptableLevelSeed seeder;
         private BuildingStatus currentBuildingData;
         private BuildingStatus backupBuilderData;
         private int routId;
         BuilderData builderData;
         private int finalRoutId = 3;
-        public void Initilize(ScriptableLevelSeed levelSeed, IRoom startRoom,
+        public void Initilize(IRoom startRoom,
             BuilderData builderData, ref BuildingStatus currentBuildingData, ref BuildingStatus backupBuilderData) {
-            seeder = levelSeed;
             this.startRoom = startRoom;
             availableEntryDoors = startRoom.GetDoorways();
             this.currentBuildingData = currentBuildingData;
@@ -40,9 +38,9 @@ namespace Knotgames.Blank.LevelGen {
                 UpdateBackupWithCurrent();
                 RoutBuilder routBuild = gameObject.AddComponent<RoutBuilder>();
                 if(routId == finalRoutId)
-                    routBuild.Initilize(builderData.finalIteration, seeder, builderData, ref currentBuildingData, ref backupBuilderData);
+                    routBuild.Initilize(builderData.finalIteration, builderData, ref currentBuildingData, ref backupBuilderData);
                 else
-                    routBuild.Initilize(builderData.iterations, seeder, builderData, ref currentBuildingData, ref backupBuilderData);
+                    routBuild.Initilize(builderData.iterations, builderData, ref currentBuildingData, ref backupBuilderData);
 
                 IBuilder routBuilder = routBuild;
                 routBuilder.StartBuilder();
@@ -59,7 +57,7 @@ namespace Knotgames.Blank.LevelGen {
         }
 
         private void PickRout() {
-            int rand = seeder.levelSeed.GetRandomBetween(0, availableEntryDoors.Count);
+            int rand = Random.Range(0, availableEntryDoors.Count);
             currentBuildingData.availableDoorways.Add(availableEntryDoors[rand]);
             availableEntryDoors.RemoveAt(rand);
             routId++;

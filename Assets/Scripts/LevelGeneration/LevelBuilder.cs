@@ -31,7 +31,7 @@ namespace Knotgames.Blank.LevelGen {
 
             yield return interval;
             BaseLayoutBuilder baseBuild = gameObject.AddComponent<BaseLayoutBuilder>();
-            baseBuild.Initilize(seeder, startRoom, builderData, ref currentStatus, ref backup);
+            baseBuild.Initilize(startRoom, builderData, ref currentStatus, ref backup);
             IBuilder baseBuilder = baseBuild;
             baseBuilder.StartBuilder();
             yield return interval;
@@ -42,7 +42,7 @@ namespace Knotgames.Blank.LevelGen {
             Debug.Log("<color=yellow>Base Built</color>");
 
             PuzzleBuilder puzzleBuild = gameObject.AddComponent<PuzzleBuilder>();
-            puzzleBuild.Initilize(seeder,ref builderData);
+            puzzleBuild.Initilize(ref builderData);
             IBuilder puzzleBuilder = puzzleBuild;
             puzzleBuild.StartBuilder();
             yield return interval;

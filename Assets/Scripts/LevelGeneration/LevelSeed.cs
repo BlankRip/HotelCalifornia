@@ -16,9 +16,9 @@ namespace Knotgames.Blank.LevelGen
             Random.InitState(seedValue);
         }
 
-        public int GetRandomBetween(int min, int max) {
-            return Random.Range(min, max);
-        }
+        // public int GetRandomBetween(int min, int max) {
+        //     return Random.Range(min, max);
+        // }
 
         public void GenerateSeed() {
             seedValue = Random.Range(int.MinValue, int.MaxValue);

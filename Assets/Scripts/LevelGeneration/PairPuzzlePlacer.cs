@@ -5,13 +5,11 @@ using UnityEngine;
 namespace Knotgames.Blank.LevelGen {
     public class PairPuzzlePlacer: IPuzzlePlacer
     {
-        private ScriptableLevelSeed seeder;
         private BuilderData builderData;
         private List<PuzzleType> spawnedPairTypes;
         int setInUse;
 
-        public PairPuzzlePlacer(ScriptableLevelSeed levelSeed, ref BuilderData builderData) {
-            seeder = levelSeed;
+        public PairPuzzlePlacer(ref BuilderData builderData) {
             this.builderData = builderData;
 
             spawnedPairTypes = new List<PuzzleType>();
@@ -19,7 +17,7 @@ namespace Knotgames.Blank.LevelGen {
 
         public bool Place() {
             List<IRoom> currentSet = GetRandomSet();
-            int rand = seeder.levelSeed.GetRandomBetween(0, currentSet.Count);
+            int rand = Random.Range(0, currentSet.Count);
             
             IPairPuzzleRoom spawned = GameObject.Instantiate(currentSet[rand].GetPuzzleVarient(), 
                 currentSet[rand].GetTransform().position, currentSet[rand].GetTransform().rotation, 
@@ -38,7 +36,7 @@ namespace Knotgames.Blank.LevelGen {
         }
 
         private List<IRoom> GetRandomSet() {
-            setInUse = seeder.levelSeed.GetRandomBetween(0, 3);
+            setInUse = Random.Range(0, 3);
 
             switch(setInUse) {
                 case 0:

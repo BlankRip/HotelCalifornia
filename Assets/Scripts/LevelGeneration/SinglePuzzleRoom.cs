@@ -4,12 +4,11 @@ using UnityEngine;
 namespace Knotgames.Blank.LevelGen {
     public class SinglePuzzleRoom : MonoBehaviour, ISingelPuzzleRoom
     {
-        [SerializeField] ScriptableLevelSeed seeder;
         public List<Puzzle> roomPuzzles;
         [SerializeField] private Renderer renderer;
 
         public PuzzleType GetAndActivePuzzle(ref List<PuzzleType> exclusionTypes) {
-            int rand = seeder.levelSeed.GetRandomBetween(0, roomPuzzles.Count);
+            int rand = Random.Range(0, roomPuzzles.Count);
             if(!exclusionTypes.Contains(roomPuzzles[rand].GetPuzzleType())) {
                 roomPuzzles[rand].ActivatePuzzle(renderer);
                 exclusionTypes.Add(roomPuzzles[rand].GetPuzzleType());

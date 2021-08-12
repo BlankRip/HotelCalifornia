@@ -5,13 +5,11 @@ using UnityEngine;
 namespace Knotgames.Blank.LevelGen {
     public class SinglePuzzlePlacer: IPuzzlePlacer
     {
-        private ScriptableLevelSeed seeder;
         private BuilderData builderData;
         private List<PuzzleType> spawnedSingleTypes;
         private int setInUse;
 
-        public SinglePuzzlePlacer(ScriptableLevelSeed levelSeed, ref BuilderData builderData) {
-            seeder = levelSeed;
+        public SinglePuzzlePlacer(ref BuilderData builderData) {
             this.builderData = builderData;
 
             spawnedSingleTypes = new List<PuzzleType>();
@@ -21,7 +19,7 @@ namespace Knotgames.Blank.LevelGen {
             bool puzzlePlaced = false;
             while(!puzzlePlaced) {
                 List<IRoom> currentSet = GetRandomSet();
-                int rand = seeder.levelSeed.GetRandomBetween(0, currentSet.Count);
+                int rand = Random.Range(0, currentSet.Count);
                 Debug.Log(rand);
                 Debug.Log(currentSet.Count);
                 ISingelPuzzleRoom spawned = GameObject.Instantiate(currentSet[rand].GetSingleVarient(), 
@@ -40,7 +38,7 @@ namespace Knotgames.Blank.LevelGen {
         }
 
         private List<IRoom> GetRandomSet() {
-            //setInUse = seeder.levelSeed.GetRandomBetween(0, 3, SeedValueType.PickRoutId);
+            //setInUse = Random.Range(0, 3);
             setInUse = int.MinValue;
             CheckForFreeRooms(builderData.availableSide1Rooms, 0, ref setInUse);
             CheckForFreeRooms(builderData.availableSide2Rooms, 1, ref setInUse);
