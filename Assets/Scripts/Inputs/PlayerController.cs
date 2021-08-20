@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 
 namespace RVD
 {
-    public class PlayerController : InputController
+    public class PlayerController : MovementController
     {
         public void Update()
         {
@@ -51,9 +51,5 @@ namespace RVD
         {
             sprint = true;
         }
-
-        public virtual void OnRaiseStart(InputValue value) {}
-
-        public virtual void OnRaiseFinish(InputValue value) {}
     }
 }

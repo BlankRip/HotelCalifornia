@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 
 namespace RVD
 {
-    public class GhostController : InputController
+    public class GhostController : MovementController
     {
         public void Update()
         {

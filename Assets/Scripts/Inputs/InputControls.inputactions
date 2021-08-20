@@ -1,5 +1,5 @@
 {
-    "name": "MovementControls",
+    "name": "InputControls",
     "maps": [
         {
             "name": "GroundMovement",
@@ -348,6 +348,44 @@
                     "processors": "",
                     "groups": "GamePad",
                     "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "UI",
+            "id": "b680d074-d68a-4b10-8bcd-d21734846418",
+            "actions": [
+                {
+                    "name": "Escape",
+                    "type": "Button",
+                    "id": "e2131500-1cef-44fa-8eed-2abde240b885",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "17462848-fa72-47da-b562-dd2b13687631",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "Escape",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f1752c6b-9ee9-4fd5-a695-f2d8c774ef85",
+                    "path": "<Gamepad>/buttonEast",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "GamePad",
+                    "action": "Escape",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

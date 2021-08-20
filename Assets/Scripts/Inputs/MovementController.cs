@@ -1,14 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-//using Knotgames.Alwin.Network;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 namespace RVD
 {
-    public class InputController : MonoBehaviour, IInputReader
+    public class MovementController : MonoBehaviour, IInputReader
     {
-        //protected AL_NetObject myNETObj;
         protected Vector2 moveInput, mouseInput;
         [SerializeField] protected CharacterController controller;
         [SerializeField] protected float speed = 11f;
@@ -27,24 +25,12 @@ namespace RVD
 
         public void Awake()
         {
-            //myNETObj = GetComponent<AL_NetObject>();
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = true;
         }
 
-        public void Start()
-        {
-            // if (!myNETObj.IsMine)
-            // {
-            //     GetComponentInChildren<Camera>().enabled = false;
-            //     GetComponentInChildren<AudioListener>().enabled = false;
-            // }
-        }
-
         protected void Movement()
         {
-            //if (myNETObj.IsMine)
-            //{
             Vector3 horizontalVelocity = (transform.right * moveInput.x + transform.forward * moveInput.y) * speed;
 
             if (useGravity && !controller.isGrounded)
@@ -65,7 +51,6 @@ namespace RVD
                 controller.Move(horizontalVelocity * Time.deltaTime);
                 controller.Move(verticalVelocity * Time.deltaTime);
             }
-            //}
         }
 
         public virtual void OnLowerFinish(InputValue value) {}
@@ -99,5 +84,9 @@ namespace RVD
         public virtual void OnSprintStart(InputValue value) {}
 
         public virtual void OnJump(InputValue value) {}
+
+        public void OnEscape(InputValue value) {}
+
+        public void SetUIControls() {}
     }
 }

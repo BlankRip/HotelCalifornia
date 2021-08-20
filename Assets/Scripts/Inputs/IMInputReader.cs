@@ -1,6 +1,5 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-//using Knotgames.Alwin.Network;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -17,5 +16,7 @@ namespace RVD
         void OnSprintFinish(InputValue value);
         void OnLowerStart(InputValue value);
         void OnLowerFinish(InputValue value);
+        void OnEscape(InputValue value);
+        void SetUIControls();
     }
 }
