@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace Knotgames.Blank.LevelGen {
+namespace Knotgames.LevelGen {
     public enum PuzzleType { A, B, C, D, E, F, Nada };
     public interface IPairPuzzleRoom
     {

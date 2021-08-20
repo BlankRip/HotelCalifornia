@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Knotgames.Inputs;
 
-namespace RVD
+namespace Knotgames.Movement
 {
     public class MovementController : MonoBehaviour, IInputReader
     {

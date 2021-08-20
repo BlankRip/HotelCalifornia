@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Knotgames.Movement;
 
-namespace RVD
+namespace Knotgames.Controllers
 {
     public class GhostController : MovementController
     {

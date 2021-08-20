@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Knotgames.Blank.LevelGen
+namespace Knotgames.LevelGen
 {
     public class LevelSeed : MonoBehaviour, ILevelSeed
     {

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Knotgames.Blank.LevelGen {
+namespace Knotgames.LevelGen {
     public class Doorway : MonoBehaviour
     {
         private void OnDrawGizmos() {

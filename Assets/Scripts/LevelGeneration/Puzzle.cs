@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Knotgames.Blank.LevelGen {
+namespace Knotgames.LevelGen {
     [System.Serializable]
     public class Puzzle: IPuzzle
     {

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Knotgames.Blank.LevelGen {
+namespace Knotgames.LevelGen {
     [System.Serializable]
     public class BuilderData {
         public Transform parent;
