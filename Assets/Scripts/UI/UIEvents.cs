@@ -11,6 +11,7 @@ public class UIEvents : MonoBehaviour
     [SerializeField] AudioClip clip;
     [SerializeField] AudioSource source;
     Vector3 originalScale;
+    bool first;
 
     private void Start()
     {
@@ -22,6 +23,7 @@ public class UIEvents : MonoBehaviour
     {
         text.transform.localScale = originalScale * 2;
         text.color = color;
+        first = true;
     }
 
     public void ResetColor()
@@ -39,5 +41,11 @@ public class UIEvents : MonoBehaviour
     public void Quit()
     {
         Application.Quit();
+    }
+
+    private void OnEnable()
+    {
+        if (first)
+            ResetColor();
     }
 }
