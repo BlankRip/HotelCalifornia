@@ -7,14 +7,15 @@ using UnityEngine.UI;
 namespace Knotgames.UI {
     public class PanelSwitcher : MonoBehaviour
     {
-        [SerializeField] Button button;
+        [SerializeField] GameObject button;
         [SerializeField] GameObject from;
         [SerializeField] GameObject to;
         [SerializeField] UnityEvent onSwitchEvent;
 
         private void Start() {
             if(button != null)
-                button.onClick.AddListener(() => Switch());
+                button.GetComponent<IMenuButton>().SetOnClick(() => Switch());
+                //button.onClick.AddListener(() => Switch());
         }
 
         public void Switch() {

@@ -8,15 +8,15 @@ namespace Knotgames.UI.Pause {
     public class PausePanelButtons : MonoBehaviour
     {
         [Header("If you want to automate button Events")]
-        [SerializeField] Button resumeButton;
-        [SerializeField] Button backToMenuButton;
+        [SerializeField] GameObject resumeButton;
+        [SerializeField] GameObject backToMenuButton;
         private Pause pause;
 
         private void Start() {
             pause = FindObjectOfType<Pause>();
 
-            resumeButton?.onClick.AddListener(() => Resume());
-            backToMenuButton?.onClick.AddListener(() => BackToMainMenu());
+            resumeButton?.GetComponent<IMenuButton>().SetOnClick(() => Resume());
+            backToMenuButton?.GetComponent<IMenuButton>().SetOnClick(() => BackToMainMenu());
         }
 
         public void Resume() {
