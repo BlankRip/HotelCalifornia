@@ -14,38 +14,32 @@ namespace Knotgames.UI {
         Vector3 originalScale;
         bool first;
 
-        private void Awake()
-        {
+        private void Awake() {
             original = text.color;
             originalScale = text.transform.localScale;
         }
 
-        public void SetColor()
-        {
+        public void SetColor() {
             text.transform.localScale = originalScale * 2;
             text.color = color;
             first = true;
         }
 
-        public void ResetColor()
-        {
+        public void ResetColor() {
             text.transform.localScale = originalScale;
             text.color = original;
         }
 
-        public void Hover()
-        {
+        public void Hover() {
             source.Stop();
             source.PlayOneShot(clip);
         }
 
-        public void Quit()
-        {
+        public void Quit() {
             Application.Quit();
         }
 
-        private void OnEnable()
-        {
+        private void OnEnable() {
             if (first)
                 ResetColor();
         }

@@ -20,7 +20,8 @@ namespace Knotgames.UI {
         }
 
         private void OnEnable() {
-            buttons[currentIndex].Selecte();
+            if(buttons != null)
+                buttons[currentIndex].Selecte();
         }
 
         private void Update() {

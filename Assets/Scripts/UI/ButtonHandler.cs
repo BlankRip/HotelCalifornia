@@ -17,19 +17,16 @@ namespace Knotgames.UI {
             menuNavigator = GetComponentInParent<IMenuNavigator>();
         }
 
-        public void OnPointerClick(PointerEventData eventData)
-        {
+        public void OnPointerClick(PointerEventData eventData) {
             Click();
         }
 
-        public void OnPointerEnter(PointerEventData eventData)
-        {
+        public void OnPointerEnter(PointerEventData eventData) {
             Debug.Log("Ent");
             menuNavigator.SelectButton(myIndex);
         }
 
-        public void OnPointerExit(PointerEventData eventData)
-        {
+        public void OnPointerExit(PointerEventData eventData) {
             
         }
 
