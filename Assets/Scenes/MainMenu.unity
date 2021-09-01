@@ -141,7 +141,6 @@ GameObject:
   - component: {fileID: 61467448}
   - component: {fileID: 61467447}
   - component: {fileID: 61467446}
-  - component: {fileID: 61467450}
   m_Layer: 5
   m_Name: Logbook
   m_TagString: Untagged
@@ -211,8 +210,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UIEvents, Assembly-CSharp
+      - m_Target: {fileID: 61467446}
+        m_TargetAssemblyTypeName: Knotgames.UI.ButtonEvents, Assembly-CSharp
         m_MethodName: ResetColor
         m_Mode: 1
         m_Arguments:
@@ -223,13 +222,13 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 61467450}
-        m_TargetAssemblyTypeName: Knotgames.UI.PanelSwitcher, Assembly-CSharp
+      - m_Target: {fileID: 548261141}
+        m_TargetAssemblyTypeName: Knotgames.UI.PanelSwither, Assembly-CSharp
         m_MethodName: Switch
-        m_Mode: 1
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 2027776388}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -375,24 +374,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 61467444}
   m_CullTransparentMesh: 1
---- !u!114 &61467450
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 61467444}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c2fe948a8d3f62c41ba656b91b041e5f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  button: {fileID: 61467444}
-  from: {fileID: 803547495}
-  to: {fileID: 2027776388}
-  onSwitchEvent:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1 &90596826
 GameObject:
   m_ObjectHideFlags: 0
@@ -445,6 +426,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd399df471aabc545a63ff7e594637ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  horizontalInputs: 0
   buttonsGameObjects:
   - {fileID: 242433928}
 --- !u!114 &90596829
@@ -704,6 +686,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd399df471aabc545a63ff7e594637ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  horizontalInputs: 0
   buttonsGameObjects:
   - {fileID: 779458521}
   - {fileID: 1184566841}
@@ -923,7 +906,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2330495662725321126, guid: 64176cac231abc14caecfa72823a749b, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -90.46
+      value: -90.46001
       objectReference: {fileID: 0}
     - target: {fileID: 2330495662725321126, guid: 64176cac231abc14caecfa72823a749b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -972,7 +955,6 @@ GameObject:
   - component: {fileID: 160493803}
   - component: {fileID: 160493802}
   - component: {fileID: 160493801}
-  - component: {fileID: 160493800}
   m_Layer: 5
   m_Name: Back
   m_TagString: Untagged
@@ -999,24 +981,6 @@ RectTransform:
   m_AnchoredPosition: {x: 1525, y: -808}
   m_SizeDelta: {x: 306.2309, y: 130.1149}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &160493800
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 160493798}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c2fe948a8d3f62c41ba656b91b041e5f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  button: {fileID: 160493798}
-  from: {fileID: 1486241784}
-  to: {fileID: 950090606}
-  onSwitchEvent:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!114 &160493801
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1072,9 +1036,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 160493800}
-        m_TargetAssemblyTypeName: Knotgames.UI.PanelSwitcher, Assembly-CSharp
-        m_MethodName: Switch
+      - m_Target: {fileID: 548261141}
+        m_TargetAssemblyTypeName: Knotgames.UI.PanelSwither, Assembly-CSharp
+        m_MethodName: Pop
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1423,7 +1387,6 @@ GameObject:
   - component: {fileID: 230756235}
   - component: {fileID: 230756234}
   - component: {fileID: 230756233}
-  - component: {fileID: 230756232}
   m_Layer: 5
   m_Name: Back
   m_TagString: Untagged
@@ -1450,24 +1413,6 @@ RectTransform:
   m_AnchoredPosition: {x: 1525, y: -808}
   m_SizeDelta: {x: 306.2309, y: 130.1149}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &230756232
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 230756230}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c2fe948a8d3f62c41ba656b91b041e5f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  button: {fileID: 230756230}
-  from: {fileID: 1883895558}
-  to: {fileID: 950090606}
-  onSwitchEvent:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!114 &230756233
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1523,9 +1468,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 230756232}
-        m_TargetAssemblyTypeName: Knotgames.UI.PanelSwitcher, Assembly-CSharp
-        m_MethodName: Switch
+      - m_Target: {fileID: 548261141}
+        m_TargetAssemblyTypeName: Knotgames.UI.PanelSwither, Assembly-CSharp
+        m_MethodName: Pop
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1824,7 +1769,6 @@ GameObject:
   - component: {fileID: 242433933}
   - component: {fileID: 242433932}
   - component: {fileID: 242433931}
-  - component: {fileID: 242433930}
   m_Layer: 5
   m_Name: Back
   m_TagString: Untagged
@@ -1851,24 +1795,6 @@ RectTransform:
   m_AnchoredPosition: {x: 1525, y: -808}
   m_SizeDelta: {x: 306.2309, y: 130.1149}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &242433930
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 242433928}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c2fe948a8d3f62c41ba656b91b041e5f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  button: {fileID: 242433928}
-  from: {fileID: 90596826}
-  to: {fileID: 950090606}
-  onSwitchEvent:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!114 &242433931
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1924,9 +1850,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 242433930}
-        m_TargetAssemblyTypeName: Knotgames.UI.PanelSwitcher, Assembly-CSharp
-        m_MethodName: Switch
+      - m_Target: {fileID: 548261141}
+        m_TargetAssemblyTypeName: Knotgames.UI.PanelSwither, Assembly-CSharp
+        m_MethodName: Pop
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2790,7 +2716,6 @@ GameObject:
   - component: {fileID: 443420994}
   - component: {fileID: 443420993}
   - component: {fileID: 443420992}
-  - component: {fileID: 443420991}
   m_Layer: 5
   m_Name: Back
   m_TagString: Untagged
@@ -2817,24 +2742,6 @@ RectTransform:
   m_AnchoredPosition: {x: 1525, y: -808}
   m_SizeDelta: {x: 306.2309, y: 130.1149}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &443420991
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 443420989}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c2fe948a8d3f62c41ba656b91b041e5f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  button: {fileID: 443420989}
-  from: {fileID: 2027776388}
-  to: {fileID: 803547495}
-  onSwitchEvent:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!114 &443420992
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2890,9 +2797,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 443420991}
-        m_TargetAssemblyTypeName: Knotgames.UI.PanelSwitcher, Assembly-CSharp
-        m_MethodName: Switch
+      - m_Target: {fileID: 548261141}
+        m_TargetAssemblyTypeName: Knotgames.UI.PanelSwither, Assembly-CSharp
+        m_MethodName: Pop
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3057,7 +2964,6 @@ GameObject:
   - component: {fileID: 478374587}
   - component: {fileID: 478374586}
   - component: {fileID: 478374585}
-  - component: {fileID: 478374589}
   m_Layer: 5
   m_Name: Back
   m_TagString: Untagged
@@ -3139,9 +3045,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 478374589}
-        m_TargetAssemblyTypeName: Knotgames.UI.PanelSwitcher, Assembly-CSharp
-        m_MethodName: Switch
+      - m_Target: {fileID: 548261141}
+        m_TargetAssemblyTypeName: Knotgames.UI.PanelSwither, Assembly-CSharp
+        m_MethodName: Pop
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3293,24 +3199,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 478374583}
   m_CullTransparentMesh: 1
---- !u!114 &478374589
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 478374583}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c2fe948a8d3f62c41ba656b91b041e5f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  button: {fileID: 0}
-  from: {fileID: 950090606}
-  to: {fileID: 108194767}
-  onSwitchEvent:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1 &481822809
 GameObject:
   m_ObjectHideFlags: 0
@@ -3322,9 +3210,6 @@ GameObject:
   - component: {fileID: 481822810}
   - component: {fileID: 481822815}
   - component: {fileID: 481822814}
-  - component: {fileID: 481822813}
-  - component: {fileID: 481822812}
-  - component: {fileID: 481822811}
   m_Layer: 5
   m_Name: 'D: Right'
   m_TagString: Untagged
@@ -3351,134 +3236,6 @@ RectTransform:
   m_AnchoredPosition: {x: 1263, y: -209}
   m_SizeDelta: {x: 1000, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &481822811
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 481822809}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c2fe948a8d3f62c41ba656b91b041e5f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  button: {fileID: 0}
-  from: {fileID: 0}
-  to: {fileID: 0}
-  onSwitchEvent:
-    m_PersistentCalls:
-      m_Calls: []
---- !u!114 &481822812
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 481822809}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f8f30f3d9285fd64794d5c403277e86a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  text: {fileID: 481822814}
-  color: {r: 0.9561368, g: 1, b: 0, a: 1}
-  clip: {fileID: 8300000, guid: b4fb8467a93c72944ac9eba169cff44b, type: 3}
-  source: {fileID: 1628585912}
---- !u!114 &481822813
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 481822809}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 21779e5a33bb40549bb4e48d59dadea2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  clickEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1628585912}
-        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
-        m_MethodName: PlayOneShot
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 8300000, guid: a00a27dacfcc94b4abbe9ec734a8abea, type: 3}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 242433931}
-        m_TargetAssemblyTypeName: UIEvents, Assembly-CSharp
-        m_MethodName: ResetColor
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 481822811}
-        m_TargetAssemblyTypeName: Knotgames.UI.PanelSwitcher, Assembly-CSharp
-        m_MethodName: Switch
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  enterEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 481822812}
-        m_TargetAssemblyTypeName: UIEvents, Assembly-CSharp
-        m_MethodName: Hover
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 481822812}
-        m_TargetAssemblyTypeName: UIEvents, Assembly-CSharp
-        m_MethodName: SetColor
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  exitEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 481822812}
-        m_TargetAssemblyTypeName: UIEvents, Assembly-CSharp
-        m_MethodName: ResetColor
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  navigatorObject: {fileID: 0}
 --- !u!114 &481822814
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3589,7 +3346,6 @@ GameObject:
   - component: {fileID: 521544988}
   - component: {fileID: 521544987}
   - component: {fileID: 521544986}
-  - component: {fileID: 521544990}
   m_Layer: 5
   m_Name: Credits
   m_TagString: Untagged
@@ -3659,8 +3415,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UIEvents, Assembly-CSharp
+      - m_Target: {fileID: 521544986}
+        m_TargetAssemblyTypeName: Knotgames.UI.ButtonEvents, Assembly-CSharp
         m_MethodName: ResetColor
         m_Mode: 1
         m_Arguments:
@@ -3671,13 +3427,13 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 521544990}
-        m_TargetAssemblyTypeName: Knotgames.UI.PanelSwitcher, Assembly-CSharp
+      - m_Target: {fileID: 548261141}
+        m_TargetAssemblyTypeName: Knotgames.UI.PanelSwither, Assembly-CSharp
         m_MethodName: Switch
-        m_Mode: 1
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 1936510025}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -3823,24 +3579,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 521544984}
   m_CullTransparentMesh: 1
---- !u!114 &521544990
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 521544984}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c2fe948a8d3f62c41ba656b91b041e5f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  button: {fileID: 521544984}
-  from: {fileID: 803547495}
-  to: {fileID: 1936510025}
-  onSwitchEvent:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1 &548261136
 GameObject:
   m_ObjectHideFlags: 0
@@ -3853,6 +3591,7 @@ GameObject:
   - component: {fileID: 548261139}
   - component: {fileID: 548261138}
   - component: {fileID: 548261137}
+  - component: {fileID: 548261141}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -3950,6 +3689,19 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &548261141
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 548261136}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2730a512b9b6cbc4e9c24697884ebccd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startPanel: {fileID: 108194767}
 --- !u!1 &553915394 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2330495662725321129, guid: 64176cac231abc14caecfa72823a749b, type: 3}
@@ -3968,7 +3720,6 @@ GameObject:
   - component: {fileID: 582611646}
   - component: {fileID: 582611645}
   - component: {fileID: 582611644}
-  - component: {fileID: 582611648}
   m_Layer: 5
   m_Name: Video
   m_TagString: Untagged
@@ -4050,13 +3801,13 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 582611648}
-        m_TargetAssemblyTypeName: Knotgames.UI.PanelSwitcher, Assembly-CSharp
+      - m_Target: {fileID: 548261141}
+        m_TargetAssemblyTypeName: Knotgames.UI.PanelSwither, Assembly-CSharp
         m_MethodName: Switch
-        m_Mode: 1
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 1486241784}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -4202,24 +3953,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 582611642}
   m_CullTransparentMesh: 1
---- !u!114 &582611648
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 582611642}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c2fe948a8d3f62c41ba656b91b041e5f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  button: {fileID: 582611642}
-  from: {fileID: 950090606}
-  to: {fileID: 1486241784}
-  onSwitchEvent:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1 &600046397
 GameObject:
   m_ObjectHideFlags: 0
@@ -4672,7 +4405,6 @@ GameObject:
   - component: {fileID: 763206924}
   - component: {fileID: 763206923}
   - component: {fileID: 763206922}
-  - component: {fileID: 763206926}
   m_Layer: 5
   m_Name: Audio
   m_TagString: Untagged
@@ -4754,13 +4486,13 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 763206926}
-        m_TargetAssemblyTypeName: Knotgames.UI.PanelSwitcher, Assembly-CSharp
+      - m_Target: {fileID: 548261141}
+        m_TargetAssemblyTypeName: Knotgames.UI.PanelSwither, Assembly-CSharp
         m_MethodName: Switch
-        m_Mode: 1
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 1883895558}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -4906,24 +4638,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 763206920}
   m_CullTransparentMesh: 1
---- !u!114 &763206926
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 763206920}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c2fe948a8d3f62c41ba656b91b041e5f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  button: {fileID: 763206920}
-  from: {fileID: 950090606}
-  to: {fileID: 1883895558}
-  onSwitchEvent:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1 &779458521
 GameObject:
   m_ObjectHideFlags: 0
@@ -4937,7 +4651,6 @@ GameObject:
   - component: {fileID: 779458523}
   - component: {fileID: 779458525}
   - component: {fileID: 779458526}
-  - component: {fileID: 779458527}
   m_Layer: 5
   m_Name: Play
   m_TagString: Untagged
@@ -5088,13 +4801,13 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 779458527}
-        m_TargetAssemblyTypeName: Knotgames.UI.PanelSwitcher, Assembly-CSharp
+      - m_Target: {fileID: 548261141}
+        m_TargetAssemblyTypeName: Knotgames.UI.PanelSwither, Assembly-CSharp
         m_MethodName: Switch
-        m_Mode: 1
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 2009531723}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -5171,24 +4884,6 @@ MonoBehaviour:
   color: {r: 0.9561368, g: 1, b: 0, a: 1}
   clip: {fileID: 8300000, guid: b4fb8467a93c72944ac9eba169cff44b, type: 3}
   source: {fileID: 1628585912}
---- !u!114 &779458527
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 779458521}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c2fe948a8d3f62c41ba656b91b041e5f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  button: {fileID: 779458521}
-  from: {fileID: 108194767}
-  to: {fileID: 2009531723}
-  onSwitchEvent:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1 &803547495
 GameObject:
   m_ObjectHideFlags: 0
@@ -5280,6 +4975,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd399df471aabc545a63ff7e594637ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  horizontalInputs: 0
   buttonsGameObjects:
   - {fileID: 521544984}
   - {fileID: 61467444}
@@ -5746,6 +5442,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd399df471aabc545a63ff7e594637ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  horizontalInputs: 0
   buttonsGameObjects:
   - {fileID: 582611642}
   - {fileID: 763206920}
@@ -5764,7 +5461,6 @@ GameObject:
   - component: {fileID: 994656804}
   - component: {fileID: 994656803}
   - component: {fileID: 994656802}
-  - component: {fileID: 994656801}
   m_Layer: 5
   m_Name: Back
   m_TagString: Untagged
@@ -5791,24 +5487,6 @@ RectTransform:
   m_AnchoredPosition: {x: 1525, y: -808}
   m_SizeDelta: {x: 306.2309, y: 130.1149}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &994656801
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 994656799}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c2fe948a8d3f62c41ba656b91b041e5f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  button: {fileID: 994656799}
-  from: {fileID: 1936510025}
-  to: {fileID: 803547495}
-  onSwitchEvent:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!114 &994656802
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5864,9 +5542,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 994656801}
-        m_TargetAssemblyTypeName: Knotgames.UI.PanelSwitcher, Assembly-CSharp
-        m_MethodName: Switch
+      - m_Target: {fileID: 548261141}
+        m_TargetAssemblyTypeName: Knotgames.UI.PanelSwither, Assembly-CSharp
+        m_MethodName: Pop
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6235,7 +5913,6 @@ GameObject:
   - component: {fileID: 1184566843}
   - component: {fileID: 1184566845}
   - component: {fileID: 1184566846}
-  - component: {fileID: 1184566847}
   m_Layer: 5
   m_Name: Settings
   m_TagString: Untagged
@@ -6386,13 +6063,13 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1184566847}
-        m_TargetAssemblyTypeName: Knotgames.UI.PanelSwitcher, Assembly-CSharp
+      - m_Target: {fileID: 548261141}
+        m_TargetAssemblyTypeName: Knotgames.UI.PanelSwither, Assembly-CSharp
         m_MethodName: Switch
-        m_Mode: 1
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 950090606}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -6457,24 +6134,6 @@ MonoBehaviour:
   color: {r: 0.9561368, g: 1, b: 0, a: 1}
   clip: {fileID: 8300000, guid: b4fb8467a93c72944ac9eba169cff44b, type: 3}
   source: {fileID: 1628585912}
---- !u!114 &1184566847
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1184566841}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c2fe948a8d3f62c41ba656b91b041e5f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  button: {fileID: 0}
-  from: {fileID: 108194767}
-  to: {fileID: 950090606}
-  onSwitchEvent:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!224 &1184846531 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7563715798540262392, guid: 291233c438f1f5d439e7dfe3616fb536, type: 3}
@@ -6993,9 +6652,6 @@ GameObject:
   - component: {fileID: 1431398759}
   - component: {fileID: 1431398764}
   - component: {fileID: 1431398763}
-  - component: {fileID: 1431398762}
-  - component: {fileID: 1431398761}
-  - component: {fileID: 1431398760}
   m_Layer: 5
   m_Name: 'W: Move Forward'
   m_TagString: Untagged
@@ -7022,134 +6678,6 @@ RectTransform:
   m_AnchoredPosition: {x: 500, y: -50}
   m_SizeDelta: {x: 1000, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1431398760
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1431398758}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c2fe948a8d3f62c41ba656b91b041e5f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  button: {fileID: 0}
-  from: {fileID: 0}
-  to: {fileID: 0}
-  onSwitchEvent:
-    m_PersistentCalls:
-      m_Calls: []
---- !u!114 &1431398761
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1431398758}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f8f30f3d9285fd64794d5c403277e86a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  text: {fileID: 1431398763}
-  color: {r: 0.9561368, g: 1, b: 0, a: 1}
-  clip: {fileID: 8300000, guid: b4fb8467a93c72944ac9eba169cff44b, type: 3}
-  source: {fileID: 1628585912}
---- !u!114 &1431398762
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1431398758}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 21779e5a33bb40549bb4e48d59dadea2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  clickEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1628585912}
-        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
-        m_MethodName: PlayOneShot
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 8300000, guid: a00a27dacfcc94b4abbe9ec734a8abea, type: 3}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 242433931}
-        m_TargetAssemblyTypeName: UIEvents, Assembly-CSharp
-        m_MethodName: ResetColor
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1431398760}
-        m_TargetAssemblyTypeName: Knotgames.UI.PanelSwitcher, Assembly-CSharp
-        m_MethodName: Switch
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  enterEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1431398761}
-        m_TargetAssemblyTypeName: UIEvents, Assembly-CSharp
-        m_MethodName: Hover
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1431398761}
-        m_TargetAssemblyTypeName: UIEvents, Assembly-CSharp
-        m_MethodName: SetColor
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  exitEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1431398761}
-        m_TargetAssemblyTypeName: UIEvents, Assembly-CSharp
-        m_MethodName: ResetColor
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  navigatorObject: {fileID: 0}
 --- !u!114 &1431398763
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7260,7 +6788,6 @@ GameObject:
   - component: {fileID: 1456024945}
   - component: {fileID: 1456024944}
   - component: {fileID: 1456024943}
-  - component: {fileID: 1456024942}
   m_Layer: 5
   m_Name: Back
   m_TagString: Untagged
@@ -7287,24 +6814,6 @@ RectTransform:
   m_AnchoredPosition: {x: -1517, y: -808}
   m_SizeDelta: {x: 306.2309, y: 130.1149}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1456024942
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1456024940}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c2fe948a8d3f62c41ba656b91b041e5f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  button: {fileID: 1456024940}
-  from: {fileID: 2009531723}
-  to: {fileID: 108194767}
-  onSwitchEvent:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!114 &1456024943
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7360,9 +6869,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1456024942}
-        m_TargetAssemblyTypeName: Knotgames.UI.PanelSwitcher, Assembly-CSharp
-        m_MethodName: Switch
+      - m_Target: {fileID: 548261141}
+        m_TargetAssemblyTypeName: Knotgames.UI.PanelSwither, Assembly-CSharp
+        m_MethodName: Pop
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -7577,6 +7086,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd399df471aabc545a63ff7e594637ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  horizontalInputs: 0
   buttonsGameObjects:
   - {fileID: 160493798}
 --- !u!114 &1486241787
@@ -7633,9 +7143,6 @@ GameObject:
   - component: {fileID: 1560577014}
   - component: {fileID: 1560577019}
   - component: {fileID: 1560577018}
-  - component: {fileID: 1560577017}
-  - component: {fileID: 1560577016}
-  - component: {fileID: 1560577015}
   m_Layer: 5
   m_Name: 'A: Left'
   m_TagString: Untagged
@@ -7662,134 +7169,6 @@ RectTransform:
   m_AnchoredPosition: {x: 1263, y: -50}
   m_SizeDelta: {x: 1000, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1560577015
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1560577013}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c2fe948a8d3f62c41ba656b91b041e5f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  button: {fileID: 0}
-  from: {fileID: 0}
-  to: {fileID: 0}
-  onSwitchEvent:
-    m_PersistentCalls:
-      m_Calls: []
---- !u!114 &1560577016
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1560577013}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f8f30f3d9285fd64794d5c403277e86a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  text: {fileID: 1560577018}
-  color: {r: 0.9561368, g: 1, b: 0, a: 1}
-  clip: {fileID: 8300000, guid: b4fb8467a93c72944ac9eba169cff44b, type: 3}
-  source: {fileID: 1628585912}
---- !u!114 &1560577017
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1560577013}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 21779e5a33bb40549bb4e48d59dadea2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  clickEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1628585912}
-        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
-        m_MethodName: PlayOneShot
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 8300000, guid: a00a27dacfcc94b4abbe9ec734a8abea, type: 3}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 242433931}
-        m_TargetAssemblyTypeName: UIEvents, Assembly-CSharp
-        m_MethodName: ResetColor
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1560577015}
-        m_TargetAssemblyTypeName: Knotgames.UI.PanelSwitcher, Assembly-CSharp
-        m_MethodName: Switch
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  enterEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1560577016}
-        m_TargetAssemblyTypeName: UIEvents, Assembly-CSharp
-        m_MethodName: Hover
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1560577016}
-        m_TargetAssemblyTypeName: UIEvents, Assembly-CSharp
-        m_MethodName: SetColor
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  exitEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1560577016}
-        m_TargetAssemblyTypeName: UIEvents, Assembly-CSharp
-        m_MethodName: ResetColor
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  navigatorObject: {fileID: 0}
 --- !u!114 &1560577018
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7900,7 +7279,6 @@ GameObject:
   - component: {fileID: 1582230036}
   - component: {fileID: 1582230035}
   - component: {fileID: 1582230034}
-  - component: {fileID: 1582230033}
   m_Layer: 5
   m_Name: Back
   m_TagString: Untagged
@@ -7927,24 +7305,6 @@ RectTransform:
   m_AnchoredPosition: {x: 1525, y: -808}
   m_SizeDelta: {x: 306.2309, y: 130.1149}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1582230033
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1582230031}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c2fe948a8d3f62c41ba656b91b041e5f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  button: {fileID: 1582230031}
-  from: {fileID: 803547495}
-  to: {fileID: 108194767}
-  onSwitchEvent:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!114 &1582230034
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8000,9 +7360,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1582230033}
-        m_TargetAssemblyTypeName: Knotgames.UI.PanelSwitcher, Assembly-CSharp
-        m_MethodName: Switch
+      - m_Target: {fileID: 548261141}
+        m_TargetAssemblyTypeName: Knotgames.UI.PanelSwither, Assembly-CSharp
+        m_MethodName: Pop
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -8626,7 +7986,6 @@ GameObject:
   - component: {fileID: 1701280038}
   - component: {fileID: 1701280037}
   - component: {fileID: 1701280036}
-  - component: {fileID: 1701280040}
   m_Layer: 5
   m_Name: Controls
   m_TagString: Untagged
@@ -8708,13 +8067,13 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1701280040}
-        m_TargetAssemblyTypeName: Knotgames.UI.PanelSwitcher, Assembly-CSharp
+      - m_Target: {fileID: 548261141}
+        m_TargetAssemblyTypeName: Knotgames.UI.PanelSwither, Assembly-CSharp
         m_MethodName: Switch
-        m_Mode: 1
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 90596826}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -8860,24 +8219,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1701280034}
   m_CullTransparentMesh: 1
---- !u!114 &1701280040
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1701280034}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c2fe948a8d3f62c41ba656b91b041e5f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  button: {fileID: 1701280034}
-  from: {fileID: 950090606}
-  to: {fileID: 90596826}
-  onSwitchEvent:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1 &1867814625
 GameObject:
   m_ObjectHideFlags: 0
@@ -9027,7 +8368,6 @@ GameObject:
   - component: {fileID: 1872397275}
   - component: {fileID: 1872397277}
   - component: {fileID: 1872397278}
-  - component: {fileID: 1872397279}
   m_Layer: 5
   m_Name: Extras
   m_TagString: Untagged
@@ -9178,13 +8518,13 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1872397279}
-        m_TargetAssemblyTypeName: Knotgames.UI.PanelSwitcher, Assembly-CSharp
+      - m_Target: {fileID: 548261141}
+        m_TargetAssemblyTypeName: Knotgames.UI.PanelSwither, Assembly-CSharp
         m_MethodName: Switch
-        m_Mode: 1
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 803547495}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -9249,24 +8589,6 @@ MonoBehaviour:
   color: {r: 0.9561368, g: 1, b: 0, a: 1}
   clip: {fileID: 8300000, guid: b4fb8467a93c72944ac9eba169cff44b, type: 3}
   source: {fileID: 1628585912}
---- !u!114 &1872397279
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1872397273}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c2fe948a8d3f62c41ba656b91b041e5f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  button: {fileID: 0}
-  from: {fileID: 108194767}
-  to: {fileID: 803547495}
-  onSwitchEvent:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!224 &1883174924 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7563715797347932949, guid: 291233c438f1f5d439e7dfe3616fb536, type: 3}
@@ -9323,6 +8645,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd399df471aabc545a63ff7e594637ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  horizontalInputs: 0
   buttonsGameObjects:
   - {fileID: 230756230}
 --- !u!114 &1883895561
@@ -9506,9 +8829,6 @@ GameObject:
   - component: {fileID: 1916285223}
   - component: {fileID: 1916285228}
   - component: {fileID: 1916285227}
-  - component: {fileID: 1916285226}
-  - component: {fileID: 1916285225}
-  - component: {fileID: 1916285224}
   m_Layer: 5
   m_Name: 'S: Backward'
   m_TagString: Untagged
@@ -9535,134 +8855,6 @@ RectTransform:
   m_AnchoredPosition: {x: 500, y: -209}
   m_SizeDelta: {x: 1000, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1916285224
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1916285222}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c2fe948a8d3f62c41ba656b91b041e5f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  button: {fileID: 0}
-  from: {fileID: 0}
-  to: {fileID: 0}
-  onSwitchEvent:
-    m_PersistentCalls:
-      m_Calls: []
---- !u!114 &1916285225
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1916285222}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f8f30f3d9285fd64794d5c403277e86a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  text: {fileID: 1916285227}
-  color: {r: 0.9561368, g: 1, b: 0, a: 1}
-  clip: {fileID: 8300000, guid: b4fb8467a93c72944ac9eba169cff44b, type: 3}
-  source: {fileID: 1628585912}
---- !u!114 &1916285226
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1916285222}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 21779e5a33bb40549bb4e48d59dadea2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  clickEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1628585912}
-        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
-        m_MethodName: PlayOneShot
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 8300000, guid: a00a27dacfcc94b4abbe9ec734a8abea, type: 3}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 242433931}
-        m_TargetAssemblyTypeName: UIEvents, Assembly-CSharp
-        m_MethodName: ResetColor
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1916285224}
-        m_TargetAssemblyTypeName: Knotgames.UI.PanelSwitcher, Assembly-CSharp
-        m_MethodName: Switch
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  enterEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1916285225}
-        m_TargetAssemblyTypeName: UIEvents, Assembly-CSharp
-        m_MethodName: Hover
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1916285225}
-        m_TargetAssemblyTypeName: UIEvents, Assembly-CSharp
-        m_MethodName: SetColor
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  exitEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1916285225}
-        m_TargetAssemblyTypeName: UIEvents, Assembly-CSharp
-        m_MethodName: ResetColor
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  navigatorObject: {fileID: 0}
 --- !u!114 &1916285227
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9811,6 +9003,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd399df471aabc545a63ff7e594637ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  horizontalInputs: 0
   buttonsGameObjects:
   - {fileID: 994656799}
 --- !u!114 &1936510028
@@ -10045,6 +9238,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd399df471aabc545a63ff7e594637ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  horizontalInputs: 0
   buttonsGameObjects:
   - {fileID: 1456024940}
 --- !u!114 &2009531726
@@ -10261,6 +9455,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd399df471aabc545a63ff7e594637ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  horizontalInputs: 0
   buttonsGameObjects:
   - {fileID: 443420989}
 --- !u!114 &2027776391

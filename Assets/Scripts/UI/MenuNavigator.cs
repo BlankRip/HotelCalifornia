@@ -5,9 +5,14 @@ using UnityEngine;
 namespace Knotgames.UI {
     public class MenuNavigator : MonoBehaviour, IMenuNavigator
     {
+        [SerializeField] bool horizontalInputs;
         [SerializeField] List<GameObject> buttonsGameObjects;
         private List<IMenuButton> buttons;
         private int currentIndex;
+
+        //TODO Testing with old system
+        private KeyCode positiveCode;
+        private KeyCode negetiveCode;
 
         private void Start() {
             buttons = new List<IMenuButton>();
@@ -22,13 +27,31 @@ namespace Knotgames.UI {
         private void OnEnable() {
             if(buttons != null)
                 buttons[currentIndex].Selecte();
+
+            //TODO Change to new input system
+            if(horizontalInputs) {
+                negetiveCode = KeyCode.LeftArrow;
+                positiveCode = KeyCode.RightArrow;
+            } else {
+                negetiveCode = KeyCode.DownArrow;
+                positiveCode = KeyCode.UpArrow;
+            }
+        }
+
+        private void OnDisable() {
+            //TODO reset the events to null
+            if(horizontalInputs) {
+
+            } else {
+
+            }
         }
 
         private void Update() {
             //TODO: CHANGE TO NEW INPUT SYSTEM
-            if(Input.GetKeyDown(KeyCode.DownArrow))
+            if(Input.GetKeyDown(negetiveCode))
                 CycleDown();
-            else if(Input.GetKeyDown(KeyCode.UpArrow))
+            else if(Input.GetKeyDown(positiveCode))
                 CycleUp();
             else if(Input.GetKeyDown(KeyCode.Return))
                 buttons[currentIndex].Click();
