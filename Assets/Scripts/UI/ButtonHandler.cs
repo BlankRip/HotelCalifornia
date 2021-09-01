@@ -10,11 +10,15 @@ namespace Knotgames.UI {
         [SerializeField] UnityEvent clickEvent;
         [SerializeField] UnityEvent enterEvent;
         [SerializeField] UnityEvent exitEvent;
+        [SerializeField] GameObject navigatorObject;
         private IMenuNavigator menuNavigator;
         private int myIndex;
 
         private void Start() {
-            menuNavigator = GetComponentInParent<IMenuNavigator>();
+            if(menuNavigator == null)
+                menuNavigator = GetComponentInParent<IMenuNavigator>();
+            else
+                menuNavigator = navigatorObject.GetComponent<IMenuNavigator>();
         }
 
         public void OnPointerClick(PointerEventData eventData) {
