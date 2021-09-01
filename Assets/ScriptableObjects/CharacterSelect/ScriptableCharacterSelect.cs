@@ -6,7 +6,7 @@ namespace Knotgames.CharacterData
 {
     public enum CharacterType
     {
-        Nada, Ghost, Player
+        Nada, Human, Ghost
     }
 
     public enum ModelType

@@ -6,6 +6,7 @@ using Knotgames.CharacterData;
 namespace Knotgames.CharacterSelect {
     public class AbilitySelectEvents : MonoBehaviour
     {
+        [SerializeField] bool baseSelected;
         [SerializeField] AbilitySelect selector;
         [SerializeField] ScriptableCharacterSelect characterData;
         [SerializeField] AbilityType myAbilityType;
@@ -13,6 +14,11 @@ namespace Knotgames.CharacterSelect {
         [SerializeField] int myIndex;
         [TextArea(5, 5)]
         [SerializeField] string descripsion;
+
+        private void Start() {
+            if(baseSelected)
+                OnClick();
+        }
 
         public void OnEnter() {
             selector.ChangeDescripsion(descripsion);
