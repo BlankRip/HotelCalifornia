@@ -7,6 +7,7 @@ namespace Knotgames.UI {
     {
         [SerializeField] bool horizontalInputs;
         [SerializeField] List<GameObject> buttonsGameObjects;
+        [SerializeField] MenuNavigator connectedNavigator;
         private List<IMenuButton> buttons;
         private int currentIndex;
 
@@ -33,8 +34,8 @@ namespace Knotgames.UI {
                 negetiveCode = KeyCode.LeftArrow;
                 positiveCode = KeyCode.RightArrow;
             } else {
-                negetiveCode = KeyCode.DownArrow;
-                positiveCode = KeyCode.UpArrow;
+                negetiveCode = KeyCode.UpArrow;
+                positiveCode = KeyCode.DownArrow;
             }
         }
 
@@ -58,17 +59,28 @@ namespace Knotgames.UI {
         }
 
         private void CycleUp() {
-            if(currentIndex != 0)
-                SelectButton(currentIndex - 1);
-        }
-
-        private void CycleDown() {
             if(currentIndex != buttons.Count - 1)
                 SelectButton(currentIndex + 1);
         }
 
+        private void CycleDown() {
+            if(currentIndex != 0)
+                SelectButton(currentIndex - 1);
+        }
+
         public void SelectButton(int index) {
             if(currentIndex != index) {
+                buttons[currentIndex].Deselect();
+                currentIndex = index;
+                buttons[currentIndex].Selecte();
+                if(connectedNavigator != null)
+                    connectedNavigator.SelectButton(buttons[currentIndex]);
+            }
+        }
+
+        public void SelectButton(IMenuButton button) {
+            int index = buttons.IndexOf(button);
+            if(index != currentIndex) {
                 buttons[currentIndex].Deselect();
                 currentIndex = index;
                 buttons[currentIndex].Selecte();
