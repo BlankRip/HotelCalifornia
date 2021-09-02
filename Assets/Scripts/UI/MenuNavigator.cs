@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace Knotgames.UI {
     public class MenuNavigator : MonoBehaviour, IMenuNavigator
@@ -29,7 +30,7 @@ namespace Knotgames.UI {
             if(buttons != null)
                 buttons[currentIndex].Selecte();
 
-            //TODO Change to new input system
+            // //TODO Change to new input system
             if(horizontalInputs) {
                 negetiveCode = KeyCode.LeftArrow;
                 positiveCode = KeyCode.RightArrow;
@@ -85,6 +86,11 @@ namespace Knotgames.UI {
                 currentIndex = index;
                 buttons[currentIndex].Selecte();
             }
+        }
+
+        public void Click()
+        {
+            buttons[currentIndex].Click();
         }
     }
 }

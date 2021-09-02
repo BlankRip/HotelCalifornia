@@ -1,0 +1,149 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ed26d100bf6cf04aa793f0e076af5b6, type: 3}
+  m_Name: ScriptableUINavigate
+  m_EditorClassIdentifier: 
+  leftInputAction:
+    m_Name: Left Input
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 088ec67e-2a49-4e29-b6ff-0381c815b1b5
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: e22d0343-c002-4d65-a1db-cc2125f9293e
+      m_Path: <Keyboard>/leftArrow
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Left Input
+      m_Flags: 0
+    - m_Name: 
+      m_Id: b5dbb2e5-9a85-4d63-9d5f-7666fd930158
+      m_Path: <Gamepad>/dpad/left
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Left Input
+      m_Flags: 0
+  rightInputAction:
+    m_Name: Right Input
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 0e20b65b-45a7-4d64-816a-20f5b3a3bb69
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: c6ce5554-a0f4-448d-a6b1-0803550da70d
+      m_Path: <Keyboard>/rightArrow
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Right Input
+      m_Flags: 0
+    - m_Name: 
+      m_Id: 16fc296b-3c07-4e2a-b3ca-305384802667
+      m_Path: <Gamepad>/dpad/right
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Right Input
+      m_Flags: 0
+  upInputAction:
+    m_Name: Up Input
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: f9941332-4cbe-41b9-809a-67701d8193dc
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: da52631b-5daa-45a0-93f3-0a0017140e86
+      m_Path: <Keyboard>/upArrow
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Up Input
+      m_Flags: 0
+    - m_Name: 
+      m_Id: 0746cc08-425c-4a56-b38e-b8ce95dbe3ed
+      m_Path: <Gamepad>/dpad/up
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Up Input
+      m_Flags: 0
+  downInputAction:
+    m_Name: Down Input
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: fe503c0a-eb97-4d6b-9e80-61c4967e94df
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: ed01a5e6-a969-4cb0-856a-2150dcf3e76d
+      m_Path: <Keyboard>/downArrow
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Down Input
+      m_Flags: 0
+    - m_Name: 
+      m_Id: 1e8c7e7a-4133-4404-971d-7a39e4228d76
+      m_Path: <Gamepad>/dpad/down
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Down Input
+      m_Flags: 0
+  clickInputAction:
+    m_Name: Click Input
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: ab17435e-b712-4323-8364-83bdf3d07139
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: 4210efb6-1d3f-4aa1-a2b9-7593f46546a9
+      m_Path: <Keyboard>/enter
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Click Input
+      m_Flags: 0
+    - m_Name: 
+      m_Id: 3f0d2af6-65a9-4071-bd26-49c14e048865
+      m_Path: <Gamepad>/buttonSouth
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Click Input
+      m_Flags: 0
+  onLeft:
+    m_PersistentCalls:
+      m_Calls: []
+  onRight:
+    m_PersistentCalls:
+      m_Calls: []
+  onUp:
+    m_PersistentCalls:
+      m_Calls: []
+  onDown:
+    m_PersistentCalls:
+      m_Calls: []
+  onClick:
+    m_PersistentCalls:
+      m_Calls: []
