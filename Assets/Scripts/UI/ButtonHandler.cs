@@ -43,7 +43,6 @@ namespace Knotgames.UI {
         }
 
         public void Selecte() {
-            Debug.Log("Sel");
             enterEvent.Invoke();
         }
 

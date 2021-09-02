@@ -12,6 +12,8 @@ namespace Knotgames.CharacterSelect {
         [SerializeField] AbilityType myAbilityType;
         [SerializeField] GameObject selectedOverlay;
         [SerializeField] int myIndex;
+        public Sprite icone;
+        public string abilityName;
         [TextArea(5, 5)]
         [SerializeField] string descripsion;
 
