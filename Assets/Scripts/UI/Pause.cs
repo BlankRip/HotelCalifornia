@@ -2,15 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Knotgames.Inputs;
+using Knotgames.Events;
 
 namespace Knotgames.UI.Pause {
     public class Pause : MonoBehaviour
     {
         [SerializeField] GameObject pausePanel;
-        [SerializeField] ScriptableUiInputs inputs;
+        [SerializeField] ScriptableInputManager inputs;
+        [SerializeField] ScriptableUIEvents uiEvents;
+        [SerializeField] ScriptableGameplayEvents gameplayEvents;
         
         private void Start() {
-            inputs.uiInputs.SetOnEscapeEvent(() => ShowPause());
+            gameplayEvents.onEscape.AddListener(ShowPause);
         }
 
         public void ShowPause() {
@@ -21,8 +24,8 @@ namespace Knotgames.UI.Pause {
         }
 
         private void ActivateUiInputs() {
-            inputs.uiInputs.SwitchToUiInputs();
-            inputs.uiInputs.SetOnEscapeEvent(() => HidePause());
+            inputs.inputManager.SwapToUI();
+            uiEvents.onEscape.AddListener(HidePause);
         }
 
         public void HidePause() {
@@ -33,8 +36,8 @@ namespace Knotgames.UI.Pause {
         }
 
         public void DeActivateUiInputs() {
-            inputs.uiInputs.SwitchToGamePlayInputs();
-            inputs.uiInputs.SetOnEscapeEvent(() => ShowPause());
+            inputs.inputManager.SwapToGameplay();
+            uiEvents.onEscape.RemoveListener(HidePause);
         }
     }
 }

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Knotgames.Events;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -9,12 +10,9 @@ namespace Knotgames.UI {
         [SerializeField] bool horizontalInputs;
         [SerializeField] List<GameObject> buttonsGameObjects;
         [SerializeField] MenuNavigator connectedNavigator;
+        [SerializeField] ScriptableUIEvents uiEvents;
         private List<IMenuButton> buttons;
         private int currentIndex;
-
-        //TODO Testing with old system
-        private KeyCode positiveCode;
-        private KeyCode negetiveCode;
 
         private void Start() {
             buttons = new List<IMenuButton>();
@@ -30,33 +28,25 @@ namespace Knotgames.UI {
             if(buttons != null)
                 buttons[currentIndex].Selecte();
 
-            // //TODO Change to new input system
             if(horizontalInputs) {
-                negetiveCode = KeyCode.LeftArrow;
-                positiveCode = KeyCode.RightArrow;
+                uiEvents.onLeft.AddListener(CycleDown);
+                uiEvents.onRight.AddListener(CycleUp);
             } else {
-                negetiveCode = KeyCode.UpArrow;
-                positiveCode = KeyCode.DownArrow;
+                uiEvents.onUp.AddListener(CycleDown);
+                uiEvents.onDown.AddListener(CycleUp);
             }
+            uiEvents.onEnter.AddListener(EnterPressed);
         }
 
         private void OnDisable() {
-            //TODO reset the events to null
             if(horizontalInputs) {
-
+                uiEvents.onLeft.RemoveListener(CycleDown);
+                uiEvents.onRight.RemoveListener(CycleUp);
             } else {
-
+                uiEvents.onUp.RemoveListener(CycleDown);
+                uiEvents.onDown.RemoveListener(CycleUp);
             }
-        }
-
-        private void Update() {
-            //TODO: CHANGE TO NEW INPUT SYSTEM
-            if(Input.GetKeyDown(negetiveCode))
-                CycleDown();
-            else if(Input.GetKeyDown(positiveCode))
-                CycleUp();
-            else if(Input.GetKeyDown(KeyCode.Return))
-                buttons[currentIndex].Click();
+            uiEvents.onEnter.RemoveListener(EnterPressed);
         }
 
         private void CycleUp() {
@@ -67,6 +57,10 @@ namespace Knotgames.UI {
         private void CycleDown() {
             if(currentIndex != 0)
                 SelectButton(currentIndex - 1);
+        }
+
+        private void EnterPressed() {
+            buttons[currentIndex].Click();
         }
 
         public void SelectButton(int index) {

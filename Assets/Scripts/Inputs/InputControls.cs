@@ -15,7 +15,7 @@ public class @InputControls : IInputActionCollection, IDisposable
     ""name"": ""InputControls"",
     ""maps"": [
         {
-            ""name"": ""GroundMovement"",
+            ""name"": ""Gameplay"",
             ""id"": ""eb872a0a-3240-43df-950c-95df46e49a9e"",
             ""actions"": [
                 {
@@ -903,18 +903,18 @@ public class @InputControls : IInputActionCollection, IDisposable
         }
     ]
 }");
-        // GroundMovement
-        m_GroundMovement = asset.FindActionMap("GroundMovement", throwIfNotFound: true);
-        m_GroundMovement_Move = m_GroundMovement.FindAction("Move", throwIfNotFound: true);
-        m_GroundMovement_MouseX = m_GroundMovement.FindAction("MouseX", throwIfNotFound: true);
-        m_GroundMovement_MouseY = m_GroundMovement.FindAction("MouseY", throwIfNotFound: true);
-        m_GroundMovement_LowerStart = m_GroundMovement.FindAction("LowerStart", throwIfNotFound: true);
-        m_GroundMovement_RaiseStart = m_GroundMovement.FindAction("RaiseStart", throwIfNotFound: true);
-        m_GroundMovement_SprintStart = m_GroundMovement.FindAction("SprintStart", throwIfNotFound: true);
-        m_GroundMovement_LowerFinish = m_GroundMovement.FindAction("LowerFinish", throwIfNotFound: true);
-        m_GroundMovement_RaiseFinish = m_GroundMovement.FindAction("RaiseFinish", throwIfNotFound: true);
-        m_GroundMovement_SprintFinish = m_GroundMovement.FindAction("SprintFinish", throwIfNotFound: true);
-        m_GroundMovement_Jump = m_GroundMovement.FindAction("Jump", throwIfNotFound: true);
+        // Gameplay
+        m_Gameplay = asset.FindActionMap("Gameplay", throwIfNotFound: true);
+        m_Gameplay_Move = m_Gameplay.FindAction("Move", throwIfNotFound: true);
+        m_Gameplay_MouseX = m_Gameplay.FindAction("MouseX", throwIfNotFound: true);
+        m_Gameplay_MouseY = m_Gameplay.FindAction("MouseY", throwIfNotFound: true);
+        m_Gameplay_LowerStart = m_Gameplay.FindAction("LowerStart", throwIfNotFound: true);
+        m_Gameplay_RaiseStart = m_Gameplay.FindAction("RaiseStart", throwIfNotFound: true);
+        m_Gameplay_SprintStart = m_Gameplay.FindAction("SprintStart", throwIfNotFound: true);
+        m_Gameplay_LowerFinish = m_Gameplay.FindAction("LowerFinish", throwIfNotFound: true);
+        m_Gameplay_RaiseFinish = m_Gameplay.FindAction("RaiseFinish", throwIfNotFound: true);
+        m_Gameplay_SprintFinish = m_Gameplay.FindAction("SprintFinish", throwIfNotFound: true);
+        m_Gameplay_Jump = m_Gameplay.FindAction("Jump", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -973,74 +973,74 @@ public class @InputControls : IInputActionCollection, IDisposable
         asset.Disable();
     }
 
-    // GroundMovement
-    private readonly InputActionMap m_GroundMovement;
-    private IGroundMovementActions m_GroundMovementActionsCallbackInterface;
-    private readonly InputAction m_GroundMovement_Move;
-    private readonly InputAction m_GroundMovement_MouseX;
-    private readonly InputAction m_GroundMovement_MouseY;
-    private readonly InputAction m_GroundMovement_LowerStart;
-    private readonly InputAction m_GroundMovement_RaiseStart;
-    private readonly InputAction m_GroundMovement_SprintStart;
-    private readonly InputAction m_GroundMovement_LowerFinish;
-    private readonly InputAction m_GroundMovement_RaiseFinish;
-    private readonly InputAction m_GroundMovement_SprintFinish;
-    private readonly InputAction m_GroundMovement_Jump;
-    public struct GroundMovementActions
+    // Gameplay
+    private readonly InputActionMap m_Gameplay;
+    private IGameplayActions m_GameplayActionsCallbackInterface;
+    private readonly InputAction m_Gameplay_Move;
+    private readonly InputAction m_Gameplay_MouseX;
+    private readonly InputAction m_Gameplay_MouseY;
+    private readonly InputAction m_Gameplay_LowerStart;
+    private readonly InputAction m_Gameplay_RaiseStart;
+    private readonly InputAction m_Gameplay_SprintStart;
+    private readonly InputAction m_Gameplay_LowerFinish;
+    private readonly InputAction m_Gameplay_RaiseFinish;
+    private readonly InputAction m_Gameplay_SprintFinish;
+    private readonly InputAction m_Gameplay_Jump;
+    public struct GameplayActions
     {
         private @InputControls m_Wrapper;
-        public GroundMovementActions(@InputControls wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Move => m_Wrapper.m_GroundMovement_Move;
-        public InputAction @MouseX => m_Wrapper.m_GroundMovement_MouseX;
-        public InputAction @MouseY => m_Wrapper.m_GroundMovement_MouseY;
-        public InputAction @LowerStart => m_Wrapper.m_GroundMovement_LowerStart;
-        public InputAction @RaiseStart => m_Wrapper.m_GroundMovement_RaiseStart;
-        public InputAction @SprintStart => m_Wrapper.m_GroundMovement_SprintStart;
-        public InputAction @LowerFinish => m_Wrapper.m_GroundMovement_LowerFinish;
-        public InputAction @RaiseFinish => m_Wrapper.m_GroundMovement_RaiseFinish;
-        public InputAction @SprintFinish => m_Wrapper.m_GroundMovement_SprintFinish;
-        public InputAction @Jump => m_Wrapper.m_GroundMovement_Jump;
-        public InputActionMap Get() { return m_Wrapper.m_GroundMovement; }
+        public GameplayActions(@InputControls wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Move => m_Wrapper.m_Gameplay_Move;
+        public InputAction @MouseX => m_Wrapper.m_Gameplay_MouseX;
+        public InputAction @MouseY => m_Wrapper.m_Gameplay_MouseY;
+        public InputAction @LowerStart => m_Wrapper.m_Gameplay_LowerStart;
+        public InputAction @RaiseStart => m_Wrapper.m_Gameplay_RaiseStart;
+        public InputAction @SprintStart => m_Wrapper.m_Gameplay_SprintStart;
+        public InputAction @LowerFinish => m_Wrapper.m_Gameplay_LowerFinish;
+        public InputAction @RaiseFinish => m_Wrapper.m_Gameplay_RaiseFinish;
+        public InputAction @SprintFinish => m_Wrapper.m_Gameplay_SprintFinish;
+        public InputAction @Jump => m_Wrapper.m_Gameplay_Jump;
+        public InputActionMap Get() { return m_Wrapper.m_Gameplay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
         public bool enabled => Get().enabled;
-        public static implicit operator InputActionMap(GroundMovementActions set) { return set.Get(); }
-        public void SetCallbacks(IGroundMovementActions instance)
+        public static implicit operator InputActionMap(GameplayActions set) { return set.Get(); }
+        public void SetCallbacks(IGameplayActions instance)
         {
-            if (m_Wrapper.m_GroundMovementActionsCallbackInterface != null)
+            if (m_Wrapper.m_GameplayActionsCallbackInterface != null)
             {
-                @Move.started -= m_Wrapper.m_GroundMovementActionsCallbackInterface.OnMove;
-                @Move.performed -= m_Wrapper.m_GroundMovementActionsCallbackInterface.OnMove;
-                @Move.canceled -= m_Wrapper.m_GroundMovementActionsCallbackInterface.OnMove;
-                @MouseX.started -= m_Wrapper.m_GroundMovementActionsCallbackInterface.OnMouseX;
-                @MouseX.performed -= m_Wrapper.m_GroundMovementActionsCallbackInterface.OnMouseX;
-                @MouseX.canceled -= m_Wrapper.m_GroundMovementActionsCallbackInterface.OnMouseX;
-                @MouseY.started -= m_Wrapper.m_GroundMovementActionsCallbackInterface.OnMouseY;
-                @MouseY.performed -= m_Wrapper.m_GroundMovementActionsCallbackInterface.OnMouseY;
-                @MouseY.canceled -= m_Wrapper.m_GroundMovementActionsCallbackInterface.OnMouseY;
-                @LowerStart.started -= m_Wrapper.m_GroundMovementActionsCallbackInterface.OnLowerStart;
-                @LowerStart.performed -= m_Wrapper.m_GroundMovementActionsCallbackInterface.OnLowerStart;
-                @LowerStart.canceled -= m_Wrapper.m_GroundMovementActionsCallbackInterface.OnLowerStart;
-                @RaiseStart.started -= m_Wrapper.m_GroundMovementActionsCallbackInterface.OnRaiseStart;
-                @RaiseStart.performed -= m_Wrapper.m_GroundMovementActionsCallbackInterface.OnRaiseStart;
-                @RaiseStart.canceled -= m_Wrapper.m_GroundMovementActionsCallbackInterface.OnRaiseStart;
-                @SprintStart.started -= m_Wrapper.m_GroundMovementActionsCallbackInterface.OnSprintStart;
-                @SprintStart.performed -= m_Wrapper.m_GroundMovementActionsCallbackInterface.OnSprintStart;
-                @SprintStart.canceled -= m_Wrapper.m_GroundMovementActionsCallbackInterface.OnSprintStart;
-                @LowerFinish.started -= m_Wrapper.m_GroundMovementActionsCallbackInterface.OnLowerFinish;
-                @LowerFinish.performed -= m_Wrapper.m_GroundMovementActionsCallbackInterface.OnLowerFinish;
-                @LowerFinish.canceled -= m_Wrapper.m_GroundMovementActionsCallbackInterface.OnLowerFinish;
-                @RaiseFinish.started -= m_Wrapper.m_GroundMovementActionsCallbackInterface.OnRaiseFinish;
-                @RaiseFinish.performed -= m_Wrapper.m_GroundMovementActionsCallbackInterface.OnRaiseFinish;
-                @RaiseFinish.canceled -= m_Wrapper.m_GroundMovementActionsCallbackInterface.OnRaiseFinish;
-                @SprintFinish.started -= m_Wrapper.m_GroundMovementActionsCallbackInterface.OnSprintFinish;
-                @SprintFinish.performed -= m_Wrapper.m_GroundMovementActionsCallbackInterface.OnSprintFinish;
-                @SprintFinish.canceled -= m_Wrapper.m_GroundMovementActionsCallbackInterface.OnSprintFinish;
-                @Jump.started -= m_Wrapper.m_GroundMovementActionsCallbackInterface.OnJump;
-                @Jump.performed -= m_Wrapper.m_GroundMovementActionsCallbackInterface.OnJump;
-                @Jump.canceled -= m_Wrapper.m_GroundMovementActionsCallbackInterface.OnJump;
+                @Move.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnMove;
+                @Move.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnMove;
+                @Move.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnMove;
+                @MouseX.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnMouseX;
+                @MouseX.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnMouseX;
+                @MouseX.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnMouseX;
+                @MouseY.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnMouseY;
+                @MouseY.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnMouseY;
+                @MouseY.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnMouseY;
+                @LowerStart.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnLowerStart;
+                @LowerStart.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnLowerStart;
+                @LowerStart.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnLowerStart;
+                @RaiseStart.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnRaiseStart;
+                @RaiseStart.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnRaiseStart;
+                @RaiseStart.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnRaiseStart;
+                @SprintStart.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnSprintStart;
+                @SprintStart.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnSprintStart;
+                @SprintStart.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnSprintStart;
+                @LowerFinish.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnLowerFinish;
+                @LowerFinish.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnLowerFinish;
+                @LowerFinish.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnLowerFinish;
+                @RaiseFinish.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnRaiseFinish;
+                @RaiseFinish.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnRaiseFinish;
+                @RaiseFinish.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnRaiseFinish;
+                @SprintFinish.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnSprintFinish;
+                @SprintFinish.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnSprintFinish;
+                @SprintFinish.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnSprintFinish;
+                @Jump.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnJump;
+                @Jump.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnJump;
+                @Jump.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnJump;
             }
-            m_Wrapper.m_GroundMovementActionsCallbackInterface = instance;
+            m_Wrapper.m_GameplayActionsCallbackInterface = instance;
             if (instance != null)
             {
                 @Move.started += instance.OnMove;
@@ -1076,7 +1076,7 @@ public class @InputControls : IInputActionCollection, IDisposable
             }
         }
     }
-    public GroundMovementActions @GroundMovement => new GroundMovementActions(this);
+    public GameplayActions @Gameplay => new GameplayActions(this);
 
     // UI
     private readonly InputActionMap m_UI;
@@ -1200,7 +1200,7 @@ public class @InputControls : IInputActionCollection, IDisposable
             return asset.controlSchemes[m_GamePadSchemeIndex];
         }
     }
-    public interface IGroundMovementActions
+    public interface IGameplayActions
     {
         void OnMove(InputAction.CallbackContext context);
         void OnMouseX(InputAction.CallbackContext context);
