@@ -1,8 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Knotgames.Inputs;
-using Knotgames.Events;
 
 namespace Knotgames.UI.Pause {
     public class Pause : MonoBehaviour
