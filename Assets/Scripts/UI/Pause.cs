@@ -8,36 +8,29 @@ namespace Knotgames.UI.Pause {
     public class Pause : MonoBehaviour
     {
         [SerializeField] GameObject pausePanel;
-        [SerializeField] ScriptableInputManager inputs;
-        [SerializeField] ScriptableUIEvents uiEvents;
-        [SerializeField] ScriptableGameplayEvents gameplayEvents;
-        
-        private void Start() {
-            gameplayEvents.onEscape.AddListener(ShowPause);
+        bool showing;
+
+        private void Update() {
+            if(Input.GetKeyDown(KeyCode.Escape)) {
+                if(pausePanel.activeSelf == false)
+                    ShowPause();
+            }
+            if(showing) {
+                if(pausePanel.activeSelf == false)
+                    HidePause();
+            }
         }
 
         public void ShowPause() {
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
+            showing = true;
             pausePanel.SetActive(true);
-            ActivateUiInputs();
-        }
-
-        private void ActivateUiInputs() {
-            inputs.inputManager.SwapToUI();
-            uiEvents.onEscape.AddListener(HidePause);
         }
 
         public void HidePause() {
             Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Locked;
-            pausePanel.SetActive(false);
-            DeActivateUiInputs();
-        }
-
-        public void DeActivateUiInputs() {
-            inputs.inputManager.SwapToGameplay();
-            uiEvents.onEscape.RemoveListener(HidePause);
         }
     }
 }

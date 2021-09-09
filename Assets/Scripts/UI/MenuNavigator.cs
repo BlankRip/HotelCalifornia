@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using Knotgames.Events;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -8,45 +7,46 @@ namespace Knotgames.UI {
     public class MenuNavigator : MonoBehaviour, IMenuNavigator
     {
         [SerializeField] bool horizontalInputs;
+        [SerializeField] bool secondNavigator;
         [SerializeField] List<GameObject> buttonsGameObjects;
         [SerializeField] MenuNavigator connectedNavigator;
-        [SerializeField] ScriptableUIEvents uiEvents;
         private List<IMenuButton> buttons;
         private int currentIndex;
+
+        private KeyCode positiveCode;
+        private KeyCode negetiveCode;
 
         private void Start() {
             buttons = new List<IMenuButton>();
             for (int i = 0; i < buttonsGameObjects.Count; i++) {
                 buttons.Add(buttonsGameObjects[i].GetComponent<IMenuButton>());
-                buttons[i].SetIndex(i);
+                if(!secondNavigator)
+                    buttons[i].SetIndex(i);
             }
             currentIndex = 0;
             buttons[currentIndex].Selecte();
+
+            if(horizontalInputs) {
+                negetiveCode = KeyCode.LeftArrow;
+                positiveCode = KeyCode.RightArrow;
+            } else {
+                negetiveCode = KeyCode.UpArrow;
+                positiveCode = KeyCode.DownArrow;
+            }
         }
 
         private void OnEnable() {
             if(buttons != null)
                 buttons[currentIndex].Selecte();
-
-            if(horizontalInputs) {
-                uiEvents.onLeft.AddListener(CycleDown);
-                uiEvents.onRight.AddListener(CycleUp);
-            } else {
-                uiEvents.onUp.AddListener(CycleDown);
-                uiEvents.onDown.AddListener(CycleUp);
-            }
-            uiEvents.onEnter.AddListener(EnterPressed);
         }
 
-        private void OnDisable() {
-            if(horizontalInputs) {
-                uiEvents.onLeft.RemoveListener(CycleDown);
-                uiEvents.onRight.RemoveListener(CycleUp);
-            } else {
-                uiEvents.onUp.RemoveListener(CycleDown);
-                uiEvents.onDown.RemoveListener(CycleUp);
-            }
-            uiEvents.onEnter.RemoveListener(EnterPressed);
+        private void Update() {
+            if(Input.GetKeyDown(negetiveCode))
+                CycleDown();
+            else if(Input.GetKeyDown(positiveCode))
+                CycleUp();
+            else if(Input.GetKeyDown(KeyCode.Return))
+                buttons[currentIndex].Click();
         }
 
         private void CycleUp() {
@@ -57,10 +57,6 @@ namespace Knotgames.UI {
         private void CycleDown() {
             if(currentIndex != 0)
                 SelectButton(currentIndex - 1);
-        }
-
-        private void EnterPressed() {
-            buttons[currentIndex].Click();
         }
 
         public void SelectButton(int index) {
