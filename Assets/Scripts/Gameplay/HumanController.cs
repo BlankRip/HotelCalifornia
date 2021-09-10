@@ -3,9 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 namespace Knotgames.Gameplay {
-    public class HumanController : MonoBehaviour
+    public class HumanController : MonoBehaviour, IPlayerControler
     {
-        IPlayerMovement movement;
+        private IPlayerMovement movement;
+
+        private IAbility primary;
+        private IAbility secondary;
 
         private float horizontalInput;
         private float verticalInput;
@@ -23,10 +26,26 @@ namespace Knotgames.Gameplay {
                 jump = true;
             if(Input.GetKeyDown(KeyCode.LeftControl))
                 crouch = true;
-            if(Input.GetKeyUp(KeyCode.LeftControl))
+            else if(Input.GetKeyUp(KeyCode.LeftControl))
                 crouch = false;
-            
+
+            if(Input.GetKeyDown(KeyCode.E)) {
+                if(primary.CanUse())
+                    primary.UseAbility();
+            }
+            if(Input.GetKeyDown(KeyCode.Q)) {
+                if(secondary.CanUse())
+                    secondary.UseAbility();
+            }
+        }
+
+        private void FixedUpdate() {
             movement.Move(horizontalInput, verticalInput, ref jump, ref crouch);
+        }
+
+        public void SetAbilities(List<IAbility> abilities) {
+            primary = abilities[0];
+            secondary = abilities[1];
         }
     }
 }

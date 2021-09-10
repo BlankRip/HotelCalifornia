@@ -3,9 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 namespace Knotgames.Gameplay {
-    public class GhostController : MonoBehaviour
+    public class GhostController : MonoBehaviour, IPlayerControler
     {
         IPlayerMovement movement;
+
+        private IAbility primary;
+        private IAbility secondary;
+        private IAbility ultimate;
 
         private float horizontalInput;
         private float verticalInput;
@@ -28,8 +32,29 @@ namespace Knotgames.Gameplay {
                 levitateDown = true;
             else if(Input.GetKeyUp(KeyCode.LeftControl))
                 levitateDown = false;
-            
+
+            if(Input.GetKeyDown(KeyCode.E)) {
+                if(primary.CanUse())
+                    primary.UseAbility();
+            }
+            if(Input.GetKeyDown(KeyCode.Q)) {
+                if(secondary.CanUse())
+                    secondary.UseAbility();
+            }
+            if(Input.GetKeyDown(KeyCode.R)) {
+                if(ultimate.CanUse())
+                    ultimate.UseAbility();
+            }
+        }
+
+        private void FixedUpdate() {
             movement.Move(horizontalInput, verticalInput, ref levitateUp, ref levitateDown);
+        }
+
+        public void SetAbilities(List<IAbility> abilities) {
+            primary = abilities[0];
+            secondary = abilities[1];
+            ultimate = abilities[2];
         }
     }
 }
