@@ -7,16 +7,15 @@ namespace Knotgames.Gameplay {
     public class SpawnAbilities : MonoBehaviour
     {
         [SerializeField] ScriptableCharacterSelect characterData;
-        private IPlayerControler controler;
+        private IPlayerController controler;
         private List<IAbility> abilities;
 
         private void Awake() {
             abilities = new List<IAbility>();
             for (int i = 0; i < characterData.abilityTypes.Count; i++) {
-                if(characterData.abilityTypes[i] != AbilityType.Nada)
-                    abilities.Add(AttachAbility(characterData.abilityTypes[i]));
+                abilities.Add(AttachAbility(characterData.abilityTypes[i]));
             }
-            controler = GetComponent<IPlayerControler>();
+            controler = GetComponent<IPlayerController>();
             controler.SetAbilities(abilities);
             Destroy(this, 0.2f);
         }

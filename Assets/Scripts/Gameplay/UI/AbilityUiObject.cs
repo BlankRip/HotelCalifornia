@@ -7,12 +7,13 @@ using TMPro;
 namespace Knotgames.Gameplay.UI {
     public class AbilityUiObject : MonoBehaviour, IAbilityUi
     {
+        [SerializeField] GameObject content;
         [SerializeField] Image abilityImage;
         [SerializeField] GameObject disabledOverlay;
         [SerializeField] TextMeshProUGUI useleftText;
 
         public GameObject GetGameObject() {
-            return this.gameObject;
+            return content;
         }
 
         public void UpdateObjectData(int usesLeft, Sprite image) {
@@ -27,8 +28,8 @@ namespace Knotgames.Gameplay.UI {
             else
                 disabledOverlay.SetActive(false);
             
-            if(this.gameObject.activeSelf == false)
-                this.gameObject.SetActive(true);
+            if(content.activeSelf == false)
+                content.SetActive(true);
         }
     }
 }

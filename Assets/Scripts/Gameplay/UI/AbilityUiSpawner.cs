@@ -29,7 +29,7 @@ namespace Knotgames.Gameplay.UI {
         private void SpawnAbilityUI() {
             for (int i = 0; i < characterData.abilityTypes.Count; i++) {
                 if(characterData.abilityTypes[i] != AbilityType.Nada) {
-                    AbiliyUiData data = abilityUiCollection.GetAbilityData(characterData.abilityTypes[i]);
+                    AbilityUiData data = abilityUiCollection.GetAbilityData(characterData.abilityTypes[i]);
                     uiObjects[i].UpdateObjectData(data.baseUses, data.abilitySprite);
                 } else 
                     uiObjects[i].GetGameObject().SetActive(false);

@@ -7,5 +7,6 @@ namespace Knotgames.Gameplay {
     {
         bool CanUse();
         void UseAbility();
+        void Destroy();
     }
 }

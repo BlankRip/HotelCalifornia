@@ -9,6 +9,10 @@ namespace Knotgames.Gameplay {
             return false;
         }
 
+        public void Destroy() {
+            Destroy(this);
+        }
+
         public void UseAbility() {
             Debug.Log("Should never go here as this is dubmmy ability");
         }

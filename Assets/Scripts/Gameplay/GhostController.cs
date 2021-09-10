@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 namespace Knotgames.Gameplay {
-    public class GhostController : MonoBehaviour, IPlayerControler
+    public class GhostController : MonoBehaviour, IPlayerController
     {
-        IPlayerMovement movement;
+        [SerializeField] ScriptablePlayerController currentController;
+        private IPlayerMovement movement;
 
         private IAbility primary;
         private IAbility secondary;
@@ -18,6 +19,7 @@ namespace Knotgames.Gameplay {
 
         private void Start() {
             movement = GetComponent<IPlayerMovement>();
+            currentController.controller = this;
         }
 
         private void Update() {
@@ -55,6 +57,14 @@ namespace Knotgames.Gameplay {
             primary = abilities[0];
             secondary = abilities[1];
             ultimate = abilities[2];
+        }
+
+        public GameObject GetPlayerObject() {
+            return this.gameObject;
+        }
+
+        public void SwapSecondary(IAbility ability) {
+            throw new System.NotImplementedException();
         }
     }
 }

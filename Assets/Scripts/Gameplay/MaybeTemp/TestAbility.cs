@@ -27,5 +27,9 @@ namespace Knotgames.Gameplay {
             myUi.UpdateObjectData(usesLeft);
             Debug.Log("The test ability was used");
         }
+
+        public void Destroy() {
+            Destroy(this);
+        }
     }
 }

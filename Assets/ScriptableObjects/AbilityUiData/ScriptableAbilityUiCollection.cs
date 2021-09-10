@@ -6,8 +6,8 @@ namespace Knotgames.CharacterData {
     [CreateAssetMenu()]
     public class ScriptableAbilityUiCollection : ScriptableObject
     {
-        [SerializeField] List<AbiliyUiData> allData;
-        public AbiliyUiData GetAbilityData(AbilityType type) {
+        [SerializeField] List<AbilityUiData> allData;
+        public AbilityUiData GetAbilityData(AbilityType type) {
             for(int i = 0; i < allData.Count; i++) {
                 if(type == allData[i].type)
                     return allData[i];
@@ -17,7 +17,7 @@ namespace Knotgames.CharacterData {
     }
 
     [System.Serializable]
-    public class AbiliyUiData {
+    public class AbilityUiData {
         public AbilityType type;
         public Sprite abilitySprite;
         public int baseUses;
