@@ -3,16 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using Knotgames.CharacterData;
 
-namespace Knotgames.CharacterSelect {
+namespace Knotgames.Gameplay {
     public class SpawnCharacter : MonoBehaviour
     {
         [SerializeField] ScriptableCharacterSelect characterData;
-        [SerializeField] SpawnData human1Data;
+        [SerializeField] ScriptableSpawnDataCollection allSpawnData;
 
         private void Awake() {
             switch(characterData.modelType) {
                 case ModelType.Human1:
-                    Spawn(human1Data);
+                    Spawn(allSpawnData.human1Data);
+                    return;
+                case ModelType.Human2:
+                    Spawn(allSpawnData.human2Data);
                     return;
                 default:
                     return;
@@ -30,13 +33,5 @@ namespace Knotgames.CharacterSelect {
             animator.runtimeAnimatorController = data.animatorController;
             Destroy(this, 0.2f);
         }
-    }
-
-    [System.Serializable]
-    public class SpawnData {
-        public GameObject model;
-        public Vector3 localSpawnOffset;
-        public Avatar animationAvatar;
-        public RuntimeAnimatorController animatorController;
     }
 }
