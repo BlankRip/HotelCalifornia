@@ -1,10 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using Knotgames.UI;
 
-namespace Knotgames.UI.Pause {
+namespace Knotgames.Gameplay.UI {
     public class PausePanelButtons : MonoBehaviour
     {
         [Header("If you want to automate button Events")]

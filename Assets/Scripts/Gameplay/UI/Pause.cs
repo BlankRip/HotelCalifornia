@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Knotgames.UI.Pause {
+namespace Knotgames.Gameplay.UI {
     public class Pause : MonoBehaviour
     {
         [SerializeField] GameObject pausePanel;

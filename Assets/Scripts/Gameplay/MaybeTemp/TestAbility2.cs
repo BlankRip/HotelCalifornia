@@ -4,13 +4,13 @@ using Knotgames.Gameplay.UI;
 using UnityEngine;
 
 namespace Knotgames.Gameplay {
-    public class TestAbility : MonoBehaviour, IAbility
+    public class TestAbility2 : MonoBehaviour, IAbility
     {
-        private int usesLeft = 5;
+        private int usesLeft = 3;
         private IAbilityUi myUi;
 
         private void Start() {
-            myUi = GameObject.FindGameObjectWithTag("PrimaryUi").GetComponent<IAbilityUi>();
+            myUi = GameObject.FindGameObjectWithTag("SecondaryUi").GetComponent<IAbilityUi>();
         }
         
         public bool CanUse() {
