@@ -14,7 +14,6 @@ namespace Knotgames.Gameplay.UI {
 
         private void Start() {
             pause = FindObjectOfType<Pause>();
-
             resumeButton?.GetComponent<IMenuButton>().SetOnClick(() => Resume());
             backToMenuButton?.GetComponent<IMenuButton>().SetOnClick(() => BackToMainMenu());
         }

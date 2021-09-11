@@ -29,6 +29,7 @@ namespace Knotgames.Gameplay.UI {
         public void HidePause() {
             Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Locked;
+            pausePanel.SetActive(false);
         }
     }
 }
