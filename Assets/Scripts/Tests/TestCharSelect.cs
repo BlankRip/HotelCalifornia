@@ -16,6 +16,7 @@ public class TestCharSelect : MonoBehaviour
     private void RandomGroup()
     {
         int r = Random.Range(0, 2);
+        scriptableCharSelect.ResetAbilityTypes();
         switch (r)
         {
             case 0:

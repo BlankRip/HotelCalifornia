@@ -29,11 +29,6 @@ namespace Knotgames.CharacterSelect
             }
         }
 
-        private void OnDisable()
-        {
-            SwitchModel(defaultCharacter);
-        }
-
         public void Enable()
         {
             SwitchModel(defaultCharacter);

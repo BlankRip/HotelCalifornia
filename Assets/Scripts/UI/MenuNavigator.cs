@@ -18,9 +18,12 @@ namespace Knotgames.UI {
         private void Start() {
             buttons = new List<IMenuButton>();
             for (int i = 0; i < buttonsGameObjects.Count; i++) {
-                buttons.Add(buttonsGameObjects[i].GetComponent<IMenuButton>());
-                if(!secondNavigator)
-                    buttons[i].SetIndex(i);
+                if(buttonsGameObjects[i] != null) {
+                    buttons.Add(buttonsGameObjects[i].GetComponent<IMenuButton>());
+                    if(!secondNavigator)
+                        buttons[i].SetIndex(i);
+                } else 
+                    return;
             }
             currentIndex = 0;
             buttons[currentIndex].Selecte();
