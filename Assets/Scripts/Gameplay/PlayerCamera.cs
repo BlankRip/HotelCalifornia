@@ -3,15 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 
 namespace Knotgames.Gameplay {
-    public class PlayerCamera : MonoBehaviour
+    public class PlayerCamera : MonoBehaviour, IPlayerCamera
     {
-        [SerializeField] bool ghost;
+        [SerializeField] ScriptablePlayerCamera camInterface;
         [SerializeField] Camera cam;
-        [SerializeField] Transform cameraPosition;
-        [SerializeField] Transform player;
         [SerializeField] float sensitivity = 3;
         [SerializeField] float maxUpAngle = 80;
         [SerializeField] float maxDownAngle = -80;
+        
+        private bool ghost;
+        private Transform cameraPosition;
+        private Transform player;
 
         private float mouseX;
         private float mouseY;
@@ -21,7 +23,9 @@ namespace Knotgames.Gameplay {
         
         private void Awake()
         {
-            cam = this.GetComponent<Camera>();
+            if(cam == null)
+                cam = this.GetComponent<Camera>();
+            camInterface.cam = this;
 
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
@@ -43,6 +47,12 @@ namespace Knotgames.Gameplay {
                 player.rotation = transform.rotation;
             else
                 player.Rotate(Vector3.up * mouseX);
+        }
+
+        public void Initilize(Transform player, Transform camPos, bool ghost) {
+            this.player = player;
+            this.cameraPosition = camPos;
+            this.ghost = ghost;
         }
     }
 }

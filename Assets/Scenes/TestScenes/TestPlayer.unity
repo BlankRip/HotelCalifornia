@@ -672,10 +672,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3d1a5bee08f0ba47b6d0671a8f1946c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ghost: 0
+  camInterface: {fileID: 11400000, guid: 54e7e45732af84f4dacd23da24d92128, type: 2}
   cam: {fileID: 323873990}
-  cameraPosition: {fileID: 1962338277}
-  player: {fileID: 356710835}
   sensitivity: 3
   maxUpAngle: 80
   maxDownAngle: -80
@@ -694,13 +692,14 @@ GameObject:
   - component: {fileID: 356710831}
   - component: {fileID: 356710830}
   - component: {fileID: 356710836}
+  - component: {fileID: 356710837}
   m_Layer: 0
   m_Name: PlayerHuman
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &356710830
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -826,6 +825,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterData: {fileID: 11400000, guid: 59adc07099d260040bc56da7f8aa2578, type: 2}
+--- !u!114 &356710837
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 356710829}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78d8b7cae4549c341a84a8f6433fe6a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  camera: {fileID: 11400000, guid: 54e7e45732af84f4dacd23da24d92128, type: 2}
+  isGhost: 0
+  camPos: {fileID: 1962338277}
 --- !u!1 &387987693
 GameObject:
   m_ObjectHideFlags: 0
@@ -2769,13 +2783,14 @@ GameObject:
   - component: {fileID: 1857984388}
   - component: {fileID: 1857984387}
   - component: {fileID: 1857984393}
+  - component: {fileID: 1857984394}
   m_Layer: 0
   m_Name: PlayerGhost
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1857984387
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2899,6 +2914,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterData: {fileID: 11400000, guid: 59adc07099d260040bc56da7f8aa2578, type: 2}
+--- !u!114 &1857984394
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1857984386}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78d8b7cae4549c341a84a8f6433fe6a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  camera: {fileID: 11400000, guid: 54e7e45732af84f4dacd23da24d92128, type: 2}
+  isGhost: 1
+  camPos: {fileID: 153733334}
 --- !u!1 &1938488340
 GameObject:
   m_ObjectHideFlags: 0
