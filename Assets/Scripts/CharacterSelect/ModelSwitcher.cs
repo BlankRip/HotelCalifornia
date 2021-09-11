@@ -11,7 +11,7 @@ namespace Knotgames.CharacterSelect
         public Character currentCharacter;
         Character defaultCharacter;
 
-        private void Awake()
+        private void Start()
         {
             defaultCharacter = currentCharacter;
             SwitchModel(defaultCharacter);
