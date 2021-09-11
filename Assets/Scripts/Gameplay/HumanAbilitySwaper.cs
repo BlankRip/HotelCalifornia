@@ -31,12 +31,12 @@ namespace Knotgames.Gameplay {
 
         private IAbility AttachAbility(AbilityType type) {
             switch(type) {
-                case AbilityType.test1:
-                    return player.controller.GetPlayerObject().AddComponent<TestAbility>();
                 case AbilityType.test2:
                     return player.controller.GetPlayerObject().AddComponent<TestAbility2>();
+                case AbilityType.test3:
+                    return player.controller.GetPlayerObject().AddComponent<TestAbility2>();
                 case AbilityType.test4:
-                    return player.controller.GetPlayerObject().AddComponent<DummyAbility>();
+                    return player.controller.GetPlayerObject().AddComponent<TestAbility2>();
                 default:
                     return player.controller.GetPlayerObject().AddComponent<DummyAbility>();
             }

@@ -27,13 +27,13 @@ namespace Knotgames.Gameplay {
                 case AbilityType.test2:
                     return gameObject.AddComponent<TestAbility2>();
                 case AbilityType.test3:
-                    return gameObject.AddComponent<DummyAbility>();
+                    return gameObject.AddComponent<TestAbility2>();
                 case AbilityType.test4:
-                    return gameObject.AddComponent<DummyAbility>();
+                    return gameObject.AddComponent<TestAbility2>();
                 case AbilityType.test5:
-                    return gameObject.AddComponent<DummyAbility>();
+                    return gameObject.AddComponent<TestAbility3>();
                 case AbilityType.test6:
-                    return gameObject.AddComponent<DummyAbility>();
+                    return gameObject.AddComponent<TestAbility3>();
                 default:
                     return gameObject.AddComponent<DummyAbility>();
             }
