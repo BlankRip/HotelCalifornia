@@ -17,6 +17,18 @@ namespace Knotgames.Gameplay {
                 case ModelType.Human2:
                     Spawn(allSpawnData.human2Data);
                     return;
+                case ModelType.Human3:
+                    Spawn(allSpawnData.human3Data);
+                    return;
+                case ModelType.Human4:
+                    Spawn(allSpawnData.human4Data);
+                    return;
+                case ModelType.Ghost1:
+                    Spawn(allSpawnData.human1Data);
+                    return;
+                case ModelType.Ghost2:
+                    Spawn(allSpawnData.human2Data);
+                    return;
                 default:
                     return;
             }
@@ -28,9 +40,9 @@ namespace Knotgames.Gameplay {
             model.transform.localPosition = Vector3.zero;
             model.transform.localPosition += data.localSpawnOffset;
             model.transform.localRotation = Quaternion.identity;
-            Animator animator = GetComponent<Animator>();
-            animator.avatar = data.animationAvatar;
-            animator.runtimeAnimatorController = data.animatorController;
+            // Animator animator = GetComponent<Animator>();
+            // animator.avatar = data.animationAvatar;
+            // animator.runtimeAnimatorController = data.animatorController;
             Destroy(this, 0.2f);
         }
     }

@@ -7,6 +7,8 @@ namespace Knotgames.CharacterData {
     public class ScriptableSpawnDataCollection : ScriptableObject {
         public SpawnData human1Data;
         public SpawnData human2Data;
+        public SpawnData human3Data;
+        public SpawnData human4Data;
     }
 
     [System.Serializable]
