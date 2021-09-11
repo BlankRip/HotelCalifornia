@@ -773,8 +773,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c3f3eeb85a4eda4ba4d3624e8984d59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterType: 1
-  modelType: 1
+  characterType: 2
+  modelType: 5
 --- !u!65 &132437532
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1392,6 +1392,7 @@ GameObject:
   - component: {fileID: 167260089}
   - component: {fileID: 167260088}
   - component: {fileID: 167260090}
+  - component: {fileID: 167260091}
   m_Layer: 0
   m_Name: test
   m_TagString: Untagged
@@ -1442,6 +1443,18 @@ MonoBehaviour:
   humanGroup: {fileID: 1913677092}
   ghostGroup: {fileID: 399222125}
   scriptableCharSelect: {fileID: 11400000, guid: 59adc07099d260040bc56da7f8aa2578, type: 2}
+--- !u!114 &167260091
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 167260087}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 276cd1ff52e2a044bac7ca67b3e20a28, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &213897817 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7563715798473930534, guid: 291233c438f1f5d439e7dfe3616fb536, type: 3}
@@ -8495,6 +8508,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 167260091}
+        m_TargetAssemblyTypeName: NextScene, Assembly-CSharp
+        m_MethodName: NextScener
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   enterEvent:
     m_PersistentCalls:
       m_Calls:
@@ -10070,8 +10095,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c3f3eeb85a4eda4ba4d3624e8984d59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterType: 1
-  modelType: 4
+  characterType: 2
+  modelType: 5
 --- !u!65 &1158332113
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -12620,8 +12645,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c3f3eeb85a4eda4ba4d3624e8984d59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterType: 1
-  modelType: 3
+  characterType: 2
+  modelType: 5
 --- !u!65 &1381187852
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -14271,8 +14296,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c3f3eeb85a4eda4ba4d3624e8984d59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterType: 1
-  modelType: 2
+  characterType: 2
+  modelType: 5
 --- !u!65 &1597762142
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -15483,6 +15508,18 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: Knotgames.UI.PanelSwither, Assembly-CSharp
         m_MethodName: SwitchActiveState
         m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 167260091}
+        m_TargetAssemblyTypeName: NextScene, Assembly-CSharp
+        m_MethodName: NextScener
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
