@@ -1,36 +1,33 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 namespace Knotgames.UI {
     public class MenuNavigator : MonoBehaviour, IMenuNavigator
     {
         [SerializeField] bool horizontalInputs;
+        [SerializeField] bool secondNavigator;
         [SerializeField] List<GameObject> buttonsGameObjects;
         [SerializeField] MenuNavigator connectedNavigator;
         private List<IMenuButton> buttons;
         private int currentIndex;
 
-        //TODO Testing with old system
         private KeyCode positiveCode;
         private KeyCode negetiveCode;
 
         private void Start() {
             buttons = new List<IMenuButton>();
             for (int i = 0; i < buttonsGameObjects.Count; i++) {
-                buttons.Add(buttonsGameObjects[i].GetComponent<IMenuButton>());
-                buttons[i].SetIndex(i);
+                if(buttonsGameObjects[i] != null) {
+                    buttons.Add(buttonsGameObjects[i].GetComponent<IMenuButton>());
+                    if(!secondNavigator)
+                        buttons[i].SetIndex(i);
+                } else 
+                    return;
             }
             currentIndex = 0;
             buttons[currentIndex].Selecte();
-        }
 
-        private void OnEnable() {
-            if(buttons != null)
-                buttons[currentIndex].Selecte();
-
-            // //TODO Change to new input system
             if(horizontalInputs) {
                 negetiveCode = KeyCode.LeftArrow;
                 positiveCode = KeyCode.RightArrow;
@@ -40,17 +37,12 @@ namespace Knotgames.UI {
             }
         }
 
-        private void OnDisable() {
-            //TODO reset the events to null
-            if(horizontalInputs) {
-
-            } else {
-
-            }
+        private void OnEnable() {
+            if(buttons != null)
+                buttons[currentIndex].Selecte();
         }
 
         private void Update() {
-            //TODO: CHANGE TO NEW INPUT SYSTEM
             if(Input.GetKeyDown(negetiveCode))
                 CycleDown();
             else if(Input.GetKeyDown(positiveCode))

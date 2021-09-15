@@ -11,7 +11,7 @@ namespace Knotgames.CharacterSelect
         public Character currentCharacter;
         Character defaultCharacter;
 
-        private void Awake()
+        private void Start()
         {
             defaultCharacter = currentCharacter;
             SwitchModel(defaultCharacter);
@@ -27,11 +27,6 @@ namespace Knotgames.CharacterSelect
                 scriptableCharacterSelect.characterType = character.characterType;
                 scriptableCharacterSelect.modelType = character.modelType;
             }
-        }
-
-        private void OnDisable()
-        {
-            SwitchModel(defaultCharacter);
         }
 
         public void Enable()
