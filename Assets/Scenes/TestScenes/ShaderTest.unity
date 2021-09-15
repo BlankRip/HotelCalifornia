@@ -14,20 +14,20 @@ OcclusionCullingSettings:
 RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 9
-  m_Fog: 0
-  m_FogColor: {r: 0.31639373, g: 0.6275385, b: 0.7075472, a: 1}
+  m_Fog: 1
+  m_FogColor: {r: 0.49198952, g: 0.4, b: 0.50980395, a: 1}
   m_FogMode: 3
   m_FogDensity: 0.03
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
-  m_AmbientSkyColor: {r: 0.10377362, g: 0, b: 0.1792453, a: 1}
+  m_AmbientSkyColor: {r: 0.010291449, g: 0, b: 0.047169805, a: 1}
   m_AmbientEquatorColor: {r: 0.011854745, g: 0.035375953, b: 0.16981131, a: 1}
   m_AmbientGroundColor: {r: 0.103773594, g: 0.013118546, b: 0.015239903, a: 1}
   m_AmbientIntensity: 0.25
   m_AmbientMode: 3
   m_SubtractiveShadowColor: {r: 1, g: 1, b: 1, a: 1}
   m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
-  m_HaloStrength: 0.5
+  m_HaloStrength: 0.274
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
   m_HaloTexture: {fileID: 0}
@@ -702,7 +702,7 @@ Light:
     m_UseCullingMatrixOverride: 0
   m_Cookie: {fileID: 0}
   m_DrawHalo: 0
-  m_Flare: {fileID: 0}
+  m_Flare: {fileID: 12100000, guid: 3c9946f68a621864590946b05bfb86ae, type: 2}
   m_RenderMode: 0
   m_CullingMask:
     serializedVersion: 2
@@ -1015,6 +1015,7 @@ GameObject:
   - component: {fileID: 599868237}
   - component: {fileID: 599868236}
   - component: {fileID: 599868235}
+  - component: {fileID: 599868238}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1087,6 +1088,14 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!124 &599868238
+Behaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 599868234}
+  m_Enabled: 1
 --- !u!1 &645390699
 GameObject:
   m_ObjectHideFlags: 0
@@ -2132,7 +2141,7 @@ Light:
   m_Shape: 0
   m_Color: {r: 0.97257864, g: 0.5886792, b: 1, a: 1}
   m_Intensity: 1
-  m_Range: 20.86
+  m_Range: 22.2
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
@@ -2164,7 +2173,7 @@ Light:
     m_UseCullingMatrixOverride: 0
   m_Cookie: {fileID: 0}
   m_DrawHalo: 0
-  m_Flare: {fileID: 0}
+  m_Flare: {fileID: 12100000, guid: 3c9946f68a621864590946b05bfb86ae, type: 2}
   m_RenderMode: 0
   m_CullingMask:
     serializedVersion: 2
@@ -2257,7 +2266,7 @@ Light:
     m_UseCullingMatrixOverride: 0
   m_Cookie: {fileID: 0}
   m_DrawHalo: 0
-  m_Flare: {fileID: 0}
+  m_Flare: {fileID: 12100000, guid: 3c9946f68a621864590946b05bfb86ae, type: 2}
   m_RenderMode: 0
   m_CullingMask:
     serializedVersion: 2
