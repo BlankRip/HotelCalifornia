@@ -30,7 +30,7 @@ namespace Knotgames.LevelGen {
             yield return longInterval;
             pairPlacer = new PairPuzzlePlacer(ref builderData);
             for (int i = 0; i < builderData.puzzlePairs; i++) {
-                Debug.Log("<color=cyan>Placing Pairs</color>");
+                //?Debug.Log("<color=cyan>Placing Pairs</color>");
                 bool paced = pairPlacer.Place();
                 if(paced)
                     yield return interval;
@@ -41,7 +41,7 @@ namespace Knotgames.LevelGen {
             yield return longInterval;
             singlePlacer = new SinglePuzzlePlacer(ref builderData);
             for (int i = 0; i < builderData.singelPuzzles; i++) {
-                Debug.Log("<color=cyan>Placing Singles</color>");
+                //?Debug.Log("<color=cyan>Placing Singles</color>");
                 singlePlacer.Place();
                 yield return interval;
             }

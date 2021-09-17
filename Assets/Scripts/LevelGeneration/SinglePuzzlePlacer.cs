@@ -20,8 +20,6 @@ namespace Knotgames.LevelGen {
             while(!puzzlePlaced) {
                 List<IRoom> currentSet = GetRandomSet();
                 int rand = Random.Range(0, currentSet.Count);
-                Debug.Log(rand);
-                Debug.Log(currentSet.Count);
                 ISingelPuzzleRoom spawned = GameObject.Instantiate(currentSet[rand].GetSingleVarient(), 
                     currentSet[rand].GetTransform().position, currentSet[rand].GetTransform().rotation,
                     currentSet[rand].GetTransform().parent).GetComponent<ISingelPuzzleRoom>();

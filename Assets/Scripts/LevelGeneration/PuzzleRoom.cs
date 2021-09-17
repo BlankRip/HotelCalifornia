@@ -9,9 +9,9 @@ namespace Knotgames.LevelGen {
         [SerializeField] List<Puzzle> roomPuzzles;
         [SerializeField] Renderer renderer;
         private List<PuzzleType> puzzleTypes;
-        private List<IPuzzle> myPuzzles;
+        private List<IPuzzleActivator> myPuzzles;
 
-        public PuzzleType GetAndActivePuzzle(List<PuzzleType> myType) {
+        public IPuzzleActivator GetAndActivePuzzle(List<PuzzleType> myType) {
             List<PuzzleType> common = new List<PuzzleType>();
             for (int i = 0; i < myType.Count; i++) {
                 if(GetPuzzleTypes().Contains(myType[i]))
@@ -20,21 +20,20 @@ namespace Knotgames.LevelGen {
 
             if(common.Count > 1) {
                 int rand = Random.Range(0, common.Count);
-                ActivatePuzzleOfType(common[rand]);
-                return common[rand];
+                return ActivatePuzzleOfType(common[rand]);
             } else {
-                ActivatePuzzleOfType(common[0]);
-                return common[0];
+                return ActivatePuzzleOfType(common[0]);
             }
         }
 
-        public void ActivatePuzzleOfType(PuzzleType puzzleType) {
+        public IPuzzleActivator ActivatePuzzleOfType(PuzzleType puzzleType) {
             for (int i = 0; i < myPuzzles.Count; i++) {
                 if(myPuzzles[i].GetPuzzleType() == puzzleType) {
                     myPuzzles[i].ActivatePuzzle(renderer);
-                    break;
+                    return myPuzzles[i];
                 }
             }
+            return null;
         }
 
         public List<PuzzleType> GetPuzzleTypes() {
@@ -46,7 +45,7 @@ namespace Knotgames.LevelGen {
 
         private void FillPuzzleInterface() {
             if(myPuzzles == null) {
-                myPuzzles = new List<IPuzzle>();
+                myPuzzles = new List<IPuzzleActivator>();
                 for (int i = 0; i < roomPuzzles.Count; i++)
                     myPuzzles.Add(roomPuzzles[i]);
             }
