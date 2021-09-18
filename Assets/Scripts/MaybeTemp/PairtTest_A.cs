@@ -9,16 +9,17 @@ namespace Knotgames.Gameplay {
         [SerializeField] GameObject linkedObj;
         public void Link(GameObject obj, bool initiator) {
             PairtTest_A theOther = obj.GetComponent<PairtTest_A>();
-            theOther.LinkingNow();
+            LinkingNow(obj);
 
             if(initiator) {
-                Debug.Log("Initiated So linking another");
+                Debug.Log("Initiated So linking another on");
                 theOther.Link(this.gameObject, false);
             }
         }
 
-        public void LinkingNow() {
-            Debug.Log("Linking Now");
+        public void LinkingNow(GameObject obj) {
+            linkedObj = obj;
+            Debug.Log("Linking To");
         }
     }
 }
