@@ -1,5 +1,114 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1444901940004906496
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8121483560419331756}
+  - component: {fileID: 3863698607299825212}
+  - component: {fileID: 4997505740858744727}
+  - component: {fileID: 1110408819486834639}
+  - component: {fileID: 4077028054304051976}
+  m_Layer: 0
+  m_Name: ThePuzzle
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &8121483560419331756
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1444901940004906496}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -5.05, y: 19.28, z: 0}
+  m_LocalScale: {x: 6.7313, y: 6.7313, z: 6.7313}
+  m_Children: []
+  m_Father: {fileID: 1771974922736875324}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!33 &3863698607299825212
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1444901940004906496}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &4997505740858744727
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1444901940004906496}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 78b6a1e40d426df44b8a6f0e77ae10d2, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &1110408819486834639
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1444901940004906496}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &4077028054304051976
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1444901940004906496}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aedcedd15e5edb340a9b5c9c11a7dd6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  linkedObj: {fileID: 0}
 --- !u!1 &1771974922736875325
 GameObject:
   m_ObjectHideFlags: 0
@@ -30,6 +139,7 @@ Transform:
   m_Children:
   - {fileID: 1771974922960068321}
   - {fileID: 2015687699358887706}
+  - {fileID: 8121483560419331756}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -45,13 +155,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 925619b30e43b064497f85ecdf8feaf4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  seeder: {fileID: 11400000, guid: d1861e6a6ee7f0b4186bc669d976f901, type: 2}
   roomPuzzles:
   - puzzleType: 1
+    activationObject: {fileID: 1444901940004906496}
     mat: {fileID: 2100000, guid: 8cd229eb12d815b4fac0294de5cf31a3, type: 2}
   - puzzleType: 2
+    activationObject: {fileID: 1444901940004906496}
     mat: {fileID: 2100000, guid: 8cd229eb12d815b4fac0294de5cf31a3, type: 2}
   - puzzleType: 0
+    activationObject: {fileID: 1444901940004906496}
     mat: {fileID: 2100000, guid: 749ef7c8773eb7c4eaf89bd885e9cafc, type: 2}
   renderer: {fileID: 1771974922960068323}
 --- !u!1 &1771974922960068254

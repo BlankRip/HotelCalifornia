@@ -15,6 +15,11 @@ namespace Knotgames.LevelGen {
 
         private void Start() {
             builderData.onFail += RestartLevelGen;
+            if(currentStatus.allRoomTypes.Count != currentStatus.eachTypeSpawned.Count) {
+                currentStatus.eachTypeSpawned = new List<int>();
+                for (int i = 0; i < currentStatus.allRoomTypes.Count; i++)
+                    currentStatus.eachTypeSpawned.Add(0);
+            }
             backup = new BuildingStatus(currentStatus);
             if(generateSeed)
                 seeder.levelSeed.GenerateSeed();
@@ -47,7 +52,7 @@ namespace Knotgames.LevelGen {
             puzzleBuild.StartBuilder();
             yield return interval;
             while(puzzleBuild.GetBuilderStatus()) {
-                Debug.Log("<color=cyan>Puzzle Building</color>");
+                //?Debug.Log("<color=cyan>Puzzle Building</color>");
                 yield return interval;
             }
             Debug.Log("<color=yellow>Puzzles Built</color>");

@@ -157,6 +157,7 @@ Transform:
   m_Children:
   - {fileID: 3005531331890808589}
   - {fileID: 3088258056982558454}
+  - {fileID: 2385400254690612333}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -172,15 +173,126 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 925619b30e43b064497f85ecdf8feaf4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  seeder: {fileID: 11400000, guid: d1861e6a6ee7f0b4186bc669d976f901, type: 2}
   roomPuzzles:
   - puzzleType: 1
+    activationObject: {fileID: 5308851256430172351}
     mat: {fileID: 2100000, guid: 8cd229eb12d815b4fac0294de5cf31a3, type: 2}
   - puzzleType: 3
+    activationObject: {fileID: 5308851256430172351}
     mat: {fileID: 2100000, guid: 41925724ee467eb4dab376be7d7bd4ae, type: 2}
   - puzzleType: 0
+    activationObject: {fileID: 5308851256430172351}
     mat: {fileID: 2100000, guid: 749ef7c8773eb7c4eaf89bd885e9cafc, type: 2}
   renderer: {fileID: 3005531331890808591}
+--- !u!1 &5308851256430172351
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2385400254690612333}
+  - component: {fileID: 312614693743324349}
+  - component: {fileID: 2948413382815457685}
+  - component: {fileID: 2041688275635423512}
+  - component: {fileID: 2716317353379062935}
+  m_Layer: 0
+  m_Name: ThePuzzle
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &2385400254690612333
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5308851256430172351}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 24.86, z: 0}
+  m_LocalScale: {x: 6.7313, y: 6.7313, z: 6.7313}
+  m_Children: []
+  m_Father: {fileID: 3005531332112969424}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!33 &312614693743324349
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5308851256430172351}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &2948413382815457685
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5308851256430172351}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 78b6a1e40d426df44b8a6f0e77ae10d2, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &2041688275635423512
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5308851256430172351}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &2716317353379062935
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5308851256430172351}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aedcedd15e5edb340a9b5c9c11a7dd6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  linkedObj: {fileID: 0}
 --- !u!1001 &3518094961606283041
 PrefabInstance:
   m_ObjectHideFlags: 0
