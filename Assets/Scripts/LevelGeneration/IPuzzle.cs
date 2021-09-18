@@ -11,7 +11,7 @@ namespace Knotgames.LevelGen {
         GameObject GetActivatedObject();
     }
 
-    public interface IPairPuzzle 
+    public interface IPairPuzzleSetup 
     {
         void Link(GameObject obj, bool initiator);
     }

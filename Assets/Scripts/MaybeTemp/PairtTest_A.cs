@@ -1,10 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Knotgames.LevelGen;
 
-namespace Knotgames.Gameplay {
-    public class PairtTest_A : MonoBehaviour, IPairPuzzle
+namespace Knotgames.LevelGen {
+    public class PairtTest_A : MonoBehaviour, IPairPuzzleSetup
     {
         [SerializeField] GameObject linkedObj;
         public void Link(GameObject obj, bool initiator) {

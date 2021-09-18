@@ -14,7 +14,7 @@ namespace Knotgames.LevelGen {
         }
 
         public void Link(GameObject obj, bool intiator) {
-            activationObject.GetComponent<IPairPuzzle>().Link(obj, intiator);
+            activationObject.GetComponent<IPairPuzzleSetup>().Link(obj, intiator);
         }
 
         public PuzzleType GetPuzzleType() {
