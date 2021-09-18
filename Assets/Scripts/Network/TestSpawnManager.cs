@@ -18,10 +18,10 @@ namespace Knotgames.Network
                             eventName = "spawnObject",
                             distributionOption = "serveAll",
                             ownerID = NetConnector.instance.playerID.value,
-                            objectName = "testCube",
+                            objectName = "Player",
                             transformWS = new TransformWS()
                             {
-                                position = new PositionWS(Vector3.one),
+                                position = new PositionWS(new Vector3(Random.Range(-8.75f, 8.75f), 1, 1)),
                                 rotation = new RotationWS(Quaternion.identity)
                             }
                         }

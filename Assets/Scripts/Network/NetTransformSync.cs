@@ -1,30 +1,28 @@
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 using Knotgames.Network;
+using UnityEngine;
 
-
-public class CubePositionData : MonoBehaviour
+public class NetTransformSync : MonoBehaviour
 {
-
     NetObject netObject;
-    string dataRecieved;
-
     System.Action RunOnUpdate;
+    Queue<Action> actionList = new Queue<Action>();
 
     void Start()
     {
         netObject = GetComponent<NetObject>();
-        netObject.OnMessageRecieve += GetCubeData;
+        netObject.OnMessageRecieve += SyncTrans;
     }
 
-    void GetCubeData(string dataString)
+    void SyncTrans(string dataString)
     {
         RunOnUpdate = () =>
         {
-            dataRecieved = dataString;
-            CubeData cubeData = JsonUtility.FromJson<CubeData>(dataString);
-            transform.position = cubeData.transform.position.ToVector();
+            TransformData transformData = JsonUtility.FromJson<TransformData>(dataString);
+            transform.position = transformData.transform.position.ToVector();
+            transform.rotation = transformData.transform.rotation.ToQuaternion();
         };
     }
 
@@ -34,7 +32,7 @@ public class CubePositionData : MonoBehaviour
         {
             NetConnector.instance.SendDataToServer(
                 JsonUtility.ToJson(
-                    new CubeData()
+                    new TransformData()
                     {
                         eventName = "syncObjectData",
                         distributionOption = "serveOthers",
@@ -54,15 +52,13 @@ public class CubePositionData : MonoBehaviour
             if (RunOnUpdate != null) RunOnUpdate.Invoke();
         }
     }
+}
 
-
-    public class CubeData
-    {
-        public string eventName;
-        public string distributionOption;
-        public string ownerID;
-        public string objectID;
-        public TransformWS transform;
-    }
-
+[System.Serializable]
+public class TransformData
+{
+    public string distributionOption = "serveOthers";
+    public string eventName = "syncObjectData";
+    public string ownerID, objectID;
+    public TransformWS transform;
 }
