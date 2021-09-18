@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 2800596417880024732}
   - component: {fileID: 2800596417880024735}
   - component: {fileID: 1947102890752521254}
+  - component: {fileID: 6420565335410822744}
   m_Layer: 0
   m_Name: PlayerGhost
   m_TagString: Player
@@ -125,6 +126,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterData: {fileID: 11400000, guid: 59adc07099d260040bc56da7f8aa2578, type: 2}
   allSpawnData: {fileID: 11400000, guid: f121eac6fb2b0af43b7ca0f25a814f73, type: 2}
+--- !u!114 &6420565335410822744
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2800596417880024727}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7fbac584c4748e4fbef177cb1d3a716, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rayCaster: {fileID: 11400000, guid: 5527c40895c01f0439430a9eb2301de2, type: 2}
+  interactLayers:
+    serializedVersion: 2
+    m_Bits: 768
+  rayLength: 5
 --- !u!1 &2800596419397761472
 GameObject:
   m_ObjectHideFlags: 0

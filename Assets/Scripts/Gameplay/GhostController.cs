@@ -12,14 +12,20 @@ namespace Knotgames.Gameplay {
         private IAbility secondary;
         private IAbility ultimate;
 
+        private IInteractRay interactRay;
+
         private float horizontalInput;
         private float verticalInput;
         private bool levitateUp;
         private bool levitateDown;
 
+        private void Awake() {
+            currentController.controller = this;
+        }
+
         private void Start() {
             movement = GetComponent<IPlayerMovement>();
-            currentController.controller = this;
+            interactRay = GetComponent<IInteractRay>();
         }
 
         private void Update() {
@@ -46,6 +52,11 @@ namespace Knotgames.Gameplay {
             if(Input.GetKeyDown(KeyCode.R)) {
                 if(ultimate.CanUse())
                     ultimate.UseAbility();
+            }
+
+            if(Input.GetKeyDown(KeyCode.F)) {
+                if(interactRay.CanInteract())
+                    interactRay.Interact();
             }
         }
 

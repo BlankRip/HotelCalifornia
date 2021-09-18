@@ -11,6 +11,8 @@ namespace Knotgames.Gameplay {
         private IAbility primary;
         private IAbility secondary;
 
+        private IInteractRay interactRay;
+
         private float horizontalInput;
         private float verticalInput;
         private bool jump;
@@ -22,6 +24,7 @@ namespace Knotgames.Gameplay {
 
         private void Start() {
             movement = GetComponent<IPlayerMovement>();
+            interactRay = GetComponent<IInteractRay>();
         }
 
         private void Update() {
@@ -41,6 +44,11 @@ namespace Knotgames.Gameplay {
             if(Input.GetKeyDown(KeyCode.Q)) {
                 if(secondary.CanUse())
                     secondary.UseAbility();
+            }
+
+            if(Input.GetKeyDown(KeyCode.F)) {
+                if(interactRay.CanInteract())
+                    interactRay.Interact();
             }
         }
 
