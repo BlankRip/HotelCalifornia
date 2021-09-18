@@ -1,0 +1,85 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+namespace Knotgames.Network
+{
+    public class NetEventHub : INetEventHub
+    {
+
+        SOBool isConnected;
+        SOString playerID;
+
+
+        public NetEventHub(SOBool isConnected, SOString playerID)
+        {
+            this.isConnected = isConnected;
+            this.playerID = playerID;
+        }
+
+        public void Listen(string dataString)
+        {
+            string eventName = JsonUtility.FromJson<BaseDataExtractor>(dataString).eventName;
+
+            NetDebug.DebugActions.Enqueue(
+                () =>
+                {
+                    Debug.Log(dataString);
+                }
+            );
+
+            switch (eventName)
+            {
+                case "connected":
+                    isConnected.value = true;
+                    playerID.value = JsonUtility.FromJson<PlayerJoin>(dataString).playerID;
+                    break;
+
+                case "registered":
+
+                    break;
+
+                case "joinedRandomRoom":
+
+                    break;
+
+                case "exitRoom":
+
+                    break;
+
+                case "syncObjectData":
+                    string objectID = JsonUtility.FromJson<ObjectID>(dataString).objectID;
+                    NetObjManager.instance.PassDataToObject(objectID, dataString);
+                    break;
+
+                case "spawnObject":
+                    NetObjManager.instance.AddSpawnObject(dataString);
+                    break;
+
+                case "destroyObject":
+                    NetObjManager.instance.AddDespawnObject(
+                        JsonUtility.FromJson<NetDataBase>(eventName)
+                    );
+                    break;
+
+            }
+
+        }
+    }
+
+    public class BaseDataExtractor
+    {
+        public string eventName;
+    }
+
+    public class PlayerJoin
+    {
+        public string playerID;
+    }
+
+    public class ObjectID
+    {
+        public string objectID;
+    }
+}
+
