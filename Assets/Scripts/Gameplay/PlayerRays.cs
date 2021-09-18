@@ -6,10 +6,16 @@ namespace Knotgames.Gameplay {
     public class PlayerRays : MonoBehaviour, IInteractRay
     {
         [SerializeField] ScriptableRayCaster rayCaster;
+
         [SerializeField] LayerMask interactLayers;
-        [SerializeField] float rayLength = 5;
+        [SerializeField] float interactRayLength = 5;
         private bool canInteract;
         private IInteractable interactInView;
+
+        [SerializeField] LayerMask playerLayers;
+        [SerializeField] float playerSightLenght = 10;
+        private bool playerInSite;
+        GameObject playerObj;
 
         private Camera camera;
         private void Start() {
@@ -17,11 +23,12 @@ namespace Knotgames.Gameplay {
         }
 
         private void Update() {
+            PlayerLineOfSiteRay();
             InteractionRay();
         }
 
         private void InteractionRay() {
-            RaycastHit hitInfo = rayCaster.caster.CastRay(interactLayers, rayLength);
+            RaycastHit hitInfo = rayCaster.caster.CastRay(interactLayers, interactRayLength);
             Color debugColor = Color.red;
             if(hitInfo.collider != null) {
                 debugColor = Color.green;
@@ -37,7 +44,25 @@ namespace Knotgames.Gameplay {
                     canInteract = false;
                 }
             }
-            Debug.DrawRay(camera.transform.position, camera.transform.forward * rayLength, debugColor);
+            Debug.DrawRay(camera.transform.position, camera.transform.forward * interactRayLength, debugColor);
+        }
+
+        private void PlayerLineOfSiteRay() {
+            RaycastHit hitInfo = rayCaster.caster.CastRay(playerLayers, playerSightLenght);
+            Color debugColor = Color.blue;
+            if(hitInfo.collider != null) {
+                debugColor = Color.green;
+                if(playerObj == null) {
+                    playerObj = hitInfo.collider.gameObject;
+                    playerInSite = true;
+                }
+            } else {
+                if(playerObj != null) {
+                    playerObj = null;
+                    playerInSite = false;
+                }
+            }
+            Debug.DrawRay(camera.transform.position, camera.transform.forward * playerSightLenght, debugColor);
         }
 
         public bool CanInteract() {
