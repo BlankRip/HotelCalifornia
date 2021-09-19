@@ -17,6 +17,7 @@ namespace Knotgames.Network
                         {
                             eventName = "spawnObject",
                             distributionOption = "serveAll",
+                            roomID = NetRoomJoin.instance.roomID.value,
                             ownerID = NetConnector.instance.playerID.value,
                             objectName = "Player",
                             transformWS = new TransformWS()
@@ -38,6 +39,7 @@ namespace Knotgames.Network
         {
             public string eventName;
             public string distributionOption;
+            public string roomID;
             public string ownerID;
             public string objectName;
             public TransformWS transformWS;

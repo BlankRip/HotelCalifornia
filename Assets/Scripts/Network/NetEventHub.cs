@@ -40,7 +40,7 @@ namespace Knotgames.Network
                     break;
 
                 case "joinedRandomRoom":
-
+                    NetRoomJoin.instance.roomID.value = JsonUtility.FromJson<RoomID>(dataString).roomID;
                     break;
 
                 case "exitRoom":
@@ -80,6 +80,11 @@ namespace Knotgames.Network
     public class ObjectID
     {
         public string objectID;
+    }
+
+    public class RoomID
+    {
+        public string roomID;
     }
 }
 

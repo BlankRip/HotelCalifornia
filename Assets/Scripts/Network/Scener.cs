@@ -5,8 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class Scener : MonoBehaviour
 {
+    public string loadScene;
+
     public void PlayGame()
     {
-        SceneManager.LoadScene("transsyncscene", LoadSceneMode.Single);
+        SceneManager.LoadScene(loadScene, LoadSceneMode.Single);
     }
 }
