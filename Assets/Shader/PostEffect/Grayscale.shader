@@ -1,0 +1,36 @@
+Shader "PEFX/Grayscale"
+{
+    HLSLINCLUDE
+
+    #include "Packages/com.unity.postprocessing/PostProcessing/Shaders/StdLib.hlsl"
+
+    TEXTURE2D_SAMPLER2D(_MainTex, sampler_MainTex);
+    float _Blend;
+
+    float4 Frag(VaryingsDefault i) : SV_Target
+    {
+        // test gray scale
+        float4 color = SAMPLE_TEXTURE2D(_MainTex, sampler_MainTex, i.texcoord);
+        float2 uvCent = i.texcoord.xy * 2 - 1;
+        float2 blurVector = -uvCent;
+        float luminance = dot(color.rgb, float3(0.2126729, 0.7151522, 0.0721750));
+        return lerp(color, luminance.xxxx, _Blend);
+    }
+
+    ENDHLSL
+
+    SubShader
+    {
+        Cull Off ZWrite Off ZTest Always
+
+        Pass
+        {
+            HLSLPROGRAM
+
+            #pragma vertex VertDefault
+            #pragma fragment Frag
+
+            ENDHLSL
+        }
+    }
+}
