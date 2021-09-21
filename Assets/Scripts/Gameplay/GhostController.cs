@@ -7,6 +7,7 @@ namespace Knotgames.Gameplay {
     {
         [SerializeField] ScriptablePlayerController currentController;
         private IPlayerMovement movement;
+        private IPlayerAnimator animator;
 
         private IAbility primary;
         private IAbility secondary;
@@ -25,6 +26,7 @@ namespace Knotgames.Gameplay {
 
         private void Start() {
             movement = GetComponent<IPlayerMovement>();
+            animator = GetComponent<IPlayerAnimator>();
             interactRay = GetComponent<IInteractRay>();
         }
 
@@ -58,6 +60,8 @@ namespace Knotgames.Gameplay {
                 if(interactRay.CanInteract())
                     interactRay.Interact();
             }
+
+            animator.Animate(horizontalInput, verticalInput, levitateUp, levitateDown);
         }
 
         private void FixedUpdate() {
