@@ -57,7 +57,6 @@ namespace Knotgames.Gameplay {
                         Debug.LogError($"Hor: {data.horizontalInput} \n Vert: {data.verticalInput} \n Jum: {data.moveYPositive}");
                         break;
                 }
-                Invoke("RecieveNetData", 0.25f);
             }
         }
 
