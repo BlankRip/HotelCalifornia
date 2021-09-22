@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Knotgames.Network
 {
@@ -11,11 +12,12 @@ namespace Knotgames.Network
             string eventName = JsonUtility.FromJson<ReadyData>(dataString).eventName;
             switch (eventName)
             {
-                case "readyRegistered":
-                    Debug.Log("READY");
+                case "preparePlayers":
+                    Debug.LogError("PREPARING");
                     break;
-                case "unReadyRegistered":
-                    Debug.Log("UNREADY");
+                case "startGame":
+                    Debug.LogError("STARTING");
+                    SceneManager.LoadScene(1);
                     break;
             }
         }
