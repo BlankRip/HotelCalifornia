@@ -1393,6 +1393,7 @@ GameObject:
   - component: {fileID: 167260088}
   - component: {fileID: 167260090}
   - component: {fileID: 167260091}
+  - component: {fileID: 167260092}
   m_Layer: 0
   m_Name: test
   m_TagString: Untagged
@@ -1454,6 +1455,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 276cd1ff52e2a044bac7ca67b3e20a28, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &167260092
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 167260087}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 465241ab65a46314ba93981ee9ac2516, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &213897817 stripped
@@ -8540,9 +8553,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 167260091}
-        m_TargetAssemblyTypeName: NextScene, Assembly-CSharp
-        m_MethodName: NextScener
+      - m_Target: {fileID: 167260092}
+        m_TargetAssemblyTypeName: Knotgames.Network.NetGameManager, Assembly-CSharp
+        m_MethodName: Ready
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -15072,7 +15085,19 @@ MonoBehaviour:
   portNumber: 4545
   OnMsgRecieve:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 167260092}
+        m_TargetAssemblyTypeName: Knotgames.Network.NetGameManager, Assembly-CSharp
+        m_MethodName: Hear
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   isConnected: {fileID: 11400000, guid: 4709917f6b353204fb13f30a19859633, type: 2}
   playerID: {fileID: 11400000, guid: 188cd071a62d6e04d8dd53bd15149b55, type: 2}
 --- !u!4 &1730150447
@@ -15540,9 +15565,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 167260091}
-        m_TargetAssemblyTypeName: NextScene, Assembly-CSharp
-        m_MethodName: NextScener
+      - m_Target: {fileID: 167260092}
+        m_TargetAssemblyTypeName: Knotgames.Network.NetGameManager, Assembly-CSharp
+        m_MethodName: Ready
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
