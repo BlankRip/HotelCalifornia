@@ -31,8 +31,13 @@ namespace Knotgames.Gameplay {
             animator = GetComponent<IPlayerAnimator>();
             interactRay = GetComponent<IInteractRay>();
 
-            SendNetData();
-            netObj.OnMessageRecieve += RecieveNetData;
+            if(!DevBoy.yes) {
+                SendNetData();
+                data = new PlayerNetData(netObj.id);
+                netObj.OnMessageRecieve += RecieveNetData;
+            } else {
+                data = new PlayerNetData();
+            }
         }
 
         private void SendNetData() {

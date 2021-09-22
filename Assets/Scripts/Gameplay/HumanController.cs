@@ -21,7 +21,6 @@ namespace Knotgames.Gameplay {
 
         private void Awake() {
             currentController.controller = this;
-            data = new PlayerNetData();
         }
 
         private void Start() {
@@ -31,8 +30,13 @@ namespace Knotgames.Gameplay {
             if(netObj == null)
                 netObj = GetComponent<NetObject>();
             
-            SendNetData();
-            netObj.OnMessageRecieve += RecieveNetData;
+            if(!DevBoy.yes) {
+                SendNetData();
+                data = new PlayerNetData();
+                netObj.OnMessageRecieve += RecieveNetData;
+            } else
+                data = new PlayerNetData();
+
         }
 
         private void SendNetData() {
