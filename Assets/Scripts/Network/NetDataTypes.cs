@@ -40,6 +40,7 @@ namespace Knotgames.Network {
     public class ModelSpawnNetData
     {
         public string eventName;
+        public string roomID;
         public string componentType;
         public string distributionOption;
         public string ownerID;
@@ -51,6 +52,7 @@ namespace Knotgames.Network {
             distributionOption = "serveOthers";
             componentType = "ModelSpawnNetData";
             ownerID = NetConnector.instance.playerID.value;
+            roomID = NetRoomJoin.instance.roomID.value;
             objectID = netId;
             modelType = type;
         }
