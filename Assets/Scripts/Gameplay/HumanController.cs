@@ -31,9 +31,9 @@ namespace Knotgames.Gameplay {
                 netObj = GetComponent<NetObject>();
             
             if(!DevBoy.yes) {
-                SendNetData();
                 data = new PlayerNetData();
                 netObj.OnMessageRecieve += RecieveNetData;
+                SendNetData();
             } else
                 data = new PlayerNetData();
 
