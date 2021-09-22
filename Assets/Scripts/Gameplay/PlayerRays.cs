@@ -22,15 +22,15 @@ namespace Knotgames.Gameplay {
         private Camera camera;
         private void Start() {
             camera = Camera.main;
+            if(DevBoy.yes || netObj.IsMine) {
+
+            } else
+                Destroy(this);
         }
 
         private void Awake() {
             if(netObj == null)
                 netObj = GetComponent<NetObject>();
-            if(DevBoy.yes || netObj.IsMine) {
-
-            } else
-                Destroy(this);
         }
 
         private void Update() {
