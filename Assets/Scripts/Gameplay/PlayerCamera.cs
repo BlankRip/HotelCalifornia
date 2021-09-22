@@ -57,6 +57,13 @@ namespace Knotgames.Gameplay {
             this.cameraPosition = camPos;
             this.ghost = ghost;
             initilized = true;
+
+            Invoke("WarpUpInitilize", 1.5f);
+        }
+
+        private void WarpUpInitilize() {
+            Quaternion targetRotation = Quaternion.Euler(0, transform.rotation.eulerAngles.y, 0);
+            player.rotation = targetRotation;
         }
     }
 }

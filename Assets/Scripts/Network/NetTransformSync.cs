@@ -21,11 +21,15 @@ public class NetTransformSync : MonoBehaviour
         RunOnUpdate = () =>
         {
             TransformData transformData = JsonUtility.FromJson<TransformData>(dataString);
-            transform.position = transformData.transform.position.ToVector();
-            transform.rotation = transformData.transform.rotation.ToQuaternion();
+            Vector3 targetPos = transformData.transform.position.ToVector();
+            if(targetPos != Vector3.zero)
+                transform.position = targetPos;
+            try {
+                transform.rotation = transformData.transform.rotation.ToQuaternion();
+            } catch { }
         };
     }
-
+    
     void Update()
     {
         if (netObject.IsMine)
