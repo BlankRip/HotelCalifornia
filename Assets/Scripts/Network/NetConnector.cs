@@ -67,8 +67,8 @@ namespace Knotgames.Network
 
         void OnDestroy()
         {
+            ws.Close(CloseStatusCode.Normal, JsonUtility.ToJson(new PlayerData() { playerID = playerID.value }));
             running = false;
-            ws?.Close(CloseStatusCode.Normal, JsonUtility.ToJson(new PlayerData() { playerID = playerID.value }));
         }
 
         public void SendDataToServer(string data)
@@ -76,6 +76,7 @@ namespace Knotgames.Network
             ws.Send(data);
         }
 
+        [System.Serializable]
         public class PlayerData
         {
             public string playerID;

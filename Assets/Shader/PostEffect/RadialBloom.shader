@@ -6,15 +6,9 @@ Shader "PEFX/RadialBloom"
 
     TEXTURE2D_SAMPLER2D(_MainTex, sampler_MainTex);
 
-    
+    uniform float _StepDist, _ValueControl, _OutKnee, _OutStrength;
 
-    float 
-    _StepDist,
-    _ValueControl,
-    _OutKnee,
-    _OutStrength;
-
-    int 
+    uniform int 
     _StepCount;
 
     float4 _GhostZoneColor;
@@ -35,8 +29,8 @@ Shader "PEFX/RadialBloom"
         }
         float ctrl = luminance;
         float4 colMain = lerp(luminance.xxxx * _GhostZoneColor, color * color, pow(ctrl, 2));
-        colMain += multiplier;
-        
+        colMain += pow(multiplier * _ValueControl, _OutKnee) * _OutStrength;
+
         return colMain;
         //return saturate(1 - length(uvCent)) * lerp(luminance.xxxx, color, pow(ctrl * 2, 2)) + pow(multiplier * _ValueControl, _OutKnee) * _OutStrength;
         //return luminance + multiplier * _ValueControl;
