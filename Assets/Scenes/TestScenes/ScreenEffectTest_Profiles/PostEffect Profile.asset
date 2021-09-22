@@ -77,13 +77,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b77c5407dc277943b591ade9e6b18c5, type: 3}
   m_Name: LensDistortion
   m_EditorClassIdentifier: 
-  active: 0
+  active: 1
   enabled:
     overrideState: 1
     value: 1
   intensity:
     overrideState: 1
-    value: 47.8
+    value: 21
   intensityX:
     overrideState: 1
     value: 1
@@ -130,7 +130,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1cb7e9e120078f43bce4f0b1be547a7, type: 3}
   m_Name: AmbientOcclusion
   m_EditorClassIdentifier: 
-  active: 0
+  active: 1
   enabled:
     overrideState: 1
     value: 1
@@ -139,10 +139,10 @@ MonoBehaviour:
     value: 1
   intensity:
     overrideState: 1
-    value: 0.53
+    value: 0.28
   color:
     overrideState: 1
-    value: {r: 0.06941755, g: 0, b: 0.13207549, a: 1}
+    value: {r: 0, g: 0, b: 0, a: 1}
   ambientOnly:
     overrideState: 1
     value: 1
@@ -264,7 +264,23 @@ MonoBehaviour:
     value: 10
   ghostColor:
     overrideState: 1
-    value: {r: 0.45660377, g: 0.83183587, b: 1, a: 1}
+    value: {r: 0.043137252, g: 0.9093291, b: 1, a: 1}
+  distortionTexture:
+    overrideState: 1
+    value: {fileID: 2800000, guid: ac56c592f92cba142a5a332ca95508b6, type: 3}
+    defaultState: 1
+  dstortionSize:
+    overrideState: 1
+    value: 0.7
+  dstortionSpeed:
+    overrideState: 1
+    value: 4
+  dstortionSrength:
+    overrideState: 1
+    value: 4.3
+  dstortionSoftness:
+    overrideState: 1
+    value: 0.91
 --- !u!114 &7357126673361250990
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -299,3 +315,19 @@ MonoBehaviour:
   ghostColor:
     overrideState: 0
     value: {r: 0, g: 0, b: 0, a: 1}
+  distortionTexture:
+    overrideState: 0
+    value: {fileID: 0}
+    defaultState: 1
+  dstortionSize:
+    overrideState: 0
+    value: 0.5
+  dstortionSpeed:
+    overrideState: 0
+    value: 0.5
+  dstortionSrength:
+    overrideState: 0
+    value: 0.5
+  dstortionSoftness:
+    overrideState: 0
+    value: 0.5
