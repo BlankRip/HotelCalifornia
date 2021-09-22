@@ -47,9 +47,14 @@ namespace Knotgames.Gameplay {
             }
         }
 
-        private void RecieveNetData(string revieved) {
-            if(!netObj.IsMine)
-                data = JsonUtility.FromJson<PlayerNetData>(revieved);
+        private void RecieveNetData(string recieved) {
+            if(!netObj.IsMine){
+                switch(JsonUtility.FromJson<ObjectNetData>(recieved).componentType) {
+                    case "PlayerNetData":
+                        data = JsonUtility.FromJson<PlayerNetData>(recieved);
+                        break;
+                }
+            }
         }
 
         private void Update() {

@@ -14,9 +14,28 @@ namespace Knotgames.Gameplay {
         private void Awake() {
             if(netObj == null)
                 netObj = GetComponent<NetObject>();
-            
-            if(DevBoy.yes || netObj.IsMine)
+
+            netObj.OnMessageRecieve += RecieveNetData;
+            if(DevBoy.yes || netObj.IsMine) {
                 SpawnSelect();
+                SendData();
+            }
+        }
+
+        private void SendData() {
+            if(netObj.IsMine)
+                NetConnector.instance.SendDataToServer(JsonUtility.ToJson(new ModelSpawnNetData(characterData.modelType, netObj.id)));
+        }
+
+        private void RecieveNetData(string recieved) {
+            if(!netObj.IsMine) {
+                switch(JsonUtility.FromJson<ObjectNetData>(recieved).componentType) {
+                    case "ModelSpawnNetData":
+                        ModelType type = JsonUtility.FromJson<ModelSpawnNetData>(recieved).modelType;
+                        SpawnSelect(type);
+                        break;
+                }
+            }
         }
 
         private void SpawnSelect(ModelType type = ModelType.Nada) {
