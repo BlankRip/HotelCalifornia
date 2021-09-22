@@ -22,6 +22,8 @@ public sealed class PEFXRadialBlur : PostProcessEffectSettings
     [Tooltip("Step Count")]
     public FloatParameter stepCount = new FloatParameter { value = 0.5f };
 
+    public ColorParameter ghostColor = new ColorParameter { value = Color.black };
+
    //  [Tooltip("Step Count")]
    // public VectorParameter bloomColor = new VectorParameter { value = 0.5f };
 }
@@ -35,7 +37,7 @@ public sealed class PEFXRadialBlurRenderer : PostProcessEffectRenderer<PEFXRadia
         sheet.properties.SetFloat("_OutKnee", settings.expoKnee);
         sheet.properties.SetFloat("_OutStrength", settings.outStrength);
         sheet.properties.SetFloat("_StepCount", settings.stepCount);
-      //  sheet.properties.SetVector("_BloomColor", settings.bloomColor);
+        sheet.properties.SetVector("_GhostZoneColor", settings.ghostColor);
 
         context.command.BlitFullscreenTriangle(context.source, context.destination, sheet, 0);
     }

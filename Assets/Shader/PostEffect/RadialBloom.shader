@@ -6,6 +6,7 @@ Shader "PEFX/RadialBloom"
 
     TEXTURE2D_SAMPLER2D(_MainTex, sampler_MainTex);
 
+    
 
     float 
     _StepDist,
@@ -15,6 +16,8 @@ Shader "PEFX/RadialBloom"
 
     int 
     _StepCount;
+
+    float4 _GhostZoneColor;
 
     float4 Frag(VaryingsDefault i) : SV_Target
     {
@@ -27,12 +30,16 @@ Shader "PEFX/RadialBloom"
         float multiplier = 0;
         
         for(uint j = 0; j < _StepCount; j++){
-            float pointValue = SAMPLE_TEXTURE2D(_MainTex, sampler_MainTex, i.texcoord + blurVector * j * _StepDist);
+            float pointValue = SAMPLE_TEXTURE2D(_MainTex, sampler_MainTex, i.texcoord + blurVector * j * _StepDist *(length(uvCent)));
             multiplier += (1 - j/_StepCount) * pow(pointValue, 3);
         }
         float ctrl = luminance;
+        float4 colMain = lerp(luminance.xxxx * _GhostZoneColor, color * color, pow(ctrl, 2));
+        colMain += multiplier;
+        
+        return colMain;
         //return saturate(1 - length(uvCent)) * lerp(luminance.xxxx, color, pow(ctrl * 2, 2)) + pow(multiplier * _ValueControl, _OutKnee) * _OutStrength;
-        return multiplier * _ValueControl;
+        //return luminance + multiplier * _ValueControl;
     }
 
     ENDHLSL

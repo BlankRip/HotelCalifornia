@@ -13,6 +13,7 @@ namespace Knotgames.Network
     {
 
         public static NetConnector instance;
+        public static bool running;
 
         #region Public Variables
         public bool localTesting;
@@ -33,6 +34,7 @@ namespace Knotgames.Network
         void Awake()
         {
             NetConnector.instance = this;
+            running = true;
         }
 
         void Start()
@@ -43,11 +45,9 @@ namespace Knotgames.Network
             ConnectToServer();
         }
 
-
-
         async void ConnectToServer()
         {
-            while (!isConnected.value)
+            while (!isConnected.value && running)
             {
                 Debug.Log("Connection attempt...");
                 string connectionURL = !localTesting ? ipAddressString : $"{ipLocal}:{portNumber}";
@@ -67,6 +67,7 @@ namespace Knotgames.Network
 
         void OnDestroy()
         {
+            running = false;
             ws?.Close(CloseStatusCode.Normal, JsonUtility.ToJson(new PlayerData() { playerID = playerID.value }));
         }
 
