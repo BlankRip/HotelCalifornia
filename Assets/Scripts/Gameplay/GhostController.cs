@@ -33,8 +33,8 @@ namespace Knotgames.Gameplay {
             interactRay = GetComponent<IInteractRay>();
 
             if(!DevBoy.yes) {
-                // SendNetData();
                 data = new PlayerNetData(netObj.id);
+                // SendNetData();
                 // netObj.OnMessageRecieve += RecieveNetData;
             } else {
                 data = new PlayerNetData(netObj.id);
@@ -93,9 +93,9 @@ namespace Knotgames.Gameplay {
                     if(interactRay.CanInteract())
                         interactRay.Interact();
                 }
+                movement.Move(data.horizontalInput, data.verticalInput, ref data.moveYPositive, ref data.moveYNegetive);
             }
 
-            movement.Move(data.horizontalInput, data.verticalInput, ref data.moveYPositive, ref data.moveYNegetive);
             animator.Animate(data.horizontalInput, data.verticalInput, data.moveYPositive, data.moveYNegetive);
         }
 
