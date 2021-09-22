@@ -14,6 +14,7 @@ namespace Knotgames.Network {
         public string distributionOption;
         public string ownerID;
         public string objectID;
+        public string roomID;
         public float horizontalInput;
         public float verticalInput;
         public bool moveYPositive;
@@ -24,7 +25,10 @@ namespace Knotgames.Network {
             distributionOption = "serveOthers";
             componentType = "PlayerNetData";
             if(!DevBoy.yes)
+            {
                 ownerID = NetConnector.instance.playerID.value;
+                roomID = NetRoomJoin.instance.roomID.value;
+            }
             objectID = netId;
             moveYPositive = false;
             moveYNegetive = false;
