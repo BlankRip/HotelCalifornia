@@ -2,15 +2,27 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Knotgames.CharacterData;
+using Knotgames.Network;
 
 namespace Knotgames.Gameplay {
     public class SpawnCharacter : MonoBehaviour
     {
         [SerializeField] ScriptableCharacterSelect characterData;
         [SerializeField] ScriptableSpawnDataCollection allSpawnData;
+        [SerializeField] NetObject netObj;
 
         private void Awake() {
-            switch(characterData.modelType) {
+            if(netObj == null)
+                netObj = GetComponent<NetObject>();
+            
+            if(DevBoy.yes || netObj.IsMine)
+                SpawnSelect();
+        }
+
+        private void SpawnSelect(ModelType type = ModelType.Nada) {
+            if(type == ModelType.Nada)
+                type = characterData.modelType;
+            switch(type) {
                 case ModelType.Human1:
                     Spawn(allSpawnData.human1Data);
                     return;
