@@ -14,11 +14,13 @@ namespace Knotgames.Gameplay {
         private void Awake() {
             if(netObj == null)
                 netObj = GetComponent<NetObject>();
-
-            netObj.OnMessageRecieve += RecieveNetData;
+                
+            if(!DevBoy.yes)
+                netObj.OnMessageRecieve += RecieveNetData;
             if(DevBoy.yes || netObj.IsMine) {
                 SpawnSelect();
-                SendData();
+                if(!DevBoy.yes)
+                    SendData();
             }
         }
 

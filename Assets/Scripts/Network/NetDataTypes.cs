@@ -23,10 +23,13 @@ namespace Knotgames.Network {
             eventName = "syncObjectData";
             distributionOption = "serveOthers";
             componentType = "PlayerNetData";
-            ownerID = NetConnector.instance.playerID.value;
+            if(!DevBoy.yes)
+                ownerID = NetConnector.instance.playerID.value;
             objectID = netId;
             moveYPositive = false;
             moveYNegetive = false;
+            horizontalInput = 0;
+            verticalInput = 0;
         }
     }
 
