@@ -22,7 +22,7 @@ namespace Knotgames.Network {
         public bool moveYPositive;
         public bool moveYNegetive;
 
-        public PlayerNetData(string netId = "") {
+        public PlayerNetData(string netId) {
             eventName = "syncObjectData";
             distributionOption = "serveOthers";
             componentType = "PlayerNetData";

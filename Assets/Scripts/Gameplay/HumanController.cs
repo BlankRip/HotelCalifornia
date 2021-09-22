@@ -13,7 +13,7 @@ namespace Knotgames.Gameplay {
 
         private IAbility primary;
         private IAbility secondary;
-
+        System.Action RunAgain;
         private IInteractRay interactRay;
 
         //Y Positive is Jump & Y Negetive is Crouch
@@ -31,13 +31,13 @@ namespace Knotgames.Gameplay {
                 netObj = GetComponent<NetObject>();
             
             if(!DevBoy.yes) {
-                data = new PlayerNetData();
+                data = new PlayerNetData(netObj.id);
                 netObj.OnMessageRecieve += RecieveNetData;
                 SendNetData();
-                Invoke("RecieveNetData", 0.25f);
             } else
-                data = new PlayerNetData();
-
+                data = new PlayerNetData(netObj.id);
+                
+            StartCoroutine(CallMe());
         }
 
         private void SendNetData() {
@@ -48,16 +48,19 @@ namespace Knotgames.Gameplay {
         }
 
         private void RecieveNetData(string revieved) {
-            Debug.LogError("DJGK");
-            if(!netObj.IsMine) {
-                Debug.LogError(JsonUtility.FromJson<ObjectNetData>(revieved).componentType);
-                switch(JsonUtility.FromJson<ObjectNetData>(revieved).componentType) {
-                    case "PlayerNetData":
-                        data = JsonUtility.FromJson<PlayerNetData>(revieved);
-                        Debug.LogError($"Hor: {data.horizontalInput} \n Vert: {data.verticalInput} \n Jum: {data.moveYPositive}");
-                        break;
+            RunAgain = () =>
+            {
+                Debug.LogError("DJGK");
+                if(!netObj.IsMine) {
+                    Debug.LogError(JsonUtility.FromJson<ObjectNetData>(revieved).componentType);
+                    switch(JsonUtility.FromJson<ObjectNetData>(revieved).componentType) {
+                        case "PlayerNetData":
+                            data = JsonUtility.FromJson<PlayerNetData>(revieved);
+                            Debug.LogError($"Hor: {data.horizontalInput} \n Vert: {data.verticalInput} \n Jum: {data.moveYPositive}");
+                            break;
+                    }
                 }
-            }
+            };
         }
 
         private void Update() {
@@ -79,13 +82,10 @@ namespace Knotgames.Gameplay {
                     if(secondary.CanUse())
                         secondary.UseAbility();
                 }
-
                 if(Input.GetKeyDown(KeyCode.F)) {
                     if(interactRay.CanInteract())
                         interactRay.Interact();
                 }
-            } else {
-                //Debug.LogError($"Hor: {data.horizontalInput} \n Vert: {data.verticalInput} \n Jum: {data.moveYPositive}");
             }
 
             movement.Move(data.horizontalInput, data.verticalInput, ref data.moveYPositive, ref data.moveYNegetive);
@@ -104,6 +104,14 @@ namespace Knotgames.Gameplay {
         public void SwapSecondary(IAbility ability) {
             secondary.Destroy();
             secondary = ability;
+        }
+
+        IEnumerator CallMe()
+        {
+            yield return new WaitForSeconds(0.5f);
+            if (RunAgain != null)
+                RunAgain.Invoke();
+            StartCoroutine(CallMe());
         }
     }
 }

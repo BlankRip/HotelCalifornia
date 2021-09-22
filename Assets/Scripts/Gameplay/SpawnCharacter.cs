@@ -65,8 +65,6 @@ namespace Knotgames.Gameplay {
                 case ModelType.Ghost2:
                     Spawn(allSpawnData.human2Data);
                     return;
-                default:
-                    return;
             }
         }
 

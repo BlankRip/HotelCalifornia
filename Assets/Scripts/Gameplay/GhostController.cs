@@ -36,7 +36,7 @@ namespace Knotgames.Gameplay {
                 data = new PlayerNetData(netObj.id);
                 netObj.OnMessageRecieve += RecieveNetData;
             } else {
-                data = new PlayerNetData();
+                data = new PlayerNetData(netObj.id);
             }
         }
 
