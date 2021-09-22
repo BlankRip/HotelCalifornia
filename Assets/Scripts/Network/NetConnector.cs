@@ -31,6 +31,8 @@ namespace Knotgames.Network
         WebSocket ws;
         INetEventHub eventHub;
 
+        Queue<System.Action> recievedEvents = new Queue<System.Action>();
+
         void Awake()
         {
             NetConnector.instance = this;
@@ -43,6 +45,11 @@ namespace Knotgames.Network
             playerID.value = null;
             eventHub = new NetEventHub(isConnected, playerID);
             ConnectToServer();
+        }
+
+        void Update()
+        {
+            if (recievedEvents.Count > 0) recievedEvents.Dequeue().Invoke();
         }
 
         async void ConnectToServer()
@@ -61,8 +68,13 @@ namespace Knotgames.Network
         void DataReciver(MessageEventArgs eventData)
         {
             string val = Encoding.UTF8.GetString(eventData.RawData);
-            eventHub.Listen(val);
-            OnMsgRecieve.Invoke(val);
+            recievedEvents.Enqueue(
+            () =>
+                {
+                    eventHub.Listen(val);
+                    OnMsgRecieve.Invoke(val);
+                }
+            );
         }
 
         void OnDestroy()
