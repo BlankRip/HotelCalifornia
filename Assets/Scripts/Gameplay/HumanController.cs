@@ -82,9 +82,6 @@ namespace Knotgames.Gameplay {
             }
 
             animator.Animate(data.horizontalInput, data.verticalInput, data.moveYPositive, data.moveYNegetive);
-        }
-
-        private void FixedUpdate() {
             movement.Move(data.horizontalInput, data.verticalInput, ref data.moveYPositive, ref data.moveYNegetive);
         }
 

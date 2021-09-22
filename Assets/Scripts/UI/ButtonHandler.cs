@@ -26,7 +26,6 @@ namespace Knotgames.UI {
         }
 
         public void OnPointerEnter(PointerEventData eventData) {
-            Debug.Log("Ent");
             if(menuNavigator!=null)
                 menuNavigator.SelectButton(myIndex);
         }
