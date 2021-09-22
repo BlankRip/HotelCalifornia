@@ -4,9 +4,11 @@ using UnityEngine;
 using Knotgames.CharacterData;
 
 namespace Knotgames.Network {
+    [System.Serializable]
     public class ObjectNetData {
         public string componentType;
     }
+    [System.Serializable]
     public class PlayerNetData
     {
         public string eventName;
@@ -37,6 +39,7 @@ namespace Knotgames.Network {
         }
     }
 
+    [System.Serializable]
     public class ModelSpawnNetData
     {
         public string eventName;
@@ -58,6 +61,7 @@ namespace Knotgames.Network {
         }
     }
 
+    [System.Serializable]
     public class SpawnObject
     {
         public string eventName;

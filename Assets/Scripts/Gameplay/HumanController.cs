@@ -34,6 +34,7 @@ namespace Knotgames.Gameplay {
                 data = new PlayerNetData();
                 netObj.OnMessageRecieve += RecieveNetData;
                 SendNetData();
+                Invoke("RecieveNetData", 0.25f);
             } else
                 data = new PlayerNetData();
 
@@ -47,12 +48,17 @@ namespace Knotgames.Gameplay {
         }
 
         private void RecieveNetData(string revieved) {
-            if(!netObj.IsMine)
+            Debug.LogError("DJGK");
+            if(!netObj.IsMine) {
+                Debug.LogError(JsonUtility.FromJson<ObjectNetData>(revieved).componentType);
                 switch(JsonUtility.FromJson<ObjectNetData>(revieved).componentType) {
                     case "PlayerNetData":
                         data = JsonUtility.FromJson<PlayerNetData>(revieved);
+                        Debug.LogError($"Hor: {data.horizontalInput} \n Vert: {data.verticalInput} \n Jum: {data.moveYPositive}");
                         break;
                 }
+                Invoke("RecieveNetData", 0.25f);
+            }
         }
 
         private void Update() {
@@ -79,10 +85,12 @@ namespace Knotgames.Gameplay {
                     if(interactRay.CanInteract())
                         interactRay.Interact();
                 }
+            } else {
+                //Debug.LogError($"Hor: {data.horizontalInput} \n Vert: {data.verticalInput} \n Jum: {data.moveYPositive}");
             }
 
-            animator.Animate(data.horizontalInput, data.verticalInput, data.moveYPositive, data.moveYNegetive);
             movement.Move(data.horizontalInput, data.verticalInput, ref data.moveYPositive, ref data.moveYNegetive);
+            animator.Animate(data.horizontalInput, data.verticalInput, data.moveYPositive, data.moveYNegetive);
         }
 
         public void SetAbilities(List<IAbility> abilities) {

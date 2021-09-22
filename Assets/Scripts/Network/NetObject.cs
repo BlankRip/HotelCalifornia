@@ -22,6 +22,7 @@ namespace Knotgames.Network
 
         public void WriteData(string dataString)
         {
+            Debug.LogError("HERE BITCH");
             OnMessageRecieve.Invoke(dataString);
         }
 

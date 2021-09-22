@@ -90,8 +90,8 @@ namespace Knotgames.Gameplay {
                 }
             }
 
-            animator.Animate(data.horizontalInput, data.verticalInput, data.moveYPositive, data.moveYNegetive);
             movement.Move(data.horizontalInput, data.verticalInput, ref data.moveYPositive, ref data.moveYNegetive);
+            animator.Animate(data.horizontalInput, data.verticalInput, data.moveYPositive, data.moveYNegetive);
         }
 
         public void SetAbilities(List<IAbility> abilities) {
