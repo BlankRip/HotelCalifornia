@@ -2,21 +2,28 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Knotgames.CharacterData;
+using Knotgames.Network;
 
 namespace Knotgames.Gameplay {
     public class SpawnAbilities : MonoBehaviour
     {
         [SerializeField] ScriptableCharacterSelect characterData;
+        [SerializeField] NetObject netObj;
         private IPlayerController controler;
         private List<IAbility> abilities;
 
         private void Awake() {
-            abilities = new List<IAbility>();
-            for (int i = 0; i < characterData.abilityTypes.Count; i++) {
-                abilities.Add(AttachAbility(characterData.abilityTypes[i]));
+            if(netObj == null)
+                netObj = GetComponent<NetObject>();
+
+            if(DevBoy.yes || netObj.IsMine) {
+                abilities = new List<IAbility>();
+                for (int i = 0; i < characterData.abilityTypes.Count; i++) {
+                    abilities.Add(AttachAbility(characterData.abilityTypes[i]));
+                }
+                controler = GetComponent<IPlayerController>();
+                controler.SetAbilities(abilities);
             }
-            controler = GetComponent<IPlayerController>();
-            controler.SetAbilities(abilities);
             Destroy(this, 0.2f);
         }
 

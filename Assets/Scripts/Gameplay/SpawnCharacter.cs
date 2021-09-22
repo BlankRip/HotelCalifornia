@@ -2,15 +2,46 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Knotgames.CharacterData;
+using Knotgames.Network;
 
 namespace Knotgames.Gameplay {
     public class SpawnCharacter : MonoBehaviour
     {
         [SerializeField] ScriptableCharacterSelect characterData;
         [SerializeField] ScriptableSpawnDataCollection allSpawnData;
+        [SerializeField] NetObject netObj;
 
         private void Awake() {
-            switch(characterData.modelType) {
+            if(netObj == null)
+                netObj = GetComponent<NetObject>();
+
+            netObj.OnMessageRecieve += RecieveNetData;
+            if(DevBoy.yes || netObj.IsMine) {
+                SpawnSelect();
+                SendData();
+            }
+        }
+
+        private void SendData() {
+            if(netObj.IsMine)
+                NetConnector.instance.SendDataToServer(JsonUtility.ToJson(new ModelSpawnNetData(characterData.modelType, netObj.id)));
+        }
+
+        private void RecieveNetData(string recieved) {
+            if(!netObj.IsMine) {
+                switch(JsonUtility.FromJson<ObjectNetData>(recieved).componentType) {
+                    case "ModelSpawnNetData":
+                        ModelType type = JsonUtility.FromJson<ModelSpawnNetData>(recieved).modelType;
+                        SpawnSelect(type);
+                        break;
+                }
+            }
+        }
+
+        private void SpawnSelect(ModelType type = ModelType.Nada) {
+            if(type == ModelType.Nada)
+                type = characterData.modelType;
+            switch(type) {
                 case ModelType.Human1:
                     Spawn(allSpawnData.human1Data);
                     return;

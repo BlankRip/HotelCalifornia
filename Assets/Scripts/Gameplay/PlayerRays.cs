@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Knotgames.Network;
 
 namespace Knotgames.Gameplay {
     public class PlayerRays : MonoBehaviour, IInteractRay
     {
+        [SerializeField] NetObject netObj;
         [SerializeField] ScriptableRayCaster rayCaster;
 
         [SerializeField] LayerMask interactLayers;
@@ -20,6 +22,15 @@ namespace Knotgames.Gameplay {
         private Camera camera;
         private void Start() {
             camera = Camera.main;
+        }
+
+        private void Awake() {
+            if(netObj == null)
+                netObj = GetComponent<NetObject>();
+            if(DevBoy.yes || netObj.IsMine) {
+
+            } else
+                Destroy(this);
         }
 
         private void Update() {

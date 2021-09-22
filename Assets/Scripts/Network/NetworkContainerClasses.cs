@@ -74,6 +74,13 @@ public class TransformWS
 {
     public PositionWS position;
     public RotationWS rotation;
+
+    public TransformWS() {}
+    
+    public TransformWS(Vector3 position, Quaternion rotation) {
+        this.position = new PositionWS(position);
+        this.rotation = new RotationWS(rotation);
+    }
 }
 
 [System.Serializable]

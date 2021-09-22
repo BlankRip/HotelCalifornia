@@ -9,6 +9,7 @@ namespace Knotgames.CharacterData
         Nada, Human, Ghost
     }
 
+    [System.Serializable]
     public enum ModelType
     {
         Nada,

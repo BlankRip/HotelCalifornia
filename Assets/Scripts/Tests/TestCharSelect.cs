@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class TestCharSelect : MonoBehaviour
 {
+    [SerializeField] bool human;
     [SerializeField] GameObject humanGroup, ghostGroup;
     [SerializeField] ScriptableCharacterSelect scriptableCharSelect;
 
@@ -15,18 +16,17 @@ public class TestCharSelect : MonoBehaviour
 
     private void RandomGroup()
     {
-        int r = Random.Range(0, 2);
         scriptableCharSelect.ResetAbilityTypes();
-        switch (r)
+        switch (human)
         {
-            case 0:
+            case true:
                 Debug.Log("human");
                 humanGroup.SetActive(true);
                 scriptableCharSelect.characterType = CharacterType.Human;
                 scriptableCharSelect.modelType = ModelType.Human1;
                 ghostGroup.SetActive(false);
                 break;
-            case 1:
+            case false:
                 Debug.Log("ghost");
                 humanGroup.SetActive(false);
                 scriptableCharSelect.characterType = CharacterType.Ghost;
