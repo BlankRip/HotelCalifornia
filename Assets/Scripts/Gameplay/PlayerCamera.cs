@@ -20,6 +20,8 @@ namespace Knotgames.Gameplay {
         private float rotX = 0.0f;
         private float rotY = 0.0f;
         private float rotZ = 0.0f;
+
+        private bool initilized;
         
         private void Awake()
         {
@@ -40,19 +42,21 @@ namespace Knotgames.Gameplay {
             rotX = Mathf.Clamp(rotX, maxDownAngle, maxUpAngle);
             rotY += mouseX;
 
-            transform.localRotation = Quaternion.Euler(rotX, rotY, rotZ);
-            transform.position = cameraPosition.position;
-
-            if(ghost)
-                player.rotation = transform.rotation;
-            else
-                player.Rotate(Vector3.up * mouseX);
+            if(initilized) {
+                transform.localRotation = Quaternion.Euler(rotX, rotY, rotZ);
+                transform.position = cameraPosition.position;
+                if(ghost)
+                    player.rotation = transform.rotation;
+                else
+                    player.Rotate(Vector3.up * mouseX);
+            }
         }
 
         public void Initilize(Transform player, Transform camPos, bool ghost) {
             this.player = player;
             this.cameraPosition = camPos;
             this.ghost = ghost;
+            initilized = true;
         }
     }
 }
