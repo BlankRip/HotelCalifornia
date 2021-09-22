@@ -36,8 +36,7 @@ namespace Knotgames.Gameplay {
                 switch(JsonUtility.FromJson<ObjectNetData>(recieved).componentType) {
                     case "ModelSpawnNetData":
                         ModelType type = JsonUtility.FromJson<ModelSpawnNetData>(recieved).modelType;
-                        //SpawnSelect(type);
-                        Spawn(allSpawnData.human1Data);
+                        SpawnSelect(type);
                         break;
                 }
             }
