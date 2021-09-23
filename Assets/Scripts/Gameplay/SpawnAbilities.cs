@@ -12,7 +12,7 @@ namespace Knotgames.Gameplay {
         private IPlayerController controler;
         private List<IAbility> abilities;
 
-        private void Awake() {
+        private void Start() {
             if(netObj == null)
                 netObj = GetComponent<NetObject>();
 
