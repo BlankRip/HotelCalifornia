@@ -8,16 +8,14 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: FogQuad
-  m_Shader: {fileID: 211, guid: 0000000000000000f000000000000000, type: 0}
+  m_Shader: {fileID: 4800000, guid: 4b7b0d3d688eb0349b51a4c720de8154, type: 3}
   m_ShaderKeywords: _ALPHABLEND_ON _COLORADDSUBDIFF_ON _FADING_ON
   m_LightmapFlags: 0
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: 3000
-  stringTagMap:
-    RenderType: Transparent
-  disabledShaderPasses:
-  - ALWAYS
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
@@ -35,6 +33,10 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _DetailNormalMap:
         m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Distortion:
+        m_Texture: {fileID: 2800000, guid: 6255e4f8b61681b4e98a035ca270e15c, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _EmissionMap:
@@ -73,10 +75,13 @@ Material:
     - _DistortionStrengthScaled: 0
     - _DstBlend: 1
     - _EmissionEnabled: 0
+    - _FadeTightness: 1
     - _FlipbookMode: 0
+    - _FogSpeed: 0.084
     - _GlossMapScale: 1
     - _Glossiness: 0.692
     - _GlossyReflections: 1
+    - _InvFade: 0.29
     - _LightingEnabled: 0
     - _Metallic: 0
     - _Mode: 4
