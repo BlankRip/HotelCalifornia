@@ -3,17 +3,34 @@ using System.Collections.Generic;
 using UnityEngine;
 
 namespace Knotgames.LevelGen {
-    public class LevelBuilder : MonoBehaviour
+    public class LevelBuilder : MonoBehaviour, ILevelBuilder
     {
-        [SerializeField] bool generateSeed;
+        public bool generateSeed;
         [SerializeField] ScriptableLevelSeed seeder;
+        [SerializeField] ScriptableLevelBuilder builder;
         [SerializeField] BuilderData builderData;
         [SerializeField] BuildingStatus currentStatus;
 
         private BuildingStatus backup;
         private IRoom startRoom;
+        
+        private void Awake() {
+            builder.levelBuilder = this;
+        }
 
-        private void Start() {
+        // private void Start() {
+        //     StartLevelGen(generateSeed);
+        // }
+
+        public void RestartingGeneration(bool seedStatus) {
+            if(!seedStatus)
+                Debug.LogError("This should never happen as a level gen with a succesful seed will never have to restart");
+            generateSeed = seedStatus;
+            StartLevelGen(generateSeed);
+        }
+
+        public void StartLevelGen(bool genSeed) {
+            generateSeed = genSeed;
             builderData.onFail += RestartLevelGen;
             if(currentStatus.allRoomTypes.Count != currentStatus.eachTypeSpawned.Count) {
                 currentStatus.eachTypeSpawned = new List<int>();
@@ -21,7 +38,7 @@ namespace Knotgames.LevelGen {
                     currentStatus.eachTypeSpawned.Add(0);
             }
             backup = new BuildingStatus(currentStatus);
-            if(generateSeed)
+            if(genSeed)
                 seeder.levelSeed.GenerateSeed();
             seeder.levelSeed.Initilize();
             StartCoroutine(GenerateLevel());
@@ -57,6 +74,7 @@ namespace Knotgames.LevelGen {
             }
             Debug.Log("<color=yellow>Puzzles Built</color>");
             Debug.Log("<color=green>Level Built</color>");
+            seeder.levelSeed.SeedSuccesful();
 
             yield return longInterval;
             Destroy(this);
@@ -73,7 +91,9 @@ namespace Knotgames.LevelGen {
             if(restartSafe) {
                 Debug.Log($"Retrying Gen");
                 restartSafe = false;
-                GameObject.Instantiate(builderData.levelGen, transform.position, transform.rotation);
+                LevelBuilder builder = GameObject.Instantiate(builderData.levelGen, transform.position, transform.rotation).GetComponent<LevelBuilder>();
+                builder.RestartingGeneration(generateSeed);
+
                 Destroy(this.gameObject);
             }
         }

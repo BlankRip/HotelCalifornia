@@ -8,6 +8,29 @@ namespace Knotgames.Network {
     public class ObjectNetData {
         public string componentType;
     }
+
+    [System.Serializable]
+    public class EventNetData {
+        public string eventName;
+    }
+
+    [System.Serializable]
+    public class SeedPacket 
+    {
+        public int seed;
+        public string eventName;
+        public string roomID;
+        public string distributionOption;
+
+        public SeedPacket(int seed) {
+            this.seed = seed;
+            eventName = "seedGenerated";
+            distributionOption = "serveOthers";
+            if(!DevBoy.yes)
+                roomID = NetRoomJoin.instance.roomID.value;
+        }
+    }
+
     [System.Serializable]
     public class PlayerNetData
     {
