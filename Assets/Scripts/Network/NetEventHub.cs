@@ -20,13 +20,7 @@ namespace Knotgames.Network
         public void Listen(string dataString)
         {
             string eventName = JsonUtility.FromJson<BaseDataExtractor>(dataString).eventName;
-
-            NetDebug.DebugActions.Enqueue(
-                () =>
-                {
-                    Debug.Log(dataString);
-                }
-            );
+            NetDebug.instance.AddDebug(dataString);
 
             switch (eventName)
             {
