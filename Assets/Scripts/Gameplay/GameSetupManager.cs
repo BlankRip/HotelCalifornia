@@ -32,15 +32,12 @@ namespace Knotgames.Gameplay {
             switch (eventName)
             {
                 case "generateSeed": {
-                    Debug.LogError("Host GEN");
-
                     host = true;
                     builder.levelBuilder.StartLevelGen(true);
                     break;
                 }
                 case "replicateLevel": {
                     if(!host) {
-                        Debug.LogError("Seed GEN");
                         int seed = JsonUtility.FromJson<RecievedSeed>(dataString).seed;
                         gameSeed.levelSeed.SetSeed(seed);
                         builder.levelBuilder.StartLevelGen(false);
