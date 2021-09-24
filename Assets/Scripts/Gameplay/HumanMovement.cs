@@ -12,6 +12,7 @@ namespace Knotgames.Gameplay {
         [SerializeField] [Range(0, 1)] float crouchSpeedMultiplier = 0.5f;
         private Vector3 velocity;
         private bool grounded;
+        private bool inJump;
 
         private void Start() {
             if(cc == null)
@@ -37,9 +38,14 @@ namespace Knotgames.Gameplay {
             cc.Move(move);
 
             if (moveYPositive) {
-                if(grounded)
+                if(inJump) {
+                    moveYPositive = false;
+                    inJump = false;
+                }else if(grounded) {
                     velocity.y = Mathf.Sqrt(jumpHight * -2 * gravity);
-                moveYPositive = false;
+                    inJump = true;
+                } else
+                    moveYPositive = false;
             }
 
             velocity.y += gravity * Time.deltaTime;

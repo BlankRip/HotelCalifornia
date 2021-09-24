@@ -12,6 +12,10 @@ public class NetTransformSync : MonoBehaviour
 
     void Start()
     {
+        if(DevBoy.yes) {
+            Destroy(this);
+            return;
+        }
         netObject = GetComponent<NetObject>();
         netObject.OnMessageRecieve += SyncTrans;
     }

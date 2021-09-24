@@ -73,9 +73,9 @@ namespace Knotgames.Gameplay {
             model.transform.localPosition = Vector3.zero;
             model.transform.localPosition += data.localSpawnOffset;
             model.transform.localRotation = Quaternion.identity;
-            // Animator animator = GetComponent<Animator>();
-            // animator.avatar = data.animationAvatar;
-            // animator.runtimeAnimatorController = data.animatorController;
+            Animator animator = GetComponent<Animator>();
+            animator.avatar = data.animationAvatar;
+            animator.runtimeAnimatorController = data.animatorController;
             Destroy(this, 0.2f);
         }
     }
