@@ -32,35 +32,41 @@ namespace Knotgames.Gameplay {
             if(!DevBoy.yes) {
                 data = new PlayerNetData(netObj.id);
                 netObj.OnMessageRecieve += RecieveNetData;
-                SendNetData();
+                SendNetDataRepeat();
             } else
                 data = new PlayerNetData(netObj.id);
         }
 
-        private void SendNetData() {
+        private void SendNetDataRepeat() {
             if(netObj.IsMine) {
                 NetConnector.instance.SendDataToServer(JsonUtility.ToJson(data));
                 Invoke("SendNetData", 0.2f);
             }
         }
 
+        private void SendNetData() {
+            if(netObj.IsMine)
+                NetConnector.instance.SendDataToServer(JsonUtility.ToJson(data));
+        }
+
         private void RecieveNetData(string revieved) {
-            
-                if(!netObj.IsMine) {
-                    switch(JsonUtility.FromJson<ObjectNetData>(revieved).componentType) {
-                        case "PlayerNetData":
-                            data = JsonUtility.FromJson<PlayerNetData>(revieved);
-                            break;
-                    }
+            if(!netObj.IsMine) {
+                switch(JsonUtility.FromJson<ObjectNetData>(revieved).componentType) {
+                    case "PlayerNetData":
+                        data = JsonUtility.FromJson<PlayerNetData>(revieved);
+                        break;
                 }
+            }
         }
 
         private void Update() {
             if(DevBoy.yes || netObj.IsMine) {
                 data.horizontalInput = Input.GetAxisRaw("Horizontal");
                 data.verticalInput = Input.GetAxisRaw("Vertical");
-                if(Input.GetKeyDown(KeyCode.Space))
+                if(Input.GetKeyDown(KeyCode.Space)) {
                     data.moveYPositive = true;
+                    SendNetData();
+                }
                 if(Input.GetKeyDown(KeyCode.LeftControl))
                     data.moveYNegetive = true;
                 else if(Input.GetKeyUp(KeyCode.LeftControl))
