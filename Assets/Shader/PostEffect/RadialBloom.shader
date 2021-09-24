@@ -1,4 +1,4 @@
-Shader "PEFX/RadialBloom"
+Shader "PEFX/GhostVission"
 {
     HLSLINCLUDE
 
@@ -7,7 +7,16 @@ Shader "PEFX/RadialBloom"
     TEXTURE2D_SAMPLER2D(_MainTex, sampler_MainTex);
     TEXTURE2D_SAMPLER2D(_DistortionTex, sampler_DistortionTex);
 
-    uniform float _StepDist, _ValueControl, _OutKnee, _OutStrength, _DistortionScale, _DistortionStrength, _DistortionSSoftness, _DistortionSpeed;
+    uniform float 
+    _StepDist, 
+    _ValueControl, 
+    _OutKnee, 
+    _OutStrength, 
+    _DistortionScale, 
+    _DistortionStrength, 
+    _DistortionSSoftness, 
+    _DistortionSpeed,
+    _ColorTightness;
 
     uniform int 
     _StepCount;
@@ -34,7 +43,7 @@ Shader "PEFX/RadialBloom"
             multiplier += (1 - j/_StepCount) * pow(pointValue, 3);
         }
         float ctrl = luminance;
-        float4 colMain = lerp(luminance.xxxx * _GhostZoneColor, color * color, pow(ctrl, 2));
+        float4 colMain = lerp(luminance.xxxx * _GhostZoneColor, color, pow(ctrl, _ColorTightness));
         colMain += pow(multiplier * _ValueControl, _OutKnee) * _OutStrength;
 
         

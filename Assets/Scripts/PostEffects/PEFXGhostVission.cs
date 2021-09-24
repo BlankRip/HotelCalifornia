@@ -4,8 +4,8 @@ using UnityEngine;
 using UnityEngine.Rendering.PostProcessing;
 
 [System.Serializable]
-[PostProcess(typeof(PEFXRadialBlurRenderer), PostProcessEvent.AfterStack, "PEFX/RadialBloom")]
-public sealed class PEFXRadialBlur : PostProcessEffectSettings
+[PostProcess(typeof(PEFXGhostVissionRenderer), PostProcessEvent.AfterStack, "PEFX/GhostVission")]
+public sealed class PEFXGhostVission : PostProcessEffectSettings
 {
     [Range(0f, 1f), Tooltip("scan vector distance")]
     public FloatParameter stepDist = new FloatParameter { value = 0.5f };
@@ -24,6 +24,9 @@ public sealed class PEFXRadialBlur : PostProcessEffectSettings
 
     public ColorParameter ghostColor = new ColorParameter { value = Color.black };
 
+    [Range(0f, 5f), Tooltip("Color Tightness")]
+    public FloatParameter colorTightness = new FloatParameter { value = 0.5f };
+
     public TextureParameter distortionTexture = new TextureParameter {value = null};
     [Range(0f, 5f), Tooltip("Distortion Texture Size")]
     public FloatParameter dstortionSize = new FloatParameter { value = 0.5f };
@@ -41,11 +44,11 @@ public sealed class PEFXRadialBlur : PostProcessEffectSettings
    //  [Tooltip("Step Count")]
    // public VectorParameter bloomColor = new VectorParameter { value = 0.5f };
 }
-public sealed class PEFXRadialBlurRenderer : PostProcessEffectRenderer<PEFXRadialBlur>
+public sealed class PEFXGhostVissionRenderer : PostProcessEffectRenderer<PEFXGhostVission>
 {
     public override void Render(PostProcessRenderContext context)
     {
-        var sheet = context.propertySheets.Get(Shader.Find("PEFX/RadialBloom"));
+        var sheet = context.propertySheets.Get(Shader.Find("PEFX/GhostVission"));
         sheet.properties.SetFloat("_StepDist", settings.stepDist);
         sheet.properties.SetFloat("_ValueControl", settings.outValueControl);
         sheet.properties.SetFloat("_OutKnee", settings.expoKnee);
@@ -57,6 +60,7 @@ public sealed class PEFXRadialBlurRenderer : PostProcessEffectRenderer<PEFXRadia
         sheet.properties.SetFloat("_DistortionSpeed", settings.dstortionSpeed);
         sheet.properties.SetFloat("_DistortionStrength", settings.dstortionSrength);
         sheet.properties.SetFloat("_DistortionSSoftness", settings.dstortionSoftness);
+        sheet.properties.SetFloat("_ColorTightness", settings.colorTightness);
 
         context.command.BlitFullscreenTriangle(context.source, context.destination, sheet, 0);
     }
