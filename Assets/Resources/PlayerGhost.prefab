@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 5822771298473181534}
   - component: {fileID: 8655427253258060340}
   - component: {fileID: 1804901410041902727}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: PlayerGhost
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -170,7 +170,7 @@ MonoBehaviour:
   interactRayLength: 5
   playerLayers:
     serializedVersion: 2
-    m_Bits: 1024
+    m_Bits: 12288
   playerSightLenght: 10
 --- !u!95 &7548803102301269507
 Animator:
@@ -206,6 +206,7 @@ MonoBehaviour:
   animator: {fileID: 0}
   horizontalSpeed: hSpeed
   verticalSpeed: vSpeed
+  runningBool: run
   positiveYBool: levitateUp
   negetiveYBool: levitateDown
 --- !u!114 &8655427253258060340
@@ -241,7 +242,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2800596419397761475}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: CamPos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
