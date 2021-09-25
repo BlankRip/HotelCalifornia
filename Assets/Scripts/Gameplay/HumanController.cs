@@ -65,7 +65,9 @@ namespace Knotgames.Gameplay {
                 data.verticalInput = Input.GetAxisRaw("Vertical");
                 if(Input.GetKeyDown(KeyCode.Space)) {
                     data.moveYPositive = true;
-                    SendNetData();
+                    // SendNetData();
+                    // StopAllCoroutines();
+                    // StartCoroutine(SendAfter3Frames());
                 }
                 if(Input.GetKeyDown(KeyCode.LeftControl))
                     data.moveYNegetive = true;
@@ -103,12 +105,12 @@ namespace Knotgames.Gameplay {
             secondary = ability;
         }
 
-        // IEnumerator CallMe()
-        // {
-        //     yield return new WaitForSeconds(0.5f);
-        //     if (RunAgain != null)
-        //         RunAgain.Invoke();
-        //     StartCoroutine(CallMe());
-        // }
+        IEnumerator SendAfter3Frames()
+        {
+            yield return new WaitForEndOfFrame();
+            yield return new WaitForEndOfFrame();
+            yield return new WaitForEndOfFrame();
+            SendNetData();
+        }
     }
 }
