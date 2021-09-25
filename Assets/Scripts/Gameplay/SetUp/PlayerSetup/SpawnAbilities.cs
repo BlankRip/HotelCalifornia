@@ -29,10 +29,10 @@ namespace Knotgames.Gameplay {
 
         private IAbility AttachAbility(AbilityType type) {
             switch(type) {
-                case AbilityType.test1:
-                    return gameObject.AddComponent<TestAbility>();
-                case AbilityType.test2:
-                    return gameObject.AddComponent<TestAbility2>();
+                case AbilityType.SlowRoom:
+                    return gameObject.AddComponent<SlowRoomTrigger>();
+                case AbilityType.NullAbilityRoom:
+                    return gameObject.AddComponent<NullAbilityTrigger>();
                 case AbilityType.test3:
                     return gameObject.AddComponent<TestAbility2>();
                 case AbilityType.test4:

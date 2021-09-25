@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 namespace Knotgames.Gameplay {
-    public class GhostMovement : MonoBehaviour, IPlayerMovement
+    public class GhostMovement : MonoBehaviour, IPlayerMovement, IGhostMoveAdjustment
     {
         [SerializeField] CharacterController cc;
         [SerializeField] float movementSpeed = 10;
@@ -32,5 +32,16 @@ namespace Knotgames.Gameplay {
             cc.Move(move);
         }
 
+        public float GetSpeed() {
+            return movementSpeed;
+        }
+
+        public void AdjustSpeed(float speedMultiplier) {
+            movementSpeed *= speedMultiplier;
+        }
+
+        public void SetSpeed(float speed) {
+            movementSpeed = speed;
+        }
     }
 }

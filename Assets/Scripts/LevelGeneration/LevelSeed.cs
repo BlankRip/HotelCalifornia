@@ -38,7 +38,7 @@ namespace Knotgames.LevelGen
 
         private void SendLevelReady() {
             Debug.LogError("SET Level gen COMPTLET");
-            NetConnector.instance.SendDataToServer(JsonUtility.ToJson(new ReadyData("setupCompleated", "serveMe")));
+            NetConnector.instance.SendDataToServer(JsonUtility.ToJson(new ReadyData("setupCompleated", DistributionOption.serveMe)));
         }
 
         public void SetSeed(int seed) {

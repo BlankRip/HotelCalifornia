@@ -43,7 +43,7 @@ public class NetTransformSync : MonoBehaviour
                     new TransformData()
                     {
                         eventName = "syncObjectData",
-                        distributionOption = "serveOthers",
+                        distributionOption = DistributionOption.serveOthers,
                         ownerID = NetConnector.instance.playerID.value,
                         objectID = netObject.id,
                         roomID = NetRoomJoin.instance.roomID.value,
@@ -66,7 +66,7 @@ public class NetTransformSync : MonoBehaviour
 [System.Serializable]
 public class TransformData
 {
-    public string distributionOption = "serveOthers";
+    public string distributionOption = DistributionOption.serveOthers;
     public string eventName = "syncObjectData";
     public string ownerID, objectID, roomID;
     public TransformWS transform;
