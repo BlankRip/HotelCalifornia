@@ -21,7 +21,7 @@ namespace Knotgames.Gameplay {
                 currentId = 0;
             id = currentId;
             currentId++;
-            dataToSend = new RoomStateData(roomState, id, 0);
+            dataToSend = new RoomStateData((int)roomState, id, 0);
             NetUnityEvents.instance.roomTiggerOnMsgRecieve.AddListener(ReadData);
 
             resetters = new List<IAbilityResetter>();
@@ -32,7 +32,7 @@ namespace Knotgames.Gameplay {
         }
 
         private void SendData() {
-            dataToSend.roomState = roomState;
+            dataToSend.roomState = (int)roomState;
             dataToSend.timerTime = resetIn;
             NetConnector.instance.SendDataToServer(JsonUtility.ToJson(dataToSend));
         }
@@ -41,7 +41,7 @@ namespace Knotgames.Gameplay {
             RoomIdExtraction check = JsonUtility.FromJson<RoomIdExtraction>(recieved);
             Debug.LogError(check.myId);
             if(id == check.myId)
-                SetRoomState(check.state, check.timerTime, false);
+                SetRoomState((RoomEffectState)check.state, check.timerTime, false);
         }
 
         private void Update() {
@@ -112,20 +112,20 @@ namespace Knotgames.Gameplay {
         {
             public int myId;
             public float timerTime;
-            public RoomEffectState state;
+            public int state;
         }
 
         [System.Serializable]
         private class RoomStateData
         {
-            public RoomEffectState roomState;
+            public int roomState;
             public int myId;
             public float timerTime;
             public string eventName;
             public string roomID;
             public string distributionOption;
 
-            public RoomStateData(RoomEffectState roomState, int myId, float time) {
+            public RoomStateData(int roomState, int myId, float time) {
                 this.roomState = roomState;
                 this.myId = myId;
                 this.timerTime = time;
