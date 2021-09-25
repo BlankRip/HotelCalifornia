@@ -25,7 +25,7 @@ namespace Knotgames.Network {
         public SeedPacket(int seed) {
             this.seed = seed;
             eventName = "seedGenerated";
-            distributionOption = "serveOthers";
+            distributionOption = DistributionOption.serveOthers;
             if(!DevBoy.yes)
                 roomID = NetRoomJoin.instance.roomID.value;
         }
@@ -47,7 +47,7 @@ namespace Knotgames.Network {
 
         public PlayerNetData(string netId) {
             eventName = "syncObjectData";
-            distributionOption = "serveOthers";
+            distributionOption = DistributionOption.serveOthers;
             componentType = "PlayerNetData";
             if(!DevBoy.yes)
             {
@@ -75,7 +75,7 @@ namespace Knotgames.Network {
 
         public ModelSpawnNetData(ModelType type, string netId) {
             eventName = "syncObjectData";
-            distributionOption = "serveOthers";
+            distributionOption = DistributionOption.serveOthers;
             componentType = "ModelSpawnNetData";
             ownerID = NetConnector.instance.playerID.value;
             roomID = NetRoomJoin.instance.roomID.value;
@@ -96,7 +96,7 @@ namespace Knotgames.Network {
 
         public SpawnObject(string objectName, Vector3 position, Quaternion rotation) {
             this.eventName = "spawnObject";
-            this.distributionOption = "serveAll";
+            this.distributionOption = DistributionOption.serveAll;
             this.roomID = NetRoomJoin.instance.roomID.value;
             this.ownerID = NetConnector.instance.playerID.value;
             this.objectName = objectName;

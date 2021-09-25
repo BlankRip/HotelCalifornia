@@ -23,7 +23,7 @@ namespace Knotgames.Gameplay {
         }
 
         private void SendAtLoadingStatus() {
-            NetConnector.instance.SendDataToServer(JsonUtility.ToJson(new ReadyData("readyToGenerate", "serveMe")));
+            NetConnector.instance.SendDataToServer(JsonUtility.ToJson(new ReadyData("readyToGenerate", DistributionOption.serveMe)));
         }
 
         public void Hear(string dataString)

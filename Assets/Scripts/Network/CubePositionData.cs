@@ -37,7 +37,7 @@ public class CubePositionData : MonoBehaviour
                     new CubeData()
                     {
                         eventName = "syncObjectData",
-                        distributionOption = "serveOthers",
+                        distributionOption = DistributionOption.serveOthers,
                         ownerID = NetConnector.instance.playerID.value,
                         objectID = netObject.id,
                         transform = new TransformWS()

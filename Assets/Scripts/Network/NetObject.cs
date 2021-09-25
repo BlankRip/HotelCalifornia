@@ -31,7 +31,7 @@ namespace Knotgames.Network
                 JsonUtility.ToJson(new DestroyObjectMessage()
                 {
                     eventName = "destroyObject",
-                    distributionOption = "serveAll",
+                    distributionOption = DistributionOption.serveAll,
                     objectID = id
                 })
             );
