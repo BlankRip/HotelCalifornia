@@ -6,7 +6,7 @@ using Knotgames.Gameplay.UI;
 namespace Knotgames.Gameplay {
     public class SlowRoomTrigger : RoomAbilityTrigger
     {
-        private float abilityDuration = 15;
+        private float abilityDuration = 50;
         private int usesLeft = 1;
 
         private void Start() {
