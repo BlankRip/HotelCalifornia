@@ -33,8 +33,10 @@ namespace Knotgames.Gameplay {
         public bool CanUse() {
             if(usesLeft != 0 && currentRoom != null && currentRoom.CanChangeState())
                 return true;
-            else
+            else {
+                Debug.LogError("Could not activate");
                 return false;
+            }
         }
 
         public void UseAbility() {
