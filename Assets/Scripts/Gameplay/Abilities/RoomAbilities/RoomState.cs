@@ -39,7 +39,6 @@ namespace Knotgames.Gameplay {
 
         private void ReadData(string recieved) {
             RoomIdExtraction check = JsonUtility.FromJson<RoomIdExtraction>(recieved);
-            Debug.LogError((RoomEffectState)check.roomState);
             if(id == check.myId)
                 SetRoomState((RoomEffectState)check.roomState, check.timerTime, false);
         }

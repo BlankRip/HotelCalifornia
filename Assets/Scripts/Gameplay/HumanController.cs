@@ -40,7 +40,7 @@ namespace Knotgames.Gameplay {
         private void SendNetDataRepeat() {
             if(netObj.IsMine) {
                 NetConnector.instance.SendDataToServer(JsonUtility.ToJson(data));
-                Invoke("SendNetData", 0.2f);
+                Invoke("SendNetDataRepeat", 0.2f);
             }
         }
 
