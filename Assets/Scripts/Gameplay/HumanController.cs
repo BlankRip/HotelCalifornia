@@ -65,9 +65,9 @@ namespace Knotgames.Gameplay {
                 data.verticalInput = Input.GetAxisRaw("Vertical");
                 if(Input.GetKeyDown(KeyCode.Space)) {
                     data.moveYPositive = true;
-                    // SendNetData();
-                    // StopAllCoroutines();
-                    // StartCoroutine(SendAfter3Frames());
+                    SendNetData();
+                    StopAllCoroutines();
+                    StartCoroutine(SendAfter3Frames());
                 }
                 if(Input.GetKeyDown(KeyCode.LeftControl))
                     data.moveYNegetive = true;
