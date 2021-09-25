@@ -1,17 +1,46 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Knotgames.Network;
 
 namespace Knotgames.Gameplay {
     public class RoomState : MonoBehaviour, IRoomState
     {
+        private static int currentId;
+
+        [SerializeField] bool startRoom;
         private RoomEffectState roomState;
         private List<IAbilityResetter> resetters;
         private float resetIn;
         private bool onTimer;
+        private int id;
+        private RoomStateData dataToSend;
 
-        private void Start() {
+        private void Awake() {
+            if(startRoom)
+                currentId = 0;
+            id = currentId;
+            currentId++;
+            dataToSend = new RoomStateData(roomState, id, 0);
+            NetUnityEvents.instance.roomTiggerOnMsgRecieve.AddListener(ReadData);
+
             resetters = new List<IAbilityResetter>();
+        }
+
+        private void OnDestroy() {
+            NetUnityEvents.instance.roomTiggerOnMsgRecieve.RemoveListener(ReadData);
+        }
+
+        private void SendData() {
+            dataToSend.roomState = roomState;
+            dataToSend.timerTime = resetIn;
+            NetConnector.instance.SendDataToServer(JsonUtility.ToJson(dataToSend));
+        }
+
+        private void ReadData(string recieved) {
+            RoomIdExtraction check = JsonUtility.FromJson<RoomIdExtraction>(recieved);
+            if(id == check.myId)
+                SetRoomState(check.state, check.timerTime);
         }
 
         private void Update() {
@@ -72,6 +101,38 @@ namespace Knotgames.Gameplay {
             roomState = effectState;
             resetIn = resetTime;
             onTimer = true;
+
+            if(!DevBoy.yes)
+                SendData();
+        }
+
+        private class RoomIdExtraction
+        {
+            public int myId;
+            public float timerTime;
+            public RoomEffectState state;
+        }
+
+        [System.Serializable]
+        private class RoomStateData
+        {
+            public RoomEffectState roomState;
+            public int myId;
+            public float timerTime;
+            public string eventName;
+            public string roomID;
+            public string distributionOption;
+
+            public RoomStateData(RoomEffectState roomState, int myId, float time) {
+                this.roomState = roomState;
+                this.myId = myId;
+                this.timerTime = time;
+                eventName = "roomStateSync";
+                distributionOption = DistributionOption.serveOthers;
+                if(!DevBoy.yes)
+                    roomID = NetRoomJoin.instance.roomID.value;
+            }
         }
     }
+
 }

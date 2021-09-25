@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 namespace Knotgames.Gameplay {
+    [System.Serializable]
     public enum RoomEffectState {
         Nada, Slow, NoAbility, NoEntry
     }

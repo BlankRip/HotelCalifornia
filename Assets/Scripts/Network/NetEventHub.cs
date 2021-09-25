@@ -45,6 +45,10 @@ namespace Knotgames.Network
                     string objectID = JsonUtility.FromJson<ObjectID>(dataString).objectID;
                     NetObjManager.instance.PassDataToObject(objectID, dataString);
                     break;
+                
+                case "roomStateSync":
+                    NetUnityEvents.instance.roomTiggerOnMsgRecieve.Invoke(dataString);
+                    break;
 
                 case "spawnObject":
                     NetObjManager.instance.AddSpawnObject(dataString);

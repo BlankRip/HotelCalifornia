@@ -31,8 +31,8 @@ namespace Knotgames.Gameplay {
             switch(type) {
                 case AbilityType.SlowRoom:
                     return gameObject.AddComponent<SlowRoomTrigger>();
-                case AbilityType.test2:
-                    return gameObject.AddComponent<TestAbility2>();
+                case AbilityType.NullAbilityRoom:
+                    return gameObject.AddComponent<NullAbilityTrigger>();
                 case AbilityType.test3:
                     return gameObject.AddComponent<TestAbility2>();
                 case AbilityType.test4:
