@@ -10,7 +10,7 @@ namespace Knotgames.Gameplay {
     public interface IRoomState
     {
         RoomEffectState GetRoomState();
-        void SetRoomState(RoomEffectState effectState, float resetTime);
+        void SetRoomState(RoomEffectState effectState, float resetTime, bool sendData);
         bool CanChangeState();
     }
 }

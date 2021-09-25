@@ -39,8 +39,9 @@ namespace Knotgames.Gameplay {
 
         private void ReadData(string recieved) {
             RoomIdExtraction check = JsonUtility.FromJson<RoomIdExtraction>(recieved);
+            Debug.LogError(check.myId);
             if(id == check.myId)
-                SetRoomState(check.state, check.timerTime);
+                SetRoomState(check.state, check.timerTime, false);
         }
 
         private void Update() {
@@ -97,12 +98,13 @@ namespace Knotgames.Gameplay {
                 return false;
         }
 
-        public void SetRoomState(RoomEffectState effectState, float resetTime) {
+        public void SetRoomState(RoomEffectState effectState, float resetTime, bool sendData) {
+            Debug.LogError("Entered");
             roomState = effectState;
             resetIn = resetTime;
             onTimer = true;
 
-            if(!DevBoy.yes)
+            if(sendData && !DevBoy.yes)
                 SendData();
         }
 

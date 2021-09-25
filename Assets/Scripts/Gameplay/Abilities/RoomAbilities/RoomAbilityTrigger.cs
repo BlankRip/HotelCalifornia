@@ -42,7 +42,7 @@ namespace Knotgames.Gameplay {
         public void UseAbility() {
             usesLeft--;
             myUi.UpdateObjectData(usesLeft);
-            currentRoom.SetRoomState(abilityState, abilityDuration);
+            currentRoom.SetRoomState(abilityState, abilityDuration, true);
         }
 
         public void Destroy() {
