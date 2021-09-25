@@ -24,12 +24,12 @@ namespace Knotgames.Network
 
         public void Ready()
         {
-            NetConnector.instance.SendDataToServer(JsonUtility.ToJson(new ReadyData("iAmReady", "serveMe")));
+            NetConnector.instance.SendDataToServer(JsonUtility.ToJson(new ReadyData("iAmReady", DistributionOption.serveMe)));
         }
 
         public void Unready()
         {
-            NetConnector.instance.SendDataToServer(JsonUtility.ToJson(new ReadyData("iAmNotReady", "serveMe")));
+            NetConnector.instance.SendDataToServer(JsonUtility.ToJson(new ReadyData("iAmNotReady", DistributionOption.serveMe)));
         }
     }
 

@@ -24,7 +24,7 @@ namespace Knotgames.Network
                     new JoinRoomData()
                     {
                         eventName = "joinRandom",
-                        distributionOption = "serveMe",
+                        distributionOption = DistributionOption.serveMe,
                         roomName = "defaultRoom",
                         roomSize = 5,
                         isReserved = false
