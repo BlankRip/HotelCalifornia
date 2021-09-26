@@ -1,5 +1,48 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-8402171844796498552
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 0}
+  m_Name: VissionBlur
+  m_EditorClassIdentifier: Assembly-CSharp::VissionBlur
+  active: 1
+  enabled:
+    overrideState: 1
+    value: 1
+  effect:
+    overrideState: 1
+    value: 0.00322
+  iterationCount:
+    overrideState: 1
+    value: 7
+  lookupTexture:
+    overrideState: 1
+    value: {fileID: 2800000, guid: 043a5d4d3fe27d74d9ca8dacc79e3e6f, type: 3}
+    defaultState: 1
+  ghostSmokeTexture:
+    overrideState: 1
+    value: {fileID: 2800000, guid: 454fedc56e43e064f92401e0828cff2f, type: 3}
+    defaultState: 1
+  distortionTexture:
+    overrideState: 1
+    value: {fileID: 2800000, guid: 6255e4f8b61681b4e98a035ca270e15c, type: 3}
+    defaultState: 1
+  vapourStrength:
+    overrideState: 1
+    value: 1.29
+  vapourColor:
+    overrideState: 1
+    value: {r: 0.12687784, g: 0.9339623, b: 0.79070115, a: 1}
+  selectImage:
+    overrideState: 1
+    value: 1
 --- !u!114 &-7767718586160805702
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -1360,6 +1403,39 @@ MonoBehaviour:
   quality:
     overrideState: 1
     value: 2
+--- !u!114 &-482586877069734842
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 0}
+  m_Name: VissionBlur
+  m_EditorClassIdentifier: Assembly-CSharp::VissionBlur
+  active: 1
+  enabled:
+    overrideState: 1
+    value: 1
+  effect:
+    overrideState: 1
+    value: 0
+  iterationCount:
+    overrideState: 0
+    value: 2
+  lookupTexture:
+    overrideState: 0
+    value: {fileID: 0}
+    defaultState: 1
+  ghostSmokeTexture:
+    overrideState: 0
+    value: {fileID: 0}
+    defaultState: 1
+  selectImage:
+    overrideState: 0
+    value: 0.5
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1377,6 +1453,7 @@ MonoBehaviour:
   - {fileID: -6211305829165629119}
   - {fileID: -7767718586160805702}
   - {fileID: 420941200151749050}
+  - {fileID: -8402171844796498552}
 --- !u!114 &420941200151749050
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -1389,7 +1466,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6050e2d5de785ce4d931e4dbdbf2d755, type: 3}
   m_Name: ChromaticAberration
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
   enabled:
     overrideState: 1
     value: 1
@@ -1399,7 +1476,7 @@ MonoBehaviour:
     defaultState: 1
   intensity:
     overrideState: 1
-    value: 0.126
+    value: 0
   fastMode:
     overrideState: 0
     value: 0

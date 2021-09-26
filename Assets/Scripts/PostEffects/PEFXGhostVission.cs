@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Rendering.PostProcessing;
 
 [System.Serializable]
-[PostProcess(typeof(PEFXGhostVissionRenderer), PostProcessEvent.AfterStack, "PEFX/GhostVission")]
+[PostProcess(typeof(PEFXGhostVissionRenderer), PostProcessEvent.AfterStack, "Custom/PostEffects/GhostVission")]
 public sealed class PEFXGhostVission : PostProcessEffectSettings
 {
     [Range(0f, 1f), Tooltip("scan vector distance")]
@@ -48,7 +48,7 @@ public sealed class PEFXGhostVissionRenderer : PostProcessEffectRenderer<PEFXGho
 {
     public override void Render(PostProcessRenderContext context)
     {
-        var sheet = context.propertySheets.Get(Shader.Find("PEFX/GhostVission"));
+        var sheet = context.propertySheets.Get(Shader.Find("Custom/PostEffects/GhostVission"));
         sheet.properties.SetFloat("_StepDist", settings.stepDist);
         sheet.properties.SetFloat("_ValueControl", settings.outValueControl);
         sheet.properties.SetFloat("_OutKnee", settings.expoKnee);

@@ -7,6 +7,8 @@ Shader "Custom/PostEffects/BlurHorizontal"
 		TEXTURE2D_SAMPLER2D(_MainTex, sampler_MainTex);
 		float _Shift;
 
+        #define correctionAmount 0.845;
+
 		float4 HorizontalBlur(VaryingsDefault i) : SV_Target
 		{
 			float4 color = SAMPLE_TEXTURE2D(_MainTex, sampler_MainTex, i.texcoord) * 0.16;
@@ -20,7 +22,7 @@ Shader "Custom/PostEffects/BlurHorizontal"
 			color += SAMPLE_TEXTURE2D(_MainTex, sampler_MainTex, i.texcoord + float2(-4.0 * _Shift, 0)) * 0.09;
 			color += SAMPLE_TEXTURE2D(_MainTex, sampler_MainTex, i.texcoord + float2(-5.0 * _Shift, 0)) * 0.12;
 
-		return color;
+		return color * correctionAmount;
 	}
 
 		ENDHLSL

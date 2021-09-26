@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Rendering.PostProcessing;
 
 [System.Serializable]
-[PostProcess(typeof(PEFXGrayScaleRenderer), PostProcessEvent.AfterStack, "PEFX/Grayscale")]
+[PostProcess(typeof(PEFXGrayScaleRenderer), PostProcessEvent.AfterStack, "Custom/PostEffects/Grayscale")]
 public sealed class PEFXGrayScale : PostProcessEffectSettings
 {
     [Range(0f, 1f), Tooltip("Grayscale effect intensity.")]
@@ -14,7 +14,7 @@ public sealed class PEFXGrayScaleRenderer : PostProcessEffectRenderer<PEFXGraySc
 {
     public override void Render(PostProcessRenderContext context)
     {
-        var sheet = context.propertySheets.Get(Shader.Find("PEFX/Grayscale"));
+        var sheet = context.propertySheets.Get(Shader.Find("Custom/PostEffects/Grayscale"));
         sheet.properties.SetFloat("_Blend", settings.blend);
         context.command.BlitFullscreenTriangle(context.source, context.destination, sheet, 0);
     }

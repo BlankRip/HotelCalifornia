@@ -3,20 +3,36 @@ using UnityEngine;
 using UnityEngine.Rendering.PostProcessing;
 
 [Serializable]
-[PostProcess(typeof(BloomRenderer), PostProcessEvent.AfterStack, "Custom/CustomBloom")]
-public sealed class CustomBloom : PostProcessEffectSettings
+[PostProcess(typeof(VissionBlurRenderer), PostProcessEvent.AfterStack, "Custom/VissionBlur")]
+public sealed class VissionBlur : PostProcessEffectSettings
 {
-    [Range(0f, 1f), Tooltip("Bloom effect intensity.")]
-    public FloatParameter blend = new FloatParameter { value = 0.5f };
-    [Range(0f, 1f), Tooltip("Bloom effect cutoff.")]
-    public FloatParameter cutoff = new FloatParameter { value = 0.5f };
-    [Range(0f, 0.1f), Tooltip("Bloom fine control.")]
-    public FloatParameter shift = new FloatParameter { value = 0.5f };
-    [Range(0f, 20f), Tooltip("Bloom loop.")]
-    public IntParameter bloomCount = new IntParameter { value = 2 };
+    [Range(0f, 0.005f), Tooltip("Blur intensity.")]
+    public FloatParameter effect = new FloatParameter { value = 0.5f };
+
+    [Range(0f, 20f), Tooltip("Blur Count.")]
+    public IntParameter iterationCount = new IntParameter { value = 2 };
+
+    [Tooltip("Lookup Texture")]
+    public TextureParameter lookupTexture = new TextureParameter();
+
+    [Tooltip("Smoke Texture")]
+    public TextureParameter ghostSmokeTexture = new TextureParameter();
+
+    [Tooltip("Smoke Texture")]
+    public TextureParameter distortionTexture = new TextureParameter();
+
+    [Range(0f, 3f), Tooltip("Vapour Strength")]
+    public FloatParameter vapourStrength = new FloatParameter { value = 0.5f };
+
+    [Tooltip("Vapour Color")]
+    public ColorParameter vapourColor = new ColorParameter();
+
+    [Range(0f, 1f), Tooltip("Select Image")]
+    public FloatParameter selectImage = new FloatParameter { value = 0.5f };
+
 }
 
-public sealed class BloomRenderer : PostProcessEffectRenderer<CustomBloom>
+public sealed class VissionBlurRenderer : PostProcessEffectRenderer<VissionBlur>
 {
 
     RenderTexture rt1, rt2;
@@ -25,46 +41,45 @@ public sealed class BloomRenderer : PostProcessEffectRenderer<CustomBloom>
     public override void Init()
     {
         base.Init();
-        rt1 = RenderTexture.GetTemporary(Screen.width / 2, Screen.height / 2);
-        rt2 = RenderTexture.GetTemporary(Screen.width / 2, Screen.height / 2);
+        rt1 = RenderTexture.GetTemporary(Screen.width / 4, Screen.height / 4);
+        rt2 = RenderTexture.GetTemporary(Screen.width / 4, Screen.height / 4);
 
 
     }
     public override void Render(PostProcessRenderContext context)
     {
-        /*
-        var sheet = context.propertySheets.Get(Shader.Find("Custom/PostEffects/AddTextures"));
-        sheet.properties.SetFloat("_Blend", settings.blend);
 
-       
-        // bloom texture extraction
-        var extractor = context.propertySheets.Get(Shader.Find("Custom/PostEffects/Highlight"));
-        extractor.properties.SetFloat("_Cutoff", settings.cutoff);
+        // var sheet = context.propertySheets.Get(Shader.Find("Custom/PostEffects/AddTextures"));
+        //   sheet.properties.SetFloat("_Blend", settings.effect);
 
+        var extractor = context.propertySheets.Get(Shader.Find("Custom/PostEffects/CorruptedVisionColorShift"));
+        if (settings.lookupTexture != null) extractor.properties.SetTexture("_LookupTexture", settings.lookupTexture);
         context.command.BlitFullscreenTriangle(context.source, rt1, extractor, 0);
 
-        
-
-        // blur
-        for (int i = 0; i < settings.bloomCount; i++)
+        for (int i = 0; i < settings.iterationCount; i++)
         {
-            
-        // blur vertical
-        var blurVertical = context.propertySheets.Get(Shader.Find("Custom/PostEffects/BlurVertical"));
-        blurVertical.properties.SetFloat("_Shift", settings.shift);
-        context.command.BlitFullscreenTriangle(rt1, rt2, blurVertical, 0);
 
-        // blur horizontal
-        var blurHorizontal = context.propertySheets.Get(Shader.Find("Custom/PostEffects/BlurHorizontal"));
-        blurHorizontal.properties.SetFloat("_Shift", settings.shift);
-        context.command.BlitFullscreenTriangle(rt2, rt1, blurHorizontal, 0);
+            // blur vertical
+            var blurVertical = context.propertySheets.Get(Shader.Find("Custom/PostEffects/BlurVertical"));
+            blurVertical.properties.SetFloat("_Shift", settings.effect);
+            context.command.BlitFullscreenTriangle(rt1, rt2, blurVertical, 0);
+
+            // blur horizontal
+            var blurHorizontal = context.propertySheets.Get(Shader.Find("Custom/PostEffects/BlurHorizontal"));
+            blurHorizontal.properties.SetFloat("_Shift", settings.effect);
+            context.command.BlitFullscreenTriangle(rt2, rt1, blurHorizontal, 0);
 
         }
-        
 
-        sheet.properties.SetTexture("_MainTexB", rt1);
+        var imageCombiner = context.propertySheets.Get(Shader.Find("Custom/PostEffects/CorruptedVisionCombine"));
+        imageCombiner.properties.SetTexture("_BlurImage", rt1);
+        imageCombiner.properties.SetTexture("_GhostSmokeImage", settings.ghostSmokeTexture);
+        imageCombiner.properties.SetTexture("_DistortionTexture", settings.distortionTexture.value != null ? settings.distortionTexture.value : RuntimeUtilities.blackTexture);
+        imageCombiner.properties.SetFloat("_SelectImage", settings.selectImage);
+        imageCombiner.properties.SetVector("_VapourColor", settings.vapourColor);
+        imageCombiner.properties.SetFloat("_VapourStrength", settings.vapourStrength);
 
-        context.command.BlitFullscreenTriangle(context.source, context.destination, sheet, 0);
-        */
+        context.command.BlitFullscreenTriangle(context.source, context.destination, imageCombiner, 0);
+
     }
 }
