@@ -48,7 +48,7 @@ namespace Knotgames.Gameplay
         public void UseAbility() {
             usesLeft--;
             myUi.UpdateObjectData(usesLeft);
-            trigger.TriggerEffect(effectType, abilityDuration);
+            trigger.TriggerEffect(effectType, abilityDuration, true);
             Debug.Log("<color=red>USING TRIGGER ABILITY!</color>");
         }
 

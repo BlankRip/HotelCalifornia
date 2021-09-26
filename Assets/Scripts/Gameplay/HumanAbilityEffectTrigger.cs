@@ -39,10 +39,8 @@ namespace Knotgames.Gameplay {
 
         private void RecieveData(string recieved) {
             if(JsonUtility.FromJson<ObjectNetData>(recieved).componentType == "EffectTrigger") {
-                if(netObj.IsMine) {
-                    DataExtraction extracted = JsonUtility.FromJson<DataExtraction>(recieved);
-                    TriggerEffect((AbilityEffectType)extracted.effectType, extracted.duration);
-                }
+                DataExtraction extracted = JsonUtility.FromJson<DataExtraction>(recieved);
+                TriggerEffect((AbilityEffectType)extracted.effectType, extracted.duration, false);
             }
         }
 
@@ -58,7 +56,7 @@ namespace Knotgames.Gameplay {
             }
         }
 
-        public void TriggerEffect(AbilityEffectType type, float duration) {
+        public void TriggerEffect(AbilityEffectType type, float duration, bool sendData) {
             if(netObj.IsMine) {
                 switch(type) {
                     case AbilityEffectType.BlurEffect:
@@ -66,14 +64,13 @@ namespace Knotgames.Gameplay {
                         currentEffect = blurEffect;
                         break;
                 }
-
-                underEffect = true;
-                timer = duration;
-                onTimer = true;
-            } else {
+            } else if(sendData) {
                 SendData((int) type, duration);
             }
 
+            underEffect = true;
+            timer = duration;
+            onTimer = true;
         }
 
         public bool IsUnderEffect() {
