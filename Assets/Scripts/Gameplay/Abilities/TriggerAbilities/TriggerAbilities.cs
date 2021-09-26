@@ -31,12 +31,14 @@ namespace Knotgames.Gameplay
 
         public bool CanUse()
         {
-            if (playerSiteRay.InSite()) {
+            if (playerSiteRay.InSite() && usesLeft!=0) {
                 trigger = playerSiteRay.PlayerInSiteObj().GetComponent<IAbilityEffectTrigger>();
                 if(!trigger.IsUnderEffect())
                     return true;
-                else
+                else {
+                    Debug.LogError("Could not activate");
                     return false;
+                }
             } else {
                 Debug.LogError("Could not activate");
                 return false;
