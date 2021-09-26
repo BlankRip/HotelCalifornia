@@ -6,20 +6,20 @@ using UnityEngine.Rendering.PostProcessing;
 [PostProcess(typeof(VissionBlurRenderer), PostProcessEvent.AfterStack, "Custom/VissionBlur")]
 public sealed class VissionBlur : PostProcessEffectSettings
 {
-    [Range(0f, 0.005f), Tooltip("Blur intensity.")]
+    [Range(0f, 0.01f), Tooltip("Blur intensity.")]
     public FloatParameter effect = new FloatParameter { value = 0.5f };
 
     [Range(0f, 20f), Tooltip("Blur Count.")]
     public IntParameter iterationCount = new IntParameter { value = 2 };
 
     [Tooltip("Lookup Texture")]
-    public TextureParameter lookupTexture = new TextureParameter();
+    public TextureParameter lookupTexture = new TextureParameter(){ value = null };
 
     [Tooltip("Smoke Texture")]
-    public TextureParameter ghostSmokeTexture = new TextureParameter();
+    public TextureParameter ghostSmokeTexture = new TextureParameter(){ value = null };
 
     [Tooltip("Smoke Texture")]
-    public TextureParameter distortionTexture = new TextureParameter();
+    public TextureParameter distortionTexture = new TextureParameter(){ value = null };
 
     [Range(0f, 3f), Tooltip("Vapour Strength")]
     public FloatParameter vapourStrength = new FloatParameter { value = 0.5f };
@@ -53,7 +53,7 @@ public sealed class VissionBlurRenderer : PostProcessEffectRenderer<VissionBlur>
         //   sheet.properties.SetFloat("_Blend", settings.effect);
 
         var extractor = context.propertySheets.Get(Shader.Find("Custom/PostEffects/CorruptedVisionColorShift"));
-        if (settings.lookupTexture != null) extractor.properties.SetTexture("_LookupTexture", settings.lookupTexture);
+        extractor.properties.SetTexture("_LookupTexture", settings.lookupTexture.value != null ? settings.lookupTexture.value : RuntimeUtilities.blackTexture);
         context.command.BlitFullscreenTriangle(context.source, rt1, extractor, 0);
 
         for (int i = 0; i < settings.iterationCount; i++)
@@ -73,7 +73,7 @@ public sealed class VissionBlurRenderer : PostProcessEffectRenderer<VissionBlur>
 
         var imageCombiner = context.propertySheets.Get(Shader.Find("Custom/PostEffects/CorruptedVisionCombine"));
         imageCombiner.properties.SetTexture("_BlurImage", rt1);
-        imageCombiner.properties.SetTexture("_GhostSmokeImage", settings.ghostSmokeTexture);
+        imageCombiner.properties.SetTexture("_GhostSmokeImage", settings.ghostSmokeTexture.value != null ? settings.ghostSmokeTexture.value : RuntimeUtilities.blackTexture);
         imageCombiner.properties.SetTexture("_DistortionTexture", settings.distortionTexture.value != null ? settings.distortionTexture.value : RuntimeUtilities.blackTexture);
         imageCombiner.properties.SetFloat("_SelectImage", settings.selectImage);
         imageCombiner.properties.SetVector("_VapourColor", settings.vapourColor);

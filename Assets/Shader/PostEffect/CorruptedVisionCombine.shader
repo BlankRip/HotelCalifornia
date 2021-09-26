@@ -31,6 +31,7 @@ Shader "Custom/PostEffects/CorruptedVisionCombine"
         float2 polarUV = UV2Polar(newUV);
 
         float2 distortionUV = 0.1 * (SAMPLE_TEXTURE2D(_DistortionTexture, sampler_DistortionTexture, i.texcoord + float2(_Time.x * 3, _Time.x)).xy * 2 - 1);
+        float startDistortion = SAMPLE_TEXTURE2D(_GhostSmokeImage, sampler_GhostSmokeImage,float2(polarUV.x, _Time.x * 5)).x;
 
         float vapours = (
             (
@@ -38,10 +39,9 @@ Shader "Custom/PostEffects/CorruptedVisionCombine"
                 SAMPLE_TEXTURE2D(_GhostSmokeImage, sampler_GhostSmokeImage, distortionUV + float2(polarUV.x * 2, (polarUV.y - _Time.y * 2))).x +
                 SAMPLE_TEXTURE2D(_GhostSmokeImage, sampler_GhostSmokeImage, distortionUV * 1.5 + float2(polarUV.x * 10, (polarUV.y - _Time.y * 0.5) * 0.5)).x
                 ) * 0.333
-         * saturate(radialGradient - 0.5)) * _VapourStrength * 2;
+         * saturate((radialGradient * (startDistortion + 0.5)/3) - startDistortion * 0.3)) * _VapourStrength * 2;
 
-        return lerp(color, shiftColor, saturate(radialGradient * 2 * _SelectImage)) + vapours * _VapourColor;
-        ;
+        return lerp(color, shiftColor, saturate((radialGradient * 2 * _SelectImage) + _SelectImage)) + vapours * _VapourColor;
     }
 
     ENDHLSL

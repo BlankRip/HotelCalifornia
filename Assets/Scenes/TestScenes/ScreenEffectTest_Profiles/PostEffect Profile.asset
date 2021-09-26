@@ -18,41 +18,41 @@ MonoBehaviour:
     value: 1
   stepDist:
     overrideState: 1
-    value: 0.12
+    value: 0.045
   outValueControl:
     overrideState: 1
-    value: 0.06
+    value: 0.12
   expoKnee:
     overrideState: 1
-    value: 0.81
+    value: 1.32
   outStrength:
     overrideState: 1
-    value: 1.08
+    value: 0.42
   stepCount:
     overrideState: 1
     value: 10
   ghostColor:
     overrideState: 1
-    value: {r: 0, g: 0.9360676, b: 1, a: 1}
+    value: {r: 0.15065858, g: 0.8229196, b: 0.8679245, a: 1}
   colorTightness:
     overrideState: 1
-    value: 1.05
+    value: 1.85
   distortionTexture:
     overrideState: 1
     value: {fileID: 2800000, guid: ac56c592f92cba142a5a332ca95508b6, type: 3}
     defaultState: 1
   dstortionSize:
     overrideState: 1
-    value: 1.44
+    value: 0.48
   dstortionSpeed:
     overrideState: 1
     value: 3.7
   dstortionSrength:
     overrideState: 1
-    value: 0.2
+    value: 0.3
   dstortionSoftness:
     overrideState: 1
-    value: 0.05
+    value: 0.24
 --- !u!114 &-38459237938031977
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -74,13 +74,13 @@ MonoBehaviour:
     value: 1
   intensity:
     overrideState: 1
-    value: 0.28
+    value: 0.51
   color:
     overrideState: 1
     value: {r: 0, g: 0, b: 0, a: 1}
   ambientOnly:
     overrideState: 1
-    value: 1
+    value: 0
   noiseFilterTolerance:
     overrideState: 1
     value: 0
@@ -98,10 +98,10 @@ MonoBehaviour:
     value: 0
   radius:
     overrideState: 1
-    value: 0.25
+    value: 0.76
   quality:
     overrideState: 1
-    value: 2
+    value: 0
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -117,7 +117,6 @@ MonoBehaviour:
   settings:
   - {fileID: -38459237938031977}
   - {fileID: -3475332540544193316}
-  - {fileID: 9022799901127402619}
 --- !u!114 &6141784919675596269
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -224,22 +223,3 @@ MonoBehaviour:
   dstortionSoftness:
     overrideState: 0
     value: 0.5
---- !u!114 &9022799901127402619
-MonoBehaviour:
-  m_ObjectHideFlags: 3
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1fa71d05451990c4bbc4d6e86066d67b, type: 3}
-  m_Name: PEFXGrayScale
-  m_EditorClassIdentifier: 
-  active: 1
-  enabled:
-    overrideState: 1
-    value: 1
-  blend:
-    overrideState: 1
-    value: 0
