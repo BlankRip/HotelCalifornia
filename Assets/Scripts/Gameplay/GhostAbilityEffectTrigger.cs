@@ -11,7 +11,7 @@ namespace Knotgames.Gameplay {
             //^Get components like testEffect = GetComponent<TestEffect>();
         }
 
-        public void TriggerEffect(AbilityEffectType type, float duration, bool sendData) {
+        public void TriggerEffect(AbilityEffectType type, float duration) {
             switch(type) {
                 case AbilityEffectType.Nada:
                     //^testEffect.ApplyEffect();

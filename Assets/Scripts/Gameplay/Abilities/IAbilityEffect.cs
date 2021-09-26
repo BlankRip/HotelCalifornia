@@ -14,7 +14,7 @@ namespace Knotgames.Gameplay {
 
     public interface IAbilityEffectTrigger
     {
-        void TriggerEffect(AbilityEffectType type, float duration, bool sendData);
+        void TriggerEffect(AbilityEffectType type, float duration);
         bool IsUnderEffect();
     }
 }
