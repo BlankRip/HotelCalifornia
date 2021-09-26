@@ -48,7 +48,8 @@ namespace Knotgames.Gameplay {
             if(onTimer) {
                 timer -= Time.deltaTime;
                 if(timer <= 0) {
-                    currentEffect.ResetEffect();
+                    if(netObj.IsMine)
+                        currentEffect.ResetEffect();
                     underEffect = false;
                     onTimer = false;
                     currentEffect = null;
