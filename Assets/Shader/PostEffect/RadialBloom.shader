@@ -1,4 +1,4 @@
-Shader "PEFX/GhostVission"
+Shader "Custom/PostEffects/GhostVission"
 {
     HLSLINCLUDE
 

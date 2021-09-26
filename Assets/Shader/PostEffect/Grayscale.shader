@@ -1,4 +1,4 @@
-Shader "PEFX/Grayscale"
+Shader "Custom/PostEffects/Grayscale"
 {
     HLSLINCLUDE
 
