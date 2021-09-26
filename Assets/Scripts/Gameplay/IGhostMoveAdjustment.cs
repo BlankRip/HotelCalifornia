@@ -8,5 +8,6 @@ namespace Knotgames.Gameplay {
         float GetSpeed();
         void AdjustSpeed(float speedMultiplier);
         void SetSpeed(float speed);
+        void KnockBack();
     }
 }
