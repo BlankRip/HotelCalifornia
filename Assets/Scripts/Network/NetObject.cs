@@ -20,6 +20,19 @@ namespace Knotgames.Network
             }
         }
 
+        public string ObjectID
+        {
+            get
+            {
+                return id;
+            }
+
+            set
+            {
+                id = value;
+            }
+        }
+
         public void WriteData(string dataString)
         {
             OnMessageRecieve.Invoke(dataString);

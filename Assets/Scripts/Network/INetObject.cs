@@ -4,6 +4,13 @@
     {
         get;
     }
+
+    string ObjectID
+    {
+        get;
+        set;
+    }
+
     void WriteData(string obj);
     void DeleteObject();
 }

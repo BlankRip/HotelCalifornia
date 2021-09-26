@@ -37,6 +37,10 @@ namespace Knotgames.Network
                     NetRoomJoin.instance.roomID.value = JsonUtility.FromJson<RoomID>(dataString).roomID;
                     break;
 
+                case "playerLeftRoom":
+                    Debug.LogError("Player Left Room : " + dataString);
+                    break;
+
                 case "exitRoom":
 
                     break;
@@ -45,7 +49,7 @@ namespace Knotgames.Network
                     string objectID = JsonUtility.FromJson<ObjectID>(dataString).objectID;
                     NetObjManager.instance.PassDataToObject(objectID, dataString);
                     break;
-                
+
                 case "roomStateSync":
                     NetUnityEvents.instance.roomTiggerOnMsgRecieve.Invoke(dataString);
                     break;
