@@ -87,7 +87,8 @@ namespace Knotgames.Gameplay {
                         if(ultimate.CanUse())
                             ultimate.UseAbility();
                     }
-                }
+                } else
+                Debug.LogError("NOT REGISTERING ABILITY INPUTS!");
 
                 if(Input.GetKeyDown(KeyCode.F)) {
                     if(interactRay.CanInteract())

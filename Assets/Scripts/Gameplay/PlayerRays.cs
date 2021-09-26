@@ -4,7 +4,7 @@ using UnityEngine;
 using Knotgames.Network;
 
 namespace Knotgames.Gameplay {
-    public class PlayerRays : MonoBehaviour, IInteractRay
+    public class PlayerRays : MonoBehaviour, IInteractRay, IPlayerSiteRay
     {
         [SerializeField] NetObject netObj;
         [SerializeField] ScriptableRayCaster rayCaster;
@@ -66,11 +66,13 @@ namespace Knotgames.Gameplay {
                 if(playerObj == null) {
                     playerObj = hitInfo.collider.gameObject;
                     playerInSite = true;
+                    Debug.LogError("IN VIEW");
                 }
             } else {
                 if(playerObj != null) {
                     playerObj = null;
                     playerInSite = false;
+                    Debug.LogError("OUTTA VIEW");
                 }
             }
             Debug.DrawRay(camera.transform.position, camera.transform.forward * playerSightLenght, debugColor);
@@ -82,6 +84,14 @@ namespace Knotgames.Gameplay {
 
         public void Interact() {
             interactInView.Interact();
+        }
+
+        public bool InSite() {
+            return playerInSite;
+        }
+
+        public GameObject PlayerInSiteObj() {
+            return playerObj;
         }
     }
 }

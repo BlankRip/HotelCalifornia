@@ -7,7 +7,6 @@ namespace Knotgames.Gameplay {
     public class RoomState : MonoBehaviour, IRoomState
     {
         private static int currentId;
-
         [SerializeField] bool startRoom;
         private RoomEffectState roomState;
         private List<IAbilityResetter> resetters;
@@ -24,7 +23,6 @@ namespace Knotgames.Gameplay {
             dataToSend = new RoomStateData((int)roomState, id, 0);
             if(!DevBoy.yes)
                 NetUnityEvents.instance.roomTiggerOnMsgRecieve.AddListener(ReadData);
-
             resetters = new List<IAbilityResetter>();
         }
 
@@ -53,7 +51,6 @@ namespace Knotgames.Gameplay {
                         foreach (IAbilityResetter reset in resetters)
                             reset.ResetEffect();
                     }
-
                     roomState = RoomEffectState.Nada;
                     onTimer = false;
                 }
@@ -103,7 +100,6 @@ namespace Knotgames.Gameplay {
             roomState = effectState;
             resetIn = resetTime;
             onTimer = true;
-
             if(sendData && !DevBoy.yes)
                 SendData();
         }
@@ -136,5 +132,4 @@ namespace Knotgames.Gameplay {
             }
         }
     }
-
 }

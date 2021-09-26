@@ -4,15 +4,17 @@ using UnityEngine;
 
 namespace Knotgames.Gameplay {
     public enum AbilityEffectType {
-        Nada, TestOne
+        Nada, BlurEffect
     }
     public interface IAbilityEffect
     {
         void ApplyEffect();
+        void ResetEffect();
     }
 
     public interface IAbilityEffectTrigger
     {
-        void TriggerEffect(AbilityEffectType type);
+        void TriggerEffect(AbilityEffectType type, float duration, bool sendData);
+        bool IsUnderEffect();
     }
 }

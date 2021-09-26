@@ -37,6 +37,10 @@ namespace Knotgames.Gameplay {
                 data = new PlayerNetData(netObj.id);
         }
 
+        private void OnDestroy() {
+            netObj.OnMessageRecieve -= RecieveNetData;
+        }
+
         private void SendNetDataRepeat() {
             if(netObj.IsMine) {
                 NetConnector.instance.SendDataToServer(JsonUtility.ToJson(data));
