@@ -6,12 +6,11 @@ namespace Knotgames.Gameplay
 {
     public class BlurTrigger : TriggerAbilities
     {
-        private void Start()
-        {
-            myEffect = new BlurEffect(abilityDuration);
-            abilityDuration = 5;
-            usesLeft = 5;
-            Initilize("PrimaryUi", abilityDuration, TriggerEffectState.Blur, usesLeft);
+        float duration = 5;
+        int usesLeft = 3;
+
+        private void Start() {
+            Initilize("PrimaryUi", duration, AbilityEffectType.BlurEffect, usesLeft);
         }
     }
 }

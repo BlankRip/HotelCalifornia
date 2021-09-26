@@ -4,18 +4,14 @@ using UnityEngine;
 
 namespace Knotgames.Gameplay
 {
-    public class BlurEffect : MonoBehaviour, IAbilityResetter
+    public class BlurEffect : MonoBehaviour, IAbilityEffect
     {
-
-        public BlurEffect(float dur)
-        {
-            Invoke("ResetEffect", dur);
+        public void ApplyEffect() {
+            Debug.LogError("PUT BLURE HERE");
         }
 
-        public void ResetEffect()
-        {
+        public void ResetEffect() {
             Debug.LogError("RESETTING!!");
-            Destroy(this);
         }
     }
 }

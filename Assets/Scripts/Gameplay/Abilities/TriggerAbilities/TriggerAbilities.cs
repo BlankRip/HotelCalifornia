@@ -7,63 +7,50 @@ namespace Knotgames.Gameplay
 {
     public class TriggerAbilities : MonoBehaviour, IAbility
     {
-        private ITriggerState currentTrigger;
-        protected IAbilityUi myUi;
-        public float abilityDuration;
-        public int usesLeft;
-        protected PlayerRays playerRays;
-        TriggerEffectState abilityState;
-        protected Component myEffect;
+        private IAbilityUi myUi;
+        private float abilityDuration;
+        private int usesLeft;
+        private IPlayerSiteRay playerSiteRay;
+        private IAbilityEffectTrigger trigger;
+        private AbilityEffectType effectType;
 
         protected void Awake()
         {
-            playerRays = GetComponent<PlayerRays>();
+            playerSiteRay = GetComponent<IPlayerSiteRay>();
         }
 
-        protected void Initilize(string uiTag, float abilityDuration, TriggerEffectState stateToSet, int numberOfUses)
+        protected void Initilize(string uiTag, float abilityDuration, AbilityEffectType stateToSet, int numberOfUses)
         {
             myUi = GameObject.FindGameObjectWithTag(uiTag).GetComponent<IAbilityUi>();
             this.abilityDuration = abilityDuration;
-            abilityState = stateToSet;
             usesLeft = numberOfUses;
+            effectType = stateToSet;
             myUi.UpdateObjectData(usesLeft);
         }
 
-        private void Update()
-        {
-            if (playerRays.PlayerInSight)
-                currentTrigger = playerRays.ThePlayerInSight.GetComponent<ITriggerState>();
-            else
-                currentTrigger = null;
-        }
 
         public bool CanUse()
         {
-            if (playerRays.PlayerInSight && usesLeft != 0)
-                return true;
-            else
-            {
+            if (playerSiteRay.InSite()) {
+                trigger = playerSiteRay.PlayerInSiteObj().GetComponent<IAbilityEffectTrigger>();
+                if(!trigger.IsUnderEffect())
+                    return true;
+                else
+                    return false;
+            } else {
                 Debug.LogError("Could not activate");
                 return false;
             }
         }
 
-        public void UseAbility()
-        {
+        public void UseAbility() {
             usesLeft--;
             myUi.UpdateObjectData(usesLeft);
-            currentTrigger.SetTriggerState(abilityState, abilityDuration, true);
+            trigger.TriggerEffect(effectType, abilityDuration);
             Debug.Log("<color=red>USING TRIGGER ABILITY!</color>");
-            SpawnEffect(playerRays.ThePlayerInSight);
         }
 
-        protected void SpawnEffect(GameObject obj)
-        {
-            obj.AddComponent(myEffect.GetType());
-        }
-
-        public void Destroy()
-        {
+        public void Destroy() {
             Destroy(this);
         }
     }

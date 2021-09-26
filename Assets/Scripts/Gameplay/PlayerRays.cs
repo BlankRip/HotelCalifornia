@@ -4,7 +4,7 @@ using UnityEngine;
 using Knotgames.Network;
 
 namespace Knotgames.Gameplay {
-    public class PlayerRays : MonoBehaviour, IInteractRay
+    public class PlayerRays : MonoBehaviour, IInteractRay, IPlayerSiteRay
     {
         [SerializeField] NetObject netObj;
         [SerializeField] ScriptableRayCaster rayCaster;
@@ -86,12 +86,12 @@ namespace Knotgames.Gameplay {
             interactInView.Interact();
         }
 
-        public bool PlayerInSight {
-            get {return playerInSite;}
+        public bool InSite() {
+            return playerInSite;
         }
-        
-        public GameObject ThePlayerInSight {
-            get {return playerObj;}
+
+        public GameObject PlayerInSiteObj() {
+            return playerObj;
         }
     }
 }
