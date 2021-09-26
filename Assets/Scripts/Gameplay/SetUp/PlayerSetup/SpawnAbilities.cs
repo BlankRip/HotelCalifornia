@@ -41,6 +41,8 @@ namespace Knotgames.Gameplay {
                     return gameObject.AddComponent<TestAbility3>();
                 case AbilityType.test6:
                     return gameObject.AddComponent<TestAbility3>();
+                case AbilityType.BlurVision:
+                    return gameObject.AddComponent<BlurTrigger>();
                 default:
                     return gameObject.AddComponent<DummyAbility>();
             }
