@@ -4,7 +4,7 @@ using UnityEngine;
 using Knotgames.Network;
 
 namespace Knotgames.Gameplay {
-    public class GhostController : MonoBehaviour, IPlayerController
+    public class GhostController : MonoBehaviour, IPlayerController, IGhostControlerAdjustment
     {
         [SerializeField] ScriptablePlayerController currentController;
         [SerializeField] NetObject netObj;
@@ -18,8 +18,9 @@ namespace Knotgames.Gameplay {
         private IInteractRay interactRay;
 
         // Y Positive is Levitate up & Y Negetive is Levitate Down
-        System.Action RunAgain;
-        PlayerNetData data;
+        private PlayerNetData data;
+
+        private bool checkAbilityInputs;
 
         private void Awake() {
             currentController.controller = this;
@@ -31,6 +32,7 @@ namespace Knotgames.Gameplay {
             movement = GetComponent<IPlayerMovement>();
             animator = GetComponent<IPlayerAnimator>();
             interactRay = GetComponent<IInteractRay>();
+            checkAbilityInputs = true;
 
             if(!DevBoy.yes) {
                 data = new PlayerNetData(netObj.id);
@@ -72,17 +74,19 @@ namespace Knotgames.Gameplay {
                 else if(Input.GetKeyUp(KeyCode.LeftControl))
                     data.moveYNegetive = false;
 
-                if(Input.GetKeyDown(KeyCode.E)) {
-                    if(primary.CanUse())
-                        primary.UseAbility();
-                }
-                if(Input.GetKeyDown(KeyCode.Q)) {
-                    if(secondary.CanUse())
-                        secondary.UseAbility();
-                }
-                if(Input.GetKeyDown(KeyCode.R)) {
-                    if(ultimate.CanUse())
-                        ultimate.UseAbility();
+                if(checkAbilityInputs) {
+                    if(Input.GetKeyDown(KeyCode.E)) {
+                        if(primary.CanUse())
+                            primary.UseAbility();
+                    }
+                    if(Input.GetKeyDown(KeyCode.Q)) {
+                        if(secondary.CanUse())
+                            secondary.UseAbility();
+                    }
+                    if(Input.GetKeyDown(KeyCode.R)) {
+                        if(ultimate.CanUse())
+                            ultimate.UseAbility();
+                    }
                 }
 
                 if(Input.GetKeyDown(KeyCode.F)) {
@@ -109,12 +113,8 @@ namespace Knotgames.Gameplay {
             throw new System.NotImplementedException();
         }
 
-        // IEnumerator CallMe()
-        // {
-        //     yield return new WaitForSeconds(0.5f);
-        //     if (RunAgain != null)
-        //         RunAgain.Invoke();
-        //     StartCoroutine(CallMe());
-        // }
+        public void SetAbilityUsability(bool value) {
+            checkAbilityInputs = value;
+        }
     }
 }

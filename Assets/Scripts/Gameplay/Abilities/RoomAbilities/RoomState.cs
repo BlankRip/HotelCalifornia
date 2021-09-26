@@ -22,13 +22,15 @@ namespace Knotgames.Gameplay {
             id = currentId;
             currentId++;
             dataToSend = new RoomStateData((int)roomState, id, 0);
-            NetUnityEvents.instance.roomTiggerOnMsgRecieve.AddListener(ReadData);
+            if(!DevBoy.yes)
+                NetUnityEvents.instance.roomTiggerOnMsgRecieve.AddListener(ReadData);
 
             resetters = new List<IAbilityResetter>();
         }
 
         private void OnDestroy() {
-            NetUnityEvents.instance.roomTiggerOnMsgRecieve.RemoveListener(ReadData);
+            if(!DevBoy.yes)
+                NetUnityEvents.instance.roomTiggerOnMsgRecieve.RemoveListener(ReadData);
         }
 
         private void SendData() {
