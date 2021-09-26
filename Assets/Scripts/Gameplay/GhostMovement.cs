@@ -8,6 +8,7 @@ namespace Knotgames.Gameplay {
         [SerializeField] CharacterController cc;
         [SerializeField] float movementSpeed = 10;
         [SerializeField] float levitateSpeed = 5;
+        private Vector3 previousPos;
 
         private void Start() {
             if(cc == null)
@@ -16,6 +17,7 @@ namespace Knotgames.Gameplay {
 
         public void Move(float horizontalInput, float verticalInput, ref bool moveYPositive, ref bool moveYNegetive)
         {
+            previousPos = this.transform.position;
             float levitateInput = 0;
             float levitationSpeed = levitateSpeed;
             if(moveYPositive || moveYNegetive) {
@@ -42,6 +44,12 @@ namespace Knotgames.Gameplay {
 
         public void SetSpeed(float speed) {
             movementSpeed = speed;
+        }
+
+        public void KnockBack() {
+            Vector3 dir = (previousPos - this.transform.position).normalized;
+            Vector3 moveTarget = dir * 4;
+            cc.Move(moveTarget);
         }
     }
 }

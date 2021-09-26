@@ -33,8 +33,8 @@ namespace Knotgames.Gameplay {
                     return gameObject.AddComponent<SlowRoomTrigger>();
                 case AbilityType.NullAbilityRoom:
                     return gameObject.AddComponent<NullAbilityTrigger>();
-                case AbilityType.test3:
-                    return gameObject.AddComponent<TestAbility2>();
+                case AbilityType.NoEntryRoom:
+                    return gameObject.AddComponent<NoEntryTrigger>();
                 case AbilityType.test4:
                     return gameObject.AddComponent<TestAbility2>();
                 case AbilityType.test5:

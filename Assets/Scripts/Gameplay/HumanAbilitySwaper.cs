@@ -32,9 +32,9 @@ namespace Knotgames.Gameplay {
         private IAbility AttachAbility(AbilityType type) {
             switch(type) {
                 case AbilityType.NullAbilityRoom:
-                    return player.controller.GetPlayerObject().AddComponent<TestAbility2>();
-                case AbilityType.test3:
-                    return player.controller.GetPlayerObject().AddComponent<TestAbility2>();
+                    return player.controller.GetPlayerObject().AddComponent<NullAbilityTrigger>();
+                case AbilityType.NoEntryRoom:
+                    return player.controller.GetPlayerObject().AddComponent<NoEntryTrigger>();
                 case AbilityType.test4:
                     return player.controller.GetPlayerObject().AddComponent<TestAbility2>();
                 default:
