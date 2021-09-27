@@ -49,7 +49,7 @@ namespace Knotgames.Network
 
         void Update()
         {
-            if (recievedEvents.Count > 0) recievedEvents.Dequeue().Invoke();
+            while(recievedEvents.Count > 0) recievedEvents.Dequeue().Invoke();
         }
 
         async void ConnectToServer()
