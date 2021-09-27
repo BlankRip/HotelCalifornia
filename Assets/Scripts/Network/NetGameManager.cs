@@ -39,6 +39,11 @@ namespace Knotgames.Network
         {
             NetConnector.instance.SendDataToServer(JsonUtility.ToJson(new ReadyData("iAmNotReady", DistributionOption.serveMe)));
         }
+
+        public void LeaveRoom()
+        {
+            NetConnector.instance.SendDataToServer(JsonUtility.ToJson(new ReadyData("leaveRoom", DistributionOption.serveMe)));
+        }
     }
 
     [System.Serializable]
