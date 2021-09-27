@@ -75,7 +75,14 @@ namespace Knotgames.Network
 
         public void PassDataToObject(string objectID, string dataString)
         {
-            (allNetObjectDictionary[objectID] as INetObject).WriteData(dataString);
+            try
+            {
+                (allNetObjectDictionary[objectID] as INetObject).WriteData(dataString);
+            }
+            catch (Exception e)
+            {
+                Debug.LogError("[Caught Error] " + objectID + " " + dataString);
+            }
         }
 
         [System.Serializable]
