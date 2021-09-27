@@ -7,6 +7,11 @@ using Knotgames.Network;
 public class NextScene : MonoBehaviour
 {
     public NetGameManager netGameManager;
+    private void Start()
+    {
+        if (netGameManager != null)
+            netGameManager = FindObjectOfType<NetGameManager>();
+    }
     public void NextScener()
     {
         netGameManager.inGame = true;
@@ -15,6 +20,12 @@ public class NextScene : MonoBehaviour
 
     public void Restart()
     {
+        SceneManager.LoadScene(0);
+    }
+
+    public void Backer()
+    {
+        Destroy(NetConnector.instance.gameObject);
         SceneManager.LoadScene(0);
     }
 }
