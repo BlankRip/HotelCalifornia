@@ -49,7 +49,7 @@ namespace Knotgames.Gameplay {
             if(onTimer) {
                 timer -= Time.deltaTime;
                 if(timer <= 0) {
-                    if(netObj.IsMine && currentEffect != null)
+                    if((DevBoy.yes || netObj.IsMine) && currentEffect != null)
                         currentEffect.ResetEffect();
                     underEffect = false;
                     onTimer = false;
@@ -59,7 +59,7 @@ namespace Knotgames.Gameplay {
         }
 
         public void TriggerEffect(AbilityEffectType type, float duration, bool sendData) {
-            if(netObj.IsMine) {
+            if(DevBoy.yes || netObj.IsMine) {
                 switch(type) {
                     case AbilityEffectType.BlurEffect:
                         blurEffect.ApplyEffect();
