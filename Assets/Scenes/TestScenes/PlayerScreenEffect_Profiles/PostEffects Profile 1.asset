@@ -106,7 +106,50 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   settings:
   - {fileID: -233433673315206869}
-  - {fileID: -6749100972371958399}
+  - {fileID: 4000065987701965638}
+--- !u!114 &4000065987701965638
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 0}
+  m_Name: VissionBlur
+  m_EditorClassIdentifier: Assembly-CSharp::VissionBlur
+  active: 1
+  enabled:
+    overrideState: 1
+    value: 1
+  effect:
+    overrideState: 1
+    value: 0.01
+  iterationCount:
+    overrideState: 1
+    value: 2
+  lookupTexture:
+    overrideState: 1
+    value: {fileID: 2800000, guid: 043a5d4d3fe27d74d9ca8dacc79e3e6f, type: 3}
+    defaultState: 1
+  ghostSmokeTexture:
+    overrideState: 1
+    value: {fileID: 2800000, guid: ac56c592f92cba142a5a332ca95508b6, type: 3}
+    defaultState: 1
+  distortionTexture:
+    overrideState: 1
+    value: {fileID: 2800000, guid: 6255e4f8b61681b4e98a035ca270e15c, type: 3}
+    defaultState: 1
+  vapourStrength:
+    overrideState: 1
+    value: 3
+  vapourColor:
+    overrideState: 1
+    value: {r: 0, g: 1, b: 0.99048996, a: 0}
+  selectImage:
+    overrideState: 1
+    value: 0.302
 --- !u!114 &7329253760698045682
 MonoBehaviour:
   m_ObjectHideFlags: 3

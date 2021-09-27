@@ -49,9 +49,6 @@ public sealed class VissionBlurRenderer : PostProcessEffectRenderer<VissionBlur>
     public override void Render(PostProcessRenderContext context)
     {
 
-        // var sheet = context.propertySheets.Get(Shader.Find("Custom/PostEffects/AddTextures"));
-        //   sheet.properties.SetFloat("_Blend", settings.effect);
-
         var extractor = context.propertySheets.Get(Shader.Find("Custom/PostEffects/CorruptedVisionColorShift"));
         extractor.properties.SetTexture("_LookupTexture", settings.lookupTexture.value != null ? settings.lookupTexture.value : RuntimeUtilities.blackTexture);
         context.command.BlitFullscreenTriangle(context.source, rt1, extractor, 0);
