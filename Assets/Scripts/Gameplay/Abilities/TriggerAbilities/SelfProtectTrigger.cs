@@ -9,7 +9,7 @@ namespace Knotgames.Gameplay {
         private IAbilityEffectTrigger effectTrigger;
         private IAbilityUi myUi;
         private int usesLeft = 2;
-        private float duration;
+        private float duration = 10;
 
         private void Start() {
             effectTrigger = GetComponent<IAbilityEffectTrigger>();
@@ -28,6 +28,8 @@ namespace Knotgames.Gameplay {
 
         public void UseAbility() {
             usesLeft--;
+            myUi.UpdateObjectData(usesLeft);
+            Debug.LogError("Now Protected");
             effectTrigger.TriggerEffect(AbilityEffectType.HumanProtection, duration, true);
         }
 
