@@ -20,6 +20,7 @@ namespace Knotgames.Network
         public string ipLocal;
         public string ipAddressString;
         public int portNumber;
+        public System.Action<string> OnMsgRecieveRaw;
         public CustonEventString OnMsgRecieve;
         public SOBool isConnected;
         public SOString playerID;
@@ -68,6 +69,9 @@ namespace Knotgames.Network
         void DataReciver(MessageEventArgs eventData)
         {
             string val = Encoding.UTF8.GetString(eventData.RawData);
+            OnMsgRecieveRaw.Invoke(val);
+
+            
             recievedEvents.Enqueue(
             () =>
                 {
@@ -75,6 +79,8 @@ namespace Knotgames.Network
                     OnMsgRecieve.Invoke(val);
                 }
             );
+
+            
         }
 
         void OnDestroy()
