@@ -68,9 +68,12 @@ namespace Knotgames.Gameplay {
                     case AbilityEffectType.HumanProtection:
                         break;
                 }
-            } else if(sendData) {
-                SendData((int) type, duration);
             }
+
+            if(sendData)
+                SendData((int) type, duration);
+
+            Debug.LogError("Triggred");
 
             underEffect = true;
             timer = duration;
