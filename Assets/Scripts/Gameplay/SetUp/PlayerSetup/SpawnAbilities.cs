@@ -35,8 +35,8 @@ namespace Knotgames.Gameplay {
                     return gameObject.AddComponent<NullAbilityTrigger>();
                 case AbilityType.NoEntryRoom:
                     return gameObject.AddComponent<NoEntryTrigger>();
-                case AbilityType.test4:
-                    return gameObject.AddComponent<TestAbility2>();
+                case AbilityType.ClearTraps:
+                    return gameObject.AddComponent<ClearTrapsTrigger>();
                 case AbilityType.test5:
                     return gameObject.AddComponent<TestAbility3>();
                 case AbilityType.SelfProtect:

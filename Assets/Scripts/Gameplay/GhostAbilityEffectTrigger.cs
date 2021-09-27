@@ -13,14 +13,17 @@ namespace Knotgames.Gameplay {
         private float timer;
         private bool onTimer;
         private IAbilityEffect currentEffect;
+        
+        private IAbilityEffect clearTrapsEffect;
 
 
         private void Start() {
             if(netObj == null)
                 netObj = GetComponent<NetObject>();
             dataToSend = new NetSendData(netObj.id, 0, 0);
-
             netObj.OnMessageRecieve += RecieveData;
+
+            clearTrapsEffect = GetComponent<ClearTrapsEffect>();
         }
 
         private void OnDestroy() {
@@ -72,7 +75,9 @@ namespace Knotgames.Gameplay {
             }
 
             switch(type) {
-                case AbilityEffectType.BlurEffect:
+                case AbilityEffectType.ClearTraps:
+                    clearTrapsEffect.ApplyEffect();
+                    currentEffect = clearTrapsEffect;
                     break;
             }
         }
