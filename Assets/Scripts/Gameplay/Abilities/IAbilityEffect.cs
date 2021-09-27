@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Knotgames.Gameplay {
     public enum AbilityEffectType {
-        Nada, BlurEffect
+        Nada, BlurEffect, HumanProtection
     }
     public interface IAbilityEffect
     {
