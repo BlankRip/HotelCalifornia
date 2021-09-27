@@ -21,6 +21,7 @@ namespace Knotgames.Network
             {
                 case "playerLeftRoom":
                     thePanel.SetActive(true);
+                    Cursor.lockState = CursorLockMode.None;
                     Cursor.visible = true;
                     break;
             }
