@@ -8,4 +8,9 @@ public class DontKillMe : MonoBehaviour
     {
         DontDestroyOnLoad(this);
     }
+
+    public void KillME()
+    {
+        Destroy(this.gameObject);
+    }
 }

@@ -16,6 +16,7 @@ namespace Knotgames.Gameplay {
         private IAbilityEffect currentEffect;
 
         private IAbilityEffect blurEffect;
+        private IAbilityEffect protectionEffect;
 
 
         private void Start() {
@@ -48,7 +49,7 @@ namespace Knotgames.Gameplay {
             if(onTimer) {
                 timer -= Time.deltaTime;
                 if(timer <= 0) {
-                    if(netObj.IsMine)
+                    if((DevBoy.yes || netObj.IsMine) && currentEffect != null)
                         currentEffect.ResetEffect();
                     underEffect = false;
                     onTimer = false;
@@ -58,16 +59,21 @@ namespace Knotgames.Gameplay {
         }
 
         public void TriggerEffect(AbilityEffectType type, float duration, bool sendData) {
-            if(netObj.IsMine) {
+            if(DevBoy.yes || netObj.IsMine) {
                 switch(type) {
                     case AbilityEffectType.BlurEffect:
                         blurEffect.ApplyEffect();
                         currentEffect = blurEffect;
                         break;
+                    case AbilityEffectType.HumanProtection:
+                        break;
                 }
-            } else if(sendData) {
-                SendData((int) type, duration);
             }
+
+            if(sendData)
+                SendData((int) type, duration);
+
+            Debug.LogError("Triggred");
 
             underEffect = true;
             timer = duration;

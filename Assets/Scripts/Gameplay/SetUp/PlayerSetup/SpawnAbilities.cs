@@ -39,8 +39,8 @@ namespace Knotgames.Gameplay {
                     return gameObject.AddComponent<TestAbility2>();
                 case AbilityType.test5:
                     return gameObject.AddComponent<TestAbility3>();
-                case AbilityType.test6:
-                    return gameObject.AddComponent<TestAbility3>();
+                case AbilityType.SelfProtect:
+                    return gameObject.AddComponent<SelfProtectTrigger>();
                 case AbilityType.BlurVision:
                     return gameObject.AddComponent<BlurTrigger>();
                 default:
