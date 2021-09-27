@@ -1528,7 +1528,6 @@ GameObject:
   - component: {fileID: 167260088}
   - component: {fileID: 167260090}
   - component: {fileID: 167260091}
-  - component: {fileID: 167260092}
   m_Layer: 0
   m_Name: test
   m_TagString: Untagged
@@ -1592,18 +1591,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 276cd1ff52e2a044bac7ca67b3e20a28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &167260092
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 167260087}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 465241ab65a46314ba93981ee9ac2516, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  netGameManager: {fileID: 1730150450}
 --- !u!1 &213897817 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7563715798473930534, guid: 291233c438f1f5d439e7dfe3616fb536, type: 3}
@@ -8450,7 +8438,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 167260092}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Knotgames.Network.NetGameManager, Assembly-CSharp
         m_MethodName: Ready
         m_Mode: 1
@@ -8611,7 +8599,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2384152667662576084, guid: 2d0c2f42cc028b843b6a4c4d120bab68, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -108.06018
+      value: -108.06006
       objectReference: {fileID: 0}
     - target: {fileID: 2384152668508972734, guid: 2d0c2f42cc028b843b6a4c4d120bab68, type: 3}
       propertyPath: m_Pivot.x
@@ -12587,7 +12575,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 450.00006, y: 0}
+  m_AnchoredPosition: {x: 450, y: 0}
   m_SizeDelta: {x: 900, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1431398763
@@ -12794,9 +12782,33 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 548261141}
-        m_TargetAssemblyTypeName: Knotgames.UI.PanelSwither, Assembly-CSharp
-        m_MethodName: Pop
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: NextScene, Assembly-CSharp
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 167260091}
+        m_TargetAssemblyTypeName: NextScene, Assembly-CSharp
+        m_MethodName: Restart
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1730150443}
+        m_TargetAssemblyTypeName: DontKillMe, Assembly-CSharp
+        m_MethodName: KillME
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -14658,6 +14670,7 @@ GameObject:
   - component: {fileID: 1730150442}
   - component: {fileID: 1730150448}
   - component: {fileID: 1730150449}
+  - component: {fileID: 1730150450}
   m_Layer: 0
   m_Name: NetworkManager
   m_TagString: Untagged
@@ -14735,7 +14748,7 @@ MonoBehaviour:
   OnMsgRecieve:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 167260092}
+      - m_Target: {fileID: 1730150450}
         m_TargetAssemblyTypeName: Knotgames.Network.NetGameManager, Assembly-CSharp
         m_MethodName: Hear
         m_Mode: 0
@@ -14790,6 +14803,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fdd1bcb45157134aace1d9330386d67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1730150450
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1730150441}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 465241ab65a46314ba93981ee9ac2516, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inGame: 0
 --- !u!1 &1813443436
 GameObject:
   m_ObjectHideFlags: 0
@@ -15241,7 +15267,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 167260092}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Knotgames.Network.NetGameManager, Assembly-CSharp
         m_MethodName: Ready
         m_Mode: 1
@@ -15955,7 +15981,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 450.00006, y: -159}
+  m_AnchoredPosition: {x: 450, y: -159}
   m_SizeDelta: {x: 900, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1916285227

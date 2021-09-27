@@ -7,6 +7,8 @@ namespace Knotgames.Network
 {
     public class NetGameManager : MonoBehaviour
     {
+        public bool inGame = false;
+
         public void Hear(string dataString)
         {
             string eventName = JsonUtility.FromJson<ReadyData>(dataString).eventName;
@@ -18,6 +20,12 @@ namespace Knotgames.Network
                 case "startGame":
                     Debug.LogError("STARTING");
                     SceneManager.LoadScene(1);
+                    break;
+                case "playerLeftRoom":
+                    if (inGame)
+                        Debug.Log("<color=red>A SINFUL BEING HAS BEEN PURGED FROM THE LOBBY, WHAT A DICK</color>");
+                    else
+                        Debug.Log("<color=yellow>A SINFUL BEING HAS BEEN PURGED FROM THE LOBBY, ATLEAST HE LEFT EARLY</color>");
                     break;
             }
         }
