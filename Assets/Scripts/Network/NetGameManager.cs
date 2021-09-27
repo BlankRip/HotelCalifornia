@@ -18,6 +18,7 @@ namespace Knotgames.Network
                     break;
                 case "startGame":
                     Debug.LogError("STARTING");
+                    inGame = true;
                     SceneManager.LoadScene(1);
                     break;
                 case "playerLeftRoom":
