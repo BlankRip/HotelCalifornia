@@ -77,7 +77,7 @@ namespace Knotgames.Network
         {
             try
             {
-                (allNetObjectDictionary[objectID] as INetObject).WriteData(dataString);
+                if (allNetObjectDictionary[objectID] != null) (allNetObjectDictionary[objectID] as INetObject).WriteData(dataString);
             }
             catch (Exception e)
             {
