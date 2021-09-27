@@ -13,16 +13,18 @@ namespace Knotgames.Gameplay
         private IPlayerSiteRay playerSiteRay;
         private IAbilityEffectTrigger trigger;
         private AbilityEffectType effectType;
+        private bool masterOnlyTrigger;
 
         protected void Awake()
         {
             playerSiteRay = GetComponent<IPlayerSiteRay>();
         }
 
-        protected void Initilize(string uiTag, float abilityDuration, AbilityEffectType stateToSet, int numberOfUses)
+        protected void Initilize(string uiTag, float abilityDuration, AbilityEffectType stateToSet, int numberOfUses, bool masterOnlyTrigger)
         {
             myUi = GameObject.FindGameObjectWithTag(uiTag).GetComponent<IAbilityUi>();
             this.abilityDuration = abilityDuration;
+            this.masterOnlyTrigger = masterOnlyTrigger;
             usesLeft = numberOfUses;
             effectType = stateToSet;
             myUi.UpdateObjectData(usesLeft);
@@ -48,7 +50,7 @@ namespace Knotgames.Gameplay
         public void UseAbility() {
             usesLeft--;
             myUi.UpdateObjectData(usesLeft);
-            trigger.TriggerEffect(effectType, abilityDuration, true);
+            trigger.TriggerEffect(effectType, abilityDuration, masterOnlyTrigger, true);
             Debug.Log("<color=red>USING TRIGGER ABILITY!</color>");
         }
 

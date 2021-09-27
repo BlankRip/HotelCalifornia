@@ -30,7 +30,7 @@ namespace Knotgames.Gameplay {
             usesLeft--;
             myUi.UpdateObjectData(usesLeft);
             Debug.LogError("Now Protected");
-            effectTrigger.TriggerEffect(AbilityEffectType.HumanProtection, duration, true);
+            effectTrigger.TriggerEffect(AbilityEffectType.HumanProtection, duration, true, true);
         }
 
         public void Destroy() {

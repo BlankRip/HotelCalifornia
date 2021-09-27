@@ -10,7 +10,7 @@ namespace Knotgames.Gameplay
         int usesLeft = 3;
 
         private void Start() {
-            Initilize("PrimaryUi", duration, AbilityEffectType.BlurEffect, usesLeft);
+            Initilize("PrimaryUi", duration, AbilityEffectType.BlurEffect, usesLeft, true);
         }
     }
 }

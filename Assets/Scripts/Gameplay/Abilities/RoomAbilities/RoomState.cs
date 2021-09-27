@@ -4,9 +4,10 @@ using UnityEngine;
 using Knotgames.Network;
 
 namespace Knotgames.Gameplay {
-    public class RoomState : MonoBehaviour, IRoomState
+    public class RoomState : MonoBehaviour, IRoomState, ICancelableTrap
     {
         private static int currentId;
+        [SerializeField] ScriptableTrapTracker trapTracker;
         [SerializeField] bool startRoom;
         private RoomEffectState roomState;
         private List<IAbilityResetter> resetters;
@@ -26,9 +27,14 @@ namespace Knotgames.Gameplay {
             resetters = new List<IAbilityResetter>();
         }
 
+        private void Start() {
+            trapTracker.tracker.AddToCancelable(this);
+        }
+
         private void OnDestroy() {
             if(!DevBoy.yes)
                 NetUnityEvents.instance.roomTiggerOnMsgRecieve.RemoveListener(ReadData);
+            trapTracker.tracker.RemoveFromCancelable(this);
         }
 
         private void SendData() {
@@ -46,14 +52,8 @@ namespace Knotgames.Gameplay {
         private void Update() {
             if(onTimer) {
                 resetIn -= Time.deltaTime;
-                if(resetIn <= 0) {
-                    if(resetters.Count != 0) {
-                        foreach (IAbilityResetter reset in resetters)
-                            reset.ResetEffect();
-                    }
-                    roomState = RoomEffectState.Nada;
-                    onTimer = false;
-                }
+                if(resetIn <= 0)
+                    Cancel();
             }
         }
 
@@ -102,6 +102,15 @@ namespace Knotgames.Gameplay {
             onTimer = true;
             if(sendData && !DevBoy.yes)
                 SendData();
+        }
+
+        public void Cancel() {
+            if(resetters.Count != 0) {
+                foreach (IAbilityResetter reset in resetters)
+                    reset.ResetEffect();
+            }
+            roomState = RoomEffectState.Nada;
+            onTimer = false;
         }
 
         private class RoomIdExtraction
