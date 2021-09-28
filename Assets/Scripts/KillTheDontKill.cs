@@ -4,22 +4,28 @@ using UnityEngine;
 
 public class KillTheDontKill : MonoBehaviour
 {
-    public static KillTheDontKill instance;
-    public List<DontKillMe> toKill;
+    public KillRef referer;
+    public List<GameObject> toKill;
+    private bool canDestroy = false;
 
     private void Awake()
     {
-        instance = this;
+        if (referer.reference == null)
+        {
+            referer.reference = this;
+            canDestroy = false;
+        }
+        else if (referer.reference != this)
+        {
+            canDestroy = true;
+            foreach (GameObject go in toKill)
+                Destroy(go);
+        }
     }
 
-    public void Kill()
+    private void OnDestroy()
     {
-        Debug.LogError("KILLED!!!!!!");
-        foreach(DontKillMe obj in toKill)
-        {
-            Destroy(obj.gameObject);
-        }
-
-        toKill.Clear();
+        if (!canDestroy)
+            referer.reference = null;
     }
 }

@@ -9,6 +9,8 @@ public class NetTransformSync : MonoBehaviour
     NetObject netObject;
     System.Action RunOnUpdate;
     Queue<Action> actionList = new Queue<Action>();
+    int elapsedFrames = 0;
+    public int interpolationFramesCount = 45;
 
     void Start()
     {
@@ -24,12 +26,14 @@ public class NetTransformSync : MonoBehaviour
     {
         RunOnUpdate = () =>
         {
+            float interpolationRatio = (float)elapsedFrames / interpolationFramesCount;
+            elapsedFrames = (elapsedFrames + 1) % (interpolationFramesCount + 1);
             TransformData transformData = JsonUtility.FromJson<TransformData>(dataString);
             Vector3 targetPos = transformData.transform.position.ToVector();
             if(targetPos != Vector3.zero)
-                transform.position = targetPos;
+                transform.position = Vector3.Lerp(transform.position, targetPos, interpolationRatio);
             try {
-                transform.rotation = transformData.transform.rotation.ToQuaternion();
+                transform.rotation = Quaternion.Lerp(transform.rotation, transformData.transform.rotation.ToQuaternion(), interpolationRatio);
             } catch { }
         };
     }
