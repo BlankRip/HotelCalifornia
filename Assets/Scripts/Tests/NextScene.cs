@@ -16,10 +16,4 @@ public class NextScene : MonoBehaviour
         NetGameManager.instance.LeaveRoom();
         SceneManager.LoadScene(0);
     }
-
-    public void Backer()
-    {
-        NetGameManager.instance.LeaveRoom();
-        SceneManager.LoadScene(0);
-    }
 }
