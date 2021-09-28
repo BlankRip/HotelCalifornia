@@ -8,6 +8,7 @@ namespace Knotgames.Network
     public class NetGameManager : MonoBehaviour
     {
         [HideInInspector] public bool inGame = false;
+        public static NetGameManager instance;
         public void Hear(string dataString)
         {
             string eventName = JsonUtility.FromJson<ReadyData>(dataString).eventName;
