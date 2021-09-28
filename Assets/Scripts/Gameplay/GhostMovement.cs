@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 namespace Knotgames.Gameplay {
-    public class GhostMovement : MonoBehaviour, IPlayerMovement, IGhostMoveAdjustment
+    public class GhostMovement : MonoBehaviour, IPlayerMovement, IGhostMoveAdjustment, IMoveAdjustment
     {
         [SerializeField] CharacterController cc;
         [SerializeField] float movementSpeed = 10;
@@ -50,6 +50,12 @@ namespace Knotgames.Gameplay {
             Vector3 dir = (previousPos - this.transform.position).normalized;
             Vector3 moveTarget = dir * 4;
             cc.Move(moveTarget);
+        }
+
+        public void MoveToPosition(Vector3 position) {
+            cc.enabled = false;
+            transform.position = position;
+            cc.enabled = true;
         }
     }
 }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 namespace Knotgames.Gameplay {
-    public class HumanMovement : MonoBehaviour, IPlayerMovement
+    public class HumanMovement : MonoBehaviour, IPlayerMovement, IMoveAdjustment
     {
         [SerializeField] CharacterController cc;
         [SerializeField] float movementSpeed = 10;
@@ -50,6 +50,12 @@ namespace Knotgames.Gameplay {
 
             velocity.y += gravity * Time.deltaTime;
             cc.Move(velocity * Time.deltaTime);
+        }
+
+        public void MoveToPosition(Vector3 position) {
+            cc.enabled = false;
+            transform.position = position;
+            cc.enabled = true;
         }
     }
 }
