@@ -10,4 +10,9 @@ namespace Knotgames.Gameplay {
         void SetSpeed(float speed);
         void KnockBack();
     }
+
+    public interface IMoveAdjustment
+    {
+        void MoveToPosition(Vector3 position);
+    }
 }
