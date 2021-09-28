@@ -35,7 +35,7 @@ namespace Knotgames.Network
 
         public void WriteData(string dataString)
         {
-            OnMessageRecieve.Invoke(dataString);
+            if (OnMessageRecieve != null) OnMessageRecieve.Invoke(dataString);
         }
 
         public void DeleteObject()
