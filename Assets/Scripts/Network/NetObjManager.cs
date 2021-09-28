@@ -18,7 +18,7 @@ namespace Knotgames.Network
 
         void Awake()
         {
-            instance = this;
+            if (instance == null) instance = this;
         }
 
         void Update()
@@ -75,14 +75,7 @@ namespace Knotgames.Network
 
         public void PassDataToObject(string objectID, string dataString)
         {
-            try
-            {
-                if (allNetObjectDictionary[objectID] != null) (allNetObjectDictionary[objectID] as INetObject).WriteData(dataString);
-            }
-            catch (Exception e)
-            {
-                UnityEngine.Debug.LogError("[Caught Error] " + objectID + " " + dataString);
-            }
+            if (allNetObjectDictionary.ContainsKey(objectID)) (allNetObjectDictionary[objectID] as INetObject).WriteData(dataString);
         }
 
         [System.Serializable]

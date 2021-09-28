@@ -9,11 +9,13 @@ namespace Knotgames.Network
         public static NetRoomJoin instance;
         public SOString roomID;
 
-        void Awake() {
-            instance = this;
+        void Awake()
+        {
+            if (instance == null) instance = this;
         }
 
-        void Start() {
+        void Start()
+        {
             roomID.value = null;
         }
 
