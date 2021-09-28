@@ -8,13 +8,14 @@ public class NetDebug : MonoBehaviour
     public bool isTesting;
     public Queue<string> DebugActions = new Queue<string>();
 
-    void Awake() {
-        instance = this;
+    void Awake()
+    {
+        if (instance == null) instance = this;
     }
 
     void Update()
     {
-        while(DebugActions.Count > 0)Debug.Log(DebugActions.Dequeue());
+        while (DebugActions.Count > 0) Debug.Log(DebugActions.Dequeue());
     }
 
     public void AddDebug(string displayString)
