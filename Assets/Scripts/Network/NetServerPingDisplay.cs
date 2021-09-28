@@ -11,7 +11,7 @@ namespace Knotgames.Network
         [SerializeField] Text logText;
         [SerializeField] float pingDelay = 1;
         Stopwatch clock = new Stopwatch();
-        string pingValue;
+        float pingValue;
         float nextUpdate = 0;
         Ping pingData;
 
@@ -37,16 +37,21 @@ namespace Knotgames.Network
                     )
                 );
                 nextUpdate = Time.time + pingDelay;
-                
             }
 
             logText.text = $"[Ping] : {pingValue}ms";
         }
 
         public void CalculatePing(string timeData)
-        {   
+        {
             PingSend data = JsonUtility.FromJson<PingSend>(timeData);
-            pingValue = (clock.ElapsedMilliseconds - data.time).ToString();
+            switch(data.eventName)
+            {
+                case "ping":
+                if (data.time > 0)
+                    pingValue = clock.ElapsedMilliseconds - data.time;
+                break;
+            }
         }
 
         [System.Serializable]
@@ -63,10 +68,6 @@ namespace Knotgames.Network
                 distributionOption = DistributionOption.serveMe;
                 this.time = time;
             }
-
         }
-
     }
 }
-
-
