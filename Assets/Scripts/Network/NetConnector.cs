@@ -36,21 +36,25 @@ namespace Knotgames.Network
 
         void Awake()
         {
-            NetConnector.instance = this;
+            if (NetConnector.instance == null) NetConnector.instance = this;
+            else Destroy(this);
             running = true;
         }
 
         void Start()
         {
-            isConnected.value = false;
-            playerID.value = null;
-            eventHub = new NetEventHub(isConnected, playerID);
-            ConnectToServer();
+            if (NetConnector.instance.ws == null)
+            {
+                isConnected.value = false;
+                playerID.value = null;
+                eventHub = new NetEventHub(isConnected, playerID);
+                ConnectToServer();
+            }
         }
 
         void Update()
         {
-            while(recievedEvents.Count > 0) recievedEvents.Dequeue().Invoke();
+            while (recievedEvents.Count > 0) recievedEvents.Dequeue().Invoke();
         }
 
         async void ConnectToServer()
@@ -71,7 +75,7 @@ namespace Knotgames.Network
             string val = Encoding.UTF8.GetString(eventData.RawData);
             OnMsgRecieveRaw.Invoke(val);
 
-            
+
             recievedEvents.Enqueue(
             () =>
                 {
@@ -80,12 +84,12 @@ namespace Knotgames.Network
                 }
             );
 
-            
+
         }
 
         void OnDestroy()
         {
-            ws.Close(CloseStatusCode.Normal, JsonUtility.ToJson(new PlayerData() { playerID = playerID.value }));
+            ws?.Close(CloseStatusCode.Normal, JsonUtility.ToJson(new PlayerData() { playerID = playerID.value }));
             running = false;
         }
 
