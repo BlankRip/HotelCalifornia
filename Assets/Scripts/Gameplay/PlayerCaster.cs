@@ -4,7 +4,7 @@ using UnityEngine;
 using Knotgames.Network;
 
 namespace Knotgames.Gameplay {
-    public class PlayerRays : MonoBehaviour, IInteractRay, IPlayerSiteRay
+    public class PlayerCaster : MonoBehaviour, IInteractRay, IPlayerSiteRay, ISphereCaster
     {
         [SerializeField] NetObject netObj;
         [SerializeField] ScriptableRayCaster rayCaster;
@@ -14,10 +14,12 @@ namespace Knotgames.Gameplay {
         private bool canInteract;
         private IInteractable interactInView;
 
-        [SerializeField] LayerMask playerLayers;
+        [SerializeField] bool usePlayerSightRay;
+        [SerializeField] LayerMask opositionPlayerLayers;
+        [SerializeField] LayerMask friendlyPlayerLayers;
         [SerializeField] float playerSightLenght = 10;
         private bool playerInSite;
-        GameObject playerObj;
+        private GameObject playerObj;
 
         private Camera camera;
         private void Start() {
@@ -34,8 +36,9 @@ namespace Knotgames.Gameplay {
         }
 
         private void Update() {
-            PlayerLineOfSiteRay();
             InteractionRay();
+            if(usePlayerSightRay)
+                PlayerLineOfSiteRay();
         }
 
         private void InteractionRay() {
@@ -59,7 +62,7 @@ namespace Knotgames.Gameplay {
         }
 
         private void PlayerLineOfSiteRay() {
-            RaycastHit hitInfo = rayCaster.caster.CastRay(playerLayers, playerSightLenght);
+            RaycastHit hitInfo = rayCaster.caster.CastRay(opositionPlayerLayers, playerSightLenght);
             Color debugColor = Color.blue;
             if(hitInfo.collider != null) {
                 debugColor = Color.green;
@@ -92,6 +95,23 @@ namespace Knotgames.Gameplay {
 
         public GameObject PlayerInSiteObj() {
             return playerObj;
+        }
+
+        public List<GameObject> GetOppositPlayersInSphere(float radius) {
+            return GetPlayersInSphere(radius, opositionPlayerLayers);
+        }
+
+        public List<GameObject> GetFriendlyPlayersInSphere(float radius) {
+            return GetPlayersInSphere(radius, friendlyPlayerLayers);
+        }
+
+        private List<GameObject> GetPlayersInSphere(float radius, LayerMask mask) {
+            List<GameObject> objList = new List<GameObject>();
+            Collider[] colliders = Physics.OverlapSphere(transform.position, radius, mask);
+            foreach (Collider col in colliders)
+                objList.Add(col.gameObject);
+
+            return objList;
         }
     }
 }

@@ -15,6 +15,7 @@ namespace Knotgames.Gameplay {
         private IAbilityEffect currentEffect;
         
         private IAbilityEffect clearTrapsEffect;
+        private IAbilityEffect teleportEffect;
 
 
         private void Start() {
@@ -24,6 +25,7 @@ namespace Knotgames.Gameplay {
             netObj.OnMessageRecieve += RecieveData;
 
             clearTrapsEffect = GetComponent<ClearTrapsEffect>();
+            teleportEffect = GetComponent<TeleportEffect>();
         }
 
         private void OnDestroy() {
@@ -58,7 +60,7 @@ namespace Knotgames.Gameplay {
         }
 
         public void TriggerEffect(AbilityEffectType type, float duration, bool masterOnly, bool sendData) {
-            if(sendData)
+            if(sendData && !DevBoy.yes)
                 SendData((int) type, duration, masterOnly);
 
             Debug.LogError("Triggred");
@@ -78,6 +80,10 @@ namespace Knotgames.Gameplay {
                 case AbilityEffectType.ClearTraps:
                     clearTrapsEffect.ApplyEffect();
                     currentEffect = clearTrapsEffect;
+                    break;
+                case AbilityEffectType.Teleport:
+                    teleportEffect.ApplyEffect();
+                    currentEffect = teleportEffect;
                     break;
             }
         }

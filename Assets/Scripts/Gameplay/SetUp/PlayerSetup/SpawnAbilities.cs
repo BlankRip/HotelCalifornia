@@ -43,6 +43,8 @@ namespace Knotgames.Gameplay {
                     return gameObject.AddComponent<SelfProtectTrigger>();
                 case AbilityType.BlurVision:
                     return gameObject.AddComponent<BlurTrigger>();
+                case AbilityType.BanishGhost:
+                    return gameObject.AddComponent<BanishGhostTrigger>();
                 default:
                     return gameObject.AddComponent<DummyAbility>();
             }

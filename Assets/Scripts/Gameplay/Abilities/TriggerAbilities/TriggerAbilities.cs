@@ -10,8 +10,11 @@ namespace Knotgames.Gameplay
         private IAbilityUi myUi;
         private float abilityDuration;
         private int usesLeft;
+        protected int UsesLeft {
+            get{return usesLeft;}
+        }
         private IPlayerSiteRay playerSiteRay;
-        private IAbilityEffectTrigger trigger;
+        private List<IAbilityEffectTrigger> triggers;
         private AbilityEffectType effectType;
         private bool masterOnlyTrigger;
 
@@ -22,6 +25,7 @@ namespace Knotgames.Gameplay
 
         protected void Initilize(string uiTag, float abilityDuration, AbilityEffectType stateToSet, int numberOfUses, bool masterOnlyTrigger)
         {
+            triggers = new List<IAbilityEffectTrigger>();
             myUi = GameObject.FindGameObjectWithTag(uiTag).GetComponent<IAbilityUi>();
             this.abilityDuration = abilityDuration;
             this.masterOnlyTrigger = masterOnlyTrigger;
@@ -33,9 +37,14 @@ namespace Knotgames.Gameplay
 
         public bool CanUse()
         {
+            return CanUseOverride();
+        }
+
+        protected virtual bool CanUseOverride() {
             if (playerSiteRay.InSite() && usesLeft!=0) {
-                trigger = playerSiteRay.PlayerInSiteObj().GetComponent<IAbilityEffectTrigger>();
-                if(!trigger.IsUnderEffect())
+                triggers.Clear();
+                triggers.Add(playerSiteRay.PlayerInSiteObj().GetComponent<IAbilityEffectTrigger>());
+                if(!triggers[0].IsUnderEffect())
                     return true;
                 else {
                     Debug.LogError("Could not activate");
@@ -47,10 +56,15 @@ namespace Knotgames.Gameplay
             }
         }
 
+        protected void SetTriggers(List<IAbilityEffectTrigger> triggers) {
+            this.triggers = triggers;
+        }
+
         public void UseAbility() {
             usesLeft--;
             myUi.UpdateObjectData(usesLeft);
-            trigger.TriggerEffect(effectType, abilityDuration, masterOnlyTrigger, true);
+            foreach (IAbilityEffectTrigger trigger in triggers)
+                trigger.TriggerEffect(effectType, abilityDuration, masterOnlyTrigger, true);
             Debug.Log("<color=red>USING TRIGGER ABILITY!</color>");
         }
 
