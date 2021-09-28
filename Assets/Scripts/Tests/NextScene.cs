@@ -18,7 +18,6 @@ public class NextScene : MonoBehaviour
 
     public void Backer()
     {
-        KillTheDontKill.instance.Kill();
         SceneManager.LoadScene(0);
     }
 }
