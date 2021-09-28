@@ -18,7 +18,7 @@ public class NextScene : MonoBehaviour
 
     public void Backer()
     {
-        Destroy(NetConnector.instance.gameObject);
+        KillTheDontKill.instance.Kill();
         SceneManager.LoadScene(0);
     }
 }
