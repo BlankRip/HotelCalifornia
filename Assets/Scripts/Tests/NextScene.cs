@@ -13,11 +13,13 @@ public class NextScene : MonoBehaviour
 
     public void Restart()
     {
+        NetGameManager.instance.LeaveRoom();
         SceneManager.LoadScene(0);
     }
 
     public void Backer()
     {
+        NetGameManager.instance.LeaveRoom();
         SceneManager.LoadScene(0);
     }
 }
