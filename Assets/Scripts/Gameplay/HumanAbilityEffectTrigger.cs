@@ -16,6 +16,7 @@ namespace Knotgames.Gameplay {
 
         private IAbilityEffect blurEffect;
         private IAbilityEffect protectionEffect;
+        private IAbilityEffect teleportEffect;
 
 
         private void Start() {
@@ -24,6 +25,7 @@ namespace Knotgames.Gameplay {
             dataToSend = new NetSendData(netObj.id, 0, 0);
             
             blurEffect = GetComponent<BlurEffect>();
+            teleportEffect = GetComponent<TeleportEffect>();
             netObj.OnMessageRecieve += RecieveData;
         }
 
@@ -59,7 +61,7 @@ namespace Knotgames.Gameplay {
         }
 
         public void TriggerEffect(AbilityEffectType type, float duration, bool masterOnly, bool sendData) {
-            if(sendData)
+            if(sendData && !DevBoy.yes)
                 SendData((int) type, duration, masterOnly);
 
             Debug.LogError("Triggred");
@@ -81,6 +83,10 @@ namespace Knotgames.Gameplay {
                     currentEffect = blurEffect;
                     break;
                 case AbilityEffectType.HumanProtection:
+                    break;
+                case AbilityEffectType.Teleport:
+                    teleportEffect.ApplyEffect();
+                    currentEffect = teleportEffect;
                     break;
             }
         }
