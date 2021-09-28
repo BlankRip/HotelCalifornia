@@ -14,7 +14,7 @@ public class NetDebug : MonoBehaviour
 
     void Update()
     {
-        if (DebugActions.Count > 0) Debug.Log(DebugActions.Dequeue());
+        while(DebugActions.Count > 0)Debug.Log(DebugActions.Dequeue());
     }
 
     public void AddDebug(string displayString)
