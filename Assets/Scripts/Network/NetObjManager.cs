@@ -46,7 +46,7 @@ namespace Knotgames.Network
             networkActionQueue.Enqueue(() =>
             {
                 // find object 
-                Debug.Log(spawnObject.objectName);
+                UnityEngine.Debug.Log(spawnObject.objectName);
                 GameObject newObject = Instantiate(Resources.Load(spawnObject.objectName) as GameObject,
                 spawnObject.transformWS.position.ToVector(),
                 spawnObject.transformWS.rotation.ToQuaternion());
@@ -81,7 +81,7 @@ namespace Knotgames.Network
             }
             catch (Exception e)
             {
-                Debug.LogError("[Caught Error] " + objectID + " " + dataString);
+                UnityEngine.Debug.LogError("[Caught Error] " + objectID + " " + dataString);
             }
         }
 

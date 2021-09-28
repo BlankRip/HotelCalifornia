@@ -57,7 +57,7 @@ namespace Knotgames.Network
         {
             while (!isConnected.value && running)
             {
-                Debug.Log("Connection attempt...");
+                UnityEngine.Debug.Log("Connection attempt...");
                 string connectionURL = !localTesting ? ipAddressString : $"{ipLocal}:{portNumber}";
                 ws = new WebSocket($"ws://{connectionURL}");
                 ws.OnMessage += (sender, e) => DataReciver(e);

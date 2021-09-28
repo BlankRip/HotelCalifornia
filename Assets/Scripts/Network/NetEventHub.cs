@@ -38,7 +38,7 @@ namespace Knotgames.Network
                     break;
 
                 case "playerLeftRoom":
-                    Debug.LogError("Player Left Room : " + dataString);
+                    UnityEngine.Debug.LogError("Player Left Room : " + dataString);
                     break;
 
                 case "exitRoom":

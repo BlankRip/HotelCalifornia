@@ -13,11 +13,13 @@ namespace Knotgames.Network
         Stopwatch clock = new Stopwatch();
         string pingValue;
         float nextUpdate = 0;
+        Ping pingData;
 
         void Start()
         {
             clock.Start();
             NetConnector.instance.OnMsgRecieveRaw += CalculatePing;
+            pingData = new Ping("https://hotelcaliforniagame.herokuapp.com/");
         }
 
         void OnDestroy()
@@ -35,10 +37,10 @@ namespace Knotgames.Network
                     )
                 );
                 nextUpdate = Time.time + pingDelay;
+                
             }
 
             logText.text = $"[Ping] : {pingValue}ms";
-
         }
 
         public void CalculatePing(string timeData)

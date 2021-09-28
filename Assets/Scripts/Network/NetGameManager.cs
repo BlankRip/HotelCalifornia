@@ -14,23 +14,23 @@ namespace Knotgames.Network
             switch (eventName)
             {
                 case "preparePlayers":
-                    Debug.LogError("PREPARING");
+                    UnityEngine.Debug.LogError("PREPARING");
                     break;
                 case "startGame":
-                    Debug.LogError("STARTING");
+                    UnityEngine.Debug.LogError("STARTING");
                     inGame = true;
                     SceneManager.LoadScene(1);
                     break;
                 case "playerLeftRoom":
                     if (inGame)
                     {
-                        Debug.Log("<color=red>A SINFUL BEING HAS BEEN PURGED FROM THE LOBBY, WHAT A DICK</color>");
+                        UnityEngine.Debug.Log("<color=red>A SINFUL BEING HAS BEEN PURGED FROM THE LOBBY, WHAT A DICK</color>");
                         Cursor.lockState = CursorLockMode.None;
                         Cursor.visible = true;
                         SceneManager.LoadScene(2);
                     }
                     else
-                        Debug.Log("<color=yellow>A SINFUL BEING HAS BEEN PURGED FROM THE LOBBY, ATLEAST HE LEFT EARLY</color>");
+                        UnityEngine.Debug.Log("<color=yellow>A SINFUL BEING HAS BEEN PURGED FROM THE LOBBY, ATLEAST HE LEFT EARLY</color>");
                     break;
             }
         }
