@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Knotgames.Extensions;
 
 namespace Knotgames.Network
 {
@@ -54,6 +55,11 @@ namespace Knotgames.Network
         public void LeaveRoom()
         {
             NetConnector.instance.SendDataToServer(JsonUtility.ToJson(new ReadyData("leaveRoom", DistributionOption.serveMe)));
+        }
+
+        public void CopyRoomID()
+        {
+            ClipboardExtensions.CopyToClipboard(NetRoomJoin.instance.roomID.value);
         }
     }
 
