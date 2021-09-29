@@ -17,6 +17,7 @@ namespace Knotgames.Gameplay {
         private IAbilityEffect blurEffect;
         private IAbilityEffect protectionEffect;
         private IAbilityEffect teleportEffect;
+        private IAbilityEffect delusionalEffect;
 
 
         private void Start() {
@@ -26,6 +27,7 @@ namespace Knotgames.Gameplay {
             
             blurEffect = GetComponent<BlurEffect>();
             teleportEffect = GetComponent<TeleportEffect>();
+            delusionalEffect = GetComponent<DelusionalEffect>();
             netObj.OnMessageRecieve += RecieveData;
         }
 
@@ -87,6 +89,10 @@ namespace Knotgames.Gameplay {
                 case AbilityEffectType.Teleport:
                     teleportEffect.ApplyEffect();
                     currentEffect = teleportEffect;
+                    break;
+                case AbilityEffectType.Delusional:
+                    delusionalEffect.ApplyEffect();
+                    currentEffect = delusionalEffect;
                     break;
             }
         }

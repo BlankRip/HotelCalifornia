@@ -45,6 +45,8 @@ namespace Knotgames.Gameplay {
                     return gameObject.AddComponent<BlurTrigger>();
                 case AbilityType.BanishGhost:
                     return gameObject.AddComponent<BanishGhostTrigger>();
+                case AbilityType.Delusional:
+                    return gameObject.AddComponent<DelusionalTrigger>();
                 default:
                     return gameObject.AddComponent<DummyAbility>();
             }

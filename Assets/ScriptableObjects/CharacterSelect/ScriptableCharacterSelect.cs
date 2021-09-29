@@ -20,7 +20,7 @@ namespace Knotgames.CharacterData
     public enum AbilityType
     {
         Nada,
-        SlowRoom, NullAbilityRoom, NoEntryRoom, ClearTraps, TeleportHuman, SelfProtect, BlurVision, BanishGhost
+        SlowRoom, NullAbilityRoom, NoEntryRoom, ClearTraps, TeleportHuman, SelfProtect, BlurVision, BanishGhost, Delusional
     }
 
     [CreateAssetMenu()]
