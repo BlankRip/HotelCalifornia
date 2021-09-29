@@ -39,6 +39,23 @@ namespace Knotgames.Network
                     else
                         UnityEngine.Debug.Log("<color=yellow>A SINFUL BEING HAS BEEN PURGED FROM THE LOBBY, ATLEAST HE LEFT EARLY</color>");
                     break;
+                case "youLeftRoom":
+                    UnityEngine.Debug.LogError("<color=yellow>YOU LEFT ROOM</color>");
+                    break;
+                case "customRoomCreated":
+                    UnityEngine.Debug.LogError("<color=green>CUSTOM ROOM CREATED</color>");
+                    string roomID = JsonUtility.FromJson<RoomExtractor>(dataString).roomID;
+                    NetRoomJoin.instance.roomID.value = roomID;
+                    break;
+                case "roomDoesNotExist":
+                    UnityEngine.Debug.LogError("<color=red>ROOM DOES NOT EXIST</color>");
+                    break;
+                case "joinedRoomOfID":
+                    UnityEngine.Debug.LogError("<color=green>CUSTOM ROOM JOINED</color>");
+                    break;
+                case "roomFull":
+                    UnityEngine.Debug.LogError("<color=blue>ROOM FULL</color>");
+                    break;
             }
         }
 
@@ -59,9 +76,19 @@ namespace Knotgames.Network
             NetRoomJoin.instance.roomID.value.CopyToClipboard();
         }
 
+        public void CreateRoom()
+        {
+            NetConnector.instance.SendDataToServer(JsonUtility.ToJson(new JoinRoomData("createCustomRoom", DistributionOption.serveMe, "customRoom", 2, true)));
+        }
+
+        public void JoinWithID()
+        {
+            NetConnector.instance.SendDataToServer(JsonUtility.ToJson(new RoomData("joinRoomID", DistributionOption.serveMe, ClipboardExtensions.GetClipboard())));
+        }
+
         public void CopyRoomID()
         {
-            NetRoomJoin.instance.roomID.value.CopyToClipboard();
+            ClipboardExtensions.CopyToClipboard(NetRoomJoin.instance.roomID.value);
         }
     }
 
@@ -75,5 +102,25 @@ namespace Knotgames.Network
             eventName = name;
             this.distributionOption = distributionOption;
         }
+    }
+
+    [System.Serializable]
+    public class RoomData
+    {
+        public string eventName;
+        public string distributionOption;
+        public string roomID;
+        public RoomData(string name, string distributionOption, string ID)
+        {
+            eventName = name;
+            this.distributionOption = distributionOption;
+            roomID = ID;
+        }
+    }
+
+    [System.Serializable]
+    public class RoomExtractor
+    {
+        public string roomID;
     }
 }

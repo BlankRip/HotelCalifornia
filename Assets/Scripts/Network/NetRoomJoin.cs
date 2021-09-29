@@ -21,18 +21,7 @@ namespace Knotgames.Network
 
         public void JoinRandomRoom()
         {
-            NetConnector.instance.SendDataToServer(
-                JsonUtility.ToJson(
-                    new JoinRoomData()
-                    {
-                        eventName = "joinRandom",
-                        distributionOption = DistributionOption.serveMe,
-                        roomName = "defaultRoom",
-                        roomSize = 5,
-                        isReserved = false
-                    }
-                )
-            );
+            NetConnector.instance.SendDataToServer(JsonUtility.ToJson(new JoinRoomData("joinRandom", DistributionOption.serveMe, "defaultRoom", 5, false)));
         }
     }
 
@@ -45,6 +34,13 @@ namespace Knotgames.Network
         public string roomName;
         public int roomSize;
         public bool isReserved;
+        public JoinRoomData(string eventName, string distributionOption, string roomName, int roomSize, bool isReserved)
+        {
+            this.eventName = eventName;
+            this.distributionOption = distributionOption;
+            this.roomName = roomName;
+            this.roomSize = roomSize;
+            this.isReserved = isReserved;
+        }
     }
-
 }
