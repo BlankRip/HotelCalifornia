@@ -55,11 +55,13 @@ namespace Knotgames.Network
         public void LeaveRoom()
         {
             NetConnector.instance.SendDataToServer(JsonUtility.ToJson(new ReadyData("leaveRoom", DistributionOption.serveMe)));
+            NetRoomJoin.instance.roomID.value = "";
+            NetRoomJoin.instance.roomID.value.CopyToClipboard();
         }
 
         public void CopyRoomID()
         {
-            ClipboardExtensions.CopyToClipboard(NetRoomJoin.instance.roomID.value);
+            NetRoomJoin.instance.roomID.value.CopyToClipboard();
         }
     }
 
