@@ -2,10 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Knotgames.Gameplay.UI;
+using Knotgames.Network;
 
 namespace Knotgames.Gameplay.Abilities {
     public class MoveTrapTrigger : MonoBehaviour, IAbility
     {
+        [SerializeField] ScriptableMoveTrap moveTrap;
         private int usesLeft;
         private IAbilityUi myUi;
 
@@ -23,7 +25,7 @@ namespace Knotgames.Gameplay.Abilities {
         private void Start() {
             requirements = GetComponent<ITrapRayRequirements>();
             myUi = GameObject.FindGameObjectWithTag("PrimaryUi").GetComponent<IAbilityUi>();
-            usesLeft = 1;
+            usesLeft = 2;
             myUi.UpdateObjectData(usesLeft);
             trapPlaceRadius = trapPlaceRadius * trapPlaceRadius;
             rayCaster = requirements.GetRayCaster();
@@ -31,6 +33,12 @@ namespace Knotgames.Gameplay.Abilities {
 
         private void Update() {
             if(placing) {
+                if(trap == null) {
+                    trap = moveTrap.trap;
+                    if(trap == null)
+                        return;
+                }
+
                 bool outOfBound = OutOfBoundsCheck();
                 if(outOfBound) return;
 
@@ -48,7 +56,6 @@ namespace Knotgames.Gameplay.Abilities {
                     else
                         CompleteUse();
                 }
-
             }
         }
 
@@ -61,6 +68,7 @@ namespace Knotgames.Gameplay.Abilities {
         private void CompleteUse() {
             trap.SetTrap();
             placing = false;
+            trap = null;
             usesLeft--;
             myUi.UpdateObjectData(usesLeft);
         }
@@ -72,6 +80,7 @@ namespace Knotgames.Gameplay.Abilities {
                 float distance = (playerPos - trapPos).sqrMagnitude;
                 if(distance >= trapPlaceRadius) {
                     placing = false;
+                    trap = null;
                     trap.DestroyTrap();
                     return true;
                 } else
@@ -89,7 +98,10 @@ namespace Knotgames.Gameplay.Abilities {
         }
 
         public void UseAbility() {
-            trap = GameObject.Instantiate(requirements.GetTrapObj()).GetComponent<IMovementTrap>();
+            if(DevBoy.yes)
+                trap = GameObject.Instantiate(requirements.GetTrapObj()).GetComponent<IMovementTrap>();
+            else
+                SpawnTrapObject();
             placing = true;
             currentLayerMask = requirements.GetGroundLayers();
             movingTrap = true;
@@ -98,6 +110,13 @@ namespace Knotgames.Gameplay.Abilities {
         public void Destroy() {
             Destroy(this);
         }
-    }
 
+        private void SpawnTrapObject() {
+            NetConnector.instance.SendDataToServer(
+                JsonUtility.ToJson(
+                    new SpawnObject("GhostTrap", Vector3.zero, Quaternion.identity)
+                )
+            );
+        }
+    }
 }

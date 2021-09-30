@@ -7,6 +7,7 @@ namespace Knotgames.Gameplay.Abilities {
     public class MovementTrapObj : MonoBehaviour, IMovementTrap
     {
         [SerializeField] NetObject netObj;
+        [SerializeField] ScriptableMoveTrap moveTrap;
         [SerializeField] Transform trapProjection;
         [SerializeField] Transform nutrelizerProjection;
         [SerializeField] Transform trap;
@@ -17,12 +18,18 @@ namespace Knotgames.Gameplay.Abilities {
         private void Start() {
             if(netObj == null)
                 netObj = GetComponent<NetObject>();
+            netObj.OnMessageRecieve += RecieveData;
 
             if(DevBoy.yes || netObj.IsMine) {
                 trapProjection.gameObject.SetActive(true);
                 nutrelizerProjection.gameObject.SetActive(true);
                 maxDistance = maxDistance * maxDistance;
+                moveTrap.trap = this;
             }
+        }
+
+        private void OnDestroy() {
+            netObj.OnMessageRecieve -= RecieveData;
         }
 
         private void RecieveData(string recieved) {
@@ -66,7 +73,11 @@ namespace Knotgames.Gameplay.Abilities {
         }
 
         public void DestroyTrap() {
-            Destroy(this.gameObject);
+            moveTrap.trap = null;
+            if(DevBoy.yes)
+                Destroy(this.gameObject);
+            else
+                netObj.DeleteObject();
         }
 
         private class DataExtraction 
