@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 namespace Knotgames.Gameplay.Abilities {
-    public class TrapRequirements : MonoBehaviour, ITrapRayRequirements
+    public class TrapRequirements : MonoBehaviour, ITrapRequirements
     {
+        [SerializeField] ScriptableMoveTrap moveTrap;
         [SerializeField] ScriptableRayCaster rayCaster;
         [SerializeField] LayerMask groundLayers;
         [SerializeField] LayerMask placableLayers;
@@ -12,6 +13,10 @@ namespace Knotgames.Gameplay.Abilities {
 
         public LayerMask GetGroundLayers() {
             return groundLayers;
+        }
+
+        public ScriptableMoveTrap GetMoveTrap() {
+            return moveTrap;
         }
 
         public LayerMask GetPlacableLayers() {

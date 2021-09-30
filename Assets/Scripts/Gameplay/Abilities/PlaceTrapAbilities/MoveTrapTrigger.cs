@@ -7,11 +7,11 @@ using Knotgames.Network;
 namespace Knotgames.Gameplay.Abilities {
     public class MoveTrapTrigger : MonoBehaviour, IAbility
     {
-        [SerializeField] ScriptableMoveTrap moveTrap;
+        private ScriptableMoveTrap moveTrap;
         private int usesLeft;
         private IAbilityUi myUi;
 
-        private ITrapRayRequirements requirements;
+        private ITrapRequirements requirements;
         private ScriptableRayCaster rayCaster;
         private RaycastHit hitInfo;
 
@@ -23,12 +23,13 @@ namespace Knotgames.Gameplay.Abilities {
         private float trapPlaceRadius = 20;
 
         private void Start() {
-            requirements = GetComponent<ITrapRayRequirements>();
+            requirements = GetComponent<ITrapRequirements>();
             myUi = GameObject.FindGameObjectWithTag("PrimaryUi").GetComponent<IAbilityUi>();
             usesLeft = 2;
             myUi.UpdateObjectData(usesLeft);
             trapPlaceRadius = trapPlaceRadius * trapPlaceRadius;
             rayCaster = requirements.GetRayCaster();
+            moveTrap = requirements.GetMoveTrap();
         }
 
         private void Update() {

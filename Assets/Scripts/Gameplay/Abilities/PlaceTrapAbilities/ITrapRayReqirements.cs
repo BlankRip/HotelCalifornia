@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 namespace Knotgames.Gameplay.Abilities {
-    public interface ITrapRayRequirements
+    public interface ITrapRequirements
     {
+        ScriptableMoveTrap GetMoveTrap();
         ScriptableRayCaster GetRayCaster();
         LayerMask GetGroundLayers();
         LayerMask GetPlacableLayers();
