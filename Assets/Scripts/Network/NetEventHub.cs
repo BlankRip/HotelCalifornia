@@ -60,7 +60,7 @@ namespace Knotgames.Network
 
                 case "destroyObject":
                     NetObjManager.instance.AddDespawnObject(
-                        JsonUtility.FromJson<NetDataBase>(eventName)
+                        JsonUtility.FromJson<NetDataBase>(dataString)
                     );
                     break;
 
