@@ -32,10 +32,10 @@ namespace Knotgames.Gameplay.Abilities
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.CompareTag("GhostLocker"))
+            if (other.CompareTag("GhostLocker") && !onTimer)
             {
                 ghostMoveAdjustment.LockMovement(true);
-                trapObj = other.transform.parent.GetComponent<IMovementTrap>();
+                trapObj = other.gameObject.GetComponentInParent<IMovementTrap>();
                 timer = 10;
                 onTimer = true;
             }

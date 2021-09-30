@@ -70,6 +70,7 @@ namespace Knotgames.Gameplay.Abilities {
             trap.SetTrap();
             placing = false;
             trap = null;
+            moveTrap.trap = null;
             usesLeft--;
             myUi.UpdateObjectData(usesLeft);
         }
