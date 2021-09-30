@@ -10,6 +10,7 @@ namespace Knotgames.Gameplay.Abilities
         float timer;
         IMovementTrap trapObj;
         bool onTimer;
+        private bool destroying;
 
         void Start()
         {
@@ -25,20 +26,26 @@ namespace Knotgames.Gameplay.Abilities
                 {
                     onTimer = false;
                     ghostMoveAdjustment.LockMovement(false);
+                    destroying = true;
                     trapObj.DestroyTrap();
+                    Invoke("Destroyed", 0.1f);
                 }
             }
         }
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.CompareTag("GhostLocker") && !onTimer)
+            if (other.CompareTag("GhostLocker") && !destroying)
             {
                 ghostMoveAdjustment.LockMovement(true);
                 trapObj = other.gameObject.GetComponentInParent<IMovementTrap>();
                 timer = 10;
                 onTimer = true;
             }
+        }
+
+        private void Destroyed() {
+            destroying = false;
         }
     }
 }
