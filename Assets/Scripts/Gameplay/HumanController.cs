@@ -13,7 +13,7 @@ namespace Knotgames.Gameplay {
         private IPlayerAnimator animator;
 
         private IAbility primary;
-        private IAbility secondary;
+        private IAbility ultimate;
         System.Action RunAgain;
         private IInteractRay interactRay;
 
@@ -82,9 +82,9 @@ namespace Knotgames.Gameplay {
                     if(primary.CanUse())
                         primary.UseAbility();
                 }
-                if(Input.GetKeyDown(KeyCode.F)) {
-                    if(secondary.CanUse())
-                        secondary.UseAbility();
+                if(Input.GetKeyDown(KeyCode.Q)) {
+                    if(ultimate.CanUse())
+                        ultimate.UseAbility();
                 }
                 if(Input.GetKeyDown(KeyCode.Mouse0)) {
                     if(interactRay.CanInteract())
@@ -98,7 +98,7 @@ namespace Knotgames.Gameplay {
 
         public void SetAbilities(List<IAbility> abilities) {
             primary = abilities[0];
-            secondary = abilities[1];
+            ultimate = abilities[1];
         }
 
         public GameObject GetPlayerObject() {
@@ -106,8 +106,8 @@ namespace Knotgames.Gameplay {
         }
 
         public void SwapSecondary(IAbility ability) {
-            secondary.Destroy();
-            secondary = ability;
+            ultimate.Destroy();
+            ultimate = ability;
         }
 
         IEnumerator SendAfter3Frames()

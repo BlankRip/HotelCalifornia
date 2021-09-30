@@ -3,16 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 
 namespace Knotgames.Gameplay.Abilities {
-    public class GhostTrapObj : MonoBehaviour
+    public class MovementTrapObj : MonoBehaviour, IMovementTrap
     {
         [SerializeField] Transform trapProjection;
         [SerializeField] Transform nutrelizerProjection;
         [SerializeField] Transform trap;
         [SerializeField] Transform nutrelizer;
+        private float distance;
+        private float maxDistance = 20;
 
         private void Start() {
             trapProjection.gameObject.SetActive(true);
             nutrelizerProjection.gameObject.SetActive(true);
+            maxDistance = maxDistance * maxDistance;
         }
 
         public void MoveTrapTo(Vector3 position) {
@@ -20,7 +23,10 @@ namespace Knotgames.Gameplay.Abilities {
         }
 
         public void MoveNutralizerTo(Vector3 postion, Vector3 surfaceNormal) {
-            nutrelizerProjection.position = postion;
+            distance = (postion - trapProjection.position).sqrMagnitude;
+            if(distance <= maxDistance) {
+                nutrelizerProjection.position = postion;
+            }
         }
 
         public void SetTrap() {
@@ -32,6 +38,10 @@ namespace Knotgames.Gameplay.Abilities {
             nutrelizerProjection.gameObject.SetActive(false);
             trap.gameObject.SetActive(true);
             nutrelizer.gameObject.SetActive(true);
+        }
+
+        public GameObject GetGameObject() {
+            return this.gameObject;
         }
     }
 }

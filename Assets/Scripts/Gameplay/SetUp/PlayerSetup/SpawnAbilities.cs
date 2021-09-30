@@ -47,6 +47,8 @@ namespace Knotgames.Gameplay.Abilities {
                     return gameObject.AddComponent<BanishGhostTrigger>();
                 case AbilityType.Delusional:
                     return gameObject.AddComponent<DelusionalTrigger>();
+                case AbilityType.MovementTrap:
+                    return gameObject.AddComponent<MoveTrapTrigger>();
                 default:
                     return gameObject.AddComponent<DummyAbility>();
             }
