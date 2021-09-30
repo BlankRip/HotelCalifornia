@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Knotgames.Network;
+using Knotgames.Gameplay.Abilities;
 
 namespace Knotgames.Gameplay {
     public class GhostController : MonoBehaviour, IPlayerController, IGhostControlerAdjustment
@@ -79,18 +80,18 @@ namespace Knotgames.Gameplay {
                         if(primary.CanUse())
                             primary.UseAbility();
                     }
-                    if(Input.GetKeyDown(KeyCode.Q)) {
+                    if(Input.GetKeyDown(KeyCode.F)) {
                         if(secondary.CanUse())
                             secondary.UseAbility();
                     }
-                    if(Input.GetKeyDown(KeyCode.R)) {
+                    if(Input.GetKeyDown(KeyCode.Q)) {
                         if(ultimate.CanUse())
                             ultimate.UseAbility();
                     }
                 } else
                 Debug.LogError("NOT REGISTERING ABILITY INPUTS!");
 
-                if(Input.GetKeyDown(KeyCode.F)) {
+                if(Input.GetKeyDown(KeyCode.Mouse0)) {
                     if(interactRay.CanInteract())
                         interactRay.Interact();
                 }

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Knotgames.Gameplay {
+namespace Knotgames.Gameplay.Abilities {
     public enum AbilityEffectType {
         Nada, BlurEffect, HumanProtection, ClearTraps, Teleport, Delusional
     }

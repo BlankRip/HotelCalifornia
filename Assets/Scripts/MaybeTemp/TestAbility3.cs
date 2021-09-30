@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Knotgames.Gameplay.UI;
 using UnityEngine;
 
-namespace Knotgames.Gameplay {
+namespace Knotgames.Gameplay.Abilities {
     public class TestAbility3 : MonoBehaviour, IAbility
     {
         private int usesLeft = 2;

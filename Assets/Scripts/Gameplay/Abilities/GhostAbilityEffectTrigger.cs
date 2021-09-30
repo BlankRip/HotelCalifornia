@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using Knotgames.Network;
 
-namespace Knotgames.Gameplay {
-    public class HumanAbilityEffectTrigger : MonoBehaviour, IAbilityEffectTrigger
+namespace Knotgames.Gameplay.Abilities {
+    public class GhostAbilityEffectTrigger : MonoBehaviour, IAbilityEffectTrigger
     {
         [SerializeField] NetObject netObj;
         private NetSendData dataToSend;
@@ -13,22 +13,19 @@ namespace Knotgames.Gameplay {
         private float timer;
         private bool onTimer;
         private IAbilityEffect currentEffect;
-
-        private IAbilityEffect blurEffect;
-        private IAbilityEffect protectionEffect;
+        
+        private IAbilityEffect clearTrapsEffect;
         private IAbilityEffect teleportEffect;
-        private IAbilityEffect delusionalEffect;
 
 
         private void Start() {
             if(netObj == null)
                 netObj = GetComponent<NetObject>();
             dataToSend = new NetSendData(netObj.id, 0, 0);
-            
-            blurEffect = GetComponent<BlurEffect>();
-            teleportEffect = GetComponent<TeleportEffect>();
-            delusionalEffect = GetComponent<DelusionalEffect>();
             netObj.OnMessageRecieve += RecieveData;
+
+            clearTrapsEffect = GetComponent<ClearTrapsEffect>();
+            teleportEffect = GetComponent<TeleportEffect>();
         }
 
         private void OnDestroy() {
@@ -80,19 +77,13 @@ namespace Knotgames.Gameplay {
             }
 
             switch(type) {
-                case AbilityEffectType.BlurEffect:
-                    blurEffect.ApplyEffect();
-                    currentEffect = blurEffect;
-                    break;
-                case AbilityEffectType.HumanProtection:
+                case AbilityEffectType.ClearTraps:
+                    clearTrapsEffect.ApplyEffect();
+                    currentEffect = clearTrapsEffect;
                     break;
                 case AbilityEffectType.Teleport:
                     teleportEffect.ApplyEffect();
                     currentEffect = teleportEffect;
-                    break;
-                case AbilityEffectType.Delusional:
-                    delusionalEffect.ApplyEffect();
-                    currentEffect = delusionalEffect;
                     break;
             }
         }

@@ -6,6 +6,7 @@ using Knotgames.Network;
 namespace Knotgames.Gameplay {
     public class PlayerCaster : MonoBehaviour, IInteractRay, IPlayerSiteRay, ISphereCaster
     {
+        [Header("Interaction in sight ray")]
         [SerializeField] NetObject netObj;
         [SerializeField] ScriptableRayCaster rayCaster;
 
@@ -14,12 +15,22 @@ namespace Knotgames.Gameplay {
         private bool canInteract;
         private IInteractable interactInView;
 
+
+        [Space][Header("Player in sight ray")]
         [SerializeField] bool usePlayerSightRay;
         [SerializeField] LayerMask opositionPlayerLayers;
         [SerializeField] LayerMask friendlyPlayerLayers;
         [SerializeField] float playerSightLenght = 10;
         private bool playerInSite;
         private GameObject playerObj;
+
+        [Space][Header("Trap placement rays")]
+        [SerializeField] bool usePlacementRays;
+        [SerializeField] LayerMask groundLayers;
+        [SerializeField] LayerMask interactPlacableLayers;
+        private LayerMask currentTrapLayers;
+        private RaycastHit trapRayHitInfo;
+
 
         private Camera camera;
         private void Start() {
@@ -63,6 +74,26 @@ namespace Knotgames.Gameplay {
 
         private void PlayerLineOfSiteRay() {
             RaycastHit hitInfo = rayCaster.caster.CastRay(opositionPlayerLayers, playerSightLenght);
+            Color debugColor = Color.blue;
+            if(hitInfo.collider != null) {
+                debugColor = Color.green;
+                if(playerObj == null) {
+                    playerObj = hitInfo.collider.gameObject;
+                    playerInSite = true;
+                    Debug.LogError("IN VIEW");
+                }
+            } else {
+                if(playerObj != null) {
+                    playerObj = null;
+                    playerInSite = false;
+                    Debug.LogError("OUTTA VIEW");
+                }
+            }
+            Debug.DrawRay(camera.transform.position, camera.transform.forward * playerSightLenght, debugColor);
+        }
+
+        private void TrapRay() {
+            RaycastHit hitInfo = rayCaster.caster.CastRay(currentTrapLayers, playerSightLenght);
             Color debugColor = Color.blue;
             if(hitInfo.collider != null) {
                 debugColor = Color.green;

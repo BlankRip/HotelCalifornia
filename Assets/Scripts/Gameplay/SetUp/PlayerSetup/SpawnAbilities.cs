@@ -4,7 +4,7 @@ using UnityEngine;
 using Knotgames.CharacterData;
 using Knotgames.Network;
 
-namespace Knotgames.Gameplay {
+namespace Knotgames.Gameplay.Abilities {
     public class SpawnAbilities : MonoBehaviour
     {
         [SerializeField] ScriptableCharacterSelect characterData;

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Knotgames.Network;
 
-namespace Knotgames.Gameplay {
+namespace Knotgames.Gameplay.Abilities {
     public class RoomState : MonoBehaviour, IRoomState, ICancelableTrap
     {
         private static int currentId;

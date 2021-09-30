@@ -4,7 +4,7 @@ using UnityEngine;
 using Knotgames.CharacterData;
 using Knotgames.Gameplay.UI;
 
-namespace Knotgames.Gameplay {
+namespace Knotgames.Gameplay.Abilities {
     public class HumanAbilitySwaper : MonoBehaviour
     {
         [SerializeField] ScriptableAbilityUiCollection abilityUiCollection;
