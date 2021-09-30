@@ -66,10 +66,13 @@ namespace Knotgames.Network
         {
             networkActionQueue.Enqueue(() =>
             {
-                tempObj = allNetObjectDictionary[dataObj.id] as NetObject;
-                allNetObjectDictionary.Remove(dataObj.id);
-                allNetObject.Remove(tempObj);
-                if (tempObj.gameObject) Destroy(tempObj.gameObject);
+                if (allNetObjectDictionary.Contains(dataObj.id))
+                {
+                    tempObj = allNetObjectDictionary[dataObj.id] as NetObject;
+                    allNetObjectDictionary.Remove(dataObj.id);
+                    allNetObject.Remove(tempObj);
+                    if (tempObj.gameObject) Destroy(tempObj.gameObject);
+                }
             });
         }
 
