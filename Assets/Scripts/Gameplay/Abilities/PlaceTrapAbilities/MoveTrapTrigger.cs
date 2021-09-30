@@ -33,7 +33,7 @@ namespace Knotgames.Gameplay.Abilities {
             if(placing) {
                 bool outOfBound = OutOfBoundsCheck();
                 if(outOfBound) return;
-                
+
                 hitInfo = rayCaster.caster.CastRay(currentLayerMask, 20);
                 if(hitInfo.collider != null) {
                     if(movingTrap)
@@ -72,7 +72,7 @@ namespace Knotgames.Gameplay.Abilities {
                 float distance = (playerPos - trapPos).sqrMagnitude;
                 if(distance >= trapPlaceRadius) {
                     placing = false;
-                    Destroy(trap.GetGameObject());
+                    trap.DestroyTrap();
                     return true;
                 } else
                     return false;

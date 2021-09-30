@@ -26,6 +26,7 @@ namespace Knotgames.Gameplay.Abilities {
             distance = (postion - trapProjection.position).sqrMagnitude;
             if(distance <= maxDistance) {
                 nutrelizerProjection.position = postion;
+                nutrelizerProjection.up = surfaceNormal;
             }
         }
 
@@ -40,8 +41,8 @@ namespace Knotgames.Gameplay.Abilities {
             nutrelizer.gameObject.SetActive(true);
         }
 
-        public GameObject GetGameObject() {
-            return this.gameObject;
+        public void DestroyTrap() {
+            Destroy(this.gameObject);
         }
     }
 }

@@ -8,7 +8,7 @@ namespace Knotgames.Gameplay.Abilities
     {
         IGhostMoveAdjustment ghostMoveAdjustment;
         float timer;
-        GameObject trapObj;
+        IMovementTrap trapObj;
         bool onTimer;
 
         void Start()
@@ -25,7 +25,7 @@ namespace Knotgames.Gameplay.Abilities
                 {
                     onTimer = false;
                     ghostMoveAdjustment.LockMovement(false);
-                    Destroy(trapObj);
+                    trapObj.DestroyTrap();
                 }
             }
         }
@@ -35,7 +35,7 @@ namespace Knotgames.Gameplay.Abilities
             if (other.CompareTag("GhostLocker"))
             {
                 ghostMoveAdjustment.LockMovement(true);
-                trapObj = other.transform.parent.GetComponent<IMovementTrap>().GetGameObject();
+                trapObj = other.transform.parent.GetComponent<IMovementTrap>();
                 timer = 10;
                 onTimer = true;
             }

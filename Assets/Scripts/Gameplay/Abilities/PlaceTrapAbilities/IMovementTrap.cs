@@ -8,6 +8,6 @@ namespace Knotgames.Gameplay.Abilities {
         void MoveTrapTo(Vector3 position);
         void MoveNutralizerTo(Vector3 postion, Vector3 surfaceNormal);
         void SetTrap();
-        GameObject GetGameObject();
+        void DestroyTrap();
     }
 }
