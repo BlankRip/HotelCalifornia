@@ -45,7 +45,8 @@ namespace Knotgames.Network
                 {
                     eventName = "destroyObject",
                     distributionOption = DistributionOption.serveAll,
-                    objectID = id
+                    objectID = id,
+                    roomID = NetRoomJoin.instance.roomID.value
                 })
             );
         }
@@ -55,6 +56,7 @@ namespace Knotgames.Network
             public string eventName;
             public string distributionOption;
             public string objectID;
+            public string roomID;
         }
 
     }
