@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Knotgames.Gameplay.UI;
 
-namespace Knotgames.Gameplay {
+namespace Knotgames.Gameplay.Abilities {
     public class SelfAbilityTrigger : MonoBehaviour, IAbility
     {
         private IAbilityEffectTrigger effectTrigger;

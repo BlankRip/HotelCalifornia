@@ -57,5 +57,10 @@ namespace Knotgames.Gameplay {
             transform.position = position;
             cc.enabled = true;
         }
+
+        public void LockMovement(bool state)
+        {
+            cc.enabled = !state;
+        }
     }
 }

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Knotgames.Gameplay {
+namespace Knotgames.Gameplay.Abilities {
     public class NullAbilityTrigger : RoomAbilityTrigger
     {
         private float abilityDuration = 30;

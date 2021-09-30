@@ -4,7 +4,7 @@ using UnityEngine;
 using Knotgames.CharacterData;
 using Knotgames.Network;
 
-namespace Knotgames.Gameplay {
+namespace Knotgames.Gameplay.Abilities {
     public class SpawnAbilities : MonoBehaviour
     {
         [SerializeField] ScriptableCharacterSelect characterData;
@@ -45,6 +45,10 @@ namespace Knotgames.Gameplay {
                     return gameObject.AddComponent<BlurTrigger>();
                 case AbilityType.BanishGhost:
                     return gameObject.AddComponent<BanishGhostTrigger>();
+                case AbilityType.Delusional:
+                    return gameObject.AddComponent<DelusionalTrigger>();
+                case AbilityType.MovementTrap:
+                    return gameObject.AddComponent<MoveTrapTrigger>();
                 default:
                     return gameObject.AddComponent<DummyAbility>();
             }

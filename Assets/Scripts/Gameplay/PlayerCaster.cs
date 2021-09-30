@@ -6,6 +6,7 @@ using Knotgames.Network;
 namespace Knotgames.Gameplay {
     public class PlayerCaster : MonoBehaviour, IInteractRay, IPlayerSiteRay, ISphereCaster
     {
+        [Header("Interaction in sight ray")]
         [SerializeField] NetObject netObj;
         [SerializeField] ScriptableRayCaster rayCaster;
 
@@ -14,12 +15,15 @@ namespace Knotgames.Gameplay {
         private bool canInteract;
         private IInteractable interactInView;
 
+
+        [Space][Header("Player in sight ray")]
         [SerializeField] bool usePlayerSightRay;
         [SerializeField] LayerMask opositionPlayerLayers;
         [SerializeField] LayerMask friendlyPlayerLayers;
         [SerializeField] float playerSightLenght = 10;
         private bool playerInSite;
         private GameObject playerObj;
+
 
         private Camera camera;
         private void Start() {

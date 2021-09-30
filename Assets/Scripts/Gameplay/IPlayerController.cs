@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Knotgames.Gameplay.Abilities;
 
 namespace Knotgames.Gameplay {
     public interface IPlayerController

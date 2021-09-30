@@ -7,7 +7,6 @@ namespace Knotgames.UI
 {
     public class ButtonEvents : MonoBehaviour
     {
-        [SerializeField] TMP_Text text;
         [SerializeField] AudioClip clip;
         [SerializeField] AudioSource source;
         bool first;
@@ -20,12 +19,18 @@ namespace Knotgames.UI
 
         public void SetColor()
         {
-            myAnim.SetBool("hover", true);
+            if (myAnim != null)
+                myAnim.SetBool("hover", true);
+            else
+                myAnim = GetComponent<Animator>();
         }
 
         public void ResetColor()
         {
-            myAnim.SetBool("hover", false);
+            if (myAnim != null)
+                myAnim.SetBool("hover", false);
+            else
+                myAnim = GetComponent<Animator>();
         }
 
         public void Hover()

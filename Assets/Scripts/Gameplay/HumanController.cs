@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Knotgames.Network;
+using Knotgames.Gameplay.Abilities;
 
 namespace Knotgames.Gameplay {
     public class HumanController : MonoBehaviour, IPlayerController
@@ -12,7 +13,7 @@ namespace Knotgames.Gameplay {
         private IPlayerAnimator animator;
 
         private IAbility primary;
-        private IAbility secondary;
+        private IAbility ultimate;
         System.Action RunAgain;
         private IInteractRay interactRay;
 
@@ -82,10 +83,10 @@ namespace Knotgames.Gameplay {
                         primary.UseAbility();
                 }
                 if(Input.GetKeyDown(KeyCode.Q)) {
-                    if(secondary.CanUse())
-                        secondary.UseAbility();
+                    if(ultimate.CanUse())
+                        ultimate.UseAbility();
                 }
-                if(Input.GetKeyDown(KeyCode.F)) {
+                if(Input.GetKeyDown(KeyCode.Mouse0)) {
                     if(interactRay.CanInteract())
                         interactRay.Interact();
                 }
@@ -97,7 +98,7 @@ namespace Knotgames.Gameplay {
 
         public void SetAbilities(List<IAbility> abilities) {
             primary = abilities[0];
-            secondary = abilities[1];
+            ultimate = abilities[1];
         }
 
         public GameObject GetPlayerObject() {
@@ -105,8 +106,8 @@ namespace Knotgames.Gameplay {
         }
 
         public void SwapSecondary(IAbility ability) {
-            secondary.Destroy();
-            secondary = ability;
+            ultimate.Destroy();
+            ultimate = ability;
         }
 
         IEnumerator SendAfter3Frames()

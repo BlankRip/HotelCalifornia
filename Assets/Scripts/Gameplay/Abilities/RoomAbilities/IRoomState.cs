@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Knotgames.Gameplay {
+namespace Knotgames.Gameplay.Abilities {
     [System.Serializable]
     public enum RoomEffectState {
         Nada, Slow, NoAbility, NoEntry

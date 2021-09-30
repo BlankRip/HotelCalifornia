@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Knotgames.Gameplay
+namespace Knotgames.Gameplay.Abilities
 {
     public class BlurTrigger : TriggerAbilities
     {
@@ -10,7 +10,7 @@ namespace Knotgames.Gameplay
         int usesLeft = 3;
 
         private void Start() {
-            Initilize("PrimaryUi", duration, AbilityEffectType.BlurEffect, usesLeft, true);
+            Initilize("SecondaryUi", duration, AbilityEffectType.BlurEffect, usesLeft, true);
         }
     }
 }
