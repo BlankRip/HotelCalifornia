@@ -62,7 +62,7 @@ public class RotationWS
 }
 
 [System.Serializable]
-public abstract class NetDataBase
+public class NetDataBase
 {
     public string eventName;
     public string id;
