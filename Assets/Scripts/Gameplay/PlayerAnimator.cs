@@ -34,8 +34,8 @@ namespace Knotgames.Gameplay {
                 }
             }
 
-            // animator.SetFloat(horizontalSpeed, horizontalInput);
-            // animator.SetFloat(verticalSpeed, verticalInput);
+            animator.SetFloat(horizontalSpeed, horizontalInput);
+            animator.SetFloat(verticalSpeed, verticalInput);
         }
 
         public bool GetBool(string id) {
