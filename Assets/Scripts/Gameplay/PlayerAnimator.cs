@@ -13,12 +13,20 @@ namespace Knotgames.Gameplay {
         [SerializeField] string negetiveYBool = "crouch";
         private bool running;
 
-        private void Awake() {
-            if(animator == null)
+        private void Start() {
+            if(animator == null) {
                 animator = GetComponent<Animator>();
+                if(animator == null)
+                    animator = GetComponentInChildren<Animator>();
+            }
         }
 
         public void Animate(float horizontalInput, float verticalInput, bool yPositive, bool yNegetive) {
+            if(animator == null) {
+                animator = GetComponentInChildren<Animator>();
+                return;
+            }
+
             animator.SetBool(positiveYBool, yPositive);
             animator.SetBool(negetiveYBool, yNegetive);
 

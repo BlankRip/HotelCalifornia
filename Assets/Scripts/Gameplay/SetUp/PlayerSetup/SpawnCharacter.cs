@@ -65,10 +65,13 @@ namespace Knotgames.Gameplay {
                     Spawn(allSpawnData.human6Data);
                     return;
                 case ModelType.Ghost1:
-                    Spawn(allSpawnData.human1Data);
+                    Spawn(allSpawnData.ghost1Data);
                     return;
                 case ModelType.Ghost2:
-                    Spawn(allSpawnData.human2Data);
+                    Spawn(allSpawnData.ghost2Data);
+                    return;
+                case ModelType.Ghost3:
+                    Spawn(allSpawnData.ghost3Data);
                     return;
             }
         }
@@ -79,7 +82,12 @@ namespace Knotgames.Gameplay {
             model.transform.localPosition = Vector3.zero;
             model.transform.localPosition += data.localSpawnOffset;
             model.transform.localRotation = Quaternion.identity;
-            Animator animator = GetComponent<Animator>();
+
+            Animator animator;
+            if(data.animatorOnModel)
+                animator = model.GetComponent<Animator>();
+            else
+                animator = GetComponent<Animator>();
             animator.avatar = data.animationAvatar;
             animator.runtimeAnimatorController = data.animatorController;
             Destroy(this, 0.2f);
