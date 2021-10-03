@@ -11,12 +11,16 @@ namespace Knotgames.CharacterData {
         public SpawnData human4Data;
         public SpawnData human5Data;
         public SpawnData human6Data;
+        public SpawnData ghost1Data;
+        public SpawnData ghost2Data;
+        public SpawnData ghost3Data;
     }
 
     [System.Serializable]
     public class SpawnData {
         public GameObject model;
         public Vector3 localSpawnOffset;
+        public bool animatorOnModel;
         public Avatar animationAvatar;
         public RuntimeAnimatorController animatorController;
     }
