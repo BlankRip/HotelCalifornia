@@ -34,12 +34,14 @@ namespace Knotgames.Gameplay.Puzzle.ChemicalRoom
                 held = true;
                 transform.SetParent(attachPos);
                 rb.useGravity = false;
+                rb.isKinematic = true;
             }
             else
             {
                 Debug.LogError("DROPPED");
                 held = false;
                 transform.SetParent(null);
+                rb.isKinematic = false;
                 rb.useGravity = true;
             }
         }
