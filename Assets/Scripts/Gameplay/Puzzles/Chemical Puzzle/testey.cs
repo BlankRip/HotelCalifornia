@@ -29,19 +29,27 @@ namespace Knotgames.Gameplay.Puzzle.ChemicalRoom
         public void Interact()
         {
             if (!held)
-            {
-                Debug.LogError("PICKED");
-                held = true;
-                transform.SetParent(attachPos);
-                rb.useGravity = false;
-            }
+                Pick();
             else
-            {
-                Debug.LogError("DROPPED");
-                held = false;
-                transform.SetParent(null);
-                rb.useGravity = true;
-            }
+                Drop();
+        }
+
+        public void Drop()
+        {
+            Debug.LogError("DROPPED");
+            held = false;
+            transform.SetParent(null);
+            rb.isKinematic = false;
+            rb.useGravity = true;
+        }
+
+        public void Pick()
+        {
+            Debug.LogError("PICKED");
+            held = true;
+            transform.SetParent(attachPos);
+            rb.useGravity = false;
+            rb.isKinematic = true;
         }
     }
 }

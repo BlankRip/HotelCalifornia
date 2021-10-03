@@ -8,7 +8,6 @@ namespace Knotgames.Gameplay.Puzzle.ChemicalRoom {
     public class ChemicalPuzzle : MonoBehaviour, IChemicalPuzzle
     {
         [SerializeField] ScriptatbleChemicalPuzzle chemRoom;
-
         [SerializeField] List<Transform> portionSpawnPoints;
         [SerializeField] GameObject portionObj;
         [SerializeField] int numberToSpawn = 5;
