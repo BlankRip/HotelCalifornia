@@ -2,17 +2,46 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class testey : MonoBehaviour
+namespace Knotgames.Gameplay.Puzzle.ChemicalRoom
 {
-    // Start is called before the first frame update
-    void Start()
+    public class testey : MonoBehaviour, IInteractable
     {
-        
-    }
+        Transform attachPos;
+        bool held = false;
+        Rigidbody rb;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        private void Start()
+        {
+            attachPos = GameObject.FindGameObjectWithTag("AttachPos").transform;
+            rb = GetComponent<Rigidbody>();
+        }
+
+        public void HideInteractInstruction()
+        {
+            Debug.LogError("HIDE ME BITCH!");
+        }
+
+        public void ShowInteractInstruction()
+        {
+            Debug.LogError("SHOW YOURSELF!");
+        }
+
+        public void Interact()
+        {
+            if (!held)
+            {
+                Debug.LogError("PICKED");
+                held = true;
+                transform.SetParent(attachPos);
+                rb.useGravity = false;
+            }
+            else
+            {
+                Debug.LogError("DROPPED");
+                held = false;
+                transform.SetParent(null);
+                rb.useGravity = true;
+            }
+        }
     }
 }
