@@ -13,7 +13,7 @@ namespace Knotgames.CharacterData
     public enum ModelType
     {
         Nada,
-        Human1, Human2, Human3, Human4,
+        Human1, Human2, Human3, Human4, Human5, Human6,
         Ghost1, Ghost2
     }
 

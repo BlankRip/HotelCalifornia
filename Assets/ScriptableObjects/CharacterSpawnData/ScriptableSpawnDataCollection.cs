@@ -9,6 +9,8 @@ namespace Knotgames.CharacterData {
         public SpawnData human2Data;
         public SpawnData human3Data;
         public SpawnData human4Data;
+        public SpawnData human5Data;
+        public SpawnData human6Data;
     }
 
     [System.Serializable]

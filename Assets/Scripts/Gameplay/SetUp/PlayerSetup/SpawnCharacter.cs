@@ -58,6 +58,12 @@ namespace Knotgames.Gameplay {
                 case ModelType.Human4:
                     Spawn(allSpawnData.human4Data);
                     return;
+                case ModelType.Human5:
+                    Spawn(allSpawnData.human5Data);
+                    return;
+                case ModelType.Human6:
+                    Spawn(allSpawnData.human6Data);
+                    return;
                 case ModelType.Ghost1:
                     Spawn(allSpawnData.human1Data);
                     return;
