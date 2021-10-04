@@ -28,11 +28,9 @@ namespace Knotgames.Gameplay.Puzzle.ChemicalRoom {
         }
 
         public void HideInteractInstruction() {
-            Debug.LogError("HIDE ME BITCH!");
         }
 
         public void ShowInteractInstruction() {
-            Debug.LogError("SHOW YOURSELF!");
         }
 
         private void OnTriggerEnter(Collider other) {

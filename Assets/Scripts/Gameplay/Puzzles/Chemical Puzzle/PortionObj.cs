@@ -47,15 +47,9 @@ namespace Knotgames.Gameplay.Puzzle.ChemicalRoom {
             }
         }
 
-        public void HideInteractInstruction()
-        {
-            Debug.LogError("HIDE ME BITCH!");
-        }
+        public void HideInteractInstruction() {}
 
-        public void ShowInteractInstruction()
-        {
-            Debug.LogError("SHOW YOURSELF!");
-        }
+        public void ShowInteractInstruction() {}
 
         public void Interact()
         {
@@ -76,7 +70,6 @@ namespace Knotgames.Gameplay.Puzzle.ChemicalRoom {
 
         public void Pick()
         {
-            Debug.LogError("PICKED");
             held = true;
             transform.SetParent(attachPos);
             rb.useGravity = false;

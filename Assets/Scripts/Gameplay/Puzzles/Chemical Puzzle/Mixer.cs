@@ -15,12 +15,10 @@ namespace Knotgames.Gameplay.Puzzle.ChemicalRoom
 
         public void AddPotion(IPortion type, IMixerSlot slot)
         {
-            if(!slotted.Contains(type))
-                slotted.Add(type);
-            if(!savedPotions.Contains(slot))
-                savedPotions.Add(slot);
-            if (slotted.Count == 2)
-                StartMix();
+            slotted.Add(type);
+            savedPotions.Add(slot);
+            // if (slotted.Count == 2)
+            //     StartMix();
         }
 
         public void StartMix()
