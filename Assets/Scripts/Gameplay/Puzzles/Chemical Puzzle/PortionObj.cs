@@ -85,5 +85,11 @@ namespace Knotgames.Gameplay.Puzzle.ChemicalRoom {
         public GameObject GetGameObject() {
             return this.gameObject;
         }
+
+        private void OnCollisionEnter(Collision other) {
+            if(other.gameObject.CompareTag("GhostEdge")) {
+
+            }
+        }
     }
 }
