@@ -25,9 +25,9 @@ GameObject:
   - component: {fileID: 3131198550506260476}
   - component: {fileID: 8962387195623180098}
   - component: {fileID: 870508438981735496}
-  m_Layer: 13
+  m_Layer: 12
   m_Name: PlayerHuman
-  m_TagString: Player
+  m_TagString: Human
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -172,15 +172,20 @@ MonoBehaviour:
   rayCaster: {fileID: 11400000, guid: 5527c40895c01f0439430a9eb2301de2, type: 2}
   interactLayers:
     serializedVersion: 2
-    m_Bits: 640
+    m_Bits: 129
+  interactableTags:
+  - HumanInteractable
+  - PlayerInteractable
+  - Potion
   interactRayLength: 5
   usePlayerSightRay: 0
-  opositionPlayerLayers:
+  playerLayer:
     serializedVersion: 2
-    m_Bits: 4096
-  friendlyPlayerLayers:
-    serializedVersion: 2
-    m_Bits: 8192
+    m_Bits: 12289
+  friendlyPlayerTags:
+  - Human
+  oppositPlayerTags:
+  - Ghost
   playerSightLenght: 10
 --- !u!95 &3946456329983738355
 Animator:
@@ -216,7 +221,7 @@ MonoBehaviour:
   animator: {fileID: 0}
   horizontalSpeed: hSpeed
   verticalSpeed: vSpeed
-  runningBool: run
+  movingBool: moving
   positiveYBool: jump
   negetiveYBool: crouch
 --- !u!114 &7020531454221568888
@@ -311,7 +316,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 194878696357053671}
-  m_Layer: 13
+  m_Layer: 12
   m_Name: CamPos
   m_TagString: Untagged
   m_Icon: {fileID: 0}

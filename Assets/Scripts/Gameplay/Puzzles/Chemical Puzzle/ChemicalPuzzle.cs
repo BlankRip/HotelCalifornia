@@ -12,6 +12,8 @@ namespace Knotgames.Gameplay.Puzzle.ChemicalRoom {
         [SerializeField] GameObject portionObj;
         [SerializeField] int numberToSpawn = 5;
         [SerializeField] List<SolutionPad> solutionPads;
+        [SerializeField] GameObject lockObj;
+        private IChemLock chemLock;
 
         private SpawnAtGivenPoints portionSpawner;
         private List<PortionType> spawnedTypes;
@@ -25,6 +27,7 @@ namespace Knotgames.Gameplay.Puzzle.ChemicalRoom {
             availableResultants = new List<PortionType>();
             solutions = new List<MixerSolution>();
             chemRoom.manager = this;
+            chemLock = lockObj.GetComponent<IChemLock>();
         }
 
         private void Start() {
@@ -50,6 +53,7 @@ namespace Knotgames.Gameplay.Puzzle.ChemicalRoom {
                 AddSolution(ref solution);
                 availableTypes.Add(solution.resultantType);
             }
+            chemLock.SetFinalPortionType(solutions[solutions.Count - 1].resultantType);
         }
 
         private void CullResultantsList() {

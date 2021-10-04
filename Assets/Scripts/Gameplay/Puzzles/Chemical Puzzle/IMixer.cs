@@ -14,5 +14,11 @@ namespace Knotgames.Gameplay.Puzzle.ChemicalRoom
 
     public interface IMixerSlot {
         void DestroyItemInSlot();
+        bool CanReturn();
+        void ReturingFromSlot();
+    }
+
+    public interface IChemLock {
+        void SetFinalPortionType(PortionType portionType);
     }
 }

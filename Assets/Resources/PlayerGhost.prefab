@@ -26,9 +26,9 @@ GameObject:
   - component: {fileID: 2813620547080053924}
   - component: {fileID: 1186031819668121211}
   - component: {fileID: 564658085690144599}
-  m_Layer: 12
+  m_Layer: 13
   m_Name: PlayerGhost
-  m_TagString: Player
+  m_TagString: Ghost
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -171,15 +171,19 @@ MonoBehaviour:
   rayCaster: {fileID: 11400000, guid: 5527c40895c01f0439430a9eb2301de2, type: 2}
   interactLayers:
     serializedVersion: 2
-    m_Bits: 768
+    m_Bits: 129
+  interactableTags:
+  - GhostInteractable
+  - PlayerInteractable
   interactRayLength: 5
   usePlayerSightRay: 1
-  opositionPlayerLayers:
+  playerLayer:
     serializedVersion: 2
-    m_Bits: 8192
-  friendlyPlayerLayers:
-    serializedVersion: 2
-    m_Bits: 4096
+    m_Bits: 12289
+  friendlyPlayerTags:
+  - Ghost
+  oppositPlayerTags:
+  - Human
   playerSightLenght: 10
 --- !u!114 &5822771298473181534
 MonoBehaviour:
@@ -196,7 +200,7 @@ MonoBehaviour:
   animator: {fileID: 0}
   horizontalSpeed: hSpeed
   verticalSpeed: vSpeed
-  runningBool: run
+  movingBool: moving
   positiveYBool: levitateUp
   negetiveYBool: levitateDown
 --- !u!114 &8655427253258060340
@@ -307,7 +311,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2800596419397761475}
-  m_Layer: 12
+  m_Layer: 13
   m_Name: CamPos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
