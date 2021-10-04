@@ -8,7 +8,7 @@ namespace Knotgames.Gameplay {
         [SerializeField] Animator animator;
         [SerializeField] string horizontalSpeed = "hSpeed";
         [SerializeField] string verticalSpeed = "vSpeed";
-        [SerializeField] string runningBool = "run";
+        [SerializeField] string movingBool = "moving";
         [SerializeField] string positiveYBool = "jump";
         [SerializeField] string negetiveYBool = "crouch";
         private bool running;
@@ -33,12 +33,12 @@ namespace Knotgames.Gameplay {
             if((horizontalInput != 0 || verticalInput != 0) && !yPositive) {
                 if(!running) {
                     running = true;
-                    animator.SetBool(runningBool, running);
+                    animator.SetBool(movingBool, running);
                 }
             } else {
                 if(running) {
                     running = false;
-                    animator.SetBool(runningBool, running);
+                    animator.SetBool(movingBool, running);
                 }
             }
 
