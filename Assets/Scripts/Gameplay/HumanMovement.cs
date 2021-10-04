@@ -17,17 +17,24 @@ namespace Knotgames.Gameplay {
         private bool grounded;
         private bool inJump;
 
+        private float crouchY = -1;
+        private Transform playerModel;
+        private bool resetlocalPos;
+
         private void Start() {
-            if(cc == null)
+            if(cc == null) {
                 cc = GetComponent<CharacterController>();
+                if(cc == null)
+                    cc = GetComponentInChildren<CharacterController>();
+            }
             
             initialHight = cc.height;
             crouchHight = initialHight * (1 - crouchHightReductionMultipiler);
-            Debug.Log(crouchHight);
             
             if(gravity > 0)
                 gravity *= -1;
         }
+
         private void Update() {
             grounded = cc.isGrounded;
         }
@@ -66,17 +73,33 @@ namespace Knotgames.Gameplay {
 
         private bool CrouchUnderEffect(bool crouching) {
             if(crouching && grounded) {
+                if(crouchY == -1) {
+                    PlayerModelFinder finder = GetComponentInChildren<PlayerModelFinder>();
+                    if(finder != null) {
+                        playerModel = finder.transform;
+                        crouchY = playerModel.position.y;
+                    }
+                }
+                resetlocalPos = true;
+                
                 float difference = Mathf.Abs(cc.height - crouchHight);
                 if(difference > 0.005f) {
                     cc.height = Mathf.Lerp(cc.height, crouchHight, Time.deltaTime * 10);
                 }
+                playerModel.position = new Vector3(playerModel.position.x ,crouchY, playerModel.position.z);
                 return true;
             } else {
                 float difference = Mathf.Abs(cc.height - initialHight);
                 if(difference > 0.005f) {
                     cc.height = Mathf.Lerp(cc.height, initialHight, Time.deltaTime * 10);
+                    playerModel.position = new Vector3(playerModel.position.x ,crouchY, playerModel.position.z);
                     return true;
                 }
+            }
+            
+            if(resetlocalPos) {
+                playerModel.localPosition = Vector3.zero;
+                resetlocalPos = false;
             }
 
             return false;
