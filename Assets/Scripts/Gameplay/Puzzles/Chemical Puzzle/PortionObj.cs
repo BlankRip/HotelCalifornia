@@ -15,6 +15,7 @@ namespace Knotgames.Gameplay.Puzzle.ChemicalRoom {
         Transform attachPos;
         bool held = false;
         Rigidbody rb;
+        private Vector3 restPos;
 
         private void Start() {
             attachPos = GameObject.FindGameObjectWithTag("AttachPos").transform;
@@ -80,6 +81,7 @@ namespace Knotgames.Gameplay.Puzzle.ChemicalRoom {
             transform.SetParent(attachPos);
             rb.useGravity = false;
             rb.isKinematic = true;
+            restPos = transform.position;
         }
 
         public GameObject GetGameObject() {
@@ -87,9 +89,8 @@ namespace Knotgames.Gameplay.Puzzle.ChemicalRoom {
         }
 
         private void OnCollisionEnter(Collision other) {
-            if(other.gameObject.CompareTag("GhostEdge")) {
-
-            }
+            if(other.gameObject.CompareTag("GhostEdge"))
+                transform.position = restPos;
         }
     }
 }
