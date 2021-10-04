@@ -1,8 +1,8 @@
-Shader "Custom/CustomStandardRampGeneral"
+Shader "Custom/CustomStandardGeneral"
 {
     Properties
     {
-        _LightShadow ("Light Shadow", 2D) = "white" {}
+        //_LightShadow ("Light Shadow", 2D) = "white" {}
         _Color ("Color", Color) = (1,1,1,1)
         _MainTex ("Albedo (RGB)", 2D) = "white" {}
         _BumpMap ("Bumpmap", 2D) = "bump" {}
@@ -27,7 +27,7 @@ Shader "Custom/CustomStandardRampGeneral"
         fixed _RimPower;
         fixed _Glosiness;
         fixed _GlossPower;
-        sampler2D _LightShadow;
+        uniform sampler2D _LightShadow;
 
         half4 LightingSimpleLambert (SurfaceOutput s, half3 lightDir, half atten) {
             fixed3 nLightDir = normalize(lightDir);
