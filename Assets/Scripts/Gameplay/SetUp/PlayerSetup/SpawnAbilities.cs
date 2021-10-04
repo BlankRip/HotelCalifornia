@@ -49,6 +49,8 @@ namespace Knotgames.Gameplay.Abilities {
                     return gameObject.AddComponent<DelusionalTrigger>();
                 case AbilityType.MovementTrap:
                     return gameObject.AddComponent<MoveTrapTrigger>();
+                case AbilityType.PuzzleInterfear:
+                    return gameObject.AddComponent<InterfearTrigger>();
                 default:
                     return gameObject.AddComponent<DummyAbility>();
             }

@@ -27,7 +27,7 @@ namespace Knotgames.Gameplay {
             } else
                 Destroy(this);
 
-            ray = new TheRay(rayCaster, playerSightLenght, playerTags, playerLayer, true, Color.black);
+            ray = new TheRay(rayCaster, playerSightLenght, playerTags, playerLayer, false, Color.black);
         }
 
         private void Update() {

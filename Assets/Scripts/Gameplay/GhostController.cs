@@ -88,13 +88,12 @@ namespace Knotgames.Gameplay {
                         if(ultimate.CanUse())
                             ultimate.UseAbility();
                     }
-                } else
-                Debug.LogError("NOT REGISTERING ABILITY INPUTS!");
-
-                if(Input.GetKeyDown(KeyCode.Mouse0)) {
-                    if(interactRay.CanInteract())
-                        interactRay.Interact();
                 }
+
+                // if(Input.GetKeyDown(KeyCode.Mouse0)) {
+                //     if(interactRay.CanInteract())
+                //         interactRay.Interact();
+                // }
                 movement.Move(data.horizontalInput, data.verticalInput, ref data.moveYPositive, ref data.moveYNegetive);
             }
 
