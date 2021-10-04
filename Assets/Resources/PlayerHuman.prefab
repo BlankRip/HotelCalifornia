@@ -16,7 +16,8 @@ GameObject:
   - component: {fileID: 194878695827266230}
   - component: {fileID: 194878695827266231}
   - component: {fileID: 4264586666513683969}
-  - component: {fileID: 2581340808232808732}
+  - component: {fileID: 8450607812910542193}
+  - component: {fileID: 4729996303416777955}
   - component: {fileID: 3946456329983738355}
   - component: {fileID: 1104716157976286750}
   - component: {fileID: 7020531454221568888}
@@ -156,7 +157,7 @@ MonoBehaviour:
   characterData: {fileID: 11400000, guid: 59adc07099d260040bc56da7f8aa2578, type: 2}
   allSpawnData: {fileID: 11400000, guid: f121eac6fb2b0af43b7ca0f25a814f73, type: 2}
   netObj: {fileID: 9005102189775486128}
---- !u!114 &2581340808232808732
+--- !u!114 &8450607812910542193
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -165,7 +166,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 194878695827266223}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d7fbac584c4748e4fbef177cb1d3a716, type: 3}
+  m_Script: {fileID: 11500000, guid: 87cf6248cae9c8546b32270c5cf81bbd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   netObj: {fileID: 9005102189775486128}
@@ -178,15 +179,27 @@ MonoBehaviour:
   - PlayerInteractable
   - Potion
   interactRayLength: 5
-  usePlayerSightRay: 0
+--- !u!114 &4729996303416777955
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 194878695827266223}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64f2f593f5b02d248bf137b39fc5c7fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  netObj: {fileID: 9005102189775486128}
+  rayCaster: {fileID: 11400000, guid: 5527c40895c01f0439430a9eb2301de2, type: 2}
   playerLayer:
     serializedVersion: 2
-    m_Bits: 12289
+    m_Bits: 12288
   friendlyPlayerTags:
   - Human
   oppositPlayerTags:
   - Ghost
-  playerSightLenght: 10
 --- !u!95 &3946456329983738355
 Animator:
   serializedVersion: 3
