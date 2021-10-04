@@ -6,7 +6,13 @@ namespace Knotgames.Gameplay.Puzzle.ChemicalRoom
 {
     public interface IMixer
     {
-        public void AddPotion(PortionType type, GameObject gameObject);
-        public void Mix();
+        void AddPotion(IPortion type, IMixerSlot slot);
+        void RemovePortion(IPortion type, IMixerSlot slot);
+        void StartMix();
+        bool IsMixing();
+    }
+
+    public interface IMixerSlot {
+        void DestroyItemInSlot();
     }
 }

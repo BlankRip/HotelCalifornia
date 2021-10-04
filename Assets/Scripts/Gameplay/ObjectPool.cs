@@ -11,6 +11,7 @@ namespace Knotgames.Gameplay {
             public string tag;
             public GameObject prefab;
             public int maxSize;
+            public Transform parent;
         }
 
         [SerializeField] List<Pool> objPools;
@@ -36,6 +37,8 @@ namespace Knotgames.Gameplay {
                 for (int i = 0; i < pool.maxSize; i++)
                 {
                     GameObject obj = Instantiate(pool.prefab);
+                    if(pool.parent != null)
+                        obj.transform.parent = pool.parent;
                     obj.SetActive(false);
                     objectQue.Enqueue(obj);
                 }

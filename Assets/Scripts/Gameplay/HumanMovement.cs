@@ -15,12 +15,16 @@ namespace Knotgames.Gameplay {
         private bool inJump;
 
         private void Start() {
-            if(cc == null)
+            if(cc == null) {
                 cc = GetComponent<CharacterController>();
+                if(cc == null)
+                    cc = GetComponentInChildren<CharacterController>();
+            }
             
             if(gravity > 0)
                 gravity *= -1;
         }
+
         private void Update() {
             grounded = cc.isGrounded;
         }
@@ -28,8 +32,8 @@ namespace Knotgames.Gameplay {
         public void Move(float horizontalInput, float verticalInput, ref bool moveYPositive, ref bool moveYNegetive)
         {
             float speed = movementSpeed;
-            if(moveYNegetive)
-                speed *= crouchSpeedMultiplier;
+            // if(moveYNegetive)
+            //     speed *= crouchSpeedMultiplier;
 
             if (grounded && velocity.y < 0)
                 velocity.y = -2;
@@ -47,7 +51,6 @@ namespace Knotgames.Gameplay {
                 } else
                     moveYPositive = false;
             }
-
             velocity.y += gravity * Time.deltaTime;
             cc.Move(velocity * Time.deltaTime);
         }
