@@ -11,6 +11,7 @@ namespace Knotgames.Gameplay {
         [SerializeField] ScriptableRayCaster rayCaster;
 
         [SerializeField] LayerMask interactLayers;
+        [SerializeField] List<string> interactableTags;
         [SerializeField] float interactRayLength = 5;
         private bool canInteract;
         private IInteractable interactInView;
@@ -18,8 +19,9 @@ namespace Knotgames.Gameplay {
 
         [Space][Header("Player in sight ray")]
         [SerializeField] bool usePlayerSightRay;
-        [SerializeField] LayerMask opositionPlayerLayers;
-        [SerializeField] LayerMask friendlyPlayerLayers;
+        [SerializeField] LayerMask playerLayer;
+        [SerializeField] List<string> friendlyPlayerTags;
+        [SerializeField] List<string> oppositPlayerTags;
         [SerializeField] float playerSightLenght = 10;
         private bool playerInSite;
         private GameObject playerObj;
@@ -49,38 +51,54 @@ namespace Knotgames.Gameplay {
             RaycastHit hitInfo = rayCaster.caster.CastRay(interactLayers, interactRayLength);
             Color debugColor = Color.red;
             if(hitInfo.collider != null) {
-                debugColor = Color.green;
-                if(interactInView == null) {
-                    interactInView = hitInfo.collider.gameObject.GetComponent<IInteractable>();
-                    interactInView.ShowInteractInstruction();
-                    canInteract = true;
+                if(interactableTags.Contains(hitInfo.collider.tag)) {
+                    debugColor = Color.green;
+                    if(interactInView == null) {
+                        interactInView = hitInfo.collider.gameObject.GetComponent<IInteractable>();
+                        interactInView.ShowInteractInstruction();
+                        canInteract = true;
+                    }
+                    Debug.DrawRay(camera.transform.position, camera.transform.forward * interactRayLength, debugColor);
+                    return;
                 }
-            } else {
-                if(interactInView != null) {
-                    interactInView.HideInteractInstruction();
-                    interactInView = null;
-                    canInteract = false;
-                }
+            }
+
+            if(interactInView != null) {
+                interactInView.HideInteractInstruction();
+                interactInView = null;
+                canInteract = false;
             }
             Debug.DrawRay(camera.transform.position, camera.transform.forward * interactRayLength, debugColor);
         }
 
+        private void NoInteraction() {
+            if(interactInView != null) {
+                interactInView.HideInteractInstruction();
+                interactInView = null;
+                canInteract = false;
+            }
+        }
+
         private void PlayerLineOfSiteRay() {
-            RaycastHit hitInfo = rayCaster.caster.CastRay(opositionPlayerLayers, playerSightLenght);
+            RaycastHit hitInfo = rayCaster.caster.CastRay(playerLayer, playerSightLenght);
             Color debugColor = Color.blue;
             if(hitInfo.collider != null) {
-                debugColor = Color.green;
-                if(playerObj == null) {
-                    playerObj = hitInfo.collider.gameObject;
-                    playerInSite = true;
-                    Debug.LogError("IN VIEW");
+                if(friendlyPlayerTags.Contains(hitInfo.collider.tag)) {
+                    debugColor = Color.green;
+                    if(playerObj == null) {
+                        playerObj = hitInfo.collider.gameObject;
+                        playerInSite = true;
+                        Debug.LogError("IN VIEW");
+                    }
                 }
-            } else {
-                if(playerObj != null) {
-                    playerObj = null;
-                    playerInSite = false;
-                    Debug.LogError("OUTTA VIEW");
-                }
+                Debug.DrawRay(camera.transform.position, camera.transform.forward * playerSightLenght, debugColor);
+                return;
+            }
+
+            if(playerObj != null) {
+                playerObj = null;
+                playerInSite = false;
+                Debug.LogError("OUTTA VIEW");
             }
             Debug.DrawRay(camera.transform.position, camera.transform.forward * playerSightLenght, debugColor);
         }
@@ -102,18 +120,20 @@ namespace Knotgames.Gameplay {
         }
 
         public List<GameObject> GetOppositPlayersInSphere(float radius) {
-            return GetPlayersInSphere(radius, opositionPlayerLayers);
+            return GetPlayersInSphere(radius, oppositPlayerTags);
         }
 
         public List<GameObject> GetFriendlyPlayersInSphere(float radius) {
-            return GetPlayersInSphere(radius, friendlyPlayerLayers);
+            return GetPlayersInSphere(radius, friendlyPlayerTags);
         }
 
-        private List<GameObject> GetPlayersInSphere(float radius, LayerMask mask) {
+        private List<GameObject> GetPlayersInSphere(float radius, List<string> tagMask) {
             List<GameObject> objList = new List<GameObject>();
-            Collider[] colliders = Physics.OverlapSphere(transform.position, radius, mask);
-            foreach (Collider col in colliders)
-                objList.Add(col.gameObject);
+            Collider[] colliders = Physics.OverlapSphere(transform.position, radius, playerLayer);
+            foreach (Collider col in colliders) {
+                if(tagMask.Contains(col.tag))
+                    objList.Add(col.gameObject);
+            }
 
             return objList;
         }
