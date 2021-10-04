@@ -7,23 +7,36 @@ namespace Knotgames.Gameplay.Puzzle.ChemicalRoom
     public class Mixer : MonoBehaviour, IMixer
     {
         [SerializeField] ScriptatbleChemicalPuzzle chemRoom;
-        [SerializeField] Transform[] returnSlots;
         [SerializeField] Transform successPoint;
         [SerializeField] GameObject portionPrefab;
         List<IPortion> slotted = new List<IPortion>();
-        List<GameObject> savedPotions = new List<GameObject>();
+        List<IMixerSlot> savedPotions = new List<IMixerSlot>();
+        bool mixing;
 
-        public void AddPotion(IPortion type, GameObject obj)
+        public void AddPotion(IPortion type, IMixerSlot slot)
         {
-            slotted.Add(type);
-            savedPotions.Add(obj);
-            Debug.LogError($"ADDING <color={type.ToString()}>{type.ToString()}</color>");
+            if(!slotted.Contains(type))
+                slotted.Add(type);
+            if(!savedPotions.Contains(slot))
+                savedPotions.Add(slot);
             if (slotted.Count == 2)
-                Invoke("Mix", 0.2f);
+                StartMix();
         }
 
-        public void Mix()
+        public void StartMix()
         {
+            if(!mixing)
+                StartCoroutine(Mix());
+        }
+
+        private IEnumerator Mix() {
+            mixing = true;
+            yield return new WaitForSeconds(5);
+            FinishMix();
+            mixing = false;
+        }
+
+        private void FinishMix() {
             List<MixerSolution> allSolutions = chemRoom.manager.GetSolutions();
             foreach(MixerSolution solution in allSolutions) {
                 if(!solution.mixTypes.Contains(slotted[0].GetPortionType()))
@@ -33,29 +46,22 @@ namespace Knotgames.Gameplay.Puzzle.ChemicalRoom
                 
                 IPortion resultantPortion = GameObject.Instantiate(portionPrefab, successPoint.position, Quaternion.identity).GetComponent<IPortion>();
                 resultantPortion.SetPortionType(solution.resultantType);
-                foreach(GameObject portion in savedPotions)
-                    Destroy(portion);
+                foreach(IMixerSlot portion in savedPotions)
+                    portion.DestroyItemInSlot();
 
+                slotted.Clear();
+                savedPotions.Clear();
+                return;
             }
-            
-            savedPotions[0].transform.position = returnSlots[0].position;
-            savedPotions[0].SetActive(true);
-            savedPotions[1].transform.position = returnSlots[1].position;
-            savedPotions[1].SetActive(true);
-            Debug.LogError("WRONG CONCOCTION!!!");
-            slotted.Clear();
-            savedPotions.Clear();
         }
 
-        private void OnTriggerEnter(Collider other)
-        {
-            if (other.CompareTag("Potion") == true)
-            {
-                IPortion currentPortion = other.GetComponent<IPortion>();
-                AddPotion(currentPortion, other.gameObject);
-                currentPortion.Drop();
-                other.gameObject.SetActive(false);
-            }
+        public void RemovePortion(IPortion type, IMixerSlot slot) {
+            slotted.Remove(type);
+            savedPotions.Remove(slot);
+        }
+
+        public bool IsMixing() {
+            return mixing;
         }
     }
 }
