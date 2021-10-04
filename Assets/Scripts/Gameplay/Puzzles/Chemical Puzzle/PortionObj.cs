@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 namespace Knotgames.Gameplay.Puzzle.ChemicalRoom {
-    public class PortionObj : MonoBehaviour, IPortion
+    public class PortionObj : MonoBehaviour, IPortion, IInteractable
     {
         [SerializeField] ScriptablePortionMatDataBase matDataBase;
         [SerializeField] ScriptatbleChemicalPuzzle chemRoom;
@@ -12,7 +12,14 @@ namespace Knotgames.Gameplay.Puzzle.ChemicalRoom {
         private PortionType myType;
         private bool typeSet;
 
+        Transform attachPos;
+        bool held = false;
+        Rigidbody rb;
+
         private void Start() {
+            attachPos = GameObject.FindGameObjectWithTag("AttachPos").transform;
+            rb = GetComponent<Rigidbody>();
+
             CullSpawnableList();
             int rand = Random.Range(0, baseSpawnableTypes.Count);
             SetPortionType(baseSpawnableTypes[rand]);
@@ -37,6 +44,42 @@ namespace Knotgames.Gameplay.Puzzle.ChemicalRoom {
                 chemRoom.manager.AddToSpawnedList(type);
                 typeSet = true;
             }
+        }
+
+        public void HideInteractInstruction()
+        {
+            Debug.LogError("HIDE ME BITCH!");
+        }
+
+        public void ShowInteractInstruction()
+        {
+            Debug.LogError("SHOW YOURSELF!");
+        }
+
+        public void Interact()
+        {
+            if (!held)
+                Pick();
+            else
+                Drop();
+        }
+
+        public void Drop()
+        {
+            Debug.LogError("DROPPED");
+            held = false;
+            transform.SetParent(null);
+            rb.isKinematic = false;
+            rb.useGravity = true;
+        }
+
+        private void Pick()
+        {
+            Debug.LogError("PICKED");
+            held = true;
+            transform.SetParent(attachPos);
+            rb.useGravity = false;
+            rb.isKinematic = true;
         }
     }
 }

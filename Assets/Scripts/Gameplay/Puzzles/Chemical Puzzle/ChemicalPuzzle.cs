@@ -92,6 +92,10 @@ namespace Knotgames.Gameplay.Puzzle.ChemicalRoom {
         public void AddToSpawnedList(PortionType portionType) {
             spawnedTypes.Add(portionType);
         }
+
+        public List<MixerSolution> GetSolutions() {
+            return solutions;
+        }
     }
 
     [System.Serializable]

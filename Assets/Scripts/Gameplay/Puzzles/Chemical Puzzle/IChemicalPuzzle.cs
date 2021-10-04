@@ -6,6 +6,7 @@ namespace Knotgames.Gameplay.Puzzle.ChemicalRoom {
     public interface IChemicalPuzzle
     {
         List<PortionType> GetSpawnedTypes();
+        List<MixerSolution> GetSolutions();
         void AddToSpawnedList(PortionType portionType);
     }
 }
