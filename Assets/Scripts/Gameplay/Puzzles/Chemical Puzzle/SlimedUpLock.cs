@@ -16,8 +16,10 @@ namespace Knotgames.Gameplay.Puzzle.ChemicalRoom {
         private void OnTriggerEnter(Collider other) {
             if (other.CompareTag("Potion")) {
                 IPortion portion = other.GetComponent<IPortion>();
-                if(portion.GetPortionType() == desolverType)
+                if(portion.GetPortionType() == desolverType) {
                     slimeObj.SetActive(false);
+                    Destroy(portion.GetGameObject());
+                }
             }
         }
     }
