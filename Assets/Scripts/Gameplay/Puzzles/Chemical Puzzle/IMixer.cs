@@ -17,4 +17,8 @@ namespace Knotgames.Gameplay.Puzzle.ChemicalRoom
         bool CanReturn();
         void ReturingFromSlot();
     }
+
+    public interface IChemLock {
+        void SetFinalPortionType(PortionType portionType);
+    }
 }

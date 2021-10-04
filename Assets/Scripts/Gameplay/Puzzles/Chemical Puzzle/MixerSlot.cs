@@ -13,12 +13,6 @@ namespace Knotgames.Gameplay.Puzzle.ChemicalRoom {
             myMixer = GetComponentInParent<IMixer>();
         }
 
-        public void Interact() {
-            if(slotted != null && !myMixer.IsMixing()) {
-                
-            }
-        }
-
         public void ReturingFromSlot() {
             myMixer.RemovePortion(slotted, this);
             Invoke("NullSlot", 0.03f);
