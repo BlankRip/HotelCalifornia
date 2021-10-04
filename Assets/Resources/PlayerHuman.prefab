@@ -58,7 +58,7 @@ CharacterController:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Height: 1.2
+  m_Height: 2.5
   m_Radius: 0.5
   m_SlopeLimit: 45
   m_StepOffset: 0.3
@@ -111,6 +111,7 @@ MonoBehaviour:
   gravity: -19.2
   jumpHight: 2
   crouchSpeedMultiplier: 0.5
+  crouchHightReductionMultipiler: 0.7
 --- !u!114 &194878695827266230
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -216,7 +217,7 @@ MonoBehaviour:
   animator: {fileID: 0}
   horizontalSpeed: hSpeed
   verticalSpeed: vSpeed
-  runningBool: run
+  movingBool: moving
   positiveYBool: jump
   negetiveYBool: crouch
 --- !u!114 &7020531454221568888
