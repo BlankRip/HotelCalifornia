@@ -17,13 +17,11 @@ namespace Knotgames.Gameplay.Puzzle.ChemicalRoom
         {
             slotted.Add(type);
             savedPotions.Add(slot);
-            // if (slotted.Count == 2)
-            //     StartMix();
         }
 
         public void StartMix()
         {
-            if(!mixing)
+            if(!mixing && slotted.Count == 2)
                 StartCoroutine(Mix());
         }
 

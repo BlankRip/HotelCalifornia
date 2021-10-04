@@ -16,14 +16,18 @@ namespace Knotgames.Gameplay.Puzzle.ChemicalRoom {
         bool held = false;
         Rigidbody rb;
         private Vector3 restPos;
+        private IMixerSlot mySlot;
 
         private void Start() {
             attachPos = GameObject.FindGameObjectWithTag("AttachPos").transform;
             rb = GetComponent<Rigidbody>();
 
             CullSpawnableList();
-            int rand = Random.Range(0, baseSpawnableTypes.Count);
-            SetPortionType(baseSpawnableTypes[rand]);
+            if(baseSpawnableTypes.Count > 0) {
+                int rand = Random.Range(0, baseSpawnableTypes.Count);
+                SetPortionType(baseSpawnableTypes[rand]);
+            }
+            restPos = transform.position;
         }
 
         private void CullSpawnableList() {
@@ -56,25 +60,32 @@ namespace Knotgames.Gameplay.Puzzle.ChemicalRoom {
             if (!held)
                 Pick();
             else
-                Drop(false);
+                Drop();
         }
 
-        public void Drop(bool isKinematic)
+        public void Drop()
         {
             Debug.LogError("DROPPED");
             held = false;
             transform.SetParent(null);
-            rb.isKinematic = isKinematic;
-            rb.useGravity = !isKinematic;
+            rb.isKinematic = false;
+            rb.useGravity = true;
         }
 
         public void Pick()
         {
+            if(mySlot != null) {
+                if(mySlot.CanReturn()) {
+                    mySlot.ReturingFromSlot();
+                    mySlot = null;
+                } else return;
+            }
+            restPos = transform.position;
             held = true;
             transform.SetParent(attachPos);
-            rb.useGravity = false;
+            transform.localPosition = Vector3.zero;
             rb.isKinematic = true;
-            restPos = transform.position;
+            rb.useGravity = false;
         }
 
         public GameObject GetGameObject() {
@@ -84,6 +95,10 @@ namespace Knotgames.Gameplay.Puzzle.ChemicalRoom {
         private void OnCollisionEnter(Collision other) {
             if(other.gameObject.CompareTag("GhostEdge"))
                 transform.position = restPos;
+        }
+
+        public void SetMySlot(IMixerSlot mySlot) {
+            this.mySlot = mySlot;
         }
     }
 }

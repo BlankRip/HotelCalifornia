@@ -7,9 +7,9 @@ namespace Knotgames.Gameplay.Puzzle.ChemicalRoom {
     {
         PortionType GetPortionType();
         void SetPortionType(PortionType type);
-        void Drop(bool isKinematic);
-        void Pick();
+        void Drop();
         GameObject GetGameObject();
+        void SetMySlot(IMixerSlot mySlot);
     }
 
     public enum PortionType {
