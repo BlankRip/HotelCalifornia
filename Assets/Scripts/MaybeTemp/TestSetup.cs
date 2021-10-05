@@ -49,6 +49,7 @@ namespace Knotgames.Gameplay {
                 }
                 case "playGame": {
                     Debug.LogError("START NOW");
+                    gameSeed.levelSeed.Initilize();
                     objToTurnOn.SetActive(true);
                     spawnerObj.SetActive(true);
                     loadingScreen.SetActive(false);
