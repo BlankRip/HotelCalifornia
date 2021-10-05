@@ -10,6 +10,7 @@ namespace Knotgames.Network
     {
         [HideInInspector] public bool inGame = false;
         public static NetGameManager instance;
+        public List<string> connectedPlayers;
         private void Awake()
         {
             if (instance == null)
@@ -53,8 +54,17 @@ namespace Knotgames.Network
                 case "joinedRoomOfID":
                     UnityEngine.Debug.LogError("<color=green>CUSTOM ROOM JOINED</color>");
                     break;
+                case "joinedRandomRoom":
+                    UnityEngine.Debug.LogError("<color=white>JOINED RANDOM ROOM</color>");
+                    connectedPlayers.Add(NetConnector.instance.playerID.value);
+                    break;
                 case "roomFull":
                     UnityEngine.Debug.LogError("<color=blue>ROOM FULL</color>");
+                    break;
+                case "playerJoinedRoom":
+                    UnityEngine.Debug.LogError("<color=white>PLAYER JOINED ROOM</color>");
+                    string joinedID = JsonUtility.FromJson<PlayerIDExtractor>(dataString).playerID;
+                    connectedPlayers.Add(joinedID);
                     break;
             }
         }
@@ -90,6 +100,11 @@ namespace Knotgames.Network
         {
             ClipboardExtensions.CopyToClipboard(NetRoomJoin.instance.roomID.value);
         }
+
+        public NetObject ReturnRandomPlayer()
+        {
+            return null;
+        }
     }
 
     [System.Serializable]
@@ -122,5 +137,11 @@ namespace Knotgames.Network
     public class RoomExtractor
     {
         public string roomID;
+    }
+
+    [System.Serializable]
+    public class PlayerIDExtractor
+    {
+        public string playerID;
     }
 }

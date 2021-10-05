@@ -10,6 +10,7 @@ namespace Knotgames.Gameplay.Puzzle.ChemicalRoom {
         void Drop();
         GameObject GetGameObject();
         void SetMySlot(IMixerSlot mySlot);
+        bool GetUseState();
     }
 
     public enum PortionType {

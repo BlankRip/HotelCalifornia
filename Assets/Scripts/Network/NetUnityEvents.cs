@@ -8,6 +8,9 @@ namespace Knotgames.Network {
         public static NetUnityEvents instance;
         public CustonEventString roomTiggerOnMsgRecieve;
         public CustonEventString portionTransform;
+        public CustonEventString portionUseStatus;
+        public CustonEventString puzzleSolvedEvent;
+        public CustonEventString mixerEvents;
 
         private void Awake() {
             if(instance == null)

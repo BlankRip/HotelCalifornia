@@ -56,6 +56,18 @@ namespace Knotgames.Network
                 case "potionTransform":
                     NetUnityEvents.instance.portionTransform.Invoke(dataString);
                     break;
+                case "potionUseStatus":
+                    NetUnityEvents.instance.portionUseStatus.Invoke(dataString);
+                    break;
+                case "startMixer":
+                    NetUnityEvents.instance.mixerEvents.Invoke(dataString);
+                    break;
+                case "interfearMixer":
+                    NetUnityEvents.instance.mixerEvents.Invoke(dataString);
+                    break;
+                case "puzzleSolveButton":
+                    NetUnityEvents.instance.puzzleSolvedEvent.Invoke(dataString); 
+                    break;
 
                 case "spawnObject":
                     NetObjManager.instance.AddSpawnObject(dataString);

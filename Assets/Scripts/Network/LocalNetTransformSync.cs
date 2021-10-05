@@ -37,6 +37,14 @@ namespace Knotgames.Network {
             sendData = sync;
         }
 
+        public virtual void SetID(int id) {
+            
+        }
+
+        public void SendDataOnRequest() {
+            SendData();
+        }
+
         private class ExtractionClass
         {
             public int myId;
