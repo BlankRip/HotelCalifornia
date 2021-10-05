@@ -44,8 +44,16 @@ namespace Knotgames.Gameplay.Puzzle.ChemicalRoom {
 
         private void RecieveData(string recieved) {
             ExtractionClass extracted = JsonUtility.FromJson<ExtractionClass>(recieved);
-            if(extracted.myId == myId)
+            if(extracted.myId == myId) {
                 inUse = extracted.inUse;
+                if(inUse) {
+                    rb.useGravity = false;
+                    rb.isKinematic = true;
+                } else {
+                    rb.useGravity = true;
+                    rb.isKinematic = false;
+                }
+            }
         }
 
         private void SendInUseData(bool value) {
