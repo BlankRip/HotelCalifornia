@@ -7,6 +7,7 @@ namespace Knotgames.Network {
     {
         public static NetUnityEvents instance;
         public CustonEventString roomTiggerOnMsgRecieve;
+        public CustonEventString portionTransform;
 
         private void Awake() {
             if(instance == null)
