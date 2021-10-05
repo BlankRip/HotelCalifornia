@@ -7,10 +7,13 @@ namespace Knotgames.Gameplay.Puzzle.ChemicalRoom {
     {
         [SerializeField] ScriptablePortionMatDataBase matDataBase;
         [SerializeField] ScriptatbleChemicalPuzzle chemRoom;
+        [SerializeField] GameplayEventCollection eventCollection;
         [SerializeField] List<PortionType> baseSpawnableTypes;
         [SerializeField] GameObject liquidMat;
         private PortionType myType;
+        private Renderer liquidRenderer;
         private bool typeSet;
+        private int portionTypeLastIndex;
 
         Transform attachPos;
         bool held = false;
@@ -21,6 +24,7 @@ namespace Knotgames.Gameplay.Puzzle.ChemicalRoom {
         private void Start() {
             attachPos = GameObject.FindGameObjectWithTag("AttachPos").transform;
             rb = GetComponent<Rigidbody>();
+            liquidRenderer = liquidMat.GetComponent<Renderer>();
 
             CullSpawnableList();
             if(baseSpawnableTypes.Count > 0) {
@@ -28,6 +32,31 @@ namespace Knotgames.Gameplay.Puzzle.ChemicalRoom {
                 SetPortionType(baseSpawnableTypes[rand]);
             }
             restPos = transform.position;
+            portionTypeLastIndex = System.Enum.GetValues(typeof(PortionType)).Length - 1;
+
+            eventCollection.twistVision.AddListener(TwistVision);
+            eventCollection.fixVision.AddListener(BackToNormalVision);
+        }
+
+        private void OnDestroy() {
+            eventCollection.twistVision.RemoveListener(TwistVision);
+            eventCollection.fixVision.RemoveListener(BackToNormalVision);
+        }
+
+        private void TwistVision() {
+            int currentValue = (int)myType;
+            if(currentValue == portionTypeLastIndex)
+                ChangeMat((PortionType)0);
+            else
+                ChangeMat((PortionType)(currentValue+1));
+        }
+
+        private void BackToNormalVision() {
+            ChangeMat(myType);
+        }
+
+        private void ChangeMat(PortionType type) {
+            liquidRenderer.material = matDataBase.GetMaterial(type);
         }
 
         private void CullSpawnableList() {
@@ -45,7 +74,13 @@ namespace Knotgames.Gameplay.Puzzle.ChemicalRoom {
         public void SetPortionType(PortionType type) {
             if(!typeSet) {
                 myType = type;
-                liquidMat.GetComponent<Renderer>().material = matDataBase.GetMaterial(myType);
+                if(liquidRenderer!=null)
+                    liquidRenderer.material = matDataBase.GetMaterial(myType);
+                else 
+                {
+                    liquidRenderer = liquidMat.GetComponent<Renderer>();
+                    liquidRenderer.material = matDataBase.GetMaterial(myType);
+                }
                 chemRoom.manager.AddToSpawnedList(type);
                 typeSet = true;
             }

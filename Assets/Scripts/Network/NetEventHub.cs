@@ -53,6 +53,9 @@ namespace Knotgames.Network
                 case "roomStateSync":
                     NetUnityEvents.instance.roomTiggerOnMsgRecieve.Invoke(dataString);
                     break;
+                case "potionTransform":
+                    NetUnityEvents.instance.portionTransform.Invoke(dataString);
+                    break;
 
                 case "spawnObject":
                     NetObjManager.instance.AddSpawnObject(dataString);

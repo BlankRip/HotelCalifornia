@@ -21,7 +21,8 @@ namespace Knotgames.CharacterData
     {
         Nada,
         SlowRoom, NullAbilityRoom, NoEntryRoom, ClearTraps, TeleportHuman,
-        SelfProtect, BlurVision, BanishGhost, Delusional, MovementTrap
+        SelfProtect, BlurVision, BanishGhost, Delusional, MovementTrap,
+        PuzzleInterfear
     }
 
     [CreateAssetMenu()]

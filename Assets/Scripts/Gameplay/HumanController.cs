@@ -50,7 +50,7 @@ namespace Knotgames.Gameplay {
         }
 
         private void SendNetData() {
-            if(netObj.IsMine && !DevBoy.yes)
+            if(!DevBoy.yes && netObj.IsMine)
                 NetConnector.instance.SendDataToServer(JsonUtility.ToJson(data));
         }
 

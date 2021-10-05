@@ -93,6 +93,7 @@ GameObject:
   - component: {fileID: 7931197232444357079}
   - component: {fileID: 7931197232444357080}
   - component: {fileID: 2716190115937160928}
+  - component: {fileID: 596624543159334447}
   m_Layer: 7
   m_Name: PortionBottle
   m_TagString: Potion
@@ -131,6 +132,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   matDataBase: {fileID: 11400000, guid: 304347096d05cc84a86fa1036295a262, type: 2}
   chemRoom: {fileID: 11400000, guid: 19cb4afabbc5cad448f792367a55f7d1, type: 2}
+  eventCollection: {fileID: 11400000, guid: 20ae6da02e370d848b24c70a36670026, type: 2}
   baseSpawnableTypes: 000000000100000002000000030000000900000005000000
   liquidMat: {fileID: 7931197233481279855}
 --- !u!65 &7931197232444357080
@@ -162,6 +164,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &596624543159334447
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7931197232444357076}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a66f3bce76a4d74089c43c60991a6e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7931197233481279855
 GameObject:
   m_ObjectHideFlags: 0
