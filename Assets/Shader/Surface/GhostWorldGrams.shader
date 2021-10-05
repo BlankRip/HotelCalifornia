@@ -2,7 +2,8 @@ Shader "Custom/GhostWorldGrams"
 {
     Properties
     {
-        _Color ("Color", color) = (1,1,1,1)
+        _ColorBase ("Color Base", color) = (1,1,1,1)
+        _ColorGhost ("Color Ghost", color) = (1,1,1,1)
         _MainTex ("Texture", 2D) = "white" {}
         _DistUVTex ("UV Dist Tex", 2D) = "black" {}
         _DistTex ("Distortion", 2D) = "black" {}
@@ -36,20 +37,22 @@ Shader "Custom/GhostWorldGrams"
             struct v2f
             {
                 float2 uv : TEXCOORD0;
+                fixed offest : TEXCOORD2;
                 UNITY_FOG_COORDS(1)
                 float4 vertex : SV_POSITION;
             };
 
             sampler2D _MainTex, _DistTex, _DistUVTex;
-            float4 _MainTex_ST, _Color;
+            float4 _MainTex_ST, _ColorBase, _ColorGhost;
             fixed _ClipRange, _DistScale, _DistSpeedX, _DistSpeedY;
 
             v2f vert (appdata v)
             {
                 v2f o;
                 fixed3 wPos =  sin(mul(unity_ObjectToWorld, fixed4(0,0,0,1)).xyz * 10000);
+                o.offest = wPos.y;
                 fixed distortion =  tex2Dlod(_DistTex, fixed4(v.uv * _DistScale + fixed2((_Time.x + wPos.y) * _DistSpeedX, (_Time.x + wPos.y) * _DistSpeedY), 0, 0));
-                v.vertex.x += distortion * 0.01;
+                v.vertex.xyz += UnityWorldToObjectDir(fixed3(0,1,0)) * distortion * 0.01;
                 o.vertex = UnityObjectToClipPos(v.vertex);
                 o.uv = TRANSFORM_TEX(v.uv, _MainTex);
                 UNITY_TRANSFER_FOG(o,o.vertex);
@@ -63,17 +66,17 @@ Shader "Custom/GhostWorldGrams"
             fixed4 frag (v2f i) : SV_Target
             {
                 // sample the texture
-                fixed4 col = tex2D(_MainTex, i.uv);
+                fixed4 col = tex2D(_MainTex, i.uv) * _ColorBase;
                 //clip(ColorSqr(col.xyz) - _ClipRange);
-                fixed2 disUV = tex2D(_DistUVTex, i.uv + fixed2(_Time.x * 2 * _DistSpeedX, _Time.x * 2.3 * _DistSpeedY)) * 2 - 1;
-                col += tex2D(_MainTex, i.uv + disUV * 0.03) * tex2D(_DistTex, (i.uv + 2) + fixed2(_Time.x * 2 * _DistSpeedX, _Time.x * 2.3 * _DistSpeedY) + disUV * 0.03).r;
+                fixed2 disUV = tex2D(_DistUVTex, i.uv + fixed2((_Time.x + i.offest) * 2 * _DistSpeedX, (_Time.x + i.offest) * 2.3 * _DistSpeedY)) * 2 - 1;
+                col += _ColorGhost * tex2D(_MainTex, i.uv + disUV * 0.03).r * pow(tex2D(_DistTex, (i.uv * 2) + fixed2((_Time.x+ i.offest) * 10 * _DistSpeedX, (_Time.x + i.offest) * 2.3 * _DistSpeedY) + disUV * 0.03).r * 3, 2);
 
                 // apply fog
-               // UNITY_APPLY_FOG(i.fogCoord, col);
+               // UNITY_APPLY_FOG(i.fogCoord, col);tex2D(_MainTex, i.uv + disUV * 0.03).r * 
 
 
 
-                return col * _Color;
+                return col;
             }
             ENDCG
         }
