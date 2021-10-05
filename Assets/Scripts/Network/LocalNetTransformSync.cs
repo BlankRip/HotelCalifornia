@@ -41,6 +41,10 @@ namespace Knotgames.Network {
             
         }
 
+        public void SendDataOnRequest() {
+            SendData();
+        }
+
         private class ExtractionClass
         {
             public int myId;

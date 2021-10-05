@@ -7,5 +7,6 @@ namespace Knotgames.Network {
     {
         void SetDataSyncStatus(bool sync);
         void SetID(int id);
+        void SendDataOnRequest();
     }
 }

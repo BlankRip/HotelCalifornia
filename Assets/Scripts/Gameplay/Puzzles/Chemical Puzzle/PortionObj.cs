@@ -87,6 +87,10 @@ namespace Knotgames.Gameplay.Puzzle.ChemicalRoom {
             eventCollection.twistVision.RemoveListener(TwistVision);
             eventCollection.fixVision.RemoveListener(BackToNormalVision);
         }
+        
+        public bool GetUseState() {
+            return inUse;
+        }
 
         private void TwistVision() {
             int currentValue = (int)myType;
