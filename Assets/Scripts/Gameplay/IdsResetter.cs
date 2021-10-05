@@ -6,6 +6,6 @@ using Knotgames.Gameplay.Puzzle.ChemicalRoom;
 public class IdsResetter
 {
     public static void ResetIDs() {
-        PotionTransformSync.ResetIds();
+        PortionObj.ResetIds();
     }
 }

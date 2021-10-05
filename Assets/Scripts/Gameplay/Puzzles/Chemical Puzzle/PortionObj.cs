@@ -1,10 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Knotgames.Network;
 
 namespace Knotgames.Gameplay.Puzzle.ChemicalRoom {
     public class PortionObj : MonoBehaviour, IPortion, IInteractable
     {
+        private static int portionIds;
+        public static void ResetIds() {
+            portionIds = 0;
+        }
+
         [SerializeField] ScriptablePortionMatDataBase matDataBase;
         [SerializeField] ScriptatbleChemicalPuzzle chemRoom;
         [SerializeField] GameplayEventCollection eventCollection;
@@ -21,7 +27,35 @@ namespace Knotgames.Gameplay.Puzzle.ChemicalRoom {
         private Vector3 restPos;
         private IMixerSlot mySlot;
 
+        private int myId;
+        private ILocalNetTransformSync transformSync;
+        private bool inUse;
+        private DataToSend dataToSend;
+
+        private void Awake() {
+            myId = portionIds;
+            portionIds++;
+            transformSync = GetComponent<ILocalNetTransformSync>();
+            transformSync.SetID(myId);
+
+            if(!DevBoy.yes)
+                NetUnityEvents.instance.portionUseStatus.AddListener(RecieveData);
+        }
+
+        private void RecieveData(string recieved) {
+            ExtractionClass extracted = JsonUtility.FromJson<ExtractionClass>(recieved);
+            if(extracted.myId == myId)
+                inUse = extracted.inUse;
+        }
+
+        private void SendInUseData(bool value) {
+            dataToSend.inUse = value;
+            NetConnector.instance.SendDataToServer(JsonUtility.ToJson(dataToSend));
+        }
+
         private void Start() {
+            dataToSend = new DataToSend(myId);
+
             attachPos = GameObject.FindGameObjectWithTag("AttachPos").transform;
             rb = GetComponent<Rigidbody>();
             liquidRenderer = liquidMat.GetComponent<Renderer>();
@@ -39,6 +73,9 @@ namespace Knotgames.Gameplay.Puzzle.ChemicalRoom {
         }
 
         private void OnDestroy() {
+            if(!DevBoy.yes)
+                NetUnityEvents.instance.portionUseStatus.RemoveListener(RecieveData);
+            
             eventCollection.twistVision.RemoveListener(TwistVision);
             eventCollection.fixVision.RemoveListener(BackToNormalVision);
         }
@@ -92,15 +129,21 @@ namespace Knotgames.Gameplay.Puzzle.ChemicalRoom {
 
         public void Interact()
         {
-            if (!held)
-                Pick();
-            else
-                Drop();
+            if(!inUse) {
+                if (!held)
+                    Pick();
+                else
+                    Drop();
+            }
         }
 
         public void Drop()
         {
             Debug.LogError("DROPPED");
+            if(!DevBoy.yes)
+                transformSync.SetDataSyncStatus(false);
+            SendInUseData(false);
+
             held = false;
             transform.SetParent(null);
             rb.isKinematic = false;
@@ -109,6 +152,10 @@ namespace Knotgames.Gameplay.Puzzle.ChemicalRoom {
 
         public void Pick()
         {
+            if(!DevBoy.yes)
+                transformSync.SetDataSyncStatus(true);
+            SendInUseData(true);
+
             if(mySlot != null) {
                 if(mySlot.CanReturn()) {
                     mySlot.ReturingFromSlot();
@@ -134,6 +181,29 @@ namespace Knotgames.Gameplay.Puzzle.ChemicalRoom {
 
         public void SetMySlot(IMixerSlot mySlot) {
             this.mySlot = mySlot;
+    
+        }
+
+        private class ExtractionClass {
+            public int myId;
+            public bool inUse;
+        }
+
+        private class DataToSend {
+            public int myId;
+            public bool inUse;
+            public string eventName;
+            public string roomID;
+            public string distributionOption;
+
+            public DataToSend(int id) {
+                eventName = "potionUseStatus";
+                distributionOption = DistributionOption.serveOthers;
+                myId = id;
+                if(!DevBoy.yes)
+                    roomID = NetRoomJoin.instance.roomID.value;
+            }
         }
     }
+
 }

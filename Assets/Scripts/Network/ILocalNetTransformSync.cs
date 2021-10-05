@@ -6,5 +6,6 @@ namespace Knotgames.Network {
     public interface ILocalNetTransformSync
     {
         void SetDataSyncStatus(bool sync);
+        void SetID(int id);
     }
 }
