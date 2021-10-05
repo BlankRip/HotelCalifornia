@@ -28,7 +28,7 @@ namespace Knotgames.Gameplay.Abilities {
             } else
                 Destroy(this);
             
-            ray = new TheRay(rayCaster, rayLength, interfearableTags, validLayers, true, Color.blue);
+            ray = new TheRay(rayCaster, rayLength, interfearableTags, validLayers, false, Color.blue);
         }
 
         private void Update() {
