@@ -65,6 +65,9 @@ namespace Knotgames.Network
                 case "interfearMixer":
                     NetUnityEvents.instance.mixerEvents.Invoke(dataString);
                     break;
+                case "puzzleSolveButton":
+                    NetUnityEvents.instance.puzzleSolvedEvent.Invoke(dataString); 
+                    break;
 
                 case "spawnObject":
                     NetObjManager.instance.AddSpawnObject(dataString);

@@ -9,6 +9,7 @@ namespace Knotgames.Network {
         public CustonEventString roomTiggerOnMsgRecieve;
         public CustonEventString portionTransform;
         public CustonEventString portionUseStatus;
+        public CustonEventString puzzleSolvedEvent;
         public CustonEventString mixerEvents;
 
         private void Awake() {

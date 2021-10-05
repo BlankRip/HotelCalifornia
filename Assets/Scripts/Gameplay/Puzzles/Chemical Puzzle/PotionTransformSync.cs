@@ -6,7 +6,6 @@ using Knotgames.Network;
 namespace Knotgames.Gameplay.Puzzle.ChemicalRoom {
     public class PotionTransformSync : LocalNetTransformSync
     {
-
         private int myId;
         private bool idSet;
 
