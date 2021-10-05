@@ -74,7 +74,13 @@ namespace Knotgames.Gameplay.Puzzle.ChemicalRoom {
         public void SetPortionType(PortionType type) {
             if(!typeSet) {
                 myType = type;
-                liquidRenderer.material = matDataBase.GetMaterial(myType);
+                if(liquidRenderer!=null)
+                    liquidRenderer.material = matDataBase.GetMaterial(myType);
+                else 
+                {
+                    liquidRenderer = liquidMat.GetComponent<Renderer>();
+                    liquidRenderer.material = matDataBase.GetMaterial(myType);
+                }
                 chemRoom.manager.AddToSpawnedList(type);
                 typeSet = true;
             }
