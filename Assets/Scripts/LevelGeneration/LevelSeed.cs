@@ -20,7 +20,6 @@ namespace Knotgames.LevelGen
         }
 
         public void GenerateSeed() {
-            Debug.LogError(seedValue);
             host = true;
             seedValue = Random.Range(int.MinValue, int.MaxValue);
         }
@@ -44,7 +43,6 @@ namespace Knotgames.LevelGen
 
         public void SetSeed(int seed) {
             seedValue = seed;
-            Debug.LogError(seedValue);
         }
     }
 }

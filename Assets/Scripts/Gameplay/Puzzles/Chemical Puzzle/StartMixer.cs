@@ -38,10 +38,14 @@ namespace Knotgames.Gameplay.Puzzle.ChemicalRoom {
 
         private void RecieveData(string recieved) {
             ExtractionClass extracted = JsonUtility.FromJson<ExtractionClass>(recieved);
-            if(extracted.eventName == "startMixer")
+            if(extracted.eventName == "startMixer") {
+                Debug.Log("Starting Mixer");
                 mixer.StartMix();
-            else if(extracted.eventName == "interfearMixer")
-                Interfear();
+            }
+            else if(extracted.eventName == "interfearMixer") {
+                useable = false;
+                Invoke("MakeUsable", interfearDiableTime);
+            }
         }
 
         public void Interact() {
