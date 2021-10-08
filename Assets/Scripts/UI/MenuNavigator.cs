@@ -71,7 +71,7 @@ namespace Knotgames.UI {
             }
         }
 
-        public void SelectButton(IMenuButton button) {
+        private void SelectButton(IMenuButton button) {
             int index = buttons.IndexOf(button);
             if(index != currentIndex) {
                 buttons[currentIndex].Deselect();

@@ -10,7 +10,6 @@ namespace Knotgames.LevelGen {
         [SerializeField] GameObject myPuzzleVariant;
         [SerializeField] GameObject mySinglePuzzleVariant;
         private List<Bounds> roomBounds;
-        private List<Transform> doorTransforms;
 
         public void SelfKill() {
             Destroy(this.gameObject);

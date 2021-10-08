@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 namespace Knotgames.LevelGen {
-    public class PuzzleRoom : MonoBehaviour, IPairPuzzleRoom
+    public class PairPuzzleRoom : MonoBehaviour, IPairPuzzleRoom
     {
         [SerializeField] List<RoomType> connectable;
         [SerializeField] List<Puzzle> roomPuzzles;
