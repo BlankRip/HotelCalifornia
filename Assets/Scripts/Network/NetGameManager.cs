@@ -35,6 +35,9 @@ namespace Knotgames.Network
                     if (inGame && !winDone)
                     {
                         UnityEngine.Debug.Log("<color=red>A SINFUL BEING HAS BEEN PURGED FROM THE LOBBY, WHAT A DICK</color>");
+                        inGame = false;
+                        string leftID = JsonUtility.FromJson<PlayerIDExtractor>(dataString).playerID;
+                        connectedPlayers.Remove(leftID);
                         Cursor.lockState = CursorLockMode.None;
                         Cursor.visible = true;
                         SceneManager.LoadScene(2);
@@ -42,13 +45,20 @@ namespace Knotgames.Network
                     else if (inGame && winDone)
                     {
                         UnityEngine.Debug.LogError("RESETTING WIN");
-                        winDone = false;
                         inGame = false;
+                        winDone = false;
+                        string leftID = JsonUtility.FromJson<PlayerIDExtractor>(dataString).playerID;
+                        connectedPlayers.Remove(leftID);
                     }
                     else
+                    {
+                        string leftID = JsonUtility.FromJson<PlayerIDExtractor>(dataString).playerID;
+                        connectedPlayers.Remove(leftID);
                         UnityEngine.Debug.Log("<color=yellow>A SINFUL BEING HAS BEEN PURGED FROM THE LOBBY, ATLEAST HE LEFT EARLY</color>");
+                    }
                     break;
                 case "youLeftRoom":
+                    connectedPlayers.Remove(NetConnector.instance.playerID.value);
                     UnityEngine.Debug.LogError("<color=yellow>YOU LEFT ROOM</color>");
                     break;
                 case "customRoomCreated":
@@ -69,7 +79,7 @@ namespace Knotgames.Network
                 case "roomFull":
                     UnityEngine.Debug.LogError("<color=blue>ROOM FULL</color>");
                     break;
-                case "playerJoinedRoom":
+                case "newPlayerJoinedRoom":
                     UnityEngine.Debug.LogError("<color=white>PLAYER JOINED ROOM</color>");
                     string joinedID = JsonUtility.FromJson<PlayerIDExtractor>(dataString).playerID;
                     connectedPlayers.Add(joinedID);
@@ -78,6 +88,7 @@ namespace Knotgames.Network
                     UnityEngine.Debug.LogError("<color=white>WIN TRIGGERED</color>");
                     winDone = true;
                     humanWin = JsonUtility.FromJson<WinData>(dataString).humanWin;
+                    UnityEngine.Debug.LogError($"<color=white>HUMANS WON: {humanWin}</color>");
                     Cursor.lockState = CursorLockMode.None;
                     Cursor.visible = true;
                     Scener.LoadScene(3);
@@ -172,6 +183,7 @@ namespace Knotgames.Network
             eventName = "toggledWin";
             distributionOption = DistributionOption.serveAll;
             roomID = NetRoomJoin.instance.roomID.value;
+            this.humanWin = humanWin;
         }
     }
 

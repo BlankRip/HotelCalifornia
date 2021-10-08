@@ -15,6 +15,7 @@ namespace Knotgames.Extensions
 
         public void Restart()
         {
+            NetGameManager.instance.connectedPlayers.Remove(NetConnector.instance.playerID.value);
             NetGameManager.instance.LeaveRoom();
             SceneManager.LoadScene(0);
         }
