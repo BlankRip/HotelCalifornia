@@ -11,4 +11,9 @@ public class Scener : MonoBehaviour
     {
         SceneManager.LoadScene(loadScene, LoadSceneMode.Single);
     }
+
+    public static void LoadScene(int index)
+    {
+         SceneManager.LoadScene(index, LoadSceneMode.Single);
+    }
 }
