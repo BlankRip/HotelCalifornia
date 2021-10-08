@@ -13,6 +13,9 @@ namespace Knotgames.Network
         public List<string> connectedPlayers;
         bool winDone = false;
         public bool humanWin;
+        NetObject ghost;
+        List<NetObject> humans =  new List<NetObject>();
+
         private void Awake()
         {
             if (instance == null)
@@ -47,6 +50,8 @@ namespace Knotgames.Network
                         UnityEngine.Debug.LogError("RESETTING WIN");
                         inGame = false;
                         winDone = false;
+                        ghost = null;
+                        humans.Clear();
                         string leftID = JsonUtility.FromJson<PlayerIDExtractor>(dataString).playerID;
                         connectedPlayers.Remove(leftID);
                     }
@@ -133,13 +138,18 @@ namespace Knotgames.Network
             NetConnector.instance.SendDataToServer(JsonUtility.ToJson(new WinData(humanWin)));
         }
 
-        public NetObject ReturnRandomPlayer()
+        public NetObject PickGhost()
         {
             string randomPlayer = connectedPlayers[Random.Range(0, connectedPlayers.Count)];
             foreach (NetObject obj in NetObjManager.instance.allNetObject)
             {
                 if (obj.ownerID == randomPlayer)
+                {
+                    ghost = obj;
                     return obj;
+                }
+                else
+                    humans.Add(obj);
             }
             return null;
         }
