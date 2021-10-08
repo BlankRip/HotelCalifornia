@@ -66,7 +66,7 @@ namespace Knotgames.GameSettings {
             PlayerPrefs.SetFloat("SFXVolumePreference", currentSFXVolume);
         }
 
-        public void LoadSettings(int currentResolutionIndex)
+        private void LoadSettings(int currentResolutionIndex)
         {
             if (PlayerPrefs.HasKey("ResolutionPreference"))
                 resolutionDropdown.value = PlayerPrefs.GetInt("ResolutionPreference");

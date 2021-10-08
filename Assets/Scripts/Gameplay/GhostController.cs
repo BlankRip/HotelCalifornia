@@ -16,8 +16,6 @@ namespace Knotgames.Gameplay {
         private IAbility secondary;
         private IAbility ultimate;
 
-        private IInteractRay interactRay;
-
         // Y Positive is Levitate up & Y Negetive is Levitate Down
         private PlayerNetData data;
 
@@ -32,7 +30,6 @@ namespace Knotgames.Gameplay {
                 netObj = GetComponent<NetObject>();
             movement = GetComponent<IPlayerMovement>();
             animator = GetComponent<IPlayerAnimator>();
-            interactRay = GetComponent<IInteractRay>();
             checkAbilityInputs = true;
 
             if(!DevBoy.yes) {

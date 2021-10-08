@@ -14,7 +14,6 @@ namespace Knotgames.Gameplay {
 
         private IAbility primary;
         private IAbility ultimate;
-        System.Action RunAgain;
         private IInteractRay interactRay;
 
         //Y Positive is Jump & Y Negetive is Crouch

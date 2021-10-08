@@ -20,7 +20,7 @@ namespace Knotgames.Gameplay {
             if(!DevBoy.yes)
                 netObj.OnMessageRecieve += RecieveNetData;
             if(DevBoy.yes || netObj.IsMine) {
-                SpawnSelect();
+                SpawnSelected();
                 if(!DevBoy.yes)
                     SendData();
             }
@@ -36,13 +36,13 @@ namespace Knotgames.Gameplay {
                 switch(JsonUtility.FromJson<ObjectNetData>(recieved).componentType) {
                     case "ModelSpawnNetData":
                         ModelType type = JsonUtility.FromJson<ModelSpawnNetData>(recieved).modelType;
-                        SpawnSelect(type);
+                        SpawnSelected(type);
                         break;
                 }
             }
         }
 
-        private void SpawnSelect(ModelType type = ModelType.Nada) {
+        private void SpawnSelected(ModelType type = ModelType.Nada) {
             if(type == ModelType.Nada)
                 type = characterData.modelType;
             switch(type) {

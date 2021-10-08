@@ -8,10 +8,4 @@ namespace Knotgames.Gameplay {
         bool CanInteract();
         void Interact();
     }
-
-    public interface IPlayerSiteRay
-    {
-        bool InSite();
-        GameObject PlayerInSiteObj();
-    }
 }

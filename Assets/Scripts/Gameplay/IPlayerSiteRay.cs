@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 namespace Knotgames.Gameplay {
-    public interface IPlayerInSite
+    public interface IPlayerSiteRay
     {
-        bool InLineOfSite();
-        GameObject GetPlayerObject();
+        bool InSite();
+        GameObject PlayerInSiteObj();
     }
 }
