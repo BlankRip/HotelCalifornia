@@ -5178,6 +5178,7 @@ GameObject:
   - component: {fileID: 548261138}
   - component: {fileID: 548261137}
   - component: {fileID: 548261141}
+  - component: {fileID: 548261142}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -5290,6 +5291,18 @@ MonoBehaviour:
   startPanel: {fileID: 108194767}
   parentSwitcher: {fileID: 0}
   minPanels: 1
+--- !u!114 &548261142
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 548261136}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6eb7fc0a9248c64c8da411f025f3249, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &555194249
 GameObject:
   m_ObjectHideFlags: 0
@@ -15350,6 +15363,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1678366528}
+        m_TargetAssemblyTypeName: Knotgames.UI.ButtonEvents, Assembly-CSharp
+        m_MethodName: Quit
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   enterEvent:
     m_PersistentCalls:
       m_Calls:
@@ -15612,7 +15637,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69b1759ea353dd44580a35d9d82a7ba0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isTesting: 1
+  isTesting: 0
 --- !u!114 &1730150445
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15726,6 +15751,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inGame: 0
   connectedPlayers: []
+  humanWin: 0
 --- !u!114 &1730150451
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17698,9 +17724,9 @@ MonoBehaviour:
   clickEvent:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1730150442}
-        m_TargetAssemblyTypeName: Knotgames.Network.NetRoomJoin, Assembly-CSharp
-        m_MethodName: JoinRandomRoom
+      - m_Target: {fileID: 548261142}
+        m_TargetAssemblyTypeName: Knotgames.Network.RoomJoiner, Assembly-CSharp
+        m_MethodName: JoinRoom
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

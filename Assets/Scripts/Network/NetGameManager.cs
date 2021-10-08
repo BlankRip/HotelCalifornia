@@ -11,6 +11,8 @@ namespace Knotgames.Network
         [HideInInspector] public bool inGame = false;
         public static NetGameManager instance;
         public List<string> connectedPlayers;
+        bool winDone = false;
+        public bool humanWin;
         private void Awake()
         {
             if (instance == null)
@@ -30,12 +32,18 @@ namespace Knotgames.Network
                     SceneManager.LoadScene(1);
                     break;
                 case "playerLeftRoom":
-                    if (inGame)
+                    if (inGame && !winDone)
                     {
                         UnityEngine.Debug.Log("<color=red>A SINFUL BEING HAS BEEN PURGED FROM THE LOBBY, WHAT A DICK</color>");
                         Cursor.lockState = CursorLockMode.None;
                         Cursor.visible = true;
                         SceneManager.LoadScene(2);
+                    }
+                    else if (inGame && winDone)
+                    {
+                        UnityEngine.Debug.LogError("RESETTING WIN");
+                        winDone = false;
+                        inGame = false;
                     }
                     else
                         UnityEngine.Debug.Log("<color=yellow>A SINFUL BEING HAS BEEN PURGED FROM THE LOBBY, ATLEAST HE LEFT EARLY</color>");
@@ -65,6 +73,14 @@ namespace Knotgames.Network
                     UnityEngine.Debug.LogError("<color=white>PLAYER JOINED ROOM</color>");
                     string joinedID = JsonUtility.FromJson<PlayerIDExtractor>(dataString).playerID;
                     connectedPlayers.Add(joinedID);
+                    break;
+                case "toggledWin":
+                    UnityEngine.Debug.LogError("<color=white>WIN TRIGGERED</color>");
+                    winDone = true;
+                    humanWin = JsonUtility.FromJson<WinData>(dataString).humanWin;
+                    Cursor.lockState = CursorLockMode.None;
+                    Cursor.visible = true;
+                    Scener.LoadScene(3);
                     break;
             }
         }
@@ -101,8 +117,19 @@ namespace Knotgames.Network
             ClipboardExtensions.CopyToClipboard(NetRoomJoin.instance.roomID.value);
         }
 
+        public void ToggleWinScreen(bool humanWin)
+        {
+            NetConnector.instance.SendDataToServer(JsonUtility.ToJson(new WinData(humanWin)));
+        }
+
         public NetObject ReturnRandomPlayer()
         {
+            string randomPlayer = connectedPlayers[Random.Range(0, connectedPlayers.Count)];
+            foreach (NetObject obj in NetObjManager.instance.allNetObject)
+            {
+                if (obj.ownerID == randomPlayer)
+                    return obj;
+            }
             return null;
         }
     }
@@ -130,6 +157,21 @@ namespace Knotgames.Network
             eventName = name;
             this.distributionOption = distributionOption;
             roomID = ID;
+        }
+    }
+
+    [System.Serializable]
+    public class WinData
+    {
+        public string eventName;
+        public string distributionOption;
+        public string roomID;
+        public bool humanWin;
+        public WinData(bool humanWin)
+        {
+            eventName = "toggledWin";
+            distributionOption = DistributionOption.serveAll;
+            roomID = NetRoomJoin.instance.roomID.value;
         }
     }
 
