@@ -39,6 +39,12 @@ namespace Knotgames.Network
                         Cursor.visible = true;
                         SceneManager.LoadScene(2);
                     }
+                    else if (inGame && winDone)
+                    {
+                        UnityEngine.Debug.LogError("RESETTING WIN");
+                        winDone = false;
+                        inGame = false;
+                    }
                     else
                         UnityEngine.Debug.Log("<color=yellow>A SINFUL BEING HAS BEEN PURGED FROM THE LOBBY, ATLEAST HE LEFT EARLY</color>");
                     break;
@@ -72,7 +78,6 @@ namespace Knotgames.Network
                     UnityEngine.Debug.LogError("<color=white>WIN TRIGGERED</color>");
                     winDone = true;
                     humanWin = JsonUtility.FromJson<WinData>(dataString).humanWin;
-                    Invoke("ResetWin", 5f);
                     Cursor.lockState = CursorLockMode.None;
                     Cursor.visible = true;
                     Scener.LoadScene(3);
@@ -115,12 +120,6 @@ namespace Knotgames.Network
         public void ToggleWinScreen(bool humanWin)
         {
             NetConnector.instance.SendDataToServer(JsonUtility.ToJson(new WinData(humanWin)));
-        }
-
-        void ResetWin()
-        {
-            UnityEngine.Debug.LogError("RESETTING WIN");
-            winDone = false;
         }
 
         public NetObject ReturnRandomPlayer()
