@@ -11,5 +11,10 @@ namespace Knotgames.Network
         {
             NetRoomJoin.instance.JoinRandomRoom();
         }
+
+        public void Ready()
+        {
+            NetGameManager.instance.Ready();
+        }
     }
 }
