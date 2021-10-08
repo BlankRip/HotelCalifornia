@@ -73,8 +73,7 @@ namespace Knotgames.Network
         void DataReciver(MessageEventArgs eventData)
         {
             string val = Encoding.UTF8.GetString(eventData.RawData);
-            OnMsgRecieveRaw.Invoke(val);
-
+           if (OnMsgRecieveRaw != null && OnMsgRecieveRaw.GetInvocationList().Length > 0) OnMsgRecieveRaw.Invoke(val);
 
             recievedEvents.Enqueue(
             () =>
