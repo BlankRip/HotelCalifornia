@@ -9,7 +9,7 @@ namespace Knotgames.Gameplay.Puzzle.ChemicalRoom {
     {
         private IMixer mixer;
         private bool useable;
-        private float interfearDiableTime = 5f;
+        private float interfearDisableTime = 5f;
         private DataToSend startData;
         private DataToSend usableData;
 
@@ -44,7 +44,7 @@ namespace Knotgames.Gameplay.Puzzle.ChemicalRoom {
             }
             else if(extracted.eventName == "interfearMixer") {
                 useable = false;
-                Invoke("MakeUsable", interfearDiableTime);
+                Invoke("MakeUsable", interfearDisableTime);
             }
         }
 
@@ -69,7 +69,7 @@ namespace Knotgames.Gameplay.Puzzle.ChemicalRoom {
                 SendInterfearData();
 
             useable = false;
-            Invoke("MakeUsable", interfearDiableTime);
+            Invoke("MakeUsable", interfearDisableTime);
         }
         
         private void MakeUsable() {

@@ -9,19 +9,19 @@ namespace Knotgames.Gameplay.Puzzle.ChemicalRoom
         [SerializeField] ScriptatbleChemicalPuzzle chemRoom;
         [SerializeField] Transform successPoint;
         [SerializeField] GameObject portionPrefab;
-        List<IPortion> slotted = new List<IPortion>();
-        List<IMixerSlot> savedPotions = new List<IMixerSlot>();
+        List<IPortion> potions = new List<IPortion>();
+        List<IMixerSlot> slots = new List<IMixerSlot>();
         bool mixing;
 
         public void AddPotion(IPortion type, IMixerSlot slot)
         {
-            slotted.Add(type);
-            savedPotions.Add(slot);
+            potions.Add(type);
+            slots.Add(slot);
         }
 
         public void StartMix()
         {
-            if(!mixing && slotted.Count == 2)
+            if(!mixing && potions.Count == 2)
                 StartCoroutine(Mix());
         }
 
@@ -35,25 +35,25 @@ namespace Knotgames.Gameplay.Puzzle.ChemicalRoom
         private void FinishMix() {
             List<MixerSolution> allSolutions = chemRoom.manager.GetSolutions();
             foreach(MixerSolution solution in allSolutions) {
-                if(!solution.mixTypes.Contains(slotted[0].GetPortionType()))
+                if(!solution.mixTypes.Contains(potions[0].GetPortionType()))
                     continue;
-                if(!solution.mixTypes.Contains(slotted[1].GetPortionType()))
+                if(!solution.mixTypes.Contains(potions[1].GetPortionType()))
                     continue;
                 
                 IPortion resultantPortion = GameObject.Instantiate(portionPrefab, successPoint.position, Quaternion.identity).GetComponent<IPortion>();
                 resultantPortion.SetPortionType(solution.resultantType);
-                foreach(IMixerSlot portion in savedPotions)
+                foreach(IMixerSlot portion in slots)
                     portion.DestroyItemInSlot();
 
-                slotted.Clear();
-                savedPotions.Clear();
+                potions.Clear();
+                slots.Clear();
                 return;
             }
         }
 
         public void RemovePortion(IPortion type, IMixerSlot slot) {
-            slotted.Remove(type);
-            savedPotions.Remove(slot);
+            potions.Remove(type);
+            slots.Remove(slot);
         }
 
         public bool IsMixing() {
