@@ -8,11 +8,13 @@ namespace Knotgames.Gameplay.Puzzle.XO {
     public class SolutionBoard : MonoBehaviour, ISolutionBoard
     {
         [SerializeField] GameplayEventCollection eventCollection;
+        [SerializeField] Transform boardForward;
         [SerializeField] List<Transform> textSpots;
         [SerializeField] string textObjPoolTag;
         [SerializeField] int maxEmpties = 3;
         private int currenEmpties;
         private List<TextMeshProUGUI> texts;
+        private TextMeshProUGUI forwardText;
         private bool deliutional;
 
         private void Start() {
@@ -51,12 +53,27 @@ namespace Knotgames.Gameplay.Puzzle.XO {
                 TextMeshProUGUI text = ObjectPool.instance.SpawnPoolObj(textObjPoolTag, spot.position, spot.rotation).GetComponent<TextMeshProUGUI>();
                 texts.Add(text);
             }
+            forwardText = ObjectPool.instance.SpawnPoolObj(textObjPoolTag, boardForward.position, boardForward.rotation).GetComponent<TextMeshProUGUI>();
+            forwardText.text = "↑";
         }
 
         public List<string> BuildNewSolution(Transform newSpot) {
             transform.position = newSpot.position;
             transform.rotation = newSpot.rotation;
+            RotatePad();
+            forwardText.transform.position = boardForward.position;
+            forwardText.transform.rotation = boardForward.rotation;
             return SetSolution();
+        }
+
+        private void RotatePad() {
+            int rotateDecider = Random.Range(0, 100);
+            if(rotateDecider < 20)
+                transform.Rotate(0, 0, 90);
+            else if(rotateDecider > 50 && rotateDecider < 75)
+                transform.Rotate(0, 0, -90);
+            else if(rotateDecider < 90)
+                transform.Rotate(0, 0, 180);
         }
 
         private List<string> SetSolution() {

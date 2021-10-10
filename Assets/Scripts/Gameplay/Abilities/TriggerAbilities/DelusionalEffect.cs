@@ -4,9 +4,9 @@ using UnityEngine;
 
 namespace Knotgames.Gameplay.Abilities {
     public class DelusionalEffect : MonoBehaviour, IAbilityEffect
+
     {
         [SerializeField] GameplayEventCollection eventCollection;
-
         public void ApplyEffect() {
             Debug.LogError("Start Delusions here");
             eventCollection.twistVision.Invoke();

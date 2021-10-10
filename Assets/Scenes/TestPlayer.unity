@@ -1782,7 +1782,7 @@ MonoBehaviour:
     parent: {fileID: 1674245241}
   - tag: XOText
     prefab: {fileID: 8127048522812659633, guid: 3b9689b77ad8780429e1249d1cb7e633, type: 3}
-    maxSize: 20
+    maxSize: 22
     parent: {fileID: 1674245241}
 --- !u!4 &416020166
 Transform:
@@ -8091,6 +8091,36 @@ MonoBehaviour:
   abilityImage: {fileID: 387987695}
   disabledOverlay: {fileID: 548008622}
   useleftText: {fileID: 1095445632}
+--- !u!1 &1660502272
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1660502273}
+  m_Layer: 7
+  m_Name: Forward
+  m_TagString: HumanInteractable
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1660502273
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1660502272}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.0029999416, y: 0.643, z: -0.9700011}
+  m_LocalScale: {x: 0.26102, y: 0.24896, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1840778620929188401}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1674245240
 GameObject:
   m_ObjectHideFlags: 0
@@ -10861,6 +10891,7 @@ Transform:
   - {fileID: 260952575735511762}
   - {fileID: 243353730149011336}
   - {fileID: 8960755676293576465}
+  - {fileID: 1660502273}
   - {fileID: 4971482190525233918}
   m_Father: {fileID: 1359048223}
   m_RootOrder: 1
@@ -11009,6 +11040,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   puzzleTracker: {fileID: 11400000, guid: fd981454de7de5a4cbdc5f8b956792d9, type: 2}
+  boardForward: {fileID: 1660502273}
+  textObjPoolTag: XOText
   pieces:
   - {fileID: 344764404316401517}
   - {fileID: 348354255}
@@ -11050,7 +11083,7 @@ Transform:
   - {fileID: 512671167}
   - {fileID: 104761141}
   m_Father: {fileID: 1840778620929188401}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &5102238741550469172
 MeshRenderer:
