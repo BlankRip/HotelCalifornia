@@ -60,6 +60,7 @@ namespace Knotgames.Gameplay.Puzzle.XO {
         private void DestroyPuzzleOnComplete() {
             foreach (BoardPiece item in pieces) {
                 item.gameObject.layer = 0;
+                item.gameObject.tag = "Untagged";
                 Destroy(item);
             }
             Destroy(this, 0.1f);
