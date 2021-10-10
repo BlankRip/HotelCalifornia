@@ -22,11 +22,13 @@ namespace Knotgames.Gameplay {
 
         private void Awake()
         {
-            if (instance == null)
+            if (instance == null) {
                 instance = this;
+                Fill();
+            }
         }
 
-        void Start()
+        void Fill()
         {
             poolDictionary = new Dictionary<string, Queue<GameObject>>();
 

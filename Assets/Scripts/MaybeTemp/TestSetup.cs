@@ -14,6 +14,8 @@ namespace Knotgames.Gameplay {
         private bool host = false;
 
         private void Start() {
+            if(DevBoy.yes)
+                Destroy(this);
             SendAtLoadingStatus();
             NetConnector.instance.OnMsgRecieve.AddListener(Hear);
         }
