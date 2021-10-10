@@ -7,11 +7,43 @@ using TMPro;
 namespace Knotgames.Gameplay.Puzzle.XO {
     public class SolutionBoard : MonoBehaviour, ISolutionBoard
     {
+        [SerializeField] GameplayEventCollection eventCollection;
         [SerializeField] List<Transform> textSpots;
         [SerializeField] string textObjPoolTag;
         [SerializeField] int maxEmpties = 3;
         private int currenEmpties;
         private List<TextMeshProUGUI> texts;
+        private bool deliutional;
+
+        private void Start() {
+            deliutional = false;
+            eventCollection.twistVision.AddListener(TwistVision);
+            eventCollection.fixVision.AddListener(BackToNormalVision);
+        }
+
+        private void OnDestroy() {
+            eventCollection.twistVision.RemoveListener(TwistVision);
+            eventCollection.fixVision.RemoveListener(BackToNormalVision);
+        }
+
+        private void TwistVision() {
+            deliutional = true;
+            FlipXO();
+        }
+
+        private void BackToNormalVision() {
+            deliutional = false;
+            FlipXO();
+        }
+
+        private void FlipXO() {
+            foreach (TextMeshProUGUI t in texts) {
+                if(t.text == "X")
+                    t.text = "O";
+                else if(t.text == "O")
+                    t.text = "X";
+            }
+        }
 
         public void SetUpBoard() {
             texts = new List<TextMeshProUGUI>();
@@ -36,6 +68,8 @@ namespace Knotgames.Gameplay.Puzzle.XO {
                 texts[i].transform.position = textSpots[i].position;        
                 texts[i].transform.rotation = textSpots[i].rotation;        
             }
+            if(deliutional)
+                FlipXO();
             return solution;
         }
 

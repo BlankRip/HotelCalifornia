@@ -6,15 +6,38 @@ using TMPro;
 namespace Knotgames.Gameplay.Puzzle.XO {
     public class BoardPiece : MonoBehaviour, IInteractable
     {
+        [SerializeField] GameplayEventCollection eventCollection;
         [SerializeField] string textPoolTag;
         private List<string> values;
         private int index;
         private TextMeshProUGUI myText;
         private IPuzzleBoard board;
+        private bool delusional;
         
         private void Start() {
             BasicSetUp();
             board = GetComponentInParent<IPuzzleBoard>();
+
+            delusional = false;
+            eventCollection.twistVision.AddListener(TwistVision);
+            eventCollection.fixVision.AddListener(BackToNormalVision);
+        }
+
+        private void OnDestroy() {
+            if(delusional)
+                FlipXO();
+            eventCollection.twistVision.RemoveListener(TwistVision);
+            eventCollection.fixVision.RemoveListener(BackToNormalVision);
+        }
+
+        private void TwistVision() {
+            delusional = true;
+            FlipXO();
+        }
+
+        private void BackToNormalVision() {
+            delusional = false;
+            FlipXO();
         }
 
         private void BasicSetUp() {
@@ -38,7 +61,16 @@ namespace Knotgames.Gameplay.Puzzle.XO {
             else
                 index++;
             myText.text = values[index];
+            if(delusional)
+                FlipXO();
             board.CheckSolution();
+        }
+
+        private void FlipXO() {
+            if(myText.text == "X")
+                myText.text = "O";
+            else if(myText.text == "O")
+                myText.text = "X";
         }
 
         public string GetValue() {
