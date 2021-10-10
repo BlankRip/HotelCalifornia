@@ -8,4 +8,11 @@ namespace Knotgames.Gameplay.Puzzle.XO {
         void SetUpBoard();
         List<string> BuildNewSolution(Transform newSpot);
     }
+
+    public interface IPuzzleBoard 
+    {
+        void SetUp(IXOSolutionRoom solutionRoom);
+        void SetSolution(List<string> sol);
+        void CheckSolution();
+    }
 }
