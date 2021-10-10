@@ -7,4 +7,9 @@ namespace Knotgames.Gameplay.Puzzle.XO {
     {
         void Solved();
     }
+
+    public interface IXOPuzzleRoom
+    {
+        void SetSolution(List<string> solution);
+    }
 }

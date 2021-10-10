@@ -5,6 +5,7 @@ using UnityEngine;
 namespace Knotgames.Gameplay.Puzzle.XO {
     public class PuzzleBoard : MonoBehaviour, IPuzzleBoard
     {
+        [SerializeField] ScriptablePuzzleStatusTracker puzzleTracker;
         [SerializeField] List<BoardPiece> pieces;
         [SerializeField] Vector2Int fillRange = new Vector2Int(2, 5);
         [SerializeField] List<string> solution;
@@ -36,13 +37,23 @@ namespace Knotgames.Gameplay.Puzzle.XO {
         }
 
         public void CheckSolution() {
-            // for (int i = 0; i < pieces.Count; i++) {
-            //     if(pieces[i].GetValue() != solution[i])
-            //         return;
-            // }
+            for (int i = 0; i < pieces.Count; i++) {
+                if(pieces[i].GetValue() != solution[i])
+                    return;
+            }
 
-            //! here puzzle solved
-            // solutionRoom.Solved();
+            solutionRoom.Solved();
+            puzzleTracker.tracker.OnePuzzleSolved();
+            Debug.Log("Solved");
+            DestroyPuzzleOnComplete();
+        }
+
+        private void DestroyPuzzleOnComplete() {
+            foreach (BoardPiece item in pieces) {
+                item.gameObject.layer = 0;
+                Destroy(item);
+            }
+            Destroy(this, 0.1f);
         }
     }
 }

@@ -9,7 +9,8 @@ namespace Knotgames.LevelGen {
         public Material mat;
 
         public void ActivatePuzzle(Renderer renderer) {
-            renderer.material = mat;
+            if(renderer != null)
+                renderer.material = mat;
             activationObject.SetActive(true);
         }
 

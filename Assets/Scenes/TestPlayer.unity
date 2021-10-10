@@ -1899,7 +1899,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &440850686
 Transform:
   m_ObjectHideFlags: 0
@@ -1936,6 +1936,7 @@ MonoBehaviour:
   - {fileID: 1819319682}
   - {fileID: 761206865}
   changeSolutionIn: 40
+  currentSolution: []
 --- !u!1 &444555050
 GameObject:
   m_ObjectHideFlags: 0
@@ -6312,6 +6313,57 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1290324231}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1295484422
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1295484424}
+  - component: {fileID: 1295484423}
+  m_Layer: 0
+  m_Name: PairPuzzleLinker
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1295484423
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1295484422}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7eaf3d686b8c874e905c1433c6c5647, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  A:
+    puzzleType: 0
+    activationObject: {fileID: 440850685}
+    mat: {fileID: 0}
+  B:
+    puzzleType: 1
+    activationObject: {fileID: 1359048221}
+    mat: {fileID: 0}
+--- !u!4 &1295484424
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1295484422}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.18450914, y: 20.291735, z: -40.401566}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 27
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1299776102
 GameObject:
   m_ObjectHideFlags: 0
@@ -6604,7 +6656,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1359048222
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10947,6 +10999,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b83244284202f64483b3115a981f602, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  puzzleTracker: {fileID: 11400000, guid: fd981454de7de5a4cbdc5f8b956792d9, type: 2}
   pieces:
   - {fileID: 344764404316401517}
   - {fileID: 348354255}
