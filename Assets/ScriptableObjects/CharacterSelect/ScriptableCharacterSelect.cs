@@ -32,7 +32,8 @@ namespace Knotgames.CharacterData
         public ModelType modelType;
         public List<AbilityType> abilityTypes;
 
-        public void ResetAbilityTypes() {
+        public void ResetAbilityTypes()
+        {
             for (int i = 0; i < abilityTypes.Count; i++)
                 abilityTypes[i] = AbilityType.Nada;
         }

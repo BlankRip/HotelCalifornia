@@ -3,24 +3,30 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Knotgames.Extensions;
+using Knotgames.CharacterData;
 
 namespace Knotgames.Network
 {
     public class NetGameManager : MonoBehaviour
     {
         [HideInInspector] public bool inGame = false;
+        public ScriptableSpawnDataCollection allSpawnData;
+        public ScriptableCharacterSelect characterData;
         public static NetGameManager instance;
         public List<string> connectedPlayers;
         bool winDone = false;
         public bool humanWin;
         NetObject ghost;
-        List<NetObject> humans =  new List<NetObject>();
+        List<NetObject> humans = new List<NetObject>();
+        [HideInInspector] public List<GameObject> ghostModels = new List<GameObject>();
+        [HideInInspector] public List<GameObject> humanModels = new List<GameObject>();
 
         private void Awake()
         {
             if (instance == null)
                 instance = this;
         }
+
         public void Hear(string dataString)
         {
             string eventName = JsonUtility.FromJson<ReadyData>(dataString).eventName;
@@ -52,6 +58,8 @@ namespace Knotgames.Network
                         winDone = false;
                         ghost = null;
                         humans.Clear();
+                        ghostModels.Clear();
+                        humanModels.Clear();
                         string leftID = JsonUtility.FromJson<PlayerIDExtractor>(dataString).playerID;
                         connectedPlayers.Remove(leftID);
                     }
@@ -97,6 +105,23 @@ namespace Knotgames.Network
                     Cursor.lockState = CursorLockMode.None;
                     Cursor.visible = true;
                     Scener.LoadScene(3);
+                    break;
+                case "syncObjectData":
+                    if (JsonUtility.FromJson<ObjectNetData>(dataString).componentType == "ModelSpawnNetData")
+                    {
+                        ModelSpawnNetData temp = JsonUtility.FromJson<ModelSpawnNetData>(dataString);
+                        switch (CustomExtensions.GetModelType(temp.modelType))
+                        {
+                            case "ghost":
+                                ghostModels.Add(CustomExtensions.ReturnModelObject(temp.modelType));
+                                UnityEngine.Debug.LogError("GHOST MODEL ADDED");
+                                break;
+                            case "human":
+                                humanModels.Add(CustomExtensions.ReturnModelObject(temp.modelType));
+                                UnityEngine.Debug.LogError("HUMAN MODEL ADDED");
+                                break;
+                        }
+                    }
                     break;
             }
         }
