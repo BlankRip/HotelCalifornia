@@ -2,10 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using Knotgames.Network;
 
 namespace Knotgames.Gameplay.Puzzle.XO {
     public class BoardPiece : MonoBehaviour, IInteractable
     {
+        public static int pieceId;
+        public static void ResetIDs() {
+            pieceId = 0;
+        }
+
         [SerializeField] GameplayEventCollection eventCollection;
         [SerializeField] string textPoolTag;
         private List<string> values;
@@ -13,6 +19,8 @@ namespace Knotgames.Gameplay.Puzzle.XO {
         private TextMeshProUGUI myText;
         private IPuzzleBoard board;
         private bool delusional;
+        private int id;
+        private DataToSend dataToSend;
         
         private void Start() {
             BasicSetUp();
@@ -21,6 +29,23 @@ namespace Knotgames.Gameplay.Puzzle.XO {
             delusional = false;
             eventCollection.twistVision.AddListener(TwistVision);
             eventCollection.fixVision.AddListener(BackToNormalVision);
+
+            id = pieceId;
+            pieceId++;
+            dataToSend = new DataToSend(id);
+            if(!DevBoy.yes)
+                NetUnityEvents.instance.xoPieceEvent.AddListener(RecieveData);
+        }
+
+        private void RecieveData(string recieved) {
+            ExtractionClass extracted = JsonUtility.FromJson<ExtractionClass>(recieved);
+            if(extracted.myId == id) {
+                CylceValue();
+            }
+        }
+
+        private void SendData() {
+            NetConnector.instance.SendDataToServer(JsonUtility.ToJson(dataToSend));
         }
 
         private void OnDestroy() {
@@ -28,6 +53,9 @@ namespace Knotgames.Gameplay.Puzzle.XO {
                 FlipXO();
             eventCollection.twistVision.RemoveListener(TwistVision);
             eventCollection.fixVision.RemoveListener(BackToNormalVision);
+
+            if(!DevBoy.yes)
+                NetUnityEvents.instance.xoPieceEvent.RemoveListener(RecieveData);
         }
 
         private void TwistVision() {
@@ -53,6 +81,7 @@ namespace Knotgames.Gameplay.Puzzle.XO {
 
         public void Interact() {
             CylceValue();
+            SendData();
         }
 
         private void CylceValue() {
@@ -87,6 +116,25 @@ namespace Knotgames.Gameplay.Puzzle.XO {
         }
 
         public void HideInteractInstruction() {
+        }
+
+        private class ExtractionClass {
+            public int myId;
+        }
+
+        private class DataToSend {
+            public int myId;
+            public string eventName;
+            public string roomID;
+            public string distributionOption;
+
+            public DataToSend(int id) {
+                eventName = "XOBoardPiece";
+                distributionOption = DistributionOption.serveOthers;
+                myId = id;
+                if(!DevBoy.yes)
+                    roomID = NetRoomJoin.instance.roomID.value;
+            }
         }
     }
 }

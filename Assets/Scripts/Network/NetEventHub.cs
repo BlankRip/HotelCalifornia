@@ -69,6 +69,10 @@ namespace Knotgames.Network
                     NetUnityEvents.instance.puzzleSolvedEvent.Invoke(dataString); 
                     break;
 
+                case "XOBoardPiece":
+                    NetUnityEvents.instance.xoPieceEvent.Invoke(dataString);
+                    break;
+
                 case "spawnObject":
                     NetObjManager.instance.AddSpawnObject(dataString);
                     break;
