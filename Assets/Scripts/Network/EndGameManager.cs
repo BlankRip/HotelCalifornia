@@ -21,8 +21,12 @@ namespace Knotgames.Network
             {
                 for (int i = 0; i < NetGameManager.instance.humanModels.Count; i++)
                 {
-                    GameObject go = GameObject.Instantiate(NetGameManager.instance.humanModels[i]);
+                    GameObject go = GameObject.Instantiate(NetGameManager.instance.humanModels[i].model);
+                    Animator anim = go.AddComponent<Animator>();
+                    anim.runtimeAnimatorController = NetGameManager.instance.humanModels[i].animatorController;
+                    anim.avatar = NetGameManager.instance.humanModels[i].animationAvatar;
                     go.transform.position = playerSlots[i].position;
+                    go.transform.rotation = playerSlots[i].rotation;
                 }
                 humanWinPanel.SetActive(true);
             }
@@ -30,8 +34,12 @@ namespace Knotgames.Network
             {
                 for (int i = 0; i < NetGameManager.instance.ghostModels.Count; i++)
                 {
-                    GameObject go = GameObject.Instantiate(NetGameManager.instance.ghostModels[i]);
+                    GameObject go = GameObject.Instantiate(NetGameManager.instance.ghostModels[i].model);
+                    Animator anim = go.AddComponent<Animator>();
+                    anim.runtimeAnimatorController = NetGameManager.instance.ghostModels[i].animatorController;
+                    anim.avatar = NetGameManager.instance.ghostModels[i].animationAvatar;
                     go.transform.position = playerSlots[i].position;
+                    go.transform.rotation = playerSlots[i].rotation;
                 }
                 ghostWinPanel.SetActive(true);
             }

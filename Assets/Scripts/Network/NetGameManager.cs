@@ -18,8 +18,8 @@ namespace Knotgames.Network
         public bool humanWin;
         NetObject ghost;
         List<NetObject> humans = new List<NetObject>();
-        [HideInInspector] public List<GameObject> ghostModels = new List<GameObject>();
-        [HideInInspector] public List<GameObject> humanModels = new List<GameObject>();
+        [HideInInspector] public List<SpawnData> ghostModels = new List<SpawnData>();
+        [HideInInspector] public List<SpawnData> humanModels = new List<SpawnData>();
 
         private void Awake()
         {
