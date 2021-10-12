@@ -8,7 +8,6 @@ namespace Knotgames.Audio
     public class AudioPlayer : MonoBehaviour
     {
         public static AudioPlayer instance;
-
         [SerializeField] ScriptableAudioDatabase audioDatabase;
         [SerializeField] AudioSource sfxSource2D;
         private AudioSource sfxSource3D;
@@ -48,6 +47,11 @@ namespace Knotgames.Audio
         {
             if(sfxSource3D != null)
                 sfxSource3D.PlayOneShot(audioDatabase.GetClip(name));
+        }
+
+        public AudioData GetClip(ClipName name)
+        {
+            return audioDatabase.GetClipData(name);
         }
     }
 }

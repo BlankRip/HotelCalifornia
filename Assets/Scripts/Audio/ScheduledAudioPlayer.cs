@@ -21,6 +21,7 @@ namespace Knotgames.Audio
         {
             if (AudioSettings.dspTime > startTime - 1)
             {
+                Debug.Log("playing");
                 //Check if there is an empty audio Clip
                 if (songsToPlay[nextClip] != null)
                 {

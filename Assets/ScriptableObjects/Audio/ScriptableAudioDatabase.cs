@@ -19,5 +19,16 @@ namespace Knotgames.Audio
 
             return null;
         }
+
+        public AudioData GetClipData(ClipName name)
+        {
+            foreach (AudioData data in audioData)
+            {
+                if (data.clipName == name)
+                    return data;
+            }
+
+            return null;
+        }
     }
 }
