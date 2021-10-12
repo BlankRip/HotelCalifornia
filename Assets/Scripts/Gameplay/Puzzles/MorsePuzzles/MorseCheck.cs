@@ -11,7 +11,14 @@ namespace Knotgames.Gameplay.Puzzle.Morse
         public void Interact() 
         {
             if(linkedPuzzle.CheckSolution())
-                linkedPuzzle.Solved();
+                Solve();
+        }
+
+        void Solve()
+        {
+            gameObject.tag = "Untagged";
+            gameObject.layer = 0;
+            linkedPuzzle.Solved();
         }
 
         public void HideInteractInstruction() {}
