@@ -53,7 +53,7 @@ namespace Knotgames.Gameplay.Puzzle.Morse
             Destroy(myPlayer.gameObject);
         }
 
-        public void Link(MorsePuzzle puzzle)
+        public void Link(MorseDevice puzzle)
         {
             foreach (AudioData data in solution)
             {

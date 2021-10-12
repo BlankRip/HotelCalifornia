@@ -6,7 +6,7 @@ namespace Knotgames.Gameplay.Puzzle.Morse
 {
     public class MorseCheck : MonoBehaviour, IInteractable
     {
-        [SerializeField] MorsePuzzle linkedPuzzle;
+        [SerializeField] MorseDevice linkedPuzzle;
 
         public void Interact() 
         {

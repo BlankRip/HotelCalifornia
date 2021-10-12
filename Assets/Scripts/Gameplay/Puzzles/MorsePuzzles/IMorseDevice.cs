@@ -8,10 +8,10 @@ namespace Knotgames.Gameplay.Puzzle.Morse {
     {
         void SetUpPlayer();
         void Solved();
-        void Link(MorsePuzzle puzzle);
+        void Link(MorseDevice puzzle);
     }
 
-    public interface IMorsePuzzle
+    public interface IMorseDevice
     {
         bool CheckSolution();
         void Solved();

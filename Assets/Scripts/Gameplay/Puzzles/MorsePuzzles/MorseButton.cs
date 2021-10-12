@@ -12,8 +12,6 @@ namespace Knotgames.Gameplay.Puzzle.Morse
         public ClipName myClip;
         [SerializeField] TextMeshProUGUI text;
         bool inverse;
-        private int id;
-        private DataToSend dataToSend;
 
         private void Start()
         {
@@ -24,7 +22,6 @@ namespace Knotgames.Gameplay.Puzzle.Morse
         public void Interact()
         {
             CycleValue();
-            SendData();
         }
 
         private void CycleValue()
@@ -40,47 +37,7 @@ namespace Knotgames.Gameplay.Puzzle.Morse
             text.text = myClip.ToString();
         }
 
-        private void RecieveData(string recieved)
-        {
-            ExtractionClass extracted = JsonUtility.FromJson<ExtractionClass>(recieved);
-            if (extracted.myId == id)
-            {
-                CycleValue();
-            }
-        }
-
-        private void SendData()
-        {
-            NetConnector.instance.SendDataToServer(JsonUtility.ToJson(dataToSend));
-        }
-
         public void ShowInteractInstruction() {}
         public void HideInteractInstruction() {}
-
-        private class ExtractionClass
-        {
-            public int myId;
-        }
-        
-        private class DataToSend
-        {
-            public int myId;
-            public string eventName;
-            public string roomID;
-            public string distributionOption;
-
-            public DataToSend(int id)
-            {
-                eventName = "MorseButtonClick";
-                distributionOption = DistributionOption.serveOthers;
-                myId = id;
-                if (!DevBoy.yes)
-                    roomID = NetRoomJoin.instance.roomID.value;
-            }
-
-            public void HideInteractInstruction() { }
-
-            public void ShowInteractInstruction() { }
-        }
     }
 }

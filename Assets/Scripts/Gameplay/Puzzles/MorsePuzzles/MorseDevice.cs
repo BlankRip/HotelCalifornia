@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Knotgames.Gameplay.Puzzle.Morse
 {
-    public class MorsePuzzle : MonoBehaviour, IMorsePuzzle
+    public class MorseDevice : MonoBehaviour, IMorseDevice
     {
         public List<ClipName> solution;
         MorsePlayer player;
