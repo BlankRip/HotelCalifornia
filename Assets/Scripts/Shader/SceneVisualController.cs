@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Knotagmes.Shaders
+namespace Knotgames.Shaders
 {
     [ExecuteAlways]
     public class SceneVisualController : MonoBehaviour

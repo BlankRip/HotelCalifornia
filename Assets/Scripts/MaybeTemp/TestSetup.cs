@@ -11,11 +11,12 @@ namespace Knotgames.Gameplay {
         [SerializeField] GameObject spawnerObj;
         [SerializeField] ScriptableLevelSeed gameSeed;
         [SerializeField] GameObject objToTurnOn;
-        private bool host = false;
+        [SerializeField] ScriptableHostStatus hostStatus;
 
         private void Start() {
             if(DevBoy.yes)
                 Destroy(this);
+            hostStatus.isHost = false;
             SendAtLoadingStatus();
             NetConnector.instance.OnMsgRecieve.AddListener(Hear);
         }
@@ -34,13 +35,13 @@ namespace Knotgames.Gameplay {
             switch (eventName)
             {
                 case "generateSeed": {
-                    host = true;
+                    hostStatus.isHost = true;
                     gameSeed.levelSeed.GenerateSeed();
                     gameSeed.levelSeed.SeedSuccesful();
                     break;
                 }
                 case "replicateLevel": {
-                    if(!host) {
+                    if(!hostStatus.isHost) {
                         int seed = JsonUtility.FromJson<RecievedSeed>(dataString).seed;
                         gameSeed.levelSeed.SetSeed(seed);
                         gameSeed.levelSeed.SeedSuccesful();

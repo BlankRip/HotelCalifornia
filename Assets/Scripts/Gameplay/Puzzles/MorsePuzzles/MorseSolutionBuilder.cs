@@ -28,8 +28,7 @@ namespace Knotgames.Gameplay.Puzzle.Morse {
             solution = new List<char>();
         }
 
-        public List<char> BuildSolution()
-        {
+        public List<char> BuildSolution() {
             FillSoutionData();
             SetFinalSolution();
             return solution;
