@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Knotgames.LevelGen {
     [System.Serializable]
-    public class Puzzle: IPuzzleActivator
+    public class PuzzleActivator: IPuzzleActivator
     {
         [SerializeField] PuzzleType puzzleType;
         [SerializeField] GameObject activationObject;

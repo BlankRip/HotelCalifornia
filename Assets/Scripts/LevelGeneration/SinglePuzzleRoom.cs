@@ -4,7 +4,7 @@ using UnityEngine;
 namespace Knotgames.LevelGen {
     public class SinglePuzzleRoom : MonoBehaviour, ISingelPuzzleRoom
     {
-        public List<Puzzle> roomPuzzles;
+        public List<PuzzleActivator> roomPuzzles;
         [SerializeField] private Renderer renderer;
 
         public PuzzleType GetAndActivePuzzle(ref List<PuzzleType> exclusionTypes) {

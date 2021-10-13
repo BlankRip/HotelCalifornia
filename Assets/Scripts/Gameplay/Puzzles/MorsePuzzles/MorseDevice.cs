@@ -14,7 +14,6 @@ namespace Knotgames.Gameplay.Puzzle.Morse
         void Start()
         {
             player = FindObjectOfType<MorsePlayer>();
-            player.Link(this);
         }
 
         public bool CheckSolution()
@@ -25,6 +24,10 @@ namespace Knotgames.Gameplay.Puzzle.Morse
                     return false;
             }
             return true;
+        }
+
+        public void SetSolution(List<char> solution) {
+            
         }
 
         public void Solved()

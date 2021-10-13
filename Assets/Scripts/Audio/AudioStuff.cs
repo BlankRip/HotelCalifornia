@@ -13,6 +13,6 @@ namespace Knotgames.Audio
 
     public enum ClipName
     {
-        Nada, Test1, Test2, MorseA, MorseB, MorseC
+        Nada, MorseA, MorseB, MorseC
     }
 }

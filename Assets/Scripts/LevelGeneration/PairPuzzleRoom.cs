@@ -6,7 +6,7 @@ namespace Knotgames.LevelGen {
     public class PairPuzzleRoom : MonoBehaviour, IPairPuzzleRoom
     {
         [SerializeField] List<RoomType> connectable;
-        [SerializeField] List<Puzzle> roomPuzzles;
+        [SerializeField] List<PuzzleActivator> roomPuzzles;
         [SerializeField] Renderer renderer;
         private List<PuzzleType> puzzleTypes;
         private List<IPuzzleActivator> myPuzzles;

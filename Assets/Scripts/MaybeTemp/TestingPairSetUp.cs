@@ -5,8 +5,8 @@ using UnityEngine;
 namespace Knotgames.LevelGen {
     public class TestingPairSetUp : MonoBehaviour
     {
-        [SerializeField] Puzzle A;
-        [SerializeField] Puzzle B;
+        [SerializeField] PuzzleActivator A;
+        [SerializeField] PuzzleActivator B;
 
         private void Start() {
             IPuzzleActivator aActivator = A;
