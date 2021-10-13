@@ -11,37 +11,30 @@ namespace Knotgames.Gameplay.Puzzle.Morse
     {
         public char myValue;
         [SerializeField] Transform textPos;
+        private IMorseDevice device;
+        private MorseAlphPanel panel;
         private TextMeshProUGUI text;
         bool inverse;
 
         private void Start()
         {
-            myValue = 'A';
+            myValue = '0';
+            device = GetComponentInParent<IMorseDevice>();
+            panel = FindObjectOfType<MorseAlphPanel>();
+            text = ObjectPool.instance.SpawnPoolObj("MorseText", textPos.transform.position,
+                textPos.transform.rotation).GetComponent<TextMeshProUGUI>();
             text.text = myValue.ToString();
         }
 
-        private void TextSetUp() {
-
-            text.transform.position = textPos.transform.position;
-            text.transform.rotation = textPos.transform.rotation;
+        public void SetText(char value) {
+            myValue = value;
+            text.text = myValue.ToString();
+            device.CheckSolution();
         }
 
         public void Interact()
         {
-            CycleValue();
-        }
-
-        private void CycleValue()
-        {
-            // if (myClip >= ClipName.MorseC)
-            //     inverse = true;
-            // else if (myClip <= ClipName.MorseA)
-            //     inverse = false;
-            if (!inverse)
-                myValue++;
-            else
-                myValue--;
-            text.text = myValue.ToString();
+            panel.OpenPanel(this);
         }
 
         public void ShowInteractInstruction() {}

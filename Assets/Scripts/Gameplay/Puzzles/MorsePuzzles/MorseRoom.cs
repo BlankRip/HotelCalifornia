@@ -52,7 +52,7 @@ namespace Knotgames.Gameplay.Puzzle.Morse {
         }
 
         public void Solved() {
-            throw new System.NotImplementedException();
+            Debug.Log("Solved");
         }
     }
 }
