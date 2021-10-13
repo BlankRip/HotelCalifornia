@@ -7,32 +7,28 @@ namespace Knotgames.Gameplay.Puzzle.Morse
 {
     public class MorseDevice : MonoBehaviour, IMorseDevice
     {
-        public List<ClipName> solution;
-        MorsePlayer player;
+        [SerializeField] ScriptableMorsePuzzle morsePuzzle;
         [SerializeField] MorseButton[] buttons;
+        private List<char> solution;
 
         void Start()
         {
-            player = FindObjectOfType<MorsePlayer>();
+            solution = morsePuzzle.manager.GetSolution();
         }
 
-        public bool CheckSolution()
+        public void CheckSolution()
         {
             for (int i = 0; i < buttons.Length; i++)
             {
-                if(solution[i]!= buttons[i].myClip)
-                    return false;
+                if(solution[i] != buttons[i].myValue)
+                    return;
             }
-            return true;
+            morsePuzzle.manager.Solved();
+            Solved();
         }
 
-        public void SetSolution(List<char> solution) {
-            
-        }
-
-        public void Solved()
+        private void Solved()
         {
-            player.Solved();
             foreach(MorseButton button in buttons)
             {
                 button.tag = "Untagged";

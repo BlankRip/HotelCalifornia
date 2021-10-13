@@ -13,7 +13,6 @@ namespace Knotgames.Gameplay.Puzzle.Morse {
 
     public interface IMorseDevice
     {
-        bool CheckSolution();
-        void Solved();
+        void CheckSolution();
     }
 }

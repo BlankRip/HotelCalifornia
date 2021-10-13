@@ -9,14 +9,21 @@ namespace Knotgames.Gameplay.Puzzle.Morse
 {
     public class MorseButton : MonoBehaviour, IInteractable
     {
-        public ClipName myClip;
-        [SerializeField] TextMeshProUGUI text;
+        public char myValue;
+        [SerializeField] Transform textPos;
+        private TextMeshProUGUI text;
         bool inverse;
 
         private void Start()
         {
-            myClip = ClipName.MorseA;
-            text.text = myClip.ToString();
+            myValue = 'A';
+            text.text = myValue.ToString();
+        }
+
+        private void TextSetUp() {
+
+            text.transform.position = textPos.transform.position;
+            text.transform.rotation = textPos.transform.rotation;
         }
 
         public void Interact()
@@ -26,15 +33,15 @@ namespace Knotgames.Gameplay.Puzzle.Morse
 
         private void CycleValue()
         {
-            if (myClip >= ClipName.MorseC)
-                inverse = true;
-            else if (myClip <= ClipName.MorseA)
-                inverse = false;
+            // if (myClip >= ClipName.MorseC)
+            //     inverse = true;
+            // else if (myClip <= ClipName.MorseA)
+            //     inverse = false;
             if (!inverse)
-                myClip++;
+                myValue++;
             else
-                myClip--;
-            text.text = myClip.ToString();
+                myValue--;
+            text.text = myValue.ToString();
         }
 
         public void ShowInteractInstruction() {}

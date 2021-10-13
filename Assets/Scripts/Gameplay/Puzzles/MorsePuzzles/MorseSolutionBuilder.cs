@@ -42,14 +42,19 @@ namespace Knotgames.Gameplay.Puzzle.Morse {
         private void FillSoutionData() {
             for (int i = 0; i < numberOfLetters; i++)
             {
-                char alpha = alphabets[Random.Range(0, alphabets.Count)];
-                alphabets.Remove(alpha);
+                char alpha = GetRandomChar();
                 ClipName cName = clipNames[Random.Range(0, clipNames.Count)];
                 clipNames.Remove(cName);
 
                 clipAlphabetDictionary.Add(alpha, AudioPlayer.instance.GetClip(cName));
                 myAlphas.Add(alpha);
             }
+        }
+
+        public char GetRandomChar() {
+            char toReturn = alphabets[Random.Range(0, alphabets.Count)];
+            alphabets.Remove(toReturn);
+            return toReturn;
         }
 
         private void SetFinalSolution() {

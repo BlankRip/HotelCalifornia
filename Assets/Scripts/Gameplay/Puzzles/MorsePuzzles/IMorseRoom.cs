@@ -7,5 +7,6 @@ namespace Knotgames.Gameplay.Puzzle.Morse
     public interface IMorseRoom
     {
         List<char> GetSolution();
+        void Solved();
     }
 }
