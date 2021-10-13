@@ -31,7 +31,7 @@ namespace Knotgames.Gameplay {
         }
 
         private void Update() {
-            ray.RayResults(ref playerInSite, ref playerObj);
+            ray.RayResults(ref playerInSite, ref playerObj, false);
         }
 
 

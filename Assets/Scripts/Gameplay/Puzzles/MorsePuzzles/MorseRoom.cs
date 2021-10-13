@@ -4,7 +4,7 @@ using UnityEngine;
 using Knotgames.Audio;
 
 namespace Knotgames.Gameplay.Puzzle.Morse {
-    public class MorseRoom : MonoBehaviour
+    public class MorseRoom : MonoBehaviour, IMorseRoom
     {
         [SerializeField] ScriptableMorseCollection morseCollection;
         [SerializeField] List<ClipName> clipNames;
@@ -26,6 +26,10 @@ namespace Knotgames.Gameplay.Puzzle.Morse {
                 solutionPads[padId].UpdateText(padValue);
                 solutionPads.RemoveAt(padId);
             }
+        }
+
+        public List<char> GetSolution() {
+            return solution;
         }
     }
 }

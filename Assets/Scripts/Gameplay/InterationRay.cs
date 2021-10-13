@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Knotgames.Network;
+using Debug = UnityEngine.Debug;
 
 namespace Knotgames.Gameplay {
     public class InterationRay : MonoBehaviour, IInteractRay
@@ -32,7 +33,7 @@ namespace Knotgames.Gameplay {
         }
 
         private void Update() {
-            ray.RayResults(ref canInteract, ref hitObj);
+            ray.RayResults(ref canInteract, ref hitObj, true);
             if(hitObj != null)
                 interactInView = hitObj.GetComponent<IInteractable>();
             else if(interactInView != null)

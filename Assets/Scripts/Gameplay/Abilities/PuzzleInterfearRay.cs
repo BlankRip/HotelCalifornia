@@ -32,7 +32,7 @@ namespace Knotgames.Gameplay.Abilities {
         }
 
         private void Update() {
-            ray.RayResults(ref canInterfear, ref hitObj);
+            ray.RayResults(ref canInterfear, ref hitObj, false);
             if(hitObj != null) {
                 itemInView = hitObj.GetComponent<IInterfear>();
                 if(itemInView == null)

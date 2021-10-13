@@ -26,13 +26,14 @@ namespace Knotgames.Gameplay {
                 camera = Camera.main;
         }
 
-        public void RayResults(ref bool availableStatus, ref GameObject hitObject) {
+        public void RayResults(ref bool availableStatus, ref GameObject hitObject, bool continiusCheck) {
             RaycastHit hitInfo = rayCaster.caster.CastRay(mask, rayLength);
             Color rayColor = debugColor;
+
             if(hitInfo.collider != null) {
                 if(tags.Contains(hitInfo.collider.tag)) {
                     rayColor = Color.green;
-                    if(hitObject == null) {
+                    if(continiusCheck || hitObject == null) {
                         hitObject = hitInfo.collider.gameObject;
                         availableStatus = true;
                     }
