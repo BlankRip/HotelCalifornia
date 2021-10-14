@@ -39,7 +39,7 @@ namespace Knotgames.Gameplay.Puzzle.Morse
                 availableIndex.RemoveAt(rand);
             }
 
-            Dictionary<char, AudioData> solDictianary = morsePuzzle.manager.GetSolutionDictianary();
+            Dictionary<char, AudioData> solDictianary = morsePuzzle.manager.GetSolutionDictionary();
             List<char> chars = new List<char>();
             foreach (KeyValuePair<char, AudioData> item in solDictianary)
                 chars.Add(item.Key);
@@ -61,7 +61,7 @@ namespace Knotgames.Gameplay.Puzzle.Morse
 
         private void UpdateClipsToPlay() {
             List<char> solution = morsePuzzle.manager.GetSolution();
-            Dictionary<char, AudioData> solDictianary = morsePuzzle.manager.GetSolutionDictianary();
+            Dictionary<char, AudioData> solDictianary = morsePuzzle.manager.GetSolutionDictionary();
             List<int> positionIndex = new List<int>();
             for (int i = 0; i < playChar.Count; i++)
                 positionIndex.Add(solution.IndexOf(playChar[i]));

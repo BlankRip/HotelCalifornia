@@ -4,7 +4,7 @@ using UnityEngine;
 using Knotgames.Audio;
 
 namespace Knotgames.Gameplay.Puzzle.Morse {
-    public class MorseRoom : MonoBehaviour, IMorseRoom
+    public class MorsePuzzle : MonoBehaviour, IMorsePuzzle
     {
         [SerializeField] ScriptableMorsePuzzle morsePuzzle;
         [SerializeField] ScriptableMorseCollection morseCollection;
@@ -24,14 +24,14 @@ namespace Knotgames.Gameplay.Puzzle.Morse {
             solutionBuilder = new MorseSolutionBuilder(clipNames, 3);
             solution = solutionBuilder.BuildSolution();
             solDictianary = solutionBuilder.GetSolutionDictionary();
-            PositionDivices();
+            PositionDevices();
         }
 
         private void Start() {
             SetUpPads();
         }
 
-        private void PositionDivices() {
+        private void PositionDevices() {
             Transform spot = deviceSpots[Random.Range(0, deviceSpots.Count)];
             device.position = spot.position;
             device.rotation = spot.rotation;
@@ -44,13 +44,13 @@ namespace Knotgames.Gameplay.Puzzle.Morse {
             foreach(char item in solution) {
                 ClipName cName = solDictianary[item].clipName;
                 clipNames.Remove(cName);
-                string padValue = $"{item} = {morseCollection.GetMoresString(cName)}";
+                string padValue = $"{item} = {morseCollection.GetMorseString(cName)}";
                 ActivateAPad(padValue);
             }
 
             for (int i = 0; i < 2; i++) {
                 int rand = Random.Range(0, clipNames.Count);
-                string padValue = $"{solutionBuilder.GetRandomChar()} = {morseCollection.GetMoresString(clipNames[rand])}";
+                string padValue = $"{solutionBuilder.GetRandomChar()} = {morseCollection.GetMorseString(clipNames[rand])}";
                 ActivateAPad(padValue);
             }
         }
@@ -65,7 +65,7 @@ namespace Knotgames.Gameplay.Puzzle.Morse {
             return solution;
         }
 
-        public Dictionary<char, AudioData> GetSolutionDictianary() {
+        public Dictionary<char, AudioData> GetSolutionDictionary() {
             return solDictianary;
         }
     }

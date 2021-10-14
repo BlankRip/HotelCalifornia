@@ -7,10 +7,10 @@ namespace Knotgames.Gameplay.Puzzle.Morse {
     [CreateAssetMenu()]
     public class ScriptableMorseCollection : ScriptableObject
     {
-        public List<MoresData> moresData;
+        public List<MorseData> moresData;
         private Dictionary<ClipName, string> moresDictionary;
         
-        public string GetMoresString(ClipName name)
+        public string GetMorseString(ClipName name)
         {
             if(moresDictionary == null || moresDictionary.Count != moresData.Count)
                 FillDictionary();
@@ -20,12 +20,12 @@ namespace Knotgames.Gameplay.Puzzle.Morse {
 
         private void FillDictionary() {
             moresDictionary = new Dictionary<ClipName, string>();
-            foreach (MoresData data in moresData)
+            foreach (MorseData data in moresData)
                 moresDictionary.Add(data.clipName, data.clipString);
         }
 
         [System.Serializable]
-        public class MoresData {
+        public class MorseData {
             public ClipName clipName;
             public string clipString;
         }
