@@ -73,6 +73,10 @@ namespace Knotgames.Network
                     NetUnityEvents.instance.xoPieceEvent.Invoke(dataString);
                     break;
 
+                case "MorseButton":
+                    NetUnityEvents.instance.morseButtonEvent.Invoke(dataString);
+                    break;
+
                 case "spawnObject":
                     NetObjManager.instance.AddSpawnObject(dataString);
                     break;

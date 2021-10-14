@@ -10,6 +10,10 @@ namespace Knotgames.Gameplay.Puzzle.Morse {
         [SerializeField] ScriptableMorseCollection morseCollection;
         [SerializeField] List<ClipName> clipNames;
         [SerializeField] List<SolutionPad> solutionPads;
+        [SerializeField] Transform device;
+        [SerializeField] List<Transform> deviceSpots;
+        [SerializeField] Transform player;
+        [SerializeField] List<Transform> playerSpots;
 
         private Dictionary<char, AudioData> solDictianary;
         [SerializeField] List<char> solution;
@@ -20,10 +24,20 @@ namespace Knotgames.Gameplay.Puzzle.Morse {
             solutionBuilder = new MorseSolutionBuilder(clipNames, 3);
             solution = solutionBuilder.BuildSolution();
             solDictianary = solutionBuilder.GetSolutionDictionary();
+            PositionDivices();
         }
 
         private void Start() {
             SetUpPads();
+        }
+
+        private void PositionDivices() {
+            Transform spot = deviceSpots[Random.Range(0, deviceSpots.Count)];
+            device.position = spot.position;
+            device.rotation = spot.rotation;
+            spot = playerSpots[Random.Range(0, playerSpots.Count)];
+            player.position = spot.position;
+            player.rotation = spot.rotation;
         }
 
         private void SetUpPads() {

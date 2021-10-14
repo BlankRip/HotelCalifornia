@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Knotgames.Gameplay.Puzzle.ChemicalRoom;
 using Knotgames.Gameplay.Puzzle.XO;
+using Knotgames.Gameplay.Puzzle.Morse;
 using Knotgames.Gameplay;
 
 public class IdsResetter
@@ -11,5 +12,6 @@ public class IdsResetter
         PortionObj.ResetIds();
         PuzzleSolvedObj.ResetIDs();
         BoardPiece.ResetIDs();
+        MorseButton.ResetIDs();
     }
 }

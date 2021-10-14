@@ -15,6 +15,7 @@ namespace Knotgames.Gameplay.Puzzle.Morse
         void Start()
         {
             solution = morsePuzzle.manager.GetSolution();
+            TextSetUp();
         }
 
         private void TextSetUp() {
