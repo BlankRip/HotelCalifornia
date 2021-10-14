@@ -10,17 +10,22 @@ namespace Knotgames.Gameplay.Puzzle.QuickDelivery {
         [SerializeField] string objSpawnPosTag;
         [SerializeField] List<GameObject> spawnableItems;
         [SerializeField] string instructionTextPoolTag;
+        [SerializeField] Transform instructionPos;
+        [SerializeField] Transform timerPos;
 
         private List<GameObject> spawnedObjs;
+        private List<GameObject> textObjs;
         private string delivaryItemName;
         private int amountToDeliver = 3;
         private int deliverd = 0;
         private float existanceTime = 60;
         private TextMeshProUGUI timerText;
+        private float timerTextSize = 16;
 
         private void Start() {
             PlaceDeliveryObj();
             SpawnDeliveryItems();
+            SetUpTexts();
         }
 
         private void PlaceDeliveryObj() {
@@ -41,6 +46,18 @@ namespace Knotgames.Gameplay.Puzzle.QuickDelivery {
             spawnedObjs = spawner.SpawnAndGetSpawnedObj();
         }
 
+        private void SetUpTexts() {
+            textObjs = new List<GameObject>();
+            timerText = ObjectPool.instance.SpawnPoolObj(instructionTextPoolTag, instructionPos.position, instructionPos.rotation).GetComponent<TextMeshProUGUI>();
+            timerText.text = $"Deliver 3 '{delivaryItemName}' for a reward";
+            textObjs.Add(timerText.gameObject);
+
+            timerText = ObjectPool.instance.SpawnPoolObj(instructionTextPoolTag, timerPos.position, timerPos.rotation).GetComponent<TextMeshProUGUI>();
+            timerText.fontSize = timerTextSize;
+            timerText.text = "60";
+            textObjs.Add(timerText.gameObject);
+        }
+
         private void Update() {
             existanceTime -= Time.deltaTime;
             if(existanceTime <= 0)
@@ -52,6 +69,8 @@ namespace Knotgames.Gameplay.Puzzle.QuickDelivery {
         private void SelfDistruct() {
             foreach(GameObject obj in spawnedObjs)
                 Destroy(obj);
+            foreach(GameObject obj in textObjs)
+                obj.SetActive(false);
             Destroy(this.gameObject);
         }
 
@@ -61,7 +80,7 @@ namespace Knotgames.Gameplay.Puzzle.QuickDelivery {
                 spawnedObjs.Remove(other.gameObject);
                 Destroy(other.gameObject);
                 if(deliverd == amountToDeliver) {
-                    
+
                 }
             }
         }
