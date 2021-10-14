@@ -9,6 +9,5 @@ namespace Knotgames.Gameplay.Puzzle.Morse
     {
         List<char> GetSolution();
         Dictionary<char, AudioData> GetSolutionDictianary();
-        void Solved();
     }
 }

@@ -68,10 +68,5 @@ namespace Knotgames.Gameplay.Puzzle.Morse {
         public Dictionary<char, AudioData> GetSolutionDictianary() {
             return solDictianary;
         }
-
-        public void Solved() {
-            Debug.Log("Solved");
-        }
-
     }
 }
