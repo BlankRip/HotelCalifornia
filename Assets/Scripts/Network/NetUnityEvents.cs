@@ -16,6 +16,7 @@ namespace Knotgames.Network {
         public CustonEventString xoPieceEvent;
 
         public CustonEventString morseButtonEvent;
+        public CustonEventString morsePlayerEvent;
 
         private void Awake() {
             if(instance == null)

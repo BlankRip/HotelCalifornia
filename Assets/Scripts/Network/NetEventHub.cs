@@ -76,6 +76,9 @@ namespace Knotgames.Network
                 case "MorseButton":
                     NetUnityEvents.instance.morseButtonEvent.Invoke(dataString);
                     break;
+                case "InterferePlayer":
+                    NetUnityEvents.instance.morsePlayerEvent.Invoke(dataString);
+                    break;
 
                 case "spawnObject":
                     NetObjManager.instance.AddSpawnObject(dataString);
