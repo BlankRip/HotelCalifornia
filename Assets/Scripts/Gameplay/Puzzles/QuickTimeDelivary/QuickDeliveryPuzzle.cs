@@ -80,7 +80,8 @@ namespace Knotgames.Gameplay.Puzzle.QuickDelivery {
                 spawnedObjs.Remove(other.gameObject);
                 Destroy(other.gameObject);
                 if(deliverd == amountToDeliver) {
-
+                    Debug.Log("Solved");
+                    SelfDistruct();
                 }
             }
         }
