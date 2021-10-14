@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Knotgames.Gameplay.Abilities;
 using TMPro;
 
 namespace Knotgames.Gameplay.Puzzle.QuickDelivery {
@@ -81,6 +82,7 @@ namespace Knotgames.Gameplay.Puzzle.QuickDelivery {
                 Destroy(other.gameObject);
                 if(deliverd == amountToDeliver) {
                     Debug.Log("Solved");
+                    GetComponent<HumanAbilitySwaper>().Swap();
                     SelfDistruct();
                 }
             }
