@@ -9,7 +9,7 @@ namespace Knotgames.Gameplay.Puzzle.Morse
 {
     public class MorseButton : MonoBehaviour, IInteractable
     {
-        public static int morseButtonId;
+        private static int morseButtonId;
         public static void ResetIDs() {
             morseButtonId = 0;
         }
@@ -91,7 +91,7 @@ namespace Knotgames.Gameplay.Puzzle.Morse
             public string distributionOption;
 
             public DataToSend(int id) {
-                eventName = "MorseButton";
+                eventName = "morseButton";
                 distributionOption = DistributionOption.serveOthers;
                 myId = id;
                 if(!DevBoy.yes)

@@ -73,11 +73,18 @@ namespace Knotgames.Network
                     NetUnityEvents.instance.xoPieceEvent.Invoke(dataString);
                     break;
 
-                case "MorseButton":
+                case "morseButton":
                     NetUnityEvents.instance.morseButtonEvent.Invoke(dataString);
                     break;
-                case "InterferePlayer":
+                case "interferePlayer":
                     NetUnityEvents.instance.morsePlayerEvent.Invoke(dataString);
+                    break;
+                
+                case "delivaryUseStatus":
+                    NetUnityEvents.instance.deliveryUseStatus.Invoke(dataString);
+                    break;
+                case "deliveryTransform":
+                    NetUnityEvents.instance.deliveryTransform.Invoke(dataString);
                     break;
 
                 case "spawnObject":

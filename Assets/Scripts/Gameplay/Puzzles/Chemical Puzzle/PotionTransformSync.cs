@@ -6,20 +6,19 @@ using Knotgames.Network;
 namespace Knotgames.Gameplay.Puzzle.ChemicalRoom {
     public class PotionTransformSync : LocalNetTransformSync
     {
-        private int myId;
-        private bool idSet;
+        private int portionId;
 
         private void Start() {
             if(DevBoy.yes)
                 Destroy(this);
             
-            Initilize("potionTransform", myId);
+            Initilize("potionTransform", portionId);
             if(!DevBoy.yes)
                 NetUnityEvents.instance.portionTransform.AddListener(RecieveData);
         }
 
         public override void SetID(int id) {
-            myId = id;
+            portionId = id;
         }
 
         private void OnDestroy() {

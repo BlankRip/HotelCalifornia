@@ -7,7 +7,7 @@ using Knotgames.Network;
 namespace Knotgames.Gameplay.Puzzle.XO {
     public class BoardPiece : MonoBehaviour, IInteractable
     {
-        public static int pieceId;
+        private static int pieceId;
         public static void ResetIDs() {
             pieceId = 0;
         }

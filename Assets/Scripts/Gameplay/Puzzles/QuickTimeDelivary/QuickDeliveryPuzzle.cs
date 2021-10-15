@@ -72,19 +72,20 @@ namespace Knotgames.Gameplay.Puzzle.QuickDelivery {
                 Destroy(obj);
             foreach(GameObject obj in textObjs)
                 obj.SetActive(false);
-            Destroy(this.gameObject);
+            Destroy(this.gameObject, 0.1f);
         }
 
         private void OnTriggerEnter(Collider other) {
             if(other.CompareTag("DeliveryItem")) {
                 deliverd++;
                 spawnedObjs.Remove(other.gameObject);
-                Destroy(other.gameObject);
                 if(deliverd == amountToDeliver) {
                     Debug.Log("Solved");
-                    GetComponent<HumanAbilitySwaper>().Swap();
+                    if(other.GetComponent<DeliveryItem>().localHeld)
+                        GetComponent<HumanAbilitySwaper>().Swap();
                     SelfDistruct();
                 }
+                Destroy(other.gameObject);
             }
         }
     }

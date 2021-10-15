@@ -149,7 +149,7 @@ namespace Knotgames.Gameplay.Puzzle.Morse
             public string distributionOption;
 
             public DataToSend() {
-                this.eventName = "InterferePlayer";
+                this.eventName = "interferePlayer";
                 distributionOption = DistributionOption.serveOthers;
                 if(!DevBoy.yes)
                     roomID = NetRoomJoin.instance.roomID.value;

@@ -7,7 +7,7 @@ namespace Knotgames.Gameplay {
     public class PuzzleSolvedObj : MonoBehaviour, IInteractable
     {
         #region DONT LOOK
-        public static int solutionID;
+        private static int solutionID;
         public static void ResetIDs()
         {
             solutionID = 0;
