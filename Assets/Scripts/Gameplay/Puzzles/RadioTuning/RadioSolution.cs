@@ -52,7 +52,7 @@ namespace Knotgames.Gameplay.Puzzle.Radio
                         t.text = "-45Hz";
                         break;
                     case "0Hz":
-                        t.text = "-0Hz";
+                        t.text = "0Hz";
                         break;
                     case "-45Hz":
                         t.text = "45Hz";

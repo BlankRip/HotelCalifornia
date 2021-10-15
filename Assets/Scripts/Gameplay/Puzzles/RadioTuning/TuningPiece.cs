@@ -97,7 +97,7 @@ namespace Knotgames.Gameplay.Puzzle.Radio
                     break;
                 case 2:
                     transform.rotation = originalRot * Quaternion.AngleAxis(0, Vector3.forward);
-                    myVal = "-0Hz";
+                    myVal = "0Hz";
                     break;
                 case 3:
                     transform.rotation = originalRot * Quaternion.AngleAxis(45, Vector3.forward);
@@ -130,7 +130,7 @@ namespace Knotgames.Gameplay.Puzzle.Radio
                     break;
                 case 2:
                     transform.rotation = originalRot * Quaternion.AngleAxis(0, Vector3.forward);
-                    myVal = "-0Hz";
+                    myVal = "0Hz";
                     break;
                 case 1:
                     transform.rotation = originalRot * Quaternion.AngleAxis(45, Vector3.forward);
@@ -159,7 +159,7 @@ namespace Knotgames.Gameplay.Puzzle.Radio
                     break;
                 case 2:
                     transform.rotation = originalRot * Quaternion.AngleAxis(0, Vector3.forward);
-                    myVal = "-0Hz";
+                    myVal = "0Hz";
                     break;
                 case 3:
                     transform.rotation = originalRot * Quaternion.AngleAxis(45, Vector3.forward);
