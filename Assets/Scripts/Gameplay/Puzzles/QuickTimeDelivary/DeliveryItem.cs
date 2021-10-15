@@ -58,7 +58,7 @@ namespace Knotgames.Gameplay.Puzzle.QuickDelivery {
             }
         }
 
-        public void Pick() {
+        private void Pick() {
             if(!DevBoy.yes) {
                 transformSync.SetDataSyncStatus(true);
                 SendInUseData(true);
@@ -69,7 +69,7 @@ namespace Knotgames.Gameplay.Puzzle.QuickDelivery {
             transform.localPosition = Vector3.zero;
         }
 
-        public void Drop() {
+        private void Drop() {
             if(!DevBoy.yes) {
                 transformSync.SetDataSyncStatus(false);
                 SendInUseData(false);
