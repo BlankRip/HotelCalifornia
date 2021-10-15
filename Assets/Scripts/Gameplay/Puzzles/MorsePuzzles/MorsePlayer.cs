@@ -86,8 +86,10 @@ namespace Knotgames.Gameplay.Puzzle.Morse
             List<char> solution = morsePuzzle.manager.GetSolution();
             Dictionary<char, AudioData> solDictianary = morsePuzzle.manager.GetSolutionDictionary();
             List<int> positionIndex = new List<int>();
-            for (int i = 0; i < playChar.Count; i++)
+            for (int i = 0; i < playChar.Count; i++) {
                 positionIndex.Add(solution.IndexOf(playChar[i]));
+                Debug.Log($"{playChar[i]}: {positionIndex[positionIndex.Count - 1]}");
+            }
             
             clipsToPlay = new List<AudioClip>();
             for (int i = 0; i < positionIndex.Count; i++) {

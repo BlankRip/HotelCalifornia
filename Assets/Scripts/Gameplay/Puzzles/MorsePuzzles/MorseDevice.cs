@@ -12,10 +12,12 @@ namespace Knotgames.Gameplay.Puzzle.Morse
         [SerializeField] MorseButton[] buttons;
         [SerializeField] List<Transform> alphaBetaOmagaTextPos;
         private List<char> solution;
+        private MorseAlphPanel panel;
 
         void Start()
         {
             solution = morsePuzzle.manager.GetSolution();
+            panel = FindObjectOfType<MorseAlphPanel>();
             TextSetUp();
         }
 
@@ -44,6 +46,7 @@ namespace Knotgames.Gameplay.Puzzle.Morse
         private void Solved()
         {
             Debug.Log("Solved");
+            panel.gameObject.SetActive(false);
             puzzleTracker.tracker.OnePuzzleSolved();
             foreach(MorseButton button in buttons)
             {
