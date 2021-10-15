@@ -102,7 +102,7 @@ namespace Knotgames.Gameplay.Puzzle.Morse
                     return alphaClip;
                 case 1:
                     return betaClip;
-                case 3:
+                case 2:
                     return omagaClip;
             }
             return null;
