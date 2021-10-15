@@ -109,6 +109,8 @@ namespace Knotgames.Gameplay.Puzzle.Radio
                     break;
             }
 
+            UnityEngine.Debug.LogError($"Frequency is: {myVal}", gameObject);
+
             if (screwed)
                 FlipRadio();
             tuner.CheckSolution();
@@ -139,6 +141,7 @@ namespace Knotgames.Gameplay.Puzzle.Radio
                     myVal = "90Hz";
                     break;
             }
+            UnityEngine.Debug.LogError($"Frequency is: {myVal}", gameObject);
         }
 
         public void SetRandom()
@@ -167,9 +170,11 @@ namespace Knotgames.Gameplay.Puzzle.Radio
                     myVal = "90Hz";
                     break;
             }
+            UnityEngine.Debug.LogError($"Frequency is: {myVal}", gameObject);
         }
 
-        public string GetValue() {
+        public string GetValue()
+        {
             return myVal;
         }
 
