@@ -1164,7 +1164,7 @@ GameObject:
   - component: {fileID: 171114861}
   m_Layer: 0
   m_Name: DeliveryPoint_3
-  m_TagString: DeliveryPoint
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2153,7 +2153,7 @@ GameObject:
   - component: {fileID: 350153324}
   m_Layer: 0
   m_Name: DeliveryPoint_4
-  m_TagString: DeliveryPoint
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2348,7 +2348,7 @@ GameObject:
   - component: {fileID: 409082519}
   m_Layer: 0
   m_Name: DItemSpot_13
-  m_TagString: DeliveryItemPoint
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2473,7 +2473,7 @@ GameObject:
   - component: {fileID: 412953058}
   m_Layer: 0
   m_Name: DItemSpot_10
-  m_TagString: DeliveryItemPoint
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2781,7 +2781,7 @@ GameObject:
   - component: {fileID: 453149657}
   m_Layer: 0
   m_Name: DItemSpot_4
-  m_TagString: DeliveryItemPoint
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3679,7 +3679,7 @@ GameObject:
   - component: {fileID: 598243371}
   m_Layer: 0
   m_Name: DeliveryPoint
-  m_TagString: DeliveryPoint
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3785,7 +3785,7 @@ GameObject:
   - component: {fileID: 616663011}
   m_Layer: 0
   m_Name: DItemSpot_3
-  m_TagString: DeliveryItemPoint
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3940,7 +3940,7 @@ GameObject:
   - component: {fileID: 683348227}
   m_Layer: 0
   m_Name: DItemSpot_11
-  m_TagString: DeliveryItemPoint
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4855,7 +4855,7 @@ GameObject:
   - component: {fileID: 810888534}
   m_Layer: 0
   m_Name: DItemSpot_8
-  m_TagString: DeliveryItemPoint
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5079,7 +5079,7 @@ GameObject:
   - component: {fileID: 823996081}
   m_Layer: 0
   m_Name: DeliveryPoint_1
-  m_TagString: DeliveryPoint
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6071,7 +6071,7 @@ GameObject:
   - component: {fileID: 929918130}
   m_Layer: 0
   m_Name: DItemSpot_6
-  m_TagString: DeliveryItemPoint
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6101,7 +6101,7 @@ GameObject:
   - component: {fileID: 930128947}
   m_Layer: 0
   m_Name: DItemSpot_5
-  m_TagString: DeliveryItemPoint
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8607,7 +8607,7 @@ GameObject:
   - component: {fileID: 1280395366}
   m_Layer: 0
   m_Name: DeliveryPoint_5
-  m_TagString: DeliveryPoint
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8921,9 +8921,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1303607827}
+  - component: {fileID: 1303607828}
   m_Layer: 0
   m_Name: DItemSpots
-  m_TagString: Untagged
+  m_TagString: DeliveryItemPoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8957,6 +8958,34 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 28
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1303607828
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1303607826}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8d1242863a8cd54bb74e84a4b26983e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  transformList:
+  - {fileID: 1670751791}
+  - {fileID: 1992285908}
+  - {fileID: 1598813395}
+  - {fileID: 616663011}
+  - {fileID: 453149657}
+  - {fileID: 930128947}
+  - {fileID: 929918130}
+  - {fileID: 1509917987}
+  - {fileID: 810888534}
+  - {fileID: 1612361518}
+  - {fileID: 412953058}
+  - {fileID: 683348227}
+  - {fileID: 1383410543}
+  - {fileID: 409082519}
+  - {fileID: 1652631602}
 --- !u!1 &1303806226
 GameObject:
   m_ObjectHideFlags: 0
@@ -9487,7 +9516,7 @@ GameObject:
   - component: {fileID: 1383410543}
   m_Layer: 0
   m_Name: DItemSpot_12
-  m_TagString: DeliveryItemPoint
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9574,7 +9603,7 @@ GameObject:
   - component: {fileID: 1425021795}
   m_Layer: 0
   m_Name: DeliveryPoint_2
-  m_TagString: DeliveryPoint
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9697,9 +9726,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1437448507}
+  - component: {fileID: 1437448508}
   m_Layer: 0
   m_Name: DelivaryPoints
-  m_TagString: Untagged
+  m_TagString: DeliveryPoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9726,6 +9756,27 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 27
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1437448508
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1437448506}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8d1242863a8cd54bb74e84a4b26983e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  transformList:
+  - {fileID: 598243371}
+  - {fileID: 823996081}
+  - {fileID: 1425021795}
+  - {fileID: 171114861}
+  - {fileID: 350153324}
+  - {fileID: 1280395366}
+  - {fileID: 1496066323}
+  - {fileID: 1662299964}
 --- !u!1 &1440134622
 GameObject:
   m_ObjectHideFlags: 0
@@ -9978,7 +10029,7 @@ GameObject:
   - component: {fileID: 1496066323}
   m_Layer: 0
   m_Name: DeliveryPoint_6
-  m_TagString: DeliveryPoint
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10106,7 +10157,7 @@ GameObject:
   - component: {fileID: 1509917987}
   m_Layer: 0
   m_Name: DItemSpot_7
-  m_TagString: DeliveryItemPoint
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11029,7 +11080,7 @@ GameObject:
   - component: {fileID: 1598813395}
   m_Layer: 0
   m_Name: DItemSpot_2
-  m_TagString: DeliveryItemPoint
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11119,7 +11170,7 @@ GameObject:
   - component: {fileID: 1612361518}
   m_Layer: 0
   m_Name: DItemSpot_9
-  m_TagString: DeliveryItemPoint
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11277,7 +11328,7 @@ GameObject:
   - component: {fileID: 1652631602}
   m_Layer: 0
   m_Name: DItemSpot_14
-  m_TagString: DeliveryItemPoint
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11337,7 +11388,7 @@ GameObject:
   - component: {fileID: 1662299964}
   m_Layer: 0
   m_Name: DeliveryPoint_7
-  m_TagString: DeliveryPoint
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11462,7 +11513,7 @@ GameObject:
   - component: {fileID: 1670751791}
   m_Layer: 0
   m_Name: DItemSpot
-  m_TagString: DeliveryItemPoint
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -13992,7 +14043,7 @@ GameObject:
   - component: {fileID: 1992285908}
   m_Layer: 0
   m_Name: DItemSpot_1
-  m_TagString: DeliveryItemPoint
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -34,11 +34,9 @@ namespace Knotgames.Gameplay {
                         {
                             case "ghost":
                                 NetGameManager.instance.ghostModels.Add(CustomExtensions.ReturnModelObject(characterData.modelType));
-                                UnityEngine.Debug.LogError("GHOST MODEL ADDED");
                                 break;
                             case "human":
                                 NetGameManager.instance.humanModels.Add(CustomExtensions.ReturnModelObject(characterData.modelType));
-                                UnityEngine.Debug.LogError("HUMAN MODEL ADDED");
                                 break;
                         }
                 }

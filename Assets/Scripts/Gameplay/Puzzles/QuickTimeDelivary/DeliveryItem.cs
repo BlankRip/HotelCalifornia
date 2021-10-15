@@ -70,7 +70,6 @@ namespace Knotgames.Gameplay.Puzzle.QuickDelivery {
         }
 
         public void Drop() {
-            Debug.LogError("DROPPED");
             if(!DevBoy.yes) {
                 transformSync.SetDataSyncStatus(false);
                 SendInUseData(false);

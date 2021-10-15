@@ -38,6 +38,7 @@ namespace Knotgames.Gameplay {
                     hostStatus.isHost = true;
                     gameSeed.levelSeed.GenerateSeed();
                     gameSeed.levelSeed.SeedSuccesful();
+                    Debug.LogError("HOST");
                     break;
                 }
                 case "replicateLevel": {

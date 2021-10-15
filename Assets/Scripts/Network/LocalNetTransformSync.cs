@@ -5,7 +5,7 @@ using UnityEngine;
 namespace Knotgames.Network {
     public class LocalNetTransformSync: MonoBehaviour, ILocalNetTransformSync
     {
-        private LocalTransformSyncData dataToSend;
+        [SerializeField] private LocalTransformSyncData dataToSend;
         private int myId;
         protected bool sendData;
 
@@ -52,6 +52,7 @@ namespace Knotgames.Network {
             public RotationWS rotation;
         }
 
+        [System.Serializable]
         private class LocalTransformSyncData
         {
             public int myId;
