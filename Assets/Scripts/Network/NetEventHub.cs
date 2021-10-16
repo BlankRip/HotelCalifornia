@@ -73,7 +73,7 @@ namespace Knotgames.Network
                     NetUnityEvents.instance.xoPieceEvent.Invoke(dataString);
                     break;
                     
-                case "RadioTuiningPiece":
+                case "RadioTuningPiece":
                     NetUnityEvents.instance.radioPieceEvent.Invoke(dataString);
                     break;
 
