@@ -28,8 +28,8 @@ namespace Knotgames.Gameplay.Puzzle.Radio
             originalRot = transform.rotation;
             tuner = GetComponentInParent<IRadioTuner>();
             screwed = false;
-            eventCollection.frequencyMessup.AddListener(MessupFrequency);
-            eventCollection.normalFrequency.AddListener(NormalFrequency);
+            eventCollection.twistVision.AddListener(MessupFrequency);
+            eventCollection.fixVision.AddListener(NormalFrequency);
             id = pieceId;
             pieceId++;
             dataToSend = new DataToSend(id);

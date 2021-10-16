@@ -17,14 +17,14 @@ namespace Knotgames.Gameplay.Puzzle.Radio
         private void Start()
         {
             screwed = false;
-            eventCollection.frequencyMessup.AddListener(MessupFrequency);
-            eventCollection.normalFrequency.AddListener(NormalFrequency);
+            eventCollection.twistVision.AddListener(MessupFrequency);
+            eventCollection.fixVision.AddListener(NormalFrequency);
         }
 
         private void OnDestroy()
         {
-            eventCollection.frequencyMessup.RemoveListener(MessupFrequency);
-            eventCollection.normalFrequency.RemoveListener(NormalFrequency);
+            eventCollection.twistVision.RemoveListener(MessupFrequency);
+            eventCollection.fixVision.RemoveListener(NormalFrequency);
         }
 
         private void MessupFrequency()

@@ -9,7 +9,5 @@ namespace Knotgames.Gameplay {
     {
         public UnityEvent twistVision;
         public UnityEvent fixVision;
-        public UnityEvent frequencyMessup;
-        public UnityEvent normalFrequency;
     }
 }

@@ -72,6 +72,10 @@ namespace Knotgames.Network
                 case "XOBoardPiece":
                     NetUnityEvents.instance.xoPieceEvent.Invoke(dataString);
                     break;
+                    
+                case "RadioTuiningPiece":
+                    NetUnityEvents.instance.radioPieceEvent.Invoke(dataString);
+                    break;
 
                 case "morseButton":
                     NetUnityEvents.instance.morseButtonEvent.Invoke(dataString);
