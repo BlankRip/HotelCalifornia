@@ -14,17 +14,16 @@ namespace Knotgames.Rendering
 
         void Start()
         {
-            if (renderObject == null)
-            {
-                renderObject = new RenderObject()
-                {
-                    renderer = renderer,
-                    material = material
-                };
-            }
+            CreateAndAdd();
             CustomBufferRender.AddObject(renderObject);
         }
         void OnEnable()
+        {
+            CreateAndAdd();
+            CustomBufferRender.AddObject(renderObject);
+        }
+
+        void CreateAndAdd()
         {
             if (renderObject == null)
             {
@@ -34,8 +33,13 @@ namespace Knotgames.Rendering
                     material = material
                 };
             }
-            CustomBufferRender.AddObject(renderObject);
+            else
+            {
+                renderObject.renderer = renderer;
+                renderObject.material = material;
+            }
         }
+
         void OnDisable()
         {
             if (renderObject != null) CustomBufferRender.RemoveObject(renderObject);

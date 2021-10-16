@@ -6,7 +6,6 @@ using UnityEngine.Rendering;
 
 namespace Knotgames.Rendering
 {
-    [ExecuteAlways]
     public class CustomBufferRender : MonoBehaviour
     {
         [SerializeField] CameraEvent bufferLocation;
@@ -14,16 +13,19 @@ namespace Knotgames.Rendering
         static List<RenderObject> renderObjects = new List<RenderObject>();
         Dictionary<Camera, CommandBuffer> camAndBuffer = new Dictionary<Camera, CommandBuffer>();
         Camera cam;
+        static event System.Action Reset;
 
         public static void AddObject(RenderObject rObject)
         {
             renderObjects.Remove(rObject);
             renderObjects.Add(rObject);
+            Reset?.Invoke();
         }
 
         public static void RemoveObject(RenderObject rObject)
         {
             renderObjects.Remove(rObject);
+            Reset?.Invoke();
         }
 
         public void OnDisable()
@@ -44,6 +46,11 @@ namespace Knotgames.Rendering
                     cam.Key.RemoveCommandBuffer(bufferLocation, cam.Value);
             }
             camAndBuffer.Clear();
+        }
+
+        void Awake()
+        {
+            Reset = ClearUp;
         }
 
         void Update()

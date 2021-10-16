@@ -52,13 +52,12 @@ public sealed class PEFXAlteredObjectRenderer : PostProcessEffectRenderer<PEFXAl
 
     public override void Render(PostProcessRenderContext context)
     {
-        var sheet = context.propertySheets.Get(Shader.Find("Custom/PostEffects/AltererObject"));
         tempTex = Shader.GetGlobalTexture("_PossesedTex");
-        context.command.Blit(tempTex, rt1);
 
         if (tempTex)
         {
-
+            var sheet = context.propertySheets.Get(Shader.Find("Custom/PostEffects/AltererObject"));
+            context.command.Blit(tempTex, rt1);
             var boxBlur = context.propertySheets.Get(Shader.Find("Custom/PostEffects/BoxBlur"));
             boxBlur.properties.SetFloat("_Shift", settings.effect);
             boxBlur.properties.SetFloat("_Mult", settings.mult);
@@ -88,7 +87,7 @@ public sealed class PEFXAlteredObjectRenderer : PostProcessEffectRenderer<PEFXAl
         }
         else
         {
-            context.command.BlitFullscreenTriangle(context.source, context.destination, sheet, 0);
+            context.command.BlitFullscreenTriangle(context.source, context.destination);
         }
     }
 }
