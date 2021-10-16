@@ -11,32 +11,32 @@ namespace Knotgames.Gameplay.Abilities {
         [SerializeField] List<AbilityType> giveableAbility;
         [SerializeField] ScriptablePlayerController player;
         private IAbilityUi secondarySlot;
+        int abilityIndex;
 
         private void Start() {
             secondarySlot = GameObject.FindGameObjectWithTag("SecondaryUi").GetComponent<IAbilityUi>();
+            abilityIndex = Random.Range(0, giveableAbility.Count);
         }
 
-        //! FOR TESTING ONLY
+        //!TODO FOR TESTING ONLY
         private void Update() {
             if(Input.GetKeyDown(KeyCode.K))
                 Swap();
         }
 
         public void Swap() {
-            int rand = Random.Range(0, giveableAbility.Count);
-            player.controller.SwapSecondary(AttachAbility(giveableAbility[rand]));
-            AbilityUiData uiData = abilityUiCollection.GetAbilityData(giveableAbility[rand]);
+            player.controller.SwapSecondary(AttachAbility(giveableAbility[abilityIndex]));
+            AbilityUiData uiData = abilityUiCollection.GetAbilityData(giveableAbility[abilityIndex]);
             secondarySlot.UpdateObjectData(uiData.baseUses, uiData.abilitySprite);
+            Debug.Log(giveableAbility[abilityIndex]);
         }
 
         private IAbility AttachAbility(AbilityType type) {
             switch(type) {
-                case AbilityType.NullAbilityRoom:
-                    return player.controller.GetPlayerObject().AddComponent<NullAbilityTrigger>();
+                case AbilityType.BanishGhost:
+                    return player.controller.GetPlayerObject().AddComponent<BanishGhostTrigger>();
                 case AbilityType.NoEntryRoom:
                     return player.controller.GetPlayerObject().AddComponent<NoEntryTrigger>();
-                case AbilityType.ClearTraps:
-                    return player.controller.GetPlayerObject().AddComponent<TestAbility2>();
                 default:
                     return player.controller.GetPlayerObject().AddComponent<DummyAbility>();
             }

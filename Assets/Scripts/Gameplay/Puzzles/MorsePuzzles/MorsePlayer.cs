@@ -1,14 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
-using Knotgames.Audio;
 using UnityEngine;
+using Knotgames.Audio;
+using Knotgames.Gameplay.Abilities;
+using Knotgames.Network;
 
 namespace Knotgames.Gameplay.Puzzle.Morse
 {
-    public class MorsePlayer : MonoBehaviour
+    public class MorsePlayer : MonoBehaviour, IInterfear
     {
         [SerializeField] ScriptableHostStatus hostStatus;
         [SerializeField] ScriptableMorsePuzzle morsePuzzle;
+        [SerializeField] GameObject staticAudioSource;
         [SerializeField] AudioClip alphaClip;
         [SerializeField] AudioClip betaClip;
         [SerializeField] AudioClip omagaClip;
@@ -18,11 +21,31 @@ namespace Knotgames.Gameplay.Puzzle.Morse
         [SerializeField] List<AudioClip> clipsToPlay;
         private List<AudioClip> clipType;
         private bool takeTwo;
+        private bool canInterfear;
+        private DataToSend dataToSend;
 
         private void Start() {
             GetDataToPlay();
             UpdateClipsToPlay();
             SetUpMoresPlayer();
+
+            canInterfear = true;
+            dataToSend = new DataToSend();
+            if(!DevBoy.yes)
+                NetUnityEvents.instance.morsePlayerEvent.AddListener(RecieveData);
+        }
+
+        private void SendData() {
+            NetConnector.instance.SendDataToServer(JsonUtility.ToJson(dataToSend));
+        }
+
+        private void RecieveData(string recieved) {
+            PlayStatic();
+        }
+
+        private void OnDestroy() {
+            if(!DevBoy.yes)
+                NetUnityEvents.instance.morsePlayerEvent.RemoveListener(RecieveData);
         }
 
         private void GetDataToPlay() {
@@ -39,7 +62,7 @@ namespace Knotgames.Gameplay.Puzzle.Morse
                 availableIndex.RemoveAt(rand);
             }
 
-            Dictionary<char, AudioData> solDictianary = morsePuzzle.manager.GetSolutionDictianary();
+            Dictionary<char, AudioData> solDictianary = morsePuzzle.manager.GetSolutionDictionary();
             List<char> chars = new List<char>();
             foreach (KeyValuePair<char, AudioData> item in solDictianary)
                 chars.Add(item.Key);
@@ -61,7 +84,7 @@ namespace Knotgames.Gameplay.Puzzle.Morse
 
         private void UpdateClipsToPlay() {
             List<char> solution = morsePuzzle.manager.GetSolution();
-            Dictionary<char, AudioData> solDictianary = morsePuzzle.manager.GetSolutionDictianary();
+            Dictionary<char, AudioData> solDictianary = morsePuzzle.manager.GetSolutionDictionary();
             List<int> positionIndex = new List<int>();
             for (int i = 0; i < playChar.Count; i++)
                 positionIndex.Add(solution.IndexOf(playChar[i]));
@@ -79,7 +102,7 @@ namespace Knotgames.Gameplay.Puzzle.Morse
                     return alphaClip;
                 case 1:
                     return betaClip;
-                case 3:
+                case 2:
                     return omagaClip;
             }
             return null;
@@ -93,9 +116,44 @@ namespace Knotgames.Gameplay.Puzzle.Morse
                 myPlayer.songsToPlay.Add(clip);
         }
 
-        public void Solved()
-        {
-            Destroy(myPlayer.gameObject);
+        public bool CanInterfear() {
+            return canInterfear;
+        }
+
+        public void Interfear() {
+            PlayStatic();
+        }
+
+        private void PlayStatic() {
+            myPlayer.gameObject.SetActive(false);
+            staticAudioSource.SetActive(true);
+            canInterfear = false;
+            StopAllCoroutines();
+            StartCoroutine(StopStatic());
+        }
+
+        private IEnumerator StopStatic() {
+            yield return new WaitForSeconds(8);
+            staticAudioSource.SetActive(false);
+            myPlayer.gameObject.SetActive(true);
+            canInterfear = true;
+        }
+
+        private class ExtractionClass {
+            public string eventName;
+        }
+
+        private class DataToSend {
+            public string eventName;
+            public string roomID;
+            public string distributionOption;
+
+            public DataToSend() {
+                this.eventName = "interferePlayer";
+                distributionOption = DistributionOption.serveOthers;
+                if(!DevBoy.yes)
+                    roomID = NetRoomJoin.instance.roomID.value;
+            }
         }
     }
 }

@@ -17,6 +17,7 @@ namespace Knotgames.Gameplay {
             if(DevBoy.yes)
                 Destroy(this);
             hostStatus.isHost = false;
+            IdsResetter.ResetIDs();
             SendAtLoadingStatus();
             NetConnector.instance.OnMsgRecieve.AddListener(Hear);
         }
@@ -38,6 +39,7 @@ namespace Knotgames.Gameplay {
                     hostStatus.isHost = true;
                     gameSeed.levelSeed.GenerateSeed();
                     gameSeed.levelSeed.SeedSuccesful();
+                    Debug.LogError("HOST");
                     break;
                 }
                 case "replicateLevel": {

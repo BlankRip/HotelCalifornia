@@ -7,14 +7,17 @@ namespace Knotgames.Gameplay.Puzzle.Morse
 {
     public class MorseDevice : MonoBehaviour, IMorseDevice
     {
+        [SerializeField] ScriptablePuzzleStatusTracker puzzleTracker;
         [SerializeField] ScriptableMorsePuzzle morsePuzzle;
         [SerializeField] MorseButton[] buttons;
         [SerializeField] List<Transform> alphaBetaOmagaTextPos;
         private List<char> solution;
+        private MorseAlphPanel panel;
 
         void Start()
         {
             solution = morsePuzzle.manager.GetSolution();
+            panel = FindObjectOfType<MorseAlphPanel>();
             TextSetUp();
         }
 
@@ -37,12 +40,14 @@ namespace Knotgames.Gameplay.Puzzle.Morse
                 if(solution[i] != buttons[i].myValue)
                     return;
             }
-            morsePuzzle.manager.Solved();
             Solved();
         }
 
         private void Solved()
         {
+            Debug.Log("Solved");
+            panel.gameObject.SetActive(false);
+            puzzleTracker.tracker.OnePuzzleSolved();
             foreach(MorseButton button in buttons)
             {
                 button.tag = "Untagged";

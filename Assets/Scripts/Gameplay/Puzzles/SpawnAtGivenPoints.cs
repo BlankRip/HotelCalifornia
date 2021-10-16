@@ -26,5 +26,18 @@ namespace Knotgames.Gameplay.Puzzle {
                 spawnPoints.RemoveAt(rand);
             }
         }
+
+        public List<GameObject> SpawnAndGetSpawnedObj() {
+            List<GameObject> spawnedObjs = new List<GameObject>();
+            for (int i = 0; i < numberToSpawn; i++) {
+                int rand = Random.Range(0, spawnPoints.Count);
+                GameObject spawned = GameObject.Instantiate(spawnObj, spawnPoints[rand].position, Quaternion.identity);
+                if(useRandomRotation)
+                    spawned.transform.up = (Random.insideUnitSphere).normalized;
+                spawnPoints.RemoveAt(rand);
+                spawnedObjs.Add(spawned);
+            }
+            return spawnedObjs;
+        }
     }
 }

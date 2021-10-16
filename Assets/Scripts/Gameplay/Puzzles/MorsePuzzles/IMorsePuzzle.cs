@@ -5,10 +5,9 @@ using Knotgames.Audio;
 
 namespace Knotgames.Gameplay.Puzzle.Morse
 {
-    public interface IMorseRoom
+    public interface IMorsePuzzle
     {
         List<char> GetSolution();
-        Dictionary<char, AudioData> GetSolutionDictianary();
-        void Solved();
+        Dictionary<char, AudioData> GetSolutionDictionary();
     }
 }

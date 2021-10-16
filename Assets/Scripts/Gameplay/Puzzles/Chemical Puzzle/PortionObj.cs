@@ -152,9 +152,10 @@ namespace Knotgames.Gameplay.Puzzle.ChemicalRoom {
         public void Drop()
         {
             Debug.LogError("DROPPED");
-            if(!DevBoy.yes)
+            if(!DevBoy.yes) {
                 transformSync.SetDataSyncStatus(false);
-            SendInUseData(false);
+                SendInUseData(false);
+            }
 
             held = false;
             transform.SetParent(null);
@@ -164,9 +165,10 @@ namespace Knotgames.Gameplay.Puzzle.ChemicalRoom {
 
         public void Pick()
         {
-            if(!DevBoy.yes)
+            if(!DevBoy.yes) {
                 transformSync.SetDataSyncStatus(true);
-            SendInUseData(true);
+                SendInUseData(true);
+            }
 
             if(mySlot != null) {
                 if(mySlot.CanReturn()) {

@@ -14,8 +14,13 @@ namespace Knotgames.Network {
         public CustonEventString mixerEvents;
 
         public CustonEventString xoPieceEvent;
+        public CustonEventString radioPieceEvent;
 
         public CustonEventString morseButtonEvent;
+        public CustonEventString morsePlayerEvent;
+
+        public CustonEventString deliveryUseStatus;
+        public CustonEventString deliveryTransform;
 
         private void Awake() {
             if(instance == null)

@@ -16,6 +16,7 @@ namespace Knotgames.Network {
 
         protected void RecieveData(string recieved) {
             ExtractionClass extracted = JsonUtility.FromJson<ExtractionClass>(recieved);
+            //UnityEngine.Debug.Log($"Recieved: {extracted.myId} == myId; Mine: {myId}");
             if(extracted.myId == myId) {
                 transform.position = extracted.position.ToVector();
                 transform.rotation = extracted.rotation.ToQuaternion();
@@ -52,6 +53,7 @@ namespace Knotgames.Network {
             public RotationWS rotation;
         }
 
+        [System.Serializable]
         private class LocalTransformSyncData
         {
             public int myId;

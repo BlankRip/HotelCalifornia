@@ -15,7 +15,7 @@ namespace Knotgames.Gameplay.Abilities {
         private void Start() {
             myTriggers = new List<IAbilityEffectTrigger>();
             sphereCaster = GetComponent<ISphereCaster>();
-            Initilize("PrimaryUi", duration, AbilityEffectType.Teleport, usesLeft, true);
+            Initilize("SecondaryUi", duration, AbilityEffectType.Teleport, usesLeft, true);
         }
 
         protected override bool CanUseOverride() {

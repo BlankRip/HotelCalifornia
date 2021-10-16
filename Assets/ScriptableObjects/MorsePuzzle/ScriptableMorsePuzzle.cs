@@ -6,6 +6,6 @@ namespace Knotgames.Gameplay.Puzzle.Morse {
     [CreateAssetMenu()]
     public class ScriptableMorsePuzzle : ScriptableObject
     {
-        public IMorseRoom manager;
+        public IMorsePuzzle manager;
     }
 }

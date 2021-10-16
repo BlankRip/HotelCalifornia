@@ -43,7 +43,7 @@ namespace Knotgames.Gameplay {
                 return;
             }
 
-            if(hitObject != null) {
+            if(hitObject != null || continiusCheck) {
                 hitObject = null;
                 availableStatus = false;
             }

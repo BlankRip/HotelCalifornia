@@ -54,7 +54,14 @@ namespace Knotgames.Network
 
         void Update()
         {
-            while (recievedEvents.Count > 0) recievedEvents.Dequeue().Invoke();
+            System.Action action;
+            while (recievedEvents.Count > 0) {
+                action = recievedEvents.Dequeue();
+                if(action != null)
+                    action.Invoke();
+                else
+                    UnityEngine.Debug.LogError("SOME NULL HAS BEEN DEQUEUED FROM RECIEVED EVENTS");
+            } 
         }
 
         async void ConnectToServer()
