@@ -78,7 +78,6 @@ namespace Knotgames.Rendering
             foreach (RenderObject item in renderObjects)
             {
                 commandBuffer.DrawRenderer(item.renderer, item.material);
-                Debug.Log("Rendering...");
             }
 
             commandBuffer.SetGlobalTexture("_PossesedTex", texID);
