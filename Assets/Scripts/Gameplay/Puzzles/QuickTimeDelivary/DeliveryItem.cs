@@ -22,6 +22,9 @@ namespace Knotgames.Gameplay.Puzzle.QuickDelivery {
         private void Awake() {
             myId = deliveryId;
             deliveryId++;
+            if(myId >= 3)
+                Debug.Log(myId);
+
             dataToSend = new DataToSend(myId);
             transformSync = GetComponent<ILocalNetTransformSync>();
             transformSync.SetID(myId);

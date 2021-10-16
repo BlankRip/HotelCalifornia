@@ -105,7 +105,8 @@ namespace Knotgames.Gameplay {
         }
 
         public void SwapSecondary(IAbility ability) {
-            ultimate.Destroy();
+            if(ultimate != null)
+                ultimate.Destroy();
             ultimate = ability;
         }
 

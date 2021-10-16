@@ -17,6 +17,7 @@ namespace Knotgames.Gameplay {
             if(DevBoy.yes)
                 Destroy(this);
             hostStatus.isHost = false;
+            IdsResetter.ResetIDs();
             SendAtLoadingStatus();
             NetConnector.instance.OnMsgRecieve.AddListener(Hear);
         }
