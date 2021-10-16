@@ -15,6 +15,8 @@ namespace Knotgames.Gameplay.Puzzle.Radio
         }
 
         [SerializeField] GameplayEventCollection eventCollection;
+        [SerializeField] Transform textSpot;
+        [SerializeField] string textObjPoolTag;
         private int index;
         private Quaternion originalRot;
         private IRadioTuner tuner;
@@ -25,6 +27,7 @@ namespace Knotgames.Gameplay.Puzzle.Radio
 
         private void Start()
         {
+            SetupText();
             originalRot = transform.rotation;
             tuner = GetComponentInParent<IRadioTuner>();
             screwed = false;
@@ -109,6 +112,7 @@ namespace Knotgames.Gameplay.Puzzle.Radio
                     break;
             }
 
+            text.text = myVal;
             UnityEngine.Debug.LogError($"Frequency is: {myVal}", gameObject);
 
             if (screwed)
@@ -123,6 +127,7 @@ namespace Knotgames.Gameplay.Puzzle.Radio
                 case 4:
                     transform.rotation = originalRot * Quaternion.AngleAxis(-90, Vector3.forward);
                     myVal = "-90Hz";
+
                     break;
                 case 3:
                     transform.rotation = originalRot * Quaternion.AngleAxis(-45, Vector3.forward);
@@ -141,6 +146,7 @@ namespace Knotgames.Gameplay.Puzzle.Radio
                     myVal = "90Hz";
                     break;
             }
+            text.text = myVal;
             UnityEngine.Debug.LogError($"Frequency is: {myVal}", gameObject);
         }
 
@@ -170,12 +176,21 @@ namespace Knotgames.Gameplay.Puzzle.Radio
                     myVal = "90Hz";
                     break;
             }
+            text.text = myVal;
             UnityEngine.Debug.LogError($"Frequency is: {myVal}", gameObject);
         }
 
         public string GetValue()
         {
             return myVal;
+        }
+
+        TextMeshProUGUI text;
+
+        public void SetupText()
+        {
+            text = ObjectPool.instance.SpawnPoolObj(textObjPoolTag, textSpot.position, textSpot.rotation).GetComponent<TextMeshProUGUI>();
+            text.text = myVal;
         }
 
         public void ShowInteractInstruction() { }
