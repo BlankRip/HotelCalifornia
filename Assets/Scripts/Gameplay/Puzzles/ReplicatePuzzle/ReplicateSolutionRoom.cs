@@ -15,6 +15,7 @@ namespace Knotgames.Gameplay.Puzzle.Replicate
         private void Awake()
         {
             replicateSolution = GameObject.Instantiate(replicateSolutionObj).GetComponent<IReplicateSolution>();
+            puzzleRoom.SetObjstoSpawn(replicateSolution.GetStoredObjs());
             SetUpSolution();
         }
 
@@ -22,10 +23,7 @@ namespace Knotgames.Gameplay.Puzzle.Replicate
         {
             currentSolution = replicateSolution.BuildNewSolution(transform);
             if (puzzleRoom != null)
-            {
                 puzzleRoom.SetSolution(currentSolution);
-                puzzleRoom.SetObjstoSpawn(replicateSolution.GetStoredObjs());
-            }
         }
 
         public void Solved()

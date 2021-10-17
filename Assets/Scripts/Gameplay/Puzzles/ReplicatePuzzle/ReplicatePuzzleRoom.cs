@@ -29,18 +29,12 @@ namespace Knotgames.Gameplay.Puzzle.Replicate
         public void SetObjstoSpawn(List<RepObj> objs)
         {
             objsToSpawn = objs;
-        }
-
-        private void Start()
-        {
             foreach(RepObj o in objsToSpawn)
             {
                 Transform x = objSpawnAreas[Random.Range(0, objSpawnAreas.Count)];
                 objSpawnAreas.Remove(x);
                 Instantiate(o.Object, x.position, x.rotation, this.transform);
             }
-            // replicatePuzzle.position = transform.position;
-            // replicatePuzzle.rotation = transform.rotation;
         }
     }
 }
