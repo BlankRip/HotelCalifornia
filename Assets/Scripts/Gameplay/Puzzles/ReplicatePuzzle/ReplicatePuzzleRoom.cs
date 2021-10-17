@@ -14,22 +14,32 @@ namespace Knotgames.Gameplay.Puzzle.Replicate
 
         public void Link(GameObject obj, bool initiator)
         {
+            Debug.LogError("LINKING REP PUZZLE");
             puzzle = replicatePuzzle.GetComponent<IReplicatePuzzle>();
             puzzle.SetUp(obj.GetComponent<IReplicateSolutionRoom>());
             if (initiator)
                 obj.GetComponent<IPairPuzzleSetup>().Link(this.gameObject, false);
         }
 
-        public void SetSolution(List<string> solution)
+        public void SetSolution(List<string> solution, List<RepObj> objs)
         {
             if (puzzle != null)
+            {
                 puzzle.SetSolution(solution);
+                objsToSpawn = objs;
+                SpawnObjs();
+            }
+            else
+            {
+                puzzle = replicatePuzzle.GetComponent<IReplicatePuzzle>();
+                SetSolution(solution, objs);
+            }
         }
 
-        public void SetObjstoSpawn(List<RepObj> objs)
+        public void SpawnObjs()
         {
-            objsToSpawn = objs;
-            foreach(RepObj o in objsToSpawn)
+            Debug.LogError("SPAWNING REP OBJECTS!");
+            foreach (RepObj o in objsToSpawn)
             {
                 Transform x = objSpawnAreas[Random.Range(0, objSpawnAreas.Count)];
                 objSpawnAreas.Remove(x);
