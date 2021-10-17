@@ -66,13 +66,13 @@ namespace Knotgames.Network
                     NetUnityEvents.instance.mixerEvents.Invoke(dataString);
                     break;
                 case "puzzleSolveButton":
-                    NetUnityEvents.instance.puzzleSolvedEvent.Invoke(dataString); 
+                    NetUnityEvents.instance.puzzleSolvedEvent.Invoke(dataString);
                     break;
 
                 case "XOBoardPiece":
                     NetUnityEvents.instance.xoPieceEvent.Invoke(dataString);
                     break;
-                    
+
                 case "RadioTuningPiece":
                     NetUnityEvents.instance.radioPieceEvent.Invoke(dataString);
                     break;
@@ -83,12 +83,15 @@ namespace Knotgames.Network
                 case "interferePlayer":
                     NetUnityEvents.instance.morsePlayerEvent.Invoke(dataString);
                     break;
-                
+
                 case "delivaryUseStatus":
                     NetUnityEvents.instance.deliveryUseStatus.Invoke(dataString);
                     break;
                 case "deliveryTransform":
                     NetUnityEvents.instance.deliveryTransform.Invoke(dataString);
+                    break;
+                case "repTransform":
+                    NetUnityEvents.instance.repTransform.Invoke(dataString);
                     break;
 
                 case "spawnObject":
