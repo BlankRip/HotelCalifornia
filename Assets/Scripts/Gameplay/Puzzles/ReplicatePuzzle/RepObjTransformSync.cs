@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Knotgames.Network;
 
-namespace Knotgames.Gameplay.Puzzle.QuickDelivery {
+namespace Knotgames.Gameplay.Puzzle.Replicate {
     public class RepObjTransformSync : LocalNetTransformSync
     {
         private int deliveryId;
