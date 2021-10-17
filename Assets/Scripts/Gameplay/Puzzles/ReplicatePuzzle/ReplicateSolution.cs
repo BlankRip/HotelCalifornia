@@ -12,7 +12,7 @@ namespace Knotgames.Gameplay.Puzzle.Replicate
         [SerializeField] ReplicateObjectDatabase replicateObjectDatabase;
         [SerializeField] List<Transform> objectSpots;
         private bool screwed;
-        List<RepObj> storedObjs;
+        List<RepObj> storedObjs = new List<RepObj>();
 
         private void Start()
         {
