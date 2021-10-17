@@ -9,7 +9,7 @@ namespace Knotgames.Gameplay.Puzzle.Replicate
     public class ReplicateObjectSlot : MonoBehaviour, IReplicateSlot
     {
         [SerializeField] ReplicateObjectDatabase replicateObjectDatabase;
-        RepObj myObj;
+        ReplicateObject myObj;
         IReplicatePuzzle myPuzzle;
         [SerializeField] Transform attachPos;
 
@@ -27,8 +27,9 @@ namespace Knotgames.Gameplay.Puzzle.Replicate
         {
             if(other.gameObject.CompareTag("RepObj"))
             {
-                myObj = other.gameObject.GetComponent<RepObj>();
-                myObj.Object.transform.SetPositionAndRotation(attachPos.position, attachPos.rotation); 
+                myObj = other.gameObject.GetComponent<ReplicateObject>();
+                myObj.Drop();
+                myObj.transform.SetPositionAndRotation(attachPos.position, attachPos.rotation); 
             }
         }
 
@@ -42,7 +43,7 @@ namespace Knotgames.Gameplay.Puzzle.Replicate
 
         public void Kill()
         {
-            Destroy(myObj.Object);
+            Destroy(myObj);
         }
     }
 }
