@@ -21,6 +21,7 @@ namespace Knotgames.Network {
 
         public CustonEventString deliveryUseStatus;
         public CustonEventString deliveryTransform;
+        public CustonEventString repTransform;
 
         private void Awake() {
             if(instance == null)

@@ -20,6 +20,8 @@ namespace Knotgames.Gameplay.Puzzle.Replicate
         private ILocalNetTransformSync transformSync;
         private DataToSend dataToSend;
         Rigidbody rb;
+        [HideInInspector] public bool slotted;
+        [HideInInspector] public ReplicateObjectSlot mySlot;
 
         private void Awake()
         {
@@ -104,12 +106,23 @@ namespace Knotgames.Gameplay.Puzzle.Replicate
                 transformSync.SetDataSyncStatus(true);
                 SendInUseData(true);
             }
+            if (slotted)
+            {
+                slotted = false;
+                mySlot.myObj = null;
+                Invoke("SlotReset", 0.2f);
+            }
 
             held = true;
             transform.SetParent(attachPos);
             transform.localPosition = Vector3.zero;
             rb.isKinematic = true;
             rb.useGravity = false;
+        }
+
+        void SlotReset()
+        {
+            mySlot.myCollider.enabled = true;
         }
 
         public void HideInteractInstruction() { }

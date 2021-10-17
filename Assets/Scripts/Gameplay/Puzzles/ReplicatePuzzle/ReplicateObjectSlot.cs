@@ -9,13 +9,15 @@ namespace Knotgames.Gameplay.Puzzle.Replicate
     public class ReplicateObjectSlot : MonoBehaviour, IReplicateSlot
     {
         [SerializeField] ReplicateObjectDatabase replicateObjectDatabase;
-        ReplicateObject myObj;
+        public ReplicateObject myObj;
         IReplicatePuzzle myPuzzle;
         [SerializeField] Transform attachPos;
+        [HideInInspector] public Collider myCollider;
 
         private void Awake()
         {
             myPuzzle = GetComponentInParent<IReplicatePuzzle>();
+            myCollider = GetComponent<Collider>();
         }
 
         public string GetValue()
@@ -25,19 +27,14 @@ namespace Knotgames.Gameplay.Puzzle.Replicate
 
         private void OnTriggerEnter(Collider other)
         {
-            if(other.gameObject.CompareTag("RepObj"))
+            if (other.gameObject.CompareTag("RepObj"))
             {
                 myObj = other.gameObject.GetComponent<ReplicateObject>();
                 myObj.Drop();
-                myObj.transform.SetPositionAndRotation(attachPos.position, attachPos.rotation); 
-            }
-        }
-
-        private void OnTriggerExit(Collider other)
-        {
-            if(other.gameObject.CompareTag("RepObj"))
-            {
-                myObj = null;
+                myObj.slotted = true;
+                myObj.mySlot = this;
+                myObj.transform.SetPositionAndRotation(attachPos.position, attachPos.rotation);
+                myCollider.enabled = false;
             }
         }
 
