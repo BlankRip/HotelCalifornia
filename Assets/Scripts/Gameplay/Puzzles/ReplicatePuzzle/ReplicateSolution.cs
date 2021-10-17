@@ -74,8 +74,7 @@ namespace Knotgames.Gameplay.Puzzle.Replicate
             {
                 RepObj repObj = GetRepObject();
                 GameObject go = Instantiate(repObj.Object, objectSpots[i].position, objectSpots[i].rotation, this.transform);
-                repObj.originalPos = objectSpots[i].position;
-                repObj.originalRot = objectSpots[i].rotation;
+                repObj.SetOriginal(objectSpots[i].position, objectSpots[i].rotation);
                 storedObjs.Add(repObj);
                 solution.Add(repObj.name);
             }

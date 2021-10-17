@@ -7,21 +7,15 @@ namespace Knotgames.Gameplay.Puzzle.Replicate
 {
     public class ReplicateSolutionRoom : MonoBehaviour, IReplicateSolutionRoom, IPairPuzzleSetup
     {
-        [SerializeField] List<GameObject> replicateSolutionObjs;
+        [SerializeField] GameObject replicateSolutionObj;
         private IReplicateSolution replicateSolution;
         [SerializeField] List<string> currentSolution;
         private IReplicatePuzzleRoom puzzleRoom;
 
         private void Start()
         {
-            GameObject go = PickRandomSolutionObj();
-            replicateSolution = GameObject.Instantiate(go).GetComponent<IReplicateSolution>();
+            replicateSolution = GameObject.Instantiate(replicateSolutionObj).GetComponent<IReplicateSolution>();
             SetUpSolution();
-        }
-
-        public GameObject PickRandomSolutionObj()
-        {
-            return replicateSolutionObjs[Random.Range(0, replicateSolutionObjs.Count)];
         }
 
         private void SetUpSolution()
