@@ -9,6 +9,8 @@ namespace Knotgames.Gameplay.Puzzle.Replicate
     {
         [SerializeField] Transform replicatePuzzle;
         private IReplicatePuzzle puzzle;
+        List<RepObj> objsToSpawn;
+        [SerializeField] List<Transform> objSpawnAreas;
 
         public void Link(GameObject obj, bool initiator)
         {
@@ -24,10 +26,21 @@ namespace Knotgames.Gameplay.Puzzle.Replicate
                 puzzle.SetSolution(solution);
         }
 
-        private void Awake()
+        public void SetObjstoSpawn(List<RepObj> objs)
         {
-            replicatePuzzle.position = transform.position;
-            replicatePuzzle.rotation = transform.rotation;
+            objsToSpawn = objs;
+        }
+
+        private void Start()
+        {
+            foreach(RepObj o in objsToSpawn)
+            {
+                Transform x = objSpawnAreas[Random.Range(0, objSpawnAreas.Count)];
+                objSpawnAreas.Remove(x);
+                Instantiate(o.Object, x.position, x.rotation, this.transform);
+            }
+            // replicatePuzzle.position = transform.position;
+            // replicatePuzzle.rotation = transform.rotation;
         }
     }
 }

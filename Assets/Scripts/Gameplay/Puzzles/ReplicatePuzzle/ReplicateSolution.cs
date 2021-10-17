@@ -73,7 +73,10 @@ namespace Knotgames.Gameplay.Puzzle.Replicate
             for (int i = 0; i < objectSpots.Count; i++)
             {
                 RepObj repObj = GetRepObject();
-                Instantiate(repObj.Object, objectSpots[i].position, objectSpots[i].rotation, this.transform);
+                GameObject go = Instantiate(repObj.Object, objectSpots[i].position, objectSpots[i].rotation, this.transform);
+                Destroy(go.GetComponent<ReplicateObject>());
+                go.layer = 0;
+                go.tag = "Untagged";
                 repObj.SetOriginal(objectSpots[i].position, objectSpots[i].rotation);
                 storedObjs.Add(repObj);
                 solution.Add(repObj.name);
@@ -86,6 +89,11 @@ namespace Knotgames.Gameplay.Puzzle.Replicate
         private RepObj GetRepObject()
         {
             return replicateObjectDatabase.objects[Random.Range(0, replicateObjectDatabase.objects.Count)];
+        }
+
+        public List<RepObj> GetStoredObjs()
+        {
+            return storedObjs;
         }
     }
 }

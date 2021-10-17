@@ -12,5 +12,6 @@ namespace Knotgames.Gameplay.Puzzle.Replicate
     public interface IReplicatePuzzleRoom
     {
         void SetSolution(List<string> solution);
+        void SetObjstoSpawn(List<RepObj> objs);
     }
 }

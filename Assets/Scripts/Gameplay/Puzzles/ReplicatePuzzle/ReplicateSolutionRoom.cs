@@ -12,7 +12,7 @@ namespace Knotgames.Gameplay.Puzzle.Replicate
         [SerializeField] List<string> currentSolution;
         private IReplicatePuzzleRoom puzzleRoom;
 
-        private void Start()
+        private void Awake()
         {
             replicateSolution = GameObject.Instantiate(replicateSolutionObj).GetComponent<IReplicateSolution>();
             SetUpSolution();
@@ -22,7 +22,10 @@ namespace Knotgames.Gameplay.Puzzle.Replicate
         {
             currentSolution = replicateSolution.BuildNewSolution(transform);
             if (puzzleRoom != null)
+            {
                 puzzleRoom.SetSolution(currentSolution);
+                puzzleRoom.SetObjstoSpawn(replicateSolution.GetStoredObjs());
+            }
         }
 
         public void Solved()

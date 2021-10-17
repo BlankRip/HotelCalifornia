@@ -7,6 +7,7 @@ namespace Knotgames.Gameplay.Puzzle.Replicate
     public interface IReplicateSolution
     {
         List<string> BuildNewSolution(Transform newSpot);
+        List<RepObj> GetStoredObjs();
     }
 
     public interface IReplicatePuzzle
@@ -18,11 +19,13 @@ namespace Knotgames.Gameplay.Puzzle.Replicate
 
     public interface IReplicateSlot
     {
-
+        string GetValue();
+        void Kill();
     }
 
     public interface IReplicateObject
     {
-
+        void Pick();
+        void Drop();
     }
 }
