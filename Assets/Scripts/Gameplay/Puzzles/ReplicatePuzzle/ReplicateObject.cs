@@ -31,7 +31,7 @@ namespace Knotgames.Gameplay.Puzzle.Replicate
             transformSync.SetID(myId);
 
             if (!DevBoy.yes)
-                NetUnityEvents.instance.portionUseStatus.AddListener(RecieveData);
+                NetUnityEvents.instance.repObjUseStatus.AddListener(RecieveData);
         }
 
         private void Start()
@@ -45,7 +45,7 @@ namespace Knotgames.Gameplay.Puzzle.Replicate
         private void OnDestroy()
         {
             if (!DevBoy.yes)
-                NetUnityEvents.instance.portionUseStatus.RemoveListener(RecieveData);
+                NetUnityEvents.instance.repObjUseStatus.RemoveListener(RecieveData);
         }
 
         private void RecieveData(string recieved)
