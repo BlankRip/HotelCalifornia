@@ -6,5 +6,6 @@ namespace Knotgames.Gameplay {
     public interface IPlayerCamera
     {
         void Initilize(Transform player, Transform camPos, bool ghost);
+        void Lock(bool lockState);
     }
 }

@@ -3,14 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 
 namespace Knotgames.Gameplay.Puzzle.Riddler {
-    public class RiddleSolutionPad : MonoBehaviour
+    public class RiddleSolutionPad : MonoBehaviour, IInteractable
     {
         [SerializeField] ScriptableRiddlerPuzzle thePuzzle;
+        private RiddlerInputPanel inputPanel;
         private string mySolution;
         private bool solved;
 
-        public void SetSolution(string solution) {
+        public void SetSolution(string solution, RiddlerInputPanel panel) {
             mySolution = solution.ToLower();
+            inputPanel = panel;
         }
 
         public void Check(string value) {
@@ -25,5 +27,14 @@ namespace Knotgames.Gameplay.Puzzle.Riddler {
                 Debug.Log("Play Wrong ans sound");
             }
         }
+
+        public void Interact() {
+            if(!solved)
+                inputPanel.OpenPanel(this);
+        }
+
+        public void ShowInteractInstruction() { }
+
+        public void HideInteractInstruction() { }
     }
 }

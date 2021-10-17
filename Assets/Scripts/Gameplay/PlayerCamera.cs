@@ -22,6 +22,7 @@ namespace Knotgames.Gameplay {
         private float rotZ = 0.0f;
 
         private bool initilized;
+        private bool locked;
         
         private void Awake()
         {
@@ -35,12 +36,14 @@ namespace Knotgames.Gameplay {
         
         private void Update()
         {
-            mouseX = Input.GetAxis("Mouse X") * sensitivity;
-            mouseY = Input.GetAxis("Mouse Y") * sensitivity;
+            if(!locked) {
+                mouseX = Input.GetAxis("Mouse X") * sensitivity;
+                mouseY = Input.GetAxis("Mouse Y") * sensitivity;
 
-            rotX -= mouseY;
-            rotX = Mathf.Clamp(rotX, maxDownAngle, maxUpAngle);
-            rotY += mouseX;
+                rotX -= mouseY;
+                rotX = Mathf.Clamp(rotX, maxDownAngle, maxUpAngle);
+                rotY += mouseX;
+            }
 
             if(initilized) {
                 transform.localRotation = Quaternion.Euler(rotX, rotY, rotZ);
@@ -64,6 +67,10 @@ namespace Knotgames.Gameplay {
         private void WarpUpInitilize() {
             Quaternion targetRotation = Quaternion.Euler(0, transform.rotation.eulerAngles.y, 0);
             player.rotation = targetRotation;
+        }
+
+        public void Lock(bool lockState) {
+            locked = lockState;
         }
     }
 }

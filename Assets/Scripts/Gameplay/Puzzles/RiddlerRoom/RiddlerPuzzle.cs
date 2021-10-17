@@ -7,6 +7,7 @@ namespace Knotgames.Gameplay.Puzzle.Riddler {
     {
         [SerializeField] ScriptableRiddlerPuzzle riddlerPuzzle;
         [SerializeField] ScriptablePuzzleStatusTracker puzzleTracker;
+        [SerializeField] ScriptableRiddleCollection riddleCollection;
         [SerializeField] List<GameObject> riddleBoards;
         [SerializeField] int riddlesToSolve = 3;
         private int currentSolved;
@@ -16,6 +17,7 @@ namespace Knotgames.Gameplay.Puzzle.Riddler {
         }
 
         private void Start() {
+            riddleCollection.SetUpForNewRiddleSet();
             for (int i = 0; i < riddlesToSolve; i++) {
                 int rand = Random.Range(0, riddleBoards.Count);
                 riddleBoards[rand].SetActive(true);

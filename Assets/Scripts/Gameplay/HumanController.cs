@@ -18,6 +18,7 @@ namespace Knotgames.Gameplay {
 
         //Y Positive is Jump & Y Negetive is Crouch
         private PlayerNetData data;
+        private bool lockedController;
 
         private void Awake() {
             currentController.controller = this;
@@ -65,29 +66,31 @@ namespace Knotgames.Gameplay {
 
         private void Update() {
             if(DevBoy.yes || netObj.IsMine) {
-                data.horizontalInput = Input.GetAxisRaw("Horizontal");
-                data.verticalInput = Input.GetAxisRaw("Vertical");
-                if(Input.GetKeyDown(KeyCode.Space)) {
-                    data.moveYPositive = true;
-                    SendNetData();
-                    StopAllCoroutines();
-                    StartCoroutine(SendAfter3Frames());
-                }
-                if(Input.GetKeyDown(KeyCode.LeftControl))
-                    data.moveYNegetive = true;
-                else if(Input.GetKeyUp(KeyCode.LeftControl))
-                    data.moveYNegetive = false;
-                if(Input.GetKeyDown(KeyCode.E)) {
-                    if(primary.CanUse())
-                        primary.UseAbility();
-                }
-                if(Input.GetKeyDown(KeyCode.Q)) {
-                    if(ultimate.CanUse())
-                        ultimate.UseAbility();
-                }
-                if(Input.GetKeyDown(KeyCode.Mouse0)) {
-                    if(interactRay.CanInteract())
-                        interactRay.Interact();
+                if(!lockedController) {
+                    data.horizontalInput = Input.GetAxisRaw("Horizontal");
+                    data.verticalInput = Input.GetAxisRaw("Vertical");
+                    if(Input.GetKeyDown(KeyCode.Space)) {
+                        data.moveYPositive = true;
+                        SendNetData();
+                        StopAllCoroutines();
+                        StartCoroutine(SendAfter3Frames());
+                    }
+                    if(Input.GetKeyDown(KeyCode.LeftControl))
+                        data.moveYNegetive = true;
+                    else if(Input.GetKeyUp(KeyCode.LeftControl))
+                        data.moveYNegetive = false;
+                    if(Input.GetKeyDown(KeyCode.E)) {
+                        if(primary.CanUse())
+                            primary.UseAbility();
+                    }
+                    if(Input.GetKeyDown(KeyCode.Q)) {
+                        if(ultimate.CanUse())
+                            ultimate.UseAbility();
+                    }
+                    if(Input.GetKeyDown(KeyCode.Mouse0)) {
+                        if(interactRay.CanInteract())
+                            interactRay.Interact();
+                    }
                 }
                 movement.Move(data.horizontalInput, data.verticalInput, ref data.moveYPositive, ref data.moveYNegetive);
             }
@@ -116,6 +119,15 @@ namespace Knotgames.Gameplay {
             yield return new WaitForEndOfFrame();
             yield return new WaitForEndOfFrame();
             SendNetData();
+        }
+
+        public void LockControls(bool lockState) {
+            lockedController = lockState;
+            if(lockState) {
+                data.horizontalInput = 0;
+                data.verticalInput = 0;
+                data.moveYNegetive = data.moveYPositive = false;
+            }
         }
     }
 }

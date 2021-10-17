@@ -20,6 +20,7 @@ namespace Knotgames.Gameplay {
         private PlayerNetData data;
 
         private bool checkAbilityInputs;
+        private bool lockedController;
 
         private void Awake() {
             currentController.controller = this;
@@ -60,33 +61,34 @@ namespace Knotgames.Gameplay {
 
         private void Update() {
             if(DevBoy.yes || netObj.IsMine) {
-                data.horizontalInput = Input.GetAxis("Horizontal");
-                data.verticalInput = Input.GetAxis("Vertical");
-                if(Input.GetKeyDown(KeyCode.Space))
-                    data.moveYPositive = true;
-                else if(Input.GetKeyUp(KeyCode.Space))
-                    data.moveYPositive = false;
+                if(!lockedController) {
+                    data.horizontalInput = Input.GetAxis("Horizontal");
+                    data.verticalInput = Input.GetAxis("Vertical");
+                    if(Input.GetKeyDown(KeyCode.Space))
+                        data.moveYPositive = true;
+                    else if(Input.GetKeyUp(KeyCode.Space))
+                        data.moveYPositive = false;
 
-                if(Input.GetKeyDown(KeyCode.LeftControl))
-                    data.moveYNegetive = true;
-                else if(Input.GetKeyUp(KeyCode.LeftControl))
-                    data.moveYNegetive = false;
+                    if(Input.GetKeyDown(KeyCode.LeftControl))
+                        data.moveYNegetive = true;
+                    else if(Input.GetKeyUp(KeyCode.LeftControl))
+                        data.moveYNegetive = false;
 
-                if(checkAbilityInputs) {
-                    if(Input.GetKeyDown(KeyCode.E)) {
-                        if(primary.CanUse())
-                            primary.UseAbility();
-                    }
-                    if(Input.GetKeyDown(KeyCode.F)) {
-                        if(secondary.CanUse())
-                            secondary.UseAbility();
-                    }
-                    if(Input.GetKeyDown(KeyCode.Q)) {
-                        if(ultimate.CanUse())
-                            ultimate.UseAbility();
+                    if(checkAbilityInputs) {
+                        if(Input.GetKeyDown(KeyCode.E)) {
+                            if(primary.CanUse())
+                                primary.UseAbility();
+                        }
+                        if(Input.GetKeyDown(KeyCode.F)) {
+                            if(secondary.CanUse())
+                                secondary.UseAbility();
+                        }
+                        if(Input.GetKeyDown(KeyCode.Q)) {
+                            if(ultimate.CanUse())
+                                ultimate.UseAbility();
+                        }
                     }
                 }
-
                 // if(Input.GetKeyDown(KeyCode.Mouse0)) {
                 //     if(interactRay.CanInteract())
                 //         interactRay.Interact();
@@ -113,6 +115,15 @@ namespace Knotgames.Gameplay {
 
         public void SetAbilityUsability(bool value) {
             checkAbilityInputs = value;
+        }
+
+        public void LockControls(bool lockState) {
+            lockedController = lockState;
+            if(lockState) {
+                data.horizontalInput = 0;
+                data.verticalInput = 0;
+                data.moveYNegetive = data.moveYPositive = false;
+            }
         }
     }
 }

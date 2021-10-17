@@ -7,6 +7,7 @@ namespace Knotgames.Gameplay {
     public interface IPlayerController
     {
         void SetAbilities(List<IAbility> abilities);
+        void LockControls(bool lockState);
         void SwapSecondary(IAbility ability);
         GameObject GetPlayerObject();
     }

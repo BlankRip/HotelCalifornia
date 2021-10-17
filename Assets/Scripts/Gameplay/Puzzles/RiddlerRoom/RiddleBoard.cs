@@ -12,16 +12,22 @@ namespace Knotgames.Gameplay.Puzzle.Riddler {
         [SerializeField] RiddleSolutionPad mySolutionPad;
         private TextMeshProUGUI myText;
         private Riddle myRiddle;
+        private RiddlerInputPanel inputPanel;
 
         private void Start() {
-            riddleCollection.SetUpForNewRiddleSet();
+            inputPanel = FindObjectOfType<RiddlerInputPanel>();
+            SetUpBoard();
         }
 
         private void SetUpBoard() {
             myRiddle = riddleCollection.GetRandomRiddle();
             myText = ObjectPool.instance.SpawnPoolObj(textPoolTag, textPos.position, textPos.rotation).GetComponent<TextMeshProUGUI>();
             myText.text = myRiddle.riddle;
-            mySolutionPad.SetSolution(myRiddle.answer);
+            mySolutionPad.SetSolution(myRiddle.answer, inputPanel);
+        }
+
+        public void ChangeText(string value) {
+            myText.text = value;
         }
     }
 }
