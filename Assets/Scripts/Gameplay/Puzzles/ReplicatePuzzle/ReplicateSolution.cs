@@ -73,7 +73,7 @@ namespace Knotgames.Gameplay.Puzzle.Replicate
             for (int i = 0; i < objectSpots.Count; i++)
             {
                 RepObj repObj = GetRepObject();
-                GameObject go = Instantiate(repObj.Object, objectSpots[i].position, objectSpots[i].rotation, this.transform);
+                Instantiate(repObj.Object, objectSpots[i].position, objectSpots[i].rotation, this.transform);
                 repObj.SetOriginal(objectSpots[i].position, objectSpots[i].rotation);
                 storedObjs.Add(repObj);
                 solution.Add(repObj.name);
