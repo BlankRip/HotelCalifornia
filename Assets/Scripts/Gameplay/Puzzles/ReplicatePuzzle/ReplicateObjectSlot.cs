@@ -39,5 +39,10 @@ namespace Knotgames.Gameplay.Puzzle.Replicate
                 myObj = null;
             }
         }
+
+        public void Kill()
+        {
+            Destroy(myObj.Object);
+        }
     }
 }
