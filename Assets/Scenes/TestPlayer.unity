@@ -1975,7 +1975,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 240014563}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1989,8 +1989,8 @@ Transform:
   - {fileID: 1672573741}
   - {fileID: 749229818}
   - {fileID: 1048829262}
-  m_Father: {fileID: 0}
-  m_RootOrder: 33
+  m_Father: {fileID: 1176869426}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &240307530
 GameObject:
@@ -5945,7 +5945,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &741950070
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10213,7 +10213,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1176869425
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10251,7 +10251,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 240014564}
   m_Father: {fileID: 0}
   m_RootOrder: 32
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -11633,7 +11634,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1295484423
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15179,7 +15180,7 @@ Transform:
   m_Children:
   - {fileID: 4621793913674517372}
   m_Father: {fileID: 0}
-  m_RootOrder: 35
+  m_RootOrder: 34
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1687379825
 GameObject:
@@ -15268,7 +15269,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 34
+  m_RootOrder: 33
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1690995119
 GameObject:
@@ -18287,7 +18288,7 @@ MonoBehaviour:
   loadingScreen: {fileID: 741950069}
   spawnerObj: {fileID: 1440134622}
   gameSeed: {fileID: 11400000, guid: d1861e6a6ee7f0b4186bc669d976f901, type: 2}
-  objToTurnOn: {fileID: 1295484422}
+  objToTurnOn: {fileID: 1176869424}
   hostStatus: {fileID: 11400000, guid: 965c8095d18c79344b40a6c1158818ad, type: 2}
 --- !u!4 &1951046753
 Transform:

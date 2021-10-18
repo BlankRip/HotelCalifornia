@@ -3,10 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using Knotgames.Gameplay.Abilities;
+using Knotgames.Network;
 
 namespace Knotgames.Gameplay.Puzzle.Riddler {
     public class RiddleBoard : MonoBehaviour, IInterfear
     {
+        private static int riddleBoardId;
+        public static void ResetIDs() {
+            riddleBoardId = 0;
+        }
+
         [SerializeField] string textPoolTag;
         [SerializeField] Transform textPos;
         [SerializeField] ScriptableRiddleCollection riddleCollection;
@@ -20,9 +26,34 @@ namespace Knotgames.Gameplay.Puzzle.Riddler {
         private float timer;
         private float spellDuration = 15;
 
+        private int myId;
+        private DataToSend dataToSend;
+
         private void Start() {
+            myId = riddleBoardId;
+            riddleBoardId++;
+            dataToSend = new DataToSend(myId);
+            if(!DevBoy.yes)
+                NetUnityEvents.instance.riddleBoardEvent.AddListener(RecieveData);
+
             inputPanel = FindObjectOfType<RiddlerInputPanel>();
             SetUpBoard();
+        }
+
+        private void RecieveData(string recieved) {
+            ExtractionClass extracted = JsonUtility.FromJson<ExtractionClass>(recieved);
+            if(extracted.myId == myId)
+                StartInterfere(extracted.input);
+        }
+
+        private void SendData(string inputValue) {
+            dataToSend.input = inputValue;
+            NetConnector.instance.SendDataToServer(JsonUtility.ToJson(dataToSend));
+        }
+
+        private void OnDestroy() {
+            if(!DevBoy.yes)
+                NetUnityEvents.instance.riddleBoardEvent.RemoveListener(RecieveData);
         }
 
         private void SetUpBoard() {
@@ -45,6 +76,9 @@ namespace Knotgames.Gameplay.Puzzle.Riddler {
 
         public void ChangeText(string value) {
             StartInterfere(value);
+            
+            if(!DevBoy.yes)
+                SendData(value);
         }
 
         private void StartInterfere(string value) {
@@ -60,6 +94,27 @@ namespace Knotgames.Gameplay.Puzzle.Riddler {
 
         public void Interfear() {
             inputPanel.OpenPanel(this);
+        }
+
+        private class ExtractionClass {
+            public int myId;
+            public string input;
+        }
+
+        private class DataToSend {
+            public int myId;
+            public string input;
+            public string eventName;
+            public string roomID;
+            public string distributionOption;
+
+            public DataToSend(int id) {
+                eventName = "riddleBoard";
+                distributionOption = DistributionOption.serveOthers;
+                myId = id;
+                if(!DevBoy.yes)
+                    roomID = NetRoomJoin.instance.roomID.value;
+            }
         }
     }
 }

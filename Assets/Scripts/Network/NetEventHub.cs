@@ -87,11 +87,19 @@ namespace Knotgames.Network
                 case "delivaryUseStatus":
                     NetUnityEvents.instance.deliveryUseStatus.Invoke(dataString);
                     break;
-                case "repObjUseStatus":
-                    NetUnityEvents.instance.repObjUseStatus.Invoke(dataString);
-                    break;
                 case "deliveryTransform":
                     NetUnityEvents.instance.deliveryTransform.Invoke(dataString);
+                    break;
+                
+                case "riddlePad":
+                    NetUnityEvents.instance.riddlePadEvent.Invoke(dataString);
+                    break;
+                case "riddleBoard":
+                    NetUnityEvents.instance.riddleBoardEvent.Invoke(dataString);
+                    break;
+
+                case "repObjUseStatus":
+                    NetUnityEvents.instance.repObjUseStatus.Invoke(dataString);
                     break;
                 case "repTransform":
                     NetUnityEvents.instance.repTransform.Invoke(dataString);

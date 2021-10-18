@@ -22,6 +22,10 @@ namespace Knotgames.Network
 
         public CustonEventString deliveryUseStatus;
         public CustonEventString deliveryTransform;
+
+        public CustonEventString riddlePadEvent;
+        public CustonEventString riddleBoardEvent;
+
         public CustonEventString repTransform;
         public CustonEventString repObjUseStatus;
 

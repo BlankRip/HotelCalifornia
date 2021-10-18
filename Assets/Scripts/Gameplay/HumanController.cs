@@ -124,6 +124,7 @@ namespace Knotgames.Gameplay {
         public void LockControls(bool lockState) {
             lockedController = lockState;
             if(lockState) {
+                Debug.Log("LOCKED");
                 data.horizontalInput = 0;
                 data.verticalInput = 0;
                 data.moveYNegetive = data.moveYPositive = false;
