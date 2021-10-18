@@ -21,7 +21,6 @@ namespace Knotgames.Gameplay {
         private bool lockedController;
 
         private void Awake() {
-            currentController.controller = this;
         }
 
         private void Start() {
@@ -36,6 +35,9 @@ namespace Knotgames.Gameplay {
                 SendNetDataRepeat();
             } else
                 data = new PlayerNetData(netObj.id);
+
+            if(DevBoy.yes || netObj.IsMine)
+                currentController.controller = this;
         }
 
         private void OnDestroy() {
@@ -123,7 +125,7 @@ namespace Knotgames.Gameplay {
 
         public void LockControls(bool lockState) {
             lockedController = lockState;
-            if(lockState) {
+            if(lockedController) {
                 Debug.Log("LOCKED");
                 data.horizontalInput = 0;
                 data.verticalInput = 0;

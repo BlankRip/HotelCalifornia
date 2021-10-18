@@ -40,6 +40,9 @@ namespace Knotgames.Gameplay {
             } else {
                 data = new PlayerNetData(netObj.id);
             }
+
+            if(DevBoy.yes || netObj.IsMine)
+                currentController.controller = this;
         }
 
         private void SendNetData() {
