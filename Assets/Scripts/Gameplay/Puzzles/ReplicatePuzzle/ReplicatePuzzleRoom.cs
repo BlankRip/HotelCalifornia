@@ -21,25 +21,16 @@ namespace Knotgames.Gameplay.Puzzle.Replicate
                 obj.GetComponent<IPairPuzzleSetup>().Link(this.gameObject, false);
         }
 
-        public void SetSolution(List<string> solution, List<RepObj> objs)
+        public void SetSolution(List<string> solution)
         {
             if (puzzle != null)
-            {
                 puzzle.SetSolution(solution);
-                objsToSpawn = objs;
-                SpawnObjs();
-            }
-            else
-            {
-                puzzle = replicatePuzzle.GetComponent<IReplicatePuzzle>();
-                SetSolution(solution, objs);
-            }
         }
 
-        public void SpawnObjs()
+        public void SpawnObjs(List<RepObj> objs)
         {
             Debug.LogError("SPAWNING REP OBJECTS!");
-            foreach (RepObj o in objsToSpawn)
+            foreach (RepObj o in objs)
             {
                 Transform x = objSpawnAreas[Random.Range(0, objSpawnAreas.Count)];
                 objSpawnAreas.Remove(x);

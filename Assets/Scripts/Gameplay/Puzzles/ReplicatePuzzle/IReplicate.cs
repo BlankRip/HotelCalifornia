@@ -20,12 +20,16 @@ namespace Knotgames.Gameplay.Puzzle.Replicate
     public interface IReplicateSlot
     {
         string GetValue();
-        void Kill();
+        void SetNull();
+        void SetCollider(bool val);
     }
 
     public interface IReplicateObject
     {
         void Pick();
         void Drop();
+        void Drop(bool overrider);
+        string GetName();
+        void HandleSlotting(IReplicateSlot slot, Vector3 pos, Quaternion rot);
     }
 }

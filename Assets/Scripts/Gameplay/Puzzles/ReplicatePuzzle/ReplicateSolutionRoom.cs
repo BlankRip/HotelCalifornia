@@ -22,7 +22,7 @@ namespace Knotgames.Gameplay.Puzzle.Replicate
         {
             currentSolution = replicateSolution.BuildNewSolution(transform);
             if (puzzleRoom != null)
-                puzzleRoom.SetSolution(currentSolution, replicateSolution.GetStoredObjs());
+                puzzleRoom.SetSolution(currentSolution);
         }
 
         public void Solved()
@@ -34,7 +34,8 @@ namespace Knotgames.Gameplay.Puzzle.Replicate
         {
             Debug.LogError("LINKING REP SOLUTION");
             puzzleRoom = obj.GetComponent<IReplicatePuzzleRoom>();
-            puzzleRoom.SetSolution(currentSolution, replicateSolution.GetStoredObjs());
+            puzzleRoom.SetSolution(currentSolution);
+            puzzleRoom.SpawnObjs(replicateSolution.GetStoredObjs());
             if (initiator)
                 obj.GetComponent<IPairPuzzleSetup>().Link(this.gameObject, false);
         }

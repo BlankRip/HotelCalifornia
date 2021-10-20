@@ -39,10 +39,6 @@ namespace Knotgames.Gameplay.Puzzle.Replicate
 
         private void DestroyPuzzleOnComplete()
         {
-            foreach (ReplicateObjectSlot slot in slots)
-            {
-                slot.Kill();
-            }
             Destroy(this, 0.1f);
         }
     }

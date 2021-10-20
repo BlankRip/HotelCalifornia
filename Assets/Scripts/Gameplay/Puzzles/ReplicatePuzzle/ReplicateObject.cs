@@ -21,7 +21,7 @@ namespace Knotgames.Gameplay.Puzzle.Replicate
         private DataToSend dataToSend;
         Rigidbody rb;
         [HideInInspector] public bool slotted;
-        [HideInInspector] public ReplicateObjectSlot mySlot;
+        [HideInInspector] public IReplicateSlot mySlot;
 
         private void Awake()
         {
@@ -99,6 +99,21 @@ namespace Knotgames.Gameplay.Puzzle.Replicate
             rb.useGravity = true;
         }
 
+        public void Drop(bool overrider)
+        {
+            Debug.LogError("DROPPED OVERRIDER");
+            if (!DevBoy.yes)
+            {
+                transformSync.SetDataSyncStatus(false);
+                SendInUseData(false);
+            }
+
+            held = false;
+            transform.SetParent(null);
+            rb.isKinematic = true;
+            rb.useGravity = false;
+        }
+
         public void Pick()
         {
             if (!DevBoy.yes)
@@ -109,7 +124,7 @@ namespace Knotgames.Gameplay.Puzzle.Replicate
             if (slotted)
             {
                 slotted = false;
-                mySlot.myObj = null;
+                mySlot.SetNull();
                 Invoke("SlotReset", 0.2f);
             }
 
@@ -122,12 +137,24 @@ namespace Knotgames.Gameplay.Puzzle.Replicate
 
         void SlotReset()
         {
-            mySlot.myCollider.enabled = true;
+            mySlot.SetCollider(true);
         }
 
         public void HideInteractInstruction() { }
 
         public void ShowInteractInstruction() { }
+
+        public string GetName()
+        {
+            return name;
+        }
+
+        public void HandleSlotting(IReplicateSlot slot, Vector3 position, Quaternion rotation)
+        {
+            slotted = true;
+            mySlot = slot;
+            transform.SetPositionAndRotation(position, rotation);
+        }
 
         private class ExtractionClass
         {
