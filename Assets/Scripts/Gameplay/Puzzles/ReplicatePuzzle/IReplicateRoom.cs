@@ -7,6 +7,7 @@ namespace Knotgames.Gameplay.Puzzle.Replicate
     public interface IReplicateSolutionRoom
     {
         void Solved();
+        GameObject GetMyGO();
     }
 
     public interface IReplicatePuzzleRoom

@@ -39,7 +39,8 @@ namespace Knotgames.Gameplay.Puzzle.Replicate
 
         private void DestroyPuzzleOnComplete()
         {
-            Destroy(this, 0.1f);
+            Destroy(solutionRoom.GetMyGO(), 0.1f);
+            Destroy(this.gameObject, 0.1f);
         }
     }
 }

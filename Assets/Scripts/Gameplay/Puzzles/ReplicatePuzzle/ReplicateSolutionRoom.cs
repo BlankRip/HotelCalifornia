@@ -39,5 +39,10 @@ namespace Knotgames.Gameplay.Puzzle.Replicate
             if (initiator)
                 obj.GetComponent<IPairPuzzleSetup>().Link(this.gameObject, false);
         }
+
+        public GameObject GetMyGO()
+        {
+            return replicateSolutionObj;
+        }
     }
 }
