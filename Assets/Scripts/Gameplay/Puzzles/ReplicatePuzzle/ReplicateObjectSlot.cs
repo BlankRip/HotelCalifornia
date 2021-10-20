@@ -41,6 +41,12 @@ namespace Knotgames.Gameplay.Puzzle.Replicate
             }
         }
 
+        public void Disable()
+        {
+            myObj.Disable();
+            Destroy(this);
+        }
+
         public void SetNull()
         {
             slottedName = "";

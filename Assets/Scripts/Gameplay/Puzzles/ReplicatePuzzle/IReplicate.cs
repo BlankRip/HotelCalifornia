@@ -31,5 +31,6 @@ namespace Knotgames.Gameplay.Puzzle.Replicate
         void Drop(bool overrider);
         string GetName();
         void HandleSlotting(IReplicateSlot slot, Vector3 pos, Quaternion rot);
+        void Disable();
     }
 }

@@ -163,6 +163,12 @@ namespace Knotgames.Gameplay.Puzzle.Replicate
             transform.SetPositionAndRotation(position, rotation);
         }
 
+        public void Disable()
+        {
+            gameObject.tag = "Untagged";
+            gameObject.layer = 0;
+        }
+
         private class ExtractionClass
         {
             public int myId;
