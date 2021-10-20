@@ -22,6 +22,7 @@ namespace Knotgames.Gameplay.Puzzle.Replicate
         Rigidbody rb;
         [HideInInspector] public bool slotted;
         [HideInInspector] public IReplicateSlot mySlot;
+        [SerializeField] string myName;
 
         private void Awake()
         {
@@ -151,7 +152,8 @@ namespace Knotgames.Gameplay.Puzzle.Replicate
 
         public string GetName()
         {
-            return name;
+            Debug.LogError($"RETURNING {myName}");
+            return myName;
         }
 
         public void HandleSlotting(IReplicateSlot slot, Vector3 position, Quaternion rotation)

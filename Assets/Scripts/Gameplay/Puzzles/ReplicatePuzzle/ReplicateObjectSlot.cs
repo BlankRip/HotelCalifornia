@@ -13,6 +13,7 @@ namespace Knotgames.Gameplay.Puzzle.Replicate
         IReplicatePuzzle myPuzzle;
         [SerializeField] Transform attachPos;
         [HideInInspector] public Collider myCollider;
+        string slottedName;
 
         private void Awake()
         {
@@ -22,15 +23,17 @@ namespace Knotgames.Gameplay.Puzzle.Replicate
 
         public string GetValue()
         {
-            return myObj.GetName();
+            Debug.LogError($"THIS IS NAME : {slottedName}");
+            return slottedName;
         }
 
         private void OnTriggerEnter(Collider other)
         {
             if (other.gameObject.CompareTag("RepObj"))
             {
-                myObj = other.gameObject.GetComponent<ReplicateObject>();
+                myObj = other.gameObject.GetComponent<IReplicateObject>();
                 myObj.Drop(true);
+                slottedName = myObj.GetName();
                 myObj.HandleSlotting(this, attachPos.position, attachPos.rotation);
                 myCollider.enabled = false;
                 myPuzzle.CheckSolution();
@@ -39,6 +42,7 @@ namespace Knotgames.Gameplay.Puzzle.Replicate
 
         public void SetNull()
         {
+            slottedName = "";
             myObj = null;
         }
 
