@@ -54,6 +54,7 @@ namespace Knotgames.Gameplay.Puzzle.Replicate
             if (extracted.myId == myId)
             {
                 inUse = extracted.inUse;
+                slotted = extracted.slotted;
                 if (inUse)
                 {
                     rb.useGravity = false;
@@ -61,15 +62,19 @@ namespace Knotgames.Gameplay.Puzzle.Replicate
                 }
                 else
                 {
-                    rb.useGravity = true;
-                    rb.isKinematic = false;
+                    if (!slotted)
+                    {
+                        rb.useGravity = true;
+                        rb.isKinematic = false;
+                    }
                 }
             }
         }
 
-        private void SendInUseData(bool value)
+        private void SendInUseData(bool value, bool slotValue)
         {
             dataToSend.inUse = value;
+            dataToSend.slotted = slotValue;
             NetConnector.instance.SendDataToServer(JsonUtility.ToJson(dataToSend));
         }
 
@@ -90,7 +95,7 @@ namespace Knotgames.Gameplay.Puzzle.Replicate
             if (!DevBoy.yes)
             {
                 transformSync.SetDataSyncStatus(false);
-                SendInUseData(false);
+                SendInUseData(false, false);
             }
 
             held = false;
@@ -105,7 +110,7 @@ namespace Knotgames.Gameplay.Puzzle.Replicate
             if (!DevBoy.yes)
             {
                 transformSync.SetDataSyncStatus(false);
-                SendInUseData(false);
+                SendInUseData(false, true);
             }
 
             held = false;
@@ -119,7 +124,7 @@ namespace Knotgames.Gameplay.Puzzle.Replicate
             if (!DevBoy.yes)
             {
                 transformSync.SetDataSyncStatus(true);
-                SendInUseData(true);
+                SendInUseData(true, false);
             }
             if (slotted)
             {
@@ -160,12 +165,14 @@ namespace Knotgames.Gameplay.Puzzle.Replicate
         {
             public int myId;
             public bool inUse;
+            public bool slotted;
         }
 
         private class DataToSend
         {
             public int myId;
             public bool inUse;
+            public bool slotted;
             public string eventName;
             public string roomID;
             public string distributionOption;
