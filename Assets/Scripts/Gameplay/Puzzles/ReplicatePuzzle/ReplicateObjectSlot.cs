@@ -33,6 +33,7 @@ namespace Knotgames.Gameplay.Puzzle.Replicate
                 myObj.Drop(true);
                 myObj.HandleSlotting(this, attachPos.position, attachPos.rotation);
                 myCollider.enabled = false;
+                myPuzzle.CheckSolution();
             }
         }
 
