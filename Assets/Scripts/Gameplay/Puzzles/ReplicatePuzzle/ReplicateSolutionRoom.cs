@@ -14,7 +14,7 @@ namespace Knotgames.Gameplay.Puzzle.Replicate
 
         private void Awake()
         {
-            replicateSolution = GameObject.Instantiate(replicateSolutionObj).GetComponent<IReplicateSolution>();
+            replicateSolution = GameObject.Instantiate(replicateSolutionObj, Vector3.zero, Quaternion.identity, transform).GetComponent<IReplicateSolution>();
             SetUpSolution();
         }
 
@@ -42,7 +42,7 @@ namespace Knotgames.Gameplay.Puzzle.Replicate
 
         public GameObject GetMyGO()
         {
-            return replicateSolutionObj;
+            return gameObject;
         }
     }
 }

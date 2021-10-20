@@ -40,6 +40,10 @@ namespace Knotgames.Gameplay.Puzzle.Replicate
         private void DestroyPuzzleOnComplete()
         {
             Destroy(solutionRoom.GetMyGO(), 0.1f);
+            foreach(ReplicateObjectSlot slot in slots)
+            {
+                Destroy(slot.gameObject);
+            }
             Destroy(this.gameObject, 0.1f);
         }
     }

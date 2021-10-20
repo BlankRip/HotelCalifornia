@@ -31,6 +31,7 @@ namespace Knotgames.Gameplay.Puzzle.Replicate
         {
             if (other.gameObject.CompareTag("RepObj"))
             {
+                other.transform.SetParent(transform);
                 myObj = other.gameObject.GetComponent<IReplicateObject>();
                 myObj.Drop(true);
                 slottedName = myObj.GetName();
