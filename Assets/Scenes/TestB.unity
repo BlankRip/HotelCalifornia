@@ -1825,7 +1825,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a704a0f6190ff14982008c8a6f0ed0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mazeEntryRoom: {fileID: 11400000, guid: 881cb44ada925c741abcc6e9daad293c, type: 2}
+  puzzleTracker: {fileID: 11400000, guid: fd981454de7de5a4cbdc5f8b956792d9, type: 2}
+  mazeRoom: {fileID: 11400000, guid: 881cb44ada925c741abcc6e9daad293c, type: 2}
   mazeGenObj: {fileID: 4817285477143849353, guid: 749e8d85bb9a841438d3ff6dcdb9dc91, type: 3}
   piecesToCollect: 3
   numberOfEntryPoints: 7
@@ -14338,7 +14339,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4fb287c4e82c005428446e4930889268, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mazeEntryRoom: {fileID: 11400000, guid: 881cb44ada925c741abcc6e9daad293c, type: 2}
+  mazeRoom: {fileID: 11400000, guid: 881cb44ada925c741abcc6e9daad293c, type: 2}
   inMaze: 0
 --- !u!136 &1572516340
 CapsuleCollider:
@@ -14348,7 +14349,7 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1572516338}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 0.5
   m_Height: 2
@@ -17881,7 +17882,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4fb287c4e82c005428446e4930889268, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mazeEntryRoom: {fileID: 11400000, guid: 881cb44ada925c741abcc6e9daad293c, type: 2}
+  mazeRoom: {fileID: 11400000, guid: 881cb44ada925c741abcc6e9daad293c, type: 2}
   inMaze: 1
 --- !u!136 &1829847662
 CapsuleCollider:
@@ -17891,7 +17892,7 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1829847660}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 0.5
   m_Height: 2

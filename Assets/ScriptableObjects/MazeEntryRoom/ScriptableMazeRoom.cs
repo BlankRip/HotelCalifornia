@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Knotgames.Gameplay.Puzzle.Maze {
     [CreateAssetMenu()]
-    public class ScriptableMazeEntryRoom : ScriptableObject
+    public class ScriptableMazeRoom : ScriptableObject
     {
         public IMazeEntryRoom manager;
     }

@@ -7,6 +7,7 @@ namespace Knotgames.Gameplay.Puzzle.Maze {
     {
         List<Transform> GetPlayerEntryPoints();
         Transform GetExitPoint();
+        void PieceCollected();
     }
 
     public interface IMazeManager {

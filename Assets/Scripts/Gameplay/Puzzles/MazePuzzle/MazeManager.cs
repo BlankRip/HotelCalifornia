@@ -30,7 +30,7 @@ namespace Knotgames.Gameplay.Puzzle.Maze {
             for (int i = 0; i < numberOfEntryPoints; i++) {
                 int rand = Random.Range(0, availableIndex.Count);
                 int randTile = Random.Range(0, mazeFloorTiles.Count);
-                playerSpawnPoints.Insert(availableIndex[rand], mazeFloorTiles[randTile].transform.GetChild(0));
+                playerSpawnPoints[availableIndex[rand]] = mazeFloorTiles[randTile].transform.GetChild(0);
                 availableIndex.RemoveAt(rand);
                 mazeFloorTiles.RemoveAt(randTile);
             }

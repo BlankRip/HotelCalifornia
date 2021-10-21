@@ -4,9 +4,10 @@ using UnityEngine;
 using Knotgames.MazeGen;
 
 namespace Knotgames.Gameplay.Puzzle.Maze {
-    public class MazeEntryRoom : MonoBehaviour, IMazeEntryRoom
+    public class MazeRoom : MonoBehaviour, IMazeEntryRoom
     {
-        [SerializeField] ScriptableMazeEntryRoom mazeEntryRoom;
+        [SerializeField] ScriptablePuzzleStatusTracker puzzleTracker;
+        [SerializeField] ScriptableMazeRoom mazeRoom;
         [SerializeField] GameObject mazeGenObj;
         [SerializeField] int piecesToCollect = 3;
         [SerializeField] int numberOfEntryPoints = 7;
@@ -18,21 +19,25 @@ namespace Knotgames.Gameplay.Puzzle.Maze {
         private List<Transform> playerSpawnPoints;
         private float swapAfter = 70f;
         private float timer;
+        private bool onTimer;
 
         private void Awake() {
-            mazeEntryRoom.manager = this;
+            mazeRoom.manager = this;
             mazeManager = GameObject.Instantiate(mazeGenObj).GetComponent<IMazeManager>();
             mazeManager.SetUpMaze(exitTp);
             playerSpawnPoints = mazeManager.GetPlayerEntryPoints(numberOfEntryPoints);
             mazeManager.SpawnPieces(piecesToCollect);
             ActivateTPs();
+            onTimer = true;
         }
 
         private void Update() {
-            timer += Time.deltaTime;
-            if(timer >= swapAfter) {
-                timer = 0;
-                mazeManager.SpawnPieces(piecesToCollect);
+            if(onTimer) {
+                timer += Time.deltaTime;
+                if(timer >= swapAfter) {
+                    timer = 0;
+                    mazeManager.SpawnPieces(piecesToCollect);
+                }
             }
         }
 
@@ -49,6 +54,14 @@ namespace Knotgames.Gameplay.Puzzle.Maze {
 
         public Transform GetExitPoint() {
             return exitPoint;
+        }
+
+        public void PieceCollected() {
+            piecesToCollect--;
+            if(piecesToCollect == 0) {
+                Debug.Log("Solved");
+                puzzleTracker.tracker.OnePuzzleSolved();
+            }
         }
     }
 }

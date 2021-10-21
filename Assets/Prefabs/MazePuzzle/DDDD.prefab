@@ -9,6 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5049563088396025187}
+  - component: {fileID: 2950210158218028517}
+  - component: {fileID: -7789760816949933867}
   m_Layer: 0
   m_Name: DDDD
   m_TagString: Untagged
@@ -36,6 +38,32 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &2950210158218028517
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 358764158383906978}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.62
+  m_Center: {x: 0, y: 0.06, z: 0}
+--- !u!114 &-7789760816949933867
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 358764158383906978}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3827be769dfc3d64883c8f983d571d3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mazeRoom: {fileID: 11400000, guid: 881cb44ada925c741abcc6e9daad293c, type: 2}
 --- !u!1 &720639758795260823
 GameObject:
   m_ObjectHideFlags: 0
