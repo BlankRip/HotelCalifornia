@@ -4,19 +4,26 @@ using UnityEngine;
 using Knotgames.MazeGen;
 
 namespace Knotgames.Gameplay.Puzzle.Maze {
-    public class MazeEntryRoom : MonoBehaviour
+    public class MazeEntryRoom : MonoBehaviour, IMazeEntryRoom
     {
+        [SerializeField] ScriptableMazeEntryRoom mazeEntryRoom;
         [SerializeField] string mazePointsTag;
         [SerializeField] GameObject mazeGenObj;
         [SerializeField] int numberOfEntryPoints = 7;
-        [SerializeField] GameObject entryObj;
+        [SerializeField] List<Transform> entryTpPoints;
+        [SerializeField] GameObject entryTp;
+        [SerializeField] GameObject exitTp;
+        [SerializeField] Transform exitPoint;
         [SerializeField] int piecesToCollect = 3;
         [SerializeField] List<GameObject> pieceObjects;
         private List<GameObject> mazeFloorTiles;
+        private List<Transform> playerSpawnPoints;
         private List<GameObject> currentPieces;
 
-        private void Start() {
+        private void Awake() {
+            mazeEntryRoom.manager = this;
             SetUpMaze();
+            SelectPlayerEntryPoints();
             SpawnPieces();
         }
 
@@ -28,7 +35,7 @@ namespace Knotgames.Gameplay.Puzzle.Maze {
         }
 
         private void SelectPlayerEntryPoints() {
-            List<Transform> playerSpawnPoints = new List<Transform>(new Transform[numberOfEntryPoints]);
+            playerSpawnPoints = new List<Transform>(new Transform[numberOfEntryPoints]);
             List<int> availableIndex = new List<int>();
             for (int i = 0; i < numberOfEntryPoints; i++)
                 availableIndex.Add(i);
@@ -60,6 +67,8 @@ namespace Knotgames.Gameplay.Puzzle.Maze {
                     i--;
                 copy.RemoveAt(rand);
             }
+            rand = Random.Range(0, copy.Count);
+            exitPoint.transform.position = copy[rand].transform.GetChild(0).position;
         }
 
         private void ClearCurrentPieces() {
@@ -82,6 +91,20 @@ namespace Knotgames.Gameplay.Puzzle.Maze {
                     return false;
             }
             return true;
+        }
+
+        private void ActivateTPs() {
+            int rand = Random.Range(0, entryTpPoints.Count);
+            entryTp.transform.position = entryTpPoints[rand].position;
+            entryTp.SetActive(true);
+        }
+
+        public List<Transform> GetPlayerEntryPoints() {
+            return playerSpawnPoints;
+        }
+
+        public Transform GetExitPoint() {
+            return exitPoint;
         }
     }
 }
