@@ -7,6 +7,7 @@ namespace Knotgames.Gameplay.Puzzle.Maze {
     public class MazeRoom : MonoBehaviour, IMazeEntryRoom
     {
         [SerializeField] ScriptablePuzzleStatusTracker puzzleTracker;
+        [SerializeField] GameplayEventCollection eventCollection;
         [SerializeField] ScriptableMazeRoom mazeRoom;
         [SerializeField] GameObject mazeGenObj;
         [SerializeField] int piecesToCollect = 3;
@@ -28,7 +29,17 @@ namespace Knotgames.Gameplay.Puzzle.Maze {
             playerSpawnPoints = mazeManager.GetPlayerEntryPoints(numberOfEntryPoints);
             mazeManager.SpawnPieces(piecesToCollect);
             ActivateTPs();
+            eventCollection.gameStart.AddListener(OnStart);
+            if(DevBoy.yes)
+                onTimer = true;
+        }
+
+        private void OnStart() {
             onTimer = true;
+        }
+
+        private void OnDestroy() {
+            eventCollection.gameStart.RemoveListener(OnStart);
         }
 
         private void Update() {
@@ -61,6 +72,7 @@ namespace Knotgames.Gameplay.Puzzle.Maze {
             if(piecesToCollect == 0) {
                 Debug.Log("Solved");
                 puzzleTracker.tracker.OnePuzzleSolved();
+                onTimer = false;
             }
         }
     }

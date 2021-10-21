@@ -9,5 +9,6 @@ namespace Knotgames.Gameplay {
     {
         public UnityEvent twistVision;
         public UnityEvent fixVision;
+        public UnityEvent gameStart;
     }
 }
