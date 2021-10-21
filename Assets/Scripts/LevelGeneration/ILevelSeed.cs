@@ -7,6 +7,7 @@ namespace Knotgames.LevelGen {
     {
         void Initilize();
         void SetSeed(int seed);
+        int GetSeed();
         void GenerateSeed();
         void SeedSuccesful();
     }
