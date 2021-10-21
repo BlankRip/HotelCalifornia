@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4817285477143849355}
+  - component: {fileID: 8817800370587981228}
   - component: {fileID: 4817285477143849352}
   m_Layer: 0
   m_Name: Maze
@@ -31,6 +32,23 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8817800370587981228
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4817285477143849353}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3b73be1c70447c469e0dea9abf62e22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mazePointsTag: MazeSpawnPoint
+  pieceObjects:
+  - {fileID: 358764158383906978, guid: 98c48466a0c0de04284fc8477c8bc92f, type: 3}
+  - {fileID: 2091472964286900234, guid: 52d04a4e66238024bb49b53a0344a5ea, type: 3}
+  - {fileID: 8754179241764249380, guid: 23bd0aaed073f5540b1435f78e6272dd, type: 3}
 --- !u!114 &4817285477143849352
 MonoBehaviour:
   m_ObjectHideFlags: 0

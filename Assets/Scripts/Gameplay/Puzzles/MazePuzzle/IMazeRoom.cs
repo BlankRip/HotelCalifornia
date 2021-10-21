@@ -9,9 +9,9 @@ namespace Knotgames.Gameplay.Puzzle.Maze {
         Transform GetExitPoint();
     }
 
-    public interface IMazeRoom {
-        void SpawnMaze();
-        List<Transform> GetPlayerEntryPoints();
-        Transform GetExitPoint();
+    public interface IMazeManager {
+        void SetUpMaze(GameObject exitTp);
+        List<Transform> GetPlayerEntryPoints(int numberOfEntryPoints);
+        void SpawnPieces(int piecesToCollect);
     }
 }
