@@ -11,6 +11,7 @@ namespace Knotgames.Gameplay.Puzzle.Maze {
     }
 
     public interface IMazeManager {
+        void SetStaticObjState(bool active);
         void SetUpMaze(GameObject exitTp);
         List<Transform> GetPlayerEntryPoints(int numberOfEntryPoints);
         void SpawnPieces(int piecesToCollect);

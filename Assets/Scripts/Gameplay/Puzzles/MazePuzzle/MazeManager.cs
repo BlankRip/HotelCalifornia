@@ -6,6 +6,7 @@ using UnityEngine;
 namespace Knotgames.Gameplay.Puzzle.Maze {
     public class MazeManager : MonoBehaviour, IMazeManager
     {
+        [SerializeField] ScriptableMazeManager maze;
         [SerializeField] string mazePointsTag;
         [SerializeField] List<GameObject> pieceObjects;
         [SerializeField] GameObject staticObj;
@@ -13,6 +14,23 @@ namespace Knotgames.Gameplay.Puzzle.Maze {
         private List<GameObject> mazeFloorTiles;
         private List<GameObject> currentPieces;
         private int humansInMaze;
+        private bool forceStatic;
+
+        private void Awake() {
+            maze.manager = this;
+        }
+
+        public void SetStaticObjState(bool active) {
+            if(active) {
+                forceStatic = true;
+                staticObj.SetActive(active);
+            }
+            else {
+                forceStatic = false;
+                if(humansInMaze > 0)
+                    staticObj.SetActive(active);
+            }
+        }
 
         public void SetUpMaze(GameObject exitTp) {
             this.exitTp = exitTp;
@@ -86,7 +104,8 @@ namespace Knotgames.Gameplay.Puzzle.Maze {
         private void OnTriggerEnter(Collider other) {
             if(other.CompareTag("Human")) {
                 humansInMaze++;
-                staticObj.SetActive(false);
+                if(!forceStatic)
+                    staticObj.SetActive(false);
                 other.GetComponent<IHumanMoveAdjustment>().SetOnNextTpEvent(ExitingMaze);
             }
         }
