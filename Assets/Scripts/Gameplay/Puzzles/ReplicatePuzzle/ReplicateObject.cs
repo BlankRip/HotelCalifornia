@@ -114,7 +114,7 @@ namespace Knotgames.Gameplay.Puzzle.Replicate
             rb.useGravity = true;
         }
 
-        public void Drop(bool overrider)
+        public void Drop(bool overrider, Transform t)
         {
             Debug.LogError("DROPPED OVERRIDER");
             if (!DevBoy.yes)
@@ -126,6 +126,7 @@ namespace Knotgames.Gameplay.Puzzle.Replicate
 
             held = false;
             transform.SetParent(null);
+            transform.SetPositionAndRotation(t.position, t.rotation);
             rb.isKinematic = true;
             rb.useGravity = false;
         }

@@ -29,7 +29,7 @@ namespace Knotgames.Gameplay.Puzzle.Replicate
     {
         void Pick();
         void Drop();
-        void Drop(bool overrider);
+        void Drop(bool overrider, Transform t);
         string GetName();
         void HandleSlotting(IReplicateSlot slot, Vector3 pos, Quaternion rot);
         void Disable();

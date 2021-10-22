@@ -41,7 +41,7 @@ namespace Knotgames.Gameplay.Puzzle.Replicate
                 {
                     other.transform.SetParent(transform);
                     myObj = other.gameObject.GetComponent<IReplicateObject>();
-                    myObj.Drop(true);
+                    myObj.Drop(true, attachPos);
                     slottedName = myObj.GetName();
                     myObj.HandleSlotting(this, attachPos.position, attachPos.rotation);
                     myCollider.enabled = false;
