@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Knotgames.Gameplay {
     public interface IGhostMoveAdjustment
@@ -10,6 +11,10 @@ namespace Knotgames.Gameplay {
         void SetSpeed(float speed);
         void LockMovement(bool state);
         void KnockBack();
+    }
+
+    public interface IHumanMoveAdjustment {
+        void SetOnNextTpEvent(UnityAction call);
     }
 
     public interface IMoveAdjustment

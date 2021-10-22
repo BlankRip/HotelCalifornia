@@ -87,15 +87,14 @@ namespace Knotgames.Gameplay.Puzzle.Maze {
             if(other.CompareTag("Human")) {
                 humansInMaze++;
                 staticObj.SetActive(false);
+                other.GetComponent<IHumanMoveAdjustment>().SetOnNextTpEvent(ExitingMaze);
             }
         }
 
-        private void OnTriggerExit(Collider other) {
-            if(other.CompareTag("Human")) {
-                humansInMaze--;
-                if(humansInMaze == 0)
-                    staticObj.SetActive(true);
-            }
+        private void ExitingMaze() {
+            humansInMaze--;
+            if(humansInMaze == 0)
+                staticObj.SetActive(true);
         }
     }
 }

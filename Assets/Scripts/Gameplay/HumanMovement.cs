@@ -1,9 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Knotgames.Gameplay {
-    public class HumanMovement : MonoBehaviour, IPlayerMovement, IMoveAdjustment
+    public class HumanMovement : MonoBehaviour, IPlayerMovement, IMoveAdjustment, IHumanMoveAdjustment
     {
         [SerializeField] CharacterController cc;
         [SerializeField] float movementSpeed = 10;
@@ -13,6 +14,7 @@ namespace Knotgames.Gameplay {
         private Vector3 velocity;
         private bool grounded;
         private bool inJump;
+        private UnityEvent teleportEvent;
 
         private void Start() {
             if(cc == null) {
@@ -20,6 +22,7 @@ namespace Knotgames.Gameplay {
                 if(cc == null)
                     cc = GetComponentInChildren<CharacterController>();
             }
+            teleportEvent = new UnityEvent();
             
             if(gravity > 0)
                 gravity *= -1;
@@ -55,10 +58,16 @@ namespace Knotgames.Gameplay {
             cc.Move(velocity * Time.deltaTime);
         }
 
+        public void SetOnNextTpEvent(UnityAction call) {
+            teleportEvent.AddListener(call);
+        }
+
         public void MoveToPosition(Vector3 position) {
             cc.enabled = false;
             transform.position = position;
             cc.enabled = true;
+            teleportEvent.Invoke();
+            teleportEvent.RemoveAllListeners();
         }
     }
 }
