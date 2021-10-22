@@ -36,7 +36,6 @@ namespace Knotgames.Gameplay.Puzzle.Maze {
         }
 
         private void OnStart() {
-            Debug.Log("This Shit ran");
             onTimer = true;
         }
 

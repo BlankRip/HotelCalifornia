@@ -59,7 +59,6 @@ namespace Knotgames.Gameplay {
                     Debug.LogError("START NOW");
                     spawnerObj.SetActive(true);
                     loadingScreen.SetActive(false);
-                    Debug.Log("This ran seond");
                     eventCollection.gameStart.Invoke();
                     break;
                 }

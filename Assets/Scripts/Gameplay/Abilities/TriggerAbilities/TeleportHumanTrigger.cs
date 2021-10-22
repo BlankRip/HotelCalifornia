@@ -8,7 +8,7 @@ namespace Knotgames.Gameplay.Abilities {
         float duration = 1;
         int usesLeft = 1;
         private void Start() {
-            Initilize("UltimateUi", duration, AbilityEffectType.Teleport, usesLeft, true);
+            Initilize("UltimateUi", duration, AbilityEffectType.Teleport, usesLeft, false);
         }
     }
 }
