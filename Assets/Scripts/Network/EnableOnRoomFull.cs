@@ -7,18 +7,22 @@ namespace Knotgames.Network
     public class EnableOnRoomFull : MonoBehaviour
     {
         [SerializeField] GameObject playButton;
-        private void Awake()
+        System.Action action;
+
+        public void Start()
         {
-            NetConnector.instance.OnMsgRecieve.AddListener(Hear);
-        }
-        private void OnDestroy()
-        {
-            NetConnector.instance.OnMsgRecieve.RemoveListener(Hear);
+            NetConnector.instance.OnMsgRecieve.AddListener(Enabler);
         }
 
-        public void Hear(string datastring)
+        public void OnDestroy()
         {
-            switch (datastring)
+            NetConnector.instance.OnMsgRecieve.RemoveListener(Enabler);
+        }
+
+        public void Enabler(string datastring)
+        {
+            string eventName = JsonUtility.FromJson<ExtractorClass>(datastring).eventName;
+            switch (eventName)
             {
                 case "roomFull":
                     playButton.SetActive(true);
@@ -27,6 +31,11 @@ namespace Knotgames.Network
                     playButton.SetActive(false);
                     break;
             }
+        }
+
+        private class ExtractorClass
+        {
+            public string eventName;
         }
     }
 }
