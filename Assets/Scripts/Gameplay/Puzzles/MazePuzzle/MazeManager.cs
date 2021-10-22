@@ -8,9 +8,11 @@ namespace Knotgames.Gameplay.Puzzle.Maze {
     {
         [SerializeField] string mazePointsTag;
         [SerializeField] List<GameObject> pieceObjects;
+        [SerializeField] GameObject staticObj;
         private GameObject exitTp;
         private List<GameObject> mazeFloorTiles;
         private List<GameObject> currentPieces;
+        private int humansInMaze;
 
         public void SetUpMaze(GameObject exitTp) {
             this.exitTp = exitTp;
@@ -79,6 +81,21 @@ namespace Knotgames.Gameplay.Puzzle.Maze {
                     return false;
             }
             return true;
+        }
+
+        private void OnTriggerEnter(Collider other) {
+            if(other.CompareTag("Human")) {
+                humansInMaze++;
+                staticObj.SetActive(false);
+            }
+        }
+
+        private void OnTriggerExit(Collider other) {
+            if(other.CompareTag("Human")) {
+                humansInMaze--;
+                if(humansInMaze == 0)
+                    staticObj.SetActive(true);
+            }
         }
     }
 }
