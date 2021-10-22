@@ -108,6 +108,10 @@ namespace Knotgames.Network
                     NetUnityEvents.instance.repTransform.Invoke(dataString);
                     break;
 
+                case "interfereTv":
+                    NetUnityEvents.instance.mazeTvEvent.Invoke(dataString);
+                    break;
+
                 case "spawnObject":
                     NetObjManager.instance.AddSpawnObject(dataString);
                     break;

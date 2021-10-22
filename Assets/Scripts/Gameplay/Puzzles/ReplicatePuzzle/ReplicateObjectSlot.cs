@@ -85,7 +85,7 @@ namespace Knotgames.Gameplay.Puzzle.Replicate
         private void OnDestroy()
         {
             if (!DevBoy.yes)
-                NetUnityEvents.instance.repObjUseStatus.RemoveListener(ReceiveData);
+                NetUnityEvents.instance.slotHideStatus.RemoveListener(ReceiveData);
         }
 
         private class ExtractionClass

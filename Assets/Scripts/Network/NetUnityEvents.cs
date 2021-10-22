@@ -29,6 +29,8 @@ namespace Knotgames.Network
         public CustonEventString repTransform;
         public CustonEventString repObjUseStatus;
         public CustonEventString slotHideStatus;
+        
+        public CustonEventString mazeTvEvent;
 
         private void Awake()
         {

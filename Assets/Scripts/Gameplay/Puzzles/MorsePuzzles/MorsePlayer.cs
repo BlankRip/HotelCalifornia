@@ -139,10 +139,6 @@ namespace Knotgames.Gameplay.Puzzle.Morse
             canInterfear = true;
         }
 
-        private class ExtractionClass {
-            public string eventName;
-        }
-
         private class DataToSend {
             public string eventName;
             public string roomID;
