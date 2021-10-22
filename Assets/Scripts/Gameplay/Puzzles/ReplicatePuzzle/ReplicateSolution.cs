@@ -13,12 +13,26 @@ namespace Knotgames.Gameplay.Puzzle.Replicate
         [SerializeField] List<Transform> objectSpots;
         private bool screwed;
         List<RepObj> storedObjs = new List<RepObj>();
+        List<ReplicateObjectSlot> slots = new List<ReplicateObjectSlot>();
 
+        private void Awake()
+        {
+            AssignSlots();
+        }
+        
         private void Start()
         {
             screwed = false;
             eventCollection.twistVision.AddListener(SwapObjects);
             eventCollection.fixVision.AddListener(ResetObjects);
+        }
+
+        void AssignSlots()
+        {
+            foreach (Transform spot in objectSpots)
+            {
+                slots.Add(spot.gameObject.GetComponent<ReplicateObjectSlot>());
+            }
         }
 
         private void OnDestroy()
@@ -66,21 +80,43 @@ namespace Knotgames.Gameplay.Puzzle.Replicate
             transform.rotation = newSpot.rotation;
             return SetSolution();
         }
+        List<bool> filledSpotValues = new List<bool>();
+        System.Random random = new System.Random();
+
+        void SelectFilledSpots()
+        {
+            for (int i = 0; i < objectSpots.Count; i++)
+            {
+                bool value = random.NextDouble() > 0.5;
+                filledSpotValues.Add(value);
+                if (value)
+                    Destroy(slots[i]);
+            }
+        }
 
         private List<string> SetSolution()
         {
+            SelectFilledSpots();
             List<string> solution = new List<string>();
             for (int i = 0; i < objectSpots.Count; i++)
             {
-                RepObj repObj = GetRepObject();
-                GameObject go = Instantiate(repObj.Object, objectSpots[i].position, objectSpots[i].rotation, this.transform);
-                Destroy(go.GetComponent<RepObjTransformSync>());
-                Destroy(go.GetComponent<ReplicateObject>());
-                go.layer = 0;
-                go.tag = "Untagged";
-                repObj.SetOriginal(objectSpots[i].position, objectSpots[i].rotation);
-                storedObjs.Add(repObj);
-                solution.Add(repObj.name);
+                if (filledSpotValues[i])
+                {
+                    RepObj repObj = GetRepObject();
+                    GameObject go = Instantiate(repObj.Object, objectSpots[i].position, objectSpots[i].rotation, this.transform);
+                    Destroy(go.GetComponent<RepObjTransformSync>());
+                    Destroy(go.GetComponent<ReplicateObject>());
+                    Destroy(go.GetComponent<Rigidbody>());
+                    go.layer = 0;
+                    go.tag = "Untagged";
+                    repObj.SetOriginal(objectSpots[i].position, objectSpots[i].rotation);
+                    storedObjs.Add(repObj);
+                    solution.Add(repObj.name);
+                }
+                else
+                {
+                    solution.Add("empty");
+                }
             }
             if (screwed)
                 FlipObjects();
@@ -95,6 +131,11 @@ namespace Knotgames.Gameplay.Puzzle.Replicate
         public List<RepObj> GetStoredObjs()
         {
             return storedObjs;
+        }
+
+        public ReplicateObjectSlot GetCorrespondingSlot(int index)
+        {
+            return slots[index];
         }
     }
 }

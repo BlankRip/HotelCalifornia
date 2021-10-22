@@ -6,6 +6,7 @@ using Knotgames.LevelGen;
 namespace Knotgames.Gameplay.Puzzle.XO {
     public class XOSolutionRoom : MonoBehaviour, IXOSolutionRoom, IPairPuzzleSetup
     {
+        [SerializeField] GameplayEventCollection eventCollection;
         [SerializeField] GameObject solutionBoardObj;
         [SerializeField] List<Transform> boardSpots;
         [SerializeField] float changeSolutionIn = 40;
@@ -13,12 +14,23 @@ namespace Knotgames.Gameplay.Puzzle.XO {
         [SerializeField] List<string> currentSolution;
         private IXOPuzzleRoom puzzleRoom;
         private float timer;
-        private bool timerOn = true;
+        private bool timerOn;
 
         private void Start() {
             solutionBoard = GameObject.Instantiate(solutionBoardObj).GetComponent<ISolutionBoard>();
             solutionBoard.SetUpBoard();
             SetUpSolution();
+            eventCollection.gameStart.AddListener(OnStart);
+            if(DevBoy.yes)
+                timerOn = true;
+        }
+        
+        private void OnStart() {
+            timerOn = true;
+        }
+
+        private void OnDestroy() {
+            eventCollection.gameStart.RemoveListener(OnStart);
         }
 
         private void Update() {

@@ -101,6 +101,9 @@ namespace Knotgames.Network
                 case "repObjUseStatus":
                     NetUnityEvents.instance.repObjUseStatus.Invoke(dataString);
                     break;
+                case "slotHideStatus":
+                    NetUnityEvents.instance.slotHideStatus.Invoke(dataString);
+                    break;
                 case "repTransform":
                     NetUnityEvents.instance.repTransform.Invoke(dataString);
                     break;

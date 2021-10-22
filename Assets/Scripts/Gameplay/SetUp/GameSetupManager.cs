@@ -12,6 +12,7 @@ namespace Knotgames.Gameplay {
         [SerializeField] ScriptableLevelSeed gameSeed;
         [SerializeField] ScriptableLevelBuilder builder;
         [SerializeField] ScriptableHostStatus hostStatus;
+        [SerializeField] GameplayEventCollection eventCollection;
 
         private void Start() {
             hostStatus.isHost = false;
@@ -49,6 +50,7 @@ namespace Knotgames.Gameplay {
                     Debug.LogError("START NOW");
                     spawnerObj.SetActive(true);
                     loadingScreen.SetActive(false);
+                    eventCollection.gameStart.Invoke();
                     break;
                 }
             }

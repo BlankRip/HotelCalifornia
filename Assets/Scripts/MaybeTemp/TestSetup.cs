@@ -10,8 +10,9 @@ namespace Knotgames.Gameplay {
         [SerializeField] GameObject loadingScreen;
         [SerializeField] GameObject spawnerObj;
         [SerializeField] ScriptableLevelSeed gameSeed;
-        [SerializeField] GameObject objToTurnOn;
         [SerializeField] ScriptableHostStatus hostStatus;
+        [SerializeField] GameplayEventCollection eventCollection;
+        [SerializeField] GameObject objToTurnOn;
 
         private void Start() {
             if(DevBoy.yes)
@@ -56,6 +57,7 @@ namespace Knotgames.Gameplay {
                     objToTurnOn.SetActive(true);
                     spawnerObj.SetActive(true);
                     loadingScreen.SetActive(false);
+                    eventCollection.gameStart.Invoke();
                     break;
                 }
             }

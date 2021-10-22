@@ -13,6 +13,8 @@ namespace Knotgames.LevelGen
 
         private void Awake() {
             seed.levelSeed = this;
+            if(DevBoy.yes)
+                GenerateSeed();
         }
 
         public void Initilize() {
@@ -43,6 +45,10 @@ namespace Knotgames.LevelGen
 
         public void SetSeed(int seed) {
             seedValue = seed;
+        }
+
+        public int GetSeed() {
+            return seedValue;
         }
     }
 }
