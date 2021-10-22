@@ -18,7 +18,7 @@ namespace Knotgames.MazeGen {
 
         private static void ApplyRecursiveBacktracker(ref WallState[,] maze, int width, int hight, int seed) {
             Stack<Vector2Int> needChecking = new Stack<Vector2Int>();
-            System.Random rng = new System.Random(/*seed*/);
+            System.Random rng = new System.Random(seed);
             Vector2Int pos = new Vector2Int(rng.Next(0, width), rng.Next(0, hight));
             maze[pos.x, pos.y] |= WallState.Visited;
             needChecking.Push(pos);
