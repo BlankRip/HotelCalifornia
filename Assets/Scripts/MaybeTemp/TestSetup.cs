@@ -39,7 +39,8 @@ namespace Knotgames.Gameplay {
                 case "generateSeed": {
                     hostStatus.isHost = true;
                     gameSeed.levelSeed.GenerateSeed();
-                    gameSeed.levelSeed.SeedSuccesful();
+                    objToTurnOn.SetActive(true);
+                    Invoke("DoOnInvoke", 3);
                     Debug.LogError("HOST");
                     break;
                 }
@@ -47,20 +48,25 @@ namespace Knotgames.Gameplay {
                     if(!hostStatus.isHost) {
                         int seed = JsonUtility.FromJson<RecievedSeed>(dataString).seed;
                         gameSeed.levelSeed.SetSeed(seed);
-                        gameSeed.levelSeed.SeedSuccesful();
+                        objToTurnOn.SetActive(true);
+                        Invoke("DoOnInvoke", 3);
                     }
                     break;
                 }
                 case "playGame": {
                     Debug.LogError("START NOW");
                     gameSeed.levelSeed.Initilize();
-                    objToTurnOn.SetActive(true);
                     spawnerObj.SetActive(true);
                     loadingScreen.SetActive(false);
+                    Debug.Log("This ran seond");
                     eventCollection.gameStart.Invoke();
                     break;
                 }
             }
+        }
+
+        private void DoOnInvoke() {
+            gameSeed.levelSeed.SeedSuccesful();
         }
 
         private class RecievedSeed {
