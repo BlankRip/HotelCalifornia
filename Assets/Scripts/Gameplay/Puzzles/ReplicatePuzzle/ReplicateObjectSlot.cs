@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using Knotgames.Network;
+using System;
 
 namespace Knotgames.Gameplay.Puzzle.Replicate
 {
@@ -47,6 +48,11 @@ namespace Knotgames.Gameplay.Puzzle.Replicate
                     myPuzzle.CheckSolution();
                 }
             }
+        }
+
+        public void SetPuzzle(ReplicatePuzzle replicatePuzzle)
+        {
+            myPuzzle = replicatePuzzle;
         }
 
         public void Disable()
