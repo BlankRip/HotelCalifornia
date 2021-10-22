@@ -11,6 +11,7 @@ namespace Knotgames.Gameplay.Puzzle.Replicate
         private IReplicateSolution replicateSolution;
         [SerializeField] List<string> currentSolution;
         private IReplicatePuzzleRoom puzzleRoom;
+        [SerializeField] List<Transform> objectSpots;
 
         private void Awake()
         {
@@ -23,6 +24,20 @@ namespace Knotgames.Gameplay.Puzzle.Replicate
             currentSolution = replicateSolution.BuildNewSolution(transform);
             if (puzzleRoom != null)
                 puzzleRoom.SetSolution(currentSolution);
+        }
+
+        public void ResyncSolution(List<string> sol, List<RepObj> toSpawn)
+        {
+            currentSolution = sol;
+            for (int i = 0; i < toSpawn.Count; i++)
+            {
+                int x = Random.Range(0, objectSpots.Count);
+                RepObj repObj = toSpawn[i];
+                GameObject go = Instantiate(repObj.Object, objectSpots[x].position, objectSpots[x].rotation, this.transform);
+                go.layer = 0;
+                repObj.SetOriginal(objectSpots[x].position, objectSpots[x].rotation);
+                objectSpots.RemoveAt(x);
+            }
         }
 
         public void Solved()
@@ -43,6 +58,11 @@ namespace Knotgames.Gameplay.Puzzle.Replicate
         public GameObject GetMyGO()
         {
             return gameObject;
+        }
+
+        public ReplicateObjectSlot GetCorrespondingSlot(int index)
+        {
+            return replicateSolution.GetCorrespondingSlot(index);
         }
     }
 }
