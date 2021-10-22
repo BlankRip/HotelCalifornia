@@ -14,7 +14,7 @@ namespace Knotgames.Network
 
         public void Ready()
         {
-            //NetGameManager.instance.Ready();
+            NetGameManager.instance.Ready();
         }
     }
 }

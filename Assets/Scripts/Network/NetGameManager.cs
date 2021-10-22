@@ -20,6 +20,8 @@ namespace Knotgames.Network
         List<NetObject> humans = new List<NetObject>();
         [HideInInspector] public List<SpawnData> ghostModels = new List<SpawnData>();
         [HideInInspector] public List<SpawnData> humanModels = new List<SpawnData>();
+        [SerializeField] GameObject humanGroup, ghostGroup;
+        [SerializeField] ScriptableCharacterSelect scriptableCharSelect;
 
         private void Awake()
         {
@@ -122,6 +124,24 @@ namespace Knotgames.Network
                     break;
                 case "roomFull":
                     UnityEngine.Debug.LogError("FULL ROOM");
+                    string playerType = JsonUtility.FromJson<PlayerTypeExtractor>(dataString).playerType;
+                    switch (playerType)
+                    {
+                        case "human":
+                            UnityEngine.Debug.Log("human");
+                            humanGroup.SetActive(true);
+                            scriptableCharSelect.characterType = CharacterType.Human;
+                            scriptableCharSelect.modelType = ModelType.Human1;
+                            ghostGroup.SetActive(false);
+                            break;
+                        case "ghost":
+                            UnityEngine.Debug.Log("ghost");
+                            humanGroup.SetActive(false);
+                            scriptableCharSelect.characterType = CharacterType.Ghost;
+                            scriptableCharSelect.modelType = ModelType.Ghost1;
+                            ghostGroup.SetActive(true);
+                            break;
+                    }
                     break;
             }
         }
@@ -232,5 +252,10 @@ namespace Knotgames.Network
     public class PlayerIDExtractor
     {
         public string playerID;
+    }
+    [System.Serializable]
+    public class PlayerTypeExtractor
+    {
+        public string playerType;
     }
 }
