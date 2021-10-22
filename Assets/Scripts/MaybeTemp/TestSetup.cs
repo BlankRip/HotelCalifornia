@@ -39,6 +39,7 @@ namespace Knotgames.Gameplay {
                 case "generateSeed": {
                     hostStatus.isHost = true;
                     gameSeed.levelSeed.GenerateSeed();
+                    gameSeed.levelSeed.Initilize();
                     objToTurnOn.SetActive(true);
                     Invoke("DoOnInvoke", 3);
                     Debug.LogError("HOST");
@@ -48,6 +49,7 @@ namespace Knotgames.Gameplay {
                     if(!hostStatus.isHost) {
                         int seed = JsonUtility.FromJson<RecievedSeed>(dataString).seed;
                         gameSeed.levelSeed.SetSeed(seed);
+                        gameSeed.levelSeed.Initilize();
                         objToTurnOn.SetActive(true);
                         Invoke("DoOnInvoke", 3);
                     }
@@ -55,7 +57,6 @@ namespace Knotgames.Gameplay {
                 }
                 case "playGame": {
                     Debug.LogError("START NOW");
-                    gameSeed.levelSeed.Initilize();
                     spawnerObj.SetActive(true);
                     loadingScreen.SetActive(false);
                     Debug.Log("This ran seond");
