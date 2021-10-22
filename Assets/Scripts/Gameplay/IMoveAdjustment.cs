@@ -15,6 +15,7 @@ namespace Knotgames.Gameplay {
 
     public interface IHumanMoveAdjustment {
         void SetOnNextTpEvent(UnityAction call);
+        void InvokeTpEvent();
     }
 
     public interface IMoveAdjustment

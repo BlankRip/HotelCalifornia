@@ -66,7 +66,11 @@ namespace Knotgames.Gameplay {
             cc.enabled = false;
             transform.position = position;
             cc.enabled = true;
-            Debug.Log("HERE");
+            teleportEvent.Invoke();
+            teleportEvent.RemoveAllListeners();
+        }
+
+        public void InvokeTpEvent() {
             teleportEvent.Invoke();
             teleportEvent.RemoveAllListeners();
         }

@@ -18,6 +18,7 @@ namespace Knotgames.Gameplay.Abilities {
         private IAbilityEffect protectionEffect;
         private IAbilityEffect teleportEffect;
         private IAbilityEffect delusionalEffect;
+        private IHumanMoveAdjustment humanMoveAdjustment;
 
 
         private void Start() {
@@ -74,8 +75,14 @@ namespace Knotgames.Gameplay.Abilities {
 
             if(!DevBoy.yes) {
                 if(masterOnly) {
-                    if(!netObj.IsMine)
+                    if(!netObj.IsMine) {
+                        switch(type) {
+                            case AbilityEffectType.Teleport:
+                                humanMoveAdjustment.InvokeTpEvent();
+                                break;
+                        }
                         return;
+                    }
                 }
             }
 
