@@ -22,6 +22,7 @@ namespace Knotgames.Network
         [HideInInspector] public List<SpawnData> humanModels = new List<SpawnData>();
         [SerializeField] GameObject humanGroup, ghostGroup;
         [SerializeField] ScriptableCharacterSelect scriptableCharSelect;
+        [SerializeField] bool testing;
 
         private void Awake()
         {
@@ -123,24 +124,27 @@ namespace Knotgames.Network
                     }
                     break;
                 case "roomFull":
-                    UnityEngine.Debug.LogError("FULL ROOM");
-                    string playerType = JsonUtility.FromJson<PlayerTypeExtractor>(dataString).playerType;
-                    switch (playerType)
+                    if (!testing)
                     {
-                        case "human":
-                            UnityEngine.Debug.Log("human");
-                            humanGroup.SetActive(true);
-                            scriptableCharSelect.characterType = CharacterType.Human;
-                            scriptableCharSelect.modelType = ModelType.Human1;
-                            ghostGroup.SetActive(false);
-                            break;
-                        case "ghost":
-                            UnityEngine.Debug.Log("ghost");
-                            humanGroup.SetActive(false);
-                            scriptableCharSelect.characterType = CharacterType.Ghost;
-                            scriptableCharSelect.modelType = ModelType.Ghost1;
-                            ghostGroup.SetActive(true);
-                            break;
+                        UnityEngine.Debug.LogError("FULL ROOM");
+                        string playerType = JsonUtility.FromJson<PlayerTypeExtractor>(dataString).playerType;
+                        switch (playerType)
+                        {
+                            case "human":
+                                UnityEngine.Debug.Log("human");
+                                humanGroup.SetActive(true);
+                                scriptableCharSelect.characterType = CharacterType.Human;
+                                scriptableCharSelect.modelType = ModelType.Human1;
+                                ghostGroup.SetActive(false);
+                                break;
+                            case "ghost":
+                                UnityEngine.Debug.Log("ghost");
+                                humanGroup.SetActive(false);
+                                scriptableCharSelect.characterType = CharacterType.Ghost;
+                                scriptableCharSelect.modelType = ModelType.Ghost1;
+                                ghostGroup.SetActive(true);
+                                break;
+                        }
                     }
                     break;
             }
