@@ -19,6 +19,7 @@ namespace Knotgames.Gameplay.Puzzle.Replicate
         private int myId;
         private ILocalNetTransformSync transformSync;
         private DataToSend dataToSend;
+        private HideStatus hideStatus;
         Rigidbody rb;
         [HideInInspector] public bool slotted;
         [HideInInspector] public IReplicateSlot mySlot;
@@ -38,6 +39,7 @@ namespace Knotgames.Gameplay.Puzzle.Replicate
         private void Start()
         {
             dataToSend = new DataToSend(myId);
+            hideStatus = new HideStatus();
 
             attachPos = GameObject.FindGameObjectWithTag("AttachPos").transform;
             rb = GetComponent<Rigidbody>();
@@ -79,6 +81,12 @@ namespace Knotgames.Gameplay.Puzzle.Replicate
             NetConnector.instance.SendDataToServer(JsonUtility.ToJson(dataToSend));
         }
 
+        private void SendHideStatus(bool value)
+        {
+            hideStatus.status = value;
+            NetConnector.instance.SendDataToServer(JsonUtility.ToJson(hideStatus));
+        }
+
         public void Interact()
         {
             if (!inUse)
@@ -97,6 +105,7 @@ namespace Knotgames.Gameplay.Puzzle.Replicate
             {
                 transformSync.SetDataSyncStatus(false);
                 SendInUseData(false, false);
+                SendHideStatus(false);
             }
 
             held = false;
@@ -112,6 +121,7 @@ namespace Knotgames.Gameplay.Puzzle.Replicate
             {
                 transformSync.SetDataSyncStatus(false);
                 SendInUseData(false, true);
+                SendHideStatus(false);
             }
 
             held = false;
@@ -126,6 +136,7 @@ namespace Knotgames.Gameplay.Puzzle.Replicate
             {
                 transformSync.SetDataSyncStatus(true);
                 SendInUseData(true, false);
+                SendHideStatus(true);
             }
             if (slotted)
             {
@@ -190,6 +201,22 @@ namespace Knotgames.Gameplay.Puzzle.Replicate
                 eventName = "repObjUseStatus";
                 distributionOption = DistributionOption.serveOthers;
                 myId = id;
+                if (!DevBoy.yes)
+                    roomID = NetRoomJoin.instance.roomID.value;
+            }
+        }
+
+        private class HideStatus
+        {
+            public bool status;
+            public string eventName;
+            public string roomID;
+            public string distributionOption;
+
+            public HideStatus()
+            {
+                eventName = "slotHideStatus";
+                distributionOption = DistributionOption.serveMe;
                 if (!DevBoy.yes)
                     roomID = NetRoomJoin.instance.roomID.value;
             }

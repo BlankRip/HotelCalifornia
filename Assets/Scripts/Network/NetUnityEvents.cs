@@ -28,6 +28,7 @@ namespace Knotgames.Network
 
         public CustonEventString repTransform;
         public CustonEventString repObjUseStatus;
+        public CustonEventString slotHideStatus;
 
         private void Awake()
         {
