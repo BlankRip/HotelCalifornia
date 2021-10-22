@@ -1,10 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Knotgames.MazeGen;
+using Knotgames.LevelGen;
 
 namespace Knotgames.Gameplay.Puzzle.Maze {
-    public class MazeRoom : MonoBehaviour, IMazeEntryRoom
+    public class MazeRoom : MonoBehaviour, IMazeEntryRoom, IPairPuzzleSetup
     {
         [SerializeField] ScriptablePuzzleStatusTracker puzzleTracker;
         [SerializeField] GameplayEventCollection eventCollection;
@@ -74,6 +74,10 @@ namespace Knotgames.Gameplay.Puzzle.Maze {
                 puzzleTracker.tracker.OnePuzzleSolved();
                 onTimer = false;
             }
+        }
+
+        public void Link(GameObject obj, bool initiator) {
+            // nothing to link here for now
         }
     }
 }
