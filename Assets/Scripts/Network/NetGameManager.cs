@@ -89,9 +89,6 @@ namespace Knotgames.Network
                     UnityEngine.Debug.LogError("<color=white>JOINED RANDOM ROOM</color>");
                     connectedPlayers.Add(NetConnector.instance.playerID.value);
                     break;
-                case "roomFull":
-                    UnityEngine.Debug.LogError("<color=blue>ROOM FULL</color>");
-                    break;
                 case "newPlayerJoinedRoom":
                     UnityEngine.Debug.LogError("<color=white>PLAYER JOINED ROOM</color>");
                     string joinedID = JsonUtility.FromJson<PlayerIDExtractor>(dataString).playerID;
@@ -122,6 +119,9 @@ namespace Knotgames.Network
                                 break;
                         }
                     }
+                    break;
+                case "roomFull":
+                    UnityEngine.Debug.LogError("FULL ROOM");
                     break;
             }
         }
