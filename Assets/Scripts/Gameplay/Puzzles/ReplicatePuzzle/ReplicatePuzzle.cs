@@ -27,22 +27,20 @@ namespace Knotgames.Gameplay.Puzzle.Replicate
                 if(solution[i] == "empty")
                 {
                     RepObj repObj = GetRepObject();
-                    GameObject go = Instantiate(repObj.Object, IncreasedHeightPos(slots[i].transform.position), slots[i].transform.rotation, this.transform);
+                    GameObject go = Instantiate(repObj.Object, slots[i].transform.position, slots[i].transform.rotation, this.transform);
                     go.layer = 0;
-                    repObj.SetOriginal(IncreasedHeightPos(slots[i].transform.position), slots[i].transform.rotation);
+                    Destroy(go.GetComponent<Rigidbody>());
+                    repObj.SetOriginal(slots[i].transform.position, slots[i].transform.rotation);
                     solution[i] = repObj.name;
                     toSpawn.Add(repObj);
                     Destroy(slots[i]);
                     slots[i] = solutionRoom.GetCorrespondingSlot(i);
+                    slots[i].SetPuzzle(this);
                 }
             }
             solutionRoom.ResyncSolution(solution, toSpawn);
         }
 
-        Vector3 IncreasedHeightPos(Vector3 pos)
-        {
-            return new Vector3(pos.x, pos.y + 5, pos.z);
-        }
 
         private RepObj GetRepObject()
         {
