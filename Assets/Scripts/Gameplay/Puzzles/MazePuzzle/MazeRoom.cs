@@ -30,7 +30,6 @@ namespace Knotgames.Gameplay.Puzzle.Maze {
             mazeManager.SpawnPieces(piecesToCollect);
             ActivateTPs();
             eventCollection.gameStart.AddListener(OnStart);
-            Debug.Log("This Ran first");
             if(DevBoy.yes)
                 onTimer = true;
         }

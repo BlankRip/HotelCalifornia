@@ -26,6 +26,7 @@ namespace Knotgames.Gameplay.Abilities {
                 netObj = GetComponent<NetObject>();
             dataToSend = new NetSendData(netObj.id, 0, 0);
             
+            humanMoveAdjustment = GetComponent<IHumanMoveAdjustment>();
             blurEffect = GetComponent<BlurEffect>();
             teleportEffect = GetComponent<TeleportEffect>();
             delusionalEffect = GetComponent<DelusionalEffect>();
