@@ -174,6 +174,7 @@ namespace Knotgames.Network
 
         public void JoinWithID()
         {
+            NetRoomJoin.instance.roomID.value = ClipboardExtensions.GetClipboard();
             NetConnector.instance.SendDataToServer(JsonUtility.ToJson(new RoomData("joinRoomID", DistributionOption.serveMe, ClipboardExtensions.GetClipboard())));
         }
 
