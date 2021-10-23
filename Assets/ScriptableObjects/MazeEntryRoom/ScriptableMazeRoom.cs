@@ -6,6 +6,6 @@ namespace Knotgames.Gameplay.Puzzle.Maze {
     [CreateAssetMenu()]
     public class ScriptableMazeRoom : ScriptableObject
     {
-        public IMazeEntryRoom manager;
+        public IMazeRoom manager;
     }
 }

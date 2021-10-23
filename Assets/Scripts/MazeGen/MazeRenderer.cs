@@ -1,12 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Knotgames.LevelGen;
 
 namespace Knotgames.MazeGen {
     public class MazeRenderer : MonoBehaviour
     {
-        [SerializeField] ScriptableLevelSeed seeder;
         [SerializeField] uint width = 10;
         [SerializeField] uint hight = 10;
         [SerializeField] GameObject wall;
@@ -17,8 +15,8 @@ namespace Knotgames.MazeGen {
         private float halfWallSize;
         private List<GameObject> floorTiles;
 
-        public List<GameObject> CreateMazeAndGetFloorTiles() {
-            maze = MazeGenerator.Generate(width, hight, seeder.levelSeed.GetSeed());
+        public List<GameObject> CreateMazeAndGetFloorTiles(int seed) {
+            maze = MazeGenerator.Generate(width, hight, seed);
             halfWallSize = wallSize/2;
             wallHight = wallHight/2;
 

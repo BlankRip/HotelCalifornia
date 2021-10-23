@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using Knotgames.MazeGen;
+using Knotgames.LevelGen;
 using UnityEngine;
 
 namespace Knotgames.Gameplay.Puzzle.Maze {
     public class MazeManager : MonoBehaviour, IMazeManager
     {
+        [SerializeField] ScriptableLevelSeed seeder;
         [SerializeField] ScriptableMazeManager maze;
         [SerializeField] string mazePointsTag;
         [SerializeField] List<GameObject> pieceObjects;
@@ -38,7 +40,7 @@ namespace Knotgames.Gameplay.Puzzle.Maze {
             int rand = Random.Range(0, mazeSawnPoints.Count);
             transform.position = mazeSawnPoints[rand].position;
             MazeRenderer maze = GetComponent<MazeRenderer>();
-            mazeFloorTiles = maze.CreateMazeAndGetFloorTiles();
+            mazeFloorTiles = maze.CreateMazeAndGetFloorTiles(seeder.levelSeed.GetSeed());
         }
 
         public List<Transform> GetPlayerEntryPoints(int numberOfEntryPoints) {
