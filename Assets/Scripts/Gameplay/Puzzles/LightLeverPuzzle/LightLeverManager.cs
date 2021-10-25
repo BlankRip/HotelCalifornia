@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Knotgames.Gameplay.Puzzle.LevelLight {
+namespace Knotgames.Gameplay.Puzzle.LeverLight {
 
     public class LightLeverManager: ILightLeverManager
     {
@@ -10,6 +10,7 @@ namespace Knotgames.Gameplay.Puzzle.LevelLight {
         private int digitsInSolution = 4;
         private List<SolutionData> solutionDatas;
         private List<SolutionData> setUpData;
+        private string colorHelper;
         private List<int> solution;
         private int lightsNeeded;
         private List<LightColour> lightColours;
@@ -24,6 +25,7 @@ namespace Knotgames.Gameplay.Puzzle.LevelLight {
             lightSet3 = new List<ILight>();
             lightSet4 = new List<ILight>();
             solutionDatas = new List<SolutionData>();
+            colorHelper = "";
             Setup();
         }
 
@@ -53,6 +55,8 @@ namespace Knotgames.Gameplay.Puzzle.LevelLight {
                 data.amount = rndValue;
                 solution.Add(rndValue);
                 lightsNeeded += data.amount;
+
+                colorHelper += $"{data.colour.ToString()[0]} ";
             }
         }
 
@@ -115,6 +119,15 @@ namespace Knotgames.Gameplay.Puzzle.LevelLight {
 
         public void SubstractNeedLights(int value) {
             lightsNeeded -= value;
+        }
+
+        public List<int> GetSolution() {
+            return solution;
+        }
+
+        public string GetColorHelper() {
+            Debug.Log(colorHelper);
+            return colorHelper;
         }
     }
 }

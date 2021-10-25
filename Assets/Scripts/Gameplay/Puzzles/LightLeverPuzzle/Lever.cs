@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-namespace Knotgames.Gameplay.Puzzle.LevelLight {
+namespace Knotgames.Gameplay.Puzzle.LeverLight {
     public class Lever : MonoBehaviour, IInteractable
     {
         [SerializeField] ScriptableLightLeverManager lightLever;

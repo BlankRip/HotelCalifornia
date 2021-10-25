@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Knotgames.Gameplay.Puzzle.LevelLight {
+namespace Knotgames.Gameplay.Puzzle.LeverLight {
     public class Light : MonoBehaviour, ILight
     {
         [SerializeField] ScriptableLightLeverManager lightLever;

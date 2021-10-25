@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Knotgames.Gameplay.Puzzle.LevelLight {
+namespace Knotgames.Gameplay.Puzzle.LeverLight {
     public interface ILightLeverManager
     {
         int GetLightsNeeded();
@@ -10,5 +10,7 @@ namespace Knotgames.Gameplay.Puzzle.LevelLight {
         LightColour GetAvailableLeverColor();
         LightColour GetAvailableLightColor(ILight lightObj);
         List<ILight> GetLightsOfClour(LightColour colour);
+        List<int> GetSolution();
+        string GetColorHelper();
     }
 }
