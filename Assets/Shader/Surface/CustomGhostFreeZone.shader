@@ -92,8 +92,10 @@ Shader "Custom/GhostFreeZone"
                 tex2D(_DecalTex, fixed2(wDPos.z, wDPos.y) * texScale).r * abs(newNormal.x);
 
                 fixed3 oPos = mul(unity_WorldToObject, fixed4(wDPos, 1)) * _ScanShift;
-                clip(step(abs(oPos.x), 1) * step(abs(oPos.z), 1) * step(abs(oPos.y), 1) - 0.01);
-                return tex2D(_GlowLookupTex, fixed2(pow(surfaceEffect, 0.9), 0.5)); 
+                fixed3 absOPos = abs(oPos);
+
+                clip(step(absOPos.x, 1) * step(absOPos.z, 1) * step(absOPos.y, 1) - 0.01);
+                return tex2D(_GlowLookupTex, fixed2(pow(surfaceEffect, 0.9), 0.5)) * saturate((1 - absOPos.x) * (1 - absOPos.y) * (1 - absOPos.z) * 10); 
             }
             ENDCG
         }
