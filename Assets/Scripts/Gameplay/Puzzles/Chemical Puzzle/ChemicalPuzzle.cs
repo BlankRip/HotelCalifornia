@@ -35,7 +35,7 @@ namespace Knotgames.Gameplay.Puzzle.ChemicalRoom {
         }
 
         private IEnumerator SetUp() {
-            portionSpawner.Spawn();
+            portionSpawner.Spawn(false);
             yield return new WaitForEndOfFrame();
             GeneratePuzzleSolutions();
             yield return new WaitForEndOfFrame();

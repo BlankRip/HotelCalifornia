@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using Knotgames.LevelGen;
 
 namespace Knotgames.Gameplay.Puzzle.Replicate
 {
@@ -11,18 +12,23 @@ namespace Knotgames.Gameplay.Puzzle.Replicate
         [SerializeField] GameplayEventCollection eventCollection;
         [SerializeField] ReplicateObjectDatabase replicateObjectDatabase;
         [SerializeField] List<Transform> objectSpots;
+        [SerializeField] ScriptableLevelSeed scriptableLevelSeed;
         private bool screwed;
         List<RepObj> storedObjs = new List<RepObj>();
         List<ReplicateObjectSlot> slots = new List<ReplicateObjectSlot>();
+        List<bool> filledSpotValues = new List<bool>();
+        System.Random random;
 
         private void Awake()
         {
             AssignSlots();
         }
-        
+
         private void Start()
         {
             screwed = false;
+            if (random == null)
+                random = new System.Random(scriptableLevelSeed.levelSeed.GetSeed());
             eventCollection.twistVision.AddListener(SwapObjects);
             eventCollection.fixVision.AddListener(ResetObjects);
         }
@@ -80,11 +86,13 @@ namespace Knotgames.Gameplay.Puzzle.Replicate
             transform.rotation = newSpot.rotation;
             return SetSolution();
         }
-        List<bool> filledSpotValues = new List<bool>();
-        System.Random random = new System.Random();
+
 
         void SelectFilledSpots()
         {
+            if (random == null)
+                random = new System.Random(scriptableLevelSeed.levelSeed.GetSeed());
+
             for (int i = 0; i < objectSpots.Count; i++)
             {
                 bool value = random.NextDouble() > 0.5;

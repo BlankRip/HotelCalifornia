@@ -4,7 +4,7 @@ using UnityEngine;
 using Knotgames.LevelGen;
 
 namespace Knotgames.Gameplay.Puzzle.Maze {
-    public class MazeRoom : MonoBehaviour, IMazeEntryRoom, IPairPuzzleSetup
+    public class MazeRoom : MonoBehaviour, IMazeRoom, IPairPuzzleSetup
     {
         [SerializeField] ScriptablePuzzleStatusTracker puzzleTracker;
         [SerializeField] GameplayEventCollection eventCollection;

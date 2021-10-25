@@ -17,12 +17,14 @@ namespace Knotgames.Gameplay.Puzzle {
             this.useRandomRotation = useRandomRotation;
         }
 
-        public void Spawn() {
+        public void Spawn(bool setRotation) {
             for (int i = 0; i < numberToSpawn; i++) {
                 int rand = Random.Range(0, spawnPoints.Count);
                 GameObject spawned = GameObject.Instantiate(spawnObj, spawnPoints[rand].position, Quaternion.identity);
                 if(useRandomRotation)
                     spawned.transform.up = (Random.insideUnitSphere).normalized;
+                else if(setRotation)
+                    spawned.transform.rotation = spawnPoints[rand].rotation;
                 spawnPoints.RemoveAt(rand);
             }
         }
