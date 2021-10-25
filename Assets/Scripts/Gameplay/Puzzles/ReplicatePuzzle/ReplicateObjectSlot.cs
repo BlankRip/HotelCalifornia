@@ -9,7 +9,6 @@ namespace Knotgames.Gameplay.Puzzle.Replicate
 {
     public class ReplicateObjectSlot : MonoBehaviour, IReplicateSlot
     {
-        [SerializeField] ReplicateObjectDatabase replicateObjectDatabase;
         public IReplicateObject myObj;
         IReplicatePuzzle myPuzzle;
         [SerializeField] Transform attachPos;

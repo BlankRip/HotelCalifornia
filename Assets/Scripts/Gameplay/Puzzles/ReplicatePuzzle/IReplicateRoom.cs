@@ -7,7 +7,6 @@ namespace Knotgames.Gameplay.Puzzle.Replicate
     public interface IReplicateSolutionRoom
     {
         void Solved();
-        GameObject GetMyGO();
         void ResyncSolution(List<string> sol, List<RepObj> toSpawn);
         ReplicateObjectSlot GetCorrespondingSlot(int index);
     }

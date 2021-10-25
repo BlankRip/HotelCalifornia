@@ -55,11 +55,6 @@ namespace Knotgames.Gameplay.Puzzle.Replicate
                 obj.GetComponent<IPairPuzzleSetup>().Link(this.gameObject, false);
         }
 
-        public GameObject GetMyGO()
-        {
-            return gameObject;
-        }
-
         public ReplicateObjectSlot GetCorrespondingSlot(int index)
         {
             return replicateSolution.GetCorrespondingSlot(index);
