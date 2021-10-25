@@ -9,7 +9,6 @@ namespace Knotgames.Gameplay.Puzzle.Replicate
     {
         [SerializeField] Transform replicatePuzzle;
         private IReplicatePuzzle puzzle;
-        List<RepObj> objsToSpawn;
         [SerializeField] List<Transform> objSpawnAreas;
         List<string> sol;
 
