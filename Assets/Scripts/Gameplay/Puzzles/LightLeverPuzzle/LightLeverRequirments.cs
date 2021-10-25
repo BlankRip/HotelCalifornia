@@ -9,6 +9,6 @@ namespace Knotgames.Gameplay.Puzzle.LevelLight {
     }
 
     public enum LightColour {
-        Red, Green, Blue, Yellow, White, Pink
+        Red, Green, Blue, Yellow, Cream, Purple
     }
 }

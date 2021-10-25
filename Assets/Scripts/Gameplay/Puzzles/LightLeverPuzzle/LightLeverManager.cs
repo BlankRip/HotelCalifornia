@@ -19,8 +19,17 @@ namespace Knotgames.Gameplay.Puzzle.LevelLight {
 
         public LightLeverManager() {
             colourLightDictonary = new Dictionary<LightColour, List<ILight>>();
-            lightSet1 = lightSet2 = lightSet3 = lightSet4 = new List<ILight>();
+            lightSet1 = new List<ILight>();
+            lightSet2 = new List<ILight>();
+            lightSet3 = new List<ILight>();
+            lightSet4 = new List<ILight>();
             solutionDatas = new List<SolutionData>();
+            Setup();
+        }
+
+        private void Setup() {
+            PickSolutionColors();
+            SetSolution();
         }
 
         private void PickSolutionColors() {
@@ -31,15 +40,16 @@ namespace Knotgames.Gameplay.Puzzle.LevelLight {
             for (int i = 0; i < digitsInSolution; i++) {
                 SolutionData data = new SolutionData();
                 int rand = Random.Range(0, availableIndex.Count);
-                data.colour = (LightColour)rand;
+                data.colour = (LightColour)availableIndex[rand];
                 solutionDatas.Add(data);
+                availableIndex.RemoveAt(rand);
             }
         }
 
         private void SetSolution() {
             solution = new List<int>();
             foreach(SolutionData data in solutionDatas) {
-                int rndValue = Random.Range(3, 11);
+                int rndValue = Random.Range(2, 10);
                 data.amount = rndValue;
                 solution.Add(rndValue);
                 lightsNeeded += data.amount;
@@ -101,6 +111,10 @@ namespace Knotgames.Gameplay.Puzzle.LevelLight {
                     colourLightDictonary.Add(colour, lightSet4);
                     break;
             }
+        }
+
+        public void SubstractNeedLights(int value) {
+            lightsNeeded -= value;
         }
     }
 }

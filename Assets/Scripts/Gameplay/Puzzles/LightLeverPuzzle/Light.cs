@@ -5,7 +5,7 @@ using UnityEngine;
 namespace Knotgames.Gameplay.Puzzle.LevelLight {
     public class Light : MonoBehaviour, ILight
     {
-        private ILightLeverManager manager;
+        [SerializeField] ScriptableLightLeverManager lightLever;
         [SerializeField] ScriptableLightMatDataBase matDataBase;
         [SerializeField] GameObject myLight;
         [SerializeField] float lightsOnTime = 5;
@@ -16,7 +16,7 @@ namespace Knotgames.Gameplay.Puzzle.LevelLight {
 
 
         private void Start() {
-            myColour = manager.GetAvailableLightColor(this);
+            myColour = lightLever.manager.GetAvailableLightColor(this);
             myLightRenderer = myLight.GetComponent<Renderer>();
             myLightRenderer.material = matDataBase.GetMaterial(myColour);
         }
@@ -24,8 +24,10 @@ namespace Knotgames.Gameplay.Puzzle.LevelLight {
         private void Update() {
             if(timerOn) {
                 timer += Time.deltaTime;
-                if(timer >= lightsOnTime)
+                if(timer >= lightsOnTime) {
                     timerOn = false;
+                    myLight.SetActive(false);
+                }
             }
         }
 
