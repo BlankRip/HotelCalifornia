@@ -126,7 +126,6 @@ namespace Knotgames.Gameplay.Puzzle.LeverLight {
         }
 
         public string GetColorHelper() {
-            Debug.Log(colorHelper);
             return colorHelper;
         }
     }

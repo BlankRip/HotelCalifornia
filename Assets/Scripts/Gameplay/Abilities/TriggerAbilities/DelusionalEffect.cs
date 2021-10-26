@@ -11,6 +11,14 @@ namespace Knotgames.Gameplay.Abilities {
             Debug.LogError("Start Delusions here");
             eventCollection.twistVision.Invoke();
         }
+        
+        //TODO: Only For Testing
+        // private void Update() {
+        //     if(Input.GetKeyDown(KeyCode.O))
+        //         ApplyEffect();
+        //     if(Input.GetKeyDown(KeyCode.P))
+        //         ResetEffect();
+        // }
 
         public void ResetEffect() {
             Debug.LogError("Stope seeing Delusions");
