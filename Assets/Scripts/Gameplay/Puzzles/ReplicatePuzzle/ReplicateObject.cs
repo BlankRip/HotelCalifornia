@@ -21,6 +21,7 @@ namespace Knotgames.Gameplay.Puzzle.Replicate
         private DataToSend dataToSend;
         private HideStatus hideStatus;
         Rigidbody rb;
+        private Vector3 restPos;
         [HideInInspector] public bool slotted;
         [HideInInspector] public IReplicateSlot mySlot;
         [SerializeField] string myName;
@@ -43,6 +44,7 @@ namespace Knotgames.Gameplay.Puzzle.Replicate
 
             attachPos = GameObject.FindGameObjectWithTag("AttachPos").transform;
             rb = GetComponent<Rigidbody>();
+            restPos = transform.position;
         }
 
         private void OnDestroy()
@@ -142,7 +144,7 @@ namespace Knotgames.Gameplay.Puzzle.Replicate
             if (slotted)
             {
                 slotted = false;
-                mySlot.SetNull();
+                mySlot.ClearSlot();
                 Invoke("SlotReset", 0.2f);
             }
 
@@ -153,6 +155,10 @@ namespace Knotgames.Gameplay.Puzzle.Replicate
             rb.useGravity = false;
         }
 
+        void SlotReset()
+        {
+            mySlot.SetCollider(true);
+        }
 
         public void HideInteractInstruction() { }
 
@@ -175,6 +181,12 @@ namespace Knotgames.Gameplay.Puzzle.Replicate
         {
             gameObject.tag = "Untagged";
             gameObject.layer = 0;
+        }
+
+        private void OnCollisionEnter(Collision other)
+        {
+            if (other.gameObject.CompareTag("GhostEdge"))
+                transform.position = restPos;
         }
 
         private class ExtractionClass

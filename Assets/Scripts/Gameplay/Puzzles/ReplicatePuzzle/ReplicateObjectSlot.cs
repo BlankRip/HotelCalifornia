@@ -60,10 +60,15 @@ namespace Knotgames.Gameplay.Puzzle.Replicate
             Destroy(this);
         }
 
-        public void SetNull()
+        public void ClearSlot()
         {
             slottedName = "";
             myObj = null;
+        }
+
+        public void SetCollider(bool value)
+        {
+            myCollider.enabled = value;
         }
 
         public void ReceiveData(string received)

@@ -69,6 +69,7 @@ namespace Knotgames.Gameplay.Puzzle.Map
                     mapManager.previousPiece = this;
                 else
                 {
+                    mapSolution.AddConnection(mapManager.previousPiece, this);
                     mapManager.previousPiece.lineRenderer.SetPositions(new Vector3[] { mapManager.previousPiece.transform.position, transform.position });
                     mapManager.previousPiece = null;
                     lineRenderer.enabled = true;

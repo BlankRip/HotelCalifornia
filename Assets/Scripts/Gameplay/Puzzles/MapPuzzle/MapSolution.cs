@@ -12,6 +12,8 @@ namespace Knotgames.Gameplay.Puzzle.Map
         private bool screwed;
         [SerializeField] List<MapPiece> pieces;
         List<bool> solution = new List<bool>();
+        List<string> connections = new List<string>();
+        Dictionary<MapPiece, string> connectionDatabase;
 
         private void Start()
         {
@@ -59,7 +61,7 @@ namespace Knotgames.Gameplay.Puzzle.Map
                 solution.Add(GetRandomBool());
             if (screwed)
                 FlipValues();
-            
+
             SetupMap();
             return solution;
         }
@@ -68,7 +70,7 @@ namespace Knotgames.Gameplay.Puzzle.Map
         {
             for (int i = 0; i < pieces.Count; i++)
             {
-                if(solution[i])
+                if (solution[i])
                     pieces[i].TurnOn();
             }
         }
@@ -84,7 +86,34 @@ namespace Knotgames.Gameplay.Puzzle.Map
 
         public List<string> GetConnectionValues()
         {
-            return null;
+            return connections;
+        }
+
+        public void AddConnection(MapPiece A, MapPiece B)
+        {
+            string a = "", b = "";
+            for (int i = 0; i < pieces.Count; i++)
+            {
+                if (pieces[i] == A)
+                    a = i.ToString();
+                if (pieces[i] == B)
+                    a = i.ToString();
+            }
+            string connectionstring = $"{a}-{b}";
+            if (!connectionDatabase.ContainsKey(A))
+            {
+                connections.Add(connectionstring);
+                connectionDatabase.Add(A, connectionstring);
+            }
+            else
+            {
+                for (int i = 0; i < connections.Count; i++)
+                {
+                    if (connections[i]==connectionDatabase[A])
+                        connections[i] = connectionstring;
+                    connectionDatabase[A] = connectionstring;
+                }
+            }
         }
     }
 }
