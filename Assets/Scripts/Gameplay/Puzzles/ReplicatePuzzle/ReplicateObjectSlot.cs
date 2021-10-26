@@ -44,6 +44,9 @@ namespace Knotgames.Gameplay.Puzzle.Replicate
                     myObj.HandleSlotting(this, attachPos.position, attachPos.rotation);
                     myCollider.enabled = false;
                     myPuzzle.CheckSolution();
+
+                    if(!DevBoy.yes)
+                        gameObject.GetComponent<ILocalNetTransformSync>().SendDataOnRequest();
                 }
             }
         }
