@@ -10,7 +10,7 @@ namespace Knotgames.Gameplay.Puzzle.LeverLight {
         [SerializeField] GameplayEventCollection gamplayEvents;
         [SerializeField] GameObject myLight;
         [SerializeField] float lightsOnTime = 5;
-        private LightColour myColour;
+        private LightColor myColour;
         private Renderer myLightRenderer;
         private float timer;
         private bool timerOn;
@@ -26,7 +26,7 @@ namespace Knotgames.Gameplay.Puzzle.LeverLight {
         }
 
         private void SetUpDilusionStuff() {
-            lastIndex = System.Enum.GetValues(typeof(LightColour)).Length - 1;
+            lastIndex = System.Enum.GetValues(typeof(LightColor)).Length - 1;
             twistIndex = (int)myColour;
             gamplayEvents.twistVision.AddListener(TwistVision);
             gamplayEvents.fixVision.AddListener(FixVision);
@@ -51,7 +51,7 @@ namespace Knotgames.Gameplay.Puzzle.LeverLight {
             CycleTwistedColor();
             if(twistIndex == (int)myColour)
                 CycleTwistedColor();
-            myLightRenderer.material = matDataBase.GetMaterial((LightColour)twistIndex);
+            myLightRenderer.material = matDataBase.GetMaterial((LightColor)twistIndex);
         }
 
         private void CycleTwistedColor() {

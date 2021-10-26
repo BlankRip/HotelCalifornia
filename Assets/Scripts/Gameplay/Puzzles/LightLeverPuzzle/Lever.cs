@@ -17,13 +17,13 @@ namespace Knotgames.Gameplay.Puzzle.LeverLight {
         [SerializeField] string textPoolTag;
         [SerializeField] Transform textPos;
         private TextMeshProUGUI myText;
-        private LightColour originalColor;
-        private LightColour myColour;
+        private LightColor originalColor;
+        private LightColor myColor;
         private List<ILight> myLights;
         private bool timerOn;
         private float interfereTime = 10;
         private float timer;
-        private List<LightColour> interfereColors;
+        private List<LightColor> interfereColors;
         private int colorIndex;
 
         private int myId;
@@ -31,12 +31,12 @@ namespace Knotgames.Gameplay.Puzzle.LeverLight {
         private DataToSend interfereData;
 
         private void Start() {
-            myColour = lightLever.manager.GetAvailableLeverColor();
-            originalColor = myColour;
+            myColor = lightLever.manager.GetAvailableLeverColor();
+            originalColor = myColor;
             myText = ObjectPool.instance.SpawnPoolObj(textPoolTag, textPos.position, textPos.rotation).GetComponent<TextMeshProUGUI>();
-            myText.text = myColour.ToString();
+            myText.text = myColor.ToString();
 
-            interfereColors = new List<LightColour>(lightLever.manager.GetAllAvailableColors());
+            interfereColors = new List<LightColor>(lightLever.manager.GetAllAvailableColors());
             interfereColors.Remove(originalColor);
 
             myId = leverId;
@@ -78,7 +78,7 @@ namespace Knotgames.Gameplay.Puzzle.LeverLight {
 
         private void ActivateLights() {
             if(myLights == null)
-                myLights = lightLever.manager.GetLightsOfClour(myColour);
+                myLights = lightLever.manager.GetLightsOfColor(myColor);
             foreach(ILight light in myLights)
                 light.ActivateLight();
         }
@@ -121,9 +121,9 @@ namespace Knotgames.Gameplay.Puzzle.LeverLight {
             UpdateLeverColor(interfereColors[colorIndex]);
         }
 
-        private void UpdateLeverColor(LightColour color) {
-            myColour = color;
-            myText.text = myColour.ToString();
+        private void UpdateLeverColor(LightColor color) {
+            myColor = color;
+            myText.text = myColor.ToString();
             myLights = null;
         }
 

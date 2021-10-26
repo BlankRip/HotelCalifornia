@@ -13,14 +13,14 @@ namespace Knotgames.Gameplay.Puzzle.LeverLight {
         private string colorHelper;
         private List<int> solution;
         private int lightsNeeded;
-        private List<LightColour> lightColours;
-        private List<LightColour> allColors;
-        private Dictionary<LightColour, List<ILight>> colourLightDictonary;
+        private List<LightColor> lightColours;
+        private List<LightColor> allColors;
+        private Dictionary<LightColor, List<ILight>> colourLightDictonary;
         private List<ILight> lightSet1, lightSet2, lightSet3, lightSet4;
         private int listIndex;
 
         public LightLeverManager() {
-            colourLightDictonary = new Dictionary<LightColour, List<ILight>>();
+            colourLightDictonary = new Dictionary<LightColor, List<ILight>>();
             lightSet1 = new List<ILight>();
             lightSet2 = new List<ILight>();
             lightSet3 = new List<ILight>();
@@ -36,14 +36,14 @@ namespace Knotgames.Gameplay.Puzzle.LeverLight {
         }
 
         private void PickSolutionColors() {
-            colorLastIndex = System.Enum.GetValues(typeof(LightColour)).Length;
+            colorLastIndex = System.Enum.GetValues(typeof(LightColor)).Length;
             List<int> availableIndex = new List<int>();
             for (int i = 0; i < colorLastIndex; i++)
                 availableIndex.Add(i);
             for (int i = 0; i < digitsInSolution; i++) {
                 SolutionData data = new SolutionData();
                 int rand = Random.Range(0, availableIndex.Count);
-                data.colour = (LightColour)availableIndex[rand];
+                data.color = (LightColor)availableIndex[rand];
                 solutionDatas.Add(data);
                 availableIndex.RemoveAt(rand);
             }
@@ -57,7 +57,7 @@ namespace Knotgames.Gameplay.Puzzle.LeverLight {
                 solution.Add(rndValue);
                 lightsNeeded += data.amount;
 
-                colorHelper += $"{data.colour.ToString()[0]} ";
+                colorHelper += $"{data.color.ToString()[0]} ";
             }
         }
 
@@ -65,26 +65,26 @@ namespace Knotgames.Gameplay.Puzzle.LeverLight {
             return lightsNeeded;
         }
 
-        public LightColour GetAvailableLeverColor() {
+        public LightColor GetAvailableLeverColor() {
             if(lightColours == null) {
-                lightColours = new List<LightColour>();
-                allColors = new List<LightColour>();
+                lightColours = new List<LightColor>();
+                allColors = new List<LightColor>();
                 foreach(SolutionData data in solutionDatas) {
-                    lightColours.Add(data.colour);
-                    allColors.Add(data.colour);
+                    lightColours.Add(data.color);
+                    allColors.Add(data.color);
                 }
             }
             int rand = Random.Range(0, lightColours.Count);
-            LightColour colourToReturn = lightColours[rand];
+            LightColor colourToReturn = lightColours[rand];
             lightColours.RemoveAt(rand);
             return colourToReturn;
         }
 
-        public LightColour GetAvailableLightColor(ILight lightObj) {
+        public LightColor GetAvailableLightColor(ILight lightObj) {
             if(setUpData == null)
                 setUpData = new List<SolutionData>(solutionDatas);
             int rand = Random.Range(0, setUpData.Count);
-            LightColour colorToReturn = setUpData[rand].colour;
+            LightColor colorToReturn = setUpData[rand].color;
             setUpData[rand].amount--;
             if(setUpData[rand].amount == 0)
                 setUpData.RemoveAt(rand);
@@ -93,17 +93,17 @@ namespace Knotgames.Gameplay.Puzzle.LeverLight {
             return colorToReturn;
         }
 
-        public List<ILight> GetLightsOfClour(LightColour colour) {
+        public List<ILight> GetLightsOfColor(LightColor colour) {
             return colourLightDictonary[colour];
         }
 
-        private void AddLightToList(LightColour colour, ILight lightObj) {
+        private void AddLightToList(LightColor colour, ILight lightObj) {
             if(!colourLightDictonary.ContainsKey(colour))
                 AddToDictionary(colour);
             colourLightDictonary[colour].Add(lightObj);
         }
 
-        private void AddToDictionary(LightColour colour) {
+        private void AddToDictionary(LightColor colour) {
             listIndex++;
             switch (listIndex) {
                 case 1:
@@ -121,7 +121,7 @@ namespace Knotgames.Gameplay.Puzzle.LeverLight {
             }
         }
 
-        public void SubstractNeedLights(int value) {
+        public void SubstractNeededLights(int value) {
             lightsNeeded -= value;
         }
 
@@ -133,8 +133,13 @@ namespace Knotgames.Gameplay.Puzzle.LeverLight {
             return colorHelper;
         }
 
-        public List<LightColour> GetAllAvailableColors() {
+        public List<LightColor> GetAllAvailableColors() {
             return allColors;
+        }
+
+        private class SolutionData {
+            public LightColor color;
+            public int amount;
         }
     }
 }

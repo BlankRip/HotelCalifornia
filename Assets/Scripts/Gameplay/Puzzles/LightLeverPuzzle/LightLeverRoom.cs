@@ -21,7 +21,7 @@ namespace Knotgames.Gameplay.Puzzle.LeverLight {
         private void Start() {
             if(!initilized)
                 lightLever.Initilize();
-            SpawnPads();
+            SpawnLevers();
             SpawnLights();
             if(!initilized)
                 initilized = true;
@@ -33,14 +33,14 @@ namespace Knotgames.Gameplay.Puzzle.LeverLight {
             int amountToSpawn = lightLever.manager.GetLightsNeeded();
             if(!initilized)
                 GetSpawnAmount(ref amountToSpawn);
-            lightLever.manager.SubstractNeedLights(amountToSpawn);
+            lightLever.manager.SubstractNeededLights(amountToSpawn);
             SpawnAtGivenPoints lightSpawner = new SpawnAtGivenPoints(lightSpawnPoints, lightObj, amountToSpawn, false);
             lightSpawner.Spawn(false);
         }
 
-        private void SpawnPads() {
-            SpawnAtGivenPoints padSpawner = new SpawnAtGivenPoints(leverSpawnPoints, leverObj, 2, false);
-            padSpawner.Spawn(true);
+        private void SpawnLevers() {
+            SpawnAtGivenPoints leverSpawner = new SpawnAtGivenPoints(leverSpawnPoints, leverObj, 2, false);
+            leverSpawner.Spawn(true);
         }
 
         private void GetSpawnAmount(ref int totalAmount) {
