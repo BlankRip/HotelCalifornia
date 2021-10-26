@@ -5,7 +5,8 @@ using UnityEngine;
 namespace Knotgames.Gameplay.Puzzle.Map {
     public interface IMapSolutionRoom
     {
-        void Solved();
+        bool Solved();
+        void ResyncSolution(List<string> connections);
     }
 
     public interface IMapPuzzleRoom

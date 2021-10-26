@@ -7,7 +7,6 @@ namespace Knotgames.Network
     public class EnableOnRoomFull : MonoBehaviour
     {
         [SerializeField] GameObject playButton;
-        System.Action action;
 
         public void Start()
         {

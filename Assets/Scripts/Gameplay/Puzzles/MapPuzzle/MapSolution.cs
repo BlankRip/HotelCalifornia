@@ -11,7 +11,7 @@ namespace Knotgames.Gameplay.Puzzle.Map
         [SerializeField] GameplayEventCollection eventCollection;
         private bool screwed;
         [SerializeField] List<MapPiece> pieces;
-
+        List<bool> solution = new List<bool>();
 
         private void Start()
         {
@@ -55,12 +55,22 @@ namespace Knotgames.Gameplay.Puzzle.Map
 
         private List<bool> SetSolution()
         {
-            List<bool> solution = new List<bool>();
             for (int i = 0; i < pieces.Count; i++)
                 solution.Add(GetRandomBool());
             if (screwed)
                 FlipValues();
+            
+            SetupMap();
             return solution;
+        }
+
+        public void SetupMap()
+        {
+            for (int i = 0; i < pieces.Count; i++)
+            {
+                if(solution[i])
+                    pieces[i].TurnOn();
+            }
         }
 
         bool GetRandomBool()
@@ -70,6 +80,11 @@ namespace Knotgames.Gameplay.Puzzle.Map
                 return false;
             else
                 return true;
+        }
+
+        public List<string> GetConnectionValues()
+        {
+            return null;
         }
     }
 }

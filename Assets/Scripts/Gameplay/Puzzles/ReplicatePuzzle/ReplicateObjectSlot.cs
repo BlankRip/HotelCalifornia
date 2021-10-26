@@ -66,11 +66,6 @@ namespace Knotgames.Gameplay.Puzzle.Replicate
             myObj = null;
         }
 
-        public void SetCollider(bool value)
-        {
-            myCollider.enabled = value;
-        }
-
         public void ReceiveData(string received)
         {
             ExtractionClass extracted = JsonUtility.FromJson<ExtractionClass>(received);

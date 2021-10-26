@@ -3,12 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using Knotgames.Gameplay.Abilities;
+using Knotgames.Network;
 
 namespace Knotgames.Gameplay.Puzzle.LeverLight {
     public class Lever : MonoBehaviour, IInteractable, IInterfear
     {
-        //TODO Remove testing bool
-        [SerializeField] bool testing;
+        private static int leverId;
+        public static void ResetID() {
+            leverId = 0;
+        }
+
         [SerializeField] ScriptableLightLeverManager lightLever;
         [SerializeField] string textPoolTag;
         [SerializeField] Transform textPos;
@@ -22,6 +26,10 @@ namespace Knotgames.Gameplay.Puzzle.LeverLight {
         private List<LightColour> interfereColors;
         private int colorIndex;
 
+        private int myId;
+        private DataToSend pulledData;
+        private DataToSend interfereData;
+
         private void Start() {
             myColour = lightLever.manager.GetAvailableLeverColor();
             originalColor = myColour;
@@ -30,10 +38,42 @@ namespace Knotgames.Gameplay.Puzzle.LeverLight {
 
             interfereColors = new List<LightColour>(lightLever.manager.GetAllAvailableColors());
             interfereColors.Remove(originalColor);
+
+            myId = leverId;
+            leverId++;
+            pulledData = new DataToSend("leverPull", myId);
+            interfereData = new DataToSend("leverInterfere", myId);
+            if(!DevBoy.yes)
+                NetUnityEvents.instance.lightLeverEvents.AddListener(RecieveData);
+        }
+
+        private void OnDestroy() {
+            if(!DevBoy.yes)
+                NetUnityEvents.instance.lightLeverEvents.RemoveListener(RecieveData);
+        }
+
+        private void SendInterfearData() {
+            NetConnector.instance.SendDataToServer(JsonUtility.ToJson(interfereData));
+        }
+
+        private void SendPulledData() {
+            NetConnector.instance.SendDataToServer(JsonUtility.ToJson(pulledData));
+        }
+
+        private void RecieveData(string recieved) {
+            ExtractionClass extracted = JsonUtility.FromJson<ExtractionClass>(recieved);
+            if(extracted.myId == myId) {
+                if(extracted.eventName == "leverPull")
+                    ActivateLights();
+                else if(extracted.eventName == "leverInterfere") 
+                    StartInterfere();
+            }
         }
 
         public void Interact() {
             ActivateLights();
+            if(!DevBoy.yes)
+                SendPulledData();
         }
 
         private void ActivateLights() {
@@ -44,9 +84,6 @@ namespace Knotgames.Gameplay.Puzzle.LeverLight {
         }
 
         private void Update() {
-            //Todo removie testing part
-            if(Input.GetKeyDown(KeyCode.U) && testing)
-                Interact();
             if(timerOn) {
                 timer += Time.deltaTime;
                 if(timer >= interfereTime) {
@@ -69,10 +106,12 @@ namespace Knotgames.Gameplay.Puzzle.LeverLight {
         }
 
         public void Interfear() {
-            StartColorSwitch();
+            StartInterfere();
+            if(!DevBoy.yes)
+                SendInterfearData();
         }
 
-        private void StartColorSwitch() {
+        private void StartInterfere() {
             timer = 0;
             timerOn = true;
             if(colorIndex == interfereColors.Count - 1)
@@ -86,6 +125,26 @@ namespace Knotgames.Gameplay.Puzzle.LeverLight {
             myColour = color;
             myText.text = myColour.ToString();
             myLights = null;
+        }
+
+        private class ExtractionClass {
+            public int myId;
+            public string eventName;
+        }
+
+        private class DataToSend {
+            public int myId;
+            public string eventName;
+            public string roomID;
+            public string distributionOption;
+
+            public DataToSend(string eventName, int id) {
+                myId = id;
+                this.eventName = eventName;
+                distributionOption = DistributionOption.serveOthers;
+                if(!DevBoy.yes)
+                    roomID = NetRoomJoin.instance.roomID.value;
+            }
         }
     }
 }

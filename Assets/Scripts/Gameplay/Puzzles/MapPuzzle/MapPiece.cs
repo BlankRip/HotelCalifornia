@@ -19,14 +19,17 @@ namespace Knotgames.Gameplay.Puzzle.Map
         private bool screwed;
         private int id;
         private DataToSend dataToSend;
-        bool needsConnection;
+        [SerializeField] bool needsConnection;
         [SerializeField] Material activeMat, deactiveMat;
         bool myValue;
         private IMapPuzzle mapPuzzle;
+        private IMapSolution mapSolution;
         MeshRenderer meshRenderer;
+        [HideInInspector] public LineRenderer lineRenderer;
         private void Start()
         {
             mapPuzzle = GetComponentInParent<IMapPuzzle>();
+            mapSolution = GetComponentInParent<IMapSolution>();
             screwed = false;
             eventCollection.twistVision.AddListener(Messup);
             eventCollection.fixVision.AddListener(Fix);
@@ -36,6 +39,10 @@ namespace Knotgames.Gameplay.Puzzle.Map
             if (!DevBoy.yes)
                 NetUnityEvents.instance.mapPieceEvent.AddListener(RecieveData);
             meshRenderer = GetComponent<MeshRenderer>();
+            lineRenderer = gameObject.AddComponent<LineRenderer>();
+            lineRenderer.material = activeMat;
+            lineRenderer.startWidth = 0.05f;
+            lineRenderer.endWidth = 0.05f;
         }
 
         public bool GetValue()
@@ -43,15 +50,33 @@ namespace Knotgames.Gameplay.Puzzle.Map
             return myValue;
         }
 
+        public void TurnOn()
+        {
+            if (meshRenderer != null)
+                meshRenderer.material = activeMat;
+            else
+            {
+                meshRenderer = GetComponent<MeshRenderer>();
+                meshRenderer.material = activeMat;
+            }
+        }
+
         public void Interact()
         {
             if (needsConnection)
+            {
                 if (mapManager.previousPiece == null)
                     mapManager.previousPiece = this;
                 else
-                    Debug.Log("x");//TODO Connect pieces
-                
-            CycleValue();
+                {
+                    mapManager.previousPiece.lineRenderer.SetPositions(new Vector3[] { mapManager.previousPiece.transform.position, transform.position });
+                    mapManager.previousPiece = null;
+                    lineRenderer.enabled = true;
+                }
+            }
+            else
+                CycleValue();
+
             SendData();
         }
 
