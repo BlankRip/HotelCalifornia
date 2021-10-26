@@ -19,7 +19,7 @@ namespace Knotgames.Gameplay.Puzzle.Map
         private bool screwed;
         private int id;
         private DataToSend dataToSend;
-        bool needsConnection;
+        [SerializeField] bool needsConnection;
         [SerializeField] Material activeMat, deactiveMat;
         bool myValue;
         private IMapPuzzle mapPuzzle;
@@ -43,6 +43,11 @@ namespace Knotgames.Gameplay.Puzzle.Map
             return myValue;
         }
 
+        public void TurnOn()
+        {
+            meshRenderer.material = activeMat;
+        }
+
         public void Interact()
         {
             if (needsConnection)
@@ -50,7 +55,7 @@ namespace Knotgames.Gameplay.Puzzle.Map
                     mapManager.previousPiece = this;
                 else
                     Debug.Log("x");//TODO Connect pieces
-                
+
             CycleValue();
             SendData();
         }
