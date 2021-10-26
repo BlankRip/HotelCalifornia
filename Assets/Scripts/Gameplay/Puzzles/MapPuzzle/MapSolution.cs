@@ -13,7 +13,7 @@ namespace Knotgames.Gameplay.Puzzle.Map
         [SerializeField] List<MapPiece> pieces;
         List<bool> solution = new List<bool>();
         List<string> connections = new List<string>();
-        Dictionary<MapPiece, string> connectionDatabase;
+        Dictionary<MapPiece, string> connectionDatabase = new Dictionary<MapPiece, string>();
 
         private void Start()
         {

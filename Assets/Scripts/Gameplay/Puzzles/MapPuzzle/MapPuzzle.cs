@@ -38,12 +38,16 @@ namespace Knotgames.Gameplay.Puzzle.Map
             {
                 int a = Random.Range(0, pieceIDs.Count);
                 string x = pieceIDs[a];
+                Vector3 pos1 = pieces[a].transform.position;
+                MapPiece startpiece = pieces[a];
                 x += "-";
                 pieceIDs.RemoveAt(a);
                 a = Random.Range(0, pieceIDs.Count);
                 x += pieceIDs[a];
+                Vector3 pos2 = pieces[a].transform.position;
                 pieceIDs.RemoveAt(a);
                 conekshuns.Add(x);
+                startpiece.lineRenderer.SetPositions(new Vector3[] { pos1, pos2 });
             }
             return conekshuns;
         }

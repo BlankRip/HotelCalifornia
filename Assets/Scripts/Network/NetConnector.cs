@@ -36,8 +36,10 @@ namespace Knotgames.Network
 
         void Awake()
         {
-            if (NetConnector.instance == null) NetConnector.instance = this;
-            else Destroy(this);
+            if (NetConnector.instance == null) 
+                NetConnector.instance = this;
+            else 
+                Destroy(this);
             running = true;
         }
 

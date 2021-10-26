@@ -41,10 +41,12 @@ namespace Knotgames.Gameplay.Puzzle.Map
 
         public bool CheckMySol()
         {
-            if (connections == mapSolution.GetConnectionValues())
-                return true;
-            else
-                return false;
+            foreach (string s in mapSolution.GetConnectionValues())
+            {
+                if (!connections.Contains(s))
+                    return false;
+            }
+            return true;
         }
 
         public void Link(GameObject obj, bool initiator)

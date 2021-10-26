@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Knotgames.Network;
 using UnityEngine;
+using TMPro;
 
 namespace Knotgames.Gameplay.Puzzle.Map
 {
@@ -26,6 +27,7 @@ namespace Knotgames.Gameplay.Puzzle.Map
         private IMapSolution mapSolution;
         MeshRenderer meshRenderer;
         [HideInInspector] public LineRenderer lineRenderer;
+        TextMeshProUGUI myText;
         private void Start()
         {
             mapPuzzle = GetComponentInParent<IMapPuzzle>();
@@ -43,6 +45,10 @@ namespace Knotgames.Gameplay.Puzzle.Map
             lineRenderer.material = activeMat;
             lineRenderer.startWidth = 0.05f;
             lineRenderer.endWidth = 0.05f;
+            //TEXT POS -0.1144269
+            myText = ObjectPool.instance.SpawnPoolObj("mapText", transform.position, Quaternion.identity).GetComponent<TextMeshProUGUI>();
+            myText.transform.SetParent(transform.parent);
+            myText.transform.position = new Vector3(myText.transform.position.x,myText.transform.position.y, -0.1144269f);
         }
 
         public bool GetValue()
