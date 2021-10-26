@@ -10,6 +10,7 @@ using Knotgames.Gameplay.Puzzle.QuickDelivery;
 using Knotgames.Gameplay.Puzzle.Replicate;
 using Knotgames.Gameplay.Puzzle.Riddler;
 using Knotgames.Gameplay.Puzzle.Map;
+using Knotgames.Gameplay.Puzzle.LeverLight;
 
 public class IdsResetter
 {
@@ -24,5 +25,7 @@ public class IdsResetter
         ReplicateObject.ResetIds();
         RiddleSolutionPad.ResetID();
         RiddleBoard.ResetIDs();
+        Lever.ResetID();
+        LightLeverRoom.Reset();
     }
 }

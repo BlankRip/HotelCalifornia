@@ -7,6 +7,9 @@ namespace Knotgames.Gameplay.Puzzle.LeverLight {
     public class LightLeverRoom : MonoBehaviour, IPairPuzzleSetup
     {
         private static bool initilized = false;
+        public static void Reset() {
+            initilized = false;
+        }
         [SerializeField] ScriptableLightLeverManager lightLever;
         [SerializeField] GameObject lightObj;
         [SerializeField] List<Transform> lightSpawnPoints;
