@@ -6,7 +6,6 @@ namespace Knotgames.Gameplay.Puzzle.Map
 {
     public interface IMapSolution
     {
-        void SetupMap();
         List<bool> BuildNewSolution(Transform newSpot);
     }
 

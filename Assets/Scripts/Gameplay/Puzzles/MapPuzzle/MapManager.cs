@@ -6,7 +6,6 @@ namespace Knotgames.Gameplay.Puzzle.Map
 {
     public class MapManager: ScriptableObject
     {
-        MapPiece previousPiece;
-        MapPiece currentPiece;
+        public MapPiece previousPiece;
     }
 }

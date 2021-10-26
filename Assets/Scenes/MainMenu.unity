@@ -1745,12 +1745,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 167260087}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0410e4b8af71fe141890da9a1e2390f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  human: 1
+  useServer: 1
+  human: 0
   humanGroup: {fileID: 1913677092}
   ghostGroup: {fileID: 399222125}
   scriptableCharSelect: {fileID: 11400000, guid: 59adc07099d260040bc56da7f8aa2578, type: 2}
@@ -16230,7 +16231,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69b1759ea353dd44580a35d9d82a7ba0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isTesting: 1
+  isTesting: 0
 --- !u!114 &1730150445
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16278,6 +16279,18 @@ MonoBehaviour:
       - m_Target: {fileID: 167260092}
         m_TargetAssemblyTypeName: Knotgames.Network.EnableOnRoomFull, Assembly-CSharp
         m_MethodName: Enabler
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 167260090}
+        m_TargetAssemblyTypeName: Knotgames.Gameplay.TestCharSelect, Assembly-CSharp
+        m_MethodName: Hear
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -16400,10 +16413,6 @@ MonoBehaviour:
   humanWin: 0
   ghostModels: []
   humanModels: []
-  humanGroup: {fileID: 1913677092}
-  ghostGroup: {fileID: 399222125}
-  scriptableCharSelect: {fileID: 11400000, guid: 59adc07099d260040bc56da7f8aa2578, type: 2}
-  testing: 0
 --- !u!114 &1730150451
 MonoBehaviour:
   m_ObjectHideFlags: 0

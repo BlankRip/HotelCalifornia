@@ -16,7 +16,6 @@ namespace Knotgames.Gameplay.Puzzle.Map
         private void Start()
         {
             mapSolution = GameObject.Instantiate(mapSolutionObj).GetComponent<IMapSolution>();
-            mapSolution.SetupMap();
             SetUpSolution();
         }
 
