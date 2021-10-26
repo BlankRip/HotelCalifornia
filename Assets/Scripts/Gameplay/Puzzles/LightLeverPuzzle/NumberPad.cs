@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using Knotgames.Network;
 
 namespace Knotgames.Gameplay.Puzzle.LeverLight {
     public class NumberPad : MonoBehaviour, IInteractable
@@ -14,10 +15,31 @@ namespace Knotgames.Gameplay.Puzzle.LeverLight {
         private List<int> solution;
         private bool solved = false;
 
+        DataToSend dataToSend;
+
         private void Start() {
             solution = lightLever.manager.GetSolution();
             panel = FindObjectOfType<NumberPadPanel>();
             SetUpText();
+
+            dataToSend = new DataToSend();
+            if(!DevBoy.yes)
+                NetUnityEvents.instance.lightsNumberPad.AddListener(RecieveData);
+        }
+
+        private void RecieveData(string recieved) {
+            ExtractionClass extracted = JsonUtility.FromJson<ExtractionClass>(recieved);
+            CheckSolutionOffline(extracted.expectedSolution);
+        }
+
+        private void SendData(List<int> expected) {
+            dataToSend.expectedSolution = expected;
+            NetConnector.instance.SendDataToServer(JsonUtility.ToJson(dataToSend));
+        }
+
+        private void OnDestroy() {
+            if(!DevBoy.yes)
+                NetUnityEvents.instance.lightsNumberPad.RemoveListener(RecieveData);
         }
         
         private void SetUpText() {
@@ -26,13 +48,21 @@ namespace Knotgames.Gameplay.Puzzle.LeverLight {
         }
 
         public void CheckSolution(List<int> toCheck) {
-            for (int i = 0; i < solution.Count; i++) {
-                if(toCheck[i] != solution[i])
-                    return;
+            CheckSolutionOffline(toCheck);
+            if(!DevBoy.yes)
+                SendData(toCheck);
+        }
+
+        private void CheckSolutionOffline(List<int> toCheck) {
+            if(!solved) {
+                for (int i = 0; i < solution.Count; i++) {
+                    if(toCheck[i] != solution[i])
+                        return;
+                }
+                solved = true;
+                puzzleTracker.tracker.OnePuzzleSolved();
+                Debug.Log("Solved");
             }
-            solved = true;
-            puzzleTracker.tracker.OnePuzzleSolved();
-            Debug.Log("Solved");
         }
 
         public void ShowInteractInstruction() {
@@ -46,6 +76,24 @@ namespace Knotgames.Gameplay.Puzzle.LeverLight {
         public void Interact() {
             if(!solved)
                 panel.OpenPanel(this);
+        }
+
+        private class ExtractionClass {
+            public List<int> expectedSolution;
+        }
+
+        private class DataToSend {
+            public List<int> expectedSolution;
+            public string eventName;
+            public string roomID;
+            public string distributionOption;
+
+            public DataToSend() {
+                eventName = "lightsNumPad";
+                distributionOption = DistributionOption.serveOthers;
+                if(!DevBoy.yes)
+                    roomID = NetRoomJoin.instance.roomID.value;
+            }
         }
     }
 }

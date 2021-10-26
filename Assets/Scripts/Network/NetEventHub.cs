@@ -112,6 +112,10 @@ namespace Knotgames.Network
                     NetUnityEvents.instance.mazeTvEvent.Invoke(dataString);
                     break;
 
+                case "lightsNumPad":
+                    NetUnityEvents.instance.lightsNumberPad.Invoke(dataString);
+                    break;
+
                 case "spawnObject":
                     NetObjManager.instance.AddSpawnObject(dataString);
                     break;

@@ -33,6 +33,8 @@ namespace Knotgames.Network
         
         public CustonEventString mazeTvEvent;
 
+        public CustonEventString lightsNumberPad;
+
         private void Awake()
         {
             if (instance == null)
