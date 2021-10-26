@@ -81,5 +81,10 @@ namespace Knotgames.Gameplay.Puzzle.Map
             else
                 return true;
         }
+
+        public List<string> GetConnectionValues()
+        {
+            return null;
+        }
     }
 }

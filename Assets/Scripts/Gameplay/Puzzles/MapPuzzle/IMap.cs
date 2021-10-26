@@ -8,6 +8,7 @@ namespace Knotgames.Gameplay.Puzzle.Map
     {
         void SetupMap();
         List<bool> BuildNewSolution(Transform newSpot);
+        List<string> GetConnectionValues();
     }
 
     public interface IMapPuzzle

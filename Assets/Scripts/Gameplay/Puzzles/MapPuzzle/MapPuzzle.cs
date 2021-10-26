@@ -10,7 +10,6 @@ namespace Knotgames.Gameplay.Puzzle.Map
         [SerializeField] ScriptablePuzzleStatusTracker puzzleTracker;
         [SerializeField] List<bool> solution;
         [SerializeField] List<MapPiece> pieces;
-
         IMapSolutionRoom solutionRoom;
 
         public void SetUp(IMapSolutionRoom solutionRoom)
@@ -21,6 +20,32 @@ namespace Knotgames.Gameplay.Puzzle.Map
         public void SetSolution(List<bool> sol)
         {
             solution = sol;
+            solutionRoom.ResyncSolution(GenerateConnections());
+        }
+
+        List<string> GenerateConnections()
+        {
+            int j = 0;
+            List<string> conekshuns = new List<string>();
+            List<string> pieceIDs = new List<string>();
+            foreach (MapPiece p in pieces)
+            {
+                pieceIDs.Add(j.ToString());
+                j++;
+            }
+
+            for (int i = 0; i < pieces.Count / 2; i++)
+            {
+                int a = Random.Range(0, pieceIDs.Count);
+                string x = pieceIDs[a];
+                x += "-";
+                pieceIDs.RemoveAt(a);
+                a = Random.Range(0, pieceIDs.Count);
+                x += pieceIDs[a];
+                pieceIDs.RemoveAt(a);
+                conekshuns.Add(x);
+            }
+            return conekshuns;
         }
 
         public void CheckSolution()
@@ -31,10 +56,12 @@ namespace Knotgames.Gameplay.Puzzle.Map
                     return;
             }
 
-            solutionRoom.Solved();
-            puzzleTracker.tracker.OnePuzzleSolved();
-            Debug.Log("Solved");
-            DestroyPuzzleOnComplete();
+            if (solutionRoom.Solved())
+            {
+                puzzleTracker.tracker.OnePuzzleSolved();
+                Debug.Log("Solved");
+                DestroyPuzzleOnComplete();
+            }
         }
 
         private void DestroyPuzzleOnComplete()

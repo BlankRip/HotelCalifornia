@@ -12,6 +12,7 @@ namespace Knotgames.Gameplay.Puzzle.Map
         private IMapSolution mapSolution;
         [SerializeField] List<bool> currentSolution;
         private IMapPuzzleRoom puzzleRoom;
+        [SerializeField] List<string> connections;
 
         private void Start()
         {
@@ -27,9 +28,23 @@ namespace Knotgames.Gameplay.Puzzle.Map
                 puzzleRoom.SetSolution(currentSolution);
         }
 
-        public void Solved()
+        public bool Solved()
+        {
+            Invoke("L8Kill", 1f);
+            return CheckMySol();
+        }
+
+        void L8Kill()
         {
             Destroy(this);
+        }
+
+        public bool CheckMySol()
+        {
+            if (connections == mapSolution.GetConnectionValues())
+                return true;
+            else
+                return false;
         }
 
         public void Link(GameObject obj, bool initiator)
@@ -38,6 +53,11 @@ namespace Knotgames.Gameplay.Puzzle.Map
             puzzleRoom.SetSolution(currentSolution);
             if (initiator)
                 obj.GetComponent<IPairPuzzleSetup>().Link(this.gameObject, false);
+        }
+
+        public void ResyncSolution(List<string> connections)
+        {
+            this.connections = connections;
         }
     }
 }
