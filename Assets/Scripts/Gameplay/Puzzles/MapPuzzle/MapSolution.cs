@@ -9,10 +9,9 @@ namespace Knotgames.Gameplay.Puzzle.Map
     public class MapSolution : MonoBehaviour, IMapSolution
     {
         [SerializeField] GameplayEventCollection eventCollection;
-        [SerializeField] List<Transform> textSpots;
-        [SerializeField] string textObjPoolTag;
-        private List<TextMeshProUGUI> texts;
         private bool screwed;
+        [SerializeField] List<MapPiece> pieces;
+
 
         private void Start()
         {
@@ -41,36 +40,9 @@ namespace Knotgames.Gameplay.Puzzle.Map
 
         private void FlipValues()
         {
-            foreach (TextMeshProUGUI t in texts)
+            foreach (MapPiece piece in pieces)
             {
-                switch (t.text)
-                {
-                    case "90Hz":
-                        t.text = "-90Hz";
-                        break;
-                    case "45Hz":
-                        t.text = "-45Hz";
-                        break;
-                    case "0Hz":
-                        t.text = "0Hz";
-                        break;
-                    case "-45Hz":
-                        t.text = "45Hz";
-                        break;
-                    case "-90Hz":
-                        t.text = "90Hz";
-                        break;
-                }
-            }
-        }
-
-        public void SetupMap()
-        {
-            texts = new List<TextMeshProUGUI>();
-            foreach (Transform spot in textSpots)
-            {
-                TextMeshProUGUI text = ObjectPool.instance.SpawnPoolObj(textObjPoolTag, spot.position, spot.rotation).GetComponent<TextMeshProUGUI>();
-                texts.Add(text);
+                FlipValues();
             }
         }
 
@@ -84,16 +56,20 @@ namespace Knotgames.Gameplay.Puzzle.Map
         private List<bool> SetSolution()
         {
             List<bool> solution = new List<bool>();
-            for (int i = 0; i < texts.Count; i++)
-            {
-                // texts[i].text = GetFrequency();
-                // solution.Add(texts[i].text);
-                // texts[i].transform.position = textSpots[i].position;
-                // texts[i].transform.rotation = textSpots[i].rotation;
-            }
+            for (int i = 0; i < pieces.Count; i++)
+                solution.Add(GetRandomBool());
             if (screwed)
                 FlipValues();
             return solution;
+        }
+
+        bool GetRandomBool()
+        {
+            int rand = Random.Range(0, 2);
+            if (rand == 0)
+                return false;
+            else
+                return true;
         }
     }
 }

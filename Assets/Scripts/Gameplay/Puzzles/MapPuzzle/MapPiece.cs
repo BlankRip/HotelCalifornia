@@ -8,6 +8,7 @@ namespace Knotgames.Gameplay.Puzzle.Map
 {
     public class MapPiece : MonoBehaviour, IMapPiece, IInteractable
     {
+        [SerializeField] MapManager mapManager;
         public static int pieceId;
         public static void ResetIDs()
         {
@@ -44,6 +45,12 @@ namespace Knotgames.Gameplay.Puzzle.Map
 
         public void Interact()
         {
+            if (needsConnection)
+                if (mapManager.previousPiece == null)
+                    mapManager.previousPiece = this;
+                else
+                    Debug.Log("x");//TODO Connect pieces
+                
             CycleValue();
             SendData();
         }
