@@ -21,7 +21,7 @@ namespace Knotgames.Gameplay.Puzzle.Replicate
     public interface IReplicateSlot
     {
         string GetValue();
-        void SetNull();
+        void ClearSlot();
         void SetCollider(bool val);
     }
 

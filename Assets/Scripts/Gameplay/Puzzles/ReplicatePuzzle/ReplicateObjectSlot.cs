@@ -60,7 +60,7 @@ namespace Knotgames.Gameplay.Puzzle.Replicate
             Destroy(this);
         }
 
-        public void SetNull()
+        public void ClearSlot()
         {
             slottedName = "";
             myObj = null;
