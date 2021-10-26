@@ -14,6 +14,7 @@ namespace Knotgames.Gameplay.Puzzle.LeverLight {
         private List<int> solution;
         private int lightsNeeded;
         private List<LightColour> lightColours;
+        private List<LightColour> allColors;
         private Dictionary<LightColour, List<ILight>> colourLightDictonary;
         private List<ILight> lightSet1, lightSet2, lightSet3, lightSet4;
         private int listIndex;
@@ -67,8 +68,11 @@ namespace Knotgames.Gameplay.Puzzle.LeverLight {
         public LightColour GetAvailableLeverColor() {
             if(lightColours == null) {
                 lightColours = new List<LightColour>();
-                foreach(SolutionData data in solutionDatas)
+                allColors = new List<LightColour>();
+                foreach(SolutionData data in solutionDatas) {
                     lightColours.Add(data.colour);
+                    allColors.Add(data.colour);
+                }
             }
             int rand = Random.Range(0, lightColours.Count);
             LightColour colourToReturn = lightColours[rand];
@@ -127,6 +131,10 @@ namespace Knotgames.Gameplay.Puzzle.LeverLight {
 
         public string GetColorHelper() {
             return colorHelper;
+        }
+
+        public List<LightColour> GetAllAvailableColors() {
+            return allColors;
         }
     }
 }

@@ -12,5 +12,6 @@ namespace Knotgames.Gameplay.Puzzle.LeverLight {
         List<ILight> GetLightsOfClour(LightColour colour);
         List<int> GetSolution();
         string GetColorHelper();
+        List<LightColour> GetAllAvailableColors();
     }
 }
