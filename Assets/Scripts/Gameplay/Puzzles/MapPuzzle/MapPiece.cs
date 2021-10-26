@@ -45,7 +45,13 @@ namespace Knotgames.Gameplay.Puzzle.Map
 
         public void TurnOn()
         {
-            meshRenderer.material = activeMat;
+            if (meshRenderer != null)
+                meshRenderer.material = activeMat;
+            else
+            {
+                meshRenderer = GetComponent<MeshRenderer>();
+                meshRenderer.material = activeMat;
+            }
         }
 
         public void Interact()
