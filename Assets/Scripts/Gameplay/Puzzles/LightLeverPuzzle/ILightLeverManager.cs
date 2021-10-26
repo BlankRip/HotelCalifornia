@@ -6,12 +6,12 @@ namespace Knotgames.Gameplay.Puzzle.LeverLight {
     public interface ILightLeverManager
     {
         int GetLightsNeeded();
-        void SubstractNeedLights(int value);
-        LightColour GetAvailableLeverColor();
-        LightColour GetAvailableLightColor(ILight lightObj);
-        List<ILight> GetLightsOfClour(LightColour colour);
+        void SubstractNeededLights(int value);
+        LightColor GetAvailableLeverColor();
+        LightColor GetAvailableLightColor(ILight lightObj);
+        List<ILight> GetLightsOfColor(LightColor colour);
         List<int> GetSolution();
         string GetColorHelper();
-        List<LightColour> GetAllAvailableColors();
+        List<LightColor> GetAllAvailableColors();
     }
 }
