@@ -115,6 +115,12 @@ namespace Knotgames.Network
                 case "lightsNumPad":
                     NetUnityEvents.instance.lightsNumberPad.Invoke(dataString);
                     break;
+                case "leverPull":
+                    NetUnityEvents.instance.lightLeverEvents.Invoke(dataString);
+                    break;
+                case "leverInterfere":
+                    NetUnityEvents.instance.lightLeverEvents.Invoke(dataString);
+                    break;
 
                 case "spawnObject":
                     NetObjManager.instance.AddSpawnObject(dataString);
