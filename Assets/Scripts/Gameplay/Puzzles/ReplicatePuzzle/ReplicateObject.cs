@@ -153,6 +153,10 @@ namespace Knotgames.Gameplay.Puzzle.Replicate
             rb.useGravity = false;
         }
 
+        void SlotReset()
+        {
+            mySlot.SetCollider(true);
+        }
 
         public void HideInteractInstruction() { }
 

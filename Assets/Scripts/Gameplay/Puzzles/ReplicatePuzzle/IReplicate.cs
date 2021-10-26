@@ -22,6 +22,7 @@ namespace Knotgames.Gameplay.Puzzle.Replicate
     {
         string GetValue();
         void SetNull();
+        void SetCollider(bool val);
     }
 
     public interface IReplicateObject
