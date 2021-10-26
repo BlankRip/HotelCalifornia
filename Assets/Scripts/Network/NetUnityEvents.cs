@@ -16,6 +16,7 @@ namespace Knotgames.Network
 
         public CustonEventString xoPieceEvent;
         public CustonEventString radioPieceEvent;
+        public CustonEventString mapPieceEvent;
 
         public CustonEventString morseButtonEvent;
         public CustonEventString morsePlayerEvent;

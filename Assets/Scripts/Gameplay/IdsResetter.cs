@@ -9,6 +9,7 @@ using Knotgames.Gameplay.Puzzle.Morse;
 using Knotgames.Gameplay.Puzzle.QuickDelivery;
 using Knotgames.Gameplay.Puzzle.Replicate;
 using Knotgames.Gameplay.Puzzle.Riddler;
+using Knotgames.Gameplay.Puzzle.Map;
 
 public class IdsResetter
 {
@@ -17,6 +18,7 @@ public class IdsResetter
         PuzzleSolvedObj.ResetIDs();
         BoardPiece.ResetIDs();
         TuningPiece.ResetIDs();
+        MapPiece.ResetIDs();
         MorseButton.ResetIDs();
         DeliveryItem.RestIDs();
         ReplicateObject.ResetIds();
