@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Knotgames.Gameplay.Puzzle.LevelLight {
+namespace Knotgames.Gameplay.Puzzle.LeverLight {
 
     public class LightLeverManager: ILightLeverManager
     {
@@ -10,9 +10,11 @@ namespace Knotgames.Gameplay.Puzzle.LevelLight {
         private int digitsInSolution = 4;
         private List<SolutionData> solutionDatas;
         private List<SolutionData> setUpData;
+        private string colorHelper;
         private List<int> solution;
         private int lightsNeeded;
         private List<LightColour> lightColours;
+        private List<LightColour> allColors;
         private Dictionary<LightColour, List<ILight>> colourLightDictonary;
         private List<ILight> lightSet1, lightSet2, lightSet3, lightSet4;
         private int listIndex;
@@ -24,6 +26,7 @@ namespace Knotgames.Gameplay.Puzzle.LevelLight {
             lightSet3 = new List<ILight>();
             lightSet4 = new List<ILight>();
             solutionDatas = new List<SolutionData>();
+            colorHelper = "";
             Setup();
         }
 
@@ -53,6 +56,8 @@ namespace Knotgames.Gameplay.Puzzle.LevelLight {
                 data.amount = rndValue;
                 solution.Add(rndValue);
                 lightsNeeded += data.amount;
+
+                colorHelper += $"{data.colour.ToString()[0]} ";
             }
         }
 
@@ -63,8 +68,11 @@ namespace Knotgames.Gameplay.Puzzle.LevelLight {
         public LightColour GetAvailableLeverColor() {
             if(lightColours == null) {
                 lightColours = new List<LightColour>();
-                foreach(SolutionData data in solutionDatas)
+                allColors = new List<LightColour>();
+                foreach(SolutionData data in solutionDatas) {
                     lightColours.Add(data.colour);
+                    allColors.Add(data.colour);
+                }
             }
             int rand = Random.Range(0, lightColours.Count);
             LightColour colourToReturn = lightColours[rand];
@@ -115,6 +123,18 @@ namespace Knotgames.Gameplay.Puzzle.LevelLight {
 
         public void SubstractNeedLights(int value) {
             lightsNeeded -= value;
+        }
+
+        public List<int> GetSolution() {
+            return solution;
+        }
+
+        public string GetColorHelper() {
+            return colorHelper;
+        }
+
+        public List<LightColour> GetAllAvailableColors() {
+            return allColors;
         }
     }
 }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Knotgames.LevelGen;
 
-namespace Knotgames.Gameplay.Puzzle.LevelLight {
+namespace Knotgames.Gameplay.Puzzle.LeverLight {
     public class LightLeverRoom : MonoBehaviour, IPairPuzzleSetup
     {
         private static bool initilized = false;
@@ -12,6 +12,8 @@ namespace Knotgames.Gameplay.Puzzle.LevelLight {
         [SerializeField] List<Transform> lightSpawnPoints;
         [SerializeField] GameObject leverObj;
         [SerializeField] List<Transform> leverSpawnPoints;
+        [SerializeField] GameObject keyPadObj;
+        [SerializeField] List<Transform> keyPadSpawnPoints;
 
         private void Start() {
             if(!initilized)
@@ -20,6 +22,8 @@ namespace Knotgames.Gameplay.Puzzle.LevelLight {
             SpawnLights();
             if(!initilized)
                 initilized = true;
+            else
+                SpawnKeyPad();
         }
 
         private void SpawnLights() {
@@ -47,6 +51,11 @@ namespace Knotgames.Gameplay.Puzzle.LevelLight {
                 totalAmount = 10;
             else
                 totalAmount = 5;
+        }
+
+        private void SpawnKeyPad() {
+            int rand = Random.Range(0, keyPadSpawnPoints.Count);
+            GameObject.Instantiate(keyPadObj, keyPadSpawnPoints[rand].position, keyPadSpawnPoints[rand].rotation);
         }
 
         public void Link(GameObject obj, bool initiator) {
