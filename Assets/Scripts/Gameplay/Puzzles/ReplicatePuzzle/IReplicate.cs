@@ -7,7 +7,7 @@ namespace Knotgames.Gameplay.Puzzle.Replicate
     public interface IReplicateSolution
     {
         List<string> BuildNewSolution(Transform newSpot);
-        List<RepObj> GetStoredObjs();
+        List<RepObj> GetStoredRepObjs();
         ReplicateObjectSlot GetCorrespondingSlot(int index);
     }
 

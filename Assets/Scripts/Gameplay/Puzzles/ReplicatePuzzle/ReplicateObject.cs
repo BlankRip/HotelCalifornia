@@ -25,6 +25,7 @@ namespace Knotgames.Gameplay.Puzzle.Replicate
         [HideInInspector] public bool slotted;
         [HideInInspector] public IReplicateSlot mySlot;
         [SerializeField] string myName;
+        MeshRenderer[] renderers;
 
         private void Awake()
         {
@@ -32,6 +33,8 @@ namespace Knotgames.Gameplay.Puzzle.Replicate
             portionIds++;
             transformSync = GetComponent<ILocalNetTransformSync>();
             transformSync.SetID(myId);
+            rb = GetComponent<Rigidbody>();
+            renderers = GetComponentsInChildren<MeshRenderer>();
 
             if (!DevBoy.yes)
                 NetUnityEvents.instance.repObjUseStatus.AddListener(RecieveData);
@@ -43,7 +46,6 @@ namespace Knotgames.Gameplay.Puzzle.Replicate
             hideStatus = new HideStatus();
 
             attachPos = GameObject.FindGameObjectWithTag("AttachPos").transform;
-            rb = GetComponent<Rigidbody>();
             restPos = transform.position;
         }
 
@@ -102,7 +104,6 @@ namespace Knotgames.Gameplay.Puzzle.Replicate
 
         public void Drop()
         {
-            Debug.LogError("DROPPED");
             if (!DevBoy.yes)
             {
                 transformSync.SetDataSyncStatus(false);
@@ -118,7 +119,6 @@ namespace Knotgames.Gameplay.Puzzle.Replicate
 
         public void Drop(bool overrider, Transform t)
         {
-            Debug.LogError("DROPPED OVERRIDER");
             if (!DevBoy.yes)
             {
                 transformSync.SetDataSyncStatus(false);
@@ -166,7 +166,6 @@ namespace Knotgames.Gameplay.Puzzle.Replicate
 
         public string GetName()
         {
-            Debug.LogError($"RETURNING {myName}");
             return myName;
         }
 

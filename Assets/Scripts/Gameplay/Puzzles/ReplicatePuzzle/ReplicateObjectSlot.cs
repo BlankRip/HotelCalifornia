@@ -28,7 +28,6 @@ namespace Knotgames.Gameplay.Puzzle.Replicate
 
         public string GetValue()
         {
-            Debug.LogError($"THIS IS NAME : {slottedName}");
             return slottedName;
         }
 

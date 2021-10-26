@@ -50,7 +50,7 @@ namespace Knotgames.Gameplay.Puzzle.Replicate
             Debug.LogError("LINKING REP SOLUTION");
             puzzleRoom = obj.GetComponent<IReplicatePuzzleRoom>();
             puzzleRoom.SetSolution(currentSolution);
-            puzzleRoom.SpawnObjs(replicateSolution.GetStoredObjs());
+            puzzleRoom.SpawnObjs(replicateSolution.GetStoredRepObjs());
             if (initiator)
                 obj.GetComponent<IPairPuzzleSetup>().Link(this.gameObject, false);
         }

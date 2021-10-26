@@ -14,7 +14,8 @@ namespace Knotgames.Gameplay.Puzzle.Replicate
         [SerializeField] List<Transform> objectSpots;
         [SerializeField] ScriptableLevelSeed scriptableLevelSeed;
         private bool screwed;
-        List<RepObj> storedObjs = new List<RepObj>();
+        List<GameObject> storedObjs = new List<GameObject>();
+        List<RepObj> storedRepObjs = new List<RepObj>();
         List<ReplicateObjectSlot> slots = new List<ReplicateObjectSlot>();
         List<bool> filledSpotValues = new List<bool>();
         System.Random random;
@@ -61,21 +62,26 @@ namespace Knotgames.Gameplay.Puzzle.Replicate
 
         private void FlipObjects()
         {
-            if (!screwed)
+            if (screwed)
             {
                 for (int i = 0; i < storedObjs.Count; i++)
                 {
-                    if (i + 1 > storedObjs.Count)
-                        storedObjs[i].Object.transform.SetPositionAndRotation(storedObjs[0].Object.transform.position, storedObjs[0].Object.transform.rotation);
-                    else
-                        storedObjs[i].Object.transform.SetPositionAndRotation(storedObjs[i + 1].Object.transform.position, storedObjs[i + 1].Object.transform.rotation);
+                    MeshRenderer[] mrs = storedObjs[i].GetComponentsInChildren<MeshRenderer>();
+                    foreach(MeshRenderer mr in mrs)
+                    {
+                        mr.enabled = false;
+                    }
                 }
             }
             else
             {
                 for (int i = 0; i < storedObjs.Count; i++)
                 {
-                    storedObjs[i].ResetToOriginal();
+                    MeshRenderer[] mrs = storedObjs[i].GetComponentsInChildren<MeshRenderer>();
+                    foreach(MeshRenderer mr in mrs)
+                    {
+                        mr.enabled = true;
+                    }
                 }
             }
         }
@@ -118,7 +124,8 @@ namespace Knotgames.Gameplay.Puzzle.Replicate
                     go.layer = 0;
                     go.tag = "Untagged";
                     repObj.SetOriginal(objectSpots[i].position, objectSpots[i].rotation);
-                    storedObjs.Add(repObj);
+                    storedObjs.Add(go);
+                    storedRepObjs.Add(repObj);
                     solution.Add(repObj.name);
                 }
                 else
@@ -136,9 +143,9 @@ namespace Knotgames.Gameplay.Puzzle.Replicate
             return replicateObjectDatabase.objects[Random.Range(0, replicateObjectDatabase.objects.Count)];
         }
 
-        public List<RepObj> GetStoredObjs()
+        public List<RepObj> GetStoredRepObjs()
         {
-            return storedObjs;
+            return storedRepObjs;
         }
 
         public ReplicateObjectSlot GetCorrespondingSlot(int index)
