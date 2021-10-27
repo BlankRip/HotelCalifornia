@@ -70,6 +70,7 @@ namespace Knotgames.Gameplay.Puzzle.Map
         {
             for (int i = 0; i < pieces.Count; i++)
             {
+                pieces[i].Setuptext(i.ToString());
                 if (solution[i])
                     pieces[i].TurnOn();
             }
@@ -97,7 +98,7 @@ namespace Knotgames.Gameplay.Puzzle.Map
                 if (pieces[i] == A)
                     a = i.ToString();
                 if (pieces[i] == B)
-                    a = i.ToString();
+                    b = i.ToString();
             }
             string connectionstring = $"{a}-{b}";
             if (!connectionDatabase.ContainsKey(A))
@@ -109,7 +110,7 @@ namespace Knotgames.Gameplay.Puzzle.Map
             {
                 for (int i = 0; i < connections.Count; i++)
                 {
-                    if (connections[i]==connectionDatabase[A])
+                    if (connections[i] == connectionDatabase[A])
                         connections[i] = connectionstring;
                     connectionDatabase[A] = connectionstring;
                 }

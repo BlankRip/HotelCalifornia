@@ -16,7 +16,9 @@ namespace Knotgames.Gameplay.Puzzle.Map
 
         private void Start()
         {
-            mapSolution = GameObject.Instantiate(mapSolutionObj).GetComponent<IMapSolution>();
+            GameObject obj = GameObject.Instantiate(mapSolutionObj);
+            mapSolution = obj.GetComponent<IMapSolution>();
+            obj.transform.SetParent(transform);
             SetUpSolution();
         }
 
@@ -30,7 +32,8 @@ namespace Knotgames.Gameplay.Puzzle.Map
 
         public bool Solved()
         {
-            Invoke("L8Kill", 1f);
+            if (CheckMySol())
+                Invoke("L8Kill", 1f);
             return CheckMySol();
         }
 
@@ -41,11 +44,22 @@ namespace Knotgames.Gameplay.Puzzle.Map
 
         public bool CheckMySol()
         {
-            foreach (string s in mapSolution.GetConnectionValues())
+            Debug.LogError("RAN!");
+            List<string> checker = mapSolution.GetConnectionValues();
+            if (checker.Count <= 0)
+            {
+                Debug.LogError("INCORRECT!");
+                return false;
+            }
+            foreach (string s in checker)
             {
                 if (!connections.Contains(s))
+                {
+                    Debug.LogError("INCORRECT!");
                     return false;
+                }
             }
+            Debug.LogError("CORRECT!");
             return true;
         }
 

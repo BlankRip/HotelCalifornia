@@ -23,6 +23,7 @@ namespace Knotgames.Gameplay.Puzzle.Map
             solutionRoom.ResyncSolution(GenerateConnections());
         }
 
+        List<string> conekshunsDebug;
         List<string> GenerateConnections()
         {
             int j = 0;
@@ -31,6 +32,7 @@ namespace Knotgames.Gameplay.Puzzle.Map
             foreach (MapPiece p in pieces)
             {
                 pieceIDs.Add(j.ToString());
+                p.Setuptext(j.ToString());
                 j++;
             }
 
@@ -47,8 +49,19 @@ namespace Knotgames.Gameplay.Puzzle.Map
                 Vector3 pos2 = pieces[a].transform.position;
                 pieceIDs.RemoveAt(a);
                 conekshuns.Add(x);
-                startpiece.lineRenderer.SetPositions(new Vector3[] { pos1, pos2 });
+                if (startpiece.lineRenderer == null)
+                {
+                    Debug.LogError(i);
+                    startpiece.SetupLR();
+                    startpiece.lineRenderer.SetPositions(new Vector3[] { pos1, pos2 });
+                }
+                else
+                {
+                    Debug.LogError(i);
+                    startpiece.lineRenderer.SetPositions(new Vector3[] { pos1, pos2 });
+                }
             }
+            conekshunsDebug = conekshuns;
             return conekshuns;
         }
 

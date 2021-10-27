@@ -25,6 +25,7 @@ namespace Knotgames.Gameplay.Puzzle.Map
         bool myValue;
         private IMapPuzzle mapPuzzle;
         private IMapSolution mapSolution;
+        private IMapSolutionRoom mapSolutionRoom;
         MeshRenderer meshRenderer;
         [HideInInspector] public LineRenderer lineRenderer;
         TextMeshProUGUI myText;
@@ -32,6 +33,7 @@ namespace Knotgames.Gameplay.Puzzle.Map
         {
             mapPuzzle = GetComponentInParent<IMapPuzzle>();
             mapSolution = GetComponentInParent<IMapSolution>();
+            mapSolutionRoom = transform.parent.GetComponentInParent<IMapSolutionRoom>();
             screwed = false;
             eventCollection.twistVision.AddListener(Messup);
             eventCollection.fixVision.AddListener(Fix);
@@ -41,14 +43,26 @@ namespace Knotgames.Gameplay.Puzzle.Map
             if (!DevBoy.yes)
                 NetUnityEvents.instance.mapPieceEvent.AddListener(RecieveData);
             meshRenderer = GetComponent<MeshRenderer>();
-            lineRenderer = gameObject.AddComponent<LineRenderer>();
-            lineRenderer.material = activeMat;
-            lineRenderer.startWidth = 0.05f;
-            lineRenderer.endWidth = 0.05f;
+            SetupLR();
+        }
+
+        public void SetupLR()
+        {
+            if (lineRenderer == null)
+            {
+                lineRenderer = gameObject.AddComponent<LineRenderer>();
+                lineRenderer.material = activeMat;
+                lineRenderer.startWidth = 0.05f;
+                lineRenderer.endWidth = 0.01f;
+            }
+        }
+
+        public void Setuptext(string value)
+        {
             //TEXT POS -0.1144269
-            myText = ObjectPool.instance.SpawnPoolObj("mapText", transform.position, Quaternion.identity).GetComponent<TextMeshProUGUI>();
-            myText.transform.SetParent(transform.parent);
-            myText.transform.position = new Vector3(myText.transform.position.x,myText.transform.position.y, -0.1144269f);
+            Vector3 textPos = new Vector3(transform.position.x, transform.position.y, transform.position.z - 0.05f);
+            myText = ObjectPool.instance.SpawnPoolObj("mapText", textPos, Quaternion.identity).GetComponent<TextMeshProUGUI>();
+            myText.text = value;
         }
 
         public bool GetValue()
@@ -103,6 +117,7 @@ namespace Knotgames.Gameplay.Puzzle.Map
             if (screwed)
                 FlipValues();
             mapPuzzle.CheckSolution();
+            mapSolutionRoom.CheckMySol();
         }
 
         private void Messup()
@@ -131,7 +146,8 @@ namespace Knotgames.Gameplay.Puzzle.Map
 
         private void SendData()
         {
-            NetConnector.instance.SendDataToServer(JsonUtility.ToJson(dataToSend));
+            if (!DevBoy.yes)
+                NetConnector.instance.SendDataToServer(JsonUtility.ToJson(dataToSend));
         }
 
         private void RecieveData(string recieved)
