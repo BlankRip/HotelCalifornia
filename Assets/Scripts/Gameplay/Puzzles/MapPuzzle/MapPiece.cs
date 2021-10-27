@@ -144,12 +144,14 @@ namespace Knotgames.Gameplay.Puzzle.Map
                 meshRenderer.enabled = false;
                 if (lineRenderer != null)
                     lineRenderer.enabled = false;
+                myText.gameObject.SetActive(false);
             }
             else
             {
                 meshRenderer.enabled = true;
                 if (lineRenderer != null)
                     lineRenderer.enabled = true;
+                myText.gameObject.SetActive(true);
             }
         }
 
