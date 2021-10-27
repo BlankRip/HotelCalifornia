@@ -39,11 +39,13 @@ namespace Knotgames.Gameplay.Puzzle.Map
 
         void L8Kill()
         {
+            mapSolution.Solved();
             Destroy(this);
         }
 
         public bool CheckMySol()
         {
+            int check = 0;
             Debug.LogError("RAN!");
             List<string> checker = mapSolution.GetConnectionValues();
             if (checker.Count <= 0)
@@ -58,6 +60,14 @@ namespace Knotgames.Gameplay.Puzzle.Map
                     Debug.LogError("INCORRECT!");
                     return false;
                 }
+                else
+                    check++;
+
+            }
+            if (check != connections.Count)
+            {
+                Debug.LogError("INCORRECT!");
+                return false;
             }
             Debug.LogError("CORRECT!");
             return true;

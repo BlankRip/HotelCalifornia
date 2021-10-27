@@ -10,6 +10,7 @@ namespace Knotgames.Gameplay.Puzzle.Map
         void AddConnection(MapPiece A, MapPiece B);
         List<bool> BuildNewSolution(Transform newSpot);
         List<string> GetConnectionValues();
+        void Solved();
     }
 
     public interface IMapPuzzle

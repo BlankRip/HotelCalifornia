@@ -5,8 +5,9 @@ using UnityEngine;
 namespace Knotgames.Gameplay.Puzzle.Map
 {
     [CreateAssetMenu()]
-    public class MapManager: ScriptableObject
+    public class MapManager : ScriptableObject
     {
         public MapPiece previousPiece;
+        public Material[] materials;
     }
 }

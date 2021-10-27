@@ -44,7 +44,16 @@ namespace Knotgames.Gameplay.Puzzle.Map
         {
             foreach (MapPiece piece in pieces)
             {
-                FlipValues();
+                piece.FlipValues();
+            }
+        }
+
+        public void Solved()
+        {
+            foreach (MapPiece piece in pieces)
+            {
+                piece.tag = "Untagged";
+                piece.gameObject.layer = 0;
             }
         }
 

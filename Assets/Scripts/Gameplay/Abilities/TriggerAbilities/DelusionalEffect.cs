@@ -13,12 +13,12 @@ namespace Knotgames.Gameplay.Abilities {
         }
         
         //TODO: Only For Testing
-        // private void Update() {
-        //     if(Input.GetKeyDown(KeyCode.O))
-        //         ApplyEffect();
-        //     if(Input.GetKeyDown(KeyCode.P))
-        //         ResetEffect();
-        // }
+        private void Update() {
+            if(Input.GetKeyDown(KeyCode.O))
+                ApplyEffect();
+            if(Input.GetKeyDown(KeyCode.P))
+                ResetEffect();
+        }
 
         public void ResetEffect() {
             Debug.LogError("Stope seeing Delusions");

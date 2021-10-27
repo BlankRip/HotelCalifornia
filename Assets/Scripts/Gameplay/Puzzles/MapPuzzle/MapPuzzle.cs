@@ -36,30 +36,26 @@ namespace Knotgames.Gameplay.Puzzle.Map
                 j++;
             }
 
+            List<MapPiece> copy = new List<MapPiece>(pieces);
+            
             for (int i = 0; i < pieces.Count / 2; i++)
             {
                 int a = Random.Range(0, pieceIDs.Count);
                 string x = pieceIDs[a];
-                Vector3 pos1 = pieces[a].transform.position;
-                MapPiece startpiece = pieces[a];
+                Vector3 pos1 = copy[a].transform.position;
+                MapPiece startpiece = copy[a];
                 x += "-";
                 pieceIDs.RemoveAt(a);
+                copy.RemoveAt(a);
                 a = Random.Range(0, pieceIDs.Count);
                 x += pieceIDs[a];
-                Vector3 pos2 = pieces[a].transform.position;
+                Vector3 pos2 = copy[a].transform.position;
                 pieceIDs.RemoveAt(a);
+                copy.RemoveAt(a);
                 conekshuns.Add(x);
-                if (startpiece.lineRenderer == null)
-                {
-                    Debug.LogError(i);
-                    startpiece.SetupLR();
-                    startpiece.lineRenderer.SetPositions(new Vector3[] { pos1, pos2 });
-                }
-                else
-                {
-                    Debug.LogError(i);
-                    startpiece.lineRenderer.SetPositions(new Vector3[] { pos1, pos2 });
-                }
+                startpiece.SetupLR(i);
+                startpiece.lineRenderer.SetPositions(new Vector3[] { pos1, pos2 });
+
             }
             conekshunsDebug = conekshuns;
             return conekshuns;

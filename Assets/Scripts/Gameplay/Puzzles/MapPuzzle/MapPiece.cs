@@ -43,17 +43,19 @@ namespace Knotgames.Gameplay.Puzzle.Map
             if (!DevBoy.yes)
                 NetUnityEvents.instance.mapPieceEvent.AddListener(RecieveData);
             meshRenderer = GetComponent<MeshRenderer>();
-            SetupLR();
+            if (mapSolutionRoom != null)
+                SetupLR(UnityEngine.Random.Range(0, 8));
         }
 
-        public void SetupLR()
+        public void SetupLR(int i)
         {
             if (lineRenderer == null)
             {
+                // Debug.LogError("LR");
                 lineRenderer = gameObject.AddComponent<LineRenderer>();
-                lineRenderer.material = activeMat;
+                lineRenderer.material = mapManager.materials[i];
                 lineRenderer.startWidth = 0.05f;
-                lineRenderer.endWidth = 0.01f;
+                lineRenderer.endWidth = 0.005f;
             }
         }
 
@@ -93,6 +95,8 @@ namespace Knotgames.Gameplay.Puzzle.Map
                     mapManager.previousPiece.lineRenderer.SetPositions(new Vector3[] { mapManager.previousPiece.transform.position, transform.position });
                     mapManager.previousPiece = null;
                     lineRenderer.enabled = true;
+                    if (mapSolutionRoom != null)
+                        mapSolutionRoom.CheckMySol();
                 }
             }
             else
@@ -116,8 +120,9 @@ namespace Knotgames.Gameplay.Puzzle.Map
 
             if (screwed)
                 FlipValues();
-            mapPuzzle.CheckSolution();
-            mapSolutionRoom.CheckMySol();
+
+            if (mapPuzzle != null)
+                mapPuzzle.CheckSolution();
         }
 
         private void Messup()
@@ -132,12 +137,20 @@ namespace Knotgames.Gameplay.Puzzle.Map
             FlipValues();
         }
 
-        private void FlipValues()
+        public void FlipValues()
         {
-            if (myValue)
-                meshRenderer.material = deactiveMat;
+            if (screwed)
+            {
+                meshRenderer.enabled = false;
+                if (lineRenderer != null)
+                    lineRenderer.enabled = false;
+            }
             else
-                meshRenderer.material = activeMat;
+            {
+                meshRenderer.enabled = true;
+                if (lineRenderer != null)
+                    lineRenderer.enabled = true;
+            }
         }
 
         public void HideInteractInstruction() { }
