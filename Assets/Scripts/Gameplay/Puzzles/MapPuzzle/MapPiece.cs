@@ -40,11 +40,15 @@ namespace Knotgames.Gameplay.Puzzle.Map
             id = pieceId;
             pieceId++;
             dataToSend = new DataToSend(id);
-            if (!DevBoy.yes)
-                NetUnityEvents.instance.mapPieceEvent.AddListener(RecieveData);
+            NetUnityEvents.instance.mapPieceEvent.AddListener(RecieveData);
             meshRenderer = GetComponent<MeshRenderer>();
             if (mapSolutionRoom != null)
                 SetupLR(UnityEngine.Random.Range(0, 8));
+        }
+
+        private void OnDestroy()
+        {
+            NetUnityEvents.instance.mapPieceEvent.RemoveListener(RecieveData);
         }
 
         public void SetupLR(int i)
@@ -95,8 +99,8 @@ namespace Knotgames.Gameplay.Puzzle.Map
                     mapManager.previousPiece.lineRenderer.SetPositions(new Vector3[] { mapManager.previousPiece.transform.position, transform.position });
                     mapManager.previousPiece = null;
                     lineRenderer.enabled = true;
-                    if (mapSolutionRoom != null)
-                        mapSolutionRoom.CheckMySol();
+                    if (mapPuzzle != null)
+                        mapPuzzle.CheckSolution();
                 }
             }
             else

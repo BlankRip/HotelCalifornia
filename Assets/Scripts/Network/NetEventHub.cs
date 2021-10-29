@@ -76,6 +76,9 @@ namespace Knotgames.Network
                 case "RadioTuningPiece":
                     NetUnityEvents.instance.radioPieceEvent.Invoke(dataString);
                     break;
+                case "MapPiece":
+                    NetUnityEvents.instance.mapPieceEvent.Invoke(dataString);
+                    break;
 
                 case "morseButton":
                     NetUnityEvents.instance.morseButtonEvent.Invoke(dataString);
@@ -90,7 +93,7 @@ namespace Knotgames.Network
                 case "deliveryTransform":
                     NetUnityEvents.instance.deliveryTransform.Invoke(dataString);
                     break;
-                
+
                 case "riddlePad":
                     NetUnityEvents.instance.riddlePadEvent.Invoke(dataString);
                     break;

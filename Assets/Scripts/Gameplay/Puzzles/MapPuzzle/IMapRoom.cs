@@ -7,7 +7,6 @@ namespace Knotgames.Gameplay.Puzzle.Map {
     {
         bool Solved();
         void ResyncSolution(List<string> connections);
-        bool CheckMySol();
     }
 
     public interface IMapPuzzleRoom
