@@ -99,6 +99,16 @@ namespace Knotgames.Gameplay.Puzzle.Map
             return connections;
         }
 
+        public void ResetConnections()
+        {
+            connectionDatabase.Clear();
+            connections.Clear();
+            foreach(MapPiece piece in pieces)
+            {
+                piece.lineRenderer.positionCount = 0;
+            }
+        }
+
         public void AddConnection(MapPiece A, MapPiece B)
         {
             string a = "", b = "";

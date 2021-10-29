@@ -29,6 +29,7 @@ namespace Knotgames.Gameplay.Puzzle.Map
         MeshRenderer meshRenderer;
         [HideInInspector] public LineRenderer lineRenderer;
         TextMeshProUGUI myText;
+
         private void Start()
         {
             mapPuzzle = GetComponentInParent<IMapPuzzle>();
@@ -96,9 +97,7 @@ namespace Knotgames.Gameplay.Puzzle.Map
         public void Interact()
         {
             if (needsConnection)
-            {
                 ConnectPieces();
-            }
             else
                 CycleValue();
 
