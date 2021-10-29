@@ -9,5 +9,7 @@ namespace Knotgames.Gameplay.Puzzle.Map
     {
         public MapPiece previousPiece;
         public Material[] materials;
+        public IMapPuzzle thePuzzle;
+        public IMapSolutionRoom theSolution;
     }
 }

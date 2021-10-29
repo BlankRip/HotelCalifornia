@@ -34,6 +34,10 @@ namespace Knotgames.Gameplay.Puzzle.Map
             mapPuzzle = GetComponentInParent<IMapPuzzle>();
             mapSolution = GetComponentInParent<IMapSolution>();
             mapSolutionRoom = transform.parent.GetComponentInParent<IMapSolutionRoom>();
+            if (mapManager.thePuzzle == null)
+                mapManager.thePuzzle = mapPuzzle;
+            if (mapManager.theSolution == null)
+                mapManager.theSolution = mapSolutionRoom;
             screwed = false;
             eventCollection.twistVision.AddListener(Messup);
             eventCollection.fixVision.AddListener(Fix);
@@ -49,6 +53,8 @@ namespace Knotgames.Gameplay.Puzzle.Map
         private void OnDestroy()
         {
             NetUnityEvents.instance.mapPieceEvent.RemoveListener(RecieveData);
+            mapManager.thePuzzle = null;
+            mapManager.theSolution = null;
         }
 
         public void SetupLR(int i)
@@ -91,22 +97,27 @@ namespace Knotgames.Gameplay.Puzzle.Map
         {
             if (needsConnection)
             {
-                if (mapManager.previousPiece == null)
-                    mapManager.previousPiece = this;
-                else
-                {
-                    mapSolution.AddConnection(mapManager.previousPiece, this);
-                    mapManager.previousPiece.lineRenderer.SetPositions(new Vector3[] { mapManager.previousPiece.transform.position, transform.position });
-                    mapManager.previousPiece = null;
-                    lineRenderer.enabled = true;
-                    if (mapPuzzle != null)
-                        mapPuzzle.CheckSolution();
-                }
+                ConnectPieces();
             }
             else
                 CycleValue();
 
             SendData();
+        }
+
+        private void ConnectPieces()
+        {
+            if (mapManager.previousPiece == null)
+                mapManager.previousPiece = this;
+            else
+            {
+                mapSolution.AddConnection(mapManager.previousPiece, this);
+                mapManager.previousPiece.lineRenderer.SetPositions(new Vector3[] { mapManager.previousPiece.transform.position, transform.position });
+                mapManager.previousPiece = null;
+                lineRenderer.enabled = true;
+                if (mapSolutionRoom != null)
+                    mapManager.thePuzzle.CheckSolution();
+            }
         }
 
         private void CycleValue()
@@ -173,7 +184,12 @@ namespace Knotgames.Gameplay.Puzzle.Map
         {
             ExtractionClass extracted = JsonUtility.FromJson<ExtractionClass>(recieved);
             if (extracted.myId == id)
-                CycleValue();
+            {
+                if (needsConnection)
+                    ConnectPieces();
+                else
+                    CycleValue();
+            }
         }
 
         private class ExtractionClass
