@@ -93,6 +93,9 @@ namespace Knotgames.Network
                 case "deliveryTransform":
                     NetUnityEvents.instance.deliveryTransform.Invoke(dataString);
                     break;
+                case "resetMapConnections":
+                    NetUnityEvents.instance.mixerEvents.Invoke(dataString);
+                    break;
 
                 case "riddlePad":
                     NetUnityEvents.instance.riddlePadEvent.Invoke(dataString);

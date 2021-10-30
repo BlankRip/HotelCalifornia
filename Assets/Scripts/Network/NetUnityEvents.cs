@@ -13,6 +13,7 @@ namespace Knotgames.Network
         public CustonEventString portionUseStatus;
         public CustonEventString puzzleSolvedEvent;
         public CustonEventString mixerEvents;
+        public CustonEventString mapEvents;
 
         public CustonEventString xoPieceEvent;
         public CustonEventString radioPieceEvent;
