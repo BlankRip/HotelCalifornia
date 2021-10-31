@@ -11,9 +11,8 @@ namespace Knotgames.Gameplay.Puzzle.Map
         [SerializeField] GameplayEventCollection eventCollection;
         private bool screwed;
         [SerializeField] List<MapPiece> pieces;
+        [SerializeField] List<MapConnection> connections;
         List<bool> solution = new List<bool>();
-        List<string> connections = new List<string>();
-        Dictionary<MapPiece, string> connectionDatabase = new Dictionary<MapPiece, string>();
 
         private void Start()
         {
@@ -55,6 +54,11 @@ namespace Knotgames.Gameplay.Puzzle.Map
                 piece.tag = "Untagged";
                 piece.gameObject.layer = 0;
             }
+            foreach (MapConnection connection in connections)
+            {
+                connection.tag = "Untagged";
+                connection.gameObject.layer = 0;
+            }
         }
 
         public List<bool> BuildNewSolution(Transform newSpot)
@@ -80,6 +84,7 @@ namespace Knotgames.Gameplay.Puzzle.Map
             for (int i = 0; i < pieces.Count; i++)
             {
                 pieces[i].Setuptext(i.ToString());
+                pieces[i].interactable = false;
                 if (solution[i])
                     pieces[i].TurnOn();
             }
@@ -93,47 +98,15 @@ namespace Knotgames.Gameplay.Puzzle.Map
             else
                 return true;
         }
-
-        public List<string> GetConnectionValues()
+        List<bool> conekshuns = new List<bool>();
+        public List<bool> GetConnectionValues()
         {
-            return connections;
-        }
-
-        public void ResetConnections()
-        {
-            connectionDatabase.Clear();
-            connections.Clear();
-            foreach(MapPiece piece in pieces)
+            conekshuns.Clear();
+            foreach (MapConnection connection in connections)
             {
-                piece.lineRenderer.positionCount = 0;
+                conekshuns.Add(connection.GetValue());
             }
-        }
-
-        public void AddConnection(MapPiece A, MapPiece B)
-        {
-            string a = "", b = "";
-            for (int i = 0; i < pieces.Count; i++)
-            {
-                if (pieces[i] == A)
-                    a = i.ToString();
-                if (pieces[i] == B)
-                    b = i.ToString();
-            }
-            string connectionstring = $"{a}-{b}";
-            if (!connectionDatabase.ContainsKey(A))
-            {
-                connections.Add(connectionstring);
-                connectionDatabase.Add(A, connectionstring);
-            }
-            else
-            {
-                for (int i = 0; i < connections.Count; i++)
-                {
-                    if (connections[i] == connectionDatabase[A])
-                        connections[i] = connectionstring;
-                    connectionDatabase[A] = connectionstring;
-                }
-            }
+            return conekshuns;
         }
     }
 }

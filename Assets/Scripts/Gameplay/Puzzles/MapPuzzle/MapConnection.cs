@@ -7,7 +7,7 @@ using TMPro;
 
 namespace Knotgames.Gameplay.Puzzle.Map
 {
-    public class MapPiece : MonoBehaviour, IMapPiece, IInteractable
+    public class MapConnection : MonoBehaviour, IMapPiece, IInteractable
     {
         [SerializeField] MapManager mapManager;
         public static int pieceId;
@@ -25,7 +25,6 @@ namespace Knotgames.Gameplay.Puzzle.Map
         private IMapPuzzle mapPuzzle;
         private IMapSolutionRoom mapSolutionRoom;
         MeshRenderer meshRenderer;
-        TextMeshProUGUI myText;
         public bool interactable = true;
 
         private void Start()
@@ -51,16 +50,8 @@ namespace Knotgames.Gameplay.Puzzle.Map
         {
             if (!DevBoy.yes)
                 NetUnityEvents.instance.mapPieceEvent.RemoveListener(RecieveData);
-                mapManager.thePuzzle = null;
-                mapManager.theSolution = null;
-        }
-
-        public void Setuptext(string value)
-        {
-            //TEXT POS -0.1144269
-            Vector3 textPos = new Vector3(transform.position.x, transform.position.y, transform.position.z - 0.05f);
-            myText = ObjectPool.instance.SpawnPoolObj("mapText", textPos, Quaternion.identity).GetComponent<TextMeshProUGUI>();
-            myText.text = value;
+            mapManager.thePuzzle = null;
+            mapManager.theSolution = null;
         }
 
         public bool GetValue()
@@ -123,15 +114,9 @@ namespace Knotgames.Gameplay.Puzzle.Map
         public void FlipValues()
         {
             if (screwed)
-            {
                 meshRenderer.enabled = false;
-                myText.gameObject.SetActive(false);
-            }
             else
-            {
                 meshRenderer.enabled = true;
-                myText.gameObject.SetActive(true);
-            }
         }
 
         public void HideInteractInstruction() { }
@@ -165,7 +150,7 @@ namespace Knotgames.Gameplay.Puzzle.Map
 
             public DataToSend(int id)
             {
-                eventName = "MapPiece";
+                eventName = "MapConnection";
                 distributionOption = DistributionOption.serveOthers;
                 myId = id;
                 if (!DevBoy.yes)

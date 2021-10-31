@@ -12,7 +12,7 @@ namespace Knotgames.Gameplay.Puzzle.Map
         private IMapSolution mapSolution;
         [SerializeField] List<bool> currentSolution;
         private IMapPuzzleRoom puzzleRoom;
-        [SerializeField] List<string> connections;
+        [SerializeField] List<bool> connections;
 
         private void Start()
         {
@@ -30,7 +30,7 @@ namespace Knotgames.Gameplay.Puzzle.Map
                 puzzleRoom.SetSolution(currentSolution);
         }
 
-        public bool Solved()
+        public bool CheckSolution()
         {
             if (CheckMySol())
                 Invoke("L8Kill", 1f);
@@ -45,31 +45,14 @@ namespace Knotgames.Gameplay.Puzzle.Map
 
         public bool CheckMySol()
         {
-            int check = 0;
-            Debug.LogError("RAN!");
-            List<string> checker = mapSolution.GetConnectionValues();
-            if (checker.Count <= 0)
+            List<bool> connectionsToCheck = mapSolution.GetConnectionValues();
+            int index = 0;
+            foreach (bool toCheck in connectionsToCheck)
             {
-                Debug.LogError("INCORRECT!");
-                return false;
-            }
-            foreach (string s in checker)
-            {
-                if (!connections.Contains(s))
-                {
-                    Debug.LogError("INCORRECT!");
+                if (toCheck != connections[index])
                     return false;
-                }
-                else
-                    check++;
-
+                index++;
             }
-            if (check != connections.Count)
-            {
-                Debug.LogError("INCORRECT!");
-                return false;
-            }
-            Debug.LogError("CORRECT!");
             return true;
         }
 
@@ -81,7 +64,7 @@ namespace Knotgames.Gameplay.Puzzle.Map
                 obj.GetComponent<IPairPuzzleSetup>().Link(this.gameObject, false);
         }
 
-        public void ResyncSolution(List<string> connections)
+        public void ResyncSolution(List<bool> connections)
         {
             this.connections = connections;
         }

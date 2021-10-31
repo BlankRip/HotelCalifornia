@@ -10,11 +10,17 @@ namespace Knotgames.Gameplay.Puzzle.Map
         [SerializeField] ScriptablePuzzleStatusTracker puzzleTracker;
         [SerializeField] List<bool> solution;
         [SerializeField] List<MapPiece> pieces;
+        [SerializeField] List<MapConnection> connections;
         IMapSolutionRoom solutionRoom;
+        List<bool> conekshuns = new List<bool>();
 
         public void SetUp(IMapSolutionRoom solutionRoom)
         {
             this.solutionRoom = solutionRoom;
+            for (int i = 0; i < pieces.Count; i++)
+            {
+                pieces[i].Setuptext(i.ToString());
+            }
         }
 
         public void SetSolution(List<bool> sol)
@@ -22,42 +28,20 @@ namespace Knotgames.Gameplay.Puzzle.Map
             solution = sol;
             solutionRoom.ResyncSolution(GenerateConnections());
         }
-
-        List<string> conekshunsDebug;
-        List<string> GenerateConnections()
+        List<bool> GenerateConnections()
         {
-            int j = 0;
-            List<string> conekshuns = new List<string>();
-            List<string> pieceIDs = new List<string>();
-            foreach (MapPiece p in pieces)
+            foreach (MapConnection connection in connections)
             {
-                pieceIDs.Add(j.ToString());
-                p.Setuptext(j.ToString());
-                j++;
+                connection.interactable = false;
+                int rand = Random.Range(0, 2);
+                if (rand == 0)
+                    conekshuns.Add(false);
+                else
+                {
+                    conekshuns.Add(true);
+                    connection.TurnOn();
+                }
             }
-
-            List<MapPiece> copy = new List<MapPiece>(pieces);
-            
-            for (int i = 0; i < pieces.Count / 2; i++)
-            {
-                int a = Random.Range(0, pieceIDs.Count);
-                string x = pieceIDs[a];
-                Vector3 pos1 = copy[a].transform.position;
-                MapPiece startpiece = copy[a];
-                x += "-";
-                pieceIDs.RemoveAt(a);
-                copy.RemoveAt(a);
-                a = Random.Range(0, pieceIDs.Count);
-                x += pieceIDs[a];
-                Vector3 pos2 = copy[a].transform.position;
-                pieceIDs.RemoveAt(a);
-                copy.RemoveAt(a);
-                conekshuns.Add(x);
-                startpiece.SetupLR(i);
-                startpiece.lineRenderer.SetPositions(new Vector3[] { pos1, pos2 });
-
-            }
-            conekshunsDebug = conekshuns;
             return conekshuns;
         }
 
@@ -69,7 +53,7 @@ namespace Knotgames.Gameplay.Puzzle.Map
                     return;
             }
 
-            if (solutionRoom.Solved())
+            if (solutionRoom.CheckSolution())
             {
                 puzzleTracker.tracker.OnePuzzleSolved();
                 Debug.Log("Solved");
