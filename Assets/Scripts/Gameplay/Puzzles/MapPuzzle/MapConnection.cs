@@ -38,7 +38,7 @@ namespace Knotgames.Gameplay.Puzzle.Map
             pieceId++;
             dataToSend = new DataToSend(id);
             if (!DevBoy.yes)
-                NetUnityEvents.instance.mapPieceEvent.AddListener(RecieveData);
+                NetUnityEvents.instance.mapConnectionEvent.AddListener(RecieveData);
             if (mapManager.thePuzzle == null)
                 mapManager.thePuzzle = mapPuzzle;
             if (mapManager.theSolution == null)
@@ -49,7 +49,7 @@ namespace Knotgames.Gameplay.Puzzle.Map
         private void OnDestroy()
         {
             if (!DevBoy.yes)
-                NetUnityEvents.instance.mapPieceEvent.RemoveListener(RecieveData);
+                NetUnityEvents.instance.mapConnectionEvent.RemoveListener(RecieveData);
             mapManager.thePuzzle = null;
             mapManager.theSolution = null;
         }

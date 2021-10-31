@@ -79,6 +79,9 @@ namespace Knotgames.Network
                 case "MapPiece":
                     NetUnityEvents.instance.mapPieceEvent.Invoke(dataString);
                     break;
+                case "MapConnection":
+                    NetUnityEvents.instance.mapConnectionEvent.Invoke(dataString);
+                    break;
 
                 case "morseButton":
                     NetUnityEvents.instance.morseButtonEvent.Invoke(dataString);
