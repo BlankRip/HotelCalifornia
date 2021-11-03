@@ -6,7 +6,7 @@ namespace Knotgames.LevelGen {
     {
         IPuzzleActivator GetAndActivePuzzle(List<PuzzleType> myType);
         IPuzzleActivator ActivatePuzzleOfType(PuzzleType puzzleType);
-        List<PuzzleType> GetPuzzleTypes();
+        List<PuzzleType> GetConnectablePuzzleTypes();
         List<RoomType> GetConnectableRoomTypes();
     }
 

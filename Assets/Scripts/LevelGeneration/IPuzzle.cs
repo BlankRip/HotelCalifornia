@@ -5,6 +5,7 @@ using UnityEngine;
 namespace Knotgames.LevelGen {
     public interface IPuzzleActivator 
     {
+        PuzzleType GetConnectableType();
         PuzzleType GetPuzzleType();
         void ActivatePuzzle(Renderer renderer);
         void Link(GameObject obj, bool intiator);

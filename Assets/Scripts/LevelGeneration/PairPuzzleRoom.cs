@@ -9,6 +9,7 @@ namespace Knotgames.LevelGen {
         [SerializeField] List<PuzzleActivator> roomPuzzles;
         [SerializeField] Renderer renderer;
         private List<PuzzleType> puzzleTypes;
+        private List<PuzzleType> connectablePuzzleTypes;
         private List<IPuzzleActivator> myPuzzles;
 
         public IPuzzleActivator GetAndActivePuzzle(List<PuzzleType> myType) {
@@ -36,11 +37,18 @@ namespace Knotgames.LevelGen {
             return null;
         }
 
-        public List<PuzzleType> GetPuzzleTypes() {
+        private List<PuzzleType> GetPuzzleTypes() {
             FillPuzzleInterface();
             FillPuzzleTypes();
 
             return puzzleTypes;
+        }
+
+        public List<PuzzleType> GetConnectablePuzzleTypes() {
+            FillPuzzleInterface();
+            FillConnectablePuzzleTypes();
+
+            return connectablePuzzleTypes;
         }
 
         private void FillPuzzleInterface() {
@@ -56,6 +64,14 @@ namespace Knotgames.LevelGen {
                 puzzleTypes = new List<PuzzleType>();
                 for (int i = 0; i < myPuzzles.Count; i++)
                     puzzleTypes.Add(myPuzzles[i].GetPuzzleType());
+            }
+        }
+
+        private void FillConnectablePuzzleTypes() {
+            if(connectablePuzzleTypes == null || connectablePuzzleTypes.Count == 0) {
+                connectablePuzzleTypes = new List<PuzzleType>();
+                for (int i = 0; i < myPuzzles.Count; i++)
+                    connectablePuzzleTypes.Add(myPuzzles[i].GetConnectableType());
             }
         }
 

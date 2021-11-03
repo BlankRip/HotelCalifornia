@@ -78,8 +78,8 @@ namespace Knotgames.LevelGen {
                             roomList[j].GetTransform().position, roomList[j].GetTransform().rotation, 
                             roomList[j].GetTransform().parent).GetComponent<IPairPuzzleRoom>();
 
-                        IPuzzleActivator activated = spawnedSoulmate.GetAndActivePuzzle(roomInEye.GetPuzzleTypes());
-                        PuzzleType finalType = activated.GetPuzzleType();
+                        IPuzzleActivator activated = spawnedSoulmate.GetAndActivePuzzle(roomInEye.GetConnectablePuzzleTypes());
+                        PuzzleType finalType = activated.GetConnectableType();
 
                         if(!spawnedPairTypes.Contains(finalType)) {
                             IPuzzleActivator secondActivated = roomInEye.ActivatePuzzleOfType(finalType);

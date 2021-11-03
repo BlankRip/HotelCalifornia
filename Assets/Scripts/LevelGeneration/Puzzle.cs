@@ -1,10 +1,12 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 namespace Knotgames.LevelGen {
     [System.Serializable]
     public class PuzzleActivator: IPuzzleActivator
     {
         [SerializeField] PuzzleType puzzleType;
+        [SerializeField] PuzzleType canConnectTo;
         [SerializeField] GameObject activationObject;
         public Material mat;
 
@@ -24,6 +26,10 @@ namespace Knotgames.LevelGen {
 
         public GameObject GetActivatedObject() {
             return activationObject;
+        }
+
+        public PuzzleType GetConnectableType() {
+            return canConnectTo;
         }
     }
 }
