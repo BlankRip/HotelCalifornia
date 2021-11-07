@@ -11,6 +11,7 @@ namespace Knotgames.LevelGen {
         private BuildingStatus backupBuilderData;
         private BuilderData builderData;
         private List<GameObject> availableRoomsObjs;
+        private List<GameObject> availableBackUp;
         private IRoomPlacer roomPlacer;
         Coroutine coroutine;
 
@@ -22,6 +23,7 @@ namespace Knotgames.LevelGen {
 
             availableRoomsObjs = new List<GameObject>();
             builderData.GetAllUsableRooms(currentBuildingData, ref availableRoomsObjs);
+            availableBackUp = new List<GameObject>(availableRoomsObjs);
 
             roomPlacer = new RoomPlacer(builderData, currentBuildingData);
         }
@@ -69,6 +71,7 @@ namespace Knotgames.LevelGen {
         private void RestartRout() {
             StopCoroutine(coroutine);
             //!StopAllCoroutines();
+            availableRoomsObjs = new List<GameObject>(availableBackUp);
             currentBuildingData.retries++;
             if(currentBuildingData.retries >= builderData.maxRetries) {
                 builderData.OnFaile();

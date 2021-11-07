@@ -19,6 +19,8 @@ namespace Knotgames.LevelGen {
         }
 
         public bool PlaceRoom(ref List<GameObject> availableRooms) {
+            if(availableRooms.Count == 0)
+                Debug.Log("TF");
             int rand = Random.Range(0, availableRooms.Count - 1); //-1 as unity is just a fucking bitch
 
             GameObject spawned = GameObject.Instantiate(availableRooms[rand], Vector3.zero, Quaternion.identity);

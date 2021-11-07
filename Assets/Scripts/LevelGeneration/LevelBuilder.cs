@@ -18,9 +18,10 @@ namespace Knotgames.LevelGen {
             builder.levelBuilder = this;
         }
 
-        // private void Start() {
-        //     StartLevelGen(generateSeed);
-        // }
+        private void Update() {
+            if(Input.GetKeyDown(KeyCode.U))
+                StartLevelGen(generateSeed);
+        }
 
         public void RestartingGeneration(bool seedStatus) {
             if(!seedStatus)
@@ -63,18 +64,18 @@ namespace Knotgames.LevelGen {
             }
             Debug.Log("<color=yellow>Base Built</color>");
 
-            PuzzleBuilder puzzleBuild = gameObject.AddComponent<PuzzleBuilder>();
-            puzzleBuild.Initilize(ref builderData);
-            IBuilder puzzleBuilder = puzzleBuild;
-            puzzleBuild.StartBuilder();
-            yield return interval;
-            while(puzzleBuild.GetBuilderStatus()) {
-                //?Debug.Log("<color=cyan>Puzzle Building</color>");
-                yield return interval;
-            }
-            Debug.Log("<color=yellow>Puzzles Built</color>");
-            Debug.Log("<color=green>Level Built</color>");
-            seeder.levelSeed.SeedSuccesful();
+            // PuzzleBuilder puzzleBuild = gameObject.AddComponent<PuzzleBuilder>();
+            // puzzleBuild.Initilize(ref builderData);
+            // IBuilder puzzleBuilder = puzzleBuild;
+            // puzzleBuild.StartBuilder();
+            // yield return interval;
+            // while(puzzleBuild.GetBuilderStatus()) {
+            //     //?Debug.Log("<color=cyan>Puzzle Building</color>");
+            //     yield return interval;
+            // }
+            // Debug.Log("<color=yellow>Puzzles Built</color>");
+            // Debug.Log("<color=green>Level Built</color>");
+            // seeder.levelSeed.SeedSuccesful();
 
             yield return longInterval;
             Destroy(this);
