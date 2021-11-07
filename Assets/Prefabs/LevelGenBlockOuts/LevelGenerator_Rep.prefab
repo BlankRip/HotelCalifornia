@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &4138456128819839761
+--- !u!1 &2141363058537400765
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,8 +8,8 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4138456128819839767}
-  - component: {fileID: 4138456128819839766}
+  - component: {fileID: 2141363058537400763}
+  - component: {fileID: 2141363058537400762}
   m_Layer: 0
   m_Name: LevelGenerator_Rep
   m_TagString: Untagged
@@ -17,13 +17,13 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4138456128819839767
+--- !u!4 &2141363058537400763
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4138456128819839761}
+  m_GameObject: {fileID: 2141363058537400765}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 27.536077, y: 42.990547, z: 28.994122}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -31,13 +31,13 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4138456128819839766
+--- !u!114 &2141363058537400762
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4138456128819839761}
+  m_GameObject: {fileID: 2141363058537400765}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2f1fe9d883cc7d74ca7f2f50f55dc054, type: 3}
@@ -47,7 +47,7 @@ MonoBehaviour:
   seeder: {fileID: 11400000, guid: d1861e6a6ee7f0b4186bc669d976f901, type: 2}
   builder: {fileID: 11400000, guid: 497f7d57afbaf4240a6ee0f9e7f48cd9, type: 2}
   builderData:
-    parent: {fileID: 4138456128819839767}
+    parent: {fileID: 2141363058537400763}
     levelGen: {fileID: 2141363058537400765, guid: 5db3acc37ab8c6d40970575e818d65a2, type: 3}
     startRoomObj: {fileID: 6278641875592596580, guid: de2de7e8bdf93b644b705bd9a8e0c719, type: 3}
     roomLayerMask:
@@ -56,7 +56,12 @@ MonoBehaviour:
     corridors:
     - {fileID: 8510114722464634172, guid: eeba0e1ca19c67b48a71f19b44b21981, type: 3}
     - {fileID: 4601381076472895060, guid: 629f72d75b1b8a545b50e74c5eb4500c, type: 3}
-    - {fileID: 4601381076472895060, guid: 629f72d75b1b8a545b50e74c5eb4500c, type: 3}
+    - {fileID: 7757786744341205785, guid: 969c8e67790bfbc4f863f969c7418166, type: 3}
+    - {fileID: 3244340482950529172, guid: d06671481d154be49a1aa89427fa39df, type: 3}
+    - {fileID: 2568625767746556787, guid: 3cb30fcbc0b1e98489ba30ecc4c92587, type: 3}
+    - {fileID: 947634587874417011, guid: 7182ad3f8b8f7864492260a0f8662ee2, type: 3}
+    - {fileID: 2333065310235378343, guid: bd74548e3d671394abc84f9ce4ec7997, type: 3}
+    - {fileID: 947634587874417011, guid: 7182ad3f8b8f7864492260a0f8662ee2, type: 3}
     allRoomObjs:
     - {fileID: 6278641875592596580, guid: 60a5f6f064fe030459cec8eeab41a75f, type: 3}
     - {fileID: 6278641875592596580, guid: ebefa4baac938ef448cdbc04144a7286, type: 3}
