@@ -1,7 +1,17 @@
 using System.Collections.Generic;
 
 namespace Knotgames.LevelGen {
-    public enum PuzzleType { A, B, C, D, E, F, Nada };
+    public enum PuzzleType {
+        ReplicateA, ReplicateB, ReplicateC,
+        MazeTV, MazeEntry, 
+        LightsLever, 
+        MapLines, MapDots, 
+        RadioFrequency, RadioInputs,
+        XOInteractable, XOAnswer,
+        
+        ChemicalRoom, QuizeRoom, MoresRoom,
+        Nada
+    };
     public interface IPairPuzzleRoom
     {
         IPuzzleActivator GetAndActivePuzzle(List<PuzzleType> myType);
