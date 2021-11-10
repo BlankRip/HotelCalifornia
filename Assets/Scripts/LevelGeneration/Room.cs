@@ -7,7 +7,7 @@ namespace Knotgames.LevelGen {
         [SerializeField] RoomType roomType;
         [SerializeField] List<Transform> doorways;
         [SerializeField] List<Collider> colliders;
-        [SerializeField] GameObject myPuzzleVariant;
+        [SerializeField] GameObject myPairPuzzleVariant;
         [SerializeField] GameObject mySinglePuzzleVariant;
         private List<Bounds> roomBounds;
 
@@ -34,7 +34,7 @@ namespace Knotgames.LevelGen {
         }
 
         public GameObject GetPuzzleVarient() {
-            return myPuzzleVariant;
+            return myPairPuzzleVariant;
         }
 
         public GameObject GetSingleVarient() {

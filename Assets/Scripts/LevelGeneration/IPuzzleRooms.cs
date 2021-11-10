@@ -2,7 +2,8 @@ using System.Collections.Generic;
 
 namespace Knotgames.LevelGen {
     public enum PuzzleType {
-        ReplicateA, ReplicateB, ReplicateC,
+        ReplicatePuzzleA, ReplicatePuzzleB, ReplicatePuzzleC,
+        ReplicateSolutionA, ReplicateSolutionB, ReplicateSolutionC,
         MazeTV, MazeEntry, 
         LightsLever, 
         MapLines, MapDots, 
