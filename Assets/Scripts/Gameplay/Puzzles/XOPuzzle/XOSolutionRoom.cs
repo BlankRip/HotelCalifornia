@@ -20,7 +20,8 @@ namespace Knotgames.Gameplay.Puzzle.XO {
             solutionBoard = GameObject.Instantiate(solutionBoardObj).GetComponent<ISolutionBoard>();
             solutionBoard.SetUpBoard();
             SetUpSolution();
-            eventCollection.gameStart.AddListener(OnStart);
+            if(!DevBoy.yes)
+                eventCollection.gameStart.AddListener(OnStart);
             if(DevBoy.yes)
                 timerOn = true;
         }
@@ -30,7 +31,8 @@ namespace Knotgames.Gameplay.Puzzle.XO {
         }
 
         private void OnDestroy() {
-            eventCollection.gameStart.RemoveListener(OnStart);
+            if(!DevBoy.yes)
+                eventCollection.gameStart.RemoveListener(OnStart);
         }
 
         private void Update() {

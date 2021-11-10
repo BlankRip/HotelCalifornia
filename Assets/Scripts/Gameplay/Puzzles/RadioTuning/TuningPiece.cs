@@ -24,10 +24,13 @@ namespace Knotgames.Gameplay.Puzzle.Radio
         private int id;
         private DataToSend dataToSend;
         private string myVal;
-
-        private void Start()
+        private void Awake()
         {
             SetupText();
+        }
+        
+        private void Start()
+        {
             originalRot = transform.rotation;
             tuner = GetComponentInParent<IRadioTuner>();
             screwed = false;

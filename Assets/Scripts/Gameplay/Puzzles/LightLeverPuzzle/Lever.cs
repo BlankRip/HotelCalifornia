@@ -25,6 +25,7 @@ namespace Knotgames.Gameplay.Puzzle.LeverLight {
         private float timer;
         private List<LightColor> interfereColors;
         private int colorIndex;
+        private Animator animator;
 
         private int myId;
         private DataToSend pulledData;
@@ -35,6 +36,7 @@ namespace Knotgames.Gameplay.Puzzle.LeverLight {
             originalColor = myColor;
             myText = ObjectPool.instance.SpawnPoolObj(textPoolTag, textPos.position, textPos.rotation).GetComponent<TextMeshProUGUI>();
             myText.text = myColor.ToString();
+            animator = GetComponent<Animator>();
 
             interfereColors = new List<LightColor>(lightLever.manager.GetAllAvailableColors());
             interfereColors.Remove(originalColor);
@@ -75,12 +77,23 @@ namespace Knotgames.Gameplay.Puzzle.LeverLight {
             if(!DevBoy.yes)
                 SendPulledData();
         }
-
+        bool canTrigger = true;
         private void ActivateLights() {
+            if(canTrigger)
+            {
+                canTrigger = false;
+                Invoke("ResetCanTrigger", 5);
+                animator.SetTrigger("open");
+            }
             if(myLights == null)
                 myLights = lightLever.manager.GetLightsOfColor(myColor);
             foreach(ILight light in myLights)
                 light.ActivateLight();
+        }
+
+        void ResetCanTrigger()
+        {
+            canTrigger = true;
         }
 
         private void Update() {
