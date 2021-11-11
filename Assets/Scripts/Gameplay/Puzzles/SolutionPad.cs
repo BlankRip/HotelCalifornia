@@ -16,7 +16,7 @@ namespace Knotgames.Gameplay.Puzzle {
         // }
 
         public void UpdateText(string textValue) {
-            myText = ObjectPool.instance.SpawnPoolObj("ChemPadText", targetPos.position, targetPos.rotation).GetComponent<TextMeshProUGUI>();
+            myText = ObjectPool.instance.SpawnPoolObj("PadText", targetPos.position, targetPos.rotation).GetComponent<TextMeshProUGUI>();
             myText.text = textValue;
 
             this.gameObject.SetActive(true);
