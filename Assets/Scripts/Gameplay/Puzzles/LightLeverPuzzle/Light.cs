@@ -16,12 +16,14 @@ namespace Knotgames.Gameplay.Puzzle.LeverLight {
         private bool timerOn;
         private int lastIndex;
         private int twistIndex;
+        GameObject myEffect;
 
 
         private void Start() {
             myColour = lightLever.manager.GetAvailableLightColor(this);
             myLightRenderer = myLight.GetComponent<Renderer>();
-            myLightRenderer.material = matDataBase.GetMaterial(myColour);
+            myEffect = GameObject.Instantiate(matDataBase.GetMaterial(myColour), myLight.transform.position, Quaternion.identity);
+            myEffect.SetActive(false);
             SetUpDilusionStuff();
         }
 
@@ -37,7 +39,7 @@ namespace Knotgames.Gameplay.Puzzle.LeverLight {
                 timer += Time.deltaTime;
                 if(timer >= lightsOnTime) {
                     timerOn = false;
-                    myLight.SetActive(false);
+                    myEffect.SetActive(false);
                 }
             }
         }
@@ -51,7 +53,9 @@ namespace Knotgames.Gameplay.Puzzle.LeverLight {
             CycleTwistedColor();
             if(twistIndex == (int)myColour)
                 CycleTwistedColor();
-            myLightRenderer.material = matDataBase.GetMaterial((LightColor)twistIndex);
+            Destroy(myEffect);
+            myEffect = GameObject.Instantiate(matDataBase.GetMaterial((LightColor)twistIndex), myLight.transform.position, Quaternion.identity);
+            myEffect.SetActive(false);
         }
 
         private void CycleTwistedColor() {
@@ -62,13 +66,15 @@ namespace Knotgames.Gameplay.Puzzle.LeverLight {
         }
 
         private void FixVision() {
-            myLightRenderer.material = matDataBase.GetMaterial(myColour);
+            Destroy(myEffect);
+            myEffect = GameObject.Instantiate(matDataBase.GetMaterial(myColour), myLight.transform.position, Quaternion.identity);
+            myEffect.SetActive(false);
         }
 
         public void ActivateLight() {
             timer = 0;
             timerOn = true;
-            myLight.SetActive(true);
+            myEffect.SetActive(true);
         }
     }
 }

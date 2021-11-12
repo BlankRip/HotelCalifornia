@@ -7,18 +7,18 @@ namespace Knotgames.Gameplay.Puzzle.LeverLight {
     public class ScriptableLightMatDataBase : ScriptableObject
     {
         [SerializeField] List<LightMatData> lightMats;
-        private Dictionary<LightColor, Material> dictionary;
+        private Dictionary<LightColor, GameObject> dictionary;
 
-        public Material GetMaterial(LightColor type) {
+        public GameObject GetMaterial(LightColor type) {
             SetUpNecessaryData();
             return dictionary[type];
         }
 
         private void SetUpNecessaryData() {
             if(dictionary == null) {
-                dictionary = new Dictionary<LightColor, Material>();
+                dictionary = new Dictionary<LightColor, GameObject>();
                 foreach (LightMatData matData in lightMats)
-                    dictionary.Add(matData.type, matData.material);
+                    dictionary.Add(matData.type, matData.lightEffectPrefab);
             }
         }
 
@@ -26,6 +26,7 @@ namespace Knotgames.Gameplay.Puzzle.LeverLight {
         private class LightMatData {
             public LightColor type;
             public Material material;
+            public GameObject lightEffectPrefab;
         }
     }
 
