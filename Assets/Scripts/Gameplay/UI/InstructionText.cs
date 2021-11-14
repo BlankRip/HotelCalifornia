@@ -8,6 +8,7 @@ namespace Knotgames.Gameplay.UI {
     {
         public static InstructionText instance;
         private TextMeshProUGUI theText;
+        private Coroutine coroutine;
 
         private void Awake() {
             if(instance == null) {
