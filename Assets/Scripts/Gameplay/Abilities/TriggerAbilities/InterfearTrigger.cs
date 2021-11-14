@@ -8,7 +8,7 @@ namespace Knotgames.Gameplay.Abilities {
     {
         private IInterfearRay myRay;
         private IAbilityUi myUi;
-        private int usesLeft = 5;
+        private int usesLeft = 1;
 
         private void Start() {
             myRay = GetComponent<IInterfearRay>();
@@ -21,7 +21,7 @@ namespace Knotgames.Gameplay.Abilities {
                 if(myRay.GetInterfear().CanInterfear())
                     return true;
             }
-            
+            InstructionText.instance.ShowHideInstruction("Could not use Ability", 3);
             return false;
         }
 

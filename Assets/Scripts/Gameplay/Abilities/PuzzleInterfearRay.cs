@@ -17,6 +17,7 @@ namespace Knotgames.Gameplay.Abilities {
         private GameObject hitObj;
         private IInterfear itemInView;
         private TheRay ray;
+        private bool showInstruction;
 
         private void Awake() {
             if(netObj == null)
@@ -28,7 +29,7 @@ namespace Knotgames.Gameplay.Abilities {
 
             } else
                 Destroy(this);
-            
+            showInstruction = true;
             ray = new TheRay(rayCaster, rayLength, interfearableTags, validLayers, false, Color.blue);
         }
 
@@ -39,11 +40,14 @@ namespace Knotgames.Gameplay.Abilities {
                 if(itemInView == null) {
                     InstructionText.instance.HideInstruction();
                     canInterfear = false;
-                } else
+                } else if(showInstruction) {
                     InstructionText.instance.ShowInstruction("Press \'E\' To Try Interfere");
+                    showInstruction = false;
+                }
             }
             else if(itemInView != null) {
                 InstructionText.instance.HideInstruction();
+                showInstruction = true;
                 itemInView = null;
             }
         }

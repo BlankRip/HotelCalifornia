@@ -95,8 +95,10 @@ namespace Knotgames.Gameplay.Abilities {
         public bool CanUse() {
             if(usesLeft != 0 && !placing)
                 return true;
-            else
+            else {
+                InstructionText.instance.ShowHideInstruction("Could not use Ability", 3);
                 return false;
+            }
         }
 
         public void UseAbility() {
