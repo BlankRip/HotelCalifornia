@@ -30,7 +30,7 @@ namespace Knotgames.Gameplay.Abilities {
             if(usesLeft != 0 && !effectTrigger.IsUnderEffect())
                 return true;
             else {
-                Debug.LogError("Cound not use Ability");
+                InstructionText.instance.ShowHideInstruction("Could not use Ability", 3);
                 return false;
             }
         }

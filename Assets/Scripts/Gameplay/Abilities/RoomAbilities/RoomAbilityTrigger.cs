@@ -34,7 +34,7 @@ namespace Knotgames.Gameplay.Abilities {
             if(usesLeft != 0 && currentRoom != null && currentRoom.CanChangeState())
                 return true;
             else {
-                Debug.LogError("Could not activate");
+                InstructionText.instance.ShowHideInstruction("Could not use Ability", 3);
                 return false;
             }
         }

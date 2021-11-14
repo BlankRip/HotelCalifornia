@@ -18,12 +18,26 @@ namespace Knotgames.Gameplay.UI {
             }
         }
         public void ShowInstruction(string instruction) {
+            if(coroutine != null) {
+                StopCoroutine(coroutine);
+                coroutine = null;
+            }
             theText.text = instruction;
             this.gameObject.SetActive(true);
         }
 
         public void HideInstruction() {
             this.gameObject.SetActive(false);
+        }
+
+        public void ShowHideInstruction(string instruction, float turnOffTime) {
+            ShowInstruction(instruction);
+            coroutine = StartCoroutine(HideAfter(turnOffTime));
+        }
+
+        private IEnumerator HideAfter(float time) {
+            yield return new WaitForSeconds(time);
+            HideInstruction();
         }
     }
 }
