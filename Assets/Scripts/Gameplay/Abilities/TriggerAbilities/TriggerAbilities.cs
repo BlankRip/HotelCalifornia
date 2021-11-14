@@ -47,11 +47,11 @@ namespace Knotgames.Gameplay.Abilities
                 if(!triggers[0].IsUnderEffect())
                     return true;
                 else {
-                    Debug.LogError("Could not activate");
+                    InstructionText.instance.ShowHideInstruction("Could not use Ability", 3);
                     return false;
                 }
             } else {
-                Debug.LogError("Could not activate");
+                InstructionText.instance.ShowHideInstruction("Could not use Ability", 3);
                 return false;
             }
         }
