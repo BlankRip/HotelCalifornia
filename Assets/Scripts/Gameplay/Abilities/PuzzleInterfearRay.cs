@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Knotgames.Network;
+using Knotgames.Gameplay.UI;
 
 namespace Knotgames.Gameplay.Abilities {
     public class PuzzleInterfearRay : MonoBehaviour, IInterfearRay
@@ -35,11 +36,16 @@ namespace Knotgames.Gameplay.Abilities {
             ray.RayResults(ref canInterfear, ref hitObj, false);
             if(hitObj != null) {
                 itemInView = hitObj.GetComponent<IInterfear>();
-                if(itemInView == null)
+                if(itemInView == null) {
+                    InstructionText.instance.HideInstruction();
                     canInterfear = false;
+                } else
+                    InstructionText.instance.ShowInstruction("Press \'E\' To Try Interfere");
             }
-            else if(itemInView != null)
+            else if(itemInView != null) {
+                InstructionText.instance.HideInstruction();
                 itemInView = null;
+            }
         }
 
         public IInterfear GetInterfear() {
