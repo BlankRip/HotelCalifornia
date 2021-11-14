@@ -43,15 +43,15 @@ namespace Knotgames.Gameplay {
                 rotX -= mouseY;
                 rotX = Mathf.Clamp(rotX, maxDownAngle, maxUpAngle);
                 rotY += mouseX;
-            }
 
-            if(initilized) {
-                transform.localRotation = Quaternion.Euler(rotX, rotY, rotZ);
-                transform.position = cameraPosition.position;
-                if(ghost)
-                    player.rotation = transform.rotation;
-                else
-                    player.Rotate(Vector3.up * mouseX);
+                if(initilized) {
+                    transform.localRotation = Quaternion.Euler(rotX, rotY, rotZ);
+                    transform.position = cameraPosition.position;
+                    if(ghost)
+                        player.rotation = transform.rotation;
+                    else
+                        player.Rotate(Vector3.up * mouseX);
+                }
             }
         }
 
@@ -71,6 +71,10 @@ namespace Knotgames.Gameplay {
 
         public void Lock(bool lockState) {
             locked = lockState;
+        }
+
+        public Transform GetTransform() {
+            return transform;
         }
     }
 }

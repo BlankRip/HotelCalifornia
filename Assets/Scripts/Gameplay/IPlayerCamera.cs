@@ -7,5 +7,6 @@ namespace Knotgames.Gameplay {
     {
         void Initilize(Transform player, Transform camPos, bool ghost);
         void Lock(bool lockState);
+        Transform GetTransform();
     }
 }
