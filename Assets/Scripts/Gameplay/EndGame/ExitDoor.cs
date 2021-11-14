@@ -25,11 +25,14 @@ namespace Knotgames.Gameplay {
             puzzleStatus.tracker = this;
         }
 
+        //TODO Remove this update for final build
         private void Update() {
+            #if UNITY_EDITOR
             if(Input.GetKeyDown(KeyCode.Y))
                 OnePuzzleSolved();
             if(Input.GetKeyDown(KeyCode.T))
                 playersExited++;
+            #endif
         }
 
         public void OnePuzzleSolved() {
