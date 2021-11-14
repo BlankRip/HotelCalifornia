@@ -5,9 +5,10 @@ Shader "Custom/CustomStandardGeneral"
         //_LightShadow ("Light Shadow", 2D) = "white" {}
         _Color ("Color", Color) = (1,1,1,1)
         _MainTex ("Albedo (RGB)", 2D) = "white" {}
+        _EmissionTex ("Emssion (RGB)", 2D) = "black" {}
         _BumpMap ("Bumpmap", 2D) = "bump" {}
-        _RimColor ("Rim Color", Color) = (0.26,0.19,0.16,0.0)
-        _RimPower ("Rim Power", Range(0.5,8.0)) = 3.0
+     //   _RimColor ("Rim Color", Color) = (0.26,0.19,0.16,0.0)
+        //_RimPower ("Rim Power", Range(0.5,8.0)) = 3.0
         _Glosiness ("Glosiness", Range(1,30)) = 2.0
         _GlossPower ("Gloss Power", Range(0,10)) = 0.3
     }
@@ -23,11 +24,12 @@ Shader "Custom/CustomStandardGeneral"
         half _Glossiness;
         half _Metallic;
         fixed4 _Color;
-        fixed4 _RimColor;
-        fixed _RimPower;
+        uniform fixed4 _RimColor;
+        uniform fixed _RimPower;
+        //fixed _RimPower;
         fixed _Glosiness;
         fixed _GlossPower;
-        uniform sampler2D _LightShadow;
+        uniform sampler2D _LightShadow, _EmissionTex;
 
         half4 LightingSimpleLambert (SurfaceOutput s, half3 lightDir, half atten) {
             fixed3 nLightDir = normalize(lightDir);
@@ -76,7 +78,7 @@ Shader "Custom/CustomStandardGeneral"
             o.Albedo = c.rgb;
             o.Normal = UnpackNormal (tex2D (_BumpMap, IN.uv_BumpMap));
             half rim = 1.0 - saturate(dot (normalize(IN.viewDir), o.Normal));
-            o.Emission = _RimColor.rgb * pow (rim, _RimPower);
+            o.Emission = _RimColor.rgb * pow (rim, _RimPower) + tex2D(_EmissionTex, IN.uv_MainTex) * 1.3;
             o.Alpha = c.a;
         }
         ENDCG

@@ -18,6 +18,10 @@ namespace Knotgames.Shaders
         [SerializeField] [Range(0, 20)] float charSurfaceGlossPower;
         [SerializeField] [Range(0, 3)] float charSurfaceColorBoost;
 
+        [Header("General Surface Settings")]
+        [SerializeField] Color generalRimColor;
+        [SerializeField] [Range(0, 20)] float generalRimEffect;
+
         void Start()
         {
 
@@ -32,7 +36,10 @@ namespace Knotgames.Shaders
             Shader.SetGlobalFloat("_CharGlossPower", charSurfaceGlossPower);
             Shader.SetGlobalFloat("_CharColorBoost", charSurfaceColorBoost);
             Shader.SetGlobalColor("_CharEmissionColor", charEmissionColor);
-            
+
+            Shader.SetGlobalColor("_RimColor", generalRimColor);
+            Shader.SetGlobalFloat("_RimPower", generalRimEffect);
+
         }
     }
 }
