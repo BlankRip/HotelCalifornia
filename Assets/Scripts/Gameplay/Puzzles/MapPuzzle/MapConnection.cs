@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Knotgames.Network;
 using UnityEngine;
 using TMPro;
+using Knotgames.Gameplay.UI;
 
 namespace Knotgames.Gameplay.Puzzle.Map
 {
@@ -119,9 +120,14 @@ namespace Knotgames.Gameplay.Puzzle.Map
                 meshRenderer.enabled = true;
         }
 
-        public void HideInteractInstruction() { }
+        public void HideInteractInstruction() {
+            InstructionText.instance.HideInstruction();
+        }
 
-        public void ShowInteractInstruction() { }
+        public void ShowInteractInstruction() {
+            if(interactable)
+                InstructionText.instance.ShowInstruction("Press \'LMB\' To Toggle Connection");
+        }
 
         private void SendData()
         {

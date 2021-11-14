@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Knotgames.Network;
+using Knotgames.Gameplay.UI;
 
 namespace Knotgames.Gameplay.Puzzle.ChemicalRoom {
     public class PortionObj : MonoBehaviour, IPortion, IInteractable
@@ -135,9 +136,14 @@ namespace Knotgames.Gameplay.Puzzle.ChemicalRoom {
             }
         }
 
-        public void HideInteractInstruction() {}
+        public void HideInteractInstruction() {
+            InstructionText.instance.HideInstruction();
+        }
 
-        public void ShowInteractInstruction() {}
+        public void ShowInteractInstruction() {
+            if(!inUse)
+                InstructionText.instance.ShowInstruction("Press \'LMB\' To Interact With Potion");
+        }
 
         public void Interact()
         {

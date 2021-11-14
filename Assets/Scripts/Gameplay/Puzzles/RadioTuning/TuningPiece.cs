@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using Knotgames.Network;
+using Knotgames.Gameplay.UI;
 
 namespace Knotgames.Gameplay.Puzzle.Radio
 {
@@ -196,9 +197,13 @@ namespace Knotgames.Gameplay.Puzzle.Radio
             text.text = myVal;
         }
 
-        public void ShowInteractInstruction() { }
+        public void ShowInteractInstruction() {
+            InstructionText.instance.ShowInstruction("Press \'LMB\' To Interact");
+        }
 
-        public void HideInteractInstruction() { }
+        public void HideInteractInstruction() {
+            InstructionText.instance.HideInstruction();
+        }
 
         private class ExtractionClass
         {

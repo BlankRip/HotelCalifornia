@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using Knotgames.Network;
+using Knotgames.Gameplay.UI;
 
 namespace Knotgames.Gameplay.Puzzle.XO {
     public class BoardPiece : MonoBehaviour, IInteractable
@@ -113,9 +114,11 @@ namespace Knotgames.Gameplay.Puzzle.XO {
         }
 
         public void ShowInteractInstruction() {
+            InstructionText.instance.ShowInstruction("Press \'LMB\' To Swap Value");
         }
 
         public void HideInteractInstruction() {
+            InstructionText.instance.HideInstruction();
         }
 
         private class ExtractionClass {

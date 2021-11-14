@@ -37,6 +37,9 @@ namespace Knotgames.Gameplay {
                         hitObject = hitInfo.collider.gameObject;
                         availableStatus = true;
                     }
+                } else {
+                    hitObject = null;
+                    availableStatus = false;
                 }
                 if(debugRay)
                     Debug.DrawRay(camera.transform.position, camera.transform.forward * rayLength, rayColor);

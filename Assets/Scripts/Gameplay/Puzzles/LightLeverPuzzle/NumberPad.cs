@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using Knotgames.Network;
+using Knotgames.Gameplay.UI;
 
 namespace Knotgames.Gameplay.Puzzle.LeverLight {
     public class NumberPad : MonoBehaviour, IInteractable
@@ -66,11 +67,12 @@ namespace Knotgames.Gameplay.Puzzle.LeverLight {
         }
 
         public void ShowInteractInstruction() {
-
+            if(!solved)
+                InstructionText.instance.ShowInstruction("Press \'LMB\' To Interact");
         }
 
         public void HideInteractInstruction() {
-
+            InstructionText.instance.HideInstruction();
         }
 
         public void Interact() {

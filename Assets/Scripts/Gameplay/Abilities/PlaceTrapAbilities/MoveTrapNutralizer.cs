@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Knotgames.Gameplay.UI;
 using UnityEngine;
 
 namespace Knotgames.Gameplay.Abilities {
@@ -22,12 +23,12 @@ namespace Knotgames.Gameplay.Abilities {
         }
 
         public void ShowInteractInstruction() {
-            Debug.Log("Interact with left click to disable trap");
+            InstructionText.instance.ShowInstruction("Press \'LMB\' To Nutralize Trap");
         }
 
         public void HideInteractInstruction()
         {
-            Debug.Log("Hide instruction here");
+            InstructionText.instance.HideInstruction();
         }
 
         public void Cancel() {

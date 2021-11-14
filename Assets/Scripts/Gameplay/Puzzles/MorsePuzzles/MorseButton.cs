@@ -4,6 +4,7 @@ using Knotgames.Audio;
 using UnityEngine;
 using TMPro;
 using Knotgames.Network;
+using Knotgames.Gameplay.UI;
 
 namespace Knotgames.Gameplay.Puzzle.Morse
 {
@@ -74,8 +75,12 @@ namespace Knotgames.Gameplay.Puzzle.Morse
             panel.OpenPanel(this);
         }
 
-        public void ShowInteractInstruction() {}
-        public void HideInteractInstruction() {}
+        public void ShowInteractInstruction() {
+            InstructionText.instance.ShowInstruction("Press \'LMB\' To Interact");
+        }
+        public void HideInteractInstruction() {
+            InstructionText.instance.HideInstruction();
+        }
 
 
         private class ExtractionClass {

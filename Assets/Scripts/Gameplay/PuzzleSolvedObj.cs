@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Knotgames.Network;
+using Knotgames.Gameplay.UI;
 using UnityEngine;
 
 namespace Knotgames.Gameplay {
@@ -41,11 +42,11 @@ namespace Knotgames.Gameplay {
         }
 
         public void HideInteractInstruction() {
-
+            InstructionText.instance.HideInstruction();
         }
 
         public void ShowInteractInstruction() {
-            Debug.Log("InteractNow");
+            InstructionText.instance.ShowInstruction("Press \'LMB\' To Interact");
         }
 
         public void SendData()

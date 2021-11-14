@@ -34,10 +34,13 @@ namespace Knotgames.Gameplay {
 
         private void Update() {
             ray.RayResults(ref canInteract, ref hitObj, true);
-            if(hitObj != null)
+            if(hitObj != null) {
                 interactInView = hitObj.GetComponent<IInteractable>();
-            else if(interactInView != null)
+                interactInView.ShowInteractInstruction();
+            } else if(interactInView != null) {
+                interactInView.HideInteractInstruction();
                 interactInView = null;
+            }
         }
 
         public bool CanInteract() {

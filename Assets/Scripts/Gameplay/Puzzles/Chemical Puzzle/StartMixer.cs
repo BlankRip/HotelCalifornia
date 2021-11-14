@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Knotgames.Gameplay.Abilities;
 using Knotgames.Network;
+using Knotgames.Gameplay.UI;
 
 namespace Knotgames.Gameplay.Puzzle.ChemicalRoom {
     public class StartMixer : MonoBehaviour, IInteractable, IInterfear
@@ -57,11 +58,12 @@ namespace Knotgames.Gameplay.Puzzle.ChemicalRoom {
         }
 
         public void HideInteractInstruction() {
-
+            InstructionText.instance.HideInstruction();
         }
 
         public void ShowInteractInstruction() {
-
+            if(useable)
+                InstructionText.instance.ShowInstruction("Press \'LMB\' To Start Mixer");
         }
 
         public void Interfear() {

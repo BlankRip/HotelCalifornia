@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Knotgames.Network;
+using Knotgames.Gameplay.UI;
 
 namespace Knotgames.Gameplay.Puzzle.QuickDelivery {
     public class DeliveryItem : MonoBehaviour, IInteractable
@@ -82,9 +83,14 @@ namespace Knotgames.Gameplay.Puzzle.QuickDelivery {
             transform.SetParent(null);
         }
 
-        public void ShowInteractInstruction() { }
+        public void ShowInteractInstruction() {
+            if(!inUse)
+                InstructionText.instance.ShowInstruction("Press \'LMB\' To Interact With Delivery Item");
+        }
 
-        public void HideInteractInstruction() { }
+        public void HideInteractInstruction() {
+            InstructionText.instance.HideInstruction();
+        }
 
         private class ExtractionClass {
             public int myId;

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Knotgames.Network;
+using Knotgames.Gameplay.UI;
 
 namespace Knotgames.Gameplay.Puzzle.Riddler {
     public class RiddleSolutionPad : MonoBehaviour, IInteractable
@@ -77,9 +78,14 @@ namespace Knotgames.Gameplay.Puzzle.Riddler {
             }
         }
 
-        public void ShowInteractInstruction() { }
+        public void ShowInteractInstruction() {
+            if(!solved && !inUse)
+                InstructionText.instance.ShowInstruction("Press \'LMB\' To Interact");
+        }
 
-        public void HideInteractInstruction() { }
+        public void HideInteractInstruction() {
+            InstructionText.instance.HideInstruction();
+        }
 
         private class ExtractionClass {
             public int myId;
