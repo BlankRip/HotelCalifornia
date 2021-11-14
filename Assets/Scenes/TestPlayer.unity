@@ -22989,6 +22989,7 @@ MonoBehaviour:
   camPosition: {fileID: 0}
   solvedLights: []
   widthAdjusterObj: {fileID: 0}
+  exitTrigger: {fileID: 0}
 --- !u!4 &1534955407
 Transform:
   m_ObjectHideFlags: 0
@@ -36680,6 +36681,7 @@ GameObject:
   - component: {fileID: 7524064118341110687}
   - component: {fileID: 7627771167742606949}
   - component: {fileID: 7583471704843864940}
+  - component: {fileID: 7583471704843864941}
   m_Layer: 0
   m_Name: ExitDoor
   m_TagString: Untagged
@@ -36708,6 +36710,20 @@ MonoBehaviour:
   - {fileID: 862349697}
   - {fileID: 225795941}
   widthAdjusterObj: {fileID: 1255358295}
+  exitTrigger: {fileID: 7583471704843864941}
+--- !u!65 &7583471704843864941
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7583471704843864939}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Size: {x: 2.0669775, y: 2.592854, z: 0.7776451}
+  m_Center: {x: -0.000528574, y: 1.2856362, z: 0.65}
 --- !u!33 &7584325070462951037
 MeshFilter:
   m_ObjectHideFlags: 0

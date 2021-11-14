@@ -11,10 +11,13 @@ namespace Knotgames.Gameplay {
         [SerializeField] Transform camPosition;
         [SerializeField] List<GameObject> solvedLights;
         [SerializeField] GameObject widthAdjusterObj;
+        [SerializeField] Collider exitTrigger;
         private int solvesNeeded = 3;
         private int puzzlesSolved;
         private Vector3 returnPos;
         private Quaternion returnRot;
+        private int playersExited;
+        private int playerNeededToEndGame = 2;
 
         private void Awake() {
             puzzlesSolved = 0;
@@ -24,6 +27,8 @@ namespace Knotgames.Gameplay {
         private void Update() {
             if(Input.GetKeyDown(KeyCode.Y))
                 OnePuzzleSolved();
+            if(Input.GetKeyDown(KeyCode.T))
+                playersExited++;
         }
 
         public void OnePuzzleSolved() {
@@ -34,7 +39,6 @@ namespace Knotgames.Gameplay {
         private void DoorVisualUpdate(int solves) {
             LockThings();
             StartCoroutine(ActivateLight(solves - 1));
-            //* Turn on ligts or somehting to indicate the number of puzzles solved
         }
 
         private void LockThings() {
@@ -47,7 +51,6 @@ namespace Knotgames.Gameplay {
         private IEnumerator ActivateLight(int lightIndex) {
             MoveCamToDoorView();
             yield return new WaitForSeconds(1f);
-            Debug.Log("Here");
             solvedLights[lightIndex].SetActive(true);
             yield return new WaitForSeconds(1);
             if(puzzlesSolved == solvesNeeded) {
@@ -70,9 +73,20 @@ namespace Knotgames.Gameplay {
         }
 
         private void OpenDoor() {
-            //* Open Door Here
             GetComponent<Animator>().SetBool("open", true);
+            exitTrigger.enabled = true;
             widthAdjusterObj.SetActive(true);
+        }
+
+        private void OnTriggerEnter(Collider other) {
+            if(other.CompareTag("Human")) {
+                LockThings();
+                other.gameObject.SetActive(false);
+                MoveCamToDoorView();
+                playersExited++;
+                if(playersExited == playerNeededToEndGame)
+                    Debug.Log("Humans Win");
+            }
         }
     }
 }
