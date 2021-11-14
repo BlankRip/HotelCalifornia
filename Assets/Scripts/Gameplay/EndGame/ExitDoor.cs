@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Knotgames.Network;
 using UnityEngine;
 
 namespace Knotgames.Gameplay {
@@ -84,8 +85,12 @@ namespace Knotgames.Gameplay {
                 other.gameObject.SetActive(false);
                 MoveCamToDoorView();
                 playersExited++;
-                if(playersExited == playerNeededToEndGame)
+                if(playersExited == playerNeededToEndGame) {
+                    InterationRay finalIsLocal = other.GetComponent<InterationRay>();
+                    if(finalIsLocal != null && !DevBoy.yes)
+                        NetGameManager.instance.ToggleWinScreen(true);
                     Debug.Log("Humans Win");
+                }
             }
         }
     }
