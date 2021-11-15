@@ -74,6 +74,7 @@ Transform:
   - {fileID: 5553727406555873094}
   - {fileID: 2557256366883184071}
   - {fileID: 2640929749425821781}
+  - {fileID: 3076358200980755087}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -170,6 +171,65 @@ Transform:
   m_Father: {fileID: 5553727406555873094}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2879776005316296272
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3076358200980755087}
+  - component: {fileID: 1446123618399774120}
+  - component: {fileID: 4530889225156192567}
+  m_Layer: 0
+  m_Name: RoomStateTrigger
+  m_TagString: RoomTrigger
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3076358200980755087
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2879776005316296272}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 3.7665558, y: 3.9499989, z: 2}
+  m_LocalScale: {x: 17.12, y: 8.667001, z: 12.84}
+  m_Children: []
+  m_Father: {fileID: 1903846554193859244}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1446123618399774120
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2879776005316296272}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &4530889225156192567
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2879776005316296272}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28b5e14497c370440b2856bbd867f9ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  trapTracker: {fileID: 11400000, guid: 97f776773e9bcb14b86fefe5d6303c8c, type: 2}
+  startRoom: 0
 --- !u!1 &3294251328495556427
 GameObject:
   m_ObjectHideFlags: 0

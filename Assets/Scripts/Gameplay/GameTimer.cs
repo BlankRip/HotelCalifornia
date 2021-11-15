@@ -26,9 +26,12 @@ namespace Knotgames.Gameplay {
         }
 
         private void Update() {
+            //TODO Remove from final build
+            #if UNITY_EDITOR
             if(Input.GetKeyDown(KeyCode.H)) {
                 gameplayEvents.gameStart.Invoke();
             }
+            #endif
             if(timerOn) {
                 if(currentSeconds > 0)
                     currentSeconds -= Time.deltaTime;

@@ -28,13 +28,17 @@ namespace Knotgames.Gameplay.Abilities {
         }
 
         private void Start() {
-            trapTracker.tracker.AddToCancelable(this);
+            if(startRoom)
+                roomState = RoomEffectState.NoAbility;
+            else
+                trapTracker.tracker.AddToCancelable(this);
         }
 
         private void OnDestroy() {
             if(!DevBoy.yes)
                 NetUnityEvents.instance.roomTiggerOnMsgRecieve.RemoveListener(ReadData);
-            trapTracker.tracker.RemoveFromCancelable(this);
+            if(!startRoom)
+                trapTracker.tracker.RemoveFromCancelable(this);
         }
 
         private void SendData() {
