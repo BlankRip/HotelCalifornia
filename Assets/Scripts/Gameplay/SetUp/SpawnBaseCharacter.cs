@@ -8,11 +8,13 @@ namespace Knotgames.Gameplay {
     public class SpawnBaseCharacter : MonoBehaviour
     {
         [SerializeField] ScriptableCharacterSelect characterData;
-        [SerializeField] Transform spawnPoint;
+        [SerializeField] string spawnPointTag;
         [SerializeField] string ghost;
         [SerializeField] string human;
 
         private void Awake() {
+            Transform spawnPoint = GameObject.FindGameObjectWithTag("PlayerSpawn").transform;
+
             if(characterData.characterType == CharacterType.Ghost) {
                 NetConnector.instance.SendDataToServer(
                     JsonUtility.ToJson(
