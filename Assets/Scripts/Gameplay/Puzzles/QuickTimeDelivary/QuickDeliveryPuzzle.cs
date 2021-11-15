@@ -30,13 +30,22 @@ namespace Knotgames.Gameplay.Puzzle.QuickDelivery {
         }
 
         private void PlaceDeliveryObj() {
-            List<Transform> gos = GameObject.FindGameObjectWithTag(myPossiblePosTag).GetComponent<TransformListHolder>().GetList();
+            GameObject[] holders = GameObject.FindGameObjectsWithTag(myPossiblePosTag);
+            List<Transform> gos = holders[Random.Range(0, holders.Length)].GetComponent<TransformListHolder>().GetList();
             Transform targetPos = gos[Random.Range(0, gos.Count)];
             transform.position = targetPos.position;
         }
 
         private void SpawnDeliveryItems() {
-            List<Transform> spawnPoints = GameObject.FindGameObjectWithTag(objSpawnPosTag).GetComponent<TransformListHolder>().GetList();
+            GameObject[] holders = GameObject.FindGameObjectsWithTag(objSpawnPosTag);
+            List<Transform> spawnPoints = new List<Transform>();
+            foreach(GameObject go in holders) {
+                if(spawnPoints.Count < 13) {
+                    List<Transform> thisHolderData = go.GetComponent<TransformListHolder>().GetList();
+                    foreach (Transform item in thisHolderData)
+                        spawnPoints.Add(item);
+                }
+            }
             GameObject objToSpawn = spawnableItems[Random.Range(0, spawnableItems.Count)];
             delivaryItemName = objToSpawn.name;
             
