@@ -13,7 +13,7 @@ namespace Knotgames.Gameplay {
         [SerializeField] string human;
 
         private void Awake() {
-            Transform spawnPoint = GameObject.FindGameObjectWithTag("PlayerSpawn").transform;
+            Transform spawnPoint = GameObject.FindGameObjectWithTag(spawnPointTag).transform;
 
             if(characterData.characterType == CharacterType.Ghost) {
                 NetConnector.instance.SendDataToServer(
