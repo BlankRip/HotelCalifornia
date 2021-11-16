@@ -82,6 +82,7 @@ namespace Knotgames.Gameplay.Puzzle.XO {
 
         public void Interact() {
             CylceValue();
+            if(!DevBoy.yes)
             SendData();
         }
 

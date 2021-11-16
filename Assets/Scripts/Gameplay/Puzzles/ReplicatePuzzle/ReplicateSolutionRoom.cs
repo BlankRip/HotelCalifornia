@@ -19,6 +19,13 @@ namespace Knotgames.Gameplay.Puzzle.Replicate
             SetUpSolution();
         }
 
+        public void InitPuzzle(IReplicatePuzzleRoom room)
+        {
+            puzzleRoom = room;
+            replicateSolution = GameObject.Instantiate(replicateSolutionObj, Vector3.zero, Quaternion.identity, transform).GetComponent<IReplicateSolution>();
+            SetUpSolution();
+        }
+
         private void SetUpSolution()
         {
             currentSolution = replicateSolution.BuildNewSolution(transform);

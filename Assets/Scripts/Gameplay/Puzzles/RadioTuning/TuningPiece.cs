@@ -82,7 +82,9 @@ namespace Knotgames.Gameplay.Puzzle.Radio
         public void Interact()
         {
             CycleValue();
-            SendData();
+            
+            if(!DevBoy.yes)
+                SendData();
         }
 
         private void CycleValue()

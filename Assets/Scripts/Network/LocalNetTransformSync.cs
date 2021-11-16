@@ -24,7 +24,7 @@ namespace Knotgames.Network {
         }
 
         protected void Update() {
-            if(sendData)
+            if(sendData && !DevBoy.yes)
                 SendData();
         }
 
