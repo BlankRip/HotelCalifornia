@@ -102,7 +102,7 @@ namespace Knotgames.Gameplay.Puzzle.Replicate
                 for (int i = 0; i < spawnedOnes.Count; i++)
                 {
                     MeshRenderer[] mrs = spawnedOnes[i].GetComponentsInChildren<MeshRenderer>();
-                    foreach(MeshRenderer mr in mrs)
+                    foreach (MeshRenderer mr in mrs)
                     {
                         mr.enabled = false;
                     }
@@ -113,7 +113,7 @@ namespace Knotgames.Gameplay.Puzzle.Replicate
                 for (int i = 0; i < spawnedOnes.Count; i++)
                 {
                     MeshRenderer[] mrs = spawnedOnes[i].GetComponentsInChildren<MeshRenderer>();
-                    foreach(MeshRenderer mr in mrs)
+                    foreach (MeshRenderer mr in mrs)
                     {
                         mr.enabled = true;
                     }

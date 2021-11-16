@@ -20,7 +20,8 @@ namespace Knotgames.Gameplay.Puzzle {
         public void Spawn(bool setRotation, Transform parent) {
             for (int i = 0; i < numberToSpawn; i++) {
                 int rand = Random.Range(0, spawnPoints.Count);
-                GameObject spawned = GameObject.Instantiate(spawnObj, spawnPoints[rand].position, Quaternion.identity, parent);
+                GameObject spawned = GameObject.Instantiate(spawnObj, spawnPoints[rand].position, Quaternion.identity);
+                spawned.transform.SetParent(parent);
                 if(useRandomRotation)
                     spawned.transform.up = (Random.insideUnitSphere).normalized;
                 else if(setRotation)
