@@ -75,7 +75,7 @@ Shader "Custom/CustomStandardGeneral"
             // Albedo comes from a texture tinted by color
             vDir = -normalize(IN.worldPos - _WorldSpaceCameraPos);
             fixed4 c = tex2D (_MainTex, IN.uv_MainTex) * _Color;
-            o.Albedo = c.rgb;
+            o.Albedo = pow(c.rgb, 2) + c.rgb;
             o.Normal = UnpackNormal (tex2D (_BumpMap, IN.uv_BumpMap));
             half rim = 1.0 - saturate(dot (normalize(IN.viewDir), o.Normal));
             o.Emission = _RimColor.rgb * pow (rim, _RimPower) + tex2D(_EmissionTex, IN.uv_MainTex) * 1.3;
