@@ -22,7 +22,7 @@ namespace Knotgames.Gameplay.Puzzle.LeverLight {
         private void Start() {
             myColour = lightLever.manager.GetAvailableLightColor(this);
             myLightRenderer = myLight.GetComponent<Renderer>();
-            myEffect = GameObject.Instantiate(matDataBase.GetMaterial(myColour), myLight.transform.position, Quaternion.identity);
+            myEffect = GameObject.Instantiate(matDataBase.GetMaterial(myColour), myLight.transform.position, Quaternion.identity, transform);
             myEffect.SetActive(false);
             SetUpDilusionStuff();
         }
@@ -54,7 +54,7 @@ namespace Knotgames.Gameplay.Puzzle.LeverLight {
             if(twistIndex == (int)myColour)
                 CycleTwistedColor();
             Destroy(myEffect);
-            myEffect = GameObject.Instantiate(matDataBase.GetMaterial((LightColor)twistIndex), myLight.transform.position, Quaternion.identity);
+            myEffect = GameObject.Instantiate(matDataBase.GetMaterial((LightColor)twistIndex), myLight.transform.position, Quaternion.identity, transform);
             myEffect.SetActive(false);
         }
 
@@ -67,7 +67,7 @@ namespace Knotgames.Gameplay.Puzzle.LeverLight {
 
         private void FixVision() {
             Destroy(myEffect);
-            myEffect = GameObject.Instantiate(matDataBase.GetMaterial(myColour), myLight.transform.position, Quaternion.identity);
+            myEffect = GameObject.Instantiate(matDataBase.GetMaterial(myColour), myLight.transform.position, Quaternion.identity, transform);
             myEffect.SetActive(false);
         }
 
