@@ -110,7 +110,6 @@ namespace Knotgames.LevelGen {
                         if(colliders[j].transform.parent == room.GetTransform())
                             continue;
                         else {
-                            //Debug.Log("Overlapped");
                             return true;
                         }
                     }
