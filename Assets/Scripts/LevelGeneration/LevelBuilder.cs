@@ -11,6 +11,8 @@ namespace Knotgames.LevelGen {
         [SerializeField] BuilderData builderData;
         [SerializeField] BuildingStatus currentStatus;
 
+        [SerializeField] int giveSeed = -1;
+
         private BuildingStatus backup;
         private IRoom startRoom;
         
@@ -42,6 +44,11 @@ namespace Knotgames.LevelGen {
             if(genSeed)
                 seeder.levelSeed.GenerateSeed();
             seeder.levelSeed.Initilize();
+
+            if(giveSeed != -1) {
+                seeder.levelSeed.SetSeed(giveSeed);
+            }
+            
             StartCoroutine(GenerateLevel());
         }
 
