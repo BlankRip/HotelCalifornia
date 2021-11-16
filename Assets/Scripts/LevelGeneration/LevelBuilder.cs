@@ -63,6 +63,8 @@ namespace Knotgames.LevelGen {
                 yield return interval;
             }
             Debug.Log("<color=yellow>Base Built</color>");
+            int x = seeder.levelSeed.GetSeed();
+            Debug.LogError($"<color=red>SEED IS: {x}</color>");
 
             PuzzleBuilder puzzleBuild = gameObject.AddComponent<PuzzleBuilder>();
             puzzleBuild.Initilize(ref builderData);

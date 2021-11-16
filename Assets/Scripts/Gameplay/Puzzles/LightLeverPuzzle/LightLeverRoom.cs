@@ -35,12 +35,12 @@ namespace Knotgames.Gameplay.Puzzle.LeverLight {
                 GetSpawnAmount(ref amountToSpawn);
             lightLever.manager.SubstractNeededLights(amountToSpawn);
             SpawnAtGivenPoints lightSpawner = new SpawnAtGivenPoints(lightSpawnPoints, lightObj, amountToSpawn, false);
-            lightSpawner.Spawn(false);
+            lightSpawner.Spawn(false, transform);
         }
 
         private void SpawnLevers() {
             SpawnAtGivenPoints leverSpawner = new SpawnAtGivenPoints(leverSpawnPoints, leverObj, 2, false);
-            leverSpawner.Spawn(true);
+            leverSpawner.Spawn(true, transform);
         }
 
         private void GetSpawnAmount(ref int totalAmount) {
@@ -58,7 +58,7 @@ namespace Knotgames.Gameplay.Puzzle.LeverLight {
 
         private void SpawnKeyPad() {
             int rand = Random.Range(0, keyPadSpawnPoints.Count);
-            GameObject.Instantiate(keyPadObj, keyPadSpawnPoints[rand].position, keyPadSpawnPoints[rand].rotation);
+            GameObject.Instantiate(keyPadObj, keyPadSpawnPoints[rand].position, keyPadSpawnPoints[rand].rotation, transform);
         }
 
         public void Link(GameObject obj, bool initiator) {
