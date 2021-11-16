@@ -14,6 +14,7 @@ namespace Knotgames.Gameplay.Puzzle.Riddler {
         [SerializeField] Button lockInButton;
         private RiddleSolutionPad currentPad;
         private RiddleBoard currentBoard;
+        private bool solved;
 
         public void OpenPanel(RiddleSolutionPad pad) {
             currentPad = pad;
@@ -36,20 +37,23 @@ namespace Knotgames.Gameplay.Puzzle.Riddler {
         }
 
         private void SolutionInput() {
-            currentPad.Check(inputField.text);
+            solved = currentPad.Check(inputField.text);
             lockInButton.onClick.RemoveListener(SolutionInput);
             ClosePanel();
         }
 
         private void InterfereInput() {
+            solved = false;
             currentBoard.ChangeText(inputField.text);
             lockInButton.onClick.RemoveListener(InterfereInput);
             ClosePanel();
         }
 
         private void ClosePanel() {
-            playerController.controller.LockControls(false);
-            playerCamera.cam.Lock(false);
+            if(!solved) {
+                playerController.controller.LockControls(false);
+                playerCamera.cam.Lock(false);
+            }
             inputField.text = "";
             Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Locked;

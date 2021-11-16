@@ -48,22 +48,24 @@ namespace Knotgames.Gameplay.Puzzle.LeverLight {
             myText.text = lightLever.manager.GetColorHelper();
         }
 
-        public void CheckSolution(List<int> toCheck) {
-            CheckSolutionOffline(toCheck);
+        public bool CheckSolution(List<int> toCheck) {
             if(!DevBoy.yes)
                 SendData(toCheck);
+            return CheckSolutionOffline(toCheck);
         }
 
-        private void CheckSolutionOffline(List<int> toCheck) {
+        private bool CheckSolutionOffline(List<int> toCheck) {
             if(!solved) {
                 for (int i = 0; i < solution.Count; i++) {
                     if(toCheck[i] != solution[i])
-                        return;
+                        return false;
                 }
                 solved = true;
                 puzzleTracker.tracker.OnePuzzleSolved();
                 Debug.Log("Solved");
+                return true;
             }
+            return false;
         }
 
         public void ShowInteractInstruction() {
