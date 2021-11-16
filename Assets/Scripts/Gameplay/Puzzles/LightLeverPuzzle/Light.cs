@@ -22,7 +22,8 @@ namespace Knotgames.Gameplay.Puzzle.LeverLight {
         private void Start() {
             myColour = lightLever.manager.GetAvailableLightColor(this);
             myLightRenderer = myLight.GetComponent<Renderer>();
-            myEffect = GameObject.Instantiate(matDataBase.GetMaterial(myColour), myLight.transform.position, Quaternion.identity, transform);
+            myEffect = GameObject.Instantiate(matDataBase.GetMaterial(myColour), myLight.transform.position, Quaternion.identity);
+            myEffect.transform.SetParent(transform);
             myEffect.SetActive(false);
             SetUpDilusionStuff();
         }
