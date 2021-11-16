@@ -43,12 +43,13 @@ namespace Knotgames.LevelGen {
             backup = new BuildingStatus(currentStatus);
             if(genSeed)
                 seeder.levelSeed.GenerateSeed();
-            seeder.levelSeed.Initilize();
 
             if(giveSeed != -1) {
                 seeder.levelSeed.SetSeed(giveSeed);
             }
             
+
+            seeder.levelSeed.Initilize();
             StartCoroutine(GenerateLevel());
         }
 
