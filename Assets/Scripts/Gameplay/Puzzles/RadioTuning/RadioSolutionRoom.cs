@@ -15,7 +15,9 @@ namespace Knotgames.Gameplay.Puzzle.Radio
 
         private void Start()
         {
-            radioSolution = GameObject.Instantiate(radioSolutionObj).GetComponent<IRadioSolution>();
+            GameObject obj = GameObject.Instantiate(radioSolutionObj);
+            radioSolution = obj.GetComponent<IRadioSolution>();
+            obj.transform.SetParent(transform);
             radioSolution.SetupRadio();
             SetUpSolution();
         }

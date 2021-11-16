@@ -54,19 +54,21 @@ namespace Knotgames.Gameplay.Puzzle.Riddler {
             inputPanel = panel;
         }
 
-        public void Check(string value) {
-            CheckSolve(value);
+        public bool Check(string value) {
             if(!DevBoy.yes)
                 SendData(false, value);
+            return CheckSolve(value);
         }
 
-        private void CheckSolve(string value) {
+        private bool CheckSolve(string value) {
             if(value.ToLower() == mySolution) {
                 solved = true;
                 thePuzzle.manager.UpdateSolve();
                 GetComponent<Renderer>().material = null;
+                return true;
             } else {
                 Debug.Log("Play Wrong ans sound");
+                return false;
             }
         }
 

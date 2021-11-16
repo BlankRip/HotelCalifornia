@@ -13,9 +13,11 @@ namespace Knotgames.Gameplay.Puzzle.LeverLight {
         private NumberPad numberPad;
         private int currentIndex;
         private List<int> inputs;
+        private bool solved;
 
         private void Start() {
             inputs = new List<int>{-1, -1, -1, -1};
+            solved = false;
         }
 
         public void OpenPanel(NumberPad pad) {
@@ -44,7 +46,7 @@ namespace Knotgames.Gameplay.Puzzle.LeverLight {
         }
 
         public void Submit() {
-            numberPad.CheckSolution(inputs);
+            solved = numberPad.CheckSolution(inputs);
             ClearInputs();
             ClosePanel();
         }
@@ -57,8 +59,10 @@ namespace Knotgames.Gameplay.Puzzle.LeverLight {
         }
 
         private void ClosePanel() {
-            playerController.controller.LockControls(false);
-            playerCamera.cam.Lock(false);
+            if(!solved) {
+                playerController.controller.LockControls(false);
+                playerCamera.cam.Lock(false);
+            }
             numberPad = null;
             Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Locked;

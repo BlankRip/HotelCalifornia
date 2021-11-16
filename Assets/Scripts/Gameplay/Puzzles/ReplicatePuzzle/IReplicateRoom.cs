@@ -9,6 +9,7 @@ namespace Knotgames.Gameplay.Puzzle.Replicate
         void Solved();
         void ResyncSolution(List<string> sol, List<RepObj> toSpawn);
         ReplicateObjectSlot GetCorrespondingSlot(int index);
+        void InitPuzzle(IReplicatePuzzleRoom room);
     }
 
     public interface IReplicatePuzzleRoom

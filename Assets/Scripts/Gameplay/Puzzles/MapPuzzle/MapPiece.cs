@@ -85,6 +85,7 @@ namespace Knotgames.Gameplay.Puzzle.Map
             if (interactable)
             {
                 CycleValue();
+                if(!DevBoy.yes)
                 SendData();
             }
         }

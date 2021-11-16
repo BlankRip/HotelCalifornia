@@ -11,6 +11,8 @@ namespace Knotgames.LevelGen {
         [SerializeField] BuilderData builderData;
         [SerializeField] BuildingStatus currentStatus;
 
+        [SerializeField] int giveSeed = -1;
+
         private BuildingStatus backup;
         private IRoom startRoom;
         
@@ -41,6 +43,12 @@ namespace Knotgames.LevelGen {
             backup = new BuildingStatus(currentStatus);
             if(genSeed)
                 seeder.levelSeed.GenerateSeed();
+
+            if(giveSeed != -1) {
+                seeder.levelSeed.SetSeed(giveSeed);
+            }
+            
+
             seeder.levelSeed.Initilize();
             StartCoroutine(GenerateLevel());
         }
@@ -63,6 +71,8 @@ namespace Knotgames.LevelGen {
                 yield return interval;
             }
             Debug.Log("<color=yellow>Base Built</color>");
+            int x = seeder.levelSeed.GetSeed();
+            Debug.LogError($"<color=red>SEED IS: {x}</color>");
 
             PuzzleBuilder puzzleBuild = gameObject.AddComponent<PuzzleBuilder>();
             puzzleBuild.Initilize(ref builderData);

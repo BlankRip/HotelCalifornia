@@ -56,6 +56,7 @@ namespace Knotgames.Gameplay.Puzzle.Maze {
         public void Interfear() {
             maze.manager.SetStaticObjState(true);
             fakeStatic = true;
+            if(!DevBoy.yes)
             SendData();
         }
 

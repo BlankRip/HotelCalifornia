@@ -10,13 +10,15 @@ namespace Knotgames.Gameplay.Puzzle.Replicate
         [SerializeField] Transform replicatePuzzle;
         private IReplicatePuzzle puzzle;
         [SerializeField] List<Transform> objSpawnAreas;
-        List<string> sol;
+        List<string> sol = new List<string>();
 
         public void Link(GameObject obj, bool initiator)
         {
             Debug.LogError("LINKING REP PUZZLE");
             puzzle = replicatePuzzle.GetComponent<IReplicatePuzzle>();
-            puzzle.SetUp(obj.GetComponent<IReplicateSolutionRoom>());
+            IReplicateSolutionRoom solutionRoom = obj.GetComponent<IReplicateSolutionRoom>();
+            puzzle.SetUp(solutionRoom);
+            solutionRoom.InitPuzzle(this);
             puzzle.SetSolution(sol);
             if (initiator)
                 obj.GetComponent<IPairPuzzleSetup>().Link(this.gameObject, false);
