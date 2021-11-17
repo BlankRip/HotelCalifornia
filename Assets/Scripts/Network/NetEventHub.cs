@@ -141,6 +141,10 @@ namespace Knotgames.Network
                     );
                     break;
 
+                case "timeOver":
+                    NetGameManager.instance.ToggleWinScreen(false);
+                    break;
+
             }
 
         }
