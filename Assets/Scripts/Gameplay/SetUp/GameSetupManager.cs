@@ -51,6 +51,7 @@ namespace Knotgames.Gameplay {
                     spawnerObj.SetActive(true);
                     loadingScreen.SetActive(false);
                     eventCollection.gameStart.Invoke();
+                    Destroy(this, .4f);
                     break;
                 }
             }
