@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4056090321759960}
   - component: {fileID: 33347276821259544}
   - component: {fileID: 23474565454030330}
+  - component: {fileID: 1597802767625222535}
   m_Layer: 0
   m_Name: Hall_Light_Large_LOD1
   m_TagString: Untagged
@@ -81,6 +82,38 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &1597802767625222535
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1446695605002378}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77d59c53c00a8ad41bc23a1d906af55e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mode: 0
+  movementMode: 0
+  canChangeRotation: 1
+  canChangeScale: 0
+  sizeMultiplier: 1
+  managementMode: 0
+  shadowCastingMode: 1
+  isImportant: 0
+  isShadowSource: 0
+  disablePrediction: 0
+  allowFullDisable: 1
+  withChildren: 0
+  dynamicUpdateInterval: 0.1
+  renderer: {fileID: 0}
+  renderers: []
+  noShadowRenderers: []
+  shadowOnlyRenderers: []
+  particleSystem: {fileID: 0}
+  center: {x: 0, y: 0, z: 0}
+  extents: {x: 1, y: 1, z: 1}
 --- !u!1 &1461270376037976
 GameObject:
   m_ObjectHideFlags: 0
@@ -92,6 +125,7 @@ GameObject:
   - component: {fileID: 4994404752517870}
   - component: {fileID: 33672325412007854}
   - component: {fileID: 23167459610629382}
+  - component: {fileID: 3884790726812345891}
   m_Layer: 0
   m_Name: Hall_Light_Large_LOD0
   m_TagString: Untagged
@@ -162,6 +196,38 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &3884790726812345891
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1461270376037976}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77d59c53c00a8ad41bc23a1d906af55e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mode: 0
+  movementMode: 0
+  canChangeRotation: 1
+  canChangeScale: 0
+  sizeMultiplier: 1
+  managementMode: 0
+  shadowCastingMode: 1
+  isImportant: 0
+  isShadowSource: 0
+  disablePrediction: 0
+  allowFullDisable: 1
+  withChildren: 0
+  dynamicUpdateInterval: 0.1
+  renderer: {fileID: 0}
+  renderers: []
+  noShadowRenderers: []
+  shadowOnlyRenderers: []
+  particleSystem: {fileID: 0}
+  center: {x: 0, y: 0, z: 0}
+  extents: {x: 1, y: 1, z: 1}
 --- !u!1 &1957587492063234
 GameObject:
   m_ObjectHideFlags: 0
@@ -172,6 +238,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4882994769024484}
   - component: {fileID: 205552500213018448}
+  - component: {fileID: 2894550479661983378}
   m_Layer: 0
   m_Name: Hall_Light_Large
   m_TagString: Untagged
@@ -218,3 +285,37 @@ LODGroup:
     renderers:
     - renderer: {fileID: 23474565454030330}
   m_Enabled: 1
+--- !u!114 &2894550479661983378
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1957587492063234}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77d59c53c00a8ad41bc23a1d906af55e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mode: 2
+  movementMode: 0
+  canChangeRotation: 1
+  canChangeScale: 0
+  sizeMultiplier: 1
+  managementMode: 0
+  shadowCastingMode: 1
+  isImportant: 0
+  isShadowSource: 0
+  disablePrediction: 0
+  allowFullDisable: 1
+  withChildren: 1
+  dynamicUpdateInterval: 0.1
+  renderer: {fileID: 0}
+  renderers: []
+  noShadowRenderers:
+  - {fileID: 23167459610629382}
+  - {fileID: 23474565454030330}
+  shadowOnlyRenderers: []
+  particleSystem: {fileID: 0}
+  center: {x: 0, y: 0, z: 0}
+  extents: {x: 1, y: 1, z: 1}

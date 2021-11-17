@@ -231,6 +231,7 @@ GameObject:
   - component: {fileID: 33657683691251944}
   - component: {fileID: 23980508339265492}
   - component: {fileID: 64920666997567298}
+  - component: {fileID: 3241138309056309145}
   m_Layer: 0
   m_Name: Hall_Cupboard_Wshelves_WItems
   m_TagString: Untagged
@@ -327,6 +328,61 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: ae31ec4f37a22934a84ee5cc218a2861, type: 3}
+--- !u!114 &3241138309056309145
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1145978859012250}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77d59c53c00a8ad41bc23a1d906af55e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mode: 2
+  movementMode: 0
+  canChangeRotation: 1
+  canChangeScale: 0
+  sizeMultiplier: 1
+  managementMode: 0
+  shadowCastingMode: 1
+  isImportant: 0
+  isShadowSource: 0
+  disablePrediction: 0
+  allowFullDisable: 1
+  withChildren: 1
+  dynamicUpdateInterval: 0.1
+  renderer: {fileID: 23980508339265492}
+  renderers:
+  - {fileID: 23980508339265492}
+  - {fileID: 23238944047631742}
+  - {fileID: 23386700851446168}
+  - {fileID: 23646582184535780}
+  - {fileID: 23841488125097298}
+  - {fileID: 23366504508253896}
+  - {fileID: 23111644922265928}
+  - {fileID: 23502504825346260}
+  - {fileID: 23876475405596982}
+  - {fileID: 23217991701208688}
+  - {fileID: 23282305065462662}
+  - {fileID: 23852443841767844}
+  - {fileID: 23520412999841822}
+  - {fileID: 23266780074407138}
+  - {fileID: 23099201521066394}
+  - {fileID: 23987628147040450}
+  - {fileID: 23548518847372904}
+  - {fileID: 23935473857560780}
+  - {fileID: 23964135242523500}
+  - {fileID: 23726511678038962}
+  - {fileID: 23967562519919422}
+  - {fileID: 23018575287327022}
+  - {fileID: 23704260740050572}
+  noShadowRenderers: []
+  shadowOnlyRenderers: []
+  particleSystem: {fileID: 0}
+  center: {x: 0, y: 0, z: 0}
+  extents: {x: 1, y: 1, z: 1}
 --- !u!1 &1162202312390278
 GameObject:
   m_ObjectHideFlags: 0

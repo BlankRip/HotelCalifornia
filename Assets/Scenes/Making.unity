@@ -3624,7 +3624,7 @@ PrefabInstance:
     - target: {fileID: 1409891221584877996, guid: aec8a727e9a153d4a9f1d4c5748aa909, type: 3}
       propertyPath: lightRamp
       value: 
-      objectReference: {fileID: 2800000, guid: ddd296a2c3e7f754fa9d84383920ab8e, type: 3}
+      objectReference: {fileID: 2800000, guid: b3aa092a874185546a92b0f9eb8a756b, type: 3}
     - target: {fileID: 1409891221584877997, guid: aec8a727e9a153d4a9f1d4c5748aa909, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -4124,6 +4124,86 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 660111404}
   m_CullTransparentMesh: 1
+--- !u!1 &669111102 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2323428497621156165, guid: 53fc493807605134faed89886ee6b31c, type: 3}
+  m_PrefabInstance: {fileID: 383611776}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &669111103
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 669111102}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79a0275f4d4b0f14198692740b749976, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  directionalLight: {fileID: 854691865}
+  autoDirectionalLight: 1
+  accuracy: 50
+  prediction: 0
+  minimumDistance: 1
+  referenceObject: {fileID: 669111107}
+  enableBackgroundScan: 1
+  enableNewSceneScan: 1
+  includeLODGroups: 1
+  includeMeshRenderers: 1
+  includePointAndPointLights: 1
+  includeReflectionProbes: 1
+  includeParticleSystems: 1
+  includeDisabledObjects: 0
+  includeDisabledComponents: 0
+  dynamicAnimators: 1
+  layerMovementMode: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+  layerManagementMode: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+  preCullThreshold: 0.001
+  fullDisableDistance: 100
+  hideTime: 0.1
+  debugLayer: 0
+  showStats: 0
+  editorLoggingMode: 2
+  buildLoggingMode: 1
+  gizmoColor: {r: 1, g: 1, b: 0, a: 1}
+  massGizmoColor: {r: 1, g: 1, b: 0, a: 0.01}
+  occludeeInitState: -1
+  backgroundScanTimeLimit: 50
+  instantScanTimeLimit: 100000
+  maxQueuedFrames: 1
+  enableOcclusionCulling: 1
+  psOmnidirectionalBounds: 0
+  clampShadowVolumes: 1
+  autoClampHeight: 1
+  clampHeight: 0
+  suspendOC: 0
+  drawDebugGizmos: 0
+  enableTeleportDetection: 1
+  teleportDistance: 2
+  teleportAngle: 160
+  teleportRV: 0.1
+  fastCameraSwitch: 1
+  keepShadows: 1
+  forceSkipShadomap: 1
+  vrMode: 2
+  kickstart: 0
+  ignoreContainers: 1
+  downscaleDepth: 1
+  downscaleShadowmap: 1
+  optimizedVR: 1
+  debugTextures: 1
+  enableHotkeys: 1
+  toggleOCKey: 282
+  toggleInfoKey: 283
+  calcMetricsKey: 284
+  increaseAccuracyKey: 270
+  decreaseAccuracyKey: 269
+--- !u!4 &669111107 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2323428497621156166, guid: 53fc493807605134faed89886ee6b31c, type: 3}
+  m_PrefabInstance: {fileID: 383611776}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &672071440
 GameObject:
   m_ObjectHideFlags: 0

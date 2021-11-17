@@ -184,6 +184,7 @@ GameObject:
   - component: {fileID: 33931074219002226}
   - component: {fileID: 23167723193383654}
   - component: {fileID: 64709762006353752}
+  - component: {fileID: 7342190364964452358}
   m_Layer: 0
   m_Name: Book_Cupboard_A_LOD0
   m_TagString: Untagged
@@ -268,6 +269,38 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: b717bc748da18d1458e9552f198027de, type: 3}
+--- !u!114 &7342190364964452358
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1105123490688118}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77d59c53c00a8ad41bc23a1d906af55e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mode: 0
+  movementMode: 0
+  canChangeRotation: 1
+  canChangeScale: 0
+  sizeMultiplier: 1
+  managementMode: 0
+  shadowCastingMode: 1
+  isImportant: 0
+  isShadowSource: 0
+  disablePrediction: 0
+  allowFullDisable: 1
+  withChildren: 0
+  dynamicUpdateInterval: 0.1
+  renderer: {fileID: 0}
+  renderers: []
+  noShadowRenderers: []
+  shadowOnlyRenderers: []
+  particleSystem: {fileID: 0}
+  center: {x: 0, y: 0, z: 0}
+  extents: {x: 1, y: 1, z: 1}
 --- !u!1 &1141813651531920
 GameObject:
   m_ObjectHideFlags: 0
@@ -661,6 +694,7 @@ GameObject:
   - component: {fileID: 33142555680940330}
   - component: {fileID: 23769054008460330}
   - component: {fileID: 64907677265157102}
+  - component: {fileID: 8740551793656702445}
   m_Layer: 0
   m_Name: Book_Cupboard_A_LOD1
   m_TagString: Untagged
@@ -745,6 +779,38 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: b717bc748da18d1458e9552f198027de, type: 3}
+--- !u!114 &8740551793656702445
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1572358352880478}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77d59c53c00a8ad41bc23a1d906af55e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mode: 0
+  movementMode: 0
+  canChangeRotation: 1
+  canChangeScale: 0
+  sizeMultiplier: 1
+  managementMode: 0
+  shadowCastingMode: 1
+  isImportant: 0
+  isShadowSource: 0
+  disablePrediction: 0
+  allowFullDisable: 1
+  withChildren: 0
+  dynamicUpdateInterval: 0.1
+  renderer: {fileID: 0}
+  renderers: []
+  noShadowRenderers: []
+  shadowOnlyRenderers: []
+  particleSystem: {fileID: 0}
+  center: {x: 0, y: 0, z: 0}
+  extents: {x: 1, y: 1, z: 1}
 --- !u!1 &1604181136659582
 GameObject:
   m_ObjectHideFlags: 0
@@ -1444,6 +1510,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4066415031151164}
   - component: {fileID: 205038554769948148}
+  - component: {fileID: 684029664932023332}
   m_Layer: 0
   m_Name: Book_Cupboard_A_Filled_A
   m_TagString: Untagged
@@ -1504,6 +1571,56 @@ LODGroup:
     renderers:
     - renderer: {fileID: 23769054008460330}
   m_Enabled: 1
+--- !u!114 &684029664932023332
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1825832658938974}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77d59c53c00a8ad41bc23a1d906af55e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mode: 2
+  movementMode: 0
+  canChangeRotation: 1
+  canChangeScale: 0
+  sizeMultiplier: 1
+  managementMode: 0
+  shadowCastingMode: 1
+  isImportant: 0
+  isShadowSource: 0
+  disablePrediction: 0
+  allowFullDisable: 1
+  withChildren: 1
+  dynamicUpdateInterval: 0.1
+  renderer: {fileID: 0}
+  renderers:
+  - {fileID: 23167723193383654}
+  - {fileID: 23769054008460330}
+  - {fileID: 23751302357952538}
+  - {fileID: 23158582639481054}
+  - {fileID: 23452077171546208}
+  - {fileID: 23131949070835130}
+  - {fileID: 23049572579767556}
+  - {fileID: 23384718432009172}
+  - {fileID: 23766040401938088}
+  - {fileID: 23035751342956656}
+  - {fileID: 23966343457055408}
+  - {fileID: 23034001587923352}
+  - {fileID: 23666124502032186}
+  - {fileID: 23210702170950008}
+  - {fileID: 23061789250460266}
+  - {fileID: 23261357169258214}
+  - {fileID: 23166532527310052}
+  - {fileID: 23348302960249940}
+  noShadowRenderers: []
+  shadowOnlyRenderers: []
+  particleSystem: {fileID: 0}
+  center: {x: 0, y: 0, z: 0}
+  extents: {x: 1, y: 1, z: 1}
 --- !u!1 &1859579672389362
 GameObject:
   m_ObjectHideFlags: 0
