@@ -10,6 +10,7 @@ namespace Knotgames.Gameplay.Abilities {
         [SerializeField] ScriptableAbilityUiCollection abilityUiCollection;
         [SerializeField] List<AbilityType> giveableAbility;
         [SerializeField] ScriptablePlayerController player;
+        [SerializeField] ScriptableCharacterSelect characterData;
         private IAbilityUi secondarySlot;
         int abilityIndex;
 
@@ -19,13 +20,16 @@ namespace Knotgames.Gameplay.Abilities {
         }
 
         //!TODO FOR TESTING ONLY
+        #if UNITY_EDITOR
         private void Update() {
             if(Input.GetKeyDown(KeyCode.K))
                 Swap();
         }
+        #endif
 
         public void Swap() {
             player.controller.SwapSecondary(AttachAbility(giveableAbility[abilityIndex]));
+            characterData.abilityTypes[3] = giveableAbility[abilityIndex];
             AbilityUiData uiData = abilityUiCollection.GetAbilityData(giveableAbility[abilityIndex]);
             secondarySlot.UpdateObjectData(uiData.baseUses, uiData.abilitySprite);
             Debug.Log(giveableAbility[abilityIndex]);

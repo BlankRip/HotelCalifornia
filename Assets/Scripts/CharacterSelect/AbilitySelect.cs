@@ -20,8 +20,8 @@ namespace Knotgames.CharacterSelect {
             currentSelected = events;
             currentSelected.SelectButton();
             selectedDescripsionText.text = selectedDescripsion;
-            selectedTitle.text = currentSelected.abilityName;
-            icone.sprite = currentSelected.icone;
+            selectedTitle.text = currentSelected.myData.abilityName;
+            icone.sprite = currentSelected.myData.abilitySprite;
         }
 
         public void ChangeDescripsion(string description) {
