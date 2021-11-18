@@ -18,7 +18,7 @@ namespace Knotgames.CharacterData {
 
         private void FillDictionary() {
             if(dataDictionary == null || dataDictionary.Count != allData.Count) {
-                dataDictionary.Clear();
+                dataDictionary = new Dictionary<AbilityType, AbilityUiData>();
                 for(int i = 0; i < allData.Count; i++)
                     dataDictionary.Add(allData[i].type, allData[i]);
             }

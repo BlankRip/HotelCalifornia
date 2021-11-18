@@ -2,15 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-using UnityEngine.UI;
+using Knotgames.UI;
 
 namespace Knotgames.CharacterSelect {
     public class AbilitySelect : MonoBehaviour
     {
         [SerializeField] TextMeshProUGUI descripsionText;
-        [SerializeField] TextMeshProUGUI selectedTitle;
-        [SerializeField] TextMeshProUGUI selectedDescripsionText;
-        [SerializeField] Image icone;
+        [SerializeField] AbilityDetailsUi myDetailsUi;
         private AbilitySelectEvents currentSelected;
         private string selectedDescripsion;
 
@@ -19,9 +17,7 @@ namespace Knotgames.CharacterSelect {
             currentSelected?.DeselectButton();
             currentSelected = events;
             currentSelected.SelectButton();
-            selectedDescripsionText.text = selectedDescripsion;
-            selectedTitle.text = currentSelected.myData.abilityName;
-            icone.sprite = currentSelected.myData.abilitySprite;
+            myDetailsUi.SetData(currentSelected.myData);
         }
 
         public void ChangeDescripsion(string description) {

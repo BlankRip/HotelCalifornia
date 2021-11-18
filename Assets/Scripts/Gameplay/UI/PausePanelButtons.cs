@@ -8,14 +8,17 @@ namespace Knotgames.Gameplay.UI {
     public class PausePanelButtons : MonoBehaviour
     {
         [Header("If you want to automate button Events")]
+        [SerializeField] bool useAutoAssign;
         [SerializeField] GameObject resumeButton;
         [SerializeField] GameObject backToMenuButton;
         private Pause pause;
 
         private void Start() {
             pause = FindObjectOfType<Pause>();
-            resumeButton?.GetComponent<IMenuButton>().SetOnClick(() => Resume());
-            backToMenuButton?.GetComponent<IMenuButton>().SetOnClick(() => BackToMainMenu());
+            if(useAutoAssign) {
+                resumeButton.GetComponent<IMenuButton>().SetOnClick(() => Resume());
+                backToMenuButton.GetComponent<IMenuButton>().SetOnClick(() => BackToMainMenu());
+            }
         }
 
         public void Resume() {
@@ -24,6 +27,10 @@ namespace Knotgames.Gameplay.UI {
 
         public void BackToMainMenu() {
             SceneManager.LoadScene(0);
+        }
+
+        public void ControlScreenVisibility(bool activate) {
+            pause.ToggleControlsScreen(activate);
         }
     }
 }
