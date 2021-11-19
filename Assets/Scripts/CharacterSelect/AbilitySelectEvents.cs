@@ -9,21 +9,21 @@ namespace Knotgames.CharacterSelect {
         [SerializeField] bool baseSelected;
         [SerializeField] AbilitySelect selector;
         [SerializeField] ScriptableCharacterSelect characterData;
+        [SerializeField] ScriptableAbilityUiCollection abilityUiCollection;
         [SerializeField] AbilityType myAbilityType;
         [SerializeField] GameObject selectedOverlay;
         [SerializeField] int myIndex;
-        public Sprite icone;
-        public string abilityName;
-        [TextArea(5, 5)]
-        [SerializeField] string descripsion;
+
+        public AbilityUiData myData;
 
         private void Start() {
+            myData = abilityUiCollection.GetAbilityData(myAbilityType);
             if(baseSelected)
                 OnClick();
         }
 
         public void OnEnter() {
-            selector.ChangeDescripsion(descripsion);
+            selector.ChangeDescripsion(myData.description);
         }
 
         public void OnExit() {
@@ -40,7 +40,7 @@ namespace Knotgames.CharacterSelect {
 
         public void OnClick() {
             characterData.abilityTypes[myIndex] = myAbilityType;
-            selector.SwitchSelected(descripsion, this);
+            selector.SwitchSelected(myData.description, this);
         }
     }
 }
