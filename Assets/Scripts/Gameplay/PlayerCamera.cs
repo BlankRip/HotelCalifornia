@@ -73,7 +73,7 @@ namespace Knotgames.Gameplay {
         }
 
         private void GhostCustoms() {
-
+            cam.farClipPlane = 375;
         }
 
         private void HumanCustoms() {
