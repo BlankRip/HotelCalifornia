@@ -10,6 +10,9 @@ namespace Knotgames.Gameplay {
         [SerializeField] float sensitivity = 3;
         [SerializeField] float maxUpAngle = 80;
         [SerializeField] float maxDownAngle = -80;
+
+        [Header("Human Customs")]
+        [SerializeField] LayerMask humanCamMask;
         
         private bool ghost;
         private Transform cameraPosition;
@@ -61,7 +64,20 @@ namespace Knotgames.Gameplay {
             this.ghost = ghost;
             initilized = true;
 
+            if(this.ghost)
+                GhostCustoms();
+            else
+                HumanCustoms();
+
             Invoke("WarpUpInitilize", 1.5f);
+        }
+
+        private void GhostCustoms() {
+            cam.farClipPlane = 375;
+        }
+
+        private void HumanCustoms() {
+            cam.cullingMask = humanCamMask;
         }
 
         private void WarpUpInitilize() {
