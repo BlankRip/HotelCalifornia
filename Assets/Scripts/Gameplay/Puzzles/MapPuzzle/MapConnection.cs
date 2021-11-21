@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Knotgames.Network;
 using UnityEngine;
 using TMPro;
+using Knotgames.Audio;
 using Knotgames.Gameplay.UI;
 
 namespace Knotgames.Gameplay.Puzzle.Map
@@ -27,8 +28,6 @@ namespace Knotgames.Gameplay.Puzzle.Map
         private IMapSolutionRoom mapSolutionRoom;
         MeshRenderer meshRenderer;
         public bool interactable = true;
-        AudioSource myPlayer;
-        [SerializeField] AudioClip activateSound;
 
         private void Start()
         {
@@ -47,9 +46,6 @@ namespace Knotgames.Gameplay.Puzzle.Map
             if (mapManager.theSolution == null)
                 mapManager.theSolution = mapSolutionRoom;
             meshRenderer = GetComponent<MeshRenderer>();
-            GameObject source = GameObject.Instantiate(Resources.Load("3DAudioPlayer"), transform.position, Quaternion.identity) as GameObject;
-            source.transform.SetParent(transform);
-            myPlayer = source.GetComponent<AudioSource>();
         }
 
         private void OnDestroy()
@@ -81,7 +77,7 @@ namespace Knotgames.Gameplay.Puzzle.Map
             if (interactable)
             {
                 CycleValue();
-                myPlayer.PlayOneShot(activateSound);
+                AudioPlayer.instance.PlayAudio3DOneShot(ClipName.MapConnection);
                 if (!DevBoy.yes)
                     SendData();
             }

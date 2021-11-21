@@ -4,6 +4,7 @@ using UnityEngine;
 using TMPro;
 using Knotgames.Gameplay.Abilities;
 using Knotgames.Network;
+using Knotgames.Audio;
 using Knotgames.Gameplay.UI;
 
 namespace Knotgames.Gameplay.Puzzle.LeverLight {
@@ -31,9 +32,7 @@ namespace Knotgames.Gameplay.Puzzle.LeverLight {
         private int myId;
         private DataToSend pulledData;
         private DataToSend interfereData;
-        AudioSource myPlayer;
         bool canTrigger = true;
-        [SerializeField] AudioClip activateSound;
 
         private void Start() {
             myColor = lightLever.manager.GetAvailableLeverColor();
@@ -41,9 +40,6 @@ namespace Knotgames.Gameplay.Puzzle.LeverLight {
             myText = ObjectPool.instance.SpawnPoolObj(textPoolTag, textPos.position, textPos.rotation).GetComponent<TextMeshProUGUI>();
             myText.text = myColor.ToString();
             animator = GetComponent<Animator>();
-            GameObject source = GameObject.Instantiate(Resources.Load("3DAudioPlayer"), transform.position, Quaternion.identity) as GameObject;
-            source.transform.SetParent(transform);
-            myPlayer = source.GetComponent<AudioSource>();
 
             interfereColors = new List<LightColor>(lightLever.manager.GetAllAvailableColors());
             interfereColors.Remove(originalColor);
@@ -93,7 +89,7 @@ namespace Knotgames.Gameplay.Puzzle.LeverLight {
                 canTrigger = false;
                 Invoke("ResetCanTrigger", 5);
                 animator.SetTrigger("open");
-                myPlayer.PlayOneShot(activateSound);
+                AudioPlayer.instance.PlayAudio3DOneShot(ClipName.Lever);
             }
             if(myLights == null)
                 myLights = lightLever.manager.GetLightsOfColor(myColor);

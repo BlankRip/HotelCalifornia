@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using Knotgames.Network;
+using Knotgames.Audio;
 using Knotgames.Gameplay.UI;
 
 namespace Knotgames.Gameplay.Puzzle.Radio
@@ -26,8 +27,6 @@ namespace Knotgames.Gameplay.Puzzle.Radio
         private DataToSend dataToSend;
         private string myVal;
         TextMeshProUGUI text;
-        AudioSource myPlayer;
-        [SerializeField] AudioClip activateSound;
 
         private void Awake()
         {
@@ -44,9 +43,6 @@ namespace Knotgames.Gameplay.Puzzle.Radio
             id = pieceId;
             pieceId++;
             dataToSend = new DataToSend(id);
-            GameObject source = GameObject.Instantiate(Resources.Load("3DAudioPlayer"), transform.position, Quaternion.identity) as GameObject;
-            source.transform.SetParent(transform);
-            myPlayer = source.GetComponent<AudioSource>();
             if (!DevBoy.yes)
                 NetUnityEvents.instance.radioPieceEvent.AddListener(RecieveData);
         }
@@ -91,7 +87,7 @@ namespace Knotgames.Gameplay.Puzzle.Radio
         public void Interact()
         {
             CycleValue();
-            myPlayer.PlayOneShot(activateSound);
+            AudioPlayer.instance.PlayAudio3DOneShot(ClipName.Radio);
             if (!DevBoy.yes)
                 SendData();
         }

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Knotgames.Network;
 using UnityEngine;
 using TMPro;
+using Knotgames.Audio;
 using Knotgames.Gameplay.UI;
 
 namespace Knotgames.Gameplay.Puzzle.Map
@@ -26,10 +27,7 @@ namespace Knotgames.Gameplay.Puzzle.Map
         private IMapPuzzle mapPuzzle;
         private IMapSolutionRoom mapSolutionRoom;
         MeshRenderer meshRenderer;
-        TextMeshProUGUI myText;
         public bool interactable = true;
-        AudioSource myPlayer;
-        [SerializeField] AudioClip activateSound;
 
         private void Start()
         {
@@ -48,9 +46,6 @@ namespace Knotgames.Gameplay.Puzzle.Map
             if (mapManager.theSolution == null)
                 mapManager.theSolution = mapSolutionRoom;
             meshRenderer = GetComponent<MeshRenderer>();
-            GameObject source = GameObject.Instantiate(Resources.Load("3DAudioPlayer"), transform.position, Quaternion.identity) as GameObject;
-            source.transform.SetParent(transform);
-            myPlayer = source.GetComponent<AudioSource>();
         }
 
         private void OnDestroy()
@@ -59,14 +54,6 @@ namespace Knotgames.Gameplay.Puzzle.Map
                 NetUnityEvents.instance.mapPieceEvent.RemoveListener(RecieveData);
             mapManager.thePuzzle = null;
             mapManager.theSolution = null;
-        }
-
-        public void Setuptext(string value)
-        {
-            //TEXT POS -0.1144269
-            Vector3 textPos = new Vector3(transform.position.x, transform.position.y, transform.position.z - 0.05f);
-            myText = ObjectPool.instance.SpawnPoolObj("mapText", textPos, Quaternion.identity).GetComponent<TextMeshProUGUI>();
-            myText.text = value;
         }
 
         public bool GetValue()
@@ -90,7 +77,7 @@ namespace Knotgames.Gameplay.Puzzle.Map
             if (interactable)
             {
                 CycleValue();
-                myPlayer.PlayOneShot(activateSound);
+                AudioPlayer.instance.PlayAudio3DOneShot(ClipName.MapPiece);
                 if (!DevBoy.yes)
                     SendData();
             }
@@ -131,15 +118,9 @@ namespace Knotgames.Gameplay.Puzzle.Map
         public void FlipValues()
         {
             if (screwed)
-            {
                 meshRenderer.enabled = false;
-                myText.gameObject.SetActive(false);
-            }
             else
-            {
                 meshRenderer.enabled = true;
-                myText.gameObject.SetActive(true);
-            }
         }
 
         public void HideInteractInstruction()

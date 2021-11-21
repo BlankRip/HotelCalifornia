@@ -17,10 +17,6 @@ namespace Knotgames.Gameplay.Puzzle.Map
         public void SetUp(IMapSolutionRoom solutionRoom)
         {
             this.solutionRoom = solutionRoom;
-            for (int i = 0; i < pieces.Count; i++)
-            {
-                pieces[i].Setuptext(i.ToString());
-            }
         }
 
         public void SetSolution(List<bool> sol)
