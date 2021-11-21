@@ -27,6 +27,8 @@ namespace Knotgames.Gameplay.Puzzle.Map
         private IMapSolutionRoom mapSolutionRoom;
         MeshRenderer meshRenderer;
         public bool interactable = true;
+        AudioSource myPlayer;
+        [SerializeField] AudioClip activateSound;
 
         private void Start()
         {
@@ -45,6 +47,9 @@ namespace Knotgames.Gameplay.Puzzle.Map
             if (mapManager.theSolution == null)
                 mapManager.theSolution = mapSolutionRoom;
             meshRenderer = GetComponent<MeshRenderer>();
+            GameObject source = GameObject.Instantiate(Resources.Load("3DAudioPlayer"), transform.position, Quaternion.identity) as GameObject;
+            source.transform.SetParent(transform);
+            myPlayer = source.GetComponent<AudioSource>();
         }
 
         private void OnDestroy()
@@ -76,7 +81,9 @@ namespace Knotgames.Gameplay.Puzzle.Map
             if (interactable)
             {
                 CycleValue();
-                SendData();
+                myPlayer.PlayOneShot(activateSound);
+                if (!DevBoy.yes)
+                    SendData();
             }
         }
 
@@ -120,12 +127,14 @@ namespace Knotgames.Gameplay.Puzzle.Map
                 meshRenderer.enabled = true;
         }
 
-        public void HideInteractInstruction() {
+        public void HideInteractInstruction()
+        {
             InstructionText.instance.HideInstruction();
         }
 
-        public void ShowInteractInstruction() {
-            if(interactable)
+        public void ShowInteractInstruction()
+        {
+            if (interactable)
                 InstructionText.instance.ShowInstruction("Press \'LMB\' To Toggle Connection");
         }
 

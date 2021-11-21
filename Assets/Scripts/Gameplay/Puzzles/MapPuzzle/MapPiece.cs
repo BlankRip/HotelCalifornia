@@ -28,6 +28,8 @@ namespace Knotgames.Gameplay.Puzzle.Map
         MeshRenderer meshRenderer;
         TextMeshProUGUI myText;
         public bool interactable = true;
+        AudioSource myPlayer;
+        [SerializeField] AudioClip activateSound;
 
         private void Start()
         {
@@ -46,14 +48,17 @@ namespace Knotgames.Gameplay.Puzzle.Map
             if (mapManager.theSolution == null)
                 mapManager.theSolution = mapSolutionRoom;
             meshRenderer = GetComponent<MeshRenderer>();
+            GameObject source = GameObject.Instantiate(Resources.Load("3DAudioPlayer"), transform.position, Quaternion.identity) as GameObject;
+            source.transform.SetParent(transform);
+            myPlayer = source.GetComponent<AudioSource>();
         }
 
         private void OnDestroy()
         {
             if (!DevBoy.yes)
                 NetUnityEvents.instance.mapPieceEvent.RemoveListener(RecieveData);
-                mapManager.thePuzzle = null;
-                mapManager.theSolution = null;
+            mapManager.thePuzzle = null;
+            mapManager.theSolution = null;
         }
 
         public void Setuptext(string value)
@@ -85,8 +90,9 @@ namespace Knotgames.Gameplay.Puzzle.Map
             if (interactable)
             {
                 CycleValue();
-                if(!DevBoy.yes)
-                SendData();
+                myPlayer.PlayOneShot(activateSound);
+                if (!DevBoy.yes)
+                    SendData();
             }
         }
 
@@ -136,12 +142,14 @@ namespace Knotgames.Gameplay.Puzzle.Map
             }
         }
 
-        public void HideInteractInstruction() {
+        public void HideInteractInstruction()
+        {
             InstructionText.instance.HideInstruction();
         }
 
-        public void ShowInteractInstruction() {
-            if(interactable)
+        public void ShowInteractInstruction()
+        {
+            if (interactable)
                 InstructionText.instance.ShowInstruction("Press \'LMB\' To Toggle Node");
         }
 
