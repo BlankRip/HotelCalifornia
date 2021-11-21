@@ -72,6 +72,7 @@ namespace Knotgames.Gameplay.Puzzle.Maze {
                 current = copy[rand].transform.GetChild(0);
                 if(PassedRangeTest(current, minPieceGap)) {
                     GameObject spawned = GameObject.Instantiate(pieceObjects[pieceIndex], current.position, Quaternion.identity);
+                    spawned.transform.SetParent(transform);
                     currentPieces.Add(spawned);
                 } else
                     i--;

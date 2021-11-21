@@ -24,7 +24,7 @@ namespace Knotgames.Gameplay
         void FootStepEffect() {
             Debug.Log("FOOTED");
             footSource.PlayOneShot(footstep);
-            footSource.pitch = Random.Range(1, 1.25f);
+            footSource.pitch = Random.Range(0.7f, 1.25f);
         }
     }
 }
