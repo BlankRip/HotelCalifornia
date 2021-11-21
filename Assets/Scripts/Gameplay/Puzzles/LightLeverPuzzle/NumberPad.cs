@@ -15,6 +15,7 @@ namespace Knotgames.Gameplay.Puzzle.LeverLight {
         private NumberPadPanel panel;
         private List<int> solution;
         private bool solved = false;
+        private TextMeshProUGUI myText;
 
         DataToSend dataToSend;
 
@@ -39,12 +40,14 @@ namespace Knotgames.Gameplay.Puzzle.LeverLight {
         }
 
         private void OnDestroy() {
+            if(myText != null)
+                myText.gameObject.SetActive(false);
             if(!DevBoy.yes)
                 NetUnityEvents.instance.lightsNumberPad.RemoveListener(RecieveData);
         }
         
         private void SetUpText() {
-            TextMeshProUGUI myText = ObjectPool.instance.SpawnPoolObj(textPoolTag, textPos.position, textPos.rotation).GetComponent<TextMeshProUGUI>();
+            myText = ObjectPool.instance.SpawnPoolObj(textPoolTag, textPos.position, textPos.rotation).GetComponent<TextMeshProUGUI>();
             myText.text = lightLever.manager.GetColorHelper();
         }
 

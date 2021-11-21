@@ -13,6 +13,7 @@ namespace Knotgames.Gameplay.Puzzle.Morse
         [SerializeField] List<Transform> alphaBetaOmagaTextPos;
         private List<char> solution;
         private MorseAlphPanel panel;
+        private List<GameObject> myTextObjs;
 
         void Start()
         {
@@ -21,16 +22,27 @@ namespace Knotgames.Gameplay.Puzzle.Morse
             TextSetUp();
         }
 
+        private void OnDestroy() {
+            if(myTextObjs != null) {
+                foreach (GameObject go in myTextObjs)
+                    go.SetActive(false);
+            }
+        }
+
         private void TextSetUp() {
+            myTextObjs = new List<GameObject>();
             TextMeshProUGUI text = ObjectPool.instance.SpawnPoolObj("MorseText", alphaBetaOmagaTextPos[0].transform.position,
                 alphaBetaOmagaTextPos[0].transform.rotation).GetComponent<TextMeshProUGUI>();
             text.text = "α";
+            myTextObjs.Add(text.gameObject);
             text = ObjectPool.instance.SpawnPoolObj("MorseText", alphaBetaOmagaTextPos[1].transform.position,
                 alphaBetaOmagaTextPos[1].transform.rotation).GetComponent<TextMeshProUGUI>();
             text.text = "ß";
+            myTextObjs.Add(text.gameObject);
             text = ObjectPool.instance.SpawnPoolObj("MorseText", alphaBetaOmagaTextPos[2].transform.position,
                 alphaBetaOmagaTextPos[2].transform.rotation).GetComponent<TextMeshProUGUI>();
             text.text = "Ω";
+            myTextObjs.Add(text.gameObject);
         }
 
         public void CheckSolution()

@@ -62,6 +62,8 @@ namespace Knotgames.Gameplay.Puzzle.Radio
                 FlipRadio();
             eventCollection.twistVision.RemoveListener(MessupFrequency);
             eventCollection.fixVision.RemoveListener(NormalFrequency);
+            if(text != null)
+                text.gameObject.SetActive(false);
 
             if (!DevBoy.yes)
                 NetUnityEvents.instance.radioPieceEvent.RemoveListener(RecieveData);

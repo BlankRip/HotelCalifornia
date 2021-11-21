@@ -15,6 +15,11 @@ namespace Knotgames.Gameplay.Puzzle {
         //     myText.transform.rotation = targetPos.rotation;
         // }
 
+        private void OnDestroy() {
+            if(myText != null)
+                myText.gameObject.SetActive(false);
+        }
+
         public void UpdateText(string textValue) {
             myText = ObjectPool.instance.SpawnPoolObj("PadText", targetPos.position, targetPos.rotation).GetComponent<TextMeshProUGUI>();
             myText.text = textValue;
