@@ -7,5 +7,7 @@ namespace Knotgames.LevelGen {
     public class ScriptableLevelSeed : ScriptableObject
     {
         public ILevelSeed levelSeed;
+        public static int fuckIndex;
+        public static System.Random theRand;
     }
 }
