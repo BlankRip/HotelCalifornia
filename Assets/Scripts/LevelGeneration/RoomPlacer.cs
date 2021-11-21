@@ -22,8 +22,6 @@ namespace Knotgames.LevelGen {
             if(availableRooms.Count == 0)
                 Debug.Log("TF");
             int rand = KnotRandom.theRand.Next(0, availableRooms.Count - 1); //-1 as unity is just a fucking bitch
-            Debug.Log(rand);
-            ScriptableLevelSeed.fuckIndex++;
 
             GameObject spawned = GameObject.Instantiate(availableRooms[rand], Vector3.zero, Quaternion.identity);
             spawned.transform.parent = builderData.parent;
@@ -50,8 +48,6 @@ namespace Knotgames.LevelGen {
             List<Transform> doorways = room.GetDoorways();
             for (int i = 0; i < doorways.Count; i++) {
                 int rand = KnotRandom.theRand.Next(0, availableDoorways.Count);
-                Debug.Log(rand);
-                ScriptableLevelSeed.fuckIndex++;
                 availableDoorways.Insert(rand, doorways[i]);
                 availableDoorways.Add(doorways[i]);
             }

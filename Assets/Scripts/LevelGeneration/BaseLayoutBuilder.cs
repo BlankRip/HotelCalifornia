@@ -59,10 +59,7 @@ namespace Knotgames.LevelGen {
         }
 
         private void PickRout() {
-            Debug.Log("THECHANGE " + ScriptableLevelSeed.fuckIndex);
             int rand = KnotRandom.theRand.Next(0, availableEntryDoors.Count);
-            Debug.Log(rand);
-            ScriptableLevelSeed.fuckIndex++;
             currentBuildingData.availableDoorways.Add(availableEntryDoors[rand]);
             availableEntryDoors.RemoveAt(rand);
             routId++;
