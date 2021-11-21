@@ -51,6 +51,8 @@ namespace Knotgames.Gameplay.Puzzle.LeverLight {
         }
 
         private void OnDestroy() {
+            if(myText != null)
+                myText.gameObject.SetActive(false);
             if(!DevBoy.yes)
                 NetUnityEvents.instance.lightLeverEvents.RemoveListener(RecieveData);
         }

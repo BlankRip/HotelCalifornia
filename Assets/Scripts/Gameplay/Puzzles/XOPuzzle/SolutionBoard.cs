@@ -24,6 +24,13 @@ namespace Knotgames.Gameplay.Puzzle.XO {
         }
 
         private void OnDestroy() {
+            if(forwardText != null) {
+                forwardText.gameObject.SetActive(false);
+                if(texts != null) {
+                    foreach (TextMeshProUGUI t in texts)
+                        t.gameObject.SetActive(false);
+                }
+            }
             eventCollection.twistVision.RemoveListener(TwistVision);
             eventCollection.fixVision.RemoveListener(BackToNormalVision);
         }

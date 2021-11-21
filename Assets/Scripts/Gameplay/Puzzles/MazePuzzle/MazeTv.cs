@@ -10,13 +10,14 @@ namespace Knotgames.Gameplay.Puzzle.Maze {
         [SerializeField] ScriptableMazeManager maze;
         [SerializeField] string poolTag;
         [SerializeField] Transform objPosition;
+        private GameObject pooledObj;
         private bool fakeStatic;
         private float fakeTime = 15;
         private float timer;
         private DataToSend dataToSend;
 
         private void Start() {
-            ObjectPool.instance.SpawnPoolObj(poolTag, objPosition.position, objPosition.rotation);
+            pooledObj = ObjectPool.instance.SpawnPoolObj(poolTag, objPosition.position, objPosition.rotation);
 
             dataToSend = new DataToSend();
             if(!DevBoy.yes)
@@ -34,6 +35,8 @@ namespace Knotgames.Gameplay.Puzzle.Maze {
         }
 
         private void OnDestroy() {
+            if(pooledObj != null)
+                pooledObj.SetActive(false);
             if(!DevBoy.yes)
                 NetUnityEvents.instance.mazeTvEvent.RemoveListener(RecieveData);
         }
