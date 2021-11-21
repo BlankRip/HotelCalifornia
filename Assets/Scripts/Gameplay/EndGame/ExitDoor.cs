@@ -19,6 +19,8 @@ namespace Knotgames.Gameplay {
         private Quaternion returnRot;
         private int playersExited;
         private int playerNeededToEndGame = 2;
+        AudioSource myPlayer;
+        [SerializeField] AudioClip activateSound;
 
         private void Awake() {
             puzzlesSolved = 0;
@@ -54,6 +56,7 @@ namespace Knotgames.Gameplay {
 
         private IEnumerator ActivateLight(int lightIndex) {
             MoveCamToDoorView();
+            myPlayer.PlayOneShot(activateSound);
             yield return new WaitForSeconds(1f);
             solvedLights[lightIndex].SetActive(true);
             yield return new WaitForSeconds(1);

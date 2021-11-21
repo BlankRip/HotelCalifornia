@@ -25,11 +25,15 @@ namespace Knotgames.Gameplay.Puzzle.Radio
         private int id;
         private DataToSend dataToSend;
         private string myVal;
+        TextMeshProUGUI text;
+        AudioSource myPlayer;
+        [SerializeField] AudioClip activateSound;
+
         private void Awake()
         {
             SetupText();
         }
-        
+
         private void Start()
         {
             originalRot = transform.rotation;
@@ -40,6 +44,9 @@ namespace Knotgames.Gameplay.Puzzle.Radio
             id = pieceId;
             pieceId++;
             dataToSend = new DataToSend(id);
+            GameObject source = GameObject.Instantiate(Resources.Load("3DAudioPlayer"), transform.position, Quaternion.identity) as GameObject;
+            source.transform.SetParent(transform);
+            myPlayer = source.GetComponent<AudioSource>();
             if (!DevBoy.yes)
                 NetUnityEvents.instance.radioPieceEvent.AddListener(RecieveData);
         }
@@ -62,7 +69,7 @@ namespace Knotgames.Gameplay.Puzzle.Radio
                 FlipRadio();
             eventCollection.twistVision.RemoveListener(MessupFrequency);
             eventCollection.fixVision.RemoveListener(NormalFrequency);
-            if(text != null)
+            if (text != null)
                 text.gameObject.SetActive(false);
 
             if (!DevBoy.yes)
@@ -84,8 +91,8 @@ namespace Knotgames.Gameplay.Puzzle.Radio
         public void Interact()
         {
             CycleValue();
-            
-            if(!DevBoy.yes)
+            myPlayer.PlayOneShot(activateSound);
+            if (!DevBoy.yes)
                 SendData();
         }
 
@@ -157,34 +164,35 @@ namespace Knotgames.Gameplay.Puzzle.Radio
             text.text = myVal;
             UnityEngine.Debug.LogError($"Frequency is: {myVal}", gameObject);
         }
-
+        float angle = 0;
         public void SetRandom()
         {
             index = Random.Range(0, 5);
             switch (index)
             {
                 case 0:
-                    transform.rotation = originalRot * Quaternion.AngleAxis(-90, Vector3.forward);
+                    angle = -90;
                     myVal = "-90Hz";
                     break;
                 case 1:
-                    transform.rotation = originalRot * Quaternion.AngleAxis(-45, Vector3.forward);
+                    angle = -45;
                     myVal = "-45Hz";
                     break;
                 case 2:
-                    transform.rotation = originalRot * Quaternion.AngleAxis(0, Vector3.forward);
+                    angle = 0;
                     myVal = "0Hz";
                     break;
                 case 3:
-                    transform.rotation = originalRot * Quaternion.AngleAxis(45, Vector3.forward);
+                    angle = 45;
                     myVal = "45Hz";
                     break;
                 case 4:
-                    transform.rotation = originalRot * Quaternion.AngleAxis(90, Vector3.forward);
+                    angle = 90;
                     myVal = "90Hz";
                     break;
             }
             text.text = myVal;
+            transform.Rotate(0, 0, angle, Space.Self);
             UnityEngine.Debug.LogError($"Frequency is: {myVal}", gameObject);
         }
 
@@ -193,19 +201,19 @@ namespace Knotgames.Gameplay.Puzzle.Radio
             return myVal;
         }
 
-        TextMeshProUGUI text;
-
         public void SetupText()
         {
             text = ObjectPool.instance.SpawnPoolObj(textObjPoolTag, textSpot.position, textSpot.rotation).GetComponent<TextMeshProUGUI>();
             text.text = myVal;
         }
 
-        public void ShowInteractInstruction() {
+        public void ShowInteractInstruction()
+        {
             InstructionText.instance.ShowInstruction("Press \'LMB\' To Interact");
         }
 
-        public void HideInteractInstruction() {
+        public void HideInteractInstruction()
+        {
             InstructionText.instance.HideInstruction();
         }
 
