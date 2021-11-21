@@ -52,6 +52,8 @@ namespace Knotgames.Gameplay.Puzzle.Riddler {
         }
 
         private void OnDestroy() {
+            if(myText != null)
+                myText.gameObject.SetActive(false);
             if(!DevBoy.yes)
                 NetUnityEvents.instance.riddleBoardEvent.RemoveListener(RecieveData);
         }

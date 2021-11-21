@@ -50,6 +50,8 @@ namespace Knotgames.Gameplay.Puzzle.XO {
         }
 
         private void OnDestroy() {
+            if(myText != null)
+                myText.gameObject.SetActive(false);
             if(delusional)
                 FlipXO();
             eventCollection.twistVision.RemoveListener(TwistVision);

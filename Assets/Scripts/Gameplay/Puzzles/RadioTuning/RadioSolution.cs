@@ -23,6 +23,10 @@ namespace Knotgames.Gameplay.Puzzle.Radio
 
         private void OnDestroy()
         {
+            if(texts != null) {
+                foreach (TextMeshProUGUI t in texts)
+                    t.gameObject.SetActive(false);
+            }
             eventCollection.twistVision.RemoveListener(MessupFrequency);
             eventCollection.fixVision.RemoveListener(NormalFrequency);
         }
