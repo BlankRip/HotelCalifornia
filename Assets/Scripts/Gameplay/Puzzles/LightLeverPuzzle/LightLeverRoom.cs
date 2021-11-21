@@ -18,9 +18,14 @@ namespace Knotgames.Gameplay.Puzzle.LeverLight {
         [SerializeField] GameObject keyPadObj;
         [SerializeField] List<Transform> keyPadSpawnPoints;
 
-        private void Start() {
+        private IEnumerator Start() {
             if(!initilized)
                 lightLever.Initilize();
+            yield return new WaitForEndOfFrame();
+            yield return new WaitForEndOfFrame();
+            yield return new WaitForEndOfFrame();
+            yield return new WaitForEndOfFrame();
+            yield return new WaitForEndOfFrame();
             SpawnLevers();
             SpawnLights();
             if(!initilized)
