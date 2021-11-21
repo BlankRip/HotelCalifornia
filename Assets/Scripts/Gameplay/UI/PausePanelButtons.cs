@@ -32,5 +32,9 @@ namespace Knotgames.Gameplay.UI {
         public void ControlScreenVisibility(bool activate) {
             pause.ToggleControlsScreen(activate);
         }
+
+        public void SettingsScreenVisibility(bool activate) {
+            pause.ToggleSettingsScreen(activate);
+        }
     }
 }
