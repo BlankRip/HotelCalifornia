@@ -8,6 +8,5 @@ namespace Knotgames.LevelGen {
     {
         public ILevelSeed levelSeed;
         public static int fuckIndex;
-        public static System.Random theRand;
     }
 }

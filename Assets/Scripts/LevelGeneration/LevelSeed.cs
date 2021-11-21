@@ -20,8 +20,7 @@ namespace Knotgames.LevelGen
         public void Initilize() {
             Debug.Log("Init");
             Debug.Log(seedValue);
-            Random.InitState(seedValue);
-            ScriptableLevelSeed.theRand = new System.Random(seedValue);
+            KnotRandom.theRand = new System.Random(seedValue);
         }
 
         public void GenerateSeed() {

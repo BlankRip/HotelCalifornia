@@ -29,7 +29,7 @@ namespace Knotgames.Gameplay.Puzzle.Map
             foreach (MapConnection connection in connections)
             {
                 connection.interactable = false;
-                int rand = Random.Range(0, 2);
+                int rand = KnotRandom.theRand.Next(0, 2);
                 if (rand == 0)
                     conekshuns.Add(false);
                 else

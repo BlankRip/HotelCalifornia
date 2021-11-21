@@ -24,7 +24,7 @@ namespace Knotgames.Gameplay.Puzzle.Radio
 
         private void SetUpSolution()
         {
-            int rand = Random.Range(0, radioSpots.Count);
+            int rand = KnotRandom.theRand.Next(0, radioSpots.Count);
             currentSolution = radioSolution.BuildNewSolution(radioSpots[rand]);
             if (puzzleRoom != null)
                 puzzleRoom.SetSolution(currentSolution);

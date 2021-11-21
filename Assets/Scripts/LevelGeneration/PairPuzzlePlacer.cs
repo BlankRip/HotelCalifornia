@@ -17,7 +17,7 @@ namespace Knotgames.LevelGen {
 
         public bool Place() {
             List<IRoom> currentSet = GetRandomSet();
-            int rand = Random.Range(0, currentSet.Count);
+            int rand = KnotRandom.theRand.Next(0, currentSet.Count);
             
             IPairPuzzleRoom spawned = GameObject.Instantiate(currentSet[rand].GetPuzzleVarient(), 
                 currentSet[rand].GetTransform().position, currentSet[rand].GetTransform().rotation, 
@@ -36,7 +36,7 @@ namespace Knotgames.LevelGen {
         }
 
         private List<IRoom> GetRandomSet() {
-            setInUse = Random.Range(0, 3);
+            setInUse = KnotRandom.theRand.Next(0, 3);
 
             switch(setInUse) {
                 case 0:

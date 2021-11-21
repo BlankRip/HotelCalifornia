@@ -53,7 +53,7 @@ namespace Knotgames.Gameplay.Puzzle.Maze {
         }
 
         private void ActivateTPs() {
-            int rand = Random.Range(0, entryTpPoints.Count);
+            int rand = KnotRandom.theRand.Next(0, entryTpPoints.Count);
             entryTp.transform.position = entryTpPoints[rand].position;
             entryTp.SetActive(true);
             exitTp.SetActive(true);

@@ -37,7 +37,7 @@ namespace Knotgames.Gameplay.Puzzle.Maze {
         public void SetUpMaze(GameObject exitTp) {
             this.exitTp = exitTp;
             List<Transform> mazeSawnPoints = GameObject.FindGameObjectWithTag(mazePointsTag).GetComponent<TransformListHolder>().GetList();
-            int rand = Random.Range(0, mazeSawnPoints.Count);
+            int rand = KnotRandom.theRand.Next(0, mazeSawnPoints.Count);
             transform.position = mazeSawnPoints[rand].position;
             MazeRenderer maze = GetComponent<MazeRenderer>();
             mazeFloorTiles = maze.CreateMazeAndGetFloorTiles(seeder.levelSeed.GetSeed());
@@ -50,8 +50,8 @@ namespace Knotgames.Gameplay.Puzzle.Maze {
                 availableIndex.Add(i);
             
             for (int i = 0; i < numberOfEntryPoints; i++) {
-                int rand = Random.Range(0, availableIndex.Count);
-                int randTile = Random.Range(0, mazeFloorTiles.Count);
+                int rand = KnotRandom.theRand.Next(0, availableIndex.Count);
+                int randTile = KnotRandom.theRand.Next(0, mazeFloorTiles.Count);
                 playerSpawnPoints[availableIndex[rand]] = mazeFloorTiles[randTile].transform.GetChild(0);
                 availableIndex.RemoveAt(rand);
                 mazeFloorTiles.RemoveAt(randTile);
@@ -61,14 +61,14 @@ namespace Knotgames.Gameplay.Puzzle.Maze {
 
         public void SpawnPieces(int piecesToCollect) {
             ClearCurrentPieces();
-            int pieceIndex = Random.Range(0, pieceObjects.Count);
+            int pieceIndex = KnotRandom.theRand.Next(0, pieceObjects.Count);
             List<GameObject> copy = new List<GameObject>(mazeFloorTiles);
             int rand;
             Transform current;
             float minPieceGap = 13 * 13;
 
             for (int i = 0; i < piecesToCollect; i++) {
-                rand = Random.Range(0, copy.Count);
+                rand = KnotRandom.theRand.Next(0, copy.Count);
                 current = copy[rand].transform.GetChild(0);
                 if(PassedRangeTest(current, minPieceGap)) {
                     GameObject spawned = GameObject.Instantiate(pieceObjects[pieceIndex], current.position, Quaternion.identity);
@@ -78,7 +78,7 @@ namespace Knotgames.Gameplay.Puzzle.Maze {
                     i--;
                 copy.RemoveAt(rand);
             }
-            rand = Random.Range(0, copy.Count);
+            rand = KnotRandom.theRand.Next(0, copy.Count);
             exitTp.transform.position = copy[rand].transform.GetChild(0).position;
         }
 

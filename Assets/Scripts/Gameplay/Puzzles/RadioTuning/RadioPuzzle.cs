@@ -19,7 +19,7 @@ namespace Knotgames.Gameplay.Puzzle.Radio
             List<TuningPiece> piecesCopy = new List<TuningPiece>(pieces);
             for (int i = 0; i < 3; i++)
             {
-                int rand = Random.Range(0, piecesCopy.Count);
+                int rand = KnotRandom.theRand.Next(0, piecesCopy.Count);
                 piecesCopy[rand].SetRandom();
                 piecesCopy.RemoveAt(rand);
             }

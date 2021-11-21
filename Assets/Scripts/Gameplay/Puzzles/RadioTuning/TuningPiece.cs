@@ -163,7 +163,7 @@ namespace Knotgames.Gameplay.Puzzle.Radio
         float angle = 0;
         public void SetRandom()
         {
-            index = Random.Range(0, 5);
+            index = KnotRandom.theRand.Next(0, 5);
             switch (index)
             {
                 case 0:

@@ -42,7 +42,7 @@ namespace Knotgames.Gameplay.Puzzle.Morse {
             for (int i = 0; i < numberOfLetters; i++)
             {
                 char alpha = GetRandomChar();
-                ClipName cName = clipNames[Random.Range(0, clipNames.Count)];
+                ClipName cName = clipNames[KnotRandom.theRand.Next(0, clipNames.Count)];
                 clipNames.Remove(cName);
 
                 clipAlphabetDictionary.Add(alpha, AudioPlayer.instance.GetClip(cName));
@@ -51,7 +51,7 @@ namespace Knotgames.Gameplay.Puzzle.Morse {
         }
 
         public char GetRandomChar() {
-            char toReturn = alphabets[Random.Range(0, alphabets.Count)];
+            char toReturn = alphabets[KnotRandom.theRand.Next(0, alphabets.Count)];
             alphabets.Remove(toReturn);
             return toReturn;
         }
@@ -59,7 +59,7 @@ namespace Knotgames.Gameplay.Puzzle.Morse {
         private void SetFinalSolution() {
             while (myAlphas.Count > 0)
             {
-                int rand = Random.Range(0, myAlphas.Count);
+                int rand = KnotRandom.theRand.Next(0, myAlphas.Count);
                 solution.Add(myAlphas[rand]);
                 myAlphas.RemoveAt(rand);
             }

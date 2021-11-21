@@ -102,7 +102,7 @@ namespace Knotgames.Gameplay.Puzzle.Radio
 
         private string GetFrequency()
         {
-            int rand = Random.Range(0, 5);
+            int rand = KnotRandom.theRand.Next(0, 5);
             switch (rand)
             {
                 case 0:

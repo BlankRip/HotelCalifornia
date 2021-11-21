@@ -20,7 +20,7 @@ namespace Knotgames.LevelGen {
             }
 
             if(common.Count > 1) {
-                int rand = Random.Range(0, common.Count);
+                int rand = KnotRandom.theRand.Next(0, common.Count);
                 return ActivatePuzzleOfType(common[rand]);
             } else {
                 return ActivatePuzzleOfType(common[0]);

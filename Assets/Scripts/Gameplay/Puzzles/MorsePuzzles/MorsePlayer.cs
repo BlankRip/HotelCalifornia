@@ -57,7 +57,7 @@ namespace Knotgames.Gameplay.Puzzle.Morse
             if(takeTwo)
                 iterations = 2;
             for (int i = 0; i < iterations; i++) {
-                int rand = Random.Range(0, availableIndex.Count);
+                int rand = KnotRandom.theRand.Next(0, availableIndex.Count);
                 myIndex.Add(availableIndex[rand]);
                 availableIndex.RemoveAt(rand);
             }
@@ -75,7 +75,7 @@ namespace Knotgames.Gameplay.Puzzle.Morse
         }
 
         private bool TakeTwoSounds() {
-            int rand = Random.Range(0, 101);
+            int rand = KnotRandom.theRand.Next(0, 101);
             if(rand < 20 || (rand > 55 && rand < 69) || rand > 89)
                 return true;
             else

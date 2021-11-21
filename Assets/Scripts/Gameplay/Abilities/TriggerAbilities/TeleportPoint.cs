@@ -8,7 +8,7 @@ namespace Knotgames.Gameplay.Abilities {
         [SerializeField] List<Transform> localTeleportPoints;
 
         public Vector3 GetTeleportPoint() {
-            int rand = Random.Range(0, localTeleportPoints.Count);
+            int rand = KnotRandom.theRand.Next(0, localTeleportPoints.Count);
             return localTeleportPoints[rand].position;
         }
     }

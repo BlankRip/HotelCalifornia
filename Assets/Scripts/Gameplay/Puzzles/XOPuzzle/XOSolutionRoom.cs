@@ -46,7 +46,7 @@ namespace Knotgames.Gameplay.Puzzle.XO {
         }
 
         private void SetUpSolution() {
-            int rand = Random.Range(0, boardSpots.Count);
+            int rand = KnotRandom.theRand.Next(0, boardSpots.Count);
             currentSolution = solutionBoard.BuildNewSolution(boardSpots[rand]);
             timer = 0;
 

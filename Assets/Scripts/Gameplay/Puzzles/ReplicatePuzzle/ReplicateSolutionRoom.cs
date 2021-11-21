@@ -40,7 +40,7 @@ namespace Knotgames.Gameplay.Puzzle.Replicate
             {
                 try
                 {
-                    int x = Random.Range(0, objectSpots.Count);
+                    int x = KnotRandom.theRand.Next(0, objectSpots.Count);
                     RepObj repObj = toSpawn[i];
                     GameObject go = Instantiate(repObj.Object, objectSpots[x].position, objectSpots[x].rotation, this.transform);
                     go.layer = 0;

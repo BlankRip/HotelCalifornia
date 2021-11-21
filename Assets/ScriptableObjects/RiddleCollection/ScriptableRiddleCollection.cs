@@ -14,7 +14,7 @@ namespace Knotgames.Gameplay.Puzzle.Riddler {
         }
 
         public Riddle GetRandomRiddle() {
-            int rand = Random.Range(0, availableRiddles.Count);
+            int rand = KnotRandom.theRand.Next(0, availableRiddles.Count);
             Riddle riddleToReturn = availableRiddles[rand];
             availableRiddles.RemoveAt(rand);
             return riddleToReturn;

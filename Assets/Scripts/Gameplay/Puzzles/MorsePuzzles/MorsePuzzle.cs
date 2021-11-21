@@ -32,10 +32,10 @@ namespace Knotgames.Gameplay.Puzzle.Morse {
         }
 
         private void PositionDevices() {
-            Transform spot = deviceSpots[Random.Range(0, deviceSpots.Count)];
+            Transform spot = deviceSpots[KnotRandom.theRand.Next(0, deviceSpots.Count)];
             device.position = spot.position;
             device.rotation = spot.rotation;
-            spot = playerSpots[Random.Range(0, playerSpots.Count)];
+            spot = playerSpots[KnotRandom.theRand.Next(0, playerSpots.Count)];
             player.position = spot.position;
             player.rotation = spot.rotation;
         }
@@ -49,14 +49,14 @@ namespace Knotgames.Gameplay.Puzzle.Morse {
             }
 
             for (int i = 0; i < 2; i++) {
-                int rand = Random.Range(0, clipNames.Count);
+                int rand = KnotRandom.theRand.Next(0, clipNames.Count);
                 string padValue = $"{solutionBuilder.GetRandomChar()} = {morseCollection.GetMorseString(clipNames[rand])}";
                 ActivateAPad(padValue);
             }
         }
 
         private void ActivateAPad(string value) {
-            int padId = Random.Range(0, solutionPads.Count);
+            int padId = KnotRandom.theRand.Next(0, solutionPads.Count);
             solutionPads[padId].UpdateText(value);
             solutionPads.RemoveAt(padId);
         }

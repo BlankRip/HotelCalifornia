@@ -13,7 +13,7 @@ public class MazeTVRoom : MonoBehaviour, IPairPuzzleSetup
     }
 
     private void Start() {
-        int rand = Random.Range(0, tvSpots.Count);
+        int rand = KnotRandom.theRand.Next(0, tvSpots.Count);
         tvObj.position = tvSpots[rand].position;
         tvObj.rotation = tvSpots[rand].rotation;
         tvObj.gameObject.SetActive(true);

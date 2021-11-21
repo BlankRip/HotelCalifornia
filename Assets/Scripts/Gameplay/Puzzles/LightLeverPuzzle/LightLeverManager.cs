@@ -42,7 +42,7 @@ namespace Knotgames.Gameplay.Puzzle.LeverLight {
                 availableIndex.Add(i);
             for (int i = 0; i < digitsInSolution; i++) {
                 SolutionData data = new SolutionData();
-                int rand = Random.Range(0, availableIndex.Count);
+                int rand = KnotRandom.theRand.Next(0, availableIndex.Count);
                 data.color = (LightColor)availableIndex[rand];
                 solutionDatas.Add(data);
                 availableIndex.RemoveAt(rand);
@@ -52,7 +52,7 @@ namespace Knotgames.Gameplay.Puzzle.LeverLight {
         private void SetSolution() {
             solution = new List<int>();
             foreach(SolutionData data in solutionDatas) {
-                int rndValue = Random.Range(2, 10);
+                int rndValue = KnotRandom.theRand.Next(2, 10);
                 data.amount = rndValue;
                 solution.Add(rndValue);
                 lightsNeeded += data.amount;
@@ -74,7 +74,7 @@ namespace Knotgames.Gameplay.Puzzle.LeverLight {
                     allColors.Add(data.color);
                 }
             }
-            int rand = Random.Range(0, lightColours.Count);
+            int rand = KnotRandom.theRand.Next(0, lightColours.Count);
             LightColor colourToReturn = lightColours[rand];
             lightColours.RemoveAt(rand);
             return colourToReturn;
@@ -83,7 +83,7 @@ namespace Knotgames.Gameplay.Puzzle.LeverLight {
         public LightColor GetAvailableLightColor(ILight lightObj) {
             if(setUpData == null)
                 setUpData = new List<SolutionData>(solutionDatas);
-            int rand = Random.Range(0, setUpData.Count);
+            int rand = KnotRandom.theRand.Next(0, setUpData.Count);
             LightColor colorToReturn = setUpData[rand].color;
             setUpData[rand].amount--;
             if(setUpData[rand].amount == 0)
