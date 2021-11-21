@@ -17,7 +17,9 @@ namespace Knotgames.Gameplay.Puzzle.XO {
         private bool timerOn;
 
         private void Start() {
-            solutionBoard = GameObject.Instantiate(solutionBoardObj).GetComponent<ISolutionBoard>();
+            GameObject obj = GameObject.Instantiate(solutionBoardObj);
+            obj.transform.SetParent(transform);
+            solutionBoard = obj.GetComponent<ISolutionBoard>();
             solutionBoard.SetUpBoard();
             SetUpSolution();
             if(!DevBoy.yes)
