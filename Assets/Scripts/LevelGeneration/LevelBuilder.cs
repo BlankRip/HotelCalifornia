@@ -20,10 +20,10 @@ namespace Knotgames.LevelGen {
             builder.levelBuilder = this;
         }
 
-        // private void Update() {
-        //     if(Input.GetKeyDown(KeyCode.U))
-        //         StartLevelGen(generateSeed);
-        // }
+        private void Update() {
+            if(Input.GetKeyDown(KeyCode.U))
+                StartLevelGen(generateSeed);
+        }
 
         public void RestartingGeneration(bool seedStatus) {
             if(!seedStatus)

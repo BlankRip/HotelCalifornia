@@ -13,6 +13,12 @@ namespace Knotgames.Gameplay {
 
         [Header("Human Customs")]
         [SerializeField] LayerMask humanCamMask;
+        [SerializeField] GameObject humanPostEffects;
+        [SerializeField] GameObject ghostBuffer;
+
+        [Header("Ghost Custom")]
+        [SerializeField] GameObject ghostPostEffects;
+        [SerializeField] GameObject humanBuffer;
         
         private bool ghost;
         private Transform cameraPosition;
@@ -74,10 +80,14 @@ namespace Knotgames.Gameplay {
 
         private void GhostCustoms() {
             cam.farClipPlane = 375;
+            ghostPostEffects.SetActive(true);
+            humanBuffer.SetActive(false);
         }
 
         private void HumanCustoms() {
             cam.cullingMask = humanCamMask;
+            humanPostEffects.SetActive(true);
+            ghostBuffer.SetActive(false);
         }
 
         private void WarpUpInitilize() {
