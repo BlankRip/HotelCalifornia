@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using Knotgames.Audio;
 
 namespace Knotgames.Gameplay {
     public class GameTimer : MonoBehaviour
@@ -43,6 +44,7 @@ namespace Knotgames.Gameplay {
                         currentSeconds -= Time.deltaTime;
                     } else {
                         timerOn = false;
+                        AudioPlayer.instance.PlayAudio2DOneShot(ClipName.TimeUp);
                         Debug.Log("Gameover: Ghost wins");
                     }
                 }

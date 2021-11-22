@@ -56,8 +56,6 @@ namespace Knotgames.Gameplay.Puzzle.Morse {
         }
 
         private void ActivateAPad(string value) {
-            if(KnotRandom.theRand == null)
-                KnotRandom.theRand = new System.Random(-1);
             int padId = KnotRandom.theRand.Next(0, solutionPads.Count);
             solutionPads[padId].UpdateText(value);
             solutionPads.RemoveAt(padId);
