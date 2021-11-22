@@ -17,10 +17,6 @@ namespace Knotgames.Gameplay.Puzzle.Map
         public void SetUp(IMapSolutionRoom solutionRoom)
         {
             this.solutionRoom = solutionRoom;
-            for (int i = 0; i < pieces.Count; i++)
-            {
-                pieces[i].Setuptext(i.ToString());
-            }
         }
 
         public void SetSolution(List<bool> sol)
@@ -33,7 +29,7 @@ namespace Knotgames.Gameplay.Puzzle.Map
             foreach (MapConnection connection in connections)
             {
                 connection.interactable = false;
-                int rand = Random.Range(0, 2);
+                int rand = KnotRandom.theRand.Next(0, 2);
                 if (rand == 0)
                     conekshuns.Add(false);
                 else

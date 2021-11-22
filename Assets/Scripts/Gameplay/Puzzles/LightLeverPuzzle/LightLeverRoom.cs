@@ -18,9 +18,14 @@ namespace Knotgames.Gameplay.Puzzle.LeverLight {
         [SerializeField] GameObject keyPadObj;
         [SerializeField] List<Transform> keyPadSpawnPoints;
 
-        private void Start() {
+        private IEnumerator Start() {
             if(!initilized)
                 lightLever.Initilize();
+            yield return new WaitForEndOfFrame();
+            yield return new WaitForEndOfFrame();
+            yield return new WaitForEndOfFrame();
+            yield return new WaitForEndOfFrame();
+            yield return new WaitForEndOfFrame();
             SpawnLevers();
             SpawnLights();
             if(!initilized)
@@ -57,7 +62,7 @@ namespace Knotgames.Gameplay.Puzzle.LeverLight {
         }
 
         private void SpawnKeyPad() {
-            int rand = Random.Range(0, keyPadSpawnPoints.Count);
+            int rand = KnotRandom.theRand.Next(0, keyPadSpawnPoints.Count);
             GameObject.Instantiate(keyPadObj, keyPadSpawnPoints[rand].position, keyPadSpawnPoints[rand].rotation, transform);
         }
 

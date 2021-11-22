@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Knotgames.Network;
 using UnityEngine;
 using TMPro;
+using Knotgames.Audio;
 using Knotgames.Gameplay.UI;
 
 namespace Knotgames.Gameplay.Puzzle.Map
@@ -76,7 +77,9 @@ namespace Knotgames.Gameplay.Puzzle.Map
             if (interactable)
             {
                 CycleValue();
-                SendData();
+                AudioPlayer.instance.PlayAudio3DOneShot(ClipName.MapConnection);
+                if (!DevBoy.yes)
+                    SendData();
             }
         }
 
@@ -120,12 +123,14 @@ namespace Knotgames.Gameplay.Puzzle.Map
                 meshRenderer.enabled = true;
         }
 
-        public void HideInteractInstruction() {
+        public void HideInteractInstruction()
+        {
             InstructionText.instance.HideInstruction();
         }
 
-        public void ShowInteractInstruction() {
-            if(interactable)
+        public void ShowInteractInstruction()
+        {
+            if (interactable)
                 InstructionText.instance.ShowInstruction("Press \'LMB\' To Toggle Connection");
         }
 

@@ -4,6 +4,7 @@ using UnityEngine;
 using TMPro;
 using Knotgames.Gameplay.Abilities;
 using Knotgames.Network;
+using Knotgames.Audio;
 using Knotgames.Gameplay.UI;
 
 namespace Knotgames.Gameplay.Puzzle.LeverLight {
@@ -31,6 +32,7 @@ namespace Knotgames.Gameplay.Puzzle.LeverLight {
         private int myId;
         private DataToSend pulledData;
         private DataToSend interfereData;
+        bool canTrigger = true;
 
         private void Start() {
             myColor = lightLever.manager.GetAvailableLeverColor();
@@ -80,13 +82,14 @@ namespace Knotgames.Gameplay.Puzzle.LeverLight {
             if(!DevBoy.yes)
                 SendPulledData();
         }
-        bool canTrigger = true;
+
         private void ActivateLights() {
             if(canTrigger)
             {
                 canTrigger = false;
                 Invoke("ResetCanTrigger", 5);
                 animator.SetTrigger("open");
+                AudioPlayer.instance.PlayAudio3DOneShot(ClipName.Lever);
             }
             if(myLights == null)
                 myLights = lightLever.manager.GetLightsOfColor(myColor);

@@ -57,7 +57,7 @@ namespace Knotgames.Gameplay.Puzzle.Replicate
 
         private RepObj GetRepObject()
         {
-            return replicateObjectDatabase.objects[Random.Range(0, replicateObjectDatabase.objects.Count)];
+            return replicateObjectDatabase.objects[KnotRandom.theRand.Next(0, replicateObjectDatabase.objects.Count)];
         }
 
         public void CheckSolution()

@@ -18,10 +18,10 @@ namespace Knotgames.Gameplay.Puzzle.XO {
             RotatePad();
 
             this.solutionRoom = solutionRoom;
-            int fillCount = Random.Range(fillRange.x, fillRange.y) + 1;
+            int fillCount = KnotRandom.theRand.Next(fillRange.x, fillRange.y) + 1;
             List<BoardPiece> piecesCopy = new List<BoardPiece>(pieces);
             for (int i = 0; i < fillCount; i++) {
-                int rand = Random.Range(0, piecesCopy.Count);
+                int rand = KnotRandom.theRand.Next(0, piecesCopy.Count);
                 piecesCopy[rand].SetRandom();
                 piecesCopy.RemoveAt(rand);
             }
@@ -32,7 +32,7 @@ namespace Knotgames.Gameplay.Puzzle.XO {
         }
 
         private void RotatePad() {
-            int rotateDecider = Random.Range(0, 100);
+            int rotateDecider = KnotRandom.theRand.Next(0, 100);
             if(rotateDecider < 20)
                 transform.Rotate(0, 0, 90);
             else if(rotateDecider > 50 && rotateDecider < 75)

@@ -23,7 +23,7 @@ namespace Knotgames.Gameplay.Puzzle.XO {
         }
 
         private void Awake() {
-            int randSpot = Random.Range(0, boardSpots.Count);
+            int randSpot = KnotRandom.theRand.Next(0, boardSpots.Count);
             puzzleBoard.position = boardSpots[randSpot].position;
             puzzleBoard.rotation = boardSpots[randSpot].rotation;
         }

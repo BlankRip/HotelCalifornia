@@ -112,7 +112,7 @@ namespace Knotgames.Gameplay.Puzzle.XO {
 
         public void SetRandom() {
             BasicSetUp();
-            index = Random.Range(1, 3);
+            index = KnotRandom.theRand.Next(1, 3);
             myText.text = values[index];
         }
 

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Knotgames.Network;
+using Knotgames.Audio;
 using UnityEngine;
 
 namespace Knotgames.Gameplay {
@@ -54,6 +55,7 @@ namespace Knotgames.Gameplay {
 
         private IEnumerator ActivateLight(int lightIndex) {
             MoveCamToDoorView();
+            AudioPlayer.instance.PlayAudio3DOneShot(ClipName.Solved);
             yield return new WaitForSeconds(1f);
             solvedLights[lightIndex].SetActive(true);
             yield return new WaitForSeconds(1);

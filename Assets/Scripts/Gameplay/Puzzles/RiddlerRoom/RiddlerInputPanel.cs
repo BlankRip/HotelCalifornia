@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using Knotgames.Audio;
 
 namespace Knotgames.Gameplay.Puzzle.Riddler {
     public class RiddlerInputPanel : MonoBehaviour
@@ -40,6 +41,7 @@ namespace Knotgames.Gameplay.Puzzle.Riddler {
             solved = currentPad.Check(inputField.text);
             lockInButton.onClick.RemoveListener(SolutionInput);
             ClosePanel();
+            AudioPlayer.instance.PlayAudio2DOneShot(ClipName.Numpad);
         }
 
         private void InterfereInput() {

@@ -31,8 +31,8 @@ namespace Knotgames.Gameplay.Puzzle.QuickDelivery {
 
         private void PlaceDeliveryObj() {
             GameObject[] holders = GameObject.FindGameObjectsWithTag(myPossiblePosTag);
-            List<Transform> gos = holders[Random.Range(0, holders.Length)].GetComponent<TransformListHolder>().GetList();
-            Transform targetPos = gos[Random.Range(0, gos.Count)];
+            List<Transform> gos = holders[KnotRandom.theRand.Next(0, holders.Length)].GetComponent<TransformListHolder>().GetList();
+            Transform targetPos = gos[KnotRandom.theRand.Next(0, gos.Count)];
             transform.position = targetPos.position;
         }
 
@@ -46,7 +46,7 @@ namespace Knotgames.Gameplay.Puzzle.QuickDelivery {
                         spawnPoints.Add(item);
                 }
             }
-            GameObject objToSpawn = spawnableItems[Random.Range(0, spawnableItems.Count)];
+            GameObject objToSpawn = spawnableItems[KnotRandom.theRand.Next(0, spawnableItems.Count)];
             delivaryItemName = objToSpawn.name;
             
             SpawnAtGivenPoints spawner = new SpawnAtGivenPoints(spawnPoints, objToSpawn, amountToDeliver, true);

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Knotgames.Audio;
 using TMPro;
 
 namespace Knotgames.Gameplay.Puzzle.LeverLight {
@@ -34,6 +35,7 @@ namespace Knotgames.Gameplay.Puzzle.LeverLight {
                 inputs[currentIndex] = buttonValue;
                 currentIndex++;
                 UpdateUi();
+                AudioPlayer.instance.PlayAudio2DOneShot(ClipName.Numpad);
             }
         }
 
@@ -42,6 +44,7 @@ namespace Knotgames.Gameplay.Puzzle.LeverLight {
                 currentIndex--;
                 inputs[currentIndex] = -1;
                 UpdateUi();
+                AudioPlayer.instance.PlayAudio2DOneShot(ClipName.Numpad);
             }
         }
 
@@ -49,6 +52,7 @@ namespace Knotgames.Gameplay.Puzzle.LeverLight {
             solved = numberPad.CheckSolution(inputs);
             ClearInputs();
             ClosePanel();
+            AudioPlayer.instance.PlayAudio2DOneShot(ClipName.Numpad);
         }
 
         private void ClearInputs() {

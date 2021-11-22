@@ -24,7 +24,7 @@ namespace Knotgames.Gameplay.Puzzle.Map
 
         private void SetUpSolution()
         {
-            int rand = Random.Range(0, mapSpots.Count);
+            int rand = KnotRandom.theRand.Next(0, mapSpots.Count);
             currentSolution = mapSolution.BuildNewSolution(mapSpots[rand]);
             if (puzzleRoom != null)
                 puzzleRoom.SetSolution(currentSolution);

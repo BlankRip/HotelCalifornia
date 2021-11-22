@@ -17,7 +17,9 @@ namespace Knotgames.Gameplay.Puzzle.XO {
         private bool timerOn;
 
         private void Start() {
-            solutionBoard = GameObject.Instantiate(solutionBoardObj).GetComponent<ISolutionBoard>();
+            GameObject obj = GameObject.Instantiate(solutionBoardObj);
+            obj.transform.SetParent(transform);
+            solutionBoard = obj.GetComponent<ISolutionBoard>();
             solutionBoard.SetUpBoard();
             SetUpSolution();
             if(!DevBoy.yes)
@@ -44,7 +46,7 @@ namespace Knotgames.Gameplay.Puzzle.XO {
         }
 
         private void SetUpSolution() {
-            int rand = Random.Range(0, boardSpots.Count);
+            int rand = KnotRandom.theRand.Next(0, boardSpots.Count);
             currentSolution = solutionBoard.BuildNewSolution(boardSpots[rand]);
             timer = 0;
 

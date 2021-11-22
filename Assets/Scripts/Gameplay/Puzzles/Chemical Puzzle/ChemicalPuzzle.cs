@@ -73,13 +73,13 @@ namespace Knotgames.Gameplay.Puzzle.ChemicalRoom {
         }
 
         private void InsertMixerType(ref MixerSolution solution, ref List<PortionType> available) {
-            int rand = Random.Range(0, available.Count);
+            int rand = KnotRandom.theRand.Next(0, available.Count);
             solution.mixTypes.Add(available[rand]);
             available.RemoveAt(rand);
         }
 
         private void AddSolution(ref MixerSolution solution) {
-            int rand = Random.Range(0, availableResultants.Count);
+            int rand = KnotRandom.theRand.Next(0, availableResultants.Count);
             solution.resultantType = availableResultants[rand];
             availableResultants.RemoveAt(rand);
             solutions.Add(solution);
@@ -91,7 +91,7 @@ namespace Knotgames.Gameplay.Puzzle.ChemicalRoom {
         }
 
         private void SetUpPad(MixerSolution solution) {
-            int rand = Random.Range(0, solutionPads.Count);
+            int rand = KnotRandom.theRand.Next(0, solutionPads.Count);
             string textValue = $"{solution.mixTypes[0]} + {solution.mixTypes[1]} = {solution.resultantType}";
             solutionPads[rand].UpdateText(textValue);
             solutionPads.RemoveAt(rand);

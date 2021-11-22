@@ -71,7 +71,7 @@ namespace Knotgames.Gameplay.Puzzle.ChemicalRoom {
 
             CullSpawnableList();
             if(baseSpawnableTypes.Count > 0) {
-                int rand = Random.Range(0, baseSpawnableTypes.Count);
+                int rand = KnotRandom.theRand.Next(0, baseSpawnableTypes.Count);
                 SetPortionType(baseSpawnableTypes[rand]);
             }
             restPos = transform.position;

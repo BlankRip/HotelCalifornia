@@ -27,7 +27,7 @@ namespace Knotgames.Gameplay.Puzzle.Map
 
         private void Awake()
         {
-            int randSpot = Random.Range(0, mapSpots.Count);
+            int randSpot = KnotRandom.theRand.Next(0, mapSpots.Count);
             mapPuzzle.position = mapSpots[randSpot].position;
             mapPuzzle.rotation = mapSpots[randSpot].rotation;
         }

@@ -40,7 +40,7 @@ namespace Knotgames.LevelGen {
             yield return longInterval;
             for (int i = 0; i < iterations; i++) {
                 //?Debug.Log("<color=black>Rout Building</color>");
-                int rand = Random.Range(0, 100);
+                int rand = KnotRandom.theRand.Next(0, 100);
                 if(rand > 80) {
                     PlaceCorridor();
                     yield return interval;

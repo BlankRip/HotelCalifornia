@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using Knotgames.Audio;
 
 namespace Knotgames.Gameplay.Puzzle.Morse {
     public class MorseAlphPanel : MonoBehaviour
@@ -43,6 +44,7 @@ namespace Knotgames.Gameplay.Puzzle.Morse {
             Cursor.lockState = CursorLockMode.Locked;
             currentButton = null;
             panel.SetActive(false);
+            AudioPlayer.instance.PlayAudio2DOneShot(ClipName.Numpad);
         }
     }
 }

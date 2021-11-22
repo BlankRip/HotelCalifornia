@@ -27,7 +27,7 @@ namespace Knotgames.Gameplay.Puzzle.Radio
 
         private void Awake()
         {
-            int randSpot = Random.Range(0, radioSpots.Count);
+            int randSpot = KnotRandom.theRand.Next(0, radioSpots.Count);
             radioPuzzle.position = radioSpots[randSpot].position;
             radioPuzzle.rotation = radioSpots[randSpot].rotation;
         }

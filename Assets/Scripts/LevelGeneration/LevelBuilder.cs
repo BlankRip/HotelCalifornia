@@ -11,7 +11,7 @@ namespace Knotgames.LevelGen {
         [SerializeField] BuilderData builderData;
         [SerializeField] BuildingStatus currentStatus;
 
-        [SerializeField] int giveSeed = -1;
+        //[SerializeField] int giveSeed = -1;
 
         private BuildingStatus backup;
         private IRoom startRoom;
@@ -20,10 +20,10 @@ namespace Knotgames.LevelGen {
             builder.levelBuilder = this;
         }
 
-        private void Update() {
-            if(Input.GetKeyDown(KeyCode.U))
-                StartLevelGen(generateSeed);
-        }
+        // private void Update() {
+        //     if(Input.GetKeyDown(KeyCode.U))
+        //         StartLevelGen(generateSeed);
+        // }
 
         public void RestartingGeneration(bool seedStatus) {
             if(!seedStatus)
@@ -34,6 +34,7 @@ namespace Knotgames.LevelGen {
 
         public void StartLevelGen(bool genSeed) {
             generateSeed = genSeed;
+            Debug.Log(generateSeed);
             builderData.onFail += RestartLevelGen;
             if(currentStatus.allRoomTypes.Count != currentStatus.eachTypeSpawned.Count) {
                 currentStatus.eachTypeSpawned = new List<int>();
@@ -44,9 +45,9 @@ namespace Knotgames.LevelGen {
             if(genSeed)
                 seeder.levelSeed.GenerateSeed();
 
-            if(giveSeed != -1) {
-                seeder.levelSeed.SetSeed(giveSeed);
-            }
+            // if(giveSeed != -1) {
+            //     seeder.levelSeed.SetSeed(giveSeed);
+            // }
             
 
             seeder.levelSeed.Initilize();

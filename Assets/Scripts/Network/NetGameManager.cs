@@ -166,7 +166,7 @@ namespace Knotgames.Network
 
         public NetObject PickGhost()
         {
-            string randomPlayer = connectedPlayers[Random.Range(0, connectedPlayers.Count)];
+            string randomPlayer = connectedPlayers[KnotRandom.theRand.Next(0, connectedPlayers.Count)];
             foreach (NetObject obj in NetObjManager.instance.allNetObject)
             {
                 if (obj.ownerID == randomPlayer)

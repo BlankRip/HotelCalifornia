@@ -54,10 +54,12 @@ namespace Knotgames.LevelGen {
 
             yield return longInterval;
             Destroy(this);
+
+            KnotRandom.theRand.Next();
         }
 
         private void PickRout() {
-            int rand = Random.Range(0, availableEntryDoors.Count);
+            int rand = KnotRandom.theRand.Next(0, availableEntryDoors.Count);
             currentBuildingData.availableDoorways.Add(availableEntryDoors[rand]);
             availableEntryDoors.RemoveAt(rand);
             routId++;

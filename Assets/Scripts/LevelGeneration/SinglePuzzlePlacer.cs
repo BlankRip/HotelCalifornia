@@ -19,7 +19,7 @@ namespace Knotgames.LevelGen {
             bool puzzlePlaced = false;
             while(!puzzlePlaced) {
                 List<IRoom> currentSet = GetRandomSet();
-                int rand = Random.Range(0, currentSet.Count);
+                int rand = KnotRandom.theRand.Next(0, currentSet.Count);
                 ISingelPuzzleRoom spawned = GameObject.Instantiate(currentSet[rand].GetSingleVarient(), 
                     currentSet[rand].GetTransform().position, currentSet[rand].GetTransform().rotation,
                     currentSet[rand].GetTransform().parent).GetComponent<ISingelPuzzleRoom>();
@@ -36,7 +36,7 @@ namespace Knotgames.LevelGen {
         }
 
         private List<IRoom> GetRandomSet() {
-            //setInUse = Random.Range(0, 3);
+            //setInUse = KnotRandom.theRand.Next(0, 3);
             setInUse = int.MinValue;
             CheckForFreeRooms(builderData.availableSide1Rooms, 0, ref setInUse);
             CheckForFreeRooms(builderData.availableSide2Rooms, 1, ref setInUse);

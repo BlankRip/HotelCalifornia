@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Knotgames.Network;
 using Knotgames.Gameplay.UI;
+using Knotgames.Audio;
 
 namespace Knotgames.Gameplay.Puzzle.Riddler {
     public class RiddleSolutionPad : MonoBehaviour, IInteractable
@@ -65,9 +66,10 @@ namespace Knotgames.Gameplay.Puzzle.Riddler {
                 solved = true;
                 thePuzzle.manager.UpdateSolve();
                 GetComponent<Renderer>().material = null;
+                AudioPlayer.instance.PlayAudio2DOneShot(ClipName.RightAnswer);
                 return true;
             } else {
-                Debug.Log("Play Wrong ans sound");
+                AudioPlayer.instance.PlayAudio2DOneShot(ClipName.WrongAnswer);
                 return false;
             }
         }

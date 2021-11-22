@@ -74,7 +74,7 @@ namespace Knotgames.Gameplay.Puzzle.XO {
         }
 
         private void RotatePad() {
-            int rotateDecider = Random.Range(0, 100);
+            int rotateDecider = KnotRandom.theRand.Next(0, 100);
             if(rotateDecider < 20)
                 transform.Rotate(0, 0, 90);
             else if(rotateDecider > 50 && rotateDecider < 75)
@@ -98,7 +98,7 @@ namespace Knotgames.Gameplay.Puzzle.XO {
         }
 
         private string GetXOE() {
-            int rand = Random.Range(0, 3);
+            int rand = KnotRandom.theRand.Next(0, 3);
             switch (rand) {
                 case 0:
                     return "X";
@@ -107,7 +107,7 @@ namespace Knotgames.Gameplay.Puzzle.XO {
                         currenEmpties++;
                         return "";
                     } else {
-                        int newRand = Random.Range(0, 2);
+                        int newRand = KnotRandom.theRand.Next(0, 2);
                         if(newRand == 0)
                             return "O";
                         else

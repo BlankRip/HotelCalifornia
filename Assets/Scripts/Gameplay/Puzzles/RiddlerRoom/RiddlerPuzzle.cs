@@ -19,7 +19,7 @@ namespace Knotgames.Gameplay.Puzzle.Riddler {
         private void Start() {
             riddleCollection.SetUpForNewRiddleSet();
             for (int i = 0; i < riddlesToSolve; i++) {
-                int rand = Random.Range(0, riddleBoards.Count);
+                int rand = KnotRandom.theRand.Next(0, riddleBoards.Count);
                 riddleBoards[rand].SetActive(true);
                 riddleBoards.RemoveAt(rand);
             }

@@ -83,7 +83,6 @@ namespace Knotgames.Gameplay.Puzzle.Map
         {
             for (int i = 0; i < pieces.Count; i++)
             {
-                pieces[i].Setuptext(i.ToString());
                 pieces[i].interactable = false;
                 if (solution[i])
                     pieces[i].TurnOn();
@@ -92,7 +91,7 @@ namespace Knotgames.Gameplay.Puzzle.Map
 
         bool GetRandomBool()
         {
-            int rand = Random.Range(0, 2);
+            int rand = KnotRandom.theRand.Next(0, 2);
             if (rand == 0)
                 return false;
             else
