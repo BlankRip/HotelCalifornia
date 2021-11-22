@@ -1440,6 +1440,49 @@ MonoBehaviour:
       - 0.5
       - 0.5
       - 0.5
+--- !u!114 &-6548181251936483401
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff476833c7e7530448725bd9fd7966c9, type: 3}
+  m_Name: PlayerEyeBlur
+  m_EditorClassIdentifier: 
+  active: 1
+  enabled:
+    overrideState: 1
+    value: 1
+  effect:
+    overrideState: 1
+    value: 0.01
+  iterationCount:
+    overrideState: 1
+    value: 3
+  lookupTexture:
+    overrideState: 1
+    value: {fileID: 2800000, guid: 043a5d4d3fe27d74d9ca8dacc79e3e6f, type: 3}
+    defaultState: 1
+  ghostSmokeTexture:
+    overrideState: 1
+    value: {fileID: 2800000, guid: 454fedc56e43e064f92401e0828cff2f, type: 3}
+    defaultState: 1
+  distortionTexture:
+    overrideState: 1
+    value: {fileID: 2800000, guid: 6255e4f8b61681b4e98a035ca270e15c, type: 3}
+    defaultState: 1
+  vapourStrength:
+    overrideState: 1
+    value: 0
+  vapourColor:
+    overrideState: 1
+    value: {r: 0, g: 1, b: 0.8859649, a: 0}
+  selectImage:
+    overrideState: 1
+    value: 0
 --- !u!114 &-6211305829165629119
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -1533,6 +1576,49 @@ MonoBehaviour:
   opacity:
     overrideState: 1
     value: 1
+--- !u!114 &-577973742605013509
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 0}
+  m_Name: VissionBlur
+  m_EditorClassIdentifier: Assembly-CSharp::VissionBlur
+  active: 1
+  enabled:
+    overrideState: 1
+    value: 1
+  effect:
+    overrideState: 1
+    value: 0.00558
+  iterationCount:
+    overrideState: 1
+    value: 3
+  lookupTexture:
+    overrideState: 1
+    value: {fileID: 2800000, guid: 043a5d4d3fe27d74d9ca8dacc79e3e6f, type: 3}
+    defaultState: 1
+  ghostSmokeTexture:
+    overrideState: 1
+    value: {fileID: 2800000, guid: 454fedc56e43e064f92401e0828cff2f, type: 3}
+    defaultState: 1
+  distortionTexture:
+    overrideState: 1
+    value: {fileID: 2800000, guid: 6255e4f8b61681b4e98a035ca270e15c, type: 3}
+    defaultState: 1
+  vapourStrength:
+    overrideState: 1
+    value: 3
+  vapourColor:
+    overrideState: 1
+    value: {r: 0.2584905, g: 1, b: 0.85169804, a: 0}
+  selectImage:
+    overrideState: 1
+    value: 0.751
 --- !u!114 &-482586877069734842
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -1596,6 +1682,7 @@ MonoBehaviour:
   - {fileID: -4153946737641567465}
   - {fileID: 4941787813114282773}
   - {fileID: 4428437334051913643}
+  - {fileID: -6548181251936483401}
 --- !u!114 &420941200151749050
 MonoBehaviour:
   m_ObjectHideFlags: 3

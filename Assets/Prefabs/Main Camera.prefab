@@ -1,5 +1,73 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &542735708
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 542735709}
+  - component: {fileID: 542735710}
+  - component: {fileID: 542735711}
+  m_Layer: 0
+  m_Name: VissionBlur
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &542735709
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 542735708}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2323428497621156166}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &542735710
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 542735708}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aae7cf78930095a42bc8e850639156ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  volume: {fileID: 6773416869346099570}
+  animation: {fileID: 542735711}
+  activeClip: {fileID: 7400000, guid: dd33f280725e8b740b0f56f94abe8bed, type: 2}
+  closeClip: {fileID: 7400000, guid: f629c1e8e773ba342a8fea2b3c56eb31, type: 2}
+  effectStrength: 0
+  vapourStrength: 0
+  myState: 0
+--- !u!111 &542735711
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 542735708}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 0}
+  m_Animations:
+  - {fileID: 7400000, guid: dd33f280725e8b740b0f56f94abe8bed, type: 2}
+  - {fileID: 7400000, guid: f629c1e8e773ba342a8fea2b3c56eb31, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!1 &2323428497621156165
 GameObject:
   m_ObjectHideFlags: 0
@@ -15,6 +83,7 @@ GameObject:
   - component: {fileID: 2323428497621156168}
   - component: {fileID: 669111103}
   - component: {fileID: 3239099473235163482}
+  - component: {fileID: 279800410306046018}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -35,6 +104,7 @@ Transform:
   m_Children:
   - {fileID: 2323428497697917726}
   - {fileID: 6773416869346099573}
+  - {fileID: 542735709}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -137,7 +207,7 @@ MonoBehaviour:
   directionalLight: {fileID: 0}
   autoDirectionalLight: 1
   accuracy: 50
-  prediction: 0
+  prediction: 1
   minimumDistance: 1
   referenceObject: {fileID: 2323428497621156166}
   enableBackgroundScan: 1
@@ -258,8 +328,78 @@ MonoBehaviour:
       PublicKeyToken=null
   - assemblyQualifiedName: PEFXGrayScale, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
-  - assemblyQualifiedName: VissionBlur, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+  - assemblyQualifiedName: PlayerEyeBlur, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
+--- !u!114 &279800410306046018
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2323428497621156165}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79a0275f4d4b0f14198692740b749976, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  directionalLight: {fileID: 0}
+  autoDirectionalLight: 1
+  accuracy: 50
+  prediction: 0
+  minimumDistance: 1
+  referenceObject: {fileID: 2323428497621156166}
+  enableBackgroundScan: 1
+  enableNewSceneScan: 1
+  includeLODGroups: 1
+  includeMeshRenderers: 1
+  includePointAndPointLights: 1
+  includeReflectionProbes: 1
+  includeParticleSystems: 1
+  includeDisabledObjects: 0
+  includeDisabledComponents: 0
+  dynamicAnimators: 1
+  layerMovementMode: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+  layerManagementMode: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+  preCullThreshold: 0.001
+  fullDisableDistance: 100
+  hideTime: 0.1
+  debugLayer: 0
+  showStats: 0
+  editorLoggingMode: 2
+  buildLoggingMode: 1
+  gizmoColor: {r: 1, g: 1, b: 0, a: 1}
+  massGizmoColor: {r: 1, g: 1, b: 0, a: 0.01}
+  occludeeInitState: -1
+  backgroundScanTimeLimit: 50
+  instantScanTimeLimit: 100000
+  maxQueuedFrames: 1
+  enableOcclusionCulling: 1
+  psOmnidirectionalBounds: 0
+  clampShadowVolumes: 1
+  autoClampHeight: 1
+  clampHeight: 0
+  suspendOC: 0
+  drawDebugGizmos: 0
+  enableTeleportDetection: 1
+  teleportDistance: 2
+  teleportAngle: 160
+  teleportRV: 0.1
+  fastCameraSwitch: 1
+  keepShadows: 1
+  forceSkipShadomap: 1
+  vrMode: 2
+  kickstart: 0
+  ignoreContainers: 1
+  downscaleDepth: 1
+  downscaleShadowmap: 1
+  optimizedVR: 1
+  debugTextures: 1
+  enableHotkeys: 1
+  toggleOCKey: 282
+  toggleInfoKey: 283
+  calcMetricsKey: 284
+  increaseAccuracyKey: 270
+  decreaseAccuracyKey: 269
 --- !u!1 &2323428497697917727
 GameObject:
   m_ObjectHideFlags: 0
@@ -352,3 +492,14 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1572668321317832304, guid: eab60e55927960545a5e0ee19871968c, type: 3}
   m_PrefabInstance: {fileID: 5463780321011664645}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &6773416869346099570 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1572668321317832311, guid: eab60e55927960545a5e0ee19871968c, type: 3}
+  m_PrefabInstance: {fileID: 5463780321011664645}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b9a305e18de0c04dbd257a21cd47087, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -3,8 +3,8 @@ using UnityEngine;
 using UnityEngine.Rendering.PostProcessing;
 
 [Serializable]
-[PostProcess(typeof(VissionBlurRenderer), PostProcessEvent.AfterStack, "Custom/VissionBlur")]
-public sealed class VissionBlur : PostProcessEffectSettings
+[PostProcess(typeof(PlayerEyeBlurRenderer), PostProcessEvent.AfterStack, "Custom/VissionBlur")]
+public sealed class PlayerEyeBlur : PostProcessEffectSettings
 {
     [Range(0f, 0.01f), Tooltip("Blur intensity.")]
     public FloatParameter effect = new FloatParameter { value = 0.5f };
@@ -32,7 +32,7 @@ public sealed class VissionBlur : PostProcessEffectSettings
 
 }
 
-public sealed class VissionBlurRenderer : PostProcessEffectRenderer<VissionBlur>
+public sealed class PlayerEyeBlurRenderer : PostProcessEffectRenderer<PlayerEyeBlur>
 {
 
     RenderTexture rt1, rt2;
