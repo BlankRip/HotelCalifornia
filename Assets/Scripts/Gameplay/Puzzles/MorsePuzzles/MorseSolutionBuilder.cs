@@ -51,6 +51,8 @@ namespace Knotgames.Gameplay.Puzzle.Morse {
         }
 
         public char GetRandomChar() {
+            if(KnotRandom.theRand == null)
+                KnotRandom.theRand = new System.Random(-1);
             char toReturn = alphabets[KnotRandom.theRand.Next(0, alphabets.Count)];
             alphabets.Remove(toReturn);
             return toReturn;
