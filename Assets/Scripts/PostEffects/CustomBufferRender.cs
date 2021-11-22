@@ -11,18 +11,31 @@ namespace Knotgames.Rendering
         [SerializeField] CameraEvent bufferLocation;
         private CommandBuffer commandBuffer;
         static List<RenderObject> renderObjects = new List<RenderObject>();
+        static Dictionary<string, CustomBufferRender> cBufferDist = new Dictionary<string, CustomBufferRender>();
         Dictionary<Camera, CommandBuffer> camAndBuffer = new Dictionary<Camera, CommandBuffer>();
         Camera cam;
         static event System.Action Reset;
 
-        public static void AddObject(RenderObject rObject)
+        public string commandBufferName;
+        public string textureName;
+
+        private void Awake() {
+            cBufferDist.Add(commandBufferName, this);
+            Reset = ClearUp;
+        }
+        public static CustomBufferRender GetCommandBuffer(string cBufferName)
+        {
+            return cBufferDist[cBufferName];
+        }
+
+        public void AddObject(RenderObject rObject)
         {
             renderObjects.Remove(rObject);
             renderObjects.Add(rObject);
             Reset?.Invoke();
         }
 
-        public static void RemoveObject(RenderObject rObject)
+        public void RemoveObject(RenderObject rObject)
         {
             renderObjects.Remove(rObject);
             Reset?.Invoke();
@@ -48,10 +61,6 @@ namespace Knotgames.Rendering
             camAndBuffer.Clear();
         }
 
-        void Awake()
-        {
-            Reset = ClearUp;
-        }
 
         void Update()
         {
@@ -67,7 +76,7 @@ namespace Knotgames.Rendering
             if (!cam || camAndBuffer.ContainsKey(cam)) return;
 
             commandBuffer = new CommandBuffer();
-            commandBuffer.name = "PossesionEffect";
+            commandBuffer.name = commandBufferName;
             camAndBuffer[cam] = commandBuffer;
 
             int texID = Shader.PropertyToID("TempTex");
@@ -80,7 +89,7 @@ namespace Knotgames.Rendering
                 commandBuffer.DrawRenderer(item.renderer, item.material);
             }
 
-            commandBuffer.SetGlobalTexture("_PossesedTex", texID);
+            commandBuffer.SetGlobalTexture(textureName, texID);
 
             cam.AddCommandBuffer(bufferLocation, commandBuffer);
         }

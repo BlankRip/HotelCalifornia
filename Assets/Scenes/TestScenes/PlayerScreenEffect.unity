@@ -1943,9 +1943,9 @@ MonoBehaviour:
       PublicKeyToken=null
   - assemblyQualifiedName: PEFXGhostVission, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
-  - assemblyQualifiedName: VissionBlur, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
   - assemblyQualifiedName: PEFXAlteredObject, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - assemblyQualifiedName: PlayerEyeBlur, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
 --- !u!1 &645390699
 GameObject:
@@ -2438,7 +2438,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!23 &809506270
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2516,6 +2516,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   renderer: {fileID: 809506270}
   material: {fileID: 2100000, guid: e140fe5bbb0f1974e90ef59df107645c, type: 2}
+  bufferName: PossesionEffect
 --- !u!1001 &840194946
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2969,6 +2970,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bufferLocation: 1
+  commandBufferName: PossesionEffect
+  textureName: _PossesedTex
 --- !u!4 &966173156
 Transform:
   m_ObjectHideFlags: 0
@@ -3097,7 +3100,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1076590977
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3112,6 +3115,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   renderer: {fileID: 1076590979}
   material: {fileID: 2100000, guid: e140fe5bbb0f1974e90ef59df107645c, type: 2}
+  bufferName: PossesionEffect
 --- !u!135 &1076590978
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -3587,7 +3591,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1211969793
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3602,6 +3606,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   renderer: {fileID: 1211969795}
   material: {fileID: 2100000, guid: e140fe5bbb0f1974e90ef59df107645c, type: 2}
+  bufferName: PossesionEffect
 --- !u!135 &1211969794
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -4910,6 +4915,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   renderer: {fileID: 1465036799}
   material: {fileID: 2100000, guid: e140fe5bbb0f1974e90ef59df107645c, type: 2}
+  bufferName: PossesionEffect
 --- !u!1 &1487105463
 GameObject:
   m_ObjectHideFlags: 0
@@ -5214,7 +5220,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1595301285
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5229,6 +5235,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   renderer: {fileID: 1595301287}
   material: {fileID: 2100000, guid: e140fe5bbb0f1974e90ef59df107645c, type: 2}
+  bufferName: PossesionEffect
 --- !u!135 &1595301286
 SphereCollider:
   m_ObjectHideFlags: 0

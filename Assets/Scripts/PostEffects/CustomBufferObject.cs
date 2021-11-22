@@ -4,23 +4,26 @@ using UnityEngine;
 
 namespace Knotgames.Rendering
 {
-    [ExecuteAlways]
     public class CustomBufferObject : MonoBehaviour
     {
         public Renderer renderer;
         public Material material;
+        public string bufferName;
+        
+        
 
         RenderObject renderObject;
+
 
         void Start()
         {
             CreateAndAdd();
-            CustomBufferRender.AddObject(renderObject);
+            CustomBufferRender.GetCommandBuffer(bufferName).AddObject(renderObject);
         }
         void OnEnable()
         {
             CreateAndAdd();
-            CustomBufferRender.AddObject(renderObject);
+            CustomBufferRender.GetCommandBuffer(bufferName).AddObject(renderObject);
         }
 
         void CreateAndAdd()
@@ -42,11 +45,11 @@ namespace Knotgames.Rendering
 
         void OnDisable()
         {
-            if (renderObject != null) CustomBufferRender.RemoveObject(renderObject);
+            if (renderObject != null) CustomBufferRender.GetCommandBuffer(bufferName).RemoveObject(renderObject);
         }
         void OnDestroy()
         {
-            if (renderObject != null) CustomBufferRender.RemoveObject(renderObject);
+            if (renderObject != null) CustomBufferRender.GetCommandBuffer(bufferName).RemoveObject(renderObject);
         }
     }
 }

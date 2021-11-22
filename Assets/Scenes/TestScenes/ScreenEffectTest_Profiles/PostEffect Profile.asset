@@ -1,5 +1,102 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-7893076915693309557
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c510e4f3f4b7ea3488acd2e969103805, type: 3}
+  m_Name: PEFXGhostVission
+  m_EditorClassIdentifier: 
+  active: 1
+  enabled:
+    overrideState: 1
+    value: 1
+  stepDist:
+    overrideState: 1
+    value: 0.015
+  outValueControl:
+    overrideState: 1
+    value: 0.08
+  expoKnee:
+    overrideState: 1
+    value: 0.411
+  outStrength:
+    overrideState: 1
+    value: 0.46
+  stepCount:
+    overrideState: 1
+    value: 8
+  ghostColor:
+    overrideState: 1
+    value: {r: 0.495283, g: 0.98020726, b: 1, a: 1}
+  colorTightness:
+    overrideState: 1
+    value: 0.93
+  distortionTexture:
+    overrideState: 1
+    value: {fileID: 2800000, guid: ac56c592f92cba142a5a332ca95508b6, type: 3}
+    defaultState: 1
+  dstortionSize:
+    overrideState: 1
+    value: 0.5
+  dstortionSpeed:
+    overrideState: 1
+    value: 1.07
+  dstortionSrength:
+    overrideState: 1
+    value: 5
+  dstortionSoftness:
+    overrideState: 1
+    value: 1.8
+--- !u!114 &-6920424109862203416
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81aa0820c7bb4ba43aeb914ccdadd214, type: 3}
+  m_Name: PEFXPlayerShow
+  m_EditorClassIdentifier: 
+  active: 1
+  enabled:
+    overrideState: 1
+    value: 1
+  blend:
+    overrideState: 1
+    value: 0.305
+  effect:
+    overrideState: 1
+    value: 0.013
+  mult:
+    overrideState: 1
+    value: 0.85
+  iteration:
+    overrideState: 1
+    value: 3
+  effectColor:
+    overrideState: 1
+    value: {r: 1, g: 0.41037738, b: 0.41037738, a: 1}
+  distortionTexture:
+    overrideState: 1
+    value: {fileID: 2800000, guid: 6255e4f8b61681b4e98a035ca270e15c, type: 3}
+    defaultState: 1
+  distortionScale:
+    overrideState: 1
+    value: 1.72
+  distortionEffect:
+    overrideState: 1
+    value: 0.067
+  distortionSpeed:
+    overrideState: 1
+    value: 2.34
 --- !u!114 &-3475332540544193316
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -116,7 +213,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   settings:
   - {fileID: -38459237938031977}
-  - {fileID: -3475332540544193316}
+  - {fileID: -7893076915693309557}
+  - {fileID: -6920424109862203416}
 --- !u!114 &6141784919675596269
 MonoBehaviour:
   m_ObjectHideFlags: 3
