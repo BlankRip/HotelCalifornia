@@ -3,26 +3,42 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
 
-
 namespace Knotgames.Rendering
 {
     public class CustomBufferRender : MonoBehaviour
     {
-        [SerializeField] CameraEvent bufferLocation;
-        private CommandBuffer commandBuffer;
-        static List<RenderObject> renderObjects = new List<RenderObject>();
-        static Dictionary<string, CustomBufferRender> cBufferDist = new Dictionary<string, CustomBufferRender>();
-        Dictionary<Camera, CommandBuffer> camAndBuffer = new Dictionary<Camera, CommandBuffer>();
+        [SerializeField]
+        CameraEvent bufferLocation;
+
+        List<RenderObject> renderObjects = new List<RenderObject>();
+
+        static Dictionary<string, CustomBufferRender>
+            cBufferDist = new Dictionary<string, CustomBufferRender>();
+
+        Dictionary<Camera, CommandBuffer>
+            camAndBuffer = new Dictionary<Camera, CommandBuffer>();
+
         Camera cam;
-        static event System.Action Reset;
+
+        event System.Action Reset;
+
+        public bool makeTexture;
 
         public string commandBufferName;
+
         public string textureName;
 
-        private void Awake() {
+        Texture textureRT;
+
+
+        private void Awake()
+        {
+            textureRT = new RenderTexture(Screen.width, Screen.height, 0, RenderTextureFormat.R8, RenderTextureReadWrite.Default);
+            textureRT.name = textureName;
             cBufferDist.Add(commandBufferName, this);
             Reset = ClearUp;
         }
+
         public static CustomBufferRender GetCommandBuffer(string cBufferName)
         {
             return cBufferDist[cBufferName];
@@ -30,14 +46,14 @@ namespace Knotgames.Rendering
 
         public void AddObject(RenderObject rObject)
         {
-            renderObjects.Remove(rObject);
-            renderObjects.Add(rObject);
+            renderObjects.Remove (rObject);
+            renderObjects.Add (rObject);
             Reset?.Invoke();
         }
 
         public void RemoveObject(RenderObject rObject)
         {
-            renderObjects.Remove(rObject);
+            renderObjects.Remove (rObject);
             Reset?.Invoke();
         }
 
@@ -61,7 +77,6 @@ namespace Knotgames.Rendering
             camAndBuffer.Clear();
         }
 
-
         void Update()
         {
             bool render = this.gameObject.activeSelf;
@@ -75,30 +90,49 @@ namespace Knotgames.Rendering
 
             if (!cam || camAndBuffer.ContainsKey(cam)) return;
 
-            commandBuffer = new CommandBuffer();
+            CommandBuffer commandBuffer = new CommandBuffer();
             commandBuffer.name = commandBufferName;
             camAndBuffer[cam] = commandBuffer;
 
-            int texID = Shader.PropertyToID("TempTex");
-            commandBuffer.GetTemporaryRT(texID, -1, -1, 24, FilterMode.Bilinear, RenderTextureFormat.R16);
-            commandBuffer.SetRenderTarget(texID);
+           // int texID = Shader.PropertyToID(textureName);
+
+            RenderTargetIdentifier rtID = new RenderTargetIdentifier(textureRT);
+
+            
+
+/*
+            commandBuffer
+                .GetTemporaryRT(texID,
+                -1,
+                -1,
+                24,
+                FilterMode.Bilinear,
+                RenderTextureFormat.R16);
+      
+*/
+
+
+            commandBuffer.SetRenderTarget(rtID);
             commandBuffer.ClearRenderTarget(true, true, Color.black);
+            
 
             foreach (RenderObject item in renderObjects)
             {
                 commandBuffer.DrawRenderer(item.renderer, item.material);
             }
+            //commandBuffer.SetGlobalTexture(textureName, texID);
+            //textureRT = Shader.GetGlobalTexture(texID);
 
-            commandBuffer.SetGlobalTexture(textureName, texID);
+            Shader.SetGlobalTexture(textureName, textureRT);
 
-            cam.AddCommandBuffer(bufferLocation, commandBuffer);
+            cam.AddCommandBuffer (bufferLocation, commandBuffer);
         }
     }
 
     public class RenderObject
     {
         public Material material;
+
         public Renderer renderer;
     }
-
 }

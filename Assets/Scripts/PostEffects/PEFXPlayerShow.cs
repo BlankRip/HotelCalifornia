@@ -44,8 +44,8 @@ public sealed class PEFXPlayerShowRenderer : PostProcessEffectRenderer<PEFXPlaye
     public override void Init()
     {
         base.Init();
-        rt1 = RenderTexture.GetTemporary(Screen.width / 10, Screen.height / 10);
-        rt2 = RenderTexture.GetTemporary(Screen.width / 10, Screen.height / 10);
+        rt1 = RenderTexture.GetTemporary(Screen.width / 8, Screen.height / 8);
+        rt2 = RenderTexture.GetTemporary(Screen.width / 8, Screen.height / 8);
         rt3 = RenderTexture.GetTemporary(Screen.width, Screen.height);
         rt4 = RenderTexture.GetTemporary(Screen.width, Screen.height);
     }
