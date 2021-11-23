@@ -1,0 +1,68 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4251259493924809948
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4251259493924809950}
+  - component: {fileID: 4251259493924809951}
+  - component: {fileID: 3570726048118537972}
+  m_Layer: 0
+  m_Name: VoIPManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4251259493924809950
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4251259493924809948}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -67.45795, y: 29.263283, z: 28.576576}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4251259493924809951
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4251259493924809948}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be5ec71af21c3d447ba6f503c4b9bff1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  server: https://unity.vivox.com/appconfig/18966-hotel-63052-test
+  domain: mtu1xp.vivox.com
+  tokenIssuer: 18966-hotel-63052-test
+  tokenKey: PcHv9TaUUmwRdVyzZMGriK1GKscMnsMF
+  channelType: 0
+  audioDeviceMuted: 0
+--- !u!114 &3570726048118537972
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4251259493924809948}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9b1bc60b22d47740a044acb79c034c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  charData: {fileID: 11400000, guid: 59adc07099d260040bc56da7f8aa2578, type: 2}
+  roomId: {fileID: 11400000, guid: 2b134cc63285cca40aa171a3c786f62b, type: 2}
+  micIndicator: {fileID: 0}
+  muteSprite: {fileID: 21300000, guid: 643b7e6b269039e46b23502f57922b84, type: 3}
