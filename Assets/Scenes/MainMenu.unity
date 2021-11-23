@@ -700,15 +700,19 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 740551959}
     m_Modifications:
     - target: {fileID: 1731083196431380, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_Name
       value: Garden_Wall_w_Grid (1)_2
       objectReference: {fileID: 0}
+    - target: {fileID: 1731083196431380, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_RootOrder
-      value: 52
+      value: 42
       objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_LocalScale.x
@@ -724,15 +728,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 30.25005
+      value: 31.999474
       objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -7.02
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 31.426985
+      value: 16.63712
       objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_LocalRotation.w
@@ -756,6 +760,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
+--- !u!4 &38568814 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
+  m_PrefabInstance: {fileID: 38568813}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &47394013
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1526,27 +1535,31 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 740551959}
     m_Modifications:
     - target: {fileID: 1197237336499004, guid: 7f1dc20f99bb89046bbe48942c67c938, type: 3}
       propertyPath: m_Name
       value: Garden_Gate_Wall
       objectReference: {fileID: 0}
+    - target: {fileID: 1197237336499004, guid: 7f1dc20f99bb89046bbe48942c67c938, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4701253781841970, guid: 7f1dc20f99bb89046bbe48942c67c938, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4701253781841970, guid: 7f1dc20f99bb89046bbe48942c67c938, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 11.750002
+      value: 13.499426
       objectReference: {fileID: 0}
     - target: {fileID: 4701253781841970, guid: 7f1dc20f99bb89046bbe48942c67c938, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -7.02
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4701253781841970, guid: 7f1dc20f99bb89046bbe48942c67c938, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 14.719999
+      value: -0.06986523
       objectReference: {fileID: 0}
     - target: {fileID: 4701253781841970, guid: 7f1dc20f99bb89046bbe48942c67c938, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1578,6 +1591,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7f1dc20f99bb89046bbe48942c67c938, type: 3}
+--- !u!4 &81050137 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4701253781841970, guid: 7f1dc20f99bb89046bbe48942c67c938, type: 3}
+  m_PrefabInstance: {fileID: 81050136}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &81682482
 GameObject:
   m_ObjectHideFlags: 0
@@ -2455,6 +2473,38 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 110937883}
   m_CullTransparentMesh: 1
+--- !u!1 &111076544
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 111076545}
+  m_Layer: 0
+  m_Name: Hotel and Environment
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &111076545
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 111076544}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.7494245, y: -7.02, z: 14.789865}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1020794069}
+  - {fileID: 740551959}
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &112880329
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3030,15 +3080,19 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 740551959}
     m_Modifications:
     - target: {fileID: 1731083196431380, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_Name
       value: Garden_Wall_w_Grid (5)_1
       objectReference: {fileID: 0}
+    - target: {fileID: 1731083196431380, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_RootOrder
-      value: 34
+      value: 24
       objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_LocalScale.x
@@ -3054,15 +3108,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.7494245
+      value: -2
       objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -7.02
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 14.789864
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_LocalRotation.w
@@ -3086,6 +3140,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
+--- !u!4 &137674888 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
+  m_PrefabInstance: {fileID: 137674887}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &140922961
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3631,15 +3690,19 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 740551959}
     m_Modifications:
     - target: {fileID: 1731083196431380, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_Name
       value: Garden_Wall_w_Grid (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 1731083196431380, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_RootOrder
-      value: 23
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_LocalScale.x
@@ -3655,15 +3718,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.2500002
+      value: 3.9994247
       objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -7.02
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 14.78999
+      value: 0.00012588501
       objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_LocalRotation.w
@@ -3687,6 +3750,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
+--- !u!4 &153933502 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
+  m_PrefabInstance: {fileID: 153933501}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &155790765
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3746,15 +3814,19 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 740551959}
     m_Modifications:
     - target: {fileID: 1731083196431380, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_Name
       value: Garden_Wall_w_Grid (3)_15
       objectReference: {fileID: 0}
+    - target: {fileID: 1731083196431380, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_RootOrder
-      value: 51
+      value: 41
       objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_LocalScale.x
@@ -3770,15 +3842,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 31.568521
+      value: 33.317947
       objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -7.02
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 22.10849
+      value: 7.3186255
       objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_LocalRotation.w
@@ -3802,6 +3874,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
+--- !u!4 &160491289 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
+  m_PrefabInstance: {fileID: 160491288}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &160493798
 GameObject:
   m_ObjectHideFlags: 0
@@ -4191,7 +4268,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &167260090
 MonoBehaviour:
@@ -4818,14 +4895,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 201396270}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.5, y: -2.69, z: 22.481033}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 6.2494245, y: 4.33, z: 7.691169}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1074234287}
   - {fileID: 251725299}
-  m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_Father: {fileID: 740551959}
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &206830297
 PrefabInstance:
@@ -7251,15 +7328,19 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 740551959}
     m_Modifications:
     - target: {fileID: 1731083196431380, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_Name
       value: Garden_Wall_w_Grid_1
       objectReference: {fileID: 0}
+    - target: {fileID: 1731083196431380, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_RootOrder
-      value: 35
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_LocalScale.x
@@ -7275,15 +7356,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 12.250001
+      value: 13.999426
       objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -7.02
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 14.790013
+      value: 0.0001487732
       objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_LocalRotation.w
@@ -7307,6 +7388,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
+--- !u!4 &276569613 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
+  m_PrefabInstance: {fileID: 276569612}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &277958611
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7785,15 +7871,19 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 740551959}
     m_Modifications:
     - target: {fileID: 1731083196431380, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_Name
       value: Garden_Wall_w_Grid (1)_1
       objectReference: {fileID: 0}
+    - target: {fileID: 1731083196431380, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_RootOrder
-      value: 44
+      value: 34
       objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_LocalScale.x
@@ -7809,15 +7899,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 31.568491
+      value: 33.317917
       objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -7.02
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 16.108494
+      value: 1.3186293
       objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_LocalRotation.w
@@ -7841,6 +7931,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
+--- !u!4 &288450918 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
+  m_PrefabInstance: {fileID: 288450917}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &288884750
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8594,14 +8689,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 334592690}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 16.25, y: -2.69, z: 22.481033}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 17.999424, y: 4.33, z: 7.691169}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1635393713}
   - {fileID: 598652697}
-  m_Father: {fileID: 0}
-  m_RootOrder: 18
+  m_Father: {fileID: 740551959}
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &334706104
 PrefabInstance:
@@ -8960,15 +9055,19 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 740551959}
     m_Modifications:
     - target: {fileID: 1731083196431380, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_Name
       value: Garden_Wall_w_Grid (3)_24
       objectReference: {fileID: 0}
+    - target: {fileID: 1731083196431380, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_RootOrder
-      value: 53
+      value: 43
       objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_LocalScale.x
@@ -8984,15 +9083,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 20.25006
+      value: 21.999483
       objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -7.02
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 31.427042
+      value: 16.637177
       objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_LocalRotation.w
@@ -9016,6 +9115,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
+--- !u!4 &347598189 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
+  m_PrefabInstance: {fileID: 347598188}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &348299466 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2980821816751028628, guid: 39388cdb701cb024c8258720ae0e390a, type: 3}
@@ -9062,15 +9166,19 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 740551959}
     m_Modifications:
     - target: {fileID: 1731083196431380, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_Name
       value: Garden_Wall_w_Grid (3)_17
       objectReference: {fileID: 0}
+    - target: {fileID: 1731083196431380, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_RootOrder
-      value: 49
+      value: 39
       objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_LocalScale.x
@@ -9086,15 +9194,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 31.568521
+      value: 33.317947
       objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -7.02
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 20.10849
+      value: 5.3186255
       objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_LocalRotation.w
@@ -9118,6 +9226,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
+--- !u!4 &353949649 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
+  m_PrefabInstance: {fileID: 353949648}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &355388967
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9877,14 +9990,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 376929229}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 10.5, y: -2.69, z: 22.481033}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 12.249424, y: 4.33, z: 7.691169}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1802785470}
   - {fileID: 1476400366}
-  m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_Father: {fileID: 740551959}
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &383485603
 PrefabInstance:
@@ -10623,15 +10736,19 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 740551959}
     m_Modifications:
     - target: {fileID: 1731083196431380, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_Name
       value: Garden_Wall_w_Grid (3)_4
       objectReference: {fileID: 0}
+    - target: {fileID: 1731083196431380, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_RootOrder
-      value: 29
+      value: 19
       objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_LocalScale.x
@@ -10647,15 +10764,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 22.25
+      value: 23.999424
       objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -7.02
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 14.790003
+      value: 0.00013828278
       objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_LocalRotation.w
@@ -10679,6 +10796,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
+--- !u!4 &400142907 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
+  m_PrefabInstance: {fileID: 400142906}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &401976952
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10738,15 +10860,19 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 740551959}
     m_Modifications:
     - target: {fileID: 1731083196431380, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_Name
       value: Garden_Wall_w_Grid (3)_6
       objectReference: {fileID: 0}
+    - target: {fileID: 1731083196431380, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_RootOrder
-      value: 31
+      value: 21
       objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_LocalScale.x
@@ -10762,15 +10888,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 28.25
+      value: 29.999424
       objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -7.02
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 14.790006
+      value: 0.0001411438
       objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_LocalRotation.w
@@ -10794,6 +10920,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
+--- !u!4 &404732474 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
+  m_PrefabInstance: {fileID: 404732473}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &409635899
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11143,15 +11274,19 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 740551959}
     m_Modifications:
     - target: {fileID: 1731083196431380, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_Name
       value: Garden_Wall_w_Grid (3)_19
       objectReference: {fileID: 0}
+    - target: {fileID: 1731083196431380, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_RootOrder
-      value: 47
+      value: 37
       objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_LocalScale.x
@@ -11167,15 +11302,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 31.568525
+      value: 33.31795
       objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -7.02
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 24.10849
+      value: 9.318625
       objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_LocalRotation.w
@@ -11199,20 +11334,29 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
+--- !u!4 &421870444 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
+  m_PrefabInstance: {fileID: 421870443}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &427048954
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 740551959}
     m_Modifications:
     - target: {fileID: 1731083196431380, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_Name
       value: Garden_Wall_w_Grid (3)_3
       objectReference: {fileID: 0}
+    - target: {fileID: 1731083196431380, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_RootOrder
-      value: 28
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_LocalScale.x
@@ -11228,15 +11372,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 20.25
+      value: 21.999424
       objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -7.02
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 14.790001
+      value: 0.00013637543
       objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_LocalRotation.w
@@ -11260,20 +11404,29 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
+--- !u!4 &427048955 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
+  m_PrefabInstance: {fileID: 427048954}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &427825649
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 740551959}
     m_Modifications:
     - target: {fileID: 1731083196431380, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_Name
       value: Garden_Wall_w_Grid (3)_25
       objectReference: {fileID: 0}
+    - target: {fileID: 1731083196431380, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_RootOrder
-      value: 58
+      value: 48
       objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_LocalScale.x
@@ -11289,15 +11442,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 28.25005
+      value: 29.999474
       objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -7.02
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 31.427008
+      value: 16.637142
       objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_LocalRotation.w
@@ -11321,6 +11474,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
+--- !u!4 &427825650 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
+  m_PrefabInstance: {fileID: 427825649}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &428780476
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11554,19 +11712,23 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 740551959}
     m_Modifications:
     - target: {fileID: 1666876308516074, guid: 5921b4bc00391b4479fca393a8d394d0, type: 3}
       propertyPath: m_Name
       value: Garden_Sign
       objectReference: {fileID: 0}
+    - target: {fileID: 1666876308516074, guid: 5921b4bc00391b4479fca393a8d394d0, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4371293326148136, guid: 5921b4bc00391b4479fca393a8d394d0, type: 3}
       propertyPath: m_RootOrder
-      value: 14
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4371293326148136, guid: 5921b4bc00391b4479fca393a8d394d0, type: 3}
       propertyPath: m_LocalScale.x
-      value: 4.952213
+      value: 4.9522142
       objectReference: {fileID: 0}
     - target: {fileID: 4371293326148136, guid: 5921b4bc00391b4479fca393a8d394d0, type: 3}
       propertyPath: m_LocalScale.y
@@ -11574,19 +11736,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4371293326148136, guid: 5921b4bc00391b4479fca393a8d394d0, type: 3}
       propertyPath: m_LocalScale.z
-      value: 4.952213
+      value: 4.9522142
       objectReference: {fileID: 0}
     - target: {fileID: 4371293326148136, guid: 5921b4bc00391b4479fca393a8d394d0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 13.4
+      value: 15.149424
       objectReference: {fileID: 0}
     - target: {fileID: 4371293326148136, guid: 5921b4bc00391b4479fca393a8d394d0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -9.4
+      value: -2.3799996
       objectReference: {fileID: 0}
     - target: {fileID: 4371293326148136, guid: 5921b4bc00391b4479fca393a8d394d0, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 12.4
+      value: -2.389865
       objectReference: {fileID: 0}
     - target: {fileID: 4371293326148136, guid: 5921b4bc00391b4479fca393a8d394d0, type: 3}
       propertyPath: m_LocalRotation.w
@@ -11618,6 +11780,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5921b4bc00391b4479fca393a8d394d0, type: 3}
+--- !u!4 &443204112 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4371293326148136, guid: 5921b4bc00391b4479fca393a8d394d0, type: 3}
+  m_PrefabInstance: {fileID: 443204111}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &443420989
 GameObject:
   m_ObjectHideFlags: 0
@@ -12188,7 +12355,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 740551959}
     m_Modifications:
     - target: {fileID: 1409891221584877996, guid: aec8a727e9a153d4a9f1d4c5748aa909, type: 3}
       propertyPath: generalRimEffect
@@ -12208,19 +12375,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1409891221584877997, guid: aec8a727e9a153d4a9f1d4c5748aa909, type: 3}
       propertyPath: m_RootOrder
-      value: 36
+      value: 26
       objectReference: {fileID: 0}
     - target: {fileID: 1409891221584877997, guid: aec8a727e9a153d4a9f1d4c5748aa909, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.558047
+      value: -2.8086224
       objectReference: {fileID: 0}
     - target: {fileID: 1409891221584877997, guid: aec8a727e9a153d4a9f1d4c5748aa909, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.9485565
+      value: 7.9685564
       objectReference: {fileID: 0}
     - target: {fileID: 1409891221584877997, guid: aec8a727e9a153d4a9f1d4c5748aa909, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.9921438
+      value: -16.78201
       objectReference: {fileID: 0}
     - target: {fileID: 1409891221584877997, guid: aec8a727e9a153d4a9f1d4c5748aa909, type: 3}
       propertyPath: m_LocalRotation.w
@@ -12228,15 +12395,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1409891221584877997, guid: aec8a727e9a153d4a9f1d4c5748aa909, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 1409891221584877997, guid: aec8a727e9a153d4a9f1d4c5748aa909, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 1409891221584877997, guid: aec8a727e9a153d4a9f1d4c5748aa909, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 1409891221584877997, guid: aec8a727e9a153d4a9f1d4c5748aa909, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -12254,8 +12421,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: VisualController
       objectReference: {fileID: 0}
+    - target: {fileID: 1409891221584877999, guid: aec8a727e9a153d4a9f1d4c5748aa909, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aec8a727e9a153d4a9f1d4c5748aa909, type: 3}
+--- !u!4 &469748095 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1409891221584877997, guid: aec8a727e9a153d4a9f1d4c5748aa909, type: 3}
+  m_PrefabInstance: {fileID: 469748094}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &478142912
 GameObject:
   m_ObjectHideFlags: 0
@@ -13874,15 +14050,19 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 740551959}
     m_Modifications:
     - target: {fileID: 1731083196431380, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_Name
       value: Garden_Wall_w_Grid (3)_22
       objectReference: {fileID: 0}
+    - target: {fileID: 1731083196431380, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_RootOrder
-      value: 55
+      value: 45
       objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_LocalScale.x
@@ -13898,15 +14078,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 26.250053
+      value: 27.999477
       objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -7.02
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 31.427023
+      value: 16.637157
       objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_LocalRotation.w
@@ -13930,6 +14110,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
+--- !u!4 &531659209 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
+  m_PrefabInstance: {fileID: 531659208}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &535846468
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14594,7 +14779,7 @@ RectTransform:
   - {fileID: 2011614025}
   - {fileID: 1944495221}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -15535,7 +15720,7 @@ RectTransform:
   m_Children:
   - {fileID: 1053562572}
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -16047,15 +16232,19 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 740551959}
     m_Modifications:
     - target: {fileID: 1731083196431380, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_Name
       value: Garden_Wall_w_Grid (3)_18
       objectReference: {fileID: 0}
+    - target: {fileID: 1731083196431380, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_RootOrder
-      value: 48
+      value: 38
       objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_LocalScale.x
@@ -16071,15 +16260,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 31.568537
+      value: 33.317963
       objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -7.02
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 30.10849
+      value: 15.318625
       objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_LocalRotation.w
@@ -16103,6 +16292,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
+--- !u!4 &601566943 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
+  m_PrefabInstance: {fileID: 601566942}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &609632329 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2330495662725321129, guid: 64176cac231abc14caecfa72823a749b, type: 3}
@@ -16163,15 +16357,19 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 740551959}
     m_Modifications:
     - target: {fileID: 1731083196431380, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_Name
       value: Garden_Wall_w_Grid (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 1731083196431380, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_RootOrder
-      value: 20
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_LocalScale.x
@@ -16187,15 +16385,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.7494245
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -7.02
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 14.789865
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_LocalRotation.w
@@ -16219,6 +16417,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
+--- !u!4 &614911268 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
+  m_PrefabInstance: {fileID: 614911267}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &616765145
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18481,7 +18684,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 17
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &723099935
 PrefabInstance:
@@ -19007,6 +19210,85 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4402787317570956, guid: d98cc1afb40a0814c94bdd3bfc290cfa, type: 3}
   m_PrefabInstance: {fileID: 736445281}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &740551958
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 740551959}
+  m_Layer: 0
+  m_Name: Enviroment
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &740551959
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 740551958}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 792222932}
+  - {fileID: 2037010622}
+  - {fileID: 1290860942}
+  - {fileID: 1207178936}
+  - {fileID: 81050137}
+  - {fileID: 443204112}
+  - {fileID: 201396271}
+  - {fileID: 376929230}
+  - {fileID: 334592691}
+  - {fileID: 995321330}
+  - {fileID: 614911268}
+  - {fileID: 1769490175}
+  - {fileID: 2089648612}
+  - {fileID: 153933502}
+  - {fileID: 1530550791}
+  - {fileID: 2022864210}
+  - {fileID: 1999837694}
+  - {fileID: 1535087104}
+  - {fileID: 427048955}
+  - {fileID: 400142907}
+  - {fileID: 1464395845}
+  - {fileID: 404732474}
+  - {fileID: 945121503}
+  - {fileID: 1470160506}
+  - {fileID: 137674888}
+  - {fileID: 276569613}
+  - {fileID: 469748095}
+  - {fileID: 961987799}
+  - {fileID: 2026871721}
+  - {fileID: 1477041205}
+  - {fileID: 1735880849}
+  - {fileID: 2092160181}
+  - {fileID: 2080951360}
+  - {fileID: 1426826926}
+  - {fileID: 288450918}
+  - {fileID: 1035163465}
+  - {fileID: 1098673542}
+  - {fileID: 421870444}
+  - {fileID: 601566943}
+  - {fileID: 353949649}
+  - {fileID: 2035944866}
+  - {fileID: 160491289}
+  - {fileID: 38568814}
+  - {fileID: 347598189}
+  - {fileID: 807109554}
+  - {fileID: 531659209}
+  - {fileID: 946777369}
+  - {fileID: 1552862400}
+  - {fileID: 427825650}
+  m_Father: {fileID: 111076545}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &741375156
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -20769,27 +21051,31 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 740551959}
     m_Modifications:
     - target: {fileID: 1549318217557828, guid: a5c2d005f885f6148bf1ede0e0d421a2, type: 3}
       propertyPath: m_Name
       value: Garden_Stand
       objectReference: {fileID: 0}
-    - target: {fileID: 4330840106255896, guid: a5c2d005f885f6148bf1ede0e0d421a2, type: 3}
-      propertyPath: m_RootOrder
+    - target: {fileID: 1549318217557828, guid: a5c2d005f885f6148bf1ede0e0d421a2, type: 3}
+      propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4330840106255896, guid: a5c2d005f885f6148bf1ede0e0d421a2, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4330840106255896, guid: a5c2d005f885f6148bf1ede0e0d421a2, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 31.502657
+      value: 33.252083
       objectReference: {fileID: 0}
     - target: {fileID: 4330840106255896, guid: a5c2d005f885f6148bf1ede0e0d421a2, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -7.02
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4330840106255896, guid: a5c2d005f885f6148bf1ede0e0d421a2, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 14.855839
+      value: 0.065974236
       objectReference: {fileID: 0}
     - target: {fileID: 4330840106255896, guid: a5c2d005f885f6148bf1ede0e0d421a2, type: 3}
       propertyPath: m_LocalRotation.w
@@ -20797,15 +21083,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4330840106255896, guid: a5c2d005f885f6148bf1ede0e0d421a2, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4330840106255896, guid: a5c2d005f885f6148bf1ede0e0d421a2, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4330840106255896, guid: a5c2d005f885f6148bf1ede0e0d421a2, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4330840106255896, guid: a5c2d005f885f6148bf1ede0e0d421a2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -20821,6 +21107,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a5c2d005f885f6148bf1ede0e0d421a2, type: 3}
+--- !u!4 &792222932 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4330840106255896, guid: a5c2d005f885f6148bf1ede0e0d421a2, type: 3}
+  m_PrefabInstance: {fileID: 792222931}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &792472055
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -21356,15 +21647,19 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 740551959}
     m_Modifications:
     - target: {fileID: 1731083196431380, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_Name
       value: Garden_Wall_w_Grid (3)_23
       objectReference: {fileID: 0}
+    - target: {fileID: 1731083196431380, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_RootOrder
-      value: 54
+      value: 44
       objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_LocalScale.x
@@ -21380,15 +21675,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 22.250053
+      value: 23.999477
       objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -7.02
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 31.427038
+      value: 16.637173
       objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_LocalRotation.w
@@ -21412,6 +21707,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
+--- !u!4 &807109554 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
+  m_PrefabInstance: {fileID: 807109553}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &810427963
 GameObject:
   m_ObjectHideFlags: 0
@@ -22012,7 +22312,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &844711344
 GameObject:
@@ -24409,15 +24709,19 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 740551959}
     m_Modifications:
     - target: {fileID: 1731083196431380, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_Name
       value: Garden_Wall_w_Grid (3)_7
       objectReference: {fileID: 0}
+    - target: {fileID: 1731083196431380, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_RootOrder
-      value: 32
+      value: 22
       objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_LocalScale.x
@@ -24433,15 +24737,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 30.25
+      value: 31.999424
       objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -7.02
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 14.790007
+      value: 0.00014209747
       objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_LocalRotation.w
@@ -24465,32 +24769,41 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
+--- !u!4 &945121503 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
+  m_PrefabInstance: {fileID: 945121502}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &946777368
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 740551959}
     m_Modifications:
     - target: {fileID: 1549318217557828, guid: a5c2d005f885f6148bf1ede0e0d421a2, type: 3}
       propertyPath: m_Name
       value: Garden_Stand_1
       objectReference: {fileID: 0}
+    - target: {fileID: 1549318217557828, guid: a5c2d005f885f6148bf1ede0e0d421a2, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4330840106255896, guid: a5c2d005f885f6148bf1ede0e0d421a2, type: 3}
       propertyPath: m_RootOrder
-      value: 56
+      value: 46
       objectReference: {fileID: 0}
     - target: {fileID: 4330840106255896, guid: a5c2d005f885f6148bf1ede0e0d421a2, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 31.502707
+      value: 33.252132
       objectReference: {fileID: 0}
     - target: {fileID: 4330840106255896, guid: a5c2d005f885f6148bf1ede0e0d421a2, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -7.02
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4330840106255896, guid: a5c2d005f885f6148bf1ede0e0d421a2, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 31.361149
+      value: 16.571285
       objectReference: {fileID: 0}
     - target: {fileID: 4330840106255896, guid: a5c2d005f885f6148bf1ede0e0d421a2, type: 3}
       propertyPath: m_LocalRotation.w
@@ -24498,15 +24811,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4330840106255896, guid: a5c2d005f885f6148bf1ede0e0d421a2, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4330840106255896, guid: a5c2d005f885f6148bf1ede0e0d421a2, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4330840106255896, guid: a5c2d005f885f6148bf1ede0e0d421a2, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4330840106255896, guid: a5c2d005f885f6148bf1ede0e0d421a2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -24522,6 +24835,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a5c2d005f885f6148bf1ede0e0d421a2, type: 3}
+--- !u!4 &946777369 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4330840106255896, guid: a5c2d005f885f6148bf1ede0e0d421a2, type: 3}
+  m_PrefabInstance: {fileID: 946777368}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &946925031
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -25071,15 +25389,19 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 740551959}
     m_Modifications:
     - target: {fileID: 1731083196431380, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_Name
       value: Garden_Wall_w_Grid (3)_11
       objectReference: {fileID: 0}
+    - target: {fileID: 1731083196431380, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_RootOrder
-      value: 37
+      value: 27
       objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_LocalScale.x
@@ -25095,15 +25417,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 31.568521
+      value: 33.317947
       objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -7.02
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 22.10849
+      value: 7.3186255
       objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_LocalRotation.w
@@ -25127,6 +25449,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
+--- !u!4 &961987799 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
+  m_PrefabInstance: {fileID: 961987798}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &966089200
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -26256,14 +26583,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 995321329}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.75, y: -2.69, z: 22.481033}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -2.0005755, y: 4.33, z: 7.691169}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1719627091}
   - {fileID: 458008741}
-  m_Father: {fileID: 0}
-  m_RootOrder: 19
+  m_Father: {fileID: 740551959}
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &996352244
 PrefabInstance:
@@ -26720,7 +27047,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1020794068}
   m_LocalRotation: {x: -0, y: -1, z: -0, w: -0.00000035762784}
-  m_LocalPosition: {x: 1, y: -3.02, z: 24.8}
+  m_LocalPosition: {x: 2.7494245, y: 4, z: 10.010135}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 773346752}
@@ -26729,8 +27056,8 @@ Transform:
   - {fileID: 592916912}
   - {fileID: 559269387}
   - {fileID: 357641856}
-  m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_Father: {fileID: 111076545}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: -180, z: 0}
 --- !u!224 &1023766501 stripped
 RectTransform:
@@ -26964,15 +27291,19 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 740551959}
     m_Modifications:
     - target: {fileID: 1731083196431380, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_Name
       value: Garden_Wall_w_Grid (3)_21
       objectReference: {fileID: 0}
+    - target: {fileID: 1731083196431380, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_RootOrder
-      value: 45
+      value: 35
       objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_LocalScale.x
@@ -26988,15 +27319,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 31.568514
+      value: 33.31794
       objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -7.02
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 18.108492
+      value: 3.3186274
       objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_LocalRotation.w
@@ -27020,6 +27351,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
+--- !u!4 &1035163465 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
+  m_PrefabInstance: {fileID: 1035163464}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1037342216
 GameObject:
   m_ObjectHideFlags: 0
@@ -28385,15 +28721,19 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 740551959}
     m_Modifications:
     - target: {fileID: 1731083196431380, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_Name
       value: Garden_Wall_w_Grid (3)_20
       objectReference: {fileID: 0}
+    - target: {fileID: 1731083196431380, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_RootOrder
-      value: 46
+      value: 36
       objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_LocalScale.x
@@ -28409,15 +28749,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 31.568525
+      value: 33.31795
       objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -7.02
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 26.108486
+      value: 11.318622
       objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_LocalRotation.w
@@ -28441,6 +28781,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
+--- !u!4 &1098673542 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
+  m_PrefabInstance: {fileID: 1098673541}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1101077432
 GameObject:
   m_ObjectHideFlags: 0
@@ -30821,27 +31166,31 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 740551959}
     m_Modifications:
     - target: {fileID: 1197237336499004, guid: 7f1dc20f99bb89046bbe48942c67c938, type: 3}
       propertyPath: m_Name
       value: Garden_Gate_Wall
       objectReference: {fileID: 0}
+    - target: {fileID: 1197237336499004, guid: 7f1dc20f99bb89046bbe48942c67c938, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4701253781841970, guid: 7f1dc20f99bb89046bbe48942c67c938, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4701253781841970, guid: 7f1dc20f99bb89046bbe48942c67c938, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.500002
+      value: 6.2494264
       objectReference: {fileID: 0}
     - target: {fileID: 4701253781841970, guid: 7f1dc20f99bb89046bbe48942c67c938, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -7.02
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4701253781841970, guid: 7f1dc20f99bb89046bbe48942c67c938, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 14.719999
+      value: -0.06986523
       objectReference: {fileID: 0}
     - target: {fileID: 4701253781841970, guid: 7f1dc20f99bb89046bbe48942c67c938, type: 3}
       propertyPath: m_LocalRotation.w
@@ -30849,15 +31198,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4701253781841970, guid: 7f1dc20f99bb89046bbe48942c67c938, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4701253781841970, guid: 7f1dc20f99bb89046bbe48942c67c938, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4701253781841970, guid: 7f1dc20f99bb89046bbe48942c67c938, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4701253781841970, guid: 7f1dc20f99bb89046bbe48942c67c938, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -30873,6 +31222,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7f1dc20f99bb89046bbe48942c67c938, type: 3}
+--- !u!4 &1207178936 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4701253781841970, guid: 7f1dc20f99bb89046bbe48942c67c938, type: 3}
+  m_PrefabInstance: {fileID: 1207178935}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1208151621
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -32579,11 +32933,15 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 740551959}
     m_Modifications:
     - target: {fileID: 1517946568467170, guid: b949cbb1c8b54dc438ef57dc69854b95, type: 3}
       propertyPath: m_Name
       value: Garden_Gate_Flap_1Sided
+      objectReference: {fileID: 0}
+    - target: {fileID: 1517946568467170, guid: b949cbb1c8b54dc438ef57dc69854b95, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1647649034584810, guid: b949cbb1c8b54dc438ef57dc69854b95, type: 3}
       propertyPath: m_IsActive
@@ -32591,19 +32949,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4612731168115980, guid: b949cbb1c8b54dc438ef57dc69854b95, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4612731168115980, guid: b949cbb1c8b54dc438ef57dc69854b95, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 10.95896
+      value: 12.708384
       objectReference: {fileID: 0}
     - target: {fileID: 4612731168115980, guid: b949cbb1c8b54dc438ef57dc69854b95, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -7.02
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4612731168115980, guid: b949cbb1c8b54dc438ef57dc69854b95, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 14.727091
+      value: -0.062773705
       objectReference: {fileID: 0}
     - target: {fileID: 4612731168115980, guid: b949cbb1c8b54dc438ef57dc69854b95, type: 3}
       propertyPath: m_LocalRotation.w
@@ -32675,6 +33033,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b949cbb1c8b54dc438ef57dc69854b95, type: 3}
+--- !u!4 &1290860942 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4612731168115980, guid: b949cbb1c8b54dc438ef57dc69854b95, type: 3}
+  m_PrefabInstance: {fileID: 1290860941}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1291033740
 GameObject:
   m_ObjectHideFlags: 0
@@ -35205,15 +35568,19 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 740551959}
     m_Modifications:
     - target: {fileID: 1731083196431380, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_Name
       value: Garden_Wall_w_Grid (3)_8
       objectReference: {fileID: 0}
+    - target: {fileID: 1731083196431380, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_RootOrder
-      value: 43
+      value: 33
       objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_LocalScale.x
@@ -35229,15 +35596,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 31.568514
+      value: 33.31794
       objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -7.02
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 18.108492
+      value: 3.3186274
       objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_LocalRotation.w
@@ -35261,6 +35628,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
+--- !u!4 &1426826926 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
+  m_PrefabInstance: {fileID: 1426826925}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1427399535
 GameObject:
   m_ObjectHideFlags: 0
@@ -36489,15 +36861,19 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 740551959}
     m_Modifications:
     - target: {fileID: 1731083196431380, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_Name
       value: Garden_Wall_w_Grid (3)_5
       objectReference: {fileID: 0}
+    - target: {fileID: 1731083196431380, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_RootOrder
-      value: 30
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_LocalScale.x
@@ -36513,15 +36889,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 24.25
+      value: 25.999424
       objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -7.02
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 14.790004
+      value: 0.00013923645
       objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_LocalRotation.w
@@ -36545,20 +36921,29 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
+--- !u!4 &1464395845 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
+  m_PrefabInstance: {fileID: 1464395844}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1470160505
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 740551959}
     m_Modifications:
     - target: {fileID: 1731083196431380, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_Name
       value: Garden_Wall_w_Grid (2)_1
       objectReference: {fileID: 0}
+    - target: {fileID: 1731083196431380, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_RootOrder
-      value: 33
+      value: 23
       objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_LocalScale.x
@@ -36574,15 +36959,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.25
+      value: 5.9994245
       objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -7.02
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 14.789991
+      value: 0.00012683868
       objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_LocalRotation.w
@@ -36606,6 +36991,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
+--- !u!4 &1470160506 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
+  m_PrefabInstance: {fileID: 1470160505}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1476400365
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -36685,15 +37075,19 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 740551959}
     m_Modifications:
     - target: {fileID: 1731083196431380, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_Name
       value: Garden_Wall_w_Grid (3)_10
       objectReference: {fileID: 0}
+    - target: {fileID: 1731083196431380, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_RootOrder
-      value: 39
+      value: 29
       objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_LocalScale.x
@@ -36709,15 +37103,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 31.568521
+      value: 33.317947
       objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -7.02
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 20.10849
+      value: 5.3186255
       objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_LocalRotation.w
@@ -36741,6 +37135,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
+--- !u!4 &1477041205 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
+  m_PrefabInstance: {fileID: 1477041204}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1482140626
 GameObject:
   m_ObjectHideFlags: 0
@@ -37566,11 +37965,15 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 740551959}
     m_Modifications:
+    - target: {fileID: 1197237336499004, guid: 7f1dc20f99bb89046bbe48942c67c938, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4701253781841970, guid: 7f1dc20f99bb89046bbe48942c67c938, type: 3}
       propertyPath: m_RootOrder
-      value: 24
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 4701253781841970, guid: 7f1dc20f99bb89046bbe48942c67c938, type: 3}
       propertyPath: m_LocalScale.x
@@ -37586,15 +37989,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4701253781841970, guid: 7f1dc20f99bb89046bbe48942c67c938, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.7499952
+      value: -2.0005708
       objectReference: {fileID: 0}
     - target: {fileID: 4701253781841970, guid: 7f1dc20f99bb89046bbe48942c67c938, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -7.02
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4701253781841970, guid: 7f1dc20f99bb89046bbe48942c67c938, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 14.719977
+      value: -0.06988716
       objectReference: {fileID: 0}
     - target: {fileID: 4701253781841970, guid: 7f1dc20f99bb89046bbe48942c67c938, type: 3}
       propertyPath: m_LocalRotation.w
@@ -37618,6 +38021,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7f1dc20f99bb89046bbe48942c67c938, type: 3}
+--- !u!4 &1530550791 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4701253781841970, guid: 7f1dc20f99bb89046bbe48942c67c938, type: 3}
+  m_PrefabInstance: {fileID: 1530550790}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1531167979
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -37735,15 +38143,19 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 740551959}
     m_Modifications:
     - target: {fileID: 1731083196431380, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_Name
       value: Garden_Wall_w_Grid (3)_2
       objectReference: {fileID: 0}
+    - target: {fileID: 1731083196431380, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_RootOrder
-      value: 27
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_LocalScale.x
@@ -37759,15 +38171,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 26.25
+      value: 27.999424
       objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -7.02
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 14.790005
+      value: 0.00014019012
       objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_LocalRotation.w
@@ -37791,6 +38203,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
+--- !u!4 &1535087104 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
+  m_PrefabInstance: {fileID: 1535087103}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1538665554
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -38064,15 +38481,19 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 740551959}
     m_Modifications:
     - target: {fileID: 1731083196431380, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_Name
       value: Garden_Wall_w_Grid (3)_26
       objectReference: {fileID: 0}
+    - target: {fileID: 1731083196431380, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_RootOrder
-      value: 57
+      value: 47
       objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_LocalScale.x
@@ -38088,15 +38509,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 24.25005
+      value: 25.999474
       objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -7.02
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 31.427027
+      value: 16.637161
       objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_LocalRotation.w
@@ -38120,6 +38541,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
+--- !u!4 &1552862400 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
+  m_PrefabInstance: {fileID: 1552862399}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1560498763
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -39480,7 +39906,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1630454547
 PrefabInstance:
@@ -41819,7 +42245,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1730150448
 MonoBehaviour:
@@ -42276,15 +42702,19 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 740551959}
     m_Modifications:
     - target: {fileID: 1731083196431380, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_Name
       value: Garden_Wall_w_Grid (3)_14
       objectReference: {fileID: 0}
+    - target: {fileID: 1731083196431380, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_RootOrder
-      value: 40
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_LocalScale.x
@@ -42300,15 +42730,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 31.568537
+      value: 33.317963
       objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -7.02
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 30.10849
+      value: 15.318625
       objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_LocalRotation.w
@@ -42332,6 +42762,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
+--- !u!4 &1735880849 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
+  m_PrefabInstance: {fileID: 1735880848}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1740299678
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -42649,11 +43084,15 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 740551959}
     m_Modifications:
+    - target: {fileID: 1731083196431380, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_RootOrder
-      value: 21
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_LocalScale.x
@@ -42669,15 +43108,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 14.250001
+      value: 15.999426
       objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -7.02
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 14.790014
+      value: 0.00014972687
       objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_LocalRotation.w
@@ -42701,6 +43140,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
+--- !u!4 &1769490175 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
+  m_PrefabInstance: {fileID: 1769490174}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1770544154
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -45932,7 +46376,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 50, y: -64.1, z: 0}
 --- !u!1001 &1889678717
 PrefabInstance:
@@ -48968,15 +49412,19 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 740551959}
     m_Modifications:
     - target: {fileID: 1731083196431380, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_Name
       value: Garden_Wall_w_Grid (3)_1
       objectReference: {fileID: 0}
+    - target: {fileID: 1731083196431380, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_RootOrder
-      value: 26
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_LocalScale.x
@@ -48992,15 +49440,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 18.25
+      value: 19.999424
       objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -7.02
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 14.79
+      value: 0.00013542175
       objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_LocalRotation.w
@@ -49024,6 +49472,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
+--- !u!4 &1999837694 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
+  m_PrefabInstance: {fileID: 1999837693}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2004649697
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -49801,15 +50254,19 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 740551959}
     m_Modifications:
     - target: {fileID: 1731083196431380, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_Name
       value: Garden_Wall_w_Grid (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1731083196431380, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_RootOrder
-      value: 25
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_LocalScale.x
@@ -49825,15 +50282,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 16.250002
+      value: 17.999426
       objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -7.02
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 14.790019
+      value: 0.00015449524
       objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_LocalRotation.w
@@ -49857,6 +50314,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
+--- !u!4 &2022864210 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
+  m_PrefabInstance: {fileID: 2022864209}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2026772735
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -49916,15 +50378,19 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 740551959}
     m_Modifications:
     - target: {fileID: 1731083196431380, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_Name
       value: Garden_Wall_w_Grid (3)_13
       objectReference: {fileID: 0}
+    - target: {fileID: 1731083196431380, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_RootOrder
-      value: 38
+      value: 28
       objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_LocalScale.x
@@ -49940,15 +50406,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 31.568533
+      value: 33.31796
       objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -7.02
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 28.108492
+      value: 13.318627
       objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_LocalRotation.w
@@ -49972,6 +50438,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
+--- !u!4 &2026871721 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
+  m_PrefabInstance: {fileID: 2026871720}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2026883601
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -50225,15 +50696,19 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 740551959}
     m_Modifications:
     - target: {fileID: 1731083196431380, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_Name
       value: Garden_Wall_w_Grid (3)_16
       objectReference: {fileID: 0}
+    - target: {fileID: 1731083196431380, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_RootOrder
-      value: 50
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_LocalScale.x
@@ -50249,15 +50724,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 31.568533
+      value: 33.31796
       objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -7.02
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 28.108492
+      value: 13.318627
       objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_LocalRotation.w
@@ -50281,6 +50756,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
+--- !u!4 &2035944866 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
+  m_PrefabInstance: {fileID: 2035944865}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2036399058
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -50340,11 +50820,15 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 740551959}
     m_Modifications:
     - target: {fileID: 1517946568467170, guid: b949cbb1c8b54dc438ef57dc69854b95, type: 3}
       propertyPath: m_Name
       value: Garden_Gate_Flap_1Sided
+      objectReference: {fileID: 0}
+    - target: {fileID: 1517946568467170, guid: b949cbb1c8b54dc438ef57dc69854b95, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1647649034584810, guid: b949cbb1c8b54dc438ef57dc69854b95, type: 3}
       propertyPath: m_IsActive
@@ -50352,7 +50836,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4612731168115980, guid: b949cbb1c8b54dc438ef57dc69854b95, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4612731168115980, guid: b949cbb1c8b54dc438ef57dc69854b95, type: 3}
       propertyPath: m_LocalScale.x
@@ -50364,15 +50848,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4612731168115980, guid: b949cbb1c8b54dc438ef57dc69854b95, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5.4589596
+      value: 7.208384
       objectReference: {fileID: 0}
     - target: {fileID: 4612731168115980, guid: b949cbb1c8b54dc438ef57dc69854b95, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -7.02
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4612731168115980, guid: b949cbb1c8b54dc438ef57dc69854b95, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 14.7270975
+      value: -0.06276703
       objectReference: {fileID: 0}
     - target: {fileID: 4612731168115980, guid: b949cbb1c8b54dc438ef57dc69854b95, type: 3}
       propertyPath: m_LocalRotation.w
@@ -50424,6 +50908,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b949cbb1c8b54dc438ef57dc69854b95, type: 3}
+--- !u!4 &2037010622 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4612731168115980, guid: b949cbb1c8b54dc438ef57dc69854b95, type: 3}
+  m_PrefabInstance: {fileID: 2037010621}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2037383675
 GameObject:
   m_ObjectHideFlags: 0
@@ -51258,15 +51747,19 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 740551959}
     m_Modifications:
     - target: {fileID: 1731083196431380, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_Name
       value: Garden_Wall_w_Grid (3)_9
       objectReference: {fileID: 0}
+    - target: {fileID: 1731083196431380, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_RootOrder
-      value: 42
+      value: 32
       objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_LocalScale.x
@@ -51282,15 +51775,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 31.568525
+      value: 33.31795
       objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -7.02
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 26.108486
+      value: 11.318622
       objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_LocalRotation.w
@@ -51314,6 +51807,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
+--- !u!4 &2080951360 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
+  m_PrefabInstance: {fileID: 2080951359}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2081299711
 GameObject:
   m_ObjectHideFlags: 0
@@ -51465,15 +51963,19 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 740551959}
     m_Modifications:
     - target: {fileID: 1731083196431380, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_Name
       value: Garden_Wall_w_Grid (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 1731083196431380, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_RootOrder
-      value: 22
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_LocalScale.x
@@ -51489,15 +51991,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.25
+      value: 1.9994245
       objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -7.02
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 14.789987
+      value: 0.00012207031
       objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_LocalRotation.w
@@ -51521,6 +52023,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
+--- !u!4 &2089648612 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
+  m_PrefabInstance: {fileID: 2089648611}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2090004975
 GameObject:
   m_ObjectHideFlags: 0
@@ -51556,15 +52063,19 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 740551959}
     m_Modifications:
     - target: {fileID: 1731083196431380, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_Name
       value: Garden_Wall_w_Grid (3)_12
       objectReference: {fileID: 0}
+    - target: {fileID: 1731083196431380, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_RootOrder
-      value: 41
+      value: 31
       objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_LocalScale.x
@@ -51580,15 +52091,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 31.568525
+      value: 33.31795
       objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -7.02
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 24.10849
+      value: 9.318625
       objectReference: {fileID: 0}
     - target: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
       propertyPath: m_LocalRotation.w
@@ -51612,6 +52123,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
+--- !u!4 &2092160181 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
+  m_PrefabInstance: {fileID: 2092160180}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2098091910
 GameObject:
   m_ObjectHideFlags: 0
