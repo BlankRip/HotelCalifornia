@@ -196,6 +196,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4128827381532915614}
   - component: {fileID: 7706534926621704461}
+  - component: {fileID: 6547506822075640307}
   m_Layer: 12
   m_Name: Wolf3D_Hair
   m_TagString: Untagged
@@ -336,6 +337,21 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.000009958516, y: 0.0059205974, z: -0.000032316428}
     m_Extent: {x: 0.0015530528, y: 0.0017111255, z: 0.0016848044}
   m_DirtyAABB: 0
+--- !u!114 &6547506822075640307
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 416572283081203965}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 012f0e7a16bd9e3458d5bcafb824e8ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  renderer: {fileID: 7706534926621704461}
+  material: {fileID: 2100000, guid: e140fe5bbb0f1974e90ef59df107645c, type: 2}
+  bufferName: PlayerExistanceBuffer
 --- !u!1 &438750767578395170
 GameObject:
   m_ObjectHideFlags: 0
@@ -565,6 +581,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6613357940818608939}
   - component: {fileID: 518283123232049556}
+  - component: {fileID: 8621979670466370376}
   m_Layer: 12
   m_Name: Wolf3D_Outfit_Top
   m_TagString: Untagged
@@ -705,6 +722,21 @@ SkinnedMeshRenderer:
     m_Center: {x: 0.00002941757, y: 0.0007715926, z: -0.000006728049}
     m_Extent: {x: 0.0026642121, y: 0.004254017, z: 0.0017170715}
   m_DirtyAABB: 0
+--- !u!114 &8621979670466370376
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1134623243086161473}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 012f0e7a16bd9e3458d5bcafb824e8ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  renderer: {fileID: 518283123232049556}
+  material: {fileID: 2100000, guid: e140fe5bbb0f1974e90ef59df107645c, type: 2}
+  bufferName: PlayerExistanceBuffer
 --- !u!1 &1171473087588313977
 GameObject:
   m_ObjectHideFlags: 0
@@ -899,6 +931,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7269973165332817945}
   - component: {fileID: 8864328160448153929}
+  - component: {fileID: 7056432769270473709}
   m_Layer: 12
   m_Name: Wolf3D_Body
   m_TagString: Untagged
@@ -1039,6 +1072,21 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.00000005424954, y: -0.0029907608, z: -0.000446829}
     m_Extent: {x: 0.0047216685, y: 0.0073753893, z: 0.001790191}
   m_DirtyAABB: 0
+--- !u!114 &7056432769270473709
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1720550769851579632}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 012f0e7a16bd9e3458d5bcafb824e8ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  renderer: {fileID: 8864328160448153929}
+  material: {fileID: 2100000, guid: e140fe5bbb0f1974e90ef59df107645c, type: 2}
+  bufferName: PlayerExistanceBuffer
 --- !u!1 &1919799468351590393
 GameObject:
   m_ObjectHideFlags: 0
@@ -1453,6 +1501,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5822961811775803109}
   - component: {fileID: 8792828407613186684}
+  - component: {fileID: 4342938749854187046}
   m_Layer: 12
   m_Name: Wolf3D_Head
   m_TagString: Untagged
@@ -1593,6 +1642,21 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.000000042142347, y: 0.0054702065, z: 0.00040741393}
     m_Extent: {x: 0.00090159214, y: 0.0017085378, z: 0.0014570188}
   m_DirtyAABB: 0
+--- !u!114 &4342938749854187046
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3501919706308316537}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 012f0e7a16bd9e3458d5bcafb824e8ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  renderer: {fileID: 8792828407613186684}
+  material: {fileID: 2100000, guid: e140fe5bbb0f1974e90ef59df107645c, type: 2}
+  bufferName: PlayerExistanceBuffer
 --- !u!1 &3601858654473224503
 GameObject:
   m_ObjectHideFlags: 0
@@ -3358,6 +3422,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9203710389689131694}
   - component: {fileID: 8386980089580462766}
+  - component: {fileID: 5434869334755896370}
   m_Layer: 12
   m_Name: Wolf3D_Outfit_Footwear
   m_TagString: Untagged
@@ -3498,6 +3563,21 @@ SkinnedMeshRenderer:
     m_Center: {x: 0.000012032338, y: -0.009831302, z: -0.0008769681}
     m_Extent: {x: 0.002201558, y: 0.0015610815, z: 0.0017196205}
   m_DirtyAABB: 0
+--- !u!114 &5434869334755896370
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8352870714629591704}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 012f0e7a16bd9e3458d5bcafb824e8ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  renderer: {fileID: 8386980089580462766}
+  material: {fileID: 2100000, guid: e140fe5bbb0f1974e90ef59df107645c, type: 2}
+  bufferName: PlayerExistanceBuffer
 --- !u!1 &8407510016065560744
 GameObject:
   m_ObjectHideFlags: 0
