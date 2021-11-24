@@ -41,7 +41,11 @@ namespace Knotgames.Rendering
 
         public static CustomBufferRender GetCommandBuffer(string cBufferName)
         {
+            if(cBufferDist.ContainsKey(cBufferName)){
             return cBufferDist[cBufferName];
+            }
+
+            return null;
         }
 
         public void AddObject(RenderObject rObject)
@@ -60,11 +64,13 @@ namespace Knotgames.Rendering
         public void OnDisable()
         {
             ClearUp();
+            cBufferDist.Remove(commandBufferName);
         }
 
         public void OnEnable()
         {
             ClearUp();
+            cBufferDist.Remove(commandBufferName);
         }
 
         void ClearUp()

@@ -18,12 +18,12 @@ namespace Knotgames.Rendering
         void Start()
         {
             CreateAndAdd();
-            CustomBufferRender.GetCommandBuffer(bufferName).AddObject(renderObject);
+            CustomBufferRender.GetCommandBuffer(bufferName)?.AddObject(renderObject);
         }
         void OnEnable()
         {
             CreateAndAdd();
-            CustomBufferRender.GetCommandBuffer(bufferName).AddObject(renderObject);
+            CustomBufferRender.GetCommandBuffer(bufferName)?.AddObject(renderObject);
         }
 
         void CreateAndAdd()
@@ -45,11 +45,11 @@ namespace Knotgames.Rendering
 
         void OnDisable()
         {
-            if (renderObject != null) CustomBufferRender.GetCommandBuffer(bufferName).RemoveObject(renderObject);
+            if (renderObject != null) CustomBufferRender.GetCommandBuffer(bufferName)?.RemoveObject(renderObject);
         }
         void OnDestroy()
         {
-            if (renderObject != null) CustomBufferRender.GetCommandBuffer(bufferName).RemoveObject(renderObject);
+            if (renderObject != null) CustomBufferRender.GetCommandBuffer(bufferName)?.RemoveObject(renderObject);
         }
     }
 }
