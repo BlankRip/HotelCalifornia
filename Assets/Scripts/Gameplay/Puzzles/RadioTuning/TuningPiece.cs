@@ -189,7 +189,6 @@ namespace Knotgames.Gameplay.Puzzle.Radio
             }
             text.text = myVal;
             transform.Rotate(0, 0, angle, Space.Self);
-            UnityEngine.Debug.LogError($"Frequency is: {myVal}", gameObject);
         }
 
         public string GetValue()

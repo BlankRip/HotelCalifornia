@@ -7,13 +7,23 @@ namespace Knotgames.Gameplay.Abilities {
 
     {
         [SerializeField] GameplayEventCollection eventCollection;
+
+        private void Update() {
+            if(Input.GetKeyDown(KeyCode.O))
+                ApplyEffect();
+            else if (Input.GetKeyDown(KeyCode.I))
+                ResetEffect();
+        }
+
         public void ApplyEffect() {
             Debug.LogError("Start Delusions here");
+            PlayerVissiionCorrupt.instance.SetEffectState(State.active);
             eventCollection.twistVision.Invoke();
         }
 
         public void ResetEffect() {
             Debug.LogError("Stope seeing Delusions");
+            PlayerVissiionCorrupt.instance.SetEffectState(State.inactive);
             eventCollection.fixVision.Invoke();
         }
     }

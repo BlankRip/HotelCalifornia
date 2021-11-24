@@ -34,7 +34,6 @@ namespace Knotgames.LevelGen {
 
         public void StartLevelGen(bool genSeed) {
             generateSeed = genSeed;
-            Debug.Log(generateSeed);
             builderData.onFail += RestartLevelGen;
             if(currentStatus.allRoomTypes.Count != currentStatus.eachTypeSpawned.Count) {
                 currentStatus.eachTypeSpawned = new List<int>();
