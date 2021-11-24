@@ -2897,6 +2897,53 @@ ReflectionProbe:
   m_UseOcclusionCulling: 1
   m_Importance: 1
   m_CustomBakedTexture: {fileID: 0}
+--- !u!1 &127982994
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 127982996}
+  - component: {fileID: 127982995}
+  m_Layer: 0
+  m_Name: HumanEffectBuffer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!114 &127982995
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 127982994}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 562a34ded64fc3c4a9e9567f4e70bb3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bufferLocation: 1
+  makeTexture: 0
+  commandBufferName: PossesionEffect
+  textureName: _PossesedTex
+--- !u!4 &127982996
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 127982994}
+  m_LocalRotation: {x: 0.089385584, y: -0.19096787, z: -0.017465146, w: 0.97736204}
+  m_LocalPosition: {x: -1.7808878, y: 7.061506, z: -5.31635}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 249470848}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &130571164
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6208,6 +6255,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 519143562}
+  - {fileID: 2002622081}
+  - {fileID: 127982996}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -10.451, y: 22.112, z: 0}
@@ -49522,6 +49571,53 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4359315566852916, guid: 6f6d9a284bdcc364f88088beb5014064, type: 3}
   m_PrefabInstance: {fileID: 1999837693}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2002622079
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2002622081}
+  - component: {fileID: 2002622080}
+  m_Layer: 0
+  m_Name: GhostEffectBuffer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2002622080
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2002622079}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 562a34ded64fc3c4a9e9567f4e70bb3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bufferLocation: 0
+  makeTexture: 0
+  commandBufferName: PlayerExistanceBuffer
+  textureName: _PlayerExistance
+--- !u!4 &2002622081
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2002622079}
+  m_LocalRotation: {x: 0.089385584, y: -0.19096787, z: -0.017465146, w: 0.97736204}
+  m_LocalPosition: {x: -1.7808878, y: 7.061506, z: -5.31635}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 249470848}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2004649697
 PrefabInstance:
   m_ObjectHideFlags: 0
