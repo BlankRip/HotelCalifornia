@@ -4,10 +4,10 @@ using UnityEngine;
 
 public static class DevBoy
 {
-    public static bool yes = true;
+    public static bool yes = false;
 
-    static DevBoy()
-    {
-        KnotRandom.theRand = new System.Random(-1);
-    }
+    // static DevBoy()
+    // {
+    //     KnotRandom.theRand = new System.Random(-1);
+    // }
 }
