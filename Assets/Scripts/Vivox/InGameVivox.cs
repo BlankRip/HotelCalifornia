@@ -10,8 +10,9 @@ public class InGameVivox : MonoBehaviour
     [SerializeField] SOString roomId;
     [SerializeField] Image micIndicator;
     [SerializeField] Sprite muteSprite;
-    private Sprite unMuteSprite;
+    [SerializeField] Sprite unMuteSprite;
     private bool mute;
+    private bool loggedIn;
     private VoIPManager theScript;
 
     private void Start() {
@@ -19,10 +20,10 @@ public class InGameVivox : MonoBehaviour
             MyDestroy();
 
         if(charData.characterType == CharacterType.Human) {
-            unMuteSprite = micIndicator.sprite;
             theScript = GetComponent<VoIPManager>();
             VoIPManager.channelName = roomId.value;
             theScript.enabled = true;
+            loggedIn = true;
         } else 
             MyDestroy();
     }
@@ -45,6 +46,11 @@ public class InGameVivox : MonoBehaviour
         else
             micIndicator.sprite = unMuteSprite;
         mute = !mute;
+    }
+
+    private void OnDestroy() {
+        if(loggedIn)
+            theScript.Logout();
     }
 
 }
