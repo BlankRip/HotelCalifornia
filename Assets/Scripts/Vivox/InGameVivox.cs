@@ -42,10 +42,12 @@ public class InGameVivox : MonoBehaviour
 
     private void ToggleVisual() {
         mute = !mute;
-        if(mute)
-            micIndicator.sprite = muteSprite;
-        else
-            micIndicator.sprite = unMuteSprite;
+        if(micIndicator != null) {
+            if(mute)
+                micIndicator.sprite = muteSprite;
+            else
+                micIndicator.sprite = unMuteSprite;
+        }
     }
 
     private void OnDestroy() {

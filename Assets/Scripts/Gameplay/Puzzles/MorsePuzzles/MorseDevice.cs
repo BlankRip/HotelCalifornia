@@ -24,8 +24,10 @@ namespace Knotgames.Gameplay.Puzzle.Morse
 
         private void OnDestroy() {
             if(myTextObjs != null) {
-                foreach (GameObject go in myTextObjs)
-                    go.SetActive(false);
+                foreach (GameObject go in myTextObjs) {
+                    if(go != null)
+                        go.SetActive(false);
+                }
             }
         }
 
