@@ -4,7 +4,7 @@ using UnityEngine;
 
 public static class DevBoy
 {
-    public static bool yes = false;
+    public static bool yes = true;
 
     // static DevBoy()
     // {

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Knotgames.Audio;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -15,6 +16,7 @@ namespace Knotgames.Gameplay {
         private bool grounded;
         private bool inJump;
         private UnityEvent teleportEvent;
+        string gender = "";
 
         private void Start() {
             if(cc == null) {
@@ -51,6 +53,12 @@ namespace Knotgames.Gameplay {
                 }else if(grounded) {
                     velocity.y = Mathf.Sqrt(jumpHight * -2 * gravity);
                     inJump = true;
+                    if(gender == "")
+                            gender = GetComponentInChildren<GenderAssigner>().gender;
+                    if(gender == "Male")
+                        AudioPlayer.instance.PlayAudio2DOneShot(ClipName.MaleJump);
+                    if(gender == "Female")
+                        AudioPlayer.instance.PlayAudio2DOneShot(ClipName.FemaleJump);
                 } else
                     moveYPositive = false;
             }

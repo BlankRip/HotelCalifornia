@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Knotgames.Network;
 using Knotgames.Gameplay.Abilities;
+using Knotgames.Audio;
 
 namespace Knotgames.Gameplay {
     public class HumanController : MonoBehaviour, IPlayerController

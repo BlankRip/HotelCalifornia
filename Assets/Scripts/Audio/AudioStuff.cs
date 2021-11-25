@@ -14,6 +14,7 @@ namespace Knotgames.Audio
     public enum ClipName
     {
         Nada, MorseA, MorseB, MorseC, MorseD, MorseE, MorseF, MorseG, MorseH, MorseI,
-        Lever, MapConnection, MapPiece, Radio, Numpad, Solved, RightAnswer, WrongAnswer, TimeUp
+        Lever, MapConnection, MapPiece, Radio, Numpad, Solved, RightAnswer, WrongAnswer, TimeUp,
+        MaleJump, FemaleJump
     }
 }
