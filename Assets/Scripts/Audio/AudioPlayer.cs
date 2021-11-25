@@ -29,6 +29,11 @@ namespace Knotgames.Audio
             sfxSource2D.clip = audioDatabase.GetClip(name);
             sfxSource2D.Play();
         }
+
+        public void Stop2DAudio()
+        {
+            sfxSource2D.Stop();
+        }
         
         public void PlayAudio2DOneShot(ClipName name)
         {

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Knotgames.Gameplay.Abilities;
 using TMPro;
+using Knotgames.Audio;
 
 namespace Knotgames.Gameplay.Puzzle.QuickDelivery {
     public class QuickDeliveryPuzzle : MonoBehaviour
@@ -84,6 +85,7 @@ namespace Knotgames.Gameplay.Puzzle.QuickDelivery {
         private void OnTriggerEnter(Collider other) {
             if(other.CompareTag("DeliveryItem")) {
                 deliverd++;
+                AudioPlayer.instance.PlayAudio2DOneShot(ClipName.DeliveryDone);
                 spawnedObjs.Remove(other.gameObject);
                 if(deliverd == amountToDeliver) {
                     Debug.Log("Solved");

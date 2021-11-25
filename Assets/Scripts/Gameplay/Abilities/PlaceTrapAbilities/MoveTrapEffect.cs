@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Knotgames.Audio;
 using UnityEngine;
 
 namespace Knotgames.Gameplay.Abilities
@@ -38,6 +39,7 @@ namespace Knotgames.Gameplay.Abilities
             if (other.CompareTag("GhostLocker") && !destroying)
             {
                 ghostMoveAdjustment.LockMovement(true);
+                AudioPlayer.instance.PlayAudio2DOneShot(ClipName.GhostTrap);
                 trapObj = other.gameObject.GetComponentInParent<IMovementTrap>();
                 timer = 10;
                 onTimer = true;

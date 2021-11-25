@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Knotgames.Audio;
 using UnityEngine;
 
 namespace Knotgames.Gameplay.Abilities {
@@ -16,8 +17,10 @@ namespace Knotgames.Gameplay.Abilities {
 
         private void OnTriggerEnter(Collider other) {
             if(other.CompareTag("RoomTrigger")) {
-                if(other.GetComponent<IRoomState>().GetRoomState() == RoomEffectState.Slow)
-                    moveAdjustment.AdjustSpeed(speedReductionMultiplier);
+                if(other.GetComponent<IRoomState>().GetRoomState() == RoomEffectState.Slow) {
+                        moveAdjustment.AdjustSpeed(speedReductionMultiplier);
+                        AudioPlayer.instance.PlayAudio2DOneShot(ClipName.SlowDown);
+                }
             }
         }
 

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Knotgames.Audio;
 using Knotgames.Gameplay.UI;
 using UnityEngine;
 
@@ -20,6 +21,7 @@ namespace Knotgames.Gameplay.Abilities {
 
         public void Interact() {
             movementTrap.DestroyTrap();
+            AudioPlayer.instance.PlayAudio2DOneShot(ClipName.TrapNeutralize);
         }
 
         public void ShowInteractInstruction() {

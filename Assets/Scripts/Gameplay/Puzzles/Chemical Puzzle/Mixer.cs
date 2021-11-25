@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Knotgames.Audio;
 using UnityEngine;
 
 namespace Knotgames.Gameplay.Puzzle.ChemicalRoom
@@ -27,8 +28,10 @@ namespace Knotgames.Gameplay.Puzzle.ChemicalRoom
 
         private IEnumerator Mix() {
             mixing = true;
+            AudioPlayer.instance.PlayAudio2DOneShot(ClipName.ChemicalMixing);
             yield return new WaitForSeconds(5);
             FinishMix();
+            AudioPlayer.instance.Stop2DAudio();
             mixing = false;
         }
 

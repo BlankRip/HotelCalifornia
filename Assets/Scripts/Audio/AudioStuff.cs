@@ -15,6 +15,6 @@ namespace Knotgames.Audio
     {
         Nada, MorseA, MorseB, MorseC, MorseD, MorseE, MorseF, MorseG, MorseH, MorseI,
         Lever, MapConnection, MapPiece, Radio, Numpad, Solved, RightAnswer, WrongAnswer, TimeUp,
-        MaleJump, FemaleJump
+        MaleJump, FemaleJump, GhostWhisper, ChemicalMixing, DeliveryDone, SlowDown, GhostTrap, TrapNeutralize
     }
 }
