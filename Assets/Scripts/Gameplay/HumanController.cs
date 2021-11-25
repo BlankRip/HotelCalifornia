@@ -83,12 +83,16 @@ namespace Knotgames.Gameplay {
                     else if(Input.GetKeyUp(KeyCode.LeftControl))
                         data.moveYNegetive = false;
                     if(Input.GetKeyDown(KeyCode.E)) {
-                        if(primary.CanUse())
-                            primary.UseAbility();
+                        if(primary.CanUse()) {
+                                primary.UseAbility();
+                                AudioPlayer.instance.PlayAudio2DOneShot(ClipName.CastAbility);
+                            }
                     }
                     if(Input.GetKeyDown(KeyCode.Q)) {
-                        if(ultimate.CanUse())
-                            ultimate.UseAbility();
+                        if(ultimate.CanUse()) {
+                                ultimate.UseAbility();
+                                AudioPlayer.instance.PlayAudio2DOneShot(ClipName.CastAbility);
+                            }
                     }
                     if(Input.GetKeyDown(KeyCode.Mouse0)) {
                         if(interactRay.CanInteract())

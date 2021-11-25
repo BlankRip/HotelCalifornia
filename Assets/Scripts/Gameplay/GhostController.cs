@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Knotgames.Network;
 using Knotgames.Gameplay.Abilities;
+using Knotgames.Audio;
 
 namespace Knotgames.Gameplay {
     public class GhostController : MonoBehaviour, IPlayerController, IGhostControlerAdjustment
@@ -79,16 +80,22 @@ namespace Knotgames.Gameplay {
 
                     if(checkAbilityInputs) {
                         if(Input.GetKeyDown(KeyCode.E)) {
-                            if(primary.CanUse())
+                            if(primary.CanUse()) {
                                 primary.UseAbility();
+                                AudioPlayer.instance.PlayAudio2DOneShot(ClipName.CastAbility);
+                            }
                         }
                         if(Input.GetKeyDown(KeyCode.F)) {
-                            if(secondary.CanUse())
+                            if(secondary.CanUse()) {
                                 secondary.UseAbility();
+                                AudioPlayer.instance.PlayAudio2DOneShot(ClipName.CastAbility);
+                            }
                         }
                         if(Input.GetKeyDown(KeyCode.Q)) {
-                            if(ultimate.CanUse())
+                            if(ultimate.CanUse()) {
                                 ultimate.UseAbility();
+                                AudioPlayer.instance.PlayAudio2DOneShot(ClipName.CastAbility);
+                            }
                         }
                     }
                 }
