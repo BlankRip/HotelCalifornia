@@ -64,6 +64,7 @@ namespace Knotgames.Network
             }
 
             temp = new EventReRunSuitCase();
+            temp.Fill(value, action);
 
             return temp;
         }
@@ -74,7 +75,7 @@ namespace Knotgames.Network
             while (activeEventContainer.Count > 0)
             {
                 actionCase = activeEventContainer.Dequeue();
-
+                
                 try
                 {
                     actionCase.eventAction.Invoke();
@@ -83,7 +84,7 @@ namespace Knotgames.Network
                 {
                     UnityEngine.Debug.Log("Error Occured : " + actionCase.dataString);
                 }
-                
+
                 inactiveEventContainer.Enqueue(actionCase);
             }
         }
