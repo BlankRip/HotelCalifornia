@@ -35,7 +35,15 @@ namespace Knotgames.Network
                 for (int i = 0; i < NetGameManager.instance.ghostModels.Count; i++)
                 {
                     GameObject go = GameObject.Instantiate(NetGameManager.instance.ghostModels[i].model);
-                    Animator anim = go.AddComponent<Animator>();
+                    Animator anim = null;
+                    try
+                    {
+                        anim = go.GetComponent<Animator>();
+                    }
+                    catch
+                    {
+                        anim = go.AddComponent<Animator>();
+                    }
                     anim.runtimeAnimatorController = NetGameManager.instance.ghostModels[i].animatorController;
                     anim.avatar = NetGameManager.instance.ghostModels[i].animationAvatar;
                     go.transform.position = playerSlots[i].position;
