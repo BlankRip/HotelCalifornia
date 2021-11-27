@@ -19,17 +19,15 @@ public class InGameVivox : MonoBehaviour
         if(DevBoy.yes)
             MyDestroy();
 
-        if(charData.characterType == CharacterType.Human) {
-            theScript = GetComponent<VoIPManager>();
-            VoIPManager.channelName = roomId.value;
-            theScript.enabled = true;
-            loggedIn = true;
-        } else 
-            MyDestroy();
+        theScript = GetComponent<VoIPManager>();
+        VoIPManager.channelName = roomId.value;
+        theScript.enabled = true;
+        loggedIn = true;
     }
 
     private void MyDestroy() {
-        Destroy(micIndicator.gameObject);
+        if(micIndicator != null)
+            Destroy(micIndicator.gameObject);
         Destroy(this.gameObject);
     }
 
@@ -42,6 +40,10 @@ public class InGameVivox : MonoBehaviour
 
     private void ToggleVisual() {
         mute = !mute;
+        SetVisual();
+    }
+
+    private void SetVisual() {
         if(micIndicator != null) {
             if(mute)
                 micIndicator.sprite = muteSprite;
@@ -53,6 +55,11 @@ public class InGameVivox : MonoBehaviour
     private void OnDestroy() {
         if(loggedIn)
             theScript.Logout();
+    }
+
+    public void SetMicIndicator(Image img) {
+        micIndicator = img;
+        SetVisual();
     }
 
 }
