@@ -146,7 +146,7 @@ namespace Knotgames.Gameplay.Puzzle.Replicate
             {
                 slotted = false;
                 mySlot.ClearSlot();
-                Invoke("SlotReset", 0.2f);
+                Invoke("SlotReset", 1f);
             }
 
             held = true;

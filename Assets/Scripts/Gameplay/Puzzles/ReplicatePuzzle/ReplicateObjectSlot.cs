@@ -21,6 +21,7 @@ namespace Knotgames.Gameplay.Puzzle.Replicate
             myPuzzle = GetComponentInParent<IReplicatePuzzle>();
             myCollider = GetComponent<Collider>();
             meshRenderer = GetComponent<MeshRenderer>();
+            if(!DevBoy.yes)
             meshRenderer.enabled = false;
             if (!DevBoy.yes)
                 NetUnityEvents.instance.slotHideStatus.AddListener(ReceiveData);
