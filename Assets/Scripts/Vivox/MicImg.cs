@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class MicImg : MonoBehaviour
 {
-    private void Awake() {
+    private void Start() {
         InGameVivox inGameVivox = FindObjectOfType<InGameVivox>();
         inGameVivox.SetMicIndicator(GetComponent<Image>());
     }
