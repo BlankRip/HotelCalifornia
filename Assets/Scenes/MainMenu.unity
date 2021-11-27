@@ -901,7 +901,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -1223.6316, y: -36.99945}
+  m_AnchoredPosition: {x: -1223.6316, y: -36.999573}
   m_SizeDelta: {x: -3225.2808, y: -2029.8851}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &61467446
@@ -3336,9 +3336,9 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 78.12891, y: 115.97351}
+  m_AnchoredPosition: {x: 490.9004, y: 234.00012}
   m_SizeDelta: {x: 825.51807, y: 236.04602}
-  m_Pivot: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &153415890
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11181,7 +11181,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
+    rgba: 4291940817
   m_fontColor: {r: 0.81960785, g: 0.81960785, b: 0.81960785, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
@@ -19102,7 +19102,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -1223.0022, y: -36.99945}
+  m_AnchoredPosition: {x: -1223.0022, y: -36.999573}
   m_SizeDelta: {x: -3224.022, y: -2029.885}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &763206922
@@ -26940,7 +26940,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: -105.19946, y: 13.699951}
+  m_AnchoredPosition: {x: -105.19873, y: 13.699829}
   m_SizeDelta: {x: 1962.457, y: 659.58}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &872283117
@@ -29204,6 +29204,8 @@ GameObject:
   - component: {fileID: 964687046}
   - component: {fileID: 964687049}
   - component: {fileID: 964687050}
+  - component: {fileID: 964687052}
+  - component: {fileID: 964687051}
   m_Layer: 5
   m_Name: MainTitle
   m_TagString: Untagged
@@ -29310,7 +29312,7 @@ Animation:
   m_Animations:
   - {fileID: 7400000, guid: 84dbf5887d8570c42bc775da7d8eebed, type: 2}
   m_WrapMode: 0
-  m_PlayAutomatically: 1
+  m_PlayAutomatically: 0
   m_AnimatePhysics: 0
   m_CullingType: 0
 --- !u!114 &964687049
@@ -29414,6 +29416,99 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!114 &964687051
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 964687043}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a313875054f695e4f9e2bf509b4dbff5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animation: {fileID: 964687048}
+  clip: {fileID: 7400000, guid: 84dbf5887d8570c42bc775da7d8eebed, type: 2}
+--- !u!114 &964687052
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 964687043}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03a62ace5ccb293439b580dbd54c4fb3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectName: MenuSplashManagenemt
+  OnFirstTime:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 964687051}
+        m_TargetAssemblyTypeName: PlayAnimation, Assembly-CSharp
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnNextTime:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1677056851}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 964687043}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 998340602}
+        m_TargetAssemblyTypeName: TransitionScreenManager, Assembly-CSharp
+        m_MethodName: FadeOut
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 5
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 108194767}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!1001 &968002607
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -30399,7 +30494,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
+    rgba: 4291940817
   m_fontColor: {r: 0.81960785, g: 0.81960785, b: 0.81960785, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3

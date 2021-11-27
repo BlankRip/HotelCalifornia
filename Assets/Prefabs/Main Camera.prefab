@@ -50,7 +50,7 @@ MonoBehaviour:
   closeClip: {fileID: 7400000, guid: f629c1e8e773ba342a8fea2b3c56eb31, type: 2}
   effectStrength: 0
   vapourStrength: 0
-  updateState: 1
+  updateState: 0
   myState: 0
 --- !u!111 &542735711
 Animation:
@@ -180,6 +180,7 @@ GameObject:
   - component: {fileID: 2323428497621156168}
   - component: {fileID: 3239099473235163482}
   - component: {fileID: 279800410306046018}
+  - component: {fileID: 3860693874036896020}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -436,6 +437,18 @@ MonoBehaviour:
   calcMetricsKey: 284
   increaseAccuracyKey: 270
   decreaseAccuracyKey: 269
+--- !u!114 &3860693874036896020
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2323428497621156165}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5154715108ced92469e793010d1a6794, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2323428497697917727
 GameObject:
   m_ObjectHideFlags: 0

@@ -24,6 +24,11 @@ public sealed class PEFXGhostVission : PostProcessEffectSettings
 
     public ColorParameter ghostColor = new ColorParameter { value = Color.black };
 
+    public ColorParameter fogColor = new ColorParameter { value = Color.black };
+
+    [Range(0f, 5f), Tooltip("Color Tightness")]
+    public FloatParameter fogDistance = new FloatParameter { value = 0.5f };
+
     [Range(0f, 5f), Tooltip("Color Tightness")]
     public FloatParameter colorTightness = new FloatParameter { value = 0.5f };
 
@@ -55,12 +60,14 @@ public sealed class PEFXGhostVissionRenderer : PostProcessEffectRenderer<PEFXGho
         sheet.properties.SetFloat("_OutStrength", settings.outStrength);
         sheet.properties.SetFloat("_StepCount", settings.stepCount);
         sheet.properties.SetVector("_GhostZoneColor", settings.ghostColor);
+        sheet.properties.SetVector("_FogColor", settings.fogColor);
         sheet.properties.SetTexture("_DistortionTex", settings.distortionTexture);
         sheet.properties.SetFloat("_DistortionScale", settings.dstortionSize);
         sheet.properties.SetFloat("_DistortionSpeed", settings.dstortionSpeed);
         sheet.properties.SetFloat("_DistortionStrength", settings.dstortionSrength);
         sheet.properties.SetFloat("_DistortionSSoftness", settings.dstortionSoftness);
         sheet.properties.SetFloat("_ColorTightness", settings.colorTightness);
+        sheet.properties.SetFloat("_FogDistance", settings.fogDistance);
 
         context.command.BlitFullscreenTriangle(context.source, context.destination, sheet, 0);
     }

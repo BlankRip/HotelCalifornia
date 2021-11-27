@@ -36,7 +36,11 @@ namespace Knotgames.Rendering
         {
             textureRT = new RenderTexture(Screen.width, Screen.height, 0, texFormat, RenderTextureReadWrite.Default);
             textureRT.name = textureName;
-            cBufferDist.Add(commandBufferName, this);
+            if(commandBufferName.Contains(commandBufferName))
+            {
+                cBufferDist[commandBufferName] = this;
+            }
+            else cBufferDist.Add(commandBufferName, this);
             Reset = ClearUp;
         }
 

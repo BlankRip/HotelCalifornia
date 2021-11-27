@@ -3038,6 +3038,7 @@ GameObject:
   - component: {fileID: 599868235}
   - component: {fileID: 599868238}
   - component: {fileID: 599868239}
+  - component: {fileID: 599868240}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -3085,7 +3086,7 @@ Camera:
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_RenderingPath: 3
+  m_RenderingPath: 1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
   m_TargetEye: 3
@@ -3103,15 +3104,15 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 599868234}
-  m_LocalRotation: {x: 0.064314455, y: -0.4532549, z: 0.032231722, w: 0.88847333}
-  m_LocalPosition: {x: -15.060439, y: 3.3252075, z: -9.324654}
+  m_LocalRotation: {x: 0.0719331, y: 0.009611295, z: -0.001204163, w: 0.99736243}
+  m_LocalPosition: {x: -16.16, y: 2.27, z: -9.324654}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1613768444}
   - {fileID: 241248306960449916}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 8.251, y: 1.1, z: -0.059}
 --- !u!124 &599868238
 Behaviour:
   m_ObjectHideFlags: 0
@@ -3192,6 +3193,18 @@ MonoBehaviour:
       PublicKeyToken=null
   - assemblyQualifiedName: PEFXGlitch, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
+--- !u!114 &599868240
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 599868234}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5154715108ced92469e793010d1a6794, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &629375203
 GameObject:
   m_ObjectHideFlags: 0
@@ -9167,6 +9180,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5785497042800305078, guid: 59f976b55f8f24f46bde2154e060f767, type: 3}
+      propertyPath: texFormat
+      value: 28
+      objectReference: {fileID: 0}
+    - target: {fileID: 5785497042800305078, guid: 59f976b55f8f24f46bde2154e060f767, type: 3}
       propertyPath: makeTexture
       value: 1
       objectReference: {fileID: 0}
@@ -9180,7 +9197,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5785497042800305079, guid: 59f976b55f8f24f46bde2154e060f767, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9178453884660096247, guid: 59f976b55f8f24f46bde2154e060f767, type: 3}
       propertyPath: m_Name
