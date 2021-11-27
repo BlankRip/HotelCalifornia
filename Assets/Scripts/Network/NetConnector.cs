@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Collections.Concurrent;
 using UnityEngine;
 using UnityEngine.Events;
 using System.Text;
@@ -32,8 +33,8 @@ namespace Knotgames.Network
         WebSocket ws;
         INetEventHub eventHub;
 
-        Queue<EventReRunSuitCase> activeEventContainer = new Queue<EventReRunSuitCase>();
-        Queue<EventReRunSuitCase> inactiveEventContainer = new Queue<EventReRunSuitCase>();
+        ConcurrentQueue<EventReRunSuitCase> activeEventContainer = new ConcurrentQueue<EventReRunSuitCase>();
+        ConcurrentQueue<EventReRunSuitCase> inactiveEventContainer = new ConcurrentQueue<EventReRunSuitCase>();
 
         void Awake()
         {
@@ -57,15 +58,10 @@ namespace Knotgames.Network
 
         EventReRunSuitCase GetMeASuitcase(string value, string comment, System.Action action)
         {
-            EventReRunSuitCase temp;
-            if (inactiveEventContainer.Count > 0)
-            {
-                temp = inactiveEventContainer.Dequeue();
-            }
-
-            temp = new EventReRunSuitCase();
+            EventReRunSuitCase temp = null;
+            if (inactiveEventContainer.Count > 0 && inactiveEventContainer.TryDequeue(out temp));
+            else temp = new EventReRunSuitCase();
             temp.Fill(value, comment, action);
-
             return temp;
         }
 
@@ -74,19 +70,21 @@ namespace Knotgames.Network
             EventReRunSuitCase actionCase;
             while (activeEventContainer.Count > 0)
             {
-                actionCase = activeEventContainer.Dequeue();
-
-                try
+                if (activeEventContainer.TryDequeue(out actionCase))
                 {
-                    actionCase.eventAction.Invoke();
-                }
-                catch (System.Exception)
-                {
-                    UnityEngine.Debug.Log("Error COMMENT : " + actionCase.comment);
-                    UnityEngine.Debug.Log("Error Occured : " + actionCase.dataString);
-                }
 
-                inactiveEventContainer.Enqueue(actionCase);
+                    try
+                    {
+                        actionCase.eventAction.Invoke();
+                    }
+                    catch (System.Exception)
+                    {
+                        UnityEngine.Debug.Log("Error COMMENT : " + actionCase.comment);
+                        UnityEngine.Debug.Log("Error Occured : " + actionCase.dataString);
+                    }
+
+                    inactiveEventContainer.Enqueue(actionCase);
+                }
             }
         }
 
@@ -110,10 +108,10 @@ namespace Knotgames.Network
 
             string comment = "NA";
 
-            if(eventData.RawData == null)comment = "RAW DATA IS NULL";
-            else if(eventData.RawData.Length == 0)comment = "RAW DATA SIZE IS ZERO";
-            else if(eventData.Data == null)comment = "DATA SIZE IS NULL";
-            else if(val == null)comment = "VALUE INPUT IS :" + val;
+            if (eventData.RawData == null) comment = "RAW DATA IS NULL";
+            else if (eventData.RawData.Length == 0) comment = "RAW DATA SIZE IS ZERO";
+            else if (eventData.Data == null) comment = "DATA SIZE IS NULL";
+            else if (val == null) comment = "VALUE INPUT IS :" + val;
 
             activeEventContainer.Enqueue(
                 GetMeASuitcase(
