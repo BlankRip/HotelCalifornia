@@ -18,12 +18,12 @@ namespace Knotgames.Rendering
         void Start()
         {
             CreateAndAdd();
-            CustomBufferRender.GetCommandBuffer(bufferName)?.AddObject(renderObject);
+            CustomBufferRender.GetCommandBuffer(bufferName).AddObject(renderObject);
         }
         void OnEnable()
         {
             CreateAndAdd();
-            CustomBufferRender.GetCommandBuffer(bufferName)?.AddObject(renderObject);
+            CustomBufferRender.GetCommandBuffer(bufferName).AddObject(renderObject);
         }
 
         void CreateAndAdd()

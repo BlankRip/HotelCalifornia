@@ -6,6 +6,7 @@ Shader "Custom/PostEffects/GhostVission"
 
     TEXTURE2D_SAMPLER2D(_MainTex, sampler_MainTex);
     TEXTURE2D_SAMPLER2D(_DistortionTex, sampler_DistortionTex);
+    TEXTURE2D_SAMPLER2D(_ExcludeColor, sampler_ExcludeColor);
 
     uniform float 
     _StepDist, 
@@ -25,6 +26,7 @@ Shader "Custom/PostEffects/GhostVission"
 
     float4 Frag(VaryingsDefault i) : SV_Target
     {
+        float4 excludeCol = SAMPLE_TEXTURE2D(_ExcludeColor, sampler_ExcludeColor, i.texcoord);
         // test gray scale
         float4 color = SAMPLE_TEXTURE2D(_MainTex, sampler_MainTex, i.texcoord);
         float2 uvCent = i.texcoord.xy * 2 - 1;
@@ -49,7 +51,7 @@ Shader "Custom/PostEffects/GhostVission"
         
 
         //return saturate(1 - distortionValue);
-        return colMain;
+        return lerp(colMain, color, excludeCol.a);
         //return saturate(1 - length(uvCent)) * lerp(luminance.xxxx, color, pow(ctrl * 2, 2)) + pow(multiplier * _ValueControl, _OutKnee) * _OutStrength;
         //return luminance + multiplier * _ValueControl;
     }

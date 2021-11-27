@@ -44,8 +44,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bufferLocation: 1
+  makeTexture: 0
   commandBufferName: PossesionEffect
+  texFormat: 0
   textureName: _PossesedTex
+  textureRT: {fileID: 0}
 --- !u!1 &5785497042800305079
 GameObject:
   m_ObjectHideFlags: 0
@@ -56,6 +59,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5785497042800305081}
   - component: {fileID: 5785497042800305078}
+  - component: {fileID: 5917543580415413674}
   m_Layer: 0
   m_Name: GhostEffectBuffer
   m_TagString: Untagged
@@ -90,8 +94,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bufferLocation: 1
+  makeTexture: 0
   commandBufferName: PlayerExistanceBuffer
+  texFormat: 0
   textureName: _PlayerExistance
+  textureRT: {fileID: 0}
+--- !u!114 &5917543580415413674
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5785497042800305079}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 562a34ded64fc3c4a9e9567f4e70bb3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bufferLocation: 7
+  makeTexture: 0
+  commandBufferName: ExcludeColorBuffer
+  texFormat: 0
+  textureName: _ExcludeColor
+  textureRT: {fileID: 0}
 --- !u!1 &9178453884660096247
 GameObject:
   m_ObjectHideFlags: 0

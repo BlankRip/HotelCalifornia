@@ -26,14 +26,15 @@ namespace Knotgames.Rendering
 
         public string commandBufferName;
 
+        public RenderTextureFormat texFormat;
         public string textureName;
 
-        Texture textureRT;
+        [SerializeField]Texture textureRT;
 
 
         private void Awake()
         {
-            textureRT = new RenderTexture(Screen.width, Screen.height, 0, RenderTextureFormat.R8, RenderTextureReadWrite.Default);
+            textureRT = new RenderTexture(Screen.width, Screen.height, 0, texFormat, RenderTextureReadWrite.Default);
             textureRT.name = textureName;
             cBufferDist.Add(commandBufferName, this);
             Reset = ClearUp;
@@ -42,7 +43,7 @@ namespace Knotgames.Rendering
         public static CustomBufferRender GetCommandBuffer(string cBufferName)
         {
             if(cBufferDist.ContainsKey(cBufferName)){
-            return cBufferDist[cBufferName];
+                return cBufferDist[cBufferName];
             }
 
             return null;
@@ -67,10 +68,14 @@ namespace Knotgames.Rendering
             cBufferDist.Remove(commandBufferName);
         }
 
+
+        private void OnDestroy() {
+            ClearUp();
+            cBufferDist.Remove(commandBufferName);
+        }
         public void OnEnable()
         {
             ClearUp();
-            cBufferDist.Remove(commandBufferName);
         }
 
         void ClearUp()
@@ -100,35 +105,18 @@ namespace Knotgames.Rendering
             commandBuffer.name = commandBufferName;
             camAndBuffer[cam] = commandBuffer;
 
-           // int texID = Shader.PropertyToID(textureName);
 
             RenderTargetIdentifier rtID = new RenderTargetIdentifier(textureRT);
 
-            
-
-/*
-            commandBuffer
-                .GetTemporaryRT(texID,
-                -1,
-                -1,
-                24,
-                FilterMode.Bilinear,
-                RenderTextureFormat.R16);
-      
-*/
-
-
             commandBuffer.SetRenderTarget(rtID);
-            commandBuffer.ClearRenderTarget(true, true, Color.black);
+            commandBuffer.ClearRenderTarget(true, true, new Color(0,0,0,0));
             
 
             foreach (RenderObject item in renderObjects)
             {
                 commandBuffer.DrawRenderer(item.renderer, item.material);
             }
-            //commandBuffer.SetGlobalTexture(textureName, texID);
-            //textureRT = Shader.GetGlobalTexture(texID);
-
+            
             Shader.SetGlobalTexture(textureName, textureRT);
 
             cam.AddCommandBuffer (bufferLocation, commandBuffer);
