@@ -35,6 +35,7 @@ namespace Knotgames.LevelGen
         }
 
         private void SendSeed() {
+            Debug.LogError("Sending seed");
             NetConnector.instance.SendDataToServer(JsonUtility.ToJson(new SeedPacket(seedValue)));
         }
 

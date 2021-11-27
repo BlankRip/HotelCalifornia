@@ -41,6 +41,7 @@ namespace Knotgames.Gameplay {
                 }
                 case "replicateLevel": {
                     if(!hostStatus.isHost) {
+                        Debug.LogError("Replicating");
                         int seed = JsonUtility.FromJson<RecievedSeed>(dataString).seed;
                         gameSeed.levelSeed.SetSeed(seed);
                         builder.levelBuilder.StartLevelGen(false);
