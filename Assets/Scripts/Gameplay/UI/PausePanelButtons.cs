@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Knotgames.UI;
+using Knotgames.Network;
 
 namespace Knotgames.Gameplay.UI {
     public class PausePanelButtons : MonoBehaviour
@@ -26,6 +27,7 @@ namespace Knotgames.Gameplay.UI {
         }
 
         public void BackToMainMenu() {
+            NetGameManager.instance.LeaveRoom();
             SceneManager.LoadScene(0);
         }
 
