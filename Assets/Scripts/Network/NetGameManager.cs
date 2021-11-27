@@ -36,7 +36,6 @@ namespace Knotgames.Network
                     UnityEngine.Debug.LogError("PREPARING");
                     break;
                 case "startGame":
-                    UnityEngine.Debug.LogError("STARTING");
                     inGame = true;
                     SceneManager.LoadScene(1);
                     break;
