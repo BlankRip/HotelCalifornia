@@ -67,6 +67,10 @@ namespace Knotgames.Network
                         string leftID = JsonUtility.FromJson<PlayerIDExtractor>(dataString).playerID;
                         connectedPlayers.Remove(leftID);
                         UnityEngine.Debug.Log("<color=yellow>A SINFUL BEING HAS BEEN PURGED FROM THE LOBBY, ATLEAST HE LEFT EARLY</color>");
+                        connectedPlayers.Remove(leftID);
+                        Cursor.lockState = CursorLockMode.None;
+                        Cursor.visible = true;
+                        SceneManager.LoadScene(2);
                     }
                     break;
                 case "youLeftRoom":
