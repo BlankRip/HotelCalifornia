@@ -191,6 +191,7 @@ GameObject:
   - component: {fileID: 2716190115937160928}
   - component: {fileID: 596624543159334447}
   - component: {fileID: 3419881726794330378}
+  - component: {fileID: 8032701603763744347}
   m_Layer: 7
   m_Name: PortionBottle
   m_TagString: Potion
@@ -273,3 +274,35 @@ CapsuleCollider:
   m_Height: 0.682515
   m_Direction: 1
   m_Center: {x: 0, y: 0.083780706, z: 0}
+--- !u!114 &8032701603763744347
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7931197232444357076}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77d59c53c00a8ad41bc23a1d906af55e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mode: 100
+  movementMode: 1
+  canChangeRotation: 1
+  canChangeScale: 0
+  sizeMultiplier: 1
+  managementMode: 0
+  shadowCastingMode: 1
+  isImportant: 0
+  isShadowSource: 0
+  disablePrediction: 0
+  allowFullDisable: 1
+  withChildren: 1
+  dynamicUpdateInterval: 0.3
+  renderer: {fileID: 0}
+  renderers: []
+  noShadowRenderers: []
+  shadowOnlyRenderers: []
+  particleSystem: {fileID: 0}
+  center: {x: 0, y: 0.027444959, z: 0}
+  extents: {x: 0.075813055, y: 0.113314986, z: 0.07581329}

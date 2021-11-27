@@ -52,6 +52,12 @@ public class PlayerVissionBlur : MonoBehaviour
     {
         playerEyeBlur.selectImage.value = effectStrength;
         playerEyeBlur.vapourStrength.value = vapourStrength;
+
+        if(updateState)
+        {
+            UpdateAnimationState(myState == State.active ? true : false);
+            updateState = false;
+        }
     }
 
     public void UpdateAnimationState(bool state) 
