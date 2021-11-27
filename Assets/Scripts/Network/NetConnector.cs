@@ -32,13 +32,14 @@ namespace Knotgames.Network
         WebSocket ws;
         INetEventHub eventHub;
 
-        Queue<System.Action> recievedEvents = new Queue<System.Action>();
+        Queue<EventReRunSuitCase> activeEventContainer = new Queue<EventReRunSuitCase>();
+        Queue<EventReRunSuitCase> inactiveEventContainer = new Queue<EventReRunSuitCase>();
 
         void Awake()
         {
-            if (NetConnector.instance == null) 
+            if (NetConnector.instance == null)
                 NetConnector.instance = this;
-            else 
+            else
                 Destroy(this);
             running = true;
         }
@@ -54,16 +55,37 @@ namespace Knotgames.Network
             }
         }
 
+        EventReRunSuitCase GetMeASuitcase(string value, System.Action action)
+        {
+            EventReRunSuitCase temp;
+            if (inactiveEventContainer.Count > 0)
+            {
+                temp = inactiveEventContainer.Dequeue();
+            }
+
+            temp = new EventReRunSuitCase();
+
+            return temp;
+        }
+
         void Update()
         {
-            System.Action action;
-            while (recievedEvents.Count > 0) {
-                action = recievedEvents.Dequeue();
-                if(action != null)
-                    action.Invoke();
-                else
-                    UnityEngine.Debug.LogError("SOME NULL HAS BEEN DEQUEUED FROM RECIEVED EVENTS");
-            } 
+            EventReRunSuitCase actionCase;
+            while (activeEventContainer.Count > 0)
+            {
+                actionCase = activeEventContainer.Dequeue();
+
+                try
+                {
+                    actionCase.eventAction.Invoke();
+                }
+                catch (System.Exception)
+                {
+                    UnityEngine.Debug.Log("Error Occured : " + actionCase.dataString);
+                }
+                
+                inactiveEventContainer.Enqueue(actionCase);
+            }
         }
 
         async void ConnectToServer()
@@ -82,17 +104,18 @@ namespace Knotgames.Network
         void DataReciver(MessageEventArgs eventData)
         {
             string val = Encoding.UTF8.GetString(eventData.RawData);
-           if (OnMsgRecieveRaw != null && OnMsgRecieveRaw.GetInvocationList().Length > 0) OnMsgRecieveRaw.Invoke(val);
+            if (OnMsgRecieveRaw != null && OnMsgRecieveRaw.GetInvocationList().Length > 0) OnMsgRecieveRaw.Invoke(val);
 
-            recievedEvents.Enqueue(
-            () =>
-                {
-                    eventHub.Listen(val);
-                    OnMsgRecieve.Invoke(val);
-                }
+            activeEventContainer.Enqueue(
+                GetMeASuitcase(
+                    val,
+                    () =>
+                    {
+                        eventHub.Listen(val);
+                        OnMsgRecieve.Invoke(val);
+                    }
+                )
             );
-
-
         }
 
         void OnDestroy()
@@ -110,6 +133,19 @@ namespace Knotgames.Network
         public class PlayerData
         {
             public string playerID;
+        }
+
+        public class EventReRunSuitCase
+        {
+            public string dataString;
+            public System.Action eventAction;
+
+            public void Fill(string dataString, System.Action eventAction)
+            {
+                this.dataString = dataString;
+                this.eventAction = eventAction;
+            }
+
         }
 
     }
