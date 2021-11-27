@@ -5,8 +5,8 @@ using UnityEngine;
 namespace Knotgames.Gameplay.Abilities {
     public class DelusionalTrigger : TriggerAbilities
     {
-        float duration = 30;
-        int usesLeft = 2;
+        float duration = 35;
+        int usesLeft = 3;
 
         private void Start() {
             Initilize("SecondaryUi", duration, AbilityEffectType.Delusional, usesLeft, true);

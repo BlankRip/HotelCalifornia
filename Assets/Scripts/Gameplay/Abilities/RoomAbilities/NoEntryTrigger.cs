@@ -5,7 +5,7 @@ using UnityEngine;
 namespace Knotgames.Gameplay.Abilities {
     public class NoEntryTrigger : RoomAbilityTrigger
     {
-        private float abilityDuration = 40;
+        private float abilityDuration = 35;
         private int usesLeft = 1;
 
         private void Start() {

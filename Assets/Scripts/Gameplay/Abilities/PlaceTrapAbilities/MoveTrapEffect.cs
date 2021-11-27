@@ -41,7 +41,7 @@ namespace Knotgames.Gameplay.Abilities
                 ghostMoveAdjustment.LockMovement(true);
                 AudioPlayer.instance.PlayAudio2DOneShot(ClipName.GhostTrap);
                 trapObj = other.gameObject.GetComponentInParent<IMovementTrap>();
-                timer = 10;
+                timer = 40;
                 onTimer = true;
             }
         }

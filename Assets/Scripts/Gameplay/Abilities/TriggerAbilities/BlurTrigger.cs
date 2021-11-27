@@ -6,7 +6,7 @@ namespace Knotgames.Gameplay.Abilities
 {
     public class BlurTrigger : TriggerAbilities
     {
-        float duration = 5;
+        float duration = 20;
         int usesLeft = 3;
 
         private void Start() {

@@ -8,7 +8,7 @@ namespace Knotgames.Gameplay.Abilities {
     {
         private IInterfearRay myRay;
         private IAbilityUi myUi;
-        private int usesLeft = 1;
+        private int usesLeft = 5;
 
         private void Start() {
             myRay = GetComponent<IInterfearRay>();
