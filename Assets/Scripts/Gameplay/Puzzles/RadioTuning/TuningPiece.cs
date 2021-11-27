@@ -124,7 +124,6 @@ namespace Knotgames.Gameplay.Puzzle.Radio
             }
 
             text.text = myVal;
-            UnityEngine.Debug.LogError($"Frequency is: {myVal}", gameObject);
 
             if (screwed)
                 FlipRadio();

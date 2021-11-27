@@ -7,6 +7,7 @@ public class MicImg : MonoBehaviour
 {
     private void Start() {
         InGameVivox inGameVivox = FindObjectOfType<InGameVivox>();
-        inGameVivox.SetMicIndicator(GetComponent<Image>());
+        if(inGameVivox != null)
+            inGameVivox.SetMicIndicator(GetComponent<Image>());
     }
 }
