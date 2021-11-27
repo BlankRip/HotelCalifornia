@@ -14,7 +14,8 @@ public class NetTransformSync : MonoBehaviour
 
     void Start()
     {
-        if(DevBoy.yes) {
+        if (DevBoy.yes)
+        {
             Destroy(this);
             return;
         }
@@ -30,39 +31,30 @@ public class NetTransformSync : MonoBehaviour
             elapsedFrames = (elapsedFrames + 1) % (interpolationFramesCount + 1);
             TransformData transformData = JsonUtility.FromJson<TransformData>(dataString);
             Vector3 targetPos = transformData.transform.position.ToVector();
-            if(targetPos != Vector3.zero)
+            if (targetPos != Vector3.zero)
                 transform.position = Vector3.Lerp(transform.position, targetPos, interpolationRatio);
-            try {
+            try
+            {
                 transform.rotation = Quaternion.Lerp(transform.rotation, transformData.transform.rotation.ToQuaternion(), interpolationRatio);
-            } catch { }
+            }
+            catch { }
         };
     }
-    
+
     void Update()
     {
         if (netObject.IsMine)
         {
-            NetConnector.instance.SendDataToServer(
-                JsonUtility.ToJson(
-                    new TransformData()
-                    {
-                        eventName = "syncObjectData",
-                        distributionOption = DistributionOption.serveOthers,
-                        ownerID = NetConnector.instance.playerID.value,
-                        objectID = netObject.id,
-                        roomID = NetRoomJoin.instance.roomID.value,
-                        transform = new TransformWS()
-                        {
-                            position = new PositionWS(transform.position),
-                            rotation = new RotationWS(transform.rotation)
-                        }
-                    }
-                )
-            );
+            TransformData dataToSend = new TransformData(netObject.id, transform.position, transform.rotation);
+            if (dataToSend != null)
+                NetConnector.instance.SendDataToServer(JsonUtility.ToJson(dataToSend));
+            else
+                Debug.LogError("TRASH ENGINE!");
         }
         else
         {
-            if (RunOnUpdate != null) RunOnUpdate.Invoke();
+            if (RunOnUpdate != null)
+                RunOnUpdate.Invoke();
         }
     }
 }
@@ -74,4 +66,17 @@ public class TransformData
     public string eventName = "syncObjectData";
     public string ownerID, objectID, roomID;
     public TransformWS transform;
+    public TransformData(string id, Vector3 pos, Quaternion rot)
+    {
+        eventName = "syncObjectData";
+        distributionOption = DistributionOption.serveOthers;
+        ownerID = NetConnector.instance.playerID.value;
+        objectID = id;
+        roomID = NetRoomJoin.instance.roomID.value;
+        transform = new TransformWS()
+        {
+            position = new PositionWS(pos),
+            rotation = new RotationWS(rot)
+        };
+    }
 }
