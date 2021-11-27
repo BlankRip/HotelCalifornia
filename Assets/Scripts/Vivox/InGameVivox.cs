@@ -19,6 +19,7 @@ public class InGameVivox : MonoBehaviour
         if(DevBoy.yes)
             MyDestroy();
 
+        this.transform.parent = null;
         theScript = GetComponent<VoIPManager>();
         VoIPManager.channelName = roomId.value;
         theScript.enabled = true;
