@@ -37,9 +37,12 @@ namespace Knotgames.Gameplay.Puzzle.Replicate
             Debug.LogError("SPAWNING REP OBJECTS!");
             foreach (RepObj o in objs)
             {
-                Transform x = objSpawnAreas[KnotRandom.theRand.Next(0, objSpawnAreas.Count)];
-                objSpawnAreas.Remove(x);
-                Instantiate(o.Object, x.position, x.rotation, this.transform);
+                if (objSpawnAreas.Count > 0)
+                {
+                    Transform x = objSpawnAreas[KnotRandom.theRand.Next(0, objSpawnAreas.Count)];
+                    objSpawnAreas.Remove(x);
+                    Instantiate(o.Object, x.position, x.rotation, this.transform);
+                }
             }
         }
     }
