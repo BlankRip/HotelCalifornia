@@ -36,21 +36,15 @@ namespace Knotgames.Gameplay.Puzzle.Replicate
         public void ResyncSolution(List<string> sol, List<RepObj> toSpawn)
         {
             currentSolution = sol;
-            for (int i = 0; i < toSpawn.Count; i++)
+            for (int i = 0; i < toSpawn.Count && objectSpots.Count > 0; i++)
             {
-                try
-                {
-                    int x = KnotRandom.theRand.Next(0, objectSpots.Count);
-                    RepObj repObj = toSpawn[i];
-                    GameObject go = Instantiate(repObj.Object, objectSpots[x].position, objectSpots[x].rotation, this.transform);
-                    go.layer = 0;
-                    repObj.SetOriginal(objectSpots[x].position, objectSpots[x].rotation);
-                    objectSpots.RemoveAt(x);
-                }
-                catch
-                {
-                    Debug.LogError("X");
-                }
+                int x = KnotRandom.theRand.Next(0, objectSpots.Count);
+                RepObj repObj = toSpawn[i];
+                GameObject go = Instantiate(repObj.Object, objectSpots[x].position, objectSpots[x].rotation, this.transform);
+                go.layer = 0;
+                go.tag = "Untagged";
+                repObj.SetOriginal(objectSpots[x].position, objectSpots[x].rotation);
+                objectSpots.RemoveAt(x);
             }
         }
 

@@ -38,6 +38,7 @@ namespace Knotgames.Gameplay.Puzzle.Replicate
                 {
                     RepObj repObj = GetRepObject();
                     GameObject go = Instantiate(repObj.Object, slots[i].transform.position, slots[i].transform.rotation, this.transform);
+                    go.tag = "Untagged";
                     go.layer = 0;
                     Destroy(go.GetComponent<RepObjTransformSync>());
                     Destroy(go.GetComponent<ReplicateObject>());
