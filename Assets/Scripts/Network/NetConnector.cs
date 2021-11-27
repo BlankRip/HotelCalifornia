@@ -55,7 +55,7 @@ namespace Knotgames.Network
             }
         }
 
-        EventReRunSuitCase GetMeASuitcase(string value, System.Action action)
+        EventReRunSuitCase GetMeASuitcase(string value, string comment, System.Action action)
         {
             EventReRunSuitCase temp;
             if (inactiveEventContainer.Count > 0)
@@ -64,7 +64,7 @@ namespace Knotgames.Network
             }
 
             temp = new EventReRunSuitCase();
-            temp.Fill(value, action);
+            temp.Fill(value, comment, action);
 
             return temp;
         }
@@ -75,13 +75,14 @@ namespace Knotgames.Network
             while (activeEventContainer.Count > 0)
             {
                 actionCase = activeEventContainer.Dequeue();
-                
+
                 try
                 {
                     actionCase.eventAction.Invoke();
                 }
                 catch (System.Exception)
                 {
+                    UnityEngine.Debug.Log("Error COMMENT : " + actionCase.comment);
                     UnityEngine.Debug.Log("Error Occured : " + actionCase.dataString);
                 }
 
@@ -96,20 +97,28 @@ namespace Knotgames.Network
                 UnityEngine.Debug.Log("Connection attempt...");
                 string connectionURL = !localTesting ? ipAddressString : $"{ipLocal}:{portNumber}";
                 ws = new WebSocket($"ws://{connectionURL}");
-                ws.OnMessage += (sender, e) => DataReciver(e);
+                ws.OnMessage += (sender, e) => DataReciver(sender, e);
                 ws.Connect();
                 await Task.Delay(reConnectionWaitTime);
             }
         }
 
-        void DataReciver(MessageEventArgs eventData)
+        void DataReciver(System.Object s, MessageEventArgs eventData)
         {
             string val = Encoding.UTF8.GetString(eventData.RawData);
             if (OnMsgRecieveRaw != null && OnMsgRecieveRaw.GetInvocationList().Length > 0) OnMsgRecieveRaw.Invoke(val);
 
+            string comment = "NA";
+
+            if(eventData.RawData == null)comment = "RAW DATA IS NULL";
+            else if(eventData.RawData.Length == 0)comment = "RAW DATA SIZE IS ZERO";
+            else if(eventData.Data == null)comment = "DATA SIZE IS NULL";
+            else if(val == null)comment = "VALUE INPUT IS :" + val;
+
             activeEventContainer.Enqueue(
                 GetMeASuitcase(
                     val,
+                    comment,
                     () =>
                     {
                         eventHub.Listen(val);
@@ -138,13 +147,15 @@ namespace Knotgames.Network
 
         public class EventReRunSuitCase
         {
+            public string comment;
             public string dataString;
             public System.Action eventAction;
 
-            public void Fill(string dataString, System.Action eventAction)
+            public void Fill(string dataString, string comment, System.Action eventAction)
             {
                 this.dataString = dataString;
                 this.eventAction = eventAction;
+                this.comment = comment;
             }
 
         }
