@@ -7,7 +7,7 @@ namespace Knotgames.Gameplay {
     {
         [SerializeField] ScriptablePlayerCamera camInterface;
         [SerializeField] Camera cam;
-        [SerializeField] float sensitivity = 3;
+        [SerializeField] SOFloat mouseSens;
         [SerializeField] float maxUpAngle = 80;
         [SerializeField] float maxDownAngle = -80;
 
@@ -44,8 +44,8 @@ namespace Knotgames.Gameplay {
         private void Update()
         {
             if(!locked) {
-                mouseX = Input.GetAxis("Mouse X") * sensitivity;
-                mouseY = Input.GetAxis("Mouse Y") * sensitivity;
+                mouseX = Input.GetAxis("Mouse X") * mouseSens.value;
+                mouseY = Input.GetAxis("Mouse Y") * mouseSens.value;
 
                 rotX -= mouseY;
                 rotX = Mathf.Clamp(rotX, maxDownAngle, maxUpAngle);
