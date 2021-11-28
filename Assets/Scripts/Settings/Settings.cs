@@ -64,6 +64,7 @@ namespace Knotgames.GameSettings {
             PlayerPrefs.SetString("FullscreenPreference", Screen.fullScreen.ToString());
             PlayerPrefs.SetFloat("MusicVolumePreference", currentMusicVolume);
             PlayerPrefs.SetFloat("SFXVolumePreference", currentSFXVolume);
+            PlayerPrefs.SetFloat("Sensitivity", currentSFXVolume);
         }
 
         private void LoadSettings(int currentResolutionIndex)
@@ -85,7 +86,7 @@ namespace Knotgames.GameSettings {
             else
                 sfxSlider.value = 100;
 
-            Debug.Log($"<color=green>Loaded Settings: {resolutionDropdown.value}, {Screen.fullScreen}, {musicSlider.value}, {sfxSlider.value} </color>");
+            Debug.Log($"<color=green>Loaded Settings: {resolutionDropdown.value}, {Screen.fullScreen}, {musicSlider.value}, {sfxSlider.value}</color>");
         }
 
         public void ClearPrefs()
