@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using Knotgames.CharacterData;
 
 namespace Knotgames.CharacterSelect {
@@ -11,6 +12,7 @@ namespace Knotgames.CharacterSelect {
         [SerializeField] ScriptableCharacterSelect characterData;
         [SerializeField] ScriptableAbilityUiCollection abilityUiCollection;
         [SerializeField] AbilityType myAbilityType;
+        [SerializeField] Image myAbilityImage;
         [SerializeField] GameObject selectedOverlay;
         [SerializeField] int myIndex;
 
@@ -18,6 +20,7 @@ namespace Knotgames.CharacterSelect {
 
         private void Start() {
             myData = abilityUiCollection.GetAbilityData(myAbilityType);
+            myAbilityImage.sprite = myData.abilitySprite;
             if(baseSelected)
                 OnClick();
         }
