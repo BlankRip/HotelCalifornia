@@ -29,7 +29,7 @@ public sealed class PEFXGhostVission : PostProcessEffectSettings
     [Range(0f, 5f), Tooltip("Color Tightness")]
     public FloatParameter fogDistance = new FloatParameter { value = 0.5f };
 
-    [Range(0f, 5f), Tooltip("Color Tightness")]
+    [Range(0f, 20f), Tooltip("Color Tightness")]
     public FloatParameter colorTightness = new FloatParameter { value = 0.5f };
 
     public TextureParameter distortionTexture = new TextureParameter {value = null};

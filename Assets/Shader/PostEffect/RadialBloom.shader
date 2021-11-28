@@ -52,7 +52,7 @@ Shader "Custom/PostEffects/GhostVission"
             float pointValue = SAMPLE_TEXTURE2D(_MainTex, sampler_MainTex, i.texcoord + blurVector * saturate(1 - distortionValue) * j * _StepDist *(length(uvCent)));
             multiplier += (1 - j/_StepCount) * pow(pointValue, 3);
         }
-        float ctrl = luminance;
+        float ctrl = luminance * .3;
         float4 colMain = lerp(luminance.xxxx * _GhostZoneColor, color, pow(ctrl, _ColorTightness));
         colMain += pow(multiplier * _ValueControl, _OutKnee) * _OutStrength;
 
