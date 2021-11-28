@@ -59,9 +59,9 @@ namespace Knotgames.GameSettings
         private void LoadSettings()
         {
             if (PlayerPrefs.HasKey("Sensitivity"))
-            { senseSlider.value = PlayerPrefs.GetFloat("Sensitivity"); senseText.text = senseSlider.value.ToString(); }
+            { senseSlider.value = PlayerPrefs.GetFloat("Sensitivity"); senseText.text = senseSlider.value.ToString(); senseFloat.value = senseSlider.value;}
             else
-            { senseSlider.value = 9; senseText.text = senseSlider.value.ToString(); }
+            { senseSlider.value = 3; senseText.text = senseSlider.value.ToString(); senseFloat.value = senseSlider.value;}
 
             Debug.Log("LOADED MOUSE SETTINGS");
         }
