@@ -6,9 +6,9 @@ public static class DevBoy
 {
     public static bool yes = false;
 
-    static DevBoy()
-    {
-        if(yes)
-            KnotRandom.theRand = new System.Random(-1);
-    }
+    // static DevBoy()
+    // {
+    //     if(yes)
+    //         KnotRandom.theRand = new System.Random(-1);
+    // }
 }
