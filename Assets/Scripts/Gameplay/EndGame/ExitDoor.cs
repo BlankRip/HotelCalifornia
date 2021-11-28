@@ -92,8 +92,10 @@ namespace Knotgames.Gameplay {
                 playersExited++;
                 if(playersExited == playerNeededToEndGame) {
                     InterationRay finalIsLocal = other.GetComponent<InterationRay>();
-                    if(finalIsLocal != null && !DevBoy.yes)
+                    if(finalIsLocal != null && !DevBoy.yes) {
+                        Debug.Log("Net send human Win");
                         NetGameManager.instance.ToggleWinScreen(true);
+                    }
                     Debug.Log("Humans Win");
                 }
             }
