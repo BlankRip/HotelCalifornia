@@ -27,16 +27,16 @@ namespace Knotgames.LevelGen {
             WaitForSeconds longInterval = new WaitForSeconds(1);
             WaitForFixedUpdate interval = new WaitForFixedUpdate();
 
-            // yield return longInterval;
-            // pairPlacer = new PairPuzzlePlacer(ref builderData);
-            // for (int i = 0; i < builderData.puzzlePairs; i++) {
-            //     //?Debug.Log("<color=cyan>Placing Pairs</color>");
-            //     bool paced = pairPlacer.Place();
-            //     if(paced)
-            //         yield return interval;
-            //     else
-            //         builderData.OnFaile();
-            // }
+            yield return longInterval;
+            pairPlacer = new PairPuzzlePlacer(ref builderData);
+            for (int i = 0; i < builderData.puzzlePairs; i++) {
+                //?Debug.Log("<color=cyan>Placing Pairs</color>");
+                bool paced = pairPlacer.Place();
+                if(paced)
+                    yield return interval;
+                else
+                    builderData.OnFaile();
+            }
 
             yield return longInterval;
             singlePlacer = new SinglePuzzlePlacer(ref builderData);
