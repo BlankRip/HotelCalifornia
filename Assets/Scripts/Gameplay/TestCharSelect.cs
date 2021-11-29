@@ -12,6 +12,7 @@ namespace Knotgames.Gameplay
         [SerializeField] bool useServer;
         [SerializeField] bool human;
         [SerializeField] GameObject humanGroup, ghostGroup;
+        [SerializeField] Character humanDefault, ghostDefault;
         [SerializeField] ScriptableCharacterSelect scriptableCharSelect;
         ModelSwitcher modelSwitcher;
 
@@ -38,6 +39,7 @@ namespace Knotgames.Gameplay
                 case true:
                     Debug.Log("human");
                     humanGroup.SetActive(true);
+                    modelSwitcher.OverrideDefault(humanDefault);
                     scriptableCharSelect.characterType = CharacterType.Human;
                     scriptableCharSelect.modelType = ModelType.Human1;
                     ghostGroup.SetActive(false);
@@ -45,6 +47,7 @@ namespace Knotgames.Gameplay
                 case false:
                     Debug.Log("ghost");
                     humanGroup.SetActive(false);
+                    modelSwitcher.OverrideDefault(ghostDefault);
                     scriptableCharSelect.characterType = CharacterType.Ghost;
                     scriptableCharSelect.modelType = ModelType.Ghost1;
                     ghostGroup.SetActive(true);

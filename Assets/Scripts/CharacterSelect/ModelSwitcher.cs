@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Knotgames.CharacterData;
+using System;
 
 namespace Knotgames.CharacterSelect
 {
@@ -31,6 +32,13 @@ namespace Knotgames.CharacterSelect
 
         public void Enable()
         {
+            SwitchModel(defaultCharacter);
+        }
+
+        internal void OverrideDefault(Character humanDefault)
+        {
+            defaultCharacter = humanDefault;
+            currentCharacter = defaultCharacter;
             SwitchModel(defaultCharacter);
         }
     }
