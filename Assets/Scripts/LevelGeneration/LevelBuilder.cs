@@ -102,7 +102,7 @@ namespace Knotgames.LevelGen {
         public void RestartLevelGen() {
             if(restartSafe) {
                 restartSafe = false;
-                Destroy(this.gameObject);
+                this.gameObject.SetActive(false);
                 Invoke("RestartGap", 0.5f);
             }
         }
@@ -111,6 +111,7 @@ namespace Knotgames.LevelGen {
             Debug.Log($"Retrying Gen");
             LevelBuilder builder = GameObject.Instantiate(builderData.levelGen, transform.position, transform.rotation).GetComponent<LevelBuilder>();
             builder.RestartingGeneration(generateSeed);
+            Destroy(this.gameObject);
         }
     }
 }
