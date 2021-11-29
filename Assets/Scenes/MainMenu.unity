@@ -15049,6 +15049,8 @@ GameObject:
   - component: {fileID: 580943871}
   - component: {fileID: 580943870}
   - component: {fileID: 580943874}
+  - component: {fileID: 580943876}
+  - component: {fileID: 580943875}
   m_Layer: 5
   m_Name: DevCanvas
   m_TagString: Untagged
@@ -15149,6 +15151,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b2b1a7cb86044e42b2e2c60a34f5ff4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &580943875
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 580943869}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e941c80a3e7824a46b898e8b7be6637c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &580943876
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 580943869}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56d34ac823b58a0428a01e83b3b2e74a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  logText: {fileID: 1657603336}
+  pingDelay: 1
 --- !u!1 &582611642
 GameObject:
   m_ObjectHideFlags: 0
@@ -54287,7 +54315,6 @@ GameObject:
   - component: {fileID: 1730150448}
   - component: {fileID: 1730150449}
   - component: {fileID: 1730150450}
-  - component: {fileID: 1730150451}
   - component: {fileID: 1730150452}
   - component: {fileID: 1730150453}
   m_Layer: 0
@@ -54513,20 +54540,6 @@ MonoBehaviour:
   humanWin: 0
   ghostModels: []
   humanModels: []
---- !u!114 &1730150451
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1730150441}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 56d34ac823b58a0428a01e83b3b2e74a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  logText: {fileID: 1657603336}
-  pingDelay: 1
 --- !u!114 &1730150452
 MonoBehaviour:
   m_ObjectHideFlags: 0
