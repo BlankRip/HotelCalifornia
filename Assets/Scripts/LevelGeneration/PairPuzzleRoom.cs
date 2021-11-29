@@ -31,7 +31,7 @@ namespace Knotgames.LevelGen {
             for (int i = 0; i < myPuzzles.Count; i++) {
                 if(myPuzzles[i].GetPuzzleType() == puzzleType) {
                     myPuzzles[i].ActivatePuzzle(renderer);
-                    Debug.Log($"<color=pink> {myPuzzles[i].GetPuzzleType()} </color>", this.gameObject);
+                    Debug.Log($"<color=cyan> {myPuzzles[i].GetPuzzleType()} </color>", this.gameObject);
                     return myPuzzles[i];
                 }
             }
