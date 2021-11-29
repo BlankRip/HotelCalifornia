@@ -24,7 +24,9 @@ namespace Knotgames.Gameplay.Puzzle.Maze {
 
         private void Awake() {
             mazeRoom.manager = this;
-            mazeManager = GameObject.Instantiate(mazeGenObj).GetComponent<IMazeManager>();
+            GameObject mazeObj = GameObject.Instantiate(mazeGenObj);
+            mazeObj.transform.parent = this.transform;
+            mazeManager = mazeObj.GetComponent<IMazeManager>();
             mazeManager.SetUpMaze(exitTp);
             playerSpawnPoints = mazeManager.GetPlayerEntryPoints(numberOfEntryPoints);
             mazeManager.SpawnPieces(piecesToCollect);

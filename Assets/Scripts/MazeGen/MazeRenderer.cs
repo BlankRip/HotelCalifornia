@@ -10,6 +10,7 @@ namespace Knotgames.MazeGen {
         [SerializeField] GameObject wall;
         [SerializeField] float wallSize = 1;
         [SerializeField] GameObject floor;
+        [SerializeField] GameObject celing;
         [SerializeField] float wallHight;
         private WallState[,] maze;
         private float halfWallSize;
@@ -35,6 +36,8 @@ namespace Knotgames.MazeGen {
                     Transform floorPiece = GameObject.Instantiate(floor, transform).transform;
                     floorPiece.position = pos + new Vector3(0, -wallHight, 0);
                     floorTiles.Add(floorPiece.gameObject);
+                    Transform celingPiece = GameObject.Instantiate(celing, transform).transform;
+                    celingPiece.position = pos + new Vector3(0, wallHight, 0);
 
                     if(cell.HasFlag(WallState.Up)) {
                         Transform topWall = GameObject.Instantiate(wall, transform).transform;
