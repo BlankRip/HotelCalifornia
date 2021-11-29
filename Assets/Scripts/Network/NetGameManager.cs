@@ -13,7 +13,6 @@ namespace Knotgames.Network
         public ScriptableSpawnDataCollection allSpawnData;
         public ScriptableCharacterSelect characterData;
         public static NetGameManager instance;
-        public List<string> connectedPlayers;
         bool winDone = false;
         public bool humanWin;
         NetObject ghost;
@@ -45,10 +44,8 @@ namespace Knotgames.Network
                         UnityEngine.Debug.Log("<color=red>A SINFUL BEING HAS BEEN PURGED FROM THE LOBBY, WHAT A DICK</color>");
                         inGame = false;
                         string leftID = JsonUtility.FromJson<PlayerIDExtractor>(dataString).playerID;
-                        connectedPlayers.Remove(leftID);
                         Cursor.lockState = CursorLockMode.None;
                         Cursor.visible = true;
-                        NetGameManager.instance.connectedPlayers.Remove(NetConnector.instance.playerID.value);
                         NetGameManager.instance.LeaveRoom();
                         SceneManager.LoadScene(2);
                     }
@@ -62,21 +59,17 @@ namespace Knotgames.Network
                         ghostModels.Clear();
                         humanModels.Clear();
                         string leftID = JsonUtility.FromJson<PlayerIDExtractor>(dataString).playerID;
-                        connectedPlayers.Remove(leftID);
                     }
                     else
                     {
                         string leftID = JsonUtility.FromJson<PlayerIDExtractor>(dataString).playerID;
-                        connectedPlayers.Remove(leftID);
                         UnityEngine.Debug.Log("<color=yellow>A SINFUL BEING HAS BEEN PURGED FROM THE LOBBY, ATLEAST HE LEFT EARLY</color>");
-                        connectedPlayers.Remove(leftID);
                         Cursor.lockState = CursorLockMode.None;
                         Cursor.visible = true;
                         SceneManager.LoadScene(2);
                     }
                     break;
                 case "youLeftRoom":
-                    connectedPlayers.Remove(NetConnector.instance.playerID.value);
                     UnityEngine.Debug.LogError("<color=yellow>YOU LEFT ROOM</color>");
                     break;
                 case "customRoomCreated":
@@ -92,12 +85,10 @@ namespace Knotgames.Network
                     break;
                 case "joinedRandomRoom":
                     UnityEngine.Debug.LogError("<color=white>JOINED RANDOM ROOM</color>");
-                    connectedPlayers.Add(NetConnector.instance.playerID.value);
                     break;
                 case "newPlayerJoinedRoom":
                     UnityEngine.Debug.LogError("<color=white>PLAYER JOINED ROOM</color>");
                     string joinedID = JsonUtility.FromJson<PlayerIDExtractor>(dataString).playerID;
-                    connectedPlayers.Add(joinedID);
                     break;
                 case "toggledWin":
                     UnityEngine.Debug.LogError("<color=white>WIN TRIGGERED</color>");
@@ -143,6 +134,7 @@ namespace Knotgames.Network
 
         public void LeaveRoom()
         {
+            UnityEngine.Debug.LogError("CALLING LEAVE ROOM");
             NetConnector.instance.SendDataToServer(JsonUtility.ToJson(new ReadyData("leaveRoom", DistributionOption.serveMe)));
             NetRoomJoin.instance.roomID.value = "";
             NetRoomJoin.instance.roomID.value.CopyToClipboard();
@@ -167,22 +159,6 @@ namespace Knotgames.Network
         public void ToggleWinScreen(bool humanWin)
         {
             NetConnector.instance.SendDataToServer(JsonUtility.ToJson(new WinData(humanWin)));
-        }
-
-        public NetObject PickGhost()
-        {
-            string randomPlayer = connectedPlayers[Random.Range(0, connectedPlayers.Count)];
-            foreach (NetObject obj in NetObjManager.instance.allNetObject)
-            {
-                if (obj.ownerID == randomPlayer)
-                {
-                    ghost = obj;
-                    return obj;
-                }
-                else
-                    humans.Add(obj);
-            }
-            return null;
         }
     }
 
