@@ -12,6 +12,7 @@ namespace Knotgames.LevelGen {
             if(!exclusionTypes.Contains(roomPuzzles[rand].GetPuzzleType())) {
                 roomPuzzles[rand].ActivatePuzzle(renderer);
                 exclusionTypes.Add(roomPuzzles[rand].GetPuzzleType());
+                Debug.Log($"<color=pink> {roomPuzzles[rand].GetPuzzleType()} </color>", this.gameObject);
                 return roomPuzzles[rand].GetPuzzleType();
             } else {
                 return PuzzleType.Nada;

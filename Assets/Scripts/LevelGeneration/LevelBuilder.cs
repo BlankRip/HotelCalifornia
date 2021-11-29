@@ -77,7 +77,7 @@ namespace Knotgames.LevelGen {
             PuzzleBuilder puzzleBuild = gameObject.AddComponent<PuzzleBuilder>();
             puzzleBuild.Initilize(ref builderData);
             IBuilder puzzleBuilder = puzzleBuild;
-            yield return new WaitForSeconds(6f);
+            yield return new WaitForSeconds(3f);
             puzzleBuild.StartBuilder();
             yield return interval;
             while(puzzleBuild.GetBuilderStatus()) {
