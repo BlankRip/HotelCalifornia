@@ -135,7 +135,7 @@ namespace Knotgames.Network
 
         public void LeaveRoom()
         {
-            UnityEngine.Debug.LogError("CALLING LEAVE ROOM");
+            UnityEngine.Debug.LogError($"CALLING LEAVE ROOM on '{NetRoomJoin.instance.roomID.value}'");
             NetConnector.instance.SendDataToServer(JsonUtility.ToJson(new ReadyData("leaveRoom", DistributionOption.serveMe)));
             NetRoomJoin.instance.roomID.value = "";
             NetRoomJoin.instance.roomID.value.CopyToClipboard();
