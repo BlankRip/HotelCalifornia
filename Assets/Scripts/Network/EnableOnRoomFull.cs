@@ -6,7 +6,7 @@ namespace Knotgames.Network
 {
     public class EnableOnRoomFull : MonoBehaviour
     {
-        [SerializeField] GameObject playButton;
+        [SerializeField] GameObject[] playButtons;
 
         public void Start()
         {
@@ -24,10 +24,12 @@ namespace Knotgames.Network
             switch (eventName)
             {
                 case "roomFull":
-                    playButton.SetActive(true);
+                    foreach (GameObject playButton in playButtons)
+                        playButton.SetActive(true);
                     break;
                 case "youLeftRoom":
-                    playButton.SetActive(false);
+                    foreach (GameObject playButton in playButtons)
+                        playButton.SetActive(false);
                     break;
             }
         }
