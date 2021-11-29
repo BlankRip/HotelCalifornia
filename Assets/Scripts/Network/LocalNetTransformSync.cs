@@ -24,8 +24,12 @@ namespace Knotgames.Network {
         }
 
         protected void Update() {
-            if(sendData && !DevBoy.yes)
-                SendData();
+            if(sendData && !DevBoy.yes) { 
+                if (NetRoomJoin.instance.roomID.value != null)
+                    SendData();
+                else
+                    UnityEngine.Debug.LogError("<color=red> CRASH PREVENTED </color>");
+            }
         }
 
         public void SendData() {
