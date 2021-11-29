@@ -19,5 +19,10 @@ namespace Knotgames.Extensions
             NetGameManager.instance.LeaveRoom();
             SceneManager.LoadScene(0);
         }
+
+        public void RestartNoServer()
+        {
+            SceneManager.LoadScene(0);
+        }
     }
 }
