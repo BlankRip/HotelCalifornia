@@ -48,6 +48,8 @@ namespace Knotgames.Network
                         connectedPlayers.Remove(leftID);
                         Cursor.lockState = CursorLockMode.None;
                         Cursor.visible = true;
+                        NetGameManager.instance.connectedPlayers.Remove(NetConnector.instance.playerID.value);
+                        NetGameManager.instance.LeaveRoom();
                         SceneManager.LoadScene(2);
                     }
                     else if (inGame && winDone)
