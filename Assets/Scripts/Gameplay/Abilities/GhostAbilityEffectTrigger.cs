@@ -36,7 +36,10 @@ namespace Knotgames.Gameplay.Abilities {
             dataToSend.effectType = effectType;
             dataToSend.duration = duration;
             dataToSend.masterOnly = masterOnly;
-            NetConnector.instance.SendDataToServer(JsonUtility.ToJson(dataToSend));
+            if (NetRoomJoin.instance.roomID.value != null)
+                NetConnector.instance.SendDataToServer(JsonUtility.ToJson(dataToSend));
+            else
+                Debug.LogError("<color=red> CRASH PREVENTED </color>");
         }
 
         private void RecieveData(string recieved) {

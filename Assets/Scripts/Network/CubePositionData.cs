@@ -32,22 +32,27 @@ public class CubePositionData : MonoBehaviour
     {
         if (netObject.IsMine)
         {
-            NetConnector.instance.SendDataToServer(
-                JsonUtility.ToJson(
-                    new CubeData()
-                    {
-                        eventName = "syncObjectData",
-                        distributionOption = DistributionOption.serveOthers,
-                        ownerID = NetConnector.instance.playerID.value,
-                        objectID = netObject.id,
-                        transform = new TransformWS()
+            if (NetRoomJoin.instance.roomID.value != null)
+            {
+                NetConnector.instance.SendDataToServer(
+                    JsonUtility.ToJson(
+                        new CubeData()
                         {
-                            position = new PositionWS(transform.position),
-                            rotation = new RotationWS(transform.rotation)
+                            eventName = "syncObjectData",
+                            distributionOption = DistributionOption.serveOthers,
+                            ownerID = NetConnector.instance.playerID.value,
+                            objectID = netObject.id,
+                            transform = new TransformWS()
+                            {
+                                position = new PositionWS(transform.position),
+                                rotation = new RotationWS(transform.rotation)
+                            }
                         }
-                    }
-                )
-            );
+                    )
+                );
+            }
+            else
+                Debug.LogError("<color=red> CRASH PREVENTED </color>");
         }
         else
         {

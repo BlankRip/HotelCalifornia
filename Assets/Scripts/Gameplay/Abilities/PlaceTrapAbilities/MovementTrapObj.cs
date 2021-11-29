@@ -68,8 +68,11 @@ namespace Knotgames.Gameplay.Abilities {
         }
 
         private void SendTrapData() {
-            NetConnector.instance.SendDataToServer(JsonUtility.ToJson(new NetSendData(netObj.id, trapProjection.position, 
-                nutrelizerProjection.position, new RotationWS(nutrelizerProjection.rotation))));
+            if (NetRoomJoin.instance.roomID.value != null)
+                NetConnector.instance.SendDataToServer(JsonUtility.ToJson(new NetSendData(netObj.id, trapProjection.position, 
+                    nutrelizerProjection.position, new RotationWS(nutrelizerProjection.rotation))));
+            else
+                Debug.LogError("<color=red> CRASH PREVENTED </color>");
         }
 
         public void DestroyTrap() {
