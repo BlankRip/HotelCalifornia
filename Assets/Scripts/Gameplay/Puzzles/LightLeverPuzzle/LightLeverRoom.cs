@@ -8,6 +8,7 @@ namespace Knotgames.Gameplay.Puzzle.LeverLight {
     {
         private static bool initilized = false;
         public static void Reset() {
+            Debug.LogError("<color=blue> light reset </color>");
             initilized = false;
         }
         [SerializeField] ScriptableLightLeverManager lightLever;
@@ -19,13 +20,12 @@ namespace Knotgames.Gameplay.Puzzle.LeverLight {
         [SerializeField] List<Transform> keyPadSpawnPoints;
 
         private IEnumerator Start() {
-            if(!initilized)
+            if(!initilized) {
+                Debug.Log("<color=blue> fucking ass </color>");
                 lightLever.Initilize();
-            yield return new WaitForEndOfFrame();
-            yield return new WaitForEndOfFrame();
-            yield return new WaitForEndOfFrame();
-            yield return new WaitForEndOfFrame();
-            yield return new WaitForEndOfFrame();
+            } else
+                Debug.Log("<color=blue> fucking dick </color>");
+            yield return new WaitForSeconds(0.35f);
             SpawnLevers();
             SpawnLights();
             if(!initilized) {
