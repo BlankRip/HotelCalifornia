@@ -45,11 +45,16 @@ public class NetTransformSync : MonoBehaviour
     {
         if (netObject.IsMine)
         {
-            TransformData dataToSend = new TransformData(netObject.id, transform.position, transform.rotation);
-            if (dataToSend != null)
-                NetConnector.instance.SendDataToServer(JsonUtility.ToJson(dataToSend));
+            if (NetRoomJoin.instance.roomID.value != null)
+            {
+                TransformData dataToSend = new TransformData(netObject.id, transform.position, transform.rotation);
+                if (dataToSend != null)
+                    NetConnector.instance.SendDataToServer(JsonUtility.ToJson(dataToSend));
+                else
+                    Debug.LogError("TRASH ENGINE!");
+            }
             else
-                Debug.LogError("TRASH ENGINE!");
+                Debug.LogError("<color=red> CRASH PREVENTED </color>");
         }
         else
         {
