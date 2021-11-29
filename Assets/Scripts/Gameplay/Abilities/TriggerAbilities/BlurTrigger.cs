@@ -6,8 +6,8 @@ namespace Knotgames.Gameplay.Abilities
 {
     public class BlurTrigger : TriggerAbilities
     {
-        float duration = 20;
-        int usesLeft = 3;
+        float duration = 30;
+        int usesLeft = 4;
 
         private void Start() {
             Initilize("SecondaryUi", duration, AbilityEffectType.BlurEffect, usesLeft, true);

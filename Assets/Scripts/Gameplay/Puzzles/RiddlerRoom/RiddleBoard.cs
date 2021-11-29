@@ -24,7 +24,7 @@ namespace Knotgames.Gameplay.Puzzle.Riddler {
         private bool underSpell;
         private bool timerOn;
         private float timer;
-        private float spellDuration = 15;
+        private float spellDuration = 12;
 
         private int myId;
         private DataToSend dataToSend;

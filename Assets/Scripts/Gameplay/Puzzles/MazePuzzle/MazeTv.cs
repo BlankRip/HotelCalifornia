@@ -12,7 +12,7 @@ namespace Knotgames.Gameplay.Puzzle.Maze {
         [SerializeField] Transform objPosition;
         private GameObject pooledObj;
         private bool fakeStatic;
-        private float fakeTime = 15;
+        private float fakeTime = 10;
         private float timer;
         private DataToSend dataToSend;
 

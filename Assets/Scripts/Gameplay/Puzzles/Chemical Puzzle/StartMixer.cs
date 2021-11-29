@@ -10,7 +10,7 @@ namespace Knotgames.Gameplay.Puzzle.ChemicalRoom {
     {
         private IMixer mixer;
         private bool useable;
-        private float interfearDisableTime = 5f;
+        private float interfearDisableTime = 8f;
         private DataToSend startData;
         private DataToSend usableData;
 

@@ -23,7 +23,7 @@ namespace Knotgames.Gameplay.Puzzle.LeverLight {
         private LightColor myColor;
         private List<ILight> myLights;
         private bool timerOn;
-        private float interfereTime = 10;
+        private float interfereTime = 12;
         private float timer;
         private List<LightColor> interfereColors;
         private int colorIndex;
