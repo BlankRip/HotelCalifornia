@@ -66,6 +66,7 @@ namespace Knotgames.Network
                         UnityEngine.Debug.Log("<color=yellow>A SINFUL BEING HAS BEEN PURGED FROM THE LOBBY, ATLEAST HE LEFT EARLY</color>");
                         Cursor.lockState = CursorLockMode.None;
                         Cursor.visible = true;
+                        NetGameManager.instance.LeaveRoom();
                         SceneManager.LoadScene(2);
                     }
                     break;
