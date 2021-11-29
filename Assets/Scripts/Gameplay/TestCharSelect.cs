@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Knotgames.CharacterData;
+using Knotgames.CharacterSelect;
 using Knotgames.Network;
 using UnityEngine;
 
@@ -12,9 +13,11 @@ namespace Knotgames.Gameplay
         [SerializeField] bool human;
         [SerializeField] GameObject humanGroup, ghostGroup;
         [SerializeField] ScriptableCharacterSelect scriptableCharSelect;
+        ModelSwitcher modelSwitcher;
 
         void Start()
         {
+            modelSwitcher = FindObjectOfType<ModelSwitcher>();
             if(!useServer)
                 RandomGroup();
             if (useServer)
