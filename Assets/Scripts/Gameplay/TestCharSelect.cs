@@ -69,6 +69,7 @@ namespace Knotgames.Gameplay
                             case "human":
                                 Debug.Log("human");
                                 humanGroup.SetActive(true);
+                                modelSwitcher.OverrideDefault(humanDefault);
                                 scriptableCharSelect.characterType = CharacterType.Human;
                                 scriptableCharSelect.modelType = ModelType.Human1;
                                 ghostGroup.SetActive(false);
@@ -76,6 +77,7 @@ namespace Knotgames.Gameplay
                             case "ghost":
                                 Debug.Log("ghost");
                                 humanGroup.SetActive(false);
+                                modelSwitcher.OverrideDefault(ghostDefault);
                                 scriptableCharSelect.characterType = CharacterType.Ghost;
                                 scriptableCharSelect.modelType = ModelType.Ghost1;
                                 ghostGroup.SetActive(true);

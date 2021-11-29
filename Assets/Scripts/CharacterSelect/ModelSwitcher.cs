@@ -39,7 +39,7 @@ namespace Knotgames.CharacterSelect
         {
             defaultCharacter = humanDefault;
             currentCharacter = defaultCharacter;
-            SwitchModel(defaultCharacter);
+            SwitchModel(currentCharacter);
         }
     }
 }
