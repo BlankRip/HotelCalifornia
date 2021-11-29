@@ -77,6 +77,7 @@ namespace Knotgames.LevelGen {
             PuzzleBuilder puzzleBuild = gameObject.AddComponent<PuzzleBuilder>();
             puzzleBuild.Initilize(ref builderData);
             IBuilder puzzleBuilder = puzzleBuild;
+            yield return new WaitForSeconds(6f);
             puzzleBuild.StartBuilder();
             yield return interval;
             while(puzzleBuild.GetBuilderStatus()) {
@@ -100,13 +101,16 @@ namespace Knotgames.LevelGen {
         private bool restartSafe = true;
         public void RestartLevelGen() {
             if(restartSafe) {
-                Debug.Log($"Retrying Gen");
                 restartSafe = false;
-                LevelBuilder builder = GameObject.Instantiate(builderData.levelGen, transform.position, transform.rotation).GetComponent<LevelBuilder>();
-                builder.RestartingGeneration(generateSeed);
-
                 Destroy(this.gameObject);
+                Invoke("RestartGap", 0.5f);
             }
+        }
+
+        private void RestartGap() {
+            Debug.Log($"Retrying Gen");
+            LevelBuilder builder = GameObject.Instantiate(builderData.levelGen, transform.position, transform.rotation).GetComponent<LevelBuilder>();
+            builder.RestartingGeneration(generateSeed);
         }
     }
 }

@@ -18,6 +18,7 @@ namespace Knotgames.LevelGen
         }
 
         public void Initilize() {
+            KnotRandom.theRand = null;
             KnotRandom.theRand = new System.Random(seedValue);
         }
 
