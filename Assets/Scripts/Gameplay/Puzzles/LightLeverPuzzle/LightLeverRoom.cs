@@ -28,8 +28,10 @@ namespace Knotgames.Gameplay.Puzzle.LeverLight {
             yield return new WaitForEndOfFrame();
             SpawnLevers();
             SpawnLights();
-            if(!initilized)
+            if(!initilized) {
+                Debug.Log("<color=blue> first light </color>");
                 initilized = true;
+            }
             else
                 SpawnKeyPad();
         }
@@ -62,6 +64,7 @@ namespace Knotgames.Gameplay.Puzzle.LeverLight {
         }
 
         private void SpawnKeyPad() {
+            Debug.Log("<color=blue> keypad Spawned </color>");
             int rand = KnotRandom.theRand.Next(0, keyPadSpawnPoints.Count);
             GameObject.Instantiate(keyPadObj, keyPadSpawnPoints[rand].position, keyPadSpawnPoints[rand].rotation, transform);
         }

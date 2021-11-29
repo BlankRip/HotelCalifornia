@@ -109,6 +109,7 @@ namespace Knotgames.LevelGen {
 
         private void RestartGap() {
             Debug.Log($"Retrying Gen");
+            IdsResetter.ResetIDs();
             LevelBuilder builder = GameObject.Instantiate(builderData.levelGen, transform.position, transform.rotation).GetComponent<LevelBuilder>();
             builder.RestartingGeneration(generateSeed);
             Destroy(this.gameObject);
