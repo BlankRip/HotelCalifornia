@@ -37,7 +37,6 @@ namespace Knotgames.LevelGen {
                 currentBuildingData.currentRoutRooms.Add(current);
                 currentBuildingData.eachTypeSpawned[currentBuildingData.allRoomTypes.IndexOf(current.GetRoomType())]++;
                 availableRooms.RemoveAt(rand);
-                Debug.Log($"<color=pink> {current.GetRoomType()} </color>");
                 return true;
             } else {
                 current.SelfKill();

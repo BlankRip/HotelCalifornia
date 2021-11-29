@@ -8,7 +8,6 @@ namespace Knotgames.Gameplay.Puzzle.LeverLight {
     {
         private static bool initilized = false;
         public static void Reset() {
-            Debug.LogError("<color=blue> light reset </color>");
             initilized = false;
         }
         [SerializeField] ScriptableLightLeverManager lightLever;
@@ -20,18 +19,13 @@ namespace Knotgames.Gameplay.Puzzle.LeverLight {
         [SerializeField] List<Transform> keyPadSpawnPoints;
 
         private IEnumerator Start() {
-            if(!initilized) {
-                Debug.Log("<color=blue> fucking ass </color>");
+            if(!initilized)
                 lightLever.Initilize();
-            } else
-                Debug.Log("<color=blue> fucking dick </color>");
             yield return new WaitForSeconds(0.35f);
             SpawnLevers();
             SpawnLights();
-            if(!initilized) {
-                Debug.Log("<color=blue> first light </color>");
+            if(!initilized)
                 initilized = true;
-            }
             else
                 SpawnKeyPad();
         }
@@ -64,7 +58,6 @@ namespace Knotgames.Gameplay.Puzzle.LeverLight {
         }
 
         private void SpawnKeyPad() {
-            Debug.Log("<color=blue> keypad Spawned </color>");
             int rand = KnotRandom.theRand.Next(0, keyPadSpawnPoints.Count);
             GameObject.Instantiate(keyPadObj, keyPadSpawnPoints[rand].position, keyPadSpawnPoints[rand].rotation, transform);
         }
