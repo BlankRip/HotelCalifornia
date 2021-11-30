@@ -19,6 +19,7 @@ namespace Knotgames.Network
         List<NetObject> humans = new List<NetObject>();
         [HideInInspector] public List<SpawnData> ghostModels = new List<SpawnData>();
         [HideInInspector] public List<SpawnData> humanModels = new List<SpawnData>();
+        private bool createdRoom = false;
 
         private void Awake()
         {
@@ -135,6 +136,7 @@ namespace Knotgames.Network
 
         public void LeaveRoom()
         {
+            createdRoom = false;
             humanModels.Clear();
             ghostModels.Clear();
             UnityEngine.Debug.LogError($"CALLING LEAVE ROOM on '{NetRoomJoin.instance.roomID.value}'");
@@ -145,7 +147,11 @@ namespace Knotgames.Network
 
         public void CreateRoom()
         {
-            NetConnector.instance.SendDataToServer(JsonUtility.ToJson(new JoinRoomData("createCustomRoom", DistributionOption.serveMe, "customRoom", 2, true)));
+            if (!createdRoom)
+            {
+                NetConnector.instance.SendDataToServer(JsonUtility.ToJson(new JoinRoomData("createCustomRoom", DistributionOption.serveMe, "customRoom", 2, true)));
+                createdRoom = true;
+            }
         }
 
         public void JoinWithID()
