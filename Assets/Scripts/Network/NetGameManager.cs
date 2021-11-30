@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using Knotgames.Extensions;
 using Knotgames.CharacterData;
+using System;
 
 namespace Knotgames.Network
 {
@@ -94,12 +95,8 @@ namespace Knotgames.Network
                     break;
                 case "toggledWin":
                     UnityEngine.Debug.LogError("<color=white>WIN TRIGGERED</color>");
-                    winDone = true;
-                    humanWin = JsonUtility.FromJson<WinData>(dataString).humanWin;
-                    UnityEngine.Debug.LogError($"<color=white>HUMANS WON: {humanWin}</color>");
-                    Cursor.lockState = CursorLockMode.None;
-                    Cursor.visible = true;
-                    Scener.LoadScene(3);
+                    LeaveRoom();
+                    StartCoroutine(DelayedWinStuff(dataString));
                     break;
                 case "syncObjectData":
                     if (JsonUtility.FromJson<ObjectNetData>(dataString).componentType == "ModelSpawnNetData")
@@ -121,7 +118,21 @@ namespace Knotgames.Network
                 case "roomFull":
                     UnityEngine.Debug.LogError("FULL ROOM");
                     break;
+                case "timerOff":
+                    UnityEngine.Debug.LogError("<color=purple>GAME TIMER TURNED OFF</color>");
+                    break;
             }
+        }
+
+        private IEnumerator DelayedWinStuff(string dataString)
+        {
+            yield return new WaitForSeconds(0.3f);
+            winDone = true;
+            humanWin = JsonUtility.FromJson<WinData>(dataString).humanWin;
+            UnityEngine.Debug.LogError($"<color=white>HUMANS WON: {humanWin}</color>");
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+            Scener.LoadScene(3);
         }
 
         public void Ready()
@@ -169,6 +180,7 @@ namespace Knotgames.Network
         public void ToggleWinScreen(bool humanWin)
         {
             NetConnector.instance.SendDataToServer(JsonUtility.ToJson(new WinData(humanWin)));
+            NetConnector.instance.SendDataToServer(JsonUtility.ToJson(new GameOver()));
         }
     }
 
@@ -211,6 +223,20 @@ namespace Knotgames.Network
             distributionOption = DistributionOption.serveAll;
             roomID = NetRoomJoin.instance.roomID.value;
             this.humanWin = humanWin;
+        }
+    }
+
+    [System.Serializable]
+    public class GameOver
+    {
+        public string eventName;
+        public string distributionOption;
+        public string roomID;
+        public GameOver()
+        {
+            eventName = "gameOver";
+            distributionOption = DistributionOption.serveMe;
+            roomID = NetRoomJoin.instance.roomID.value;
         }
     }
 
