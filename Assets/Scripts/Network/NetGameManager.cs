@@ -147,13 +147,18 @@ namespace Knotgames.Network
 
         public void LeaveRoom()
         {
-            createdRoom = false;
-            humanModels.Clear();
-            ghostModels.Clear();
-            UnityEngine.Debug.LogError($"CALLING LEAVE ROOM on '{NetRoomJoin.instance.roomID.value}'");
-            NetConnector.instance.SendDataToServer(JsonUtility.ToJson(new ReadyData("leaveRoom", DistributionOption.serveMe)));
-            NetRoomJoin.instance.roomID.value = "";
-            NetRoomJoin.instance.roomID.value.CopyToClipboard();
+            if (NetRoomJoin.instance.roomID.value != null)
+            {
+                createdRoom = false;
+                humanModels.Clear();
+                ghostModels.Clear();
+                UnityEngine.Debug.LogError($"CALLING LEAVE ROOM on '{NetRoomJoin.instance.roomID.value}'");
+                NetConnector.instance.SendDataToServer(JsonUtility.ToJson(new ReadyData("leaveRoom", DistributionOption.serveMe)));
+                NetRoomJoin.instance.roomID.value = "";
+                NetRoomJoin.instance.roomID.value.CopyToClipboard();
+            }
+            else
+                UnityEngine.Debug.LogError($"TRYING TO LEAVE EMPTY ROOM ID");
         }
 
         public void CreateRoom()
