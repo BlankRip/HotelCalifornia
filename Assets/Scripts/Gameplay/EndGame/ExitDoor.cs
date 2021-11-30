@@ -86,13 +86,15 @@ namespace Knotgames.Gameplay {
 
         private void OnTriggerEnter(Collider other) {
             if(other.CompareTag("Human")) {
-                LockThings();
-                other.gameObject.SetActive(false);
-                MoveCamToDoorView();
+                InterationRay isLocal = other.GetComponent<InterationRay>();
+                if(isLocal != null) {
+                    LockThings();
+                    other.gameObject.SetActive(false);
+                    MoveCamToDoorView();
+                }
                 playersExited++;
                 if(playersExited == playerNeededToEndGame) {
-                    InterationRay finalIsLocal = other.GetComponent<InterationRay>();
-                    if(finalIsLocal != null && !DevBoy.yes) {
+                    if(isLocal != null && !DevBoy.yes) {
                         Debug.Log("Net send human Win");
                         NetGameManager.instance.ToggleWinScreen(true);
                     }
