@@ -17,7 +17,7 @@ namespace Knotgames.Audio
                 audioSource.clip = clip;
                 songsToPlay.RemoveAt(0);
                 songsToPlay.Add(clip);
-                audioSource.Play();
+                audioSource.Play((ulong)clip.frequency * 5);
             }
         }
     }
