@@ -15,6 +15,9 @@ namespace Knotgames.Gameplay.Puzzle.Riddler {
         [SerializeField] Button lockInButton;
         private RiddleSolutionPad currentPad;
         private RiddleBoard currentBoard;
+        
+        private int ridlesToSolve = 3;
+        private int solvedSoFar;
         private bool solved;
 
         public void OpenPanel(RiddleSolutionPad pad) {
@@ -38,14 +41,21 @@ namespace Knotgames.Gameplay.Puzzle.Riddler {
         }
 
         private void SolutionInput() {
-            solved = currentPad.Check(inputField.text);
+            bool solvedThis = currentPad.Check(inputField.text);
+            if(solvedThis)
+                UpdateBoardSolve();
             lockInButton.onClick.RemoveListener(SolutionInput);
             ClosePanel();
             AudioPlayer.instance.PlayAudio2DOneShot(ClipName.Numpad);
         }
 
+        private void UpdateBoardSolve() {
+            solvedSoFar++;
+            if(solvedSoFar == ridlesToSolve)
+                solved = true;
+        }
+
         private void InterfereInput() {
-            solved = false;
             currentBoard.ChangeText(inputField.text);
             lockInButton.onClick.RemoveListener(InterfereInput);
             ClosePanel();
