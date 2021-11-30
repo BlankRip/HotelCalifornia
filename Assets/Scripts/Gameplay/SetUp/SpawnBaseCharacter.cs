@@ -14,7 +14,6 @@ namespace Knotgames.Gameplay {
 
         private void Awake() {
             Transform spawnPoint = GameObject.FindGameObjectWithTag(spawnPointTag).transform;
-            Debug.Log(spawnPoint.name);
             if(characterData.characterType == CharacterType.Ghost) {
                 NetConnector.instance.SendDataToServer(
                     JsonUtility.ToJson(

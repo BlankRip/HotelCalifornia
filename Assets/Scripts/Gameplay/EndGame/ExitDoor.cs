@@ -14,6 +14,7 @@ namespace Knotgames.Gameplay {
         [SerializeField] List<GameObject> solvedLights;
         [SerializeField] GameObject widthAdjusterObj;
         [SerializeField] Collider exitTrigger;
+        [SerializeField] GameObject exitViaual;
         private int solvesNeeded = 3;
         private int puzzlesSolved;
         private Vector3 returnPos;
@@ -79,6 +80,7 @@ namespace Knotgames.Gameplay {
         }
 
         private void OpenDoor() {
+            exitViaual.SetActive(true);
             GetComponent<Animator>().SetBool("open", true);
             exitTrigger.enabled = true;
             widthAdjusterObj.SetActive(true);
@@ -87,9 +89,9 @@ namespace Knotgames.Gameplay {
         private void OnTriggerEnter(Collider other) {
             if(other.CompareTag("Human")) {
                 InterationRay isLocal = other.GetComponent<InterationRay>();
+                other.gameObject.SetActive(false);
                 if(isLocal != null) {
                     LockThings();
-                    other.gameObject.SetActive(false);
                     MoveCamToDoorView();
                 }
                 playersExited++;
