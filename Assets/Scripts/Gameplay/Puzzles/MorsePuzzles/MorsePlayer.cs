@@ -122,6 +122,8 @@ namespace Knotgames.Gameplay.Puzzle.Morse
 
         public void Interfear() {
             PlayStatic();
+            if(!DevBoy.yes)
+                SendData();
         }
 
         private void PlayStatic() {
