@@ -122,7 +122,7 @@ Shader "Custom/UI/Disolve"
                 //disolveShader += _UVOffset * 20 + (1 - IN.texcoord.y * 20);
                 //disolveShader = step( .5, disolveShader);
 
-                fixed disolveValue = disolveTexValue + (lerp(.71, .824, _T) * 20 + (1 - IN.texcoord.y * 20));
+                fixed disolveValue = disolveTexValue + (lerp(.71, .824, 1  - _T) * 20 + (1 - IN.texcoord.y * 20));
 
                 fixed valueA = step(.5, disolveValue);
                 fixed valueB = step(disolveValue, .55) * step(.5, disolveValue);
