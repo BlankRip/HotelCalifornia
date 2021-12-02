@@ -106,11 +106,9 @@ namespace Knotgames.Network
                         {
                             case "ghost":
                                 ghostModels.Add(CustomExtensions.ReturnModelObject(temp.modelType));
-                                UnityEngine.Debug.LogError("GHOST MODEL ADDED");
                                 break;
                             case "human":
                                 humanModels.Add(CustomExtensions.ReturnModelObject(temp.modelType));
-                                UnityEngine.Debug.LogError("HUMAN MODEL ADDED");
                                 break;
                         }
                     }
@@ -152,13 +150,10 @@ namespace Knotgames.Network
                 createdRoom = false;
                 humanModels.Clear();
                 ghostModels.Clear();
-                UnityEngine.Debug.LogError($"CALLING LEAVE ROOM on '{NetRoomJoin.instance.roomID.value}'");
                 NetConnector.instance.SendDataToServer(JsonUtility.ToJson(new ReadyData("leaveRoom", DistributionOption.serveMe)));
                 NetRoomJoin.instance.roomID.value = "";
                 NetRoomJoin.instance.roomID.value.CopyToClipboard();
             }
-            else
-                UnityEngine.Debug.LogError($"TRYING TO LEAVE EMPTY ROOM ID");
         }
 
         public void CreateRoom()

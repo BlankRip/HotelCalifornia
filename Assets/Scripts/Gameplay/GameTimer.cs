@@ -10,9 +10,13 @@ namespace Knotgames.Gameplay {
         [SerializeField] GameplayEventCollection gameplayEvents;
         [SerializeField] int minutes, seconds;
         [SerializeField] TextMeshProUGUI minutesText, secondsText;
+        [SerializeField] Material visualMat;
         private int currenMinutes;
         private float currentSeconds;
         private bool timerOn;
+        private float visualValue;
+        private float maxSeconds;
+        private float currentVisualSec;
 
         private void Awake() {
             currenMinutes = minutes;
@@ -20,6 +24,10 @@ namespace Knotgames.Gameplay {
             currentSeconds = seconds;
             secondsText.text = seconds.ToString();
             gameplayEvents.gameStart.AddListener(StartTimer);
+            maxSeconds = (60 * minutes) + seconds;
+            currentVisualSec = maxSeconds;
+            visualMat.SetFloat("_T", 0);
+            timerOn = true;
         }
 
         private void OnDestroy() {
@@ -34,14 +42,17 @@ namespace Knotgames.Gameplay {
             }
             #endif
             if(timerOn) {
-                if(currentSeconds > 0)
+                if(currentSeconds > 0) {
                     currentSeconds -= Time.deltaTime;
+                    currentVisualSec -= Time.deltaTime;
+                }
                 else {
                     if(currenMinutes > 0) {
                         currenMinutes--;
                         minutesText.text = currenMinutes.ToString();
                         currentSeconds = 60;
                         currentSeconds -= Time.deltaTime;
+                        currentVisualSec -= Time.deltaTime;
                     } else {
                         timerOn = false;
                         AudioPlayer.instance.PlayAudio2DOneShot(ClipName.TimeUp);
@@ -49,7 +60,13 @@ namespace Knotgames.Gameplay {
                     }
                 }
                 secondsText.text = ((int)currentSeconds).ToString();
+                VisualUpdate();
             }
+        }
+
+        private void VisualUpdate() {
+            visualValue = Mathf.InverseLerp(maxSeconds, 0, currentVisualSec);
+            visualMat.SetFloat("_T", visualValue);
         }
 
         private void StartTimer() {
