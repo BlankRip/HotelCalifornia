@@ -13,6 +13,7 @@ namespace Knotgames.Gameplay.Puzzle.ChemicalRoom
         List<IPortion> potions = new List<IPortion>();
         List<IMixerSlot> slots = new List<IMixerSlot>();
         bool mixing;
+        [SerializeField] Animator startMixerAnim;
 
         public void AddPotion(IPortion type, IMixerSlot slot)
         {
@@ -28,10 +29,12 @@ namespace Knotgames.Gameplay.Puzzle.ChemicalRoom
 
         private IEnumerator Mix() {
             mixing = true;
+            startMixerAnim.Play("Start");
             AudioPlayer.instance.PlayAudio2DOneShot(ClipName.ChemicalMixing);
             yield return new WaitForSeconds(5);
             FinishMix();
             AudioPlayer.instance.Stop2DAudio();
+            startMixerAnim.Play("Stop");
             mixing = false;
         }
 
