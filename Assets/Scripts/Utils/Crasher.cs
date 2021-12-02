@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Crasher : MonoBehaviour
 {
+    #if UNITY_EDITOR
     bool crash = false;
     void Update()
     {
@@ -22,5 +23,5 @@ public class Crasher : MonoBehaviour
             CrashFunction();
         }
     }
-
+    #endif
 }

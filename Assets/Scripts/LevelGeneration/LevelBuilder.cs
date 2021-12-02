@@ -20,11 +20,6 @@ namespace Knotgames.LevelGen {
             builder.levelBuilder = this;
         }
 
-        // private void Update() {
-        //     if(Input.GetKeyDown(KeyCode.U))
-        //         StartLevelGen(generateSeed);
-        // }
-
         public void RestartingGeneration(bool seedStatus) {
             if(!seedStatus)
                 Debug.LogError("This should never happen as a level gen with a succesful seed will never have to restart");
