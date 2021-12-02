@@ -158,7 +158,7 @@ namespace Knotgames.Network
         {
             if (!createdRoom)
             {
-                NetConnector.instance.SendDataToServer(JsonUtility.ToJson(new JoinRoomData("createCustomRoom", DistributionOption.serveMe, "customRoom", 2, true)));
+                NetConnector.instance.SendDataToServer(JsonUtility.ToJson(new JoinRoomData("createCustomRoom", DistributionOption.serveMe, "customRoom", 3, true)));
                 createdRoom = true;
                 CopyRoomID();
             }
