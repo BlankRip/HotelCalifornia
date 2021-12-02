@@ -11,7 +11,7 @@ Shader "Custom/UI/Disolve"
         _DisolveScaleB ("Disolve Scale B", range(0, 50)) = 2
         _DisolveSpeedB ("Scroll Speed B", range(0, 2)) = 2
 
-        _UVOffset ("UV Offset", range(0, 1)) = 0
+        _T ("Time", range(0, 1)) = 0
 
         _Color ("Tint", Color) = (1,1,1,1)
         _ColorA ("Tint A", Color) = (1,1,1,1)
@@ -93,7 +93,7 @@ Shader "Custom/UI/Disolve"
             float4 _MainTex_ST;
             fixed _DisolveScaleA, 
             _DisolveScaleB,
-            _UVOffset, 
+            _T, 
             _DisolveSpeedA, 
             _DisolveSpeedB;
 
@@ -122,28 +122,12 @@ Shader "Custom/UI/Disolve"
                 //disolveShader += _UVOffset * 20 + (1 - IN.texcoord.y * 20);
                 //disolveShader = step( .5, disolveShader);
 
-                fixed disolveValue = disolveTexValue + (lerp(.728, .824, _UVOffset) * 20 + (1 - IN.texcoord.y * 20));
+                fixed disolveValue = disolveTexValue + (lerp(.728, .824, _T) * 20 + (1 - IN.texcoord.y * 20));
 
                 fixed valueA = step(.5, disolveValue);
                 fixed valueB = step(disolveValue, .55) * step(.5, disolveValue);
 
 
-                /*
-                fixed cutValue = tex2D(_DisolveMaske, IN.texcoord).r;
-
-                #ifdef UNITY_UI_CLIP_RECT
-                //color.a *= UnityGet2DClipping(IN.worldPosition.xy, _ClipRect);
-                #endif
-
-                #ifdef UNITY_UI_ALPHACLIP
-                //clip (color.a - 0.001);
-                #endif
-
-                //clip(cutValue - (1 - IN.color.a));
-
-                cutValue += IN.color.a * 2 - 1;
-                cutValue = pow(saturate(cutValue), 2);
-                */
 
                 return color * valueA + valueB * _ColorA;
             }
