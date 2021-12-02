@@ -117,12 +117,12 @@ Shader "Custom/UI/Disolve"
                 half disolveTexValue = pow(
                     saturate(
                     tex2D(_DisolveMaske, (IN.texcoord - fixed2(0, _Time.x * _DisolveSpeedA)) * _DisolveScaleA).r *
-                    tex2D(_DisolveMaske, (IN.texcoord - fixed2(0, _Time.x * _DisolveSpeedB)) * _DisolveScaleB).r), .8);
+                    tex2D(_DisolveMaske, (IN.texcoord - fixed2(0, _Time.x * _DisolveSpeedB)) * _DisolveScaleB).r * 2), .8);
 
                 //disolveShader += _UVOffset * 20 + (1 - IN.texcoord.y * 20);
                 //disolveShader = step( .5, disolveShader);
 
-                fixed disolveValue = disolveTexValue + (lerp(.728, .824, _T) * 20 + (1 - IN.texcoord.y * 20));
+                fixed disolveValue = disolveTexValue + (lerp(.71, .824, _T) * 20 + (1 - IN.texcoord.y * 20));
 
                 fixed valueA = step(.5, disolveValue);
                 fixed valueB = step(disolveValue, .55) * step(.5, disolveValue);

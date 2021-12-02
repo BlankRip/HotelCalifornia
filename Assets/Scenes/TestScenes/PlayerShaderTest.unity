@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 0.498
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.2651921, g: 0.27089158, b: 0.25442815, a: 0.498}
+  m_IndirectSpecularColor: {r: 0.26519182, g: 0.2708913, b: 0.254428, a: 0.498}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2386,9 +2386,13 @@ MonoBehaviour:
       PublicKeyToken=null
   - assemblyQualifiedName: PEFXGhostVission, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
-  - assemblyQualifiedName: VissionBlur, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
   - assemblyQualifiedName: PEFXAlteredObject, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - assemblyQualifiedName: PEFXGlitch, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - assemblyQualifiedName: PEFXPlayerShow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - assemblyQualifiedName: PlayerEyeBlur, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
 --- !u!114 &599868240
 MonoBehaviour:
@@ -6819,6 +6823,10 @@ PrefabInstance:
       propertyPath: lightRamp
       value: 
       objectReference: {fileID: 2800000, guid: b3aa092a874185546a92b0f9eb8a756b, type: 3}
+    - target: {fileID: 1409891221584877996, guid: aec8a727e9a153d4a9f1d4c5748aa909, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1409891221584877997, guid: aec8a727e9a153d4a9f1d4c5748aa909, type: 3}
       propertyPath: m_RootOrder
       value: 0
