@@ -95,6 +95,7 @@ namespace Knotgames.Network
                     break;
                 case "toggledWin":
                     UnityEngine.Debug.LogError("<color=white>WIN TRIGGERED</color>");
+                    winDone = true;
                     LeaveRoom();
                     StartCoroutine(DelayedWinStuff(dataString));
                     break;
@@ -125,7 +126,6 @@ namespace Knotgames.Network
         private IEnumerator DelayedWinStuff(string dataString)
         {
             yield return new WaitForSeconds(0.3f);
-            winDone = true;
             humanWin = JsonUtility.FromJson<WinData>(dataString).humanWin;
             UnityEngine.Debug.LogError($"<color=white>HUMANS WON: {humanWin}</color>");
             Cursor.lockState = CursorLockMode.None;
@@ -148,8 +148,6 @@ namespace Knotgames.Network
             if (NetRoomJoin.instance.roomID.value != null)
             {
                 createdRoom = false;
-                humanModels.Clear();
-                ghostModels.Clear();
                 NetConnector.instance.SendDataToServer(JsonUtility.ToJson(new ReadyData("leaveRoom", DistributionOption.serveMe)));
                 NetRoomJoin.instance.roomID.value = "";
                 NetRoomJoin.instance.roomID.value.CopyToClipboard();

@@ -11,13 +11,13 @@ public class testwin : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.L))
         {
             Debug.Log("humanwin");
-            // NetGameManager.instance.ToggleWinScreen(true);
+            NetGameManager.instance.ToggleWinScreen(true);
             Destroy(this);
         }
         if (Input.GetKeyDown(KeyCode.K))
         {
             Debug.Log("ghostwin");
-            // NetGameManager.instance.ToggleWinScreen(false);
+            NetGameManager.instance.ToggleWinScreen(false);
             Destroy(this);
         }
 #endif

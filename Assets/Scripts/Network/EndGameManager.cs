@@ -51,6 +51,8 @@ namespace Knotgames.Network
                 }
                 ghostWinPanel.SetActive(true);
             }
+            NetGameManager.instance.humanModels.Clear();
+            NetGameManager.instance.ghostModels.Clear();
         }
     }
 }
