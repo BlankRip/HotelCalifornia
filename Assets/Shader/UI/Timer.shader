@@ -5,11 +5,16 @@ Shader "Custom/UI/Disolve"
         [PerRendererData] _MainTex ("Sprite Texture", 2D) = "white" {}
 
         _DisolveMaske ("Disolve Texture", 2D) = "white" {}
-        _DisolveScale ("Disolve Scale", range(0, 50)) = 2
+        _DisolveScaleA ("Disolve Scale A", range(0, 50)) = 2
+        _DisolveSpeedA ("Scroll Speed A", range(0, 2)) = 2
+
+        _DisolveScaleB ("Disolve Scale B", range(0, 50)) = 2
+        _DisolveSpeedB ("Scroll Speed B", range(0, 2)) = 2
 
         _UVOffset ("UV Offset", range(0, 1)) = 0
 
         _Color ("Tint", Color) = (1,1,1,1)
+        _ColorA ("Tint A", Color) = (1,1,1,1)
 
         _StencilComp ("Stencil Comparison", Float) = 8
         _Stencil ("Stencil ID", Float) = 0
@@ -82,11 +87,15 @@ Shader "Custom/UI/Disolve"
 
             sampler2D _MainTex;
             sampler2D _DisolveMaske;
-            fixed4 _Color;
+            fixed4 _Color, _ColorA;
             fixed4 _TextureSampleAdd;
             float4 _ClipRect;
             float4 _MainTex_ST;
-            fixed _DisolveScale, _UVOffset;
+            fixed _DisolveScaleA, 
+            _DisolveScaleB,
+            _UVOffset, 
+            _DisolveSpeedA, 
+            _DisolveSpeedB;
 
             v2f vert(appdata_t v)
             {
@@ -105,10 +114,19 @@ Shader "Custom/UI/Disolve"
             fixed4 frag(v2f IN) : SV_Target
             {
                 half4 color = (tex2D(_MainTex, IN.texcoord) + _TextureSampleAdd) * IN.color;
-                half disolveTexValue = tex2D(_DisolveMaske, (IN.texcoord - fixed2(0, _Time.x)) * _DisolveScale);
+                half disolveTexValue = pow(
+                    saturate(
+                    tex2D(_DisolveMaske, (IN.texcoord - fixed2(0, _Time.x * _DisolveSpeedA)) * _DisolveScaleA).r *
+                    tex2D(_DisolveMaske, (IN.texcoord - fixed2(0, _Time.x * _DisolveSpeedB)) * _DisolveScaleB).r), .8);
 
                 //disolveShader += _UVOffset * 20 + (1 - IN.texcoord.y * 20);
                 //disolveShader = step( .5, disolveShader);
+
+                fixed disolveValue = disolveTexValue + (lerp(.728, .824, _UVOffset) * 20 + (1 - IN.texcoord.y * 20));
+
+                fixed valueA = step(.5, disolveValue);
+                fixed valueB = step(disolveValue, .55) * step(.5, disolveValue);
+
 
                 /*
                 fixed cutValue = tex2D(_DisolveMaske, IN.texcoord).r;
@@ -127,7 +145,7 @@ Shader "Custom/UI/Disolve"
                 cutValue = pow(saturate(cutValue), 2);
                 */
 
-                return color * disolveShader;
+                return color * valueA + valueB * _ColorA;
             }
         ENDCG
         }
