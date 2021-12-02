@@ -7,9 +7,19 @@ public class testwin : MonoBehaviour
 {
     void Update()
     {
+#if UNITY_EDITOR
         if (Input.GetKeyDown(KeyCode.L))
-            NetGameManager.instance.ToggleWinScreen(true);
+        {
+            Debug.Log("humanwin");
+            // NetGameManager.instance.ToggleWinScreen(true);
+            Destroy(this);
+        }
         if (Input.GetKeyDown(KeyCode.K))
-            NetGameManager.instance.ToggleWinScreen(false);
+        {
+            Debug.Log("ghostwin");
+            // NetGameManager.instance.ToggleWinScreen(false);
+            Destroy(this);
+        }
+#endif
     }
 }
