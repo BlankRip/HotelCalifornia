@@ -27,7 +27,6 @@ namespace Knotgames.Gameplay {
             maxSeconds = (60 * minutes) + seconds;
             currentVisualSec = maxSeconds;
             visualMat.SetFloat("_T", 0);
-            timerOn = true;
         }
 
         private void OnDestroy() {
