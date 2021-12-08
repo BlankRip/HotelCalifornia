@@ -3910,7 +3910,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2980821815950826709}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Knotgames.GameSettings.Settings, Assembly-CSharp
         m_MethodName: SaveSettings
         m_Mode: 1
@@ -5896,7 +5896,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2980821815950826709}
+      - m_Target: {fileID: 1165076309}
         m_TargetAssemblyTypeName: Knotgames.GameSettings.Settings, Assembly-CSharp
         m_MethodName: SetMusicVolume
         m_Mode: 0
@@ -14490,6 +14490,69 @@ MonoBehaviour:
   m_ChildScaleWidth: 1
   m_ChildScaleHeight: 1
   m_ReverseArrangement: 0
+--- !u!1 &1165076308
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1165076310}
+  - component: {fileID: 1165076309}
+  - component: {fileID: 1165076311}
+  m_Layer: 0
+  m_Name: SettingsLoader
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1165076309
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1165076308}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb8bf784698cb1d4c81b7800d31b12d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioMixer: {fileID: 24100000, guid: 6c73c399ad17bcd49947da2ce8ffcfd9, type: 2}
+  resolutionDropdown: {fileID: 2980821816831038618}
+  musicSlider: {fileID: 2980821817687069018}
+  sfxSlider: {fileID: 2980821816900613960}
+--- !u!4 &1165076310
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1165076308}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 19
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1165076311
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1165076308}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67de47078c9a4db478938ac0b9c77a7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  senseSlider: {fileID: 7974509987746992040}
+  senseText: {fileID: 7974509987554728634}
+  senseFloat: {fileID: 11400000, guid: 0b9bdd7332589eb41846f39b45a95cc5, type: 2}
 --- !u!1001 &1178263425
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -19247,7 +19310,7 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2980821815950826709}
+      - m_Target: {fileID: 1165076309}
         m_TargetAssemblyTypeName: Knotgames.GameSettings.Settings, Assembly-CSharp
         m_MethodName: SetFullscreen
         m_Mode: 0
@@ -19463,7 +19526,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2980821815950826709}
+      - m_Target: {fileID: 1165076309}
         m_TargetAssemblyTypeName: Knotgames.GameSettings.Settings, Assembly-CSharp
         m_MethodName: SetSFXVolume
         m_Mode: 0
@@ -21201,7 +21264,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2980821815950826709}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Knotgames.GameSettings.Settings, Assembly-CSharp
         m_MethodName: ClearPrefs
         m_Mode: 1
@@ -25878,22 +25941,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &2980821815950826709
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2980821815950826711}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fb8bf784698cb1d4c81b7800d31b12d5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  audioMixer: {fileID: 24100000, guid: 6c73c399ad17bcd49947da2ce8ffcfd9, type: 2}
-  resolutionDropdown: {fileID: 2980821816831038618}
-  musicSlider: {fileID: 2980821817687069018}
-  sfxSlider: {fileID: 2980821816900613960}
 --- !u!1 &2980821815950826711
 GameObject:
   m_ObjectHideFlags: 0
@@ -25903,7 +25950,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2980821815950826708}
-  - component: {fileID: 2980821815950826709}
   m_Layer: 5
   m_Name: SettingsMenu
   m_TagString: Untagged
@@ -26944,9 +26990,9 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2980821815950826711}
-        m_TargetAssemblyTypeName: Settings, Assembly-CSharp
-        m_MethodName: 
+      - m_Target: {fileID: 1165076309}
+        m_TargetAssemblyTypeName: Knotgames.GameSettings.Settings, Assembly-CSharp
+        m_MethodName: SetResolution
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -27250,8 +27296,8 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2980821815950826709}
-        m_TargetAssemblyTypeName: Settings, Assembly-CSharp
+      - m_Target: {fileID: 1165076309}
+        m_TargetAssemblyTypeName: Knotgames.GameSettings.Settings, Assembly-CSharp
         m_MethodName: SetSFXVolume
         m_Mode: 0
         m_Arguments:
@@ -27895,8 +27941,8 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2980821815950826709}
-        m_TargetAssemblyTypeName: Settings, Assembly-CSharp
+      - m_Target: {fileID: 1165076309}
+        m_TargetAssemblyTypeName: Knotgames.GameSettings.Settings, Assembly-CSharp
         m_MethodName: SetFullscreen
         m_Mode: 0
         m_Arguments:
@@ -28127,8 +28173,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2980821815950826709}
-        m_TargetAssemblyTypeName: Settings, Assembly-CSharp
+      - m_Target: {fileID: 1165076309}
+        m_TargetAssemblyTypeName: Knotgames.GameSettings.Settings, Assembly-CSharp
         m_MethodName: SaveSettings
         m_Mode: 1
         m_Arguments:
@@ -28259,8 +28305,8 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2980821815950826709}
-        m_TargetAssemblyTypeName: Settings, Assembly-CSharp
+      - m_Target: {fileID: 1165076309}
+        m_TargetAssemblyTypeName: Knotgames.GameSettings.Settings, Assembly-CSharp
         m_MethodName: SetMusicVolume
         m_Mode: 0
         m_Arguments:
@@ -28682,8 +28728,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2980821815950826709}
-        m_TargetAssemblyTypeName: Settings, Assembly-CSharp
+      - m_Target: {fileID: 1165076309}
+        m_TargetAssemblyTypeName: Knotgames.GameSettings.Settings, Assembly-CSharp
         m_MethodName: ClearPrefs
         m_Mode: 1
         m_Arguments:
@@ -29569,7 +29615,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7974509987746992047}
+      - m_Target: {fileID: 1165076311}
         m_TargetAssemblyTypeName: Knotgames.GameSettings.MouseSettings, Assembly-CSharp
         m_MethodName: SetMouseSensitivity
         m_Mode: 0
@@ -29613,7 +29659,6 @@ GameObject:
   m_Component:
   - component: {fileID: 7974509987746992041}
   - component: {fileID: 7974509987746992040}
-  - component: {fileID: 7974509987746992047}
   - component: {fileID: 7974509987746992043}
   m_Layer: 5
   m_Name: MouseSenseSlider
@@ -29642,21 +29687,6 @@ MonoBehaviour:
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
   m_LayoutPriority: 1
---- !u!114 &7974509987746992047
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7974509987746992042}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 67de47078c9a4db478938ac0b9c77a7c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  senseSlider: {fileID: 7974509987746992040}
-  senseText: {fileID: 7974509987554728634}
-  senseFloat: {fileID: 11400000, guid: 0b9bdd7332589eb41846f39b45a95cc5, type: 2}
 --- !u!1 &7974509987862119380
 GameObject:
   m_ObjectHideFlags: 0
@@ -30009,7 +30039,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7974509987746992047}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Knotgames.GameSettings.MouseSettings, Assembly-CSharp
         m_MethodName: SetMouseSensitivity
         m_Mode: 0
