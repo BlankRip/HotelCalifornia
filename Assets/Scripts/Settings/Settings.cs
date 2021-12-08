@@ -39,7 +39,6 @@ namespace Knotgames.GameSettings
         public void SetMusicVolume(float volume)
         {
             currentMusicVolume = volume;
-            SaveSettings();
             float x = Mathf.Clamp(volume, -80f, -15f);
             audioMixer.SetFloat("MusicVolume", x);
         }
@@ -47,7 +46,6 @@ namespace Knotgames.GameSettings
         public void SetSFXVolume(float volume)
         {
             currentSFXVolume = volume;
-            SaveSettings();
             float x = Mathf.Clamp(volume, -80f, 0f);
             audioMixer.SetFloat("SFXVolume", x);
         }
@@ -55,14 +53,12 @@ namespace Knotgames.GameSettings
         public void SetFullscreen(bool isFullscreen)
         {
             Screen.fullScreen = isFullscreen;
-            SaveSettings();
         }
 
         public void SetResolution(int resolutionIndex)
         {
             Resolution resolution = resolutions[resolutionIndex];
             Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
-            SaveSettings();
         }
 
         public void SaveSettings()
