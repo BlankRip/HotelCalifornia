@@ -46,7 +46,7 @@ namespace Knotgames.GameSettings
                 senseFloat.value = x;
                 currentSense = x;
                 senseSlider.value = x;
-                senseText.text = String.Format(x.ToString(), "F2");
+                senseText.text = x.ToString("F2");
                 SaveSettings();
             }
         }

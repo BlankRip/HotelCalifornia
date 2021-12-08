@@ -38,18 +38,18 @@ namespace Knotgames.GameSettings
 
         public void SetMusicVolume(float volume)
         {
+            currentMusicVolume = volume;
+            SaveSettings();
             float x = Mathf.Clamp(volume, -80f, -15f);
             audioMixer.SetFloat("MusicVolume", x);
-            currentMusicVolume = x;
-            SaveSettings();
         }
 
         public void SetSFXVolume(float volume)
         {
+            currentSFXVolume = volume;
+            SaveSettings();
             float x = Mathf.Clamp(volume, -80f, 0f);
             audioMixer.SetFloat("SFXVolume", x);
-            currentSFXVolume = x;
-            SaveSettings();
         }
 
         public void SetFullscreen(bool isFullscreen)
@@ -71,7 +71,6 @@ namespace Knotgames.GameSettings
             PlayerPrefs.SetString("FullscreenPreference", Screen.fullScreen.ToString());
             PlayerPrefs.SetFloat("MusicVolumePreference", currentMusicVolume);
             PlayerPrefs.SetFloat("SFXVolumePreference", currentSFXVolume);
-            PlayerPrefs.SetFloat("Sensitivity", currentSFXVolume);
         }
 
         private void LoadSettings(int currentResolutionIndex)
