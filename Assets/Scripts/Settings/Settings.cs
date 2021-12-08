@@ -6,7 +6,8 @@ using UnityEngine.Audio;
 using UnityEngine.UI;
 using TMPro;
 
-namespace Knotgames.GameSettings {
+namespace Knotgames.GameSettings
+{
     public class Settings : MonoBehaviour
     {
         public AudioMixer audioMixer;
@@ -37,14 +38,16 @@ namespace Knotgames.GameSettings {
 
         public void SetMusicVolume(float volume)
         {
-            audioMixer.SetFloat("MusicVolume", volume);
-            currentMusicVolume = volume;
+            float x = Mathf.Clamp(volume, -80f, 20f);
+            audioMixer.SetFloat("MusicVolume", x);
+            currentMusicVolume = x;
         }
-        
+
         public void SetSFXVolume(float volume)
         {
-            audioMixer.SetFloat("SFXVolume", volume);
-            currentSFXVolume = volume;
+            float x = Mathf.Clamp(volume, -80f, 20f);
+            audioMixer.SetFloat("SFXVolume", x);
+            currentSFXVolume = x;
         }
 
         public void SetFullscreen(bool isFullscreen)
