@@ -46,7 +46,7 @@ namespace Knotgames.GameSettings
                 senseFloat.value = x;
                 currentSense = x;
                 senseSlider.value = x;
-                senseText.text = x.ToString("F2");
+                senseText.text = String.Format(x.ToString(), "F2");
                 SaveSettings();
             }
         }
@@ -59,11 +59,11 @@ namespace Knotgames.GameSettings
         private void LoadSettings()
         {
             if (PlayerPrefs.HasKey("Sensitivity"))
-            { senseSlider.value = PlayerPrefs.GetFloat("Sensitivity"); senseText.text = senseSlider.value.ToString(); senseFloat.value = senseSlider.value;}
+            { senseSlider.value = PlayerPrefs.GetFloat("Sensitivity"); senseText.text = senseSlider.value.ToString(); senseFloat.value = senseSlider.value; }
             else
-            { senseSlider.value = 3; senseText.text = senseSlider.value.ToString(); senseFloat.value = senseSlider.value;}
+            { senseSlider.value = 3; senseText.text = senseSlider.value.ToString(); senseFloat.value = senseSlider.value; }
 
-            Debug.Log("LOADED MOUSE SETTINGS");
+            Debug.LogError($"LOADED MOUSE SETTINGS : {PlayerPrefs.GetFloat("Sensitivity")}");
         }
     }
 }

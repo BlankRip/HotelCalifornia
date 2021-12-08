@@ -41,6 +41,7 @@ namespace Knotgames.GameSettings
             float x = Mathf.Clamp(volume, -80f, -15f);
             audioMixer.SetFloat("MusicVolume", x);
             currentMusicVolume = x;
+            SaveSettings();
         }
 
         public void SetSFXVolume(float volume)
@@ -48,17 +49,20 @@ namespace Knotgames.GameSettings
             float x = Mathf.Clamp(volume, -80f, 0f);
             audioMixer.SetFloat("SFXVolume", x);
             currentSFXVolume = x;
+            SaveSettings();
         }
 
         public void SetFullscreen(bool isFullscreen)
         {
             Screen.fullScreen = isFullscreen;
+            SaveSettings();
         }
 
         public void SetResolution(int resolutionIndex)
         {
             Resolution resolution = resolutions[resolutionIndex];
             Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
+            SaveSettings();
         }
 
         public void SaveSettings()
@@ -81,15 +85,27 @@ namespace Knotgames.GameSettings
             else
                 Screen.fullScreen = true;
             if (PlayerPrefs.HasKey("MusicVolumePreference"))
-                musicSlider.value = Mathf.Clamp(PlayerPrefs.GetFloat("MusicVolumePreference"), -80f, -15f);
+            {
+                musicSlider.value = PlayerPrefs.GetFloat("MusicVolumePreference");
+                SetMusicVolume(PlayerPrefs.GetFloat("MusicVolumePreference"));
+            }
             else
+            {
                 musicSlider.value = -15f;
+                SetMusicVolume(-15f);
+            }
             if (PlayerPrefs.HasKey("SFXVolumePreference"))
-                sfxSlider.value = Mathf.Clamp(PlayerPrefs.GetFloat("SFXVolumePreference"), -80f, 0f);
+            {
+                sfxSlider.value = PlayerPrefs.GetFloat("SFXVolumePreference");
+                SetSFXVolume(PlayerPrefs.GetFloat("SFXVolumePreference"));
+            }
             else
+            {
                 sfxSlider.value = 0;
+                SetSFXVolume(0);
+            }
 
-            Debug.Log($"<color=green>Loaded Settings: {resolutionDropdown.value}, {Screen.fullScreen}, {musicSlider.value}, {sfxSlider.value}</color>");
+            Debug.LogError($"<color=green>Loaded Settings: {resolutionDropdown.value}, {Screen.fullScreen}, {musicSlider.value}, {sfxSlider.value}</color>");
         }
 
         public void ClearPrefs()
