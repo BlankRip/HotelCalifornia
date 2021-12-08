@@ -89,7 +89,7 @@ namespace Knotgames.Gameplay.Puzzle.LeverLight {
                 canTrigger = false;
                 Invoke("ResetCanTrigger", 5);
                 animator.SetTrigger("open");
-                AudioPlayer.instance.PlayAudio3DOneShot(ClipName.Lever);
+                AudioPlayer.instance.PlayAudio3D(ClipName.Lever, transform.position);
             }
             if(myLights == null)
                 myLights = lightLever.manager.GetLightsOfColor(myColor);

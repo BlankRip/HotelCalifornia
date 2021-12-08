@@ -46,7 +46,7 @@ namespace Knotgames.Gameplay {
 
         private IEnumerator ActivateLight(int lightIndex) {
             MoveCamToDoorView();
-            AudioPlayer.instance.PlayAudio3DOneShot(ClipName.Solved);
+            AudioPlayer.instance.PlayAudio3D(ClipName.Solved, transform.position);
             yield return new WaitForSeconds(1f);
             solvedLights[lightIndex].SetActive(true);
             yield return new WaitForSeconds(1);

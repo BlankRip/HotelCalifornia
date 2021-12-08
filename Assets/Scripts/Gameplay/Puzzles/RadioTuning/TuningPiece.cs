@@ -87,7 +87,7 @@ namespace Knotgames.Gameplay.Puzzle.Radio
         public void Interact()
         {
             CycleValue();
-            AudioPlayer.instance.PlayAudio3DOneShot(ClipName.Radio);
+            AudioPlayer.instance.PlayAudio3D(ClipName.Radio, transform.position);
             if (!DevBoy.yes)
                 SendData();
         }

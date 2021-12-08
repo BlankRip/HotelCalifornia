@@ -58,7 +58,12 @@ namespace Knotgames.Gameplay.Puzzle.Riddler {
         public bool Check(string value) {
             if(!DevBoy.yes)
                 SendData(false, value);
-            return CheckSolve(value);
+            bool sol = CheckSolve(value);
+            if(sol)
+                AudioPlayer.instance.PlayAudio2DOneShot(ClipName.RightAnswer);
+            else
+                AudioPlayer.instance.PlayAudio2DOneShot(ClipName.WrongAnswer);
+            return sol;
         }
 
         private bool CheckSolve(string value) {
@@ -66,10 +71,8 @@ namespace Knotgames.Gameplay.Puzzle.Riddler {
                 solved = true;
                 thePuzzle.manager.UpdateSolve();
                 GetComponent<Renderer>().material = null;
-                AudioPlayer.instance.PlayAudio2DOneShot(ClipName.RightAnswer);
                 return true;
             } else {
-                AudioPlayer.instance.PlayAudio2DOneShot(ClipName.WrongAnswer);
                 return false;
             }
         }

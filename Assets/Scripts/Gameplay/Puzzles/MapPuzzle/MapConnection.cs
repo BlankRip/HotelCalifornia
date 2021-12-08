@@ -77,7 +77,7 @@ namespace Knotgames.Gameplay.Puzzle.Map
             if (interactable)
             {
                 CycleValue();
-                AudioPlayer.instance.PlayAudio3DOneShot(ClipName.MapConnection);
+                AudioPlayer.instance.PlayAudio3D(ClipName.MapConnection, transform.position);
                 if (!DevBoy.yes)
                     SendData();
             }

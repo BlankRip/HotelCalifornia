@@ -48,12 +48,6 @@ namespace Knotgames.Audio
             sfxSource3D.Play();
         }
 
-        public void PlayAudio3DOneShot(ClipName name)
-        {
-            if(sfxSource3D != null)
-                sfxSource3D.PlayOneShot(audioDatabase.GetClip(name));
-        }
-
         public AudioData GetClip(ClipName name)
         {
             return audioDatabase.GetClipData(name);

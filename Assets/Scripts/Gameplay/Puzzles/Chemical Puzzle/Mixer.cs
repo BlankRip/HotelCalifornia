@@ -30,7 +30,7 @@ namespace Knotgames.Gameplay.Puzzle.ChemicalRoom
         private IEnumerator Mix() {
             mixing = true;
             startMixerAnim.Play("Start");
-            AudioPlayer.instance.PlayAudio2DOneShot(ClipName.ChemicalMixing);
+            AudioPlayer.instance.PlayAudio3D(ClipName.ChemicalMixing, transform.position);
             yield return new WaitForSeconds(5);
             FinishMix();
             AudioPlayer.instance.Stop2DAudio();
