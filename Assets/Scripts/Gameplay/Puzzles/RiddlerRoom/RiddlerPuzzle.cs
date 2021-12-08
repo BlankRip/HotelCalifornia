@@ -29,10 +29,8 @@ namespace Knotgames.Gameplay.Puzzle.Riddler {
 
         public void UpdateSolve() {
             currentSolved++;
-            if(currentSolved == riddlesToSolve) {
+            if(currentSolved == riddlesToSolve)
                 puzzleTracker.tracker.OnePuzzleSolved();
-                Debug.Log("Solved");
-            }
         }
     }
 }

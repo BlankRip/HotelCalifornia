@@ -64,7 +64,7 @@ namespace Knotgames.Gameplay.Puzzle.Riddler {
         private bool CheckSolve(string value) {
             if(value.ToLower() == mySolution) {
                 solved = true;
-                //^thePuzzle.manager.UpdateSolve();
+                thePuzzle.manager.UpdateSolve();
                 GetComponent<Renderer>().material = null;
                 AudioPlayer.instance.PlayAudio2DOneShot(ClipName.RightAnswer);
                 return true;
