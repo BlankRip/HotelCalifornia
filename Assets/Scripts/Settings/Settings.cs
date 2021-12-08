@@ -38,14 +38,14 @@ namespace Knotgames.GameSettings
 
         public void SetMusicVolume(float volume)
         {
-            float x = Mathf.Clamp(volume, -80f, 20f);
+            float x = Mathf.Clamp(volume, -80f, -15f);
             audioMixer.SetFloat("MusicVolume", x);
             currentMusicVolume = x;
         }
 
         public void SetSFXVolume(float volume)
         {
-            float x = Mathf.Clamp(volume, -80f, 20f);
+            float x = Mathf.Clamp(volume, -80f, 0f);
             audioMixer.SetFloat("SFXVolume", x);
             currentSFXVolume = x;
         }
@@ -81,13 +81,13 @@ namespace Knotgames.GameSettings
             else
                 Screen.fullScreen = true;
             if (PlayerPrefs.HasKey("MusicVolumePreference"))
-                musicSlider.value = PlayerPrefs.GetFloat("MusicVolumePreference");
+                musicSlider.value = Mathf.Clamp(PlayerPrefs.GetFloat("MusicVolumePreference"), -80f, -15f);
             else
-                musicSlider.value = 100;
+                musicSlider.value = -15f;
             if (PlayerPrefs.HasKey("SFXVolumePreference"))
-                sfxSlider.value = PlayerPrefs.GetFloat("SFXVolumePreference");
+                sfxSlider.value = Mathf.Clamp(PlayerPrefs.GetFloat("SFXVolumePreference"), -80f, 0f);
             else
-                sfxSlider.value = 100;
+                sfxSlider.value = 0;
 
             Debug.Log($"<color=green>Loaded Settings: {resolutionDropdown.value}, {Screen.fullScreen}, {musicSlider.value}, {sfxSlider.value}</color>");
         }
