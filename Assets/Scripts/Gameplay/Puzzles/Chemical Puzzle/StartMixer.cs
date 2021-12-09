@@ -51,6 +51,7 @@ namespace Knotgames.Gameplay.Puzzle.ChemicalRoom {
 
         public void Interact() {
             if(useable) {
+                Debug.LogError($"Started Mix");
                 mixer.StartMix();
                 if(!DevBoy.yes)
                     SendStartMixerData();

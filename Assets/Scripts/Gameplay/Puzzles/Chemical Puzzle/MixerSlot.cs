@@ -32,6 +32,7 @@ namespace Knotgames.Gameplay.Puzzle.ChemicalRoom {
                 slotted.Drop();
                 other.transform.position = placementPoint.position;
                 other.transform.rotation = Quaternion.identity;
+                Debug.LogError($"Slotted: {slotted.GetPortionType()}");
 
                 if(!DevBoy.yes && needToSendData) 
                     slotted.GetGameObject().GetComponent<ILocalNetTransformSync>().SendDataOnRequest();
