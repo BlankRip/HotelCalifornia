@@ -22,7 +22,7 @@ namespace Knotgames.Shaders
         [SerializeField] Color generalRimColor;
         [SerializeField] [Range(0, 20)] float generalRimEffect;
 
-        bool updatValues;
+        [SerializeField] bool updatValues;
 
         void Start()
         {

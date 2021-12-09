@@ -2,6 +2,7 @@ Shader "Custom/LoadingImage"
 {
     Properties
     {
+        _MainTex("Sprite Texture", 2D) = "white" {}
         [HDR]_Color ("Color", color) = (1,1,1,1)
     }
     SubShader
