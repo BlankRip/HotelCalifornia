@@ -27,7 +27,7 @@ Shader "Custom/CustomStandardCharecter"
         uniform fixed _CharGlosiness;
         uniform fixed _CharGlossPower;
         uniform fixed _CharColorBoost;
-        uniform sampler2D _LightShadow;
+        uniform sampler2D _LightColorGradient;
 
         half4 LightingSimpleLambert (SurfaceOutput s, half3 lightDir, half atten) {
             fixed3 nLightDir = normalize(lightDir);
@@ -38,7 +38,7 @@ Shader "Custom/CustomStandardCharecter"
 
             half4 c;
             fixed lightColorCTRL = saturate(((NdotL * 0.5 + 0.5) * atten * length(_LightColor0.rgb)));
-            fixed3 lightColor = tex2D(_LightShadow, fixed2(lightColorCTRL, 0.5));
+            fixed3 lightColor = tex2D(_LightColorGradient, fixed2(lightColorCTRL, 0.5));
             c.rgb = (s.Albedo + lightColor * _LightColor0.rgb * 0.5) * lightColor;
             c.rgb += _LightColor0 * intencity * max(NdotL, 0) * atten;
             c.a = s.Alpha;

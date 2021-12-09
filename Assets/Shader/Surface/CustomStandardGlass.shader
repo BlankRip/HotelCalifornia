@@ -33,7 +33,7 @@ Shader "Custom/CustomStandardGlass"
         fixed _GlossPower;
         fixed _GlossEffectPow;
         fixed _ReflectionEffectPow;
-        uniform sampler2D _LightShadow;
+        uniform sampler2D _LightColorGradient;
 
         half4 LightingSimpleLambert (SurfaceOutput s, half3 lightDir, half atten) {
             fixed3 nLightDir = normalize(lightDir);
@@ -44,7 +44,7 @@ Shader "Custom/CustomStandardGlass"
 
             half4 c;
             fixed lightColorCTRL = saturate(((NdotL * 0.5 + 0.5) * atten * length(_LightColor0.rgb)));
-            fixed3 lightColor = tex2D(_LightShadow, fixed2(lightColorCTRL, 0.5));
+            fixed3 lightColor = tex2D(_LightColorGradient, fixed2(lightColorCTRL, 0.5));
             fixed aVal = intencity * max(NdotL, 0) * atten;
             c.rgb = lerp((s.Albedo + lightColor * _LightColor0.rgb * 0.5) * lightColor, 0, aVal);
             c.rgb += _LightColor0 * aVal;

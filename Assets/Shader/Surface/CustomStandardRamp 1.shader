@@ -2,7 +2,7 @@ Shader "Custom/CustomStandardRampGlowing"
 {
     Properties
     {
-        _LightShadow ("Light Shadow", 2D) = "white" {}
+        _LightColorGradient ("Light Shadow", 2D) = "white" {}
         _Color ("Color", Color) = (1,1,1,1)
         _MainTex ("Albedo (RGB)", 2D) = "white" {}
         _BumpMap ("Bumpmap", 2D) = "bump" {}
@@ -17,13 +17,13 @@ Shader "Custom/CustomStandardRampGlowing"
         CGPROGRAM
         // Physically based Standard lighting model, and enable shadows on all light types
         #pragma surface surf SimpleLambert fullforwardshadows
-        sampler2D _LightShadow;
+        sampler2D _LightColorGradient;
 
         half4 LightingSimpleLambert (SurfaceOutput s, half3 lightDir, half atten) {
             half NdotL = dot (s.Normal, lightDir);
             half4 c;
             fixed lightColorCTRL = (NdotL * 0.5 + 0.5) * atten;
-            fixed3 lightColor = tex2D(_LightShadow, fixed2(lightColorCTRL, 0.5));
+            fixed3 lightColor = tex2D(_LightColorGradient, fixed2(lightColorCTRL, 0.5));
             c.rgb = (s.Albedo + lightColor * _LightColor0.rgb) * lightColor * 0.5;
             c.a = s.Alpha;
             return c;

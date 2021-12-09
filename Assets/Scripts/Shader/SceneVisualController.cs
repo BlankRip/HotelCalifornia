@@ -22,24 +22,35 @@ namespace Knotgames.Shaders
         [SerializeField] Color generalRimColor;
         [SerializeField] [Range(0, 20)] float generalRimEffect;
 
+        bool updatValues;
+
         void Start()
         {
-
+            updatValues = true;
         }
 
         public void Update()
         {
-            Shader.SetGlobalTexture("_LightShadow", lightRamp);
-            Shader.SetGlobalColor("_CharRimColor", charRimColor);
-            Shader.SetGlobalFloat("_CharRimPower", charRimEffect);
-            Shader.SetGlobalFloat("_CharGlosiness", charSurfaceGloss);
-            Shader.SetGlobalFloat("_CharGlossPower", charSurfaceGlossPower);
-            Shader.SetGlobalFloat("_CharColorBoost", charSurfaceColorBoost);
-            Shader.SetGlobalColor("_CharEmissionColor", charEmissionColor);
+            if (updatValues)
+            {
+                Shader.SetGlobalTexture("_LightColorGradient", lightRamp);
+                Shader.SetGlobalColor("_CharRimColor", charRimColor);
+                Shader.SetGlobalFloat("_CharRimPower", charRimEffect);
+                Shader.SetGlobalFloat("_CharGlosiness", charSurfaceGloss);
+                Shader.SetGlobalFloat("_CharGlossPower", charSurfaceGlossPower);
+                Shader.SetGlobalFloat("_CharColorBoost", charSurfaceColorBoost);
+                Shader.SetGlobalColor("_CharEmissionColor", charEmissionColor);
+                Shader.SetGlobalColor("_RimColor", generalRimColor);
+                Shader.SetGlobalFloat("_RimPower", generalRimEffect);
 
-            Shader.SetGlobalColor("_RimColor", generalRimColor);
-            Shader.SetGlobalFloat("_RimPower", generalRimEffect);
-
+                updatValues = false;
+            }
         }
+
+        public void UpdateValues()
+        {
+            updatValues = true;
+        }
+
     }
 }
