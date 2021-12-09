@@ -17,7 +17,6 @@ namespace Knotgames.Network
         bool winDone = false;
         public bool humanWin;
         NetObject ghost;
-        List<NetObject> humans = new List<NetObject>();
         [HideInInspector] public List<SpawnData> ghostModels = new List<SpawnData>();
         [HideInInspector] public List<SpawnData> humanModels = new List<SpawnData>();
         private bool createdRoom = false;
@@ -45,7 +44,6 @@ namespace Knotgames.Network
                     {
                         UnityEngine.Debug.Log("<color=red>A SINFUL BEING HAS BEEN PURGED FROM THE LOBBY, WHAT A DICK</color>");
                         inGame = false;
-                        string leftID = JsonUtility.FromJson<PlayerIDExtractor>(dataString).playerID;
                         Cursor.lockState = CursorLockMode.None;
                         Cursor.visible = true;
                         NetGameManager.instance.LeaveRoom();
@@ -57,14 +55,11 @@ namespace Knotgames.Network
                         inGame = false;
                         winDone = false;
                         ghost = null;
-                        humans.Clear();
                         ghostModels.Clear();
                         humanModels.Clear();
-                        string leftID = JsonUtility.FromJson<PlayerIDExtractor>(dataString).playerID;
                     }
                     else
                     {
-                        string leftID = JsonUtility.FromJson<PlayerIDExtractor>(dataString).playerID;
                         UnityEngine.Debug.Log("<color=yellow>A SINFUL BEING HAS BEEN PURGED FROM THE LOBBY, ATLEAST HE LEFT EARLY</color>");
                         Cursor.lockState = CursorLockMode.None;
                         Cursor.visible = true;
@@ -107,9 +102,11 @@ namespace Knotgames.Network
                         {
                             case "ghost":
                                 ghostModels.Add(CustomExtensions.ReturnModelObject(temp.modelType));
+                                UnityEngine.Debug.LogError($"ADDED {CustomExtensions.ReturnModelObject(temp.modelType).model.name}");
                                 break;
                             case "human":
                                 humanModels.Add(CustomExtensions.ReturnModelObject(temp.modelType));
+                                UnityEngine.Debug.LogError($"ADDED {CustomExtensions.ReturnModelObject(temp.modelType).model.name}");
                                 break;
                         }
                     }

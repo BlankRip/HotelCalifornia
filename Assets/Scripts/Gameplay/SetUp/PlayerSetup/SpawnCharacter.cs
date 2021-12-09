@@ -34,9 +34,11 @@ namespace Knotgames.Gameplay {
                         {
                             case "ghost":
                                 NetGameManager.instance.ghostModels.Add(CustomExtensions.ReturnModelObject(characterData.modelType));
+                                Debug.LogError($"ADDED {CustomExtensions.ReturnModelObject(characterData.modelType).model.name}");
                                 break;
                             case "human":
                                 NetGameManager.instance.humanModels.Add(CustomExtensions.ReturnModelObject(characterData.modelType));
+                                Debug.LogError($"ADDED {CustomExtensions.ReturnModelObject(characterData.modelType).model.name}");
                                 break;
                         }
                 }
