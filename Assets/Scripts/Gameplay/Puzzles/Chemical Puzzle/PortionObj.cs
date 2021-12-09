@@ -50,6 +50,10 @@ namespace Knotgames.Gameplay.Puzzle.ChemicalRoom {
                 if(inUse) {
                     rb.useGravity = false;
                     rb.isKinematic = true;
+                    if(mySlot != null) {
+                        mySlot.ReturingFromSlot();
+                        mySlot = null;
+                    }
                 } else {
                     rb.useGravity = true;
                     rb.isKinematic = false;
