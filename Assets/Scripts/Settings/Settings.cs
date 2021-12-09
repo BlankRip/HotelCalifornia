@@ -86,8 +86,8 @@ namespace Knotgames.GameSettings
             }
             else
             {
-                musicSlider.value = musicSlider.minValue;
-                SetMusicVolume(musicSlider.minValue);
+                musicSlider.value = musicSlider.maxValue;
+                SetMusicVolume(musicSlider.maxValue);
             }
             if (PlayerPrefs.HasKey("SFXVolumePreference"))
             {
@@ -96,8 +96,8 @@ namespace Knotgames.GameSettings
             }
             else
             {
-                sfxSlider.value = sfxSlider.minValue;
-                SetSFXVolume(sfxSlider.minValue);
+                sfxSlider.value = sfxSlider.maxValue;
+                SetSFXVolume(sfxSlider.maxValue);
             }
 
             Debug.LogError($"<color=green>Loaded Settings: {resolutionDropdown.value}, {Screen.fullScreen}, {musicSlider.value}, {sfxSlider.value}</color>");
