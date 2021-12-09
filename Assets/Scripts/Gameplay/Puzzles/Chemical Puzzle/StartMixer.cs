@@ -40,7 +40,6 @@ namespace Knotgames.Gameplay.Puzzle.ChemicalRoom {
         private void RecieveData(string recieved) {
             ExtractionClass extracted = JsonUtility.FromJson<ExtractionClass>(recieved);
             if(extracted.eventName == "startMixer") {
-                Debug.Log("Starting Mixer");
                 mixer.StartMix();
             }
             else if(extracted.eventName == "interfearMixer") {
@@ -51,7 +50,6 @@ namespace Knotgames.Gameplay.Puzzle.ChemicalRoom {
 
         public void Interact() {
             if(useable) {
-                Debug.LogError($"Started Mix");
                 mixer.StartMix();
                 if(!DevBoy.yes)
                     SendStartMixerData();

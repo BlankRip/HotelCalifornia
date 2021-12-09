@@ -99,8 +99,6 @@ namespace Knotgames.GameSettings
                 sfxSlider.value = 1f;
                 SetSFXVolume(1f);
             }
-
-            Debug.LogError($"<color=green>Loaded Settings: {resolutionDropdown.value}, {Screen.fullScreen}, {musicSlider.value}, {sfxSlider.value}</color>");
         }
 
         public void ClearPrefs()
