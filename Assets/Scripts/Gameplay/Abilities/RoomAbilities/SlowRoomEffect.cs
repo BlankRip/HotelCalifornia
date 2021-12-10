@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Knotgames.Audio;
+using Knotgames.CharacterData;
 using UnityEngine;
 
 namespace Knotgames.Gameplay.Abilities {
@@ -9,6 +10,7 @@ namespace Knotgames.Gameplay.Abilities {
         private IGhostMoveAdjustment moveAdjustment;
         private float normalSpeed;
         private float speedReductionMultiplier = 0.25f;
+        [SerializeField] ScriptableCharacterSelect myCharData;
 
         private void Start() {
             moveAdjustment = GetComponent<IGhostMoveAdjustment>();
@@ -19,7 +21,8 @@ namespace Knotgames.Gameplay.Abilities {
             if(other.CompareTag("RoomTrigger")) {
                 if(other.GetComponent<IRoomState>().GetRoomState() == RoomEffectState.Slow) {
                         moveAdjustment.AdjustSpeed(speedReductionMultiplier);
-                        AudioPlayer.instance.PlayAudio2DOneShot(ClipName.SlowDown);
+                        if(myCharData.characterType == CharacterType.Ghost)
+                            AudioPlayer.instance.PlayAudio2DOneShot(ClipName.SlowDown);
                 }
             }
         }
