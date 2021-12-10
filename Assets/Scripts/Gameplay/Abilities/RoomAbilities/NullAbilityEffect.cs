@@ -13,10 +13,8 @@ namespace Knotgames.Gameplay.Abilities {
 
         private void OnTriggerEnter(Collider other) {
             if(other.CompareTag("RoomTrigger")) {
-                if(other.GetComponent<IRoomState>().GetRoomState() == RoomEffectState.NoAbility) {
-                    Debug.Log("Null Null");
+                if(other.GetComponent<IRoomState>().GetRoomState() == RoomEffectState.NoAbility)
                     controlerAdjustment.SetAbilityUsability(false);
-                }
             }
         }
 
@@ -28,7 +26,6 @@ namespace Knotgames.Gameplay.Abilities {
         }
 
         public void ResetEffect() {
-            Debug.Log("Null reset");
             controlerAdjustment.SetAbilityUsability(true);
         }
     }
