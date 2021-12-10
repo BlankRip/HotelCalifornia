@@ -67,6 +67,7 @@ namespace Knotgames.Gameplay {
             this.cameraPosition = camPos;
             this.ghost = ghost;
             initilized = true;
+            GetComponent<Bearroll.GDOC>().enabled = true;
 
             if(this.ghost)
                 GhostCustoms();

@@ -34,6 +34,8 @@ namespace Knotgames.Network
             {
                 case "preparePlayers":
                     UnityEngine.Debug.LogError("PREPARING");
+                    ghostModels.Clear();
+                    humanModels.Clear();
                     break;
                 case "startGame":
                     inGame = true;
@@ -55,8 +57,11 @@ namespace Knotgames.Network
                         inGame = false;
                         winDone = false;
                         ghost = null;
-                        ghostModels.Clear();
-                        humanModels.Clear();
+                        if (SceneManager.GetActiveScene().name == "EndScene")
+                        {
+                            ghostModels.Clear();
+                            humanModels.Clear();
+                        }
                     }
                     else
                     {

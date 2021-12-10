@@ -62,8 +62,6 @@ namespace Knotgames.GameSettings
             { senseSlider.value = PlayerPrefs.GetFloat("Sensitivity"); senseText.text = senseSlider.value.ToString("F2"); senseFloat.value = senseSlider.value; }
             else
             { senseSlider.value = 3; senseText.text = senseSlider.value.ToString("F2"); senseFloat.value = senseSlider.value; }
-
-            Debug.LogError($"LOADED MOUSE SETTINGS : {PlayerPrefs.GetFloat("Sensitivity")}");
         }
     }
 }

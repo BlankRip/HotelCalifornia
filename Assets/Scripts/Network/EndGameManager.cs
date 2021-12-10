@@ -10,12 +10,12 @@ namespace Knotgames.Network
         [SerializeField] GameObject ghostWinPanel;
         [SerializeField] Transform[] playerSlots;
 
-        private void Start()
+        private void Awake()
         {
             InitializeWinScreen(NetGameManager.instance.humanWin);
         }
 
-        void InitializeWinScreen(bool humanWin)
+        public void InitializeWinScreen(bool humanWin)
         {
             if (humanWin)
             {

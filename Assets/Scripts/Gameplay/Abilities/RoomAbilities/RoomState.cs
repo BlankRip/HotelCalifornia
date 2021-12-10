@@ -62,7 +62,7 @@ namespace Knotgames.Gameplay.Abilities {
         }
 
         private void OnTriggerEnter(Collider other) {
-            if(other.CompareTag("Player"))
+            if(other.CompareTag("Ghost"))
                 AddToResetters(other.gameObject);
         }
 
@@ -75,7 +75,7 @@ namespace Knotgames.Gameplay.Abilities {
         }
 
         private void OnTriggerExit(Collider other) {
-            if(other.CompareTag("Player"))
+            if(other.CompareTag("Ghost"))
                 RemoveFromResetters(other.gameObject);
         }
 

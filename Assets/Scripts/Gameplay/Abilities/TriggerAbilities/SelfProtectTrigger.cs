@@ -6,7 +6,7 @@ using Knotgames.Gameplay.UI;
 namespace Knotgames.Gameplay.Abilities {
     public class SelfProtectTrigger : SelfAbilityTrigger
     {
-        private int usesLeft = 2;
+        private int usesLeft = 1;
         private float duration = 60;
 
         private void Start() {

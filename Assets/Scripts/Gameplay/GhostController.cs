@@ -4,6 +4,7 @@ using UnityEngine;
 using Knotgames.Network;
 using Knotgames.Gameplay.Abilities;
 using Knotgames.Audio;
+using Knotgames.Gameplay.UI;
 
 namespace Knotgames.Gameplay {
     public class GhostController : MonoBehaviour, IPlayerController, IGhostControlerAdjustment
@@ -78,25 +79,32 @@ namespace Knotgames.Gameplay {
                     else if(Input.GetKeyUp(KeyCode.LeftControl))
                         data.moveYNegetive = false;
 
-                    if(checkAbilityInputs) {
-                        if(Input.GetKeyDown(KeyCode.E)) {
+                    if(Input.GetKeyDown(KeyCode.E)) {
+                        if(checkAbilityInputs) {
                             if(primary.CanUse()) {
                                 primary.UseAbility();
                                 AudioPlayer.instance.PlayAudio2DOneShot(ClipName.CastAbility);
                             }
-                        }
-                        if(Input.GetKeyDown(KeyCode.F)) {
+                        } else
+                            InstructionText.instance.ShowInstruction("Currently Abilities Locked In This Room");
+                    }
+                    if(Input.GetKeyDown(KeyCode.F)) {
+                        if(checkAbilityInputs) {
                             if(secondary.CanUse()) {
                                 secondary.UseAbility();
                                 AudioPlayer.instance.PlayAudio2DOneShot(ClipName.CastAbility);
                             }
-                        }
-                        if(Input.GetKeyDown(KeyCode.Q)) {
+                        } else
+                            InstructionText.instance.ShowInstruction("Currently Abilities Locked In This Room");
+                    }
+                    if(Input.GetKeyDown(KeyCode.Q)) {
+                        if(checkAbilityInputs) {
                             if(ultimate.CanUse()) {
                                 ultimate.UseAbility();
                                 AudioPlayer.instance.PlayAudio2DOneShot(ClipName.CastAbility);
                             }
-                        }
+                        } else
+                            InstructionText.instance.ShowInstruction("Currently Abilities Locked In This Room");
                     }
                 }
                 // if(Input.GetKeyDown(KeyCode.Mouse0)) {
