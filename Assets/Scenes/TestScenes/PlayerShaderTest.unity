@@ -2242,6 +2242,7 @@ GameObject:
   - component: {fileID: 599868238}
   - component: {fileID: 599868239}
   - component: {fileID: 599868240}
+  - component: {fileID: 599868241}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -2289,7 +2290,7 @@ Camera:
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_RenderingPath: -1
+  m_RenderingPath: 3
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
   m_TargetEye: 3
@@ -2394,6 +2395,8 @@ MonoBehaviour:
       PublicKeyToken=null
   - assemblyQualifiedName: PlayerEyeBlur, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
+  - assemblyQualifiedName: PEFXFog, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
 --- !u!114 &599868240
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2407,6 +2410,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ghostRepelMaterial: {fileID: 2100000, guid: dd9af31c60c4a64488feae141b5993c3, type: 2}
+--- !u!114 &599868241
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 599868234}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5154715108ced92469e793010d1a6794, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &645390699
 GameObject:
   m_ObjectHideFlags: 0

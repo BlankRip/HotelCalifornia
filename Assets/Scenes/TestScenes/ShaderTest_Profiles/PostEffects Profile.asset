@@ -1684,6 +1684,7 @@ MonoBehaviour:
   - {fileID: 4428437334051913643}
   - {fileID: -6548181251936483401}
   - {fileID: 6514391976104432064}
+  - {fileID: 7690420877388425664}
 --- !u!114 &420941200151749050
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -1983,3 +1984,31 @@ MonoBehaviour:
   selectImage:
     overrideState: 1
     value: 1
+--- !u!114 &7690420877388425664
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0dc054ebc9799354da36e1affe5c7477, type: 3}
+  m_Name: PEFXFog
+  m_EditorClassIdentifier: 
+  active: 1
+  enabled:
+    overrideState: 1
+    value: 1
+  DistColor:
+    overrideState: 1
+    value: {r: 0, g: 0.16698116, b: 0.16981131, a: 1}
+  DistEffect:
+    overrideState: 1
+    value: 0.17
+  ExponentialCtrl:
+    overrideState: 1
+    value: 1.54
+  StartOffset:
+    overrideState: 1
+    value: 0
