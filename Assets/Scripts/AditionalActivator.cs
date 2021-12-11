@@ -8,13 +8,17 @@ namespace Knotgames {
         [SerializeField] List<GameObject> toActivate;
 
         private void OnEnable() {
-            foreach (GameObject go in toActivate)
-                go.SetActive(true);
+            foreach (GameObject go in toActivate) {
+                if(go != null)
+                    go.SetActive(true);
+            }
         }
 
         private void OnDisable() {
-            foreach (GameObject go in toActivate)
-                go.SetActive(false);
+            foreach (GameObject go in toActivate) {
+                if(go != null)
+                    go.SetActive(false);
+            }
         }
     }
 }
