@@ -24,10 +24,10 @@ public sealed class PEFXFogRenderer : PostProcessEffectRenderer<PEFXFog>
     public override void Render(PostProcessRenderContext context)
     {
         var sheet = context.propertySheets.Get(Shader.Find("Custom/PostEffects/Fog"));
-        sheet.properties.SetVector("_DistanceColor", settings.DistColor);
-        sheet.properties.SetFloat("_DistanceFogEffect", settings.DistEffect);
-        sheet.properties.SetFloat("_Knee", settings.ExponentialCtrl);
-        sheet.properties.SetFloat("_StartOffset", settings.StartOffset);
+        sheet.properties.SetVector("_DistanceColorGeneral", settings.DistColor);
+        sheet.properties.SetFloat("_DistanceFogEffectGeneral", settings.DistEffect);
+        sheet.properties.SetFloat("_KneeGeneral", settings.ExponentialCtrl);
+        sheet.properties.SetFloat("_StartOffsetGeneral", settings.StartOffset);
         context.command.BlitFullscreenTriangle(context.source, context.destination, sheet, 0);
     }
 }
