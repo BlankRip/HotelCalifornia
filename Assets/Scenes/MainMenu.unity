@@ -4710,8 +4710,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0410e4b8af71fe141890da9a1e2390f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  useServer: 1
-  human: 0
+  useServer: 0
+  human: 1
   humanGroup: {fileID: 1913677092}
   ghostGroup: {fileID: 399222125}
   humanDefault: {fileID: 872311082}
@@ -28367,7 +28367,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: -105.19519, y: 13.699707}
+  m_AnchoredPosition: {x: -105.19531, y: 13.699707}
   m_SizeDelta: {x: 1962.457, y: 659.58}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &872283117
@@ -31716,7 +31716,6 @@ MonoBehaviour:
   buttonsGameObjects:
   - {fileID: 582611642}
   - {fileID: 763206920}
-  - {fileID: 0}
   - {fileID: 478374583}
   connectedNavigator: {fileID: 0}
 --- !u!1 &952794788
@@ -63679,6 +63678,14 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8851166818997714421, guid: 4b29c1affedea54419c7e00f8db74b0c, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 249470851}
+    - target: {fileID: 8851166818997714421, guid: 4b29c1affedea54419c7e00f8db74b0c, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetMouseSensitivity
+      objectReference: {fileID: 0}
     - target: {fileID: 8851166818997714426, guid: 4b29c1affedea54419c7e00f8db74b0c, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -63702,6 +63709,14 @@ PrefabInstance:
     - target: {fileID: 8851166818997714426, guid: 4b29c1affedea54419c7e00f8db74b0c, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8851166819528421494, guid: 4b29c1affedea54419c7e00f8db74b0c, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 249470851}
+    - target: {fileID: 8851166819528421494, guid: 4b29c1affedea54419c7e00f8db74b0c, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetMouseSensitivity
       objectReference: {fileID: 0}
     - target: {fileID: 8851166819528421495, guid: 4b29c1affedea54419c7e00f8db74b0c, type: 3}
       propertyPath: m_AnchorMax.y
@@ -72503,6 +72518,46 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 548261140}
     m_Modifications:
+    - target: {fileID: 4633827597049566434, guid: a3eb93a70842e8a42b0c7b57de348240, type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 249470849}
+    - target: {fileID: 4633827597049566434, guid: a3eb93a70842e8a42b0c7b57de348240, type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetFullscreen
+      objectReference: {fileID: 0}
+    - target: {fileID: 4633827597590849337, guid: a3eb93a70842e8a42b0c7b57de348240, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 249470849}
+    - target: {fileID: 4633827597590849337, guid: a3eb93a70842e8a42b0c7b57de348240, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetMusicVolume
+      objectReference: {fileID: 0}
+    - target: {fileID: 4633827597786426311, guid: a3eb93a70842e8a42b0c7b57de348240, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 249470849}
+    - target: {fileID: 4633827597786426311, guid: a3eb93a70842e8a42b0c7b57de348240, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SaveSettings
+      objectReference: {fileID: 0}
+    - target: {fileID: 4633827598956052779, guid: a3eb93a70842e8a42b0c7b57de348240, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 249470849}
+    - target: {fileID: 4633827598956052779, guid: a3eb93a70842e8a42b0c7b57de348240, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetSFXVolume
+      objectReference: {fileID: 0}
+    - target: {fileID: 6495061338091640624, guid: a3eb93a70842e8a42b0c7b57de348240, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 249470849}
+    - target: {fileID: 6495061338091640624, guid: a3eb93a70842e8a42b0c7b57de348240, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ClearPrefs
+      objectReference: {fileID: 0}
     - target: {fileID: 7570735691733196941, guid: a3eb93a70842e8a42b0c7b57de348240, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
