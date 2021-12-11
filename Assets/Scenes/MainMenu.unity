@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0.07154793, b: 0.3810012, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0.07153713, b: 0.38103762, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -10971,6 +10971,7 @@ GameObject:
   m_Component:
   - component: {fileID: 399222126}
   - component: {fileID: 399222127}
+  - component: {fileID: 399222128}
   m_Layer: 5
   m_Name: GhostGroup
   m_TagString: Untagged
@@ -11021,6 +11022,20 @@ MonoBehaviour:
   startPanel: {fileID: 1979823268}
   parentSwitcher: {fileID: 548261141}
   minPanels: 1
+--- !u!114 &399222128
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 399222125}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6cc27e40c74ffa04aa79ead0e1c17223, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  toActivate:
+  - {fileID: 1533369211}
 --- !u!1001 &400142906
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -19543,7 +19558,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &731335977
 RectTransform:
   m_ObjectHideFlags: 0
@@ -61253,6 +61268,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1913677093}
   - component: {fileID: 1913677094}
+  - component: {fileID: 1913677095}
   m_Layer: 5
   m_Name: HumanGroup
   m_TagString: Untagged
@@ -61299,6 +61315,20 @@ MonoBehaviour:
   startPanel: {fileID: 340304724}
   parentSwitcher: {fileID: 548261141}
   minPanels: 1
+--- !u!114 &1913677095
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1913677092}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6cc27e40c74ffa04aa79ead0e1c17223, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  toActivate:
+  - {fileID: 731335976}
 --- !u!1 &1917050640
 GameObject:
   m_ObjectHideFlags: 0
