@@ -23,7 +23,7 @@ Shader "Custom/PostEffects/Fog"
         float4 col = SAMPLE_TEXTURE2D(_MainTex, sampler_MainTex, i.texcoord);
            
 
-        return col + lerp(0, _DistanceColorGeneral, pow(saturate((depth * _DistanceFogEffectGeneral) - _StartOffsetGeneral), _KneeGeneral));
+        return col + lerp(0, _DistanceColorGeneral, saturate(depth * _DistanceFogEffectGeneral));
     }
 
     ENDHLSL
