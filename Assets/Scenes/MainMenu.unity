@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0.07154793, b: 0.3810012, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0.07153713, b: 0.38103762, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -6817,7 +6817,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   senseSlider: {fileID: 512091391}
-  senseText: {fileID: 504926296}
+  senseText: {fileID: 1357794693}
   senseFloat: {fileID: 11400000, guid: 0b9bdd7332589eb41846f39b45a95cc5, type: 2}
 --- !u!1 &249486613
 GameObject:
@@ -13919,17 +13919,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 502711440}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &504926296 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7974509987925426953, guid: 7e54f83e96b585d4899f34da5fe7d4d4, type: 3}
-  m_PrefabInstance: {fileID: 7974509986600617920}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &512091391 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7974509987377337883, guid: 7e54f83e96b585d4899f34da5fe7d4d4, type: 3}
@@ -40675,6 +40664,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4854141345246348, guid: 7c5fce515cae1674c8d80f6ce84cda0f, type: 3}
   m_PrefabInstance: {fileID: 1354797037}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1357794693 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8851166820149814628, guid: 4b29c1affedea54419c7e00f8db74b0c, type: 3}
+  m_PrefabInstance: {fileID: 1987974163}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1365640034
 GameObject:
   m_ObjectHideFlags: 0
@@ -63766,6 +63766,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8851166820149814628, guid: 4b29c1affedea54419c7e00f8db74b0c, type: 3}
+      propertyPath: m_text
+      value: 3.00
+      objectReference: {fileID: 0}
     - target: {fileID: 8851166820440036486, guid: 4b29c1affedea54419c7e00f8db74b0c, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -72550,6 +72554,14 @@ PrefabInstance:
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: SetSFXVolume
       objectReference: {fileID: 0}
+    - target: {fileID: 4633827599050072825, guid: a3eb93a70842e8a42b0c7b57de348240, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 249470849}
+    - target: {fileID: 4633827599050072825, guid: a3eb93a70842e8a42b0c7b57de348240, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetResolution
+      objectReference: {fileID: 0}
     - target: {fileID: 6495061338091640624, guid: a3eb93a70842e8a42b0c7b57de348240, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -72701,6 +72713,26 @@ PrefabInstance:
     - target: {fileID: 7570735692336785090, guid: a3eb93a70842e8a42b0c7b57de348240, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -35.576
+      objectReference: {fileID: 0}
+    - target: {fileID: 7570735692336785148, guid: a3eb93a70842e8a42b0c7b57de348240, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7570735692336785148, guid: a3eb93a70842e8a42b0c7b57de348240, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 249470849}
+    - target: {fileID: 7570735692336785148, guid: a3eb93a70842e8a42b0c7b57de348240, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetSFXVolume
+      objectReference: {fileID: 0}
+    - target: {fileID: 7570735692360335599, guid: a3eb93a70842e8a42b0c7b57de348240, type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 249470849}
+    - target: {fileID: 7570735692360335599, guid: a3eb93a70842e8a42b0c7b57de348240, type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetFullscreen
       objectReference: {fileID: 0}
     - target: {fileID: 7570735692396398928, guid: a3eb93a70842e8a42b0c7b57de348240, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
@@ -72881,6 +72913,18 @@ PrefabInstance:
     - target: {fileID: 7570735692938595656, guid: a3eb93a70842e8a42b0c7b57de348240, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -35.576
+      objectReference: {fileID: 0}
+    - target: {fileID: 7570735692938595658, guid: a3eb93a70842e8a42b0c7b57de348240, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7570735692938595658, guid: a3eb93a70842e8a42b0c7b57de348240, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 249470849}
+    - target: {fileID: 7570735692938595658, guid: a3eb93a70842e8a42b0c7b57de348240, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetMusicVolume
       objectReference: {fileID: 0}
     - target: {fileID: 7570735692964620448, guid: a3eb93a70842e8a42b0c7b57de348240, type: 3}
       propertyPath: m_AnchorMax.x
